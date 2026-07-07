@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Palabra Viva Beta</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Lora:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- PANTALLA 1: BIENVENIDA (SPLASH) -->
+    <div id="screen-splash" class="screen active">
+        <div class="splash-content">
+            <div class="logo-wrapper">
+                <!-- Simulación de la Cruz Dorada con destello lila/arcoíris -->
+                <div class="rainbow-glow"></div>
+                <div class="golden-cross">†</div>
+                <div class="dove-icon">🕊️</div>
+            </div>
+            <h1 class="brand-title-splash">PALABRA VIVA</h1>
+            <p class="subtitle-splash">Biblia de Estudio Multilingüe</p>
+            <button class="btn-enter">Comenzar</button>
+        </div>
+    </div>
+
+    <!-- PANTALLA 2: DIVISIÓN PRINCIPAL -->
+    <div id="screen-main" class="screen">
+        <div class="split-container">
+            <!-- Bloque Superior: La Sagrada Escritura -->
+            <div id="btn-goto-bible" class="split-block block-top">
+                <div class="block-overlay">
+                    <h2>LA SANTA BIBLIA</h2>
+                    <p>Lectura, Filología y Tradición Eclesial</p>
+                </div>
+            </div>
+            <!-- Bloque Inferior: El Camino Personal -->
+            <div id="btn-goto-path" class="split-block block-bottom">
+                <div class="block-overlay">
+                    <h2>CAMINANDO CON JESÚS</h2>
+                    <p>El Camino de Emaús y Tu Ruta Diaria</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- PANTALLA 3A: DETALLE DE LA BIBLIA (Tu pantalla anterior mejorada) -->
+    <div id="screen-bible-detail" class="screen">
+        <div class="app-container">
+            <header class="main-header">
+                <button class="btn-back">⬅ Volver</button>
+                <h1 class="brand-title">PALABRA VIVA</h1>
+                <p class="header-statement">La plenitud de la Revelación se da en la Persona y Misión de Jesucristo.</p>
+            </header>
+
+            <main class="content-area">
+                <article class="scripture-passage">
+                    <p class="verse interact-paragraph">
+                        <span class="drop-cap">Y</span> el Verbo se hizo carne, y habitó entre nosotros, y vimos su gloria, gloria como del unigénito del Padre, lleno de gracia y de verdad.
+                    </p>
+                    <small class="version-tag">Juan 1:14 | Biblia el Libro del Pueblo de Dios (CEE)</small>
+                </article>
+            </main>
+
+            <!-- Panel en Abanico Tradicional abajo -->
+            <div id="study-card" class="study-card-panel hidden">
+                <div class="panel-handle"></div>
+                   <div class="columns-container">
+                    <div class="fan-column col-1">
+                        <button class="btn-close-extended">✕ Cerrar</button>
+                        <h3>Raíces y Filología</h3>
+                        <p class="focus-text">Análisis del texto original (griego/arameo). Ej: LOGOS y Sárx.</p>
+                        <div class="extended-text">
+                            <strong>Estudio Profundo del término LOGOS:</strong><br><br>
+                            En el griego clásico, 'Logos' no es solo una palabra hablada, sino el principio ordenador del universo. San Juan rompe la historia al decir que este Principio Universal se hizo 'Sárx' (carne frágil, mortal). No es una apariencia, es una asunción real de nuestra naturaleza humana.
+                        </div>
+                    </div>
+                    <div class="fan-column col-2">
+                        <button class="btn-close-extended">✕ Cerrar</button>
+                        <h3>Sucesión Apostólica</h3>
+                        <p class="focus-text">El misterio de la Iglesia y la continuidad de la misión.</p>
+                        <div class="extended-text">
+                            <strong>Tradición Eclesial Viva:</strong><br><br>
+                            Desde San Ignacio de Antioquía hasta el magisterio actual, la Iglesia custodia que la transmisión del Verbo encarnado no sufra alteraciones. Los Apóstoles vieron la Gloria del Padre y esa misma experiencia se transmite en la sucesión ininterrumpida de los obispos.
+                        </div>
+                    </div>
+                    <div class="fan-column col-3">
+                        <button class="btn-close-extended">✕ Cerrar</button>
+                        <h3>Contexto Histórico</h3>
+                        <p class="focus-text">Evidencia externa y auxiliar (Flavio Josefo, Tácito).</p>
+                        <div class="extended-text">
+                            <strong>Datación y Entorno:</strong><br><br>
+                            El Evangelio de Juan se consolida hacia finales del siglo I en Éfeso. Frente a las primeras desviaciones gnósticas que decían que Jesús era un fantasma, el contexto histórico y arqueológico reafirma el realismo de los pasajes en Judea y Galilea.
+                        </div>
+                    </div>
+                    <div class="fan-column col-4">
+                        <button class="btn-close-extended">✕ Cerrar</button>
+                        <h3>Apologética</h3>
+                        <p class="focus-text">Defensa de la fe basada en la caridad y la verdad eclesial.</p>
+                        <div class="extended-text">
+                            <strong>Defensa de la Encarnación:</strong><br><br>
+                            Contra los ataques antiguos y modernos que buscan separar al 'Jesús histórico' del 'Cristo de la fe', la apologética católica demuestra que el diseño de los Evangelios es textualmente fiel y lógicamente coherente con las profecías del Antiguo Testamento.
+                        </div>
+                    </div>
+                </div> 
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- PANTALLA 3B: DETALLE DEL CAMINO PERSONAL -->
+    <div id="screen-path-detail" class="screen">
+        <div class="app-container path-theme">
+            <header class="main-header">
+                <button class="btn-back-path">⬅ Volver</button>
+                <h1 class="brand-title text-gold">CAMINEMOS CON JESÚS</h1>
+                <p class="header-statement text-italic">Tu encuentro hoy con Él en tu ruta diaria.</p>
+            </header>
+
+            <main class="path-content">
+                <div class="path-card">
+                    <h3>1. Mi Punto de Partida</h3>
+                    <p class="question">¿Cómo está tu corazón hoy?</p>
+                    <div class="mood-buttons">
+                        <span class="badge">Óptimo</span>
+                        <span class="badge active">Agradecido</span>
+                        <span class="badge">Cansado</span>
+                    </div>
+                </div>
+
+                <div class="path-card">
+                    <h3>2. La Ruta de Emaús</h3>
+                    <p class="reflection"><em>"Reconocer Su Presencia en los pequeños detalles del día, como el calor de la familia, es el primer paso para ver Su magia."</em></p>
+                </div>
+            </main>
+        </div>
+    </div>
+
+    <script src="ariel.js"></script>
+</body>
+</html>

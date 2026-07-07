@@ -1,0 +1,77 @@
+{  
+  "app_name": "Palabra Viva",  
+  "version": "1.3",  
+  "default_language": "es",  
+  "authorized_version": "Biblia el Libro del Pueblo de Dios (CEE)",  
+  "ui_theme": {  
+    "style": "Premium, limpio y serio",  
+    "background_color": "#000000",  
+    "accent_color": "#D4AF37",  
+    "typography": "Clásica romana / Capitular",  
+    "interactive_gesture": "Tap paragraph to deploy bottom study card (Fan layout)"  
+  },  
+  "study_panel": {  
+    "sections": [  
+      {"id": "filologia", "title": "Filología y Origen", "icon": "magnifying_glass"},  
+      {"id": "conectividad", "title": "Conectividad AT/NT", "icon": "link_chains"},  
+      {"id": "apologetica", "title": "Apologética y Defensa", "icon": "shield_with_torch"}  
+    ]  
+  },  
+  "pedagogia_revelacion": {  
+    "description": "Etapas del único plan de Dios y comprensión progresiva del misterio",  
+    "ui_anchors": {
+      "header_statement": "La plenitud de la Revelación se da en la Persona y Misión de Jesucristo.",
+      "footer_statement": "Cristo es la palabra única, perfecta e insustituible del Padre; no se espera otra revelación pública."
+    },
+    "steps": [  
+      {"level": 0, "title": "Etapa 0: El Verbo oculto pero activo", "subtitle": "La Visitación"},  
+      {"level": 1, "title": "Etapa 1: Los primeros destellos", "subtitle": "El Templo y Caná"},  
+      {"level": 2, "title": "Etapa 2: Las leyes del Reino", "subtitle": "El Sermón de la Montaña"},  
+      {"level": 3, "title": "Etapa 3: Los misterios en parábolas", "subtitle": "Pedagogía del Reino"},  
+      {"level": 4, "title": "Etapa 4: Las verdades profundas", "subtitle": "Eucaristía y Purificación"},  
+      {"level": 5, "title": "Etapa 5: El triunfo definitivo", "subtitle": "La Cruz y la Resurrección"}  
+    ]  
+  },  
+  "the_four_columns_fan": {  
+    "column_1": {  
+      "title": "Raíces y Filología",  
+      "color": "#800080",  
+      "focus": "Análisis del texto original (griego/arameo). Ej: LOGOS y Sárx en Juan 1:14 para iluminar el sentido literal."  
+    },  
+    "column_2": {  
+      "title": "Sucesión Apostólica y Continuity",  
+      "color": "#B8860B",  
+      "focus": "El misterio de la Iglesia y la continuidad de la misión confiada a los Apóstoles, expresada históricamente y respaldada por mapas y los Padres de la Iglesia."  
+    },  
+    "column_3": {  
+      "title": "Contexto Histórico Secular",  
+      "color": "#E6D7B2",  
+      "focus": "Evidencia externa y auxiliar (Flavio Josefo, Tácito, Plinio, Suetonio). Aplica obligatoriamente la advertencia fija en tres capas sobre el valor relativo de la fuente secular frente al texto inspirado."  
+    },  
+    "column_4": {  
+      "title": "Respuestas y Apologética",  
+      "color": "#E34234",  
+      "focus": "Argumentación teológica y defensa de la fe basada estrictamente en la caridad y la verdad eclesial."  
+    }  
+  },
+  "card_pastoral_closure": {
+    "description": "Secuencia obligatoria de cierre pedagógico-pastoral para la transición del estudio a la comunión",
+    "steps_flow": [
+      {
+        "id": "sentido_escritura", 
+        "title": "Sentido en la Escritura", 
+        "ui_behavior": "Enfoque literal e histórico. Qué dice el texto en su contexto original."
+      },
+      {
+        "id": "sentido_salvifico", 
+        "title": "Sentido Salvífico", 
+        "ui_behavior": "Enfoque teológico y eclesial. Conexión del texto con Cristo y el depósito de la fe."
+      },
+      {
+        "id": "oracion_vida", 
+        "title": "Oración y Vida", 
+        "ui_behavior": "Modo UI Oración activo. Cambio de tipografía, ocultamiento de datos técnicos, despliegue de invocación breve, pregunta orante y meta concreta de acción."
+      }
+    ]
+  }
+}

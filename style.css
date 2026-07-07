@@ -1,0 +1,514 @@
+/* Variables de Diseño de Alta Gama */
+:root {
+  --bg-dark: #000000;
+  --bg-panel: #121212;
+  --gold: #d4af37;
+  --gold-light: #f8edc1;
+  --text-light: #e0e0e0;
+  --font-serif: "Lora", Georgia, serif;
+  --font-roman: "Cinzel", serif;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background-color: var(--bg-dark);
+  color: var(--text-light);
+  font-family: var(--font-serif);
+  min-height: 100vh;
+  overflow: hidden; /* Evita rebotes raros en el cel */
+}
+
+/* SISTEMA DE PANTALLAS (Manejo de navegación) */
+.screen {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: none; /* Ocultas por defecto */
+  background-color: var(--bg-dark);
+  z-index: 10;
+  overflow-y: auto;
+}
+
+.screen.active {
+  display: block; /* Solo la pantalla activa se ve */
+}
+
+/* --- PANTALLA 1: BIENVENIDA (SPLASH) --- */
+#screen-splash {
+  display: none;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+#screen-splash.active {
+  display: flex;
+}
+
+.splash-content {
+  padding: 20px;
+  position: relative;
+}
+
+/* La Cruz Dorada con el destello Lila / Arcoíris */
+.logo-wrapper {
+  position: relative;
+  width: 150px;
+  height: 150px;
+  margin: 0 auto 30px auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.rainbow-glow {
+  position: absolute;
+  width: 140px;
+  height: 140px;
+  border-radius: 50%;
+  background: radial-gradient(
+    circle,
+    rgba(159, 75, 192, 0.6) 2%,
+    rgba(52, 152, 219, 0.3) 50%,
+    transparent 70%
+  );
+  filter: blur(10px);
+  animation: pulseGlow 3s infinite alternate;
+}
+
+.golden-cross {
+  font-size: 7rem;
+  color: var(--gold);
+  text-shadow: 0 0 15px rgba(212, 175, 55, 0.5);
+  z-index: 2;
+}
+
+.dove-icon {
+  font-size: 2rem;
+  position: absolute;
+  bottom: 25px;
+  right: 25px;
+  z-index: 3;
+  filter: drop-shadow(0 0 5px rgba(255, 255, 255, 0.6));
+}
+
+.brand-title-splash {
+  font-family: var(--font-roman);
+  color: var(--gold);
+  letter-spacing: 5px;
+  font-size: 2.4rem;
+  margin-bottom: 10px;
+}
+
+.subtitle-splash {
+  font-size: 1rem;
+  color: #9c9b9b;
+  letter-spacing: 2px;
+  margin-bottom: 40px;
+}
+
+.btn-enter {
+  background: transparent;
+  border: 1px solid var(--gold);
+  color: var(--gold);
+  padding: 12px 35px;
+  font-family: var(--font-roman);
+  font-size: 1rem;
+  letter-spacing: 2px;
+  cursor: pointer;
+  border-radius: 4px;
+  transition: all 0.3s;
+}
+
+.btn-enter:hover {
+  background-color: var(--gold);
+  color: black;
+}
+
+/* --- PANTALLA 2: DIVISIÓN PRINCIPAL (PANTALLA PARTIDA) --- */
+.split-container {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+}
+
+.split-block {
+  flex: 1;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: transform 0.5s;
+  overflow: hidden;
+}
+
+/* Línea divisoria elegante */
+.block-top {
+  border-bottom: 2px solid var(--gold);
+  background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.9));
+}
+
+.block-bottom {
+  background: linear-gradient(rgba(0, 0, 0, 0.9), rgba(0, 0, 0, 0.7));
+}
+
+.block-overlay {
+  text-align: center;
+  padding: 20px;
+  z-index: 2;
+}
+
+.split-block h2 {
+  font-family: var(--font-roman);
+  color: var(--gold);
+  letter-spacing: 3px;
+  font-size: 1.6rem;
+  margin-bottom: 10px;
+}
+
+.split-block p {
+  font-size: 0.9rem;
+  color: #aaa;
+  font-style: italic;
+}
+
+.split-block:hover {
+  filter: brightness(1.3);
+}
+
+/* --- PANTALLAS DE DETALLE (CONTENEDORES) --- */
+.app-container {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  padding: 25px;
+  position: relative;
+}
+
+/* Botones de volver */
+.btn-back,
+.btn-back-path {
+  background: transparent;
+  border: none;
+  color: #888;
+  font-size: 1rem;
+  cursor: pointer;
+  text-align: left;
+  margin-bottom: 15px;
+  font-family: var(--font-roman);
+  transition: color 0.3s;
+}
+.btn-back:hover,
+.btn-back-path:hover {
+  color: var(--gold);
+}
+
+.main-header {
+  text-align: center;
+  border-bottom: 1px solid rgba(212, 175, 55, 0.2);
+  padding-bottom: 15px;
+  margin-bottom: 25px;
+}
+
+.brand-title {
+  font-family: var(--font-roman);
+  color: var(--gold);
+  letter-spacing: 4px;
+  font-size: 1.8rem;
+}
+
+.text-gold {
+  color: var(--gold);
+}
+
+.header-statement {
+  font-size: 0.85rem;
+  font-style: italic;
+  color: #666;
+  margin-top: 6px;
+}
+
+/* Área Biblia */
+.content-area {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.interact-paragraph {
+  font-size: 1.25rem;
+  line-height: 1.6;
+  text-align: justify;
+  cursor: pointer;
+}
+
+.drop-cap {
+  font-family: var(--font-roman);
+  font-size: 3.2rem;
+  float: left;
+  line-height: 0.8;
+  margin-right: 8px;
+  color: var(--gold);
+  font-weight: bold;
+}
+
+.version-tag {
+  display: block;
+  text-align: right;
+  margin-top: 15px;
+  color: #555;
+  font-size: 0.8rem;
+}
+
+/* Panel Abanico Abajo */
+.study-card-panel {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background-color: var(--bg-panel);
+  border-top: 4px solid var(--gold);
+  border-radius: 15px 15px 0 0;
+  padding: 15px;
+  transform: translateY(0);
+  transition: transform 0.4s ease-out;
+  z-index: 100;
+}
+
+.study-card-panel.hidden {
+  transform: translateY(calc(100% - 20px));
+}
+
+.panel-handle {
+  width: 40px;
+  height: 4px;
+  background-color: #333;
+  border-radius: 2px;
+  margin: 0 auto 15px auto;
+  cursor: pointer;
+}
+
+.columns-container {
+  display: grid;
+  grid-template-columns: repeat(
+    2,
+    1fr
+  ); /* 2x2 para que entre bien en pantallas chicas */
+  gap: 12px;
+}
+
+.fan-column {
+  padding: 12px;
+  border-radius: 6px;
+  background-color: rgba(255, 255, 255, 0.01);
+  border-top: 3px solid #333;
+}
+.col-1 {
+  border-top-color: #800080;
+}
+.col-2 {
+  border-top-color: #b8860b;
+}
+.col-3 {
+  border-top-color: #e6d7b2;
+}
+.col-4 {
+  border-top-color: #e34234;
+}
+
+.fan-column h3 {
+  font-family: var(--font-roman);
+  font-size: 0.85rem;
+  margin-bottom: 5px;
+}
+.focus-text {
+  font-size: 0.75rem;
+  color: #999;
+  line-height: 1.3;
+}
+
+/* --- DETALLE CAMINO (Caminemos con Jesús) --- */
+.path-content {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  max-width: 500px;
+  margin: 0 auto;
+}
+
+.path-card {
+  background-color: var(--bg-panel);
+  border: 1px solid rgba(212, 175, 55, 0.1);
+  padding: 20px;
+  border-radius: 10px;
+}
+
+.path-card h3 {
+  font-family: var(--font-roman);
+  color: var(--gold);
+  font-size: 1.1rem;
+  margin-bottom: 10px;
+}
+
+.question {
+  font-size: 0.95rem;
+  color: #ccc;
+  margin-bottom: 12px;
+}
+
+.mood-buttons {
+  display: flex;
+  gap: 10px;
+}
+
+.badge {
+  padding: 6px 14px;
+  border: 1px solid #444;
+  border-radius: 20px;
+  font-size: 0.8rem;
+  color: #888;
+}
+
+.badge.active {
+  background-color: rgba(212, 175, 55, 0.1);
+  border-color: var(--gold);
+  color: var(--gold);
+}
+
+.reflection {
+  font-size: 0.95rem;
+  line-height: 1.5;
+  color: #bbb;
+}
+/* --- ESTILO INTERACTIVO PARA LOS BOTONES (HOVER) --- */
+
+/* Cuando el mouse pasa por encima de cualquier 'badge' que no sea la 'active' */
+.badge:not(.active):hover {
+  /* Iluminar: Cambiamos el color del texto a un tono más claro o blanco */
+  color: #ffffff;
+
+  /* Iluminar: Hacemos el borde un poco más brillante (usando el color dorado que ya tenés) */
+  border-color: #e6c773; /* Un dorado más claro */
+
+  /* Agranda un poquito: Escalamos el elemento al 105% de su tamaño original */
+  transform: scale(1.05);
+
+  /* Transición suave: Para que no sea un salto brusco, sino un movimiento elegante */
+  transition: all 0.3s ease;
+
+  /* Cambiamos el cursor a una manito para indicar que es clickeable */
+  cursor: pointer;
+}
+/* Animación del destello */
+@keyframes pulseGlow {
+  0% {
+    transform: scale(0.9);
+    opacity: 0.5;
+  }
+  100% {
+    transform: scale(1.1);
+    opacity: 0.8;
+  }
+} /* --- ADAPTACIÓN INTELIGENTE (Celular y Computadora) --- */
+
+/* Cuando la pantalla sea ancha (como en la Computadora) */
+@media (min-width: 768px) {
+  .columns-container {
+    grid-template-columns: repeat(
+      4,
+      1fr
+    ); /* Las 4 columnas se ponen en una sola línea */
+  }
+
+  .split-container {
+    flex-direction: row; /* La pantalla principal se divide izquierda y derecha, no arriba y abajo */
+  }
+
+  .block-top {
+    border-bottom: none;
+    border-right: 2px solid var(--gold); /* Línea divisoria vertical */
+  }
+
+  .main-header {
+    position: relative;
+  }
+
+  .btn-back,
+  .btn-back-path {
+    position: absolute;
+    left: 20px;
+    top: 10px;
+  }
+} /* --- EXPANSIÓN DE TARJETAS EN DOS NIVELES --- */
+
+/* Cuando una tarjeta se expande a pantalla casi grande */
+.fan-column.expanded-full {
+  grid-column: span 2; /* Ocupa todo el ancho en el celular */
+  position: fixed;
+  top: 20%; /* Deja un 25% libre arriba para que se lea la Biblia */
+  left: 10px;
+  right: 10px;
+  bottom: 20px;
+  height: auto;
+  z-index: 150;
+  background-color: #1a1a1a;
+  border: 2px solid var(--gold);
+  padding: 20px;
+  overflow-y: auto;
+  box-shadow: 0 -10px 30px rgba(0, 0, 0, 0.8);
+  transition: all 0.3s ease-in-out;
+}
+
+/* En computadora, que ocupe todo el contenedor */
+@media (min-width: 768px) {
+  .fan-column.expanded-full {
+    grid-column: span 4;
+    top: 30%;
+    left: 25px;
+    right: 25px;
+  }
+}
+
+/* Estilo para el texto largo de lectura interna */
+.extended-text {
+  display: none;
+  margin-top: 10px;
+  font-size: 0.95rem;
+  line-height: 1.6;
+  color: #ccc;
+  text-align: justify;
+  border-top: 1px solid rgba(212, 175, 55, 0.2);
+  padding-top: 10px;
+}
+
+.fan-column.expanded-full .extended-text {
+  display: block; /* Solo se muestra cuando se abre grande */
+}
+
+/* Botón flotante para cerrar la lectura grande */
+.btn-close-extended {
+  display: none;
+  background: var(--gold);
+  color: black;
+  border: none;
+  padding: 5px 12px;
+  font-family: var(--font-roman);
+  font-size: 0.75rem;
+  cursor: pointer;
+  float: right;
+  border-radius: 3px;
+  margin-bottom: 10px;
+}
+
+.fan-column.expanded-full .btn-close-extended {
+  display: block;
+}
