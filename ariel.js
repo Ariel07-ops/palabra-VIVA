@@ -84,6 +84,16 @@ document.addEventListener("DOMContentLoaded", () => {
       console.log("Elegiste: " + button.innerText);
     });
   });
+  function redirigir(estado) {
+    if (estado === "optimo") {
+      window.location.href = "ruta-optimo.html"; // Cambiá esto por el nombre de tu otra página
+    } else if (estado === "agradecido") {
+      window.location.href = "ruta-agradecido.html";
+    } else if (estado === "cansado") {
+      window.location.href = "ruta-cansado.html";
+    }
+  }
+
   // --- INTERACTIVIDAD DEL PANEL INFERIOR (Abanico en dos niveles) ---
 
   // Nivel 1: Abrir el panel base al tocar el versículo o la barrita
