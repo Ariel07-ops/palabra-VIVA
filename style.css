@@ -421,7 +421,60 @@ body {
     transform: scale(1.1);
     opacity: 0.8;
   }
-} /* --- ADAPTACIÓN INTELIGENTE (Celular y Computadora) --- */
+}
+/* --- PANTALA CAMINIEMOS CON JESUS  (El camino de emaus opcion OPTIMO, AGRADECIDO, CANSADO,) --- */
+/* --- CAMINIEMOS CON JESUS  (opcion OPTIMO) --- */
+#screen-optimo h2 {
+  font-size: 26px;
+  text-align: center;
+  margin-bottom: 20px;
+  color: rgb(194, 172, 52);
+  padding: 15px 25px;
+}
+
+#screen-optimo p {
+  font-size: 16px;
+  text-align: justify;
+  line-height: 1.6;
+  color: #ccc;
+  margin-bottom: 15px;
+  padding: 15px 25px;
+}
+
+/* --- CAMINIEMOS CON JESUS  (opcion agradecido) --- */
+#screen-agradecido h2 {
+  font-size: 26px;
+  text-align: center;
+  margin-bottom: 20px;
+  color: rgb(194, 172, 52);
+  padding: 15px 25px;
+}
+#screen-agradecido p {
+  font-size: 16px;
+  text-align: justify;
+  line-height: 1.6;
+  color: #ccc;
+  margin-bottom: 15px;
+  padding: 15px 25px;
+}
+/* --- CAMINIEMOS CON JESUS  (opcion cansado) --- */
+#screen-cansado h2 {
+  font-size: 26px;
+  text-align: center;
+  margin-bottom: 20px;
+  color: rgb(194, 172, 52);
+  padding: 15px 25px;
+}
+#screen-cansado p {
+  font-size: 16px;
+  text-align: justify;
+  line-height: 1.6;
+  color: #ccc;
+  margin-bottom: 15px;
+  padding: 15px 25px;
+}
+
+/* --- ADAPTACIÓN INTELIGENTE (Celular y Computadora) --- */
 
 /* Cuando la pantalla sea ancha (como en la Computadora) */
 @media (min-width: 600px) {

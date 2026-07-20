@@ -33,11 +33,18 @@ botonesVolver.forEach((boton) => {
 // --- FUNCIÓN AUXILIAR PARA CAMBIAR DE PANTALLA ---
 function changeScreen(screenToShow) {
   // Ocultamos todas las pantallas sacándoles la clase 'active'
-  [screenSplash, screenMain, screenBibleDetail, screenPathDetail].forEach(
-    (screen) => {
+  [
+    screenSplash,
+    screenMain,
+    screenBibleDetail,
+    screenPathDetail,
+    screenOptimo,
+    screenCansado,
+  ].forEach((screen) => {
+    if (screen) {
       screen.classList.remove("active");
-    },
-  );
+    }
+  });
   // Mostramos solo la pantalla elegida agregándole 'active'
   screenToShow.classList.add("active");
 }
@@ -117,4 +124,12 @@ columns.forEach((col) => {
     e.stopPropagation(); // Evita conflictos de clics
     col.classList.remove("expanded-full");
   });
+});
+
+// --- BOTÓN VOLVER UNIVERSAL (Delegación de eventos) ---
+document.addEventListener("click", (e) => {
+  // Busca si el clic se hizo en un botón "volver" o dentro de él
+  if (e.target.closest(".btn-back-path")) {
+    changeScreen(screenMain);
+  }
 });
