@@ -442,14 +442,14 @@ body {
 }
 
 /* --- CAMINIEMOS CON JESUS  (opcion agradecido) --- */
-#screen-agradecido h2 {
+#screen-bendecido h2 {
   font-size: 26px;
   text-align: center;
   margin-bottom: 20px;
   color: rgb(194, 172, 52);
   padding: 15px 25px;
 }
-#screen-agradecido p {
+#screen-bendecido p {
   font-size: 16px;
   text-align: justify;
   line-height: 1.6;
@@ -528,18 +528,22 @@ body {
   transition: all 0.3s ease-in-out;
 }
 
-/* En computadora, que ocupe todo el contenedor */
+/* En computadora, que ocupe el centro con elegancia */
 @media (min-width: 800px) {
   .fan-column.expanded-full {
     grid-column: span 4;
-    max-width: 800px;
-    margin: 0;
-    top: 30%;
-    left: 0;
-    right: 0;
-    height: 60vh;
+    max-width: 900px;
+    width: 90%;
+    margin: 0 auto;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%); /* Centrado absoluto perfecto en la PC */
+    right: auto;
+    height: auto;
+    max-height: 80vh;
     display: flex;
     flex-direction: column;
+    overflow-y: auto; /* Scroll interno si el texto es muy largo */
   }
 }
 
@@ -576,4 +580,46 @@ body {
 
 .fan-column.expanded-full .btn-close-extended {
   display: block;
+}
+/* --- AJUSTES FINALES PARA COMPUTADORA (FAN Y BIBLIA) --- */
+@media (min-width: 800px) {
+  /* 1. Centrar el abanico expandido de forma limpia */
+  .fan-column.expanded-full {
+    grid-column: span 4;
+    max-width: 900px;
+    width: 90%;
+    margin: 0 auto;
+    top: 55%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    right: auto;
+    height: auto;
+    max-height: 75vh;
+    display: flex;
+    flex-direction: column;
+    overflow-y: auto;
+    padding-top: 50px; /* Más espacio arriba para que el botón de cerrar quede cómodo */
+  }
+
+  /* Asegurar que el botón de cerrar quede libre arriba a la derecha */
+  .fan-column.expanded-full .btn-close-extended {
+    position: absolute;
+    top: 15px;
+    right: 20px;
+    z-index: 10;
+    background-color: var(--gold);
+    color: black;
+    padding: 6px 14px;
+    font-weight: bold;
+  }
+
+  /* 2. Ampliar el contenedor de la Biblia a lo ancho */
+  .content-area {
+    max-width: 1000px;
+    padding: 0 40px;
+  }
+
+  .interact-paragraph {
+    font-size: 1.4rem;
+  }
 }

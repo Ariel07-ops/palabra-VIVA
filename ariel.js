@@ -4,7 +4,7 @@ const screenMain = document.getElementById("screen-main");
 const screenBibleDetail = document.getElementById("screen-bible-detail");
 const screenPathDetail = document.getElementById("screen-path-detail");
 const screenOptimo = document.getElementById("screen-optimo");
-const screenAgradecido = document.getElementById("screen-agradecido");
+const screenBendecido = document.getElementById("screen-bendecido");
 const screenCansado = document.getElementById("screen-cansado");
 
 // 2. CAPTURAR BOTONES INTERACTIVOS
@@ -18,17 +18,10 @@ const studyCard = document.getElementById("study-card");
 const panelHandle = document.querySelector(".panel-handle");
 // 2. CAPTURAR BOTONES INTERACTIVOS Emaus
 const btnOptimo = document.querySelector('[onclick="redirigir (optimo)"]');
-const btnAgradecido = document.querySelector(
-  '[onclick="redirigir (agradecido)"]',
+const btnBendecido = document.querySelector(
+  '[onclick="redirigir (bendecido)"]',
 );
 const btnCansado = document.querySelector('[onclick="redirigir (cansado)"]');
-// --- BOTONES DE VOLVER GENERALES ---
-const botonesVolver = document.querySelectorAll(".btn-back-path");
-botonesVolver.forEach((boton) => {
-  boton.addEventListener("click", () => {
-    changeScreen(screenMain);
-  });
-});
 
 // --- FUNCIÓN AUXILIAR PARA CAMBIAR DE PANTALLA ---
 function changeScreen(screenToShow) {
@@ -40,6 +33,7 @@ function changeScreen(screenToShow) {
     screenPathDetail,
     screenOptimo,
     screenCansado,
+    screenBendecido,
   ].forEach((screen) => {
     if (screen) {
       screen.classList.remove("active");
@@ -53,8 +47,8 @@ function redirigir(estado) {
   // Aquí el programa decide a qué pantalla ir según lo que se tocó
   if (estado === "optimo") {
     changeScreen(screenOptimo);
-  } else if (estado === "agradecido") {
-    changeScreen(screenAgradecido);
+  } else if (estado === "bendecido") {
+    changeScreen(screenBendecido);
   } else if (estado === "cansado") {
     changeScreen(screenCansado);
   }
@@ -114,6 +108,7 @@ columns.forEach((col) => {
 
     // Si el panel de abajo está visible, expandimos esta tarjeta
     if (!studyCard.classList.contains("hidden")) {
+      columns.forEach((c) => c.classList.remove("expanded-full")); // Cerramos cualquier otra tarjeta abierta
       col.classList.add("expanded-full");
     }
   });
@@ -126,10 +121,27 @@ columns.forEach((col) => {
   });
 });
 
-// --- BOTÓN VOLVER UNIVERSAL (Delegación de eventos) ---
-document.addEventListener("click", (e) => {
-  // Busca si el clic se hizo en un botón "volver" o dentro de él
-  if (e.target.closest(".btn-back-path")) {
-    changeScreen(screenMain);
-  }
-});
+// --- BOTONES VOLVER DE LAS PANTALLAS DE ESTADO ---
+const btnBackOptimo = document.querySelector("#screen-optimo .btn-back-path");
+const btnBackCansado = document.querySelector("#screen-cansado .btn-back-path");
+const btnBackBendecido = document.querySelector(
+  "#screen-bendecido .btn-back-path",
+);
+
+if (btnBackOptimo) {
+  btnBackOptimo.addEventListener("click", () => {
+    changeScreen(screenPathDetail);
+  });
+}
+
+if (btnBackCansado) {
+  btnBackCansado.addEventListener("click", () => {
+    changeScreen(screenPathDetail);
+  });
+}
+
+if (btnBackBendecido) {
+  btnBackBendecido.addEventListener("click", () => {
+    changeScreen(screenPathDetail);
+  });
+}
