@@ -6,7 +6,7 @@ const screenPathDetail = document.getElementById("screen-path-detail");
 const screenOptimo = document.getElementById("screen-optimo");
 const screenBendecido = document.getElementById("screen-bendecido");
 const screenCansado = document.getElementById("screen-cansado");
-
+const screenEmaus = document.getElementById("screen-emaus");
 // 2. CAPTURAR BOTONES INTERACTIVOS
 const btnEnter = document.querySelector(".btn-enter");
 const btnGotoBible = document.getElementById("btn-goto-bible");
@@ -34,6 +34,7 @@ function changeScreen(screenToShow) {
     screenOptimo,
     screenCansado,
     screenBendecido,
+    screenEmaus,
   ].forEach((screen) => {
     if (screen) {
       screen.classList.remove("active");
@@ -144,4 +145,50 @@ if (btnBackBendecido) {
   btnBackBendecido.addEventListener("click", () => {
     changeScreen(screenPathDetail);
   });
+}
+const btnBackEmaus = document.querySelector("#screen-emaus .btn-back-path");
+if (btnBackEmaus) {
+  btnBackEmaus.addEventListener("click", () => {
+    changeScreen(screenPathDetail);
+  });
+}
+// Función para mostrar el contenido de cada huella del Camino de Emaús
+function abrirPasoEmaus(numeroPaso) {
+  const contenedorContenido = document.getElementById("contenido-paso-emaus");
+  const tituloPaso = document.getElementById("titulo-paso");
+  const textoBiblico = document.getElementById("texto-biblico-paso");
+  const reflexionPaso = document.getElementById("reflexion-paso");
+
+  // Mostramos el panel si estaba oculto
+  contenedorContenido.classList.remove("hidden");
+
+  // Contenido teológico y bíblico según la huella (respetando la regla de oro: texto puro + reflexión)
+  if (numeroPaso === 1) {
+    tituloPaso.innerText = "1. El inicio en lo oculto (La Encarnación)";
+    textoBiblico.innerText =
+      "«Y el Verbo se hizo carne, y habitó entre nosotros...» (Jn 1:14)";
+    reflexionPaso.innerText =
+      "Todo gran camino comienza en el silencio y lo oculto, como Jesús en el seno de María. En lo cotidiano más pequeño Dios ya está obrando.";
+  } else if (numeroPaso === 2) {
+    tituloPaso.innerText = "2. El caminar diario (Las enseñanzas)";
+    textoBiblico.innerText =
+      "«¿No ardía nuestro corazón en nosotros mientras nos hablaba en el camino...?» (Lc 24:32)";
+    reflexionPaso.innerText =
+      "Caminar con Jesús es dejar que Su Palabra ordene nuestros pasos. A veces caminamos ciegos por las preocupaciones, pero Él va a nuestro lado.";
+  } else if (numeroPaso === 3) {
+    tituloPaso.innerText = "3. La fracción del pan (El Sacramento)";
+    textoBiblico.innerText =
+      "«Y los ojos de ellos se abrieron, y le reconocieron...» (Lc 24:31)";
+    reflexionPaso.innerText =
+      "El punto de inflexión. Es en la Eucaristía y en el dar y compartir fraterno donde cae el velo y se revela la presencia viva del Señor.";
+  } else if (numeroPaso === 4) {
+    tituloPaso.innerText = "4. Hacia el Infinito (La misión sin fin)";
+    textoBiblico.innerText =
+      "«Y levantándose en la misma hora, volvieron a Jerusalén...» (Lc 24:33)";
+    reflexionPaso.innerText =
+      "El encuentro con el Resucitado no nos encierra; nos proyecta hacia la eternidad y hacia el hermano. Cada paso terrenal es ya un eco del Cielo.";
+  }
+
+  // Hacemos un pequeño scroll automático hacia el contenido para que el usuario lo vea cómodo
+  contenedorContenido.scrollIntoView({ behavior: "smooth" });
 }

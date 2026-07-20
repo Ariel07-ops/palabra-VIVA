@@ -473,6 +473,111 @@ body {
   margin-bottom: 15px;
   padding: 15px 25px;
 }
+.card {
+  background-color: #121212;
+  border: 1px solid #2a2a2a;
+  border-radius: 12px;
+  padding: 20px;
+  margin-bottom: 20px;
+  color: #e0e0e0;
+}
+/* Botón elegante para iniciar el recorrido de Emaús */
+.btn-emaus {
+  display: inline-block;
+  margin-top: 15px;
+  background-color: transparent;
+  color: #d4af37; /* Tono dorado elegante */
+  border: 1px solid #d4af37;
+  padding: 10px 20px;
+  border-radius: 20px;
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.btn-emaus:hover {
+  background-color: #d4af37;
+  color: #121212;
+}
+/* Contenedor del camino */
+.path-journey-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+  padding: 20px 0;
+}
+
+/* Estilo base de las huellas */
+.huella-paso {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  background: rgba(212, 175, 55, 0.1); /* Toque dorado suave */
+  border: 1px solid rgba(212, 175, 55, 0.3);
+  border-radius: 50px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  padding: 10px 20px;
+}
+
+.huella-paso:hover {
+  background: rgba(212, 175, 55, 0.25);
+  transform: scale(1.05);
+}
+
+/* Crecimiento progresivo de las huellas (de cero a infinito) */
+.huella-1 {
+  font-size: 0.85rem;
+  width: 60%;
+}
+.huella-2 {
+  font-size: 1rem;
+  width: 70%;
+}
+.huella-3 {
+  font-size: 1.15rem;
+  width: 80%;
+}
+.huella-4 {
+  font-size: 1.3rem;
+  width: 90%;
+  background: linear-gradient(
+    135deg,
+    rgba(212, 175, 55, 0.3),
+    rgba(255, 215, 0, 0.5)
+  );
+  border-color: #d4af37;
+  box-shadow: 0 0 15px rgba(212, 175, 55, 0.4);
+}
+
+/* Utilidad para ocultar elementos temporalmente */
+.hidden {
+  display: none;
+}
+/* Control de vistas */
+.vista {
+  display: none;
+}
+
+.vista.active {
+  display: block;
+}
+
+/* Estilo para el botón de volver (coincidiendo con tu estética) */
+.btn-volver {
+  background: none;
+  border: none;
+  color: #d4af37;
+  font-size: 0.9rem;
+  cursor: pointer;
+  margin-bottom: 15px;
+  letter-spacing: 1px;
+}
+
+.btn-volver:hover {
+  text-decoration: underline;
+}
 
 /* --- ADAPTACIÓN INTELIGENTE (Celular y Computadora) --- */
 
