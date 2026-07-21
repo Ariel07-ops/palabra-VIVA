@@ -574,9 +574,70 @@ body {
   margin-bottom: 15px;
   letter-spacing: 1px;
 }
+/* Estilo unificado y prolijo para los botones de la Escalera */
+.path-journey-container .huella-paso {
+  width: 100%; /* Hacemos que todos ocupen el mismo ancho máximo */
+  max-width: 500px; /* Limitamos para que no se estiren demasiado en la PC */
+  justify-content: flex-start; /* Alineamos el contenido a la izquierda dentro del botón */
+  padding: 12px 25px; /* Espaciado interno cómodo */
+  margin: 0 auto; /* Centrados en la pantalla */
+  box-sizing: border-box;
+}
 
+/* Para que el ícono y el texto tengan su espacio ordenado */
+.huella-paso .icono-huella {
+  margin-right: 15px;
+  font-size: 1.2rem;
+}
+
+.huella-paso .etiqueta-paso {
+  text-align: left;
+  font-size: 0.95rem;
+}
 .btn-volver:hover {
   text-decoration: underline;
+}
+/* para que el titulo quede fijo */
+/* Hace que el encabezado de esta pantalla (título y botón volver) se quede fijo arriba */
+#screen-promesa .main-header {
+  position: sticky !important;
+  top: 0 !important;
+  background-color: #121821 !important; /* El color de fondo oscuro de tu app para que haga de cortina */
+  z-index: 50 !important;
+  padding-bottom: 15px !important;
+  border-bottom: 1px solid rgba(212, 175, 55, 0.2); /* Una línea dorada sutil opcional para separar */
+}
+/* Estilo unificado para el título y subtítulo de la pantalla de Emaús */
+#screen-emaus .header-emaus h2 {
+  color: #d4af37 !important; /* El color dorado elegante */
+  text-align: center;
+  font-weight: bold;
+}
+
+#screen-emaus .header-emaus p {
+  color: rgba(255, 255, 255, 0.85) !important; /* Blanco suave y sutil */
+  text-align: center;
+  font-style: italic;
+}
+
+/* para adaptar el peldaño de la escalera de la revelacion a toda la pantalla y que se vea bien en celular y computadora, se agregan los siguientes estilos: */
+#contenido-peldaño {
+  position: fixed !important;
+  top: 125px !important;
+  bottom: 1px !important;
+  left: 52% !important;
+  transform: translateX(
+    -53%
+  ) !important; /* El ajuste fino de izquierda que logramos */
+  width: 97% !important; /* En el celu ocupa casi todo el ancho disponible con margen */
+  max-width: 600px !important; /* En la PC nunca pasa de este tamaño fijo en píxeles */
+  overflow-y: auto !important;
+  background-color: #121821 !important;
+  border: 1px solid #d4af37 !important;
+  border-radius: 16px !important;
+  padding: 20px !important;
+  z-index: 99999 !important;
+  box-shadow: 0 15px 50px rgba(0, 0, 0, 0.95) !important;
 }
 
 /* --- ADAPTACIÓN INTELIGENTE (Celular y Computadora) --- */

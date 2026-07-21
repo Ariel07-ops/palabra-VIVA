@@ -7,6 +7,8 @@ const screenOptimo = document.getElementById("screen-optimo");
 const screenBendecido = document.getElementById("screen-bendecido");
 const screenCansado = document.getElementById("screen-cansado");
 const screenEmaus = document.getElementById("screen-emaus");
+// const screenEmausContent = document.getElementById("screen-emaus-content");
+const screenPromesa = document.getElementById("screen-promesa");
 // 2. CAPTURAR BOTONES INTERACTIVOS
 const btnEnter = document.querySelector(".btn-enter");
 const btnGotoBible = document.getElementById("btn-goto-bible");
@@ -35,6 +37,7 @@ function changeScreen(screenToShow) {
     screenCansado,
     screenBendecido,
     screenEmaus,
+    screenPromesa,
   ].forEach((screen) => {
     if (screen) {
       screen.classList.remove("active");
@@ -191,4 +194,52 @@ function abrirPasoEmaus(numeroPaso) {
 
   // Hacemos un pequeño scroll automático hacia el contenido para que el usuario lo vea cómodo
   contenedorContenido.scrollIntoView({ behavior: "smooth" });
+}
+// Función para mostrar el contenido de cada peldaño de la Escalera de la Promesa
+function abrirPeldaño(numero) {
+  const contenedor = document.getElementById("contenido-peldaño");
+  const titulo = document.getElementById("titulo-peldaño");
+  const texto = document.getElementById("texto-peldaño");
+
+  contenedor.classList.remove("hidden");
+
+  if (numero === 1) {
+    titulo.innerText = "1. El Principio Eterno (Génesis)";
+    texto.innerText =
+      "«En el principio ya era el Verbo, y el Verbo estaba con Dios, y el Verbo era Dios.» La creación entera nace de este diseño de amor eterno entre el Padre y el Hijo.";
+  } else if (numero === 2) {
+    titulo.innerText = "2. La Sombra y el Pan Oculto (Melquisedec)";
+    texto.innerText =
+      "En el Antiguo Testamento, el rey Melquisedec ofrece pan y vino a Abraham (Génesis 14), anticipando de forma misteriosa el sacerdocio eterno de Cristo y la Eucaristía.";
+  } else if (numero === 3) {
+    titulo.innerText = "3. La Voz de los Profetas (Isaías)";
+    texto.innerText =
+      "Las profecías anuncian al Emmanuel ('Dios con nosotros') y al siervo que cargará con nuestras culpas, preparando el corazón de Israel para la llegada del Salvador.";
+  } else if (numero === 4) {
+    titulo.innerText = "4. El Sí que abre el Cielo (La Anunciación)";
+    texto.innerText =
+      "El arcángel Gabriel y la respuesta humilde de María en Nazaret. El Verbo empieza a latir en lo oculto de su seno, asumiendo nuestra carne frágil.";
+  } else if (numero === 5) {
+    titulo.innerText = "5. La Luz en la Intemperie (El Pesebre)";
+    texto.innerText =
+      "Dios se hace niño y nace en la pobreza de Belén. La grandeza infinita se esconde en la absoluta pequeñez para que nadie tenga miedo de acercarse.";
+  } else if (numero === 6) {
+    titulo.innerText = "6. Las Huellas del Maestro (Vida Pública)";
+    texto.innerText =
+      "Los caminos de Galilea, las parábolas, los milagros y la enseñanza profunda que sacude el corazón humano y revela el rostro misericordioso del Padre.";
+  } else if (numero === 7) {
+    titulo.innerText = "7. La Victoria sobre la Muerte (Pascua)";
+    texto.innerText =
+      "La cruz como el trono de la entrega total por amor, seguida por el sepulcro vacío. La muerte ha sido vencida y la vida se abre paso para siempre.";
+  } else if (numero === 8) {
+    titulo.innerText = "8. La Promesa Cumplida (Pentecostés)";
+    texto.innerText =
+      "Jesús asciende al Padre y desciende el fuego del Espíritu Santo sobre la Iglesia naciente, sellando la morada de Dios dentro del corazón del creyente.";
+  }
+}
+contenedor.scrollIntoView({ behavior: "smooth" });
+// funcion para cerrar panel de la escalera de la promesa
+function cerrarPeldaño() {
+  const contenedor = document.getElementById("contenido-peldaño");
+  contenedor.classList.add("hidden");
 }

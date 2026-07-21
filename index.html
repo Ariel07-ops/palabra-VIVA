@@ -133,6 +133,8 @@
                     <p class="reflection"><em>"Reconocer Su Presencia en los pequeños detalles del día, como el calor de la familia, es el primer paso para ver Su magia."</em></p>
                    <!-- Botón para iniciar el recorrido de Emaús --> 
                     <button class="btn-emaus"onclick="changeScreen(screenEmaus)">Inicia tu recorrido</button>
+                <!-- Nuevo boton para la escalera de la promesa -->
+                 <button class="btn-emaus"onclick="changeScreen(screenPromesa)" style="margin-left: 10px;">La Escalera de la Promesa</button>
                 </div>
             </main>
         </div>
@@ -169,9 +171,7 @@
     <p>Estamos bendecidos por las bendiciones que Dios nos ha dado, y por la gracia que nos permite seguir adelante en nuestro camino de fe. Su amor nos sostiene en los momentos difíciles y nos llena de esperanza en los momentos de alegría.</p>
     
 </div>
-<!-- Pantallas de Estado en el camino de Emaus -->
 
-<!-- PANTALLA NUEVA DEL CAMINO DE EMAÚS -->
 <!-- PANTALLA NUEVA DEL CAMINO DE EMAÚS -->
 <div id="screen-emaus" class="screen">
     <button class="btn-back-path">⬅ Volver</button>
@@ -216,8 +216,59 @@
         <p id="reflexion-paso" class="reflection">Aquí aparecerá la enseñanza o reflexión...</p>
     </div>
 </div>
-
-
+<!-- PANTALLA NUEVA: LA ESCALERA DE LA PROMESA -->
+<div id="screen-promesa" class="screen">
+    
+    <div class="app-container path-theme">
+        <header class="main-header">
+            <button class="btn-back-path" onclick="changeScreen(screenPathDetail)">⬅ Volver</button>
+            <h1 class="brand-title text-gold">LA ESCALERA DE LA PROMESA</h1>
+            <p class="header-statement text-italic">El hilo conductor de la salvación: desde el principio eterno hasta Pentecostés.</p>
+        </header>
+    
+    <div class="path-journey-container">
+        <div class="huella-paso" onclick="abrirPeldaño(1)">
+            <span class="icono-huella">✨</span>
+            <span class="etiqueta-paso">1. El Principio Eterno (Génesis)</span>
+        </div>
+        <div class="huella-paso" onclick="abrirPeldaño(2)">
+            <span class="icono-huella">🍞</span>
+            <span class="etiqueta-paso">2. La Sombra y el Pan Oculto (Melquisedec)</span>
+        </div>
+        <div class="huella-paso" onclick="abrirPeldaño(3)">
+            <span class="icono-huella">📜</span>
+            <span class="etiqueta-paso">3. La Voz de los Profetas (Isaías)</span>
+        </div>
+        <div class="huella-paso" onclick="abrirPeldaño(4)">
+            <span class="icono-huella">🕊️</span>
+            <span class="etiqueta-paso">4. El Sí que abre el Cielo (La Anunciación)</span>
+        </div>
+        <div class="huella-paso" onclick="abrirPeldaño(5)">
+            <span class="icono-huella">⭐</span>
+            <span class="etiqueta-paso">5. La Luz en la Intemperie (El Pesebre)</span>
+        </div>
+        <div class="huella-paso" onclick="abrirPeldaño(6)">
+            <span class="icono-huella">👣</span>
+            <span class="etiqueta-paso">6. Las Huellas del Maestro (Vida Pública)</span>
+        </div>
+        <div class="huella-paso" onclick="abrirPeldaño(7)">
+            <span class="icono-huella">✝️</span>
+            <span class="etiqueta-paso">7. La Victoria sobre la Muerte (Pascua)</span>
+        </div>
+        <div class="huella-paso" onclick="abrirPeldaño(8)">
+            <span class="icono-huella">🔥</span>
+            <span class="etiqueta-paso">8. La Promesa Cumplida (Pentecostés)</span>
+        </div>
+        <!-- Panel de contenido para la Escalera -->
+        <div id="contenido-peldaño" class="path-card hidden" style="max-width: 600px; margin: 20px auto; position:relative;">
+        <button class="btn-close-extended" style="display: block; float: right;" onclick="cerrarPeldaño()">✕ Cerrar</button>
+        <h3 id="titulo-peldaño">Selecciona un peldaño</h3>
+        <p id="texto-peldaño" class="reflection">Aquí aparecerá el contenido histórico y doctrinal...</p>
+         </div>
+        
+    </div>
+ </div>
+ 
 
 
     <script src="ariel.js"></script>
