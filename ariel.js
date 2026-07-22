@@ -7,10 +7,9 @@ const screenOptimo = document.getElementById("screen-optimo");
 const screenBendecido = document.getElementById("screen-bendecido");
 const screenCansado = document.getElementById("screen-cansado");
 const screenEmaus = document.getElementById("screen-emaus");
-// const screenEmausContent = document.getElementById("screen-emaus-content");
 const screenPromesa = document.getElementById("screen-promesa");
-// 2. CAPTURAR BOTONES INTERACTIVOS
-const btnEnter = document.querySelector(".btn-enter");
+
+// 2. CAPTURAR BOTONES INTERACTIVOS (Sin el btnEnter que ya no existe)
 const btnGotoBible = document.getElementById("btn-goto-bible");
 const btnGotoPath = document.getElementById("btn-goto-path");
 const btnBackBible = document.querySelector(".btn-back");
@@ -18,12 +17,6 @@ const btnBackBible = document.querySelector(".btn-back");
 const textParagraph = document.querySelector(".interact-paragraph");
 const studyCard = document.getElementById("study-card");
 const panelHandle = document.querySelector(".panel-handle");
-// 2. CAPTURAR BOTONES INTERACTIVOS Emaus
-const btnOptimo = document.querySelector('[onclick="redirigir (optimo)"]');
-const btnBendecido = document.querySelector(
-  '[onclick="redirigir (bendecido)"]',
-);
-const btnCansado = document.querySelector('[onclick="redirigir (cansado)"]');
 
 // --- FUNCIÓN AUXILIAR PARA CAMBIAR DE PANTALLA ---
 function changeScreen(screenToShow) {
@@ -46,9 +39,9 @@ function changeScreen(screenToShow) {
   // Mostramos solo la pantalla elegida agregándole 'active'
   screenToShow.classList.add("active");
 }
+
 // --- FUNCIÓN PARA REDIRIGIR SEGÚN EL ESTADO ---
 function redirigir(estado) {
-  // Aquí el programa decide a qué pantalla ir según lo que se tocó
   if (estado === "optimo") {
     changeScreen(screenOptimo);
   } else if (estado === "bendecido") {
@@ -57,24 +50,17 @@ function redirigir(estado) {
     changeScreen(screenCansado);
   }
 }
-// 3. ASIGNAR LOS CLICS A CADA BOTÓN (Navegación)
 
-// De Bienvenida a la Pantalla Partida
-btnEnter.addEventListener("click", () => {
-  changeScreen(screenMain);
-});
 // --- ACTIVAR BOTONES DE ESTADO DE ÁNIMO ---
-const moodButtons = document.querySelectorAll(".badge"); // Asegurate que tus botones tengan la clase 'badge'
+const moodButtons = document.querySelectorAll(".badge");
 
 moodButtons.forEach((button) => {
   button.addEventListener("click", () => {
-    // 1. Quitamos la clase 'active' de todos los botones para "limpiar" la selección
     moodButtons.forEach((btn) => btn.classList.remove("active"));
-
-    // 2. Le ponemos 'active' solo al botón que acabamos de tocar
     button.classList.add("active");
   });
 });
+
 // De Pantalla Partida a Detalle de la Biblia (Bloque Superior)
 btnGotoBible.addEventListener("click", () => {
   changeScreen(screenBibleDetail);
@@ -91,8 +77,6 @@ btnBackBible.addEventListener("click", () => {
 });
 
 // --- INTERACTIVIDAD DEL PANEL INFERIOR (Abanico en dos niveles) ---
-
-// Nivel 1: Abrir el panel base al tocar el versículo o la barrita
 textParagraph.addEventListener("click", () => {
   studyCard.classList.toggle("hidden");
 });
@@ -101,26 +85,21 @@ panelHandle.addEventListener("click", () => {
   studyCard.classList.toggle("hidden");
 });
 
-// Nivel 2: Tocar una tarjeta para abrirla en grande dejando espacio arriba
 const columns = document.querySelectorAll(".fan-column");
 
 columns.forEach((col) => {
-  // Al tocar la minitarjeta
   col.addEventListener("click", (e) => {
-    // Si hacemos clic en el botón de cerrar, que no ejecute la apertura
     if (e.target.classList.contains("btn-close-extended")) return;
 
-    // Si el panel de abajo está visible, expandimos esta tarjeta
     if (!studyCard.classList.contains("hidden")) {
-      columns.forEach((c) => c.classList.remove("expanded-full")); // Cerramos cualquier otra tarjeta abierta
+      columns.forEach((c) => c.classList.remove("expanded-full"));
       col.classList.add("expanded-full");
     }
   });
 
-  // Al tocar el botón interno "✕ Cerrar"
   const btnClose = col.querySelector(".btn-close-extended");
   btnClose.addEventListener("click", (e) => {
-    e.stopPropagation(); // Evita conflictos de clics
+    e.stopPropagation();
     col.classList.remove("expanded-full");
   });
 });
@@ -137,24 +116,24 @@ if (btnBackOptimo) {
     changeScreen(screenPathDetail);
   });
 }
-
 if (btnBackCansado) {
   btnBackCansado.addEventListener("click", () => {
     changeScreen(screenPathDetail);
   });
 }
-
 if (btnBackBendecido) {
   btnBackBendecido.addEventListener("click", () => {
     changeScreen(screenPathDetail);
   });
 }
+
 const btnBackEmaus = document.querySelector("#screen-emaus .btn-back-path");
 if (btnBackEmaus) {
   btnBackEmaus.addEventListener("click", () => {
     changeScreen(screenPathDetail);
   });
 }
+
 // Función para mostrar el contenido de cada huella del Camino de Emaús
 function abrirPasoEmaus(numeroPaso) {
   const contenedorContenido = document.getElementById("contenido-paso-emaus");
@@ -162,10 +141,8 @@ function abrirPasoEmaus(numeroPaso) {
   const textoBiblico = document.getElementById("texto-biblico-paso");
   const reflexionPaso = document.getElementById("reflexion-paso");
 
-  // Mostramos el panel si estaba oculto
   contenedorContenido.classList.remove("hidden");
 
-  // Contenido teológico y bíblico según la huella (respetando la regla de oro: texto puro + reflexión)
   if (numeroPaso === 1) {
     tituloPaso.innerText = "1. El inicio en lo oculto (La Encarnación)";
     textoBiblico.innerText =
@@ -192,9 +169,9 @@ function abrirPasoEmaus(numeroPaso) {
       "El encuentro con el Resucitado no nos encierra; nos proyecta hacia la eternidad y hacia el hermano. Cada paso terrenal es ya un eco del Cielo.";
   }
 
-  // Hacemos un pequeño scroll automático hacia el contenido para que el usuario lo vea cómodo
   contenedorContenido.scrollIntoView({ behavior: "smooth" });
 }
+
 // Función para mostrar el contenido de cada peldaño de la Escalera de la Promesa
 function abrirPeldaño(numero) {
   const contenedor = document.getElementById("contenido-peldaño");
@@ -236,10 +213,30 @@ function abrirPeldaño(numero) {
     texto.innerText =
       "Jesús asciende al Padre y desciende el fuego del Espíritu Santo sobre la Iglesia naciente, sellando la morada de Dios dentro del corazón del creyente.";
   }
+
+  contenedor.scrollIntoView({ behavior: "smooth" });
 }
-contenedor.scrollIntoView({ behavior: "smooth" });
+
 // funcion para cerrar panel de la escalera de la promesa
 function cerrarPeldaño() {
   const contenedor = document.getElementById("contenido-peldaño");
   contenedor.classList.add("hidden");
 }
+
+// --- TRANSICIÓN AUTOMÁTICA DEL SPLASH ---
+setTimeout(() => {
+  const splash = document.getElementById("screen-splash");
+  const mainScreen = document.getElementById("screen-main");
+
+  if (splash) {
+    splash.style.transition = "opacity 0.8s ease";
+    splash.style.opacity = "0";
+
+    setTimeout(() => {
+      splash.style.display = "none";
+      if (mainScreen) {
+        mainScreen.classList.add("active");
+      }
+    }, 800);
+  }
+}, 4500); // 4.5 segundos exactos

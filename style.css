@@ -39,16 +39,43 @@ body {
 .screen.active {
   display: block; /* Solo la pantalla activa se ve */
 }
-
-/* --- PANTALLA 1: BIENVENIDA (SPLASH) --- */
+/* --- PANTALLA 1: BIENVENIDA (SPLASH RESPONSIVE) --- */
 #screen-splash {
-  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
   align-items: center;
   justify-content: center;
   text-align: center;
+  z-index: 9999;
+  background-color: #0b0f15;
 }
-#screen-splash.active {
+
+#screen-splash .splash-content-imagen {
+  width: 100%;
+  height: 100%;
   display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#screen-splash .img-portada {
+  width: 100%;
+  height: 100%;
+  object-fit: contain; /* Por defecto en compu mantiene la proporción entera */
+  display: block;
+}
+
+/* Adaptación exclusiva para Celulares (pantallas angostas menores a 768px) */
+@media (max-width: 768px) {
+  #screen-splash .img-portada {
+    width: 100vw;
+    height: 100vh;
+    object-fit: cover; /* En el celu se expande para aprovechar todo el ancho de la pantalla vertical */
+  }
 }
 
 .splash-content {
@@ -788,4 +815,19 @@ body {
   .interact-paragraph {
     font-size: 1.4rem;
   }
+}
+/* Forzamos al contenedor de la imagen a ocupar el 100% de la pantalla */
+#screen-splash .splash-content-imagen {
+  width: 100vw !important;
+  height: 100vh !important;
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+/* Forzamos a la imagen a estirarse de punta a punta */
+#screen-splash .img-portada {
+  width: 100% !important;
+  height: 100% !important;
+  object-fit: contain !important;
+  display: block !important;
 }
