@@ -877,3 +877,70 @@ body {
   text-align: center; /* Centra el texto adentro de cada botoncito */
   padding: 10px 5px; /* Ajustamos un poquito el padding para que respiren bien */
 }
+/* --- UNIFICACIÓN DEL ENCABEZADO FIJO (Promesa / Emaús) --- */
+#screen-promesa .main-header,
+#screen-emaus .header-emaus {
+  position: sticky !important;
+  top: 0 !important;
+  background-color: var(
+    --bg-dark
+  ) !important; /* Unificamos con el fondo general oscuro de la app */
+  z-index: 50 !important;
+  padding-bottom: 15px !important;
+  border-bottom: 1px solid rgba(212, 175, 55, 0.3) !important; /* Línea dorada sutil obligatoria */
+  width: 100% !important;
+  box-sizing: border-box !important;
+}
+/* --- UNIFICACIÓN DEL ENCABEZADO: CAMINEMOS CON JESÚS --- */
+#screen-menu .main-header,
+.screen-home .main-header,
+#screen-menu h2 {
+  text-align: center !important;
+  border-bottom: 2px solid #d4af37 !important; /* Línea dorada nítida y unificada */
+  padding-bottom: 15px !important;
+  margin-bottom: 20px !important;
+  width: 100% !important;
+  box-sizing: border-box !important;
+}
+
+#screen-menu h2,
+.screen-home h2 {
+  font-family: var(--font-roman) !important;
+  color: #d4af37 !important;
+  letter-spacing: 3px !important;
+  font-size: 1.6rem !important;
+}
+
+#screen-menu p,
+.screen-home .header-statement {
+  font-size: 0.85rem !important;
+  font-style: italic !important;
+  color: #a0a0a0 !important;
+  margin-top: 5px !important;
+  text-align: center !important;
+}
+/* --- ESTILO DEFINITIVO PARA EL ENCABEZADO DE EMAÚS / NUESTROS PASOS --- */
+#screen-emaus .header-emaus {
+  text-align: center !important;
+  border-bottom: 2px solid #d4af37 !important; /* Línea dorada nítida de lado a lado */
+  padding-bottom: 15px !important;
+  margin-bottom: 20px !important;
+  width: 100% !important;
+  box-sizing: border-box !important;
+}
+
+#screen-emaus .header-emaus h2 {
+  font-family: var(--font-roman) !important;
+  color: #d4af37 !important;
+  letter-spacing: 3px !important;
+  font-size: 1.6rem !important;
+  text-align: center !important;
+}
+
+#screen-emaus .header-emaus p {
+  font-size: 0.85rem !important;
+  font-style: italic !important;
+  color: #a0a0a0 !important;
+  margin-top: 5px !important;
+  text-align: center !important;
+}
