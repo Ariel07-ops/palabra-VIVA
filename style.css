@@ -419,34 +419,39 @@ body {
   line-height: 1.5;
   color: #bbb;
 }
-/* --- ESTILO INTERACTIVO PARA LOS BOTONES (HOVER) --- */
-
-/* Cuando el mouse pasa por encima de cualquier 'badge' que no sea la 'active' */
-.badge:not(.active):hover {
-  /* Iluminar: Cambiamos el color del texto a un tono más claro o blanco */
-  color: #ffffff;
-
-  /* Iluminar: Hacemos el borde un poco más brillante (usando el color dorado que ya tenés) */
-  border-color: #e6c773; /* Un dorado más claro */
-
-  /* Agranda un poquito: Escalamos el elemento al 105% de su tamaño original */
-  transform: scale(1.05);
-
-  /* Transición suave: Para que no sea un salto brusco, sino un movimiento elegante */
-  transition: all 0.3s ease;
-
-  /* Cambiamos el cursor a una manito para indicar que es clickeable */
+/* --- UNIFICACIÓN TOTAL DE LOS BOTONES DE ACCIÓN (Emaús y Promesa) --- */
+.path-card .btn-emaus {
+  display: block !important;
+  width: 100% !important;
+  max-width: 100% !important; /* Para que respeten el ancho de la tarjeta sin desbordarse */
+  margin: 10px 0 !important; /* Espaciado prolijo arriba y abajo cuando se apilen */
+  background-color: transparent !important;
+  color: #d4af37 !important; /* Color dorado elegante */
+  border: 1px solid #d4af37 !important;
+  padding: 12px 20px !important;
+  border-radius: 25px !important; /* Bordes redondeados modernos */
+  font-family: var(--font-roman) !important;
+  font-size: 0.85rem !important;
+  text-align: center !important;
   cursor: pointer;
+  transition: all 0.3s ease !important;
+  box-sizing: border-box !important;
 }
-/* Animación del destello */
-@keyframes pulseGlow {
-  0% {
-    transform: scale(0.9);
-    opacity: 0.5;
-  }
-  100% {
-    transform: scale(1.1);
-    opacity: 0.8;
+
+/* Efecto hover unificado (se iluminan suavemente al pasar el mouse o el dedo) */
+.path-card .btn-emaus:hover {
+  background-color: rgba(212, 175, 55, 0.15) !important;
+  color: #ffffff !important;
+  border-color: #f8edc1 !important;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(212, 175, 55, 0.2);
+}
+
+/* En pantallas grandes (Computadora), los ponemos lado a lado si entran cómodos, o apilados prolijos */
+@media (min-width: 768px) {
+  .path-card {
+    display: flex;
+    flex-direction: column;
   }
 }
 /* --- PANTALA CAMINIEMOS CON JESUS  (El camino de emaus opcion OPTIMO, AGRADECIDO, CANSADO,) --- */
@@ -830,4 +835,45 @@ body {
   height: 100% !important;
   object-fit: contain !important;
   display: block !important;
+}
+/* --- UNIFICACIÓN DE LOS BOTONES DE ESTADO DE ÁNIMO (ARRIBA) --- */
+.mood-buttons .badge {
+  background-color: transparent !important;
+  color: #d4af37 !important; /* Color dorado elegante */
+  border: 1px solid #d4af37 !important;
+  padding: 8px 18px !important;
+  border-radius: 20px !important;
+  font-family: var(--font-roman) !important;
+  font-size: 0.8rem !important;
+  cursor: pointer;
+  transition: all 0.3s ease !important;
+}
+
+/* Estado cuando el botón de ánimo está seleccionado (activo) */
+.mood-buttons .badge.active {
+  background-color: rgba(212, 175, 55, 0.25) !important;
+  border-color: #f8edc1 !important;
+  color: #ffffff !important;
+  font-weight: bold;
+}
+
+/* Efecto hover unificado para los botones de arriba que no están activos */
+.mood-buttons .badge:not(.active):hover {
+  background-color: rgba(212, 175, 55, 0.15) !important;
+  color: #ffffff !important;
+  border-color: #f8edc1 !important;
+  transform: translateY(-2px);
+}
+/* --- ALINEACIÓN SIMÉTRICA PARA LOS BOTONES DE ARRIBA (Mi Punto de Partida) --- */
+.mood-buttons {
+  display: flex;
+  justify-content: space-between; /* Distribuye el espacio de punta a punta de forma pareja */
+  gap: 10px; /* Espacio equilibrado entre ellos */
+  width: 100%;
+}
+
+.mood-buttons .badge {
+  flex: 1; /* Hace que los tres botones crezcan iguales y se repartan el ancho */
+  text-align: center; /* Centra el texto adentro de cada botoncito */
+  padding: 10px 5px; /* Ajustamos un poquito el padding para que respiren bien */
 }
