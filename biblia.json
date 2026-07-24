@@ -1,0 +1,50 @@
+{
+  "version": "Biblia de Jerusalén",
+  "idioma": "es",
+  "canon": "catolico",
+  "testamentos": {
+    "antiguo": [
+      {
+        "id": "gen",
+        "nombre": "Génesis",
+        "capitulos": {
+          "1": {
+            "1": "En el principio creó Dios los cielos y la tierra.",
+            "2": "La tierra era caos y confusión y oscuridad por encima del abismo, y un viento de Dios aleteaba por encima de las aguas.",
+            "3": "Dijo Dios: «Hágase la luz». Y la luz fue."
+          }
+        }
+      }
+    ],
+    "nuevo": [
+      {
+        "id": "jn",
+        "nombre": "Juan",
+        "capitulos": {
+          "1": {
+            "1": "En el principio existía el Verbo y el Verbo estaba con Dios, y el Verbo era Dios.",
+            "14": "Y el Verbo se hizo carne, y habitó entre nosotros, y vimos su gloria, gloria como del unigénito del Padre, lleno de gracia y de verdad."
+          }
+        }
+      },
+      {
+        "id": "mt",
+        "nombre": "Mateo",
+        "capitulos": {
+          "11": {
+            "28": "Vengan tods los que están cansados y agobiados, y yo los haré descansar."
+          }
+        }
+      },
+      {
+        "id": "rom",
+        "nombre": "Romanos",
+        "capitulos": {
+          "8": {
+            "28": "Y sabemos que a los que aman a Dios, todas las cosas les ayudan a bien, esto es, a los que conforme a su propósito son llamados."
+          }
+        }
+      }
+    ]
+  }
+}

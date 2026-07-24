@@ -39,105 +39,44 @@ body {
 .screen.active {
   display: block; /* Solo la pantalla activa se ve */
 }
-/* --- PANTALLA 1: BIENVENIDA (SPLASH RESPONSIVE) --- */
+html,
+body {
+  margin: 0;
+  padding: 0;
+  overflow: hidden; /* <-- ESTA ES LA CLAVE. Saca la scrollbar */
+  height: 100%;
+}
+.screen {
+  display: none;
+  height: 100vh;
+  overflow-y: auto; /* <-- ESTA permite scrollear SOLO adentro de cada pantalla */
+}
+
+.screen.active {
+  display: block;
+}
+/* Pantalla splash que cubre todo */
 #screen-splash {
   position: fixed;
   top: 0;
   left: 0;
   width: 100vw;
   height: 100vh;
+  background: #000; /* Fondo negro alrededor */
   display: flex;
-  align-items: center;
   justify-content: center;
-  text-align: center;
-  z-index: 9999;
-  background-color: #0b0f15;
+  align-items: center;
+  z-index: 9999; /* Para que quede arriba de todo hasta que el JS la oculte */
+  overflow: hidden;
 }
 
-#screen-splash .splash-content-imagen {
+/* La imagen de la cruz y la paloma */
+#screen-splash img {
+  max-width: 100%;
+  max-height: 90vh;
   width: 100%;
   height: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-#screen-splash .img-portada {
-  width: 100%;
-  height: 100%;
-  object-fit: contain; /* Por defecto en compu mantiene la proporción entera */
-  display: block;
-}
-
-/* Adaptación exclusiva para Celulares (pantallas angostas menores a 768px) */
-@media (max-width: 768px) {
-  #screen-splash .img-portada {
-    width: 100vw;
-    height: 100vh;
-    object-fit: cover; /* En el celu se expande para aprovechar todo el ancho de la pantalla vertical */
-  }
-}
-
-.splash-content {
-  padding: 20px;
-  position: relative;
-}
-
-/* La Cruz Dorada con el destello Lila / Arcoíris */
-.logo-wrapper {
-  position: relative;
-  width: 150px;
-  height: 150px;
-  margin: 0 auto 30px auto;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.rainbow-glow {
-  position: absolute;
-  width: 140px;
-  height: 140px;
-  border-radius: 50%;
-  background: radial-gradient(
-    circle,
-    rgba(159, 75, 192, 0.6) 2%,
-    rgba(52, 152, 219, 0.3) 50%,
-    transparent 70%
-  );
-  filter: blur(10px);
-  animation: pulseGlow 3s infinite alternate;
-}
-
-.golden-cross {
-  font-size: 7rem;
-  color: var(--gold);
-  text-shadow: 0 0 15px rgba(212, 175, 55, 0.5);
-  z-index: 2;
-}
-
-.dove-icon {
-  font-size: 2rem;
-  position: absolute;
-  bottom: 25px;
-  right: 25px;
-  z-index: 3;
-  filter: drop-shadow(0 0 5px rgba(255, 255, 255, 0.6));
-}
-
-.brand-title-splash {
-  font-family: var(--font-roman);
-  color: var(--gold);
-  letter-spacing: 5px;
-  font-size: 2.4rem;
-  margin-bottom: 10px;
-}
-
-.subtitle-splash {
-  font-size: 1rem;
-  color: #9c9b9b;
-  letter-spacing: 2px;
-  margin-bottom: 40px;
+  object-fit: contain; /* Asegura que la imagen se vea entera sin recortarse */
 }
 
 .btn-enter {
@@ -419,39 +358,34 @@ body {
   line-height: 1.5;
   color: #bbb;
 }
-/* --- UNIFICACIÓN TOTAL DE LOS BOTONES DE ACCIÓN (Emaús y Promesa) --- */
-.path-card .btn-emaus {
-  display: block !important;
-  width: 100% !important;
-  max-width: 100% !important; /* Para que respeten el ancho de la tarjeta sin desbordarse */
-  margin: 10px 0 !important; /* Espaciado prolijo arriba y abajo cuando se apilen */
-  background-color: transparent !important;
-  color: #d4af37 !important; /* Color dorado elegante */
-  border: 1px solid #d4af37 !important;
-  padding: 12px 20px !important;
-  border-radius: 25px !important; /* Bordes redondeados modernos */
-  font-family: var(--font-roman) !important;
-  font-size: 0.85rem !important;
-  text-align: center !important;
+/* --- ESTILO INTERACTIVO PARA LOS BOTONES (HOVER) --- */
+
+/* Cuando el mouse pasa por encima de cualquier 'badge' que no sea la 'active' */
+.badge:not(.active):hover {
+  /* Iluminar: Cambiamos el color del texto a un tono más claro o blanco */
+  color: #ffffff;
+
+  /* Iluminar: Hacemos el borde un poco más brillante (usando el color dorado que ya tenés) */
+  border-color: #e6c773; /* Un dorado más claro */
+
+  /* Agranda un poquito: Escalamos el elemento al 105% de su tamaño original */
+  transform: scale(1.05);
+
+  /* Transición suave: Para que no sea un salto brusco, sino un movimiento elegante */
+  transition: all 0.3s ease;
+
+  /* Cambiamos el cursor a una manito para indicar que es clickeable */
   cursor: pointer;
-  transition: all 0.3s ease !important;
-  box-sizing: border-box !important;
 }
-
-/* Efecto hover unificado (se iluminan suavemente al pasar el mouse o el dedo) */
-.path-card .btn-emaus:hover {
-  background-color: rgba(212, 175, 55, 0.15) !important;
-  color: #ffffff !important;
-  border-color: #f8edc1 !important;
-  transform: translateY(-2px);
-  box-shadow: 0 4px 12px rgba(212, 175, 55, 0.2);
-}
-
-/* En pantallas grandes (Computadora), los ponemos lado a lado si entran cómodos, o apilados prolijos */
-@media (min-width: 768px) {
-  .path-card {
-    display: flex;
-    flex-direction: column;
+/* Animación del destello */
+@keyframes pulseGlow {
+  0% {
+    transform: scale(0.9);
+    opacity: 0.5;
+  }
+  100% {
+    transform: scale(1.1);
+    opacity: 0.8;
   }
 }
 /* --- PANTALA CAMINIEMOS CON JESUS  (El camino de emaus opcion OPTIMO, AGRADECIDO, CANSADO,) --- */
@@ -820,127 +754,4 @@ body {
   .interact-paragraph {
     font-size: 1.4rem;
   }
-}
-/* Forzamos al contenedor de la imagen a ocupar el 100% de la pantalla */
-#screen-splash .splash-content-imagen {
-  width: 100vw !important;
-  height: 100vh !important;
-  margin: 0 !important;
-  padding: 0 !important;
-}
-
-/* Forzamos a la imagen a estirarse de punta a punta */
-#screen-splash .img-portada {
-  width: 100% !important;
-  height: 100% !important;
-  object-fit: contain !important;
-  display: block !important;
-}
-/* --- UNIFICACIÓN DE LOS BOTONES DE ESTADO DE ÁNIMO (ARRIBA) --- */
-.mood-buttons .badge {
-  background-color: transparent !important;
-  color: #d4af37 !important; /* Color dorado elegante */
-  border: 1px solid #d4af37 !important;
-  padding: 8px 18px !important;
-  border-radius: 20px !important;
-  font-family: var(--font-roman) !important;
-  font-size: 0.8rem !important;
-  cursor: pointer;
-  transition: all 0.3s ease !important;
-}
-
-/* Estado cuando el botón de ánimo está seleccionado (activo) */
-.mood-buttons .badge.active {
-  background-color: rgba(212, 175, 55, 0.25) !important;
-  border-color: #f8edc1 !important;
-  color: #ffffff !important;
-  font-weight: bold;
-}
-
-/* Efecto hover unificado para los botones de arriba que no están activos */
-.mood-buttons .badge:not(.active):hover {
-  background-color: rgba(212, 175, 55, 0.15) !important;
-  color: #ffffff !important;
-  border-color: #f8edc1 !important;
-  transform: translateY(-2px);
-}
-/* --- ALINEACIÓN SIMÉTRICA PARA LOS BOTONES DE ARRIBA (Mi Punto de Partida) --- */
-.mood-buttons {
-  display: flex;
-  justify-content: space-between; /* Distribuye el espacio de punta a punta de forma pareja */
-  gap: 10px; /* Espacio equilibrado entre ellos */
-  width: 100%;
-}
-
-.mood-buttons .badge {
-  flex: 1; /* Hace que los tres botones crezcan iguales y se repartan el ancho */
-  text-align: center; /* Centra el texto adentro de cada botoncito */
-  padding: 10px 5px; /* Ajustamos un poquito el padding para que respiren bien */
-}
-/* --- UNIFICACIÓN DEL ENCABEZADO FIJO (Promesa / Emaús) --- */
-#screen-promesa .main-header,
-#screen-emaus .header-emaus {
-  position: sticky !important;
-  top: 0 !important;
-  background-color: var(
-    --bg-dark
-  ) !important; /* Unificamos con el fondo general oscuro de la app */
-  z-index: 50 !important;
-  padding-bottom: 15px !important;
-  border-bottom: 1px solid rgba(212, 175, 55, 0.3) !important; /* Línea dorada sutil obligatoria */
-  width: 100% !important;
-  box-sizing: border-box !important;
-}
-/* --- UNIFICACIÓN DEL ENCABEZADO: CAMINEMOS CON JESÚS --- */
-#screen-menu .main-header,
-.screen-home .main-header,
-#screen-menu h2 {
-  text-align: center !important;
-  border-bottom: 2px solid #d4af37 !important; /* Línea dorada nítida y unificada */
-  padding-bottom: 15px !important;
-  margin-bottom: 20px !important;
-  width: 100% !important;
-  box-sizing: border-box !important;
-}
-
-#screen-menu h2,
-.screen-home h2 {
-  font-family: var(--font-roman) !important;
-  color: #d4af37 !important;
-  letter-spacing: 3px !important;
-  font-size: 1.6rem !important;
-}
-
-#screen-menu p,
-.screen-home .header-statement {
-  font-size: 0.85rem !important;
-  font-style: italic !important;
-  color: #a0a0a0 !important;
-  margin-top: 5px !important;
-  text-align: center !important;
-}
-/* --- ESTILO DEFINITIVO PARA EL ENCABEZADO DE EMAÚS / NUESTROS PASOS --- */
-#screen-emaus .header-emaus {
-  text-align: center !important;
-  border-bottom: 2px solid #d4af37 !important; /* Línea dorada nítida de lado a lado */
-  padding-bottom: 15px !important;
-  margin-bottom: 20px !important;
-  width: 100% !important;
-  box-sizing: border-box !important;
-}
-
-#screen-emaus .header-emaus h2 {
-  font-family: var(--font-roman) !important;
-  color: #d4af37 !important;
-  letter-spacing: 3px !important;
-  font-size: 1.6rem !important;
-  text-align: center !important;
-}
-
-#screen-emaus .header-emaus p {
-  font-size: 0.85rem !important;
-  font-style: italic !important;
-  color: #a0a0a0 !important;
-  margin-top: 5px !important;
-  text-align: center !important;
 }
