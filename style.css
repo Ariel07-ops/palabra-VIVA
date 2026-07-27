@@ -713,3 +713,19 @@ body {
     font-size: 1.4rem;
   }
 }
+/* Contenedor de los botones para que se acomoden solos */
+.mood-buttons {
+  display: flex;
+  flex-wrap: wrap; /* Hace que bajen de renglón prolijamente si no entran en la pantalla */
+  gap: 12px; /* Espacio exacto y parejo entre botón y botón (adiós desfasajes) */
+  justify-content: center; /* Centrados en la pantalla con elegancia */
+  margin: 15px 0;
+}
+
+/* Estilo unificado para los botoncitos */
+.mood-buttons .btn-emaus {
+  flex: 1 1 auto; /* Se estiran de forma inteligente según el espacio */
+  min-width: 110px; /* Ancho mínimo para que el texto nunca quede apretado */
+  text-align: center;
+  margin: 0; /* Borramos márgenes raros viejos */
+}
