@@ -15,12 +15,18 @@
   padding: 0;
 }
 
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+/* Y acá le sumamos el margen superior para que la barra no tape nada */
 body {
-  background-color: var(--bg-dark);
-  color: var(--text-light);
-  font-family: var(--font-serif);
-  min-height: 100vh;
-  overflow: hidden; /* Evita rebotes raros en el cel */
+  padding-top: 80px; /* Empuja todo el contenido hacia abajo */
+  background-color: #0b0c10;
+  color: #ffffff;
+  font-family: serif;
 }
 
 /* SISTEMA DE PANTALLAS (Manejo de navegación) */
@@ -46,10 +52,20 @@ body {
   overflow: hidden; /* <-- ESTA ES LA CLAVE. Saca la scrollbar */
   height: 100%;
 }
+/* Hacemos que cada pantalla respete el espacio de la barra superior fija */
 .screen {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
   display: none;
-  height: 100vh;
-  overflow-y: auto; /* <-- ESTA permite scrollear SOLO adentro de cada pantalla */
+  background-color: var(--bg-dark);
+  z-index: 10;
+  overflow-y: auto;
+
+  /* ESTO ES LO QUE FALTABA: Empuja el contenido adentro de la pantalla hacia abajo */
+  padding-top: 75px;
 }
 
 .screen.active {
@@ -482,13 +498,15 @@ body {
 
 /* Estilo para el botón de volver (coincidiendo con tu estética) */
 .btn-volver {
-  background: none;
-  border: none;
+  background: rgba(212, 175, 55, 0.1);
+  border: 1px solid rgba(212, 175, 55, 0.3);
   color: #d4af37;
-  font-size: 0.9rem;
+  font-size: 0.8rem;
+  padding: 5px 12px;
+  border-radius: 15px;
   cursor: pointer;
-  margin-bottom: 15px;
-  letter-spacing: 1px;
+  display: inline-block;
+  margin-bottom: 10px;
 }
 /* Estilo unificado y prolijo para los botones de la Escalera */
 .path-journey-container .huella-paso {
@@ -728,4 +746,86 @@ body {
   min-width: 110px; /* Ancho mínimo para que el texto nunca quede apretado */
   text-align: center;
   margin: 0; /* Borramos márgenes raros viejos */
+}
+/* ==========================================
+   BARRA DE NAVEGACIÓN SUPERIOR
+   ================================---------- */
+.top-navbar {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 15px;
+  background-color: #0b0c10; /* Fondo negro solemne por defecto */
+  border-bottom: 2px solid #d4af37; /* Línea dorada */
+  font-family: serif;
+}
+
+/* Contenedor central para alinear el iconito y el título */
+.nav-center {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex: 1;
+  justify-content: center;
+}
+
+/* Isologo circular de la barra (opcional si ponés la imagen) */
+.nav-brand-icon {
+  width: 35px;
+  height: 35px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 1.5px solid #d4af37;
+}
+
+/* Título con el degradado dorado de la portada */
+.nav-title {
+  font-family: serif;
+  font-size: 1.35rem;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+
+  /* Degradado dorado idéntico al splash */
+  background: linear-gradient(180deg, #fceea7 0%, #d4af37 50%, #aa7c11 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  filter: drop-shadow(0px 1px 2px rgba(0, 0, 0, 0.9));
+}
+
+/* Botones de la barra (menú y cambio de modo) */
+.nav-icon-btn {
+  background: transparent;
+  border: none;
+  color: #d4af37;
+  font-size: 1.4rem;
+  cursor: pointer;
+  padding: 5px;
+  transition: color 0.2s ease;
+}
+
+.nav-icon-btn:hover {
+  color: #fceea7;
+}
+
+/* ==========================================
+   SISTEMA DE MODOS (Oscuro / Luminoso)
+   ================================---------- */
+
+/* Modo Luminoso Suave (Gris perla / marfil) */
+body.light-mode {
+  background-color: #f4f1ea !important;
+  color: #2b2b2b !important;
+}
+
+body.light-mode .top-navbar {
+  background-color: #e6e2d8 !important;
+  border-bottom: 2px solid #b39353 !important;
+}
+
+body.light-mode .nav-icon-btn {
+  color: #3a3a3a !important;
 }
