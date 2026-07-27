@@ -812,15 +812,15 @@ body {
 }
 
 /* ==========================================
-   SISTEMA DE MODOS (Oscuro / Luminoso)
-   ================================---------- */
+   MODO LUMINOSO COMPLETO (Fondo y Letras)
+   ========================================== */
 
-/* Modo Luminoso Suave (Gris perla / marfil) */
 body.light-mode {
   background-color: #f4f1ea !important;
-  color: #2b2b2b !important;
+  color: #2b2b2b !important; /* Cambia el color de todo el texto general a oscuro */
 }
 
+/* Cambiar la barra superior */
 body.light-mode .top-navbar {
   background-color: #e6e2d8 !important;
   border-bottom: 2px solid #b39353 !important;
@@ -828,4 +828,25 @@ body.light-mode .top-navbar {
 
 body.light-mode .nav-icon-btn {
   color: #3a3a3a !important;
+}
+
+/* Cambiar los paneles y tarjetas oscuras a un tono claro elegante */
+body.light-mode .bg-panel,
+body.light-mode .path-card,
+body.light-mode .study-card-panel,
+body.light-mode .fan-column,
+body.light-mode #contenido-peldaño {
+  background-color: #e8e4dc !important;
+  color: #2b2b2b !important;
+  border-color: #b39353 !important;
+}
+
+/* Asegurar que los párrafos y textos secundarios también se lean en oscuro */
+body.light-mode p,
+body.light-mode .interact-paragraph,
+body.light-mode .question,
+body.light-mode .reflection,
+body.light-mode .focus-text,
+body.light-mode .split-block p {
+  color: #333333 !important;
 }

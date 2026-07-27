@@ -355,3 +355,12 @@ mostrarVersiculo("nuevo", "jn", "1", "14");
 console.log(
   "Script ariel.js cargado y listo para usar funciones de Biblia y Pantallas.",
 );
+// Activador automático para el botón de cambio de tema
+document.addEventListener("DOMContentLoaded", () => {
+  const btnTheme = document.getElementById("btn-theme");
+  if (btnTheme) {
+    btnTheme.addEventListener("click", () => {
+      document.body.classList.toggle("light-mode");
+    });
+  }
+});
