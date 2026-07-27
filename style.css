@@ -79,24 +79,6 @@ body {
   object-fit: contain; /* Asegura que la imagen se vea entera sin recortarse */
 }
 
-.btn-enter {
-  background: transparent;
-  border: 1px solid var(--gold);
-  color: var(--gold);
-  padding: 12px 35px;
-  font-family: var(--font-roman);
-  font-size: 1rem;
-  letter-spacing: 2px;
-  cursor: pointer;
-  border-radius: 4px;
-  transition: all 0.3s;
-}
-
-.btn-enter:hover {
-  background-color: var(--gold);
-  color: black;
-}
-
 /* --- PANTALLA 2: DIVISIÓN PRINCIPAL (PANTALLA PARTIDA) --- */
 .split-container {
   display: flex;
@@ -330,7 +312,7 @@ body {
 
 .question {
   font-size: 0.95rem;
-  color: #ccc;
+  color: #cccccc;
   margin-bottom: 12px;
 }
 
@@ -339,44 +321,12 @@ body {
   gap: 10px;
 }
 
-.badge {
-  padding: 6px 14px;
-  border: 1px solid #444;
-  border-radius: 20px;
-  font-size: 0.8rem;
-  color: #888;
-}
-
-.badge.active {
-  background-color: rgba(212, 175, 55, 0.1);
-  border-color: var(--gold);
-  color: var(--gold);
-}
-
 .reflection {
   font-size: 0.95rem;
   line-height: 1.5;
   color: #bbb;
 }
-/* --- ESTILO INTERACTIVO PARA LOS BOTONES (HOVER) --- */
 
-/* Cuando el mouse pasa por encima de cualquier 'badge' que no sea la 'active' */
-.badge:not(.active):hover {
-  /* Iluminar: Cambiamos el color del texto a un tono más claro o blanco */
-  color: #ffffff;
-
-  /* Iluminar: Hacemos el borde un poco más brillante (usando el color dorado que ya tenés) */
-  border-color: #e6c773; /* Un dorado más claro */
-
-  /* Agranda un poquito: Escalamos el elemento al 105% de su tamaño original */
-  transform: scale(1.05);
-
-  /* Transición suave: Para que no sea un salto brusco, sino un movimiento elegante */
-  transition: all 0.3s ease;
-
-  /* Cambiamos el cursor a una manito para indicar que es clickeable */
-  cursor: pointer;
-}
 /* Animación del destello */
 @keyframes pulseGlow {
   0% {
@@ -394,7 +344,7 @@ body {
   font-size: 26px;
   text-align: center;
   margin-bottom: 20px;
-  color: rgb(194, 172, 52);
+  color: #d4af37;
   padding: 15px 25px;
 }
 
@@ -412,7 +362,7 @@ body {
   font-size: 26px;
   text-align: center;
   margin-bottom: 20px;
-  color: rgb(194, 172, 52);
+  color: #d4af37;
   padding: 15px 25px;
 }
 #screen-bendecido p {
@@ -428,7 +378,7 @@ body {
   font-size: 26px;
   text-align: center;
   margin-bottom: 20px;
-  color: rgb(194, 172, 52);
+  color: #d4af37;
   padding: 15px 25px;
 }
 #screen-cansado p {
@@ -568,23 +518,12 @@ body {
 #screen-promesa .main-header {
   position: sticky !important;
   top: 0 !important;
-  background-color: #121821 !important; /* El color de fondo oscuro de tu app para que haga de cortina */
+  background-color: #000000 !important; /* El color de fondo oscuro de tu app para que haga de cortina */
   z-index: 50 !important;
   padding-bottom: 15px !important;
   border-bottom: 1px solid rgba(212, 175, 55, 0.2); /* Una línea dorada sutil opcional para separar */
 }
 /* Estilo unificado para el título y subtítulo de la pantalla de Emaús */
-#screen-emaus .header-emaus h2 {
-  color: #d4af37 !important; /* El color dorado elegante */
-  text-align: center;
-  font-weight: bold;
-}
-
-#screen-emaus .header-emaus p {
-  color: rgba(255, 255, 255, 0.85) !important; /* Blanco suave y sutil */
-  text-align: center;
-  font-style: italic;
-}
 
 /* para adaptar el peldaño de la escalera de la revelacion a toda la pantalla y que se vea bien en celular y computadora, se agregan los siguientes estilos: */
 #contenido-peldaño {
@@ -607,7 +546,26 @@ body {
 }
 
 /* --- ADAPTACIÓN INTELIGENTE (Celular y Computadora) --- */
+/* Estilo blindado y exclusivo para la cabecera de Emaús */
+#screen-emaus .header-emaus {
+  padding-bottom: 15px !important;
+  border-bottom: 1px solid rgba(212, 175, 55, 0.3) !important;
+  margin-bottom: 20px !important;
+}
 
+#screen-emaus .header-emaus h2 {
+  color: #d4af37 !important;
+  text-align: center;
+  font-weight: bold;
+  font-size: 1.5rem !important;
+}
+
+#screen-emaus .header-emaus p {
+  color: rgba(255, 255, 255, 0.65) !important; /* Gris suave y delicado */
+  font-size: 0.85rem !important; /* Letra más fina y proporcionada */
+  font-style: italic !important;
+  text-align: center;
+}
 /* Cuando la pantalla sea ancha (como en la Computadora) */
 @media (min-width: 600px) {
   .columns-container {

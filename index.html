@@ -49,10 +49,10 @@
 
             <main class="content-area">
                 <article class="scripture-passage">
-                    <p class="verse interact-paragraph">
+                    <p id="texto-versiculo-dinamico" class="verse interact-paragraph">
                         <span class="drop-cap">Y</span> el Verbo se hizo carne, y habitó entre nosotros, y vimos su gloria, gloria como del unigénito del Padre, lleno de gracia y de verdad.
                     </p>
-                    <small class="version-tag">Juan 1:14 | Biblia el Libro del Pueblo de Dios (CEE)</small>
+                    <small id="etiqueta-version-dinamica" class="version-tag">Cargando versículo...</small>
                 </article>
             </main>
 
@@ -116,9 +116,14 @@
                     <h3>1. Mi Punto de Partida</h3>
                     <p class="question">¿Cómo está tu corazón hoy?</p>
                     <div class="mood-buttons">
-                        <span class="badge"onclick="redirigir('bendecido')">Bendecido</span>
-                        <span class="badge"onclick="redirigir('optimo')">Óptimo</span>
-                        <span class="badge"onclick="redirigir('cansado')">Cansado</span>
+                        <span class="btn-emaus"onclick="redirigir('bendecido')">Bendecido</span>
+                        <span class="btn-emaus"onclick="redirigir('optimo')">Óptimo</span>
+                        <span class="btn-emaus"onclick="redirigir('feliz')">Feliz</span>
+                        <span class="btn-emaus"onclick="redirigir('cansado')">Cansado</span>
+                        <span class="btn-emaus"onclick="redirigir('triste')">Triste</span>
+                        <span class="btn-emaus"onclick="redirigir('ansioso')">Ansioso</span>
+                        <span class="btn-emaus"onclick="redirigir('preocupado')">Preocupado</span>
+                        <span class="btn-emaus"onclick="redirigir('temeroso')">Temeroso</span>
                     </div>
                 </div>
     <!-- Necesitaras en js tener los nombres screen optimo, screen bendecido etc -->
@@ -165,9 +170,43 @@
     <p>Estamos bendecidos por las bendiciones que Dios nos ha dado, y por la gracia que nos permite seguir adelante en nuestro camino de fe. Su amor nos sostiene en los momentos difíciles y nos llena de esperanza en los momentos de alegría.</p>
     
 </div>
+<div id="screen-feliz" class="screen">
+    <button class="btn-back-path">⬅ Volver</button>
+    <h2>Pantalla: Feliz</h2>
+    <p>En los momentos de felicidad, recordemos que Dios nos da la fuerza para seguir adelante. Su presencia nos acompaña y nos renueva, incluso cuando sentimos que nuestras fuerzas flaquean. Confiemos en Él y busquemos descanso en Su amor.</p>
+    <p>El que todo lo llena en todos es quien nos regala estos momentos.</p>
 
+</div>
+<div id="screen-triste" class="screen">
+    <button class="btn-back-path">⬅ Volver</button>
+    <h2>Pantalla: Triste</h2>
+    <p>En los momentos de tristeza, recordemos que Dios nos da la fuerza para seguir adelante. Su presencia nos acompaña y nos renueva, incluso cuando sentimos que nuestras fuerzas flaquean. Confiemos en Él y busquemos descanso en Su amor.</p>
+    
+
+</div>
+<div id="screen-temeroso" class="screen">
+    <button class="btn-back-path">⬅ Volver</button>
+    <h2>Pantalla: Temeroso</h2>
+    <p>En los momentos de temor, recordemos que Dios nos da la fuerza para seguir adelante. Su presencia nos acompaña y nos renueva, incluso cuando sentimos que nuestras fuerzas flaquean. Confiemos en Él y busquemos descanso en Su amor.</p>
+    
+
+</div>
+<div id="screen-cansado" class="screen">
+    <button class="btn-back-path">⬅ Volver</button>
+    <h2>Pantalla: Cansado</h2>
+    <p>En los momentos de cansancio, recordemos que Dios nos da la fuerza para seguir adelante. Su presencia nos acompaña y nos renueva, incluso cuando sentimos que nuestras fuerzas flaquean. Confiemos en Él y busquemos descanso en Su amor.</p>
+    
+
+</div>
+<div id="screen-preocupado" class="screen">
+    <button class="btn-back-path">⬅ Volver</button>
+    <h2>Pantalla: Preocupado</h2>
+    <p>En los momentos de preocupación, recordemos que Dios nos da la fuerza para seguir adelante. Su presencia nos acompaña y nos renueva, incluso cuando sentimos que nuestras fuerzas flaquean. Confiemos en Él y busquemos descanso en Su amor.</p>
+    
+
+</div>
 <!-- PANTALLA NUEVA DEL CAMINO DE EMAÚS -->
-<div id="screen-emaus" class="screen">
+<div id="screen-emaus" class="screen block-overlay">
     <button class="btn-back-path">⬅ Volver</button>
     <div class="header-emaus">
         <h2>CAMINEMOS CON JESÚS</h2>

@@ -5,9 +5,14 @@ const screenBibleDetail = document.getElementById("screen-bible-detail");
 const screenPathDetail = document.getElementById("screen-path-detail");
 const screenOptimo = document.getElementById("screen-optimo");
 const screenBendecido = document.getElementById("screen-bendecido");
+const screenPromesa = document.getElementById("screen-promesa");
+const screenPreocupado = document.getElementById("screen-preocupado");
+const screenAnsioso = document.getElementById("screen-ansioso");
+const screenTemeroso = document.getElementById("screen-temeroso");
+const screenFeliz = document.getElementById("screen-feliz");
+const screenTriste = document.getElementById("screen-triste");
 const screenCansado = document.getElementById("screen-cansado");
 const screenEmaus = document.getElementById("screen-emaus");
-const screenPromesa = document.getElementById("screen-promesa");
 
 // 2. CAPTURAR BOTONES INTERACTIVOS (Sin el btnEnter que ya no existe)
 const btnGotoBible = document.getElementById("btn-goto-bible");
@@ -29,6 +34,11 @@ function changeScreen(screenToShow) {
     screenOptimo,
     screenCansado,
     screenBendecido,
+    screenPreocupado,
+    screenAnsioso,
+    screenTemeroso,
+    screenFeliz,
+    screenTriste,
     screenEmaus,
     screenPromesa,
   ].forEach((screen) => {
@@ -48,11 +58,21 @@ function redirigir(estado) {
     changeScreen(screenBendecido);
   } else if (estado === "cansado") {
     changeScreen(screenCansado);
+  } else if (estado === "feliz") {
+    changeScreen(screenFeliz);
+  } else if (estado === "triste") {
+    changeScreen(screenTriste);
+  } else if (estado === "ansioso") {
+    changeScreen(screenAnsioso);
+  } else if (estado === "temeroso") {
+    changeScreen(screenTemeroso);
+  } else if (estado === "preocupado") {
+    changeScreen(screenPreocupado);
   }
 }
 
 // --- ACTIVAR BOTONES DE ESTADO DE ÁNIMO ---
-const moodButtons = document.querySelectorAll(".badge");
+const moodButtons = document.querySelectorAll(".btn-emaus");
 
 moodButtons.forEach((button) => {
   button.addEventListener("click", () => {
@@ -110,6 +130,15 @@ const btnBackCansado = document.querySelector("#screen-cansado .btn-back-path");
 const btnBackBendecido = document.querySelector(
   "#screen-bendecido .btn-back-path",
 );
+const btnBackFeliz = document.querySelector("#screen-feliz .btn-back-path");
+const btnBackTriste = document.querySelector("#screen-triste .btn-back-path");
+const btnBackAnsioso = document.querySelector("#screen-ansioso .btn-back-path");
+const btnBackTemeroso = document.querySelector(
+  "#screen-temeroso .btn-back-path",
+);
+const btnBackPreocupado = document.querySelector(
+  "#screen-preocupado .btn-back-path",
+);
 
 if (btnBackOptimo) {
   btnBackOptimo.addEventListener("click", () => {
@@ -123,6 +152,31 @@ if (btnBackCansado) {
 }
 if (btnBackBendecido) {
   btnBackBendecido.addEventListener("click", () => {
+    changeScreen(screenPathDetail);
+  });
+}
+if (btnBackFeliz) {
+  btnBackFeliz.addEventListener("click", () => {
+    changeScreen(screenPathDetail);
+  });
+}
+if (btnBackTriste) {
+  btnBackTriste.addEventListener("click", () => {
+    changeScreen(screenPathDetail);
+  });
+}
+if (btnBackAnsioso) {
+  btnBackAnsioso.addEventListener("click", () => {
+    changeScreen(screenPathDetail);
+  });
+}
+if (btnBackTemeroso) {
+  btnBackTemeroso.addEventListener("click", () => {
+    changeScreen(screenPathDetail);
+  });
+}
+if (btnBackPreocupado) {
+  btnBackPreocupado.addEventListener("click", () => {
     changeScreen(screenPathDetail);
   });
 }
@@ -240,3 +294,64 @@ setTimeout(() => {
     }, 800);
   }
 }, 4500); // 4.5 segundos exactos
+// Función para conectar y cargar los datos del JSON de la Biblia en la app
+async function cargarDatosBiblia() {
+  try {
+    const respuesta = await fetch("biblia.json"); // Asegurate de que el archivo JSON tenga este nombre
+    const datosBiblia = await respuesta.json();
+
+    console.log("¡Biblia cargada con éxito!", datosBiblia.version);
+    return datosBiblia;
+  } catch (error) {
+    console.error("Hubo un error al cargar la Biblia:", error);
+  }
+}
+// Función para buscar y mostrar un versículo de la Biblia en la interfaz
+async function mostrarVersiculo(testamento, libroId, capitulo, versiculoNum) {
+  try {
+    const respuesta = await fetch("biblia.json");
+    const biblia = await respuesta.json();
+
+    // Buscamos dentro de testamentos (puede ser 'nuevo' o 'antiguo')
+    const listaLibros = biblia.testamentos[testamento];
+    const libroEncontrado = listaLibros.find((l) => l.id === libroId);
+
+    if (
+      libroEncontrado &&
+      libroEncontrado.capitulos[capitulo] &&
+      libroEncontrado.capitulos[capitulo][versiculoNum]
+    ) {
+      const textoVersiculo = libroEncontrado.capitulos[capitulo][versiculoNum];
+
+      // Inyecta el texto principal
+      const contenedorVerso = document.getElementById(
+        "texto-versiculo-dinamico",
+      );
+      if (contenedorVerso) {
+        contenedorVerso.innerHTML = `<span class="drop-cap">${textoVersiculo.charAt(0)}</span>${textoVersiculo.slice(1)}`;
+      }
+
+      // Actualiza la etiqueta inferior
+      const etiquetaVersion = document.getElementById(
+        "etiqueta-version-dinamica",
+      );
+      if (etiquetaVersion) {
+        etiquetaVersion.textContent = `${libroEncontrado.nombre} ${capitulo}:${versiculoNum} | ${biblia.version}`;
+      }
+
+      console.log("¡Versículo inyectado en pantalla con éxito!");
+    } else {
+      console.warn("No se encontró esa combinación exacta en el JSON.");
+    }
+  } catch (error) {
+    console.error("Error procesando la Biblia:", error);
+  }
+}
+
+// Llamamos a la función para que se ejecute al iniciar
+mostrarVersiculo("nuevo", "jn", "1", "14");
+// Y para que se ejecute de una apenas arranca o entra a la seccion, podés llamarlo así:
+// mostrarVersiculo('nuevo', 'jn', '1', '14');
+console.log(
+  "Script ariel.js cargado y listo para usar funciones de Biblia y Pantallas.",
+);
