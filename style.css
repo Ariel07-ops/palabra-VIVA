@@ -157,22 +157,6 @@ body {
 }
 
 /* Botones de volver */
-.btn-back,
-.btn-back-path {
-  background: transparent;
-  border: none;
-  color: #888;
-  font-size: 1rem;
-  cursor: pointer;
-  text-align: left;
-  margin-bottom: 15px;
-  font-family: var(--font-roman);
-  transition: color 0.3s;
-}
-.btn-back:hover,
-.btn-back-path:hover {
-  color: var(--gold);
-}
 
 .main-header {
   text-align: center;
@@ -187,7 +171,29 @@ body {
   letter-spacing: 4px;
   font-size: 1.8rem;
 }
+.btn-back,
+.btn-back-path {
+  background: rgba(212, 175, 55, 0.1);
+  border: 2px solid rgba(212, 175, 55, 0.3);
+  color: #d4af37;
+  font-size: 1.5rem;
+  width: 45px;
+  height: 45px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  margin-bottom: 15px;
+  transition: all 0.3s;
+}
 
+.btn-back:hover,
+.btn-back-path:hover {
+  background: rgba(212, 175, 55, 0.2);
+  border-color: var(--gold);
+  color: var(--gold);
+}
 .text-gold {
   color: var(--gold);
 }
@@ -302,6 +308,26 @@ body {
   color: #999;
   line-height: 1.4;
 }
+/* modificamos la posicion del titulo El camino de Emaus */
+.header-emaus {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap; /* Permite que el párrafo baje prolijo a la línea siguiente */
+  gap: 15px;
+  margin-bottom: 20px;
+  padding-left: 30px !important; /* Espacio a la izquierda para que el botón de volver no quede pegado al borde */
+  padding-right: 20px !important;
+}
+
+.header-emaus h2 {
+  margin: 0;
+  flex-grow: 1; /* Hace que el título ocupe el espacio disponible */
+}
+
+.header-emaus p {
+  width: 100%; /* Manda el subtítulo/párrafo abajo de todo el encabezado */
+  margin: 5px 0 0 0;
+}
 
 /* --- DETALLE CAMINO (Caminemos con Jesús) --- */
 .path-content {
@@ -372,7 +398,84 @@ body {
   margin-bottom: 15px;
   padding: 15px 25px;
 }
+#screen-temeroso h2 {
+  font-size: 26px;
+  text-align: center;
+  margin-bottom: 20px;
+  color: #d4af37;
+  padding: 15px 25px;
+}
+#screen-temeroso p {
+  font-size: 16px;
+  text-align: justify;
+  line-height: 1.6;
+  color: #ccc;
+  margin-bottom: 15px;
+  padding: 15px 25px;
+}
+#screen-preocupado h2 {
+  font-size: 26px;
+  text-align: center;
+  margin-bottom: 20px;
+  color: #d4af37;
+  padding: 15px 25px;
+}
+#screen-preocupado p {
+  font-size: 16px;
+  text-align: justify;
+  line-height: 1.6;
+  color: #ccc;
+  margin-bottom: 15px;
+  padding: 15px 25px;
+}
 
+#screen-feliz h2 {
+  font-size: 26px;
+  text-align: center;
+  margin-bottom: 20px;
+  color: #d4af37;
+  padding: 15px 25px;
+}
+#screen-feliz p {
+  font-size: 16px;
+  text-align: justify;
+  line-height: 1.6;
+  color: #ccc;
+  margin-bottom: 15px;
+  padding: 15px 25px;
+}
+
+#screen-ansioso h2 {
+  font-size: 26px;
+  text-align: center;
+  margin-bottom: 20px;
+  color: #d4af37;
+  padding: 15px 25px;
+}
+#screen-ansioso p {
+  font-size: 16px;
+  text-align: justify;
+  line-height: 1.6;
+  color: #ccc;
+  margin-bottom: 15px;
+  padding: 15px 25px;
+}
+
+#screen-triste h2 {
+  font-size: 26px;
+  text-align: center;
+  margin-bottom: 20px;
+  color: #d4af37;
+  padding: 15px 25px;
+}
+#screen-triste p {
+  font-size: 16px;
+  text-align: justify;
+  line-height: 1.6;
+  color: #ccc;
+  margin-bottom: 15px;
+  padding: 15px 25px;
+}
 /* --- CAMINIEMOS CON JESUS  (opcion agradecido) --- */
 #screen-bendecido h2 {
   font-size: 26px;
@@ -499,15 +602,18 @@ body {
 /* Estilo para el botón de volver (coincidiendo con tu estética) */
 .btn-volver {
   background: rgba(212, 175, 55, 0.1);
-  border: 1px solid rgba(212, 175, 55, 0.3);
+  border: 2px solid rgba(212, 175, 55, 0.3);
   color: #d4af37;
-  font-size: 0.8rem;
-  padding: 5px 12px;
-  border-radius: 15px;
+  font-size: 1.5rem;
+  width: 50px;
+  height: 45px;
+  border-radius: 50%;
   cursor: pointer;
-  display: inline-block;
+  display: flex;
   margin-bottom: 10px;
+  align-items: center;
 }
+
 /* Estilo unificado y prolijo para los botones de la Escalera */
 .path-journey-container .huella-paso {
   width: 100%; /* Hacemos que todos ocupen el mismo ancho máximo */
@@ -564,26 +670,26 @@ body {
 }
 
 /* --- ADAPTACIÓN INTELIGENTE (Celular y Computadora) --- */
-/* Estilo blindado y exclusivo para la cabecera de Emaús */
-#screen-emaus .header-emaus {
-  padding-bottom: 15px !important;
-  border-bottom: 1px solid rgba(212, 175, 55, 0.3) !important;
-  margin-bottom: 20px !important;
+.screen-header {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap; /* Permite que el párrafo baje prolijo a la línea siguiente */
+  gap: 15px;
+  margin-bottom: 20px;
+  padding-left: 20px; /* Espacio a la izquierda para que el botón de volver no quede pegado al borde */
+  padding-right: 20px; /* Espacio a la derecha para que el texto no quede pegado al borde */
 }
 
-#screen-emaus .header-emaus h2 {
-  color: #d4af37 !important;
-  text-align: center;
-  font-weight: bold;
-  font-size: 1.5rem !important;
+.screen-header h2 {
+  margin: 0;
+  flex-grow: 1; /* Hace que el título ocupe el espacio disponible junto a la flecha */
 }
 
-#screen-emaus .header-emaus p {
-  color: rgba(255, 255, 255, 0.65) !important; /* Gris suave y delicado */
-  font-size: 0.85rem !important; /* Letra más fina y proporcionada */
-  font-style: italic !important;
-  text-align: center;
+.screen-header p {
+  width: 100%; /* Manda el subtítulo/párrafo abajo de todo el encabezado */
+  margin: 5px 0 0 0;
 }
+
 /* Cuando la pantalla sea ancha (como en la Computadora) */
 @media (min-width: 600px) {
   .columns-container {
@@ -849,4 +955,23 @@ body.light-mode .reflection,
 body.light-mode .focus-text,
 body.light-mode .split-block p {
   color: #333333 !important;
+}
+/* Contenedor de los botones de estado (Emaús / Punto de partida) */
+.mood-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 10px; /* Espacio prolijo entre cada botoncito */
+  margin-top: 15px;
+}
+
+/* Estilo unificado para cada botoncito de estado */
+.btn-emaus {
+  flex: 1 1 120px; /* Se adaptan solos al ancho del celular sin amontonarse */
+  max-width: 250px;
+  text-align: center;
+  padding: 10px 12px;
+  box-sizing: border-box;
+  cursor: pointer;
+  /* (Mantené los colores o bordes que ya tenías para estos botones) */
 }

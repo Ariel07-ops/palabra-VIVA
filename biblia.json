@@ -32,7 +32,7 @@
         "nombre": "Mateo",
         "capitulos": {
           "11": {
-            "28": "Vengan tods los que están cansados y agobiados, y yo los haré descansar."
+            "28": "Vengan todos los que están cansados y agobiados, y yo los haré descansar."
           }
         }
       },
@@ -44,7 +44,67 @@
             "28": "Y sabemos que a los que aman a Dios, todas las cosas les ayudan a bien, esto es, a los que conforme a su propósito son llamados."
           }
         }
+      },
+      {
+        "id": "1cor",
+        "nombre": "1 Corintios",
+        "capitulos": {
+          "13": {
+            "4": "El amor es paciente, es bondadoso; el amor no es envidioso ni jactancioso ni orgulloso.",
+            "7": "Todo lo disculpa, todo lo cree, todo lo espera, todo lo soporta."
+          }
+        }
       }
     ]
+  },
+  "estados_liturgicos": {
+    "bendecido": {
+      "color": "blanco",
+      "significado": "Luz, gracia y gozo pascual",
+      "cita": "Salmos 103:2-3",
+      "texto": "Bendice, alma mía, a Jehová, y no olvides ninguno de sus beneficios. Él es quien perdona todas tus iniquidades, el que sana todas tus dolencias."
+    },
+    "optimo": {
+      "color": "verde",
+      "significado": "Esperanza y resurgir de una vida nueva",
+      "cita": "Romanos 15:13",
+      "texto": "Y el Dios de esperanza os llene de todo gozo y paz en el creer, para que abundéis en esperanza por el poder del Espíritu Santo."
+    },
+    "feliz": {
+      "color": "rosa",
+      "significado": "Alegría y gozo cercano",
+      "cita": "Salmos 118:24",
+      "texto": "Este es el día que hizo Jehová; nos gozaremos y alegraremos en él."
+    },
+    "cansado": {
+      "color": "morado",
+      "significado": "Penitencia, pausa y búsqueda de descanso",
+      "cita": "Mateo 11:28",
+      "texto": "Venid a mí todos los que estéis trabajados y cargados, y yo os haré descansar."
+    },
+    "triste": {
+      "color": "azul",
+      "significado": "Consuelo y mirada al cielo en la prueba",
+      "cita": "Salmos 34:18",
+      "texto": "Cercano está Jehová a los quebrantados de corazón; y salva a los contritos de espíritu."
+    },
+    "preocupado": {
+      "color": "naranja",
+      "significado": "Confianza y entrega de las cargas al Señor",
+      "cita": "1 Pedro 5:7",
+      "texto": "Echad toda vuestra ansiedad sobre él, porque él tiene cuidado de vosotros."
+    },
+    "ansioso": {
+      "color": "rojo",
+      "significado": "Fuego del Espíritu, fortaleza y entrega",
+      "cita": "Filipenses 4:6-7",
+      "texto": "Por nada estéis afanosos, sino sean conocidas vuestras peticiones delante de Dios en toda oración y ruego, con acción de gracias."
+    },
+    "temeroso": {
+      "color": "dorado",
+      "significado": "Solemnidad, amparo y luz en la oscuridad",
+      "cita": "Isaías 41:10",
+      "texto": "No temas, porque yo estoy contigo; no desmayes, porque yo soy tu Dios que te fortalezco; siempre te ayudaré, siempre te sustentaré con la diestra de mi justicia."
+    }
   }
 }

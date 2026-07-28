@@ -364,3 +364,43 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 });
+// Función para cargar y distribuir los datos del JSON en la app
+async function inicializarBibliaDinamica() {
+  try {
+    const respuesta = await fetch("biblia.json");
+    const datos = await respuesta.json();
+
+    // 1. Inyectar versículo principal en la pantalla de detalle de la Biblia
+    const textoVersiculo = document.getElementById("texto-versiculo-dinamico");
+    const etiquetaVersion = document.getElementById(
+      "etiqueta-version-dinamica",
+    );
+
+    if (textoVersiculo && datos.testamentos && datos.testamentos.nuevo) {
+      const juanCap1 = datos.testamentos.nuevo.find((lib) => lib.id === "jn");
+      if (juanCap1 && juanCap1.capitulos["1"]["14"]) {
+        textoVersiculo.innerHTML = `<span class="drop-cap">Y</span> ${juanCap1.capitulos["1"]["14"]}`;
+        etiquetaVersion.textContent = `${datos.version} - Juan 1:14`;
+      }
+    }
+
+    // 2. Inyectar dinámicamente los textos de los estados litúrgicos desde el JSON
+    if (datos.estados_liturgicos) {
+      for (const [estado, info] of Object.entries(datos.estados_liturgicos)) {
+        const elementoCita = document.getElementById(`cita-${estado}`);
+        if (elementoCita) {
+          elementoCita.innerHTML = `<strong>${info.cita}:</strong> ${info.texto}`;
+        }
+      }
+    }
+
+    console.log("Biblia y estados cargados correctamente desde el JSON.");
+  } catch (error) {
+    console.error("No se pudo cargar el archivo biblia.json:", error);
+  }
+}
+
+// Ejecutar al cargar la página
+document.addEventListener("DOMContentLoaded", () => {
+  inicializarBibliaDinamica();
+});
