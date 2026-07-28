@@ -18,7 +18,8 @@ const screenEmaus = document.getElementById("screen-emaus");
 const btnGotoBible = document.getElementById("btn-goto-bible");
 const btnGotoPath = document.getElementById("btn-goto-path");
 const btnBackBible = document.querySelector(".btn-back");
-
+const btnMenu = document.getElementById("btn-menu");
+const menuLateral = document.getElementById("menu-lateral");
 const textParagraph = document.querySelector(".interact-paragraph");
 const studyCard = document.getElementById("study-card");
 const panelHandle = document.querySelector(".panel-handle");
@@ -399,7 +400,11 @@ async function inicializarBibliaDinamica() {
     console.error("No se pudo cargar el archivo biblia.json:", error);
   }
 }
-
+if (btnMenu && menuLateral) {
+  btnMenu.addEventListener("click", () => {
+    menuLateral.classList.toggle("active");
+  });
+}
 // Ejecutar al cargar la página
 document.addEventListener("DOMContentLoaded", () => {
   inicializarBibliaDinamica();

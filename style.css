@@ -975,3 +975,45 @@ body.light-mode .split-block p {
   cursor: pointer;
   /* (Mantené los colores o bordes que ya tenías para estos botones) */
 }
+/* Estilos para el Menú Lateral Desplegable */
+.sidebar-menu {
+  position: fixed;
+  top: 0;
+  left: -280px; /* Oculto por defecto fuera de la pantalla a la izquierda */
+  width: 280px;
+  height: 100%;
+  background-color: #0b0f19; /* Fondo oscuro elegante */
+  border-right: 2px solid #d4af37; /* Borde dorado sobrio */
+  transition: left 0.35s ease-in-out;
+  z-index: 2000;
+  padding-top: 70px;
+  box-shadow: 5px 0px 15px rgba(0, 0, 0, 0.5);
+}
+
+/* Cuando JavaScript le agrega la clase 'active', se desliza hacia la pantalla */
+.sidebar-menu.active {
+  left: 0;
+}
+
+.sidebar-menu ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.sidebar-menu li a {
+  display: block;
+  padding: 16px 22px;
+  color: #f4f4f4;
+  text-decoration: none;
+  font-size: 1.05rem;
+  border-bottom: 1px solid rgba(212, 175, 55, 0.15);
+  transition:
+    background-color 0.2s,
+    color 0.2s;
+}
+
+.sidebar-menu li a:hover {
+  background-color: rgba(212, 175, 55, 0.12);
+  color: #d4af37;
+}
