@@ -13,6 +13,7 @@ const screenFeliz = document.getElementById("screen-feliz");
 const screenTriste = document.getElementById("screen-triste");
 const screenCansado = document.getElementById("screen-cansado");
 const screenEmaus = document.getElementById("screen-emaus");
+const screenBuscar = document.getElementById("screen-buscar");
 
 // 2. CAPTURAR BOTONES INTERACTIVOS (Sin el btnEnter que ya no existe)
 const btnGotoBible = document.getElementById("btn-goto-bible");
@@ -42,6 +43,7 @@ function changeScreen(screenToShow) {
     screenTriste,
     screenEmaus,
     screenPromesa,
+    screenBuscar,
   ].forEach((screen) => {
     if (screen) {
       screen.classList.remove("active");
@@ -419,8 +421,116 @@ document.addEventListener("click", (event) => {
     menuLateral.classList.remove("active");
   }
 });
-
-// Ejecutar al cargar la página
-document.addEventListener("DOMContentLoaded", () => {
-  inicializarBibliaDinamica();
+// Conectamos y damos función directamente abajo de todo
+document.getElementById("link-inicio")?.addEventListener("click", (e) => {
+  e.preventDefault();
+  changeScreen(screenMain);
+  menuLateral.classList.remove("active"); // <--- Cierra el menú
 });
+
+document.getElementById("link-biblia")?.addEventListener("click", (e) => {
+  e.preventDefault();
+  changeScreen(screenBibleDetail);
+  menuLateral.classList.remove("active"); // <--- Cierra el menú
+});
+
+document.getElementById("link-buscar")?.addEventListener("click", (e) => {
+  e.preventDefault();
+  changeScreen(screenBuscar);
+  menuLateral.classList.remove("active"); // <--- Cierra el menú
+});
+
+document.getElementById("link-idioma")?.addEventListener("click", (e) => {
+  e.preventDefault();
+  alert("Próximamente: Selector de idioma.");
+  menuLateral.classList.remove("active");
+});
+
+document.getElementById("link-sugerir")?.addEventListener("click", (e) => {
+  e.preventDefault();
+  alert("Próximamente: Sugerir enlaces.");
+  menuLateral.classList.remove("active");
+});
+// --- BÚSQUEDA INTELIGENTE EN LOS FRAGMENTOS DISPONIBLES ---
+document
+  .getElementById("btn-ejecutar-busqueda")
+  ?.addEventListener("click", async () => {
+    const inputTexto = document
+      .getElementById("input-busqueda")
+      .value.toLowerCase()
+      .trim();
+    const contenedorResultados = document.getElementById("resultados-busqueda");
+
+    if (!inputTexto) {
+      contenedorResultados.innerHTML = `<p class="placeholder-text">Por favor, escribí algo para buscar.</p>`;
+      return;
+    }
+
+    contenedorResultados.innerHTML = `<p class="placeholder-text">Buscando en las Escrituras...</p>`;
+
+    try {
+      const respuesta = await fetch("biblia.json");
+      const datos = await respuesta.json();
+      let encontrados = [];
+
+      // 1. Buscamos en el versículo de Juan 1:14 (o los que estén en testamentos)
+      if (datos.testamentos && datos.testamentos.nuevo) {
+        datos.testamentos.nuevo.forEach((libro) => {
+          Object.entries(libro.capitulos || {}).forEach(
+            ([numCap, versiculos]) => {
+              Object.entries(versiculos || {}).forEach(([numVer, texto]) => {
+                if (
+                  texto.toLowerCase().includes(inputTexto) ||
+                  libro.nombre.toLowerCase().includes(inputTexto)
+                ) {
+                  encontrados.push({
+                    referencia: `${libro.nombre} ${numCap}:${numVer} (${datos.version})`,
+                    texto: texto,
+                  });
+                }
+              });
+            },
+          );
+        });
+      }
+
+      // 2. Buscamos también en los estados litúrgicos si coinciden
+      if (datos.estados_liturgicos) {
+        Object.entries(datos.estados_liturgicos).forEach(([estado, info]) => {
+          if (
+            info.texto.toLowerCase().includes(inputTexto) ||
+            info.cita.toLowerCase().includes(inputTexto) ||
+            estado.toLowerCase().includes(inputTexto)
+          ) {
+            encontrados.push({
+              referencia: `Camino de Emaús (${estado.toUpperCase()}): ${info.cita}`,
+              texto: info.texto,
+            });
+          }
+        });
+      }
+
+      // 3. Mostramos los resultados o el aviso de versión beta
+      if (encontrados.length > 0) {
+        contenedorResultados.innerHTML = encontrados
+          .map(
+            (item) => `
+        <div class="search-result-item" style="margin-bottom: 15px; border-bottom: 1px solid rgba(212,175,55,0.2); padding-bottom: 10px;">
+          <strong style="color: var(--gold); display: block; margin-bottom: 5px;">${item.referencia}</strong>
+          <p style="color: #e0e0e0; font-size: 0.95rem; line-height: 1.4;">"${item.texto}"</p>
+        </div>
+      `,
+          )
+          .join("");
+      } else {
+        contenedorResultados.innerHTML = `
+        <div style="text-align: center; padding: 10px;">
+          <p style="color: #d4af37; font-weight: bold; margin-bottom: 5px;">Fragmento no disponible en esta versión beta</p>
+          <p class="placeholder-text">Aún no hemos cargado este pasaje en el archivo local. ¡Probá buscando "Verbo", "carne", "Dios" o revisá los estados de Emaús!</p>
+        </div>`;
+      }
+    } catch (error) {
+      console.error("Error en la búsqueda:", error);
+      contenedorResultados.innerHTML = `<p class="placeholder-text" style="color: #e34234;">Ocurrió un error al realizar la búsqueda.</p>`;
+    }
+  });

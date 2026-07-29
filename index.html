@@ -38,11 +38,11 @@
 
     <!-- Lista de Opciones -->
     <ul>
-        <li><a href="#">🏠 Inicio</a></li>
-        <li><a href="#">📖 La Santa Biblia</a></li>
-        <li><a href="#">🔍 Buscar Versículo</a></li>
-        <li><a href="#">🌐 Idioma</a></li>
-        <li><a href="#">💡 Sugerir Enlaces</a></li>
+        <li><a href="#" id="link-inicio">🏠 Inicio</a></li>
+        <li><a href="#" id= "link-biblia">📖 La Santa Biblia</a></li>
+        <li><a href="#" id="link-buscar">🔍 Buscar Versículo</a></li>
+        <li><a href="#" id="link-idioma">🌐 Idioma</a></li>
+        <li><a href="#" id="link-sugerir">💡 Sugerir Enlaces</a></li>
     </ul>
 </nav>
 
@@ -343,14 +343,35 @@
         </div>
         <!-- Panel de contenido para la Escalera -->
         <div id="contenido-peldaño" class="path-card hidden" style="max-width: 600px; margin: 20px auto; position:relative;">
-        <button class="btn-close-extended" style="display: block; float: right;" onclick="cerrarPeldaño()">✕ Cerrar</button>
+           <button class="btn-close-extended" style="display: block; float: right;" onclick="cerrarPeldaño()">✕ Cerrar</button>
         <h3 id="titulo-peldaño">Selecciona un peldaño</h3>
         <p id="texto-peldaño" class="reflection">Aquí aparecerá el contenido histórico y doctrinal...</p>
-         </div>
-        
+        </div>
     </div>
  </div>
- 
+ <!-- Panel de contenido para la Escalera -->
+        <div id="contenido-peldaño" class="path-card hidden" style="max-width: 600px; margin: 20px auto; position:relative;">
+            <button class="btn-close-extended" style="display: block; float: right;" onclick="cerrarPeldaño()">✕ Cerrar</button>
+            <h3 id="titulo-peldaño">Selecciona un peldaño</h3>
+            <p id="texto-peldaño" class="reflection">Aquí aparecerá el contenido histórico y doctrinal...</p>
+        </div>
+    </div> <!-- Cierra path-journey-container -->
+</div> <!-- Cierra screen-promesa -->
+
+<!-- Pantalla de Búsqueda -->
+<section id="screen-buscar" class="screen">
+    <div class="search-container">
+        <h2>Buscar en las Escrituras</h2>
+        <div class="search-box-wrapper">
+            <input type="text" id="input-busqueda" placeholder="Escribe una palabra o versículo (ej: Juan 3:16)...">
+            <button id="btn-ejecutar-busqueda">Buscar</button>
+        </div>
+        <div id="resultados-busqueda" class="results-list">
+            <!-- Acá van a aparecer los resultados encontrados -->
+            <p class="placeholder-text">Los resultados de tu búsqueda aparecerán aquí.</p>
+        </div>
+    </div>
+</section>
 
 
     <script src="ariel.js"></script>
