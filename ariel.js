@@ -405,6 +405,21 @@ if (btnMenu && menuLateral) {
     menuLateral.classList.toggle("active");
   });
 }
+// Cerrar el menú si se hace clic fuera de él
+document.addEventListener("click", (event) => {
+  const menuLateral = document.getElementById("menu-lateral");
+  const btnMenu = document.getElementById("btn-menu");
+
+  // Si el menú está abierto, y el click NO fue ni en el menú ni en el botón de abrir...
+  if (
+    menuLateral.classList.contains("active") &&
+    !menuLateral.contains(event.target) &&
+    !btnMenu.contains(event.target)
+  ) {
+    menuLateral.classList.remove("active");
+  }
+});
+
 // Ejecutar al cargar la página
 document.addEventListener("DOMContentLoaded", () => {
   inicializarBibliaDinamica();

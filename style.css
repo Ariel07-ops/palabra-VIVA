@@ -980,13 +980,13 @@ body.light-mode .split-block p {
   position: fixed;
   top: 0;
   left: -280px; /* Oculto por defecto fuera de la pantalla a la izquierda */
-  width: 280px;
+  width: 180px;
   height: 100%;
-  background-color: #0b0f19; /* Fondo oscuro elegante */
+  background-color: #000000; /* Fondo oscuro elegante */
   border-right: 2px solid #d4af37; /* Borde dorado sobrio */
   transition: left 0.35s ease-in-out;
   z-index: 2000;
-  padding-top: 70px;
+  padding-top: 15px;
   box-shadow: 5px 0px 15px rgba(0, 0, 0, 0.5);
 }
 
@@ -1016,4 +1016,17 @@ body.light-mode .split-block p {
 .sidebar-menu li a:hover {
   background-color: rgba(212, 175, 55, 0.12);
   color: #d4af37;
+}
+.sidebar-brand-icon {
+  width: 32px !important;
+  height: 32px !important;
+  max-width: 32px !important;
+  object-fit: contain;
+}
+.sidebar-title {
+  font-family: "cinzel", serif;
+  border-right: 2px;
+  color: #d4af37;
+  font-size: 1.05rem;
+  font-weight: bold;
 }
