@@ -52,7 +52,7 @@
     <div id="screen-splash" class="screen active">
         <div class="splash-content-imagen">
             <!-- aqui cargo la pantalla principal -->
-             <img src="splash-cruz-nitida.png" alt="Palabra Viva Portada" class="img-portada">
+            <img src="splash-cruz-nitida.png" alt="Palabra Viva Portada" class="img-portada">
             
         </div>
     </div>
@@ -78,22 +78,95 @@
     </div>
 
     <!-- PANTALLA 3A: DETALLE DE LA BIBLIA (Tu pantalla anterior mejorada) -->
-    <div id="screen-bible-detail" class="screen">
-        <div class="app-container">
-            <header class="main-header">
-                <button class="btn-back">⬅</button>
-                <h1 class="brand-title">La Sagrada Escritura</h1>
-                <p class="header-statement">La plenitud de la Revelación se da en la Persona y Misión de Jesucristo.</p>
-            </header>
+<!-- PANTALLA 3A: LA SANTA BIBLIA (Selector de Testamentos) -->
+<div id="screen-bible-detail" class="screen">
+  <div class="app-container">
+    <header class="main-header">
+      <button class="btn-back" onclick="changeScreen(screenMain)">←</button>
+      <h1 class="brand-title">La Sagrada Escritura</h1>
+      <p class="header-statement">Seleccioná un testamento para comenzar.</p>
+    </header>
 
-            <main class="content-area">
-                <article class="scripture-passage">
-                    <p id="texto-versiculo-dinamico" class="verse interact-paragraph">
-                        <span class="drop-cap">Y</span> el Verbo se hizo carne, y habitó entre nosotros, y vimos su gloria, gloria como del unigénito del Padre, lleno de gracia y de verdad.
-                    </p>
-                    <small id="etiqueta-version-dinamica" class="version-tag">Cargando versículo...</small>
-                </article>
-            </main>
+    <main class="content-area" style="padding: 20px;">
+      
+      <!-- Contenedor exclusivo para los dos botones principales -->
+      <div class="testamentos-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; margin-top: 20px;">
+        
+        <!-- Cajita Antiguo Testamento -->
+        <div class="testamento-card" onclick="abrirAntiguoTestamento()" style="border: 2px solid var(--gold); border-radius: 12px; padding: 25px; text-align: center; cursor: pointer; background: var(--card-bg, rgba(255,255,255,0.05)); transition: transform 0.2s;">
+          <h3 style="color: var(--gold); margin: 0;">📜 Antiguo Testamento</h3>
+          <p style="font-size: 0.9rem; color: #ccc; margin-top: 8px;">Explorar los libros históricos, poéticos y proféticos.</p>
+        </div>
+
+        <!-- Cajita Nuevo Testamento -->
+        <div class="testamento-card" onclick="abrirNuevoTestamento()" style="border: 2px solid var(--gold); border-radius: 12px; padding: 25px; text-align: center; cursor: pointer; background: var(--card-bg, rgba(255,255,255,0.05)); transition: transform 0.2s;">
+          <h3 style="color: var(--gold); margin: 0;">✨ Nuevo Testamento</h3>
+          <p style="font-size: 0.9rem; color: #ccc; margin-top: 8px;">Explorar los Evangelios, cartas y Apocalipsis.</p>
+        </div>
+
+      </div>
+
+    </main>
+  </div>
+</div>
+
+
+<!-- PANTALLA 3B: ANTIGUO TESTAMENTO (Lista de Libros) -->
+<div id="screen-antiguo" class="screen">
+  <div class="app-container">
+    <header class="main-header">
+      <!-- Este botón vuelve a la pantalla de las dos cajitas -->
+      <button class="btn-back" onclick="changeScreen(screenBibleDetail)">←</button>
+      <h1 class="brand-title">Antiguo Testamento</h1>
+      <p class="header-statement">Seleccioná un libro para continuar.</p>
+    </header>
+
+    <main class="content-area" style="padding: 20px;">
+      <!-- Acá se van a cargar los botones de los libros con JS -->
+      <div id="lista-libros-antiguo" style="display: grid; grid-template-columns: repeat(auto-fill, minmax(130px, 1fr)); gap: 12px; margin-top: 10px;">
+      </div>
+    </main>
+  </div>
+</div>
+<!-- PANTALLA 3C: CAPÍTULOS Y LECTURA DEL LIBRO -->
+<div id="screen-capitulos" class="screen">
+  <div class="app-container">
+    <header class="main-header">
+      <!-- Este botón vuelve a la lista de libros del Antiguo Testamento -->
+      <button class="btn-back" onclick="changeScreen(screenAntiguo)">←</button>
+      <h1 class="brand-title" id="titulo-libro-seleccionado">Libro</h1>
+      <p class="header-statement">Seleccioná un capítulo para leer.</p>
+    </header>
+
+    <main class="content-area" style="padding: 20px;">
+      <!-- Grilla de botones para los capítulos -->
+      <div id="grid-capitulos" style="display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 20px;"></div>
+      
+      <!-- Contenedor donde se van a cargar los versículos del capítulo -->
+      <div id="texto-versiculos-area" style="text-align: justify; line-height: 1.7; color: #e0e0e0; margin-top: 15px;">
+        <em style="color: var(--gold);">Elegí un capítulo arriba para comenzar la lectura.</em>
+      </div>
+    </main>
+  </div>
+</div>
+<!-- PANTALLA 3D: LECTURA DE CAPÍTULO DEDICADA -->
+<div id="screen-lectura" class="screen">
+  <div class="app-container">
+    <header class="main-header">
+      <!-- Este botón vuelve a la lista de capítulos del libro -->
+      <button class="btn-back" onclick="changeScreen(screenCapitulos)">←</button>
+      <h1 class="brand-title" id="titulo-lectura-completa">Lectura</h1>
+      <p class="header-statement">Texto de las Escrituras</p>
+    </header>
+
+    <main class="content-area" style="padding: 20px; overflow-y: auto;">
+      <!-- Acá va el texto limpio y grande para leer sin distracciones -->
+      <div id="texto-lectura-final" style="text-align: justify; line-height: 1.8; color: #e0e0e0; font-size: 1.05rem;">
+      </div>
+    </main>
+  </div>
+</div>
+
 
             <!-- Panel en Abanico Tradicional abajo -->
             <div id="study-card" class="study-card-panel hidden">

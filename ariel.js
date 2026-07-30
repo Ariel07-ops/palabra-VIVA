@@ -14,6 +14,9 @@ const screenTriste = document.getElementById("screen-triste");
 const screenCansado = document.getElementById("screen-cansado");
 const screenEmaus = document.getElementById("screen-emaus");
 const screenBuscar = document.getElementById("screen-buscar");
+const screenAntiguo = document.getElementById("screen-antiguo");
+const screenCapitulos = document.getElementById("screen-capitulos");
+const screenLectura = document.getElementById("screen-lectura");
 
 // 2. CAPTURAR BOTONES INTERACTIVOS (Sin el btnEnter que ya no existe)
 const btnGotoBible = document.getElementById("btn-goto-bible");
@@ -44,6 +47,9 @@ function changeScreen(screenToShow) {
     screenEmaus,
     screenPromesa,
     screenBuscar,
+    screenAntiguo,
+    screenCapitulos,
+    screenLectura,
   ].forEach((screen) => {
     if (screen) {
       screen.classList.remove("active");
@@ -100,13 +106,18 @@ btnBackBible.addEventListener("click", () => {
 });
 
 // --- INTERACTIVIDAD DEL PANEL INFERIOR (Abanico en dos niveles) ---
-textParagraph.addEventListener("click", () => {
-  studyCard.classList.toggle("hidden");
-});
+// --- INTERACTIVIDAD DEL PANEL INFERIOR (Abanico en dos niveles) ---
+if (textParagraph) {
+  textParagraph.addEventListener("click", () => {
+    if (studyCard) studyCard.classList.toggle("hidden");
+  });
+}
 
-panelHandle.addEventListener("click", () => {
-  studyCard.classList.toggle("hidden");
-});
+if (panelHandle) {
+  panelHandle.addEventListener("click", () => {
+    if (studyCard) studyCard.classList.toggle("hidden");
+  });
+}
 
 const columns = document.querySelectorAll(".fan-column");
 
@@ -297,64 +308,7 @@ setTimeout(() => {
     }, 800);
   }
 }, 4500); // 4.5 segundos exactos
-// Función para conectar y cargar los datos del JSON de la Biblia en la app
-async function cargarDatosBiblia() {
-  try {
-    const respuesta = await fetch("biblia.json"); // Asegurate de que el archivo JSON tenga este nombre
-    const datosBiblia = await respuesta.json();
 
-    console.log("¡Biblia cargada con éxito!", datosBiblia.version);
-    return datosBiblia;
-  } catch (error) {
-    console.error("Hubo un error al cargar la Biblia:", error);
-  }
-}
-// Función para buscar y mostrar un versículo de la Biblia en la interfaz
-async function mostrarVersiculo(testamento, libroId, capitulo, versiculoNum) {
-  try {
-    const respuesta = await fetch("biblia.json");
-    const biblia = await respuesta.json();
-
-    // Buscamos dentro de testamentos (puede ser 'nuevo' o 'antiguo')
-    const listaLibros = biblia.testamentos[testamento];
-    const libroEncontrado = listaLibros.find((l) => l.id === libroId);
-
-    if (
-      libroEncontrado &&
-      libroEncontrado.capitulos[capitulo] &&
-      libroEncontrado.capitulos[capitulo][versiculoNum]
-    ) {
-      const textoVersiculo = libroEncontrado.capitulos[capitulo][versiculoNum];
-
-      // Inyecta el texto principal
-      const contenedorVerso = document.getElementById(
-        "texto-versiculo-dinamico",
-      );
-      if (contenedorVerso) {
-        contenedorVerso.innerHTML = `<span class="drop-cap">${textoVersiculo.charAt(0)}</span>${textoVersiculo.slice(1)}`;
-      }
-
-      // Actualiza la etiqueta inferior
-      const etiquetaVersion = document.getElementById(
-        "etiqueta-version-dinamica",
-      );
-      if (etiquetaVersion) {
-        etiquetaVersion.textContent = `${libroEncontrado.nombre} ${capitulo}:${versiculoNum} | ${biblia.version}`;
-      }
-
-      console.log("¡Versículo inyectado en pantalla con éxito!");
-    } else {
-      console.warn("No se encontró esa combinación exacta en el JSON.");
-    }
-  } catch (error) {
-    console.error("Error procesando la Biblia:", error);
-  }
-}
-
-// Llamamos a la función para que se ejecute al iniciar
-mostrarVersiculo("nuevo", "jn", "1", "14");
-// Y para que se ejecute de una apenas arranca o entra a la seccion, podés llamarlo así:
-// mostrarVersiculo('nuevo', 'jn', '1', '14');
 console.log(
   "Script ariel.js cargado y listo para usar funciones de Biblia y Pantallas.",
 );
@@ -451,20 +405,32 @@ document.getElementById("link-sugerir")?.addEventListener("click", (e) => {
   alert("Próximamente: Sugerir enlaces.");
   menuLateral.classList.remove("active");
 });
-// --- BÚSQUEDA INTELIGENTE EN LOS FRAGMENTOS DISPONIBLES ---
+
+// --- BÚSQUEDA INTELIGENTE Y TOLERANTE A TILDES / MAYÚSCULAS ---
 document
   .getElementById("btn-ejecutar-busqueda")
   ?.addEventListener("click", async () => {
-    const inputTexto = document
+    const inputOriginal = document
       .getElementById("input-busqueda")
-      .value.toLowerCase()
-      .trim();
+      .value.trim();
     const contenedorResultados = document.getElementById("resultados-busqueda");
 
-    if (!inputTexto) {
+    if (!inputOriginal) {
       contenedorResultados.innerHTML = `<p class="placeholder-text">Por favor, escribí algo para buscar.</p>`;
       return;
     }
+
+    // Función auxiliar para "limpiar" texto: quita tildes/diacríticos y pasa a minúsculas
+    const limpiarTexto = (str) =>
+      str
+        .toLowerCase()
+        .replace(/[áäàâã]/g, "a")
+        .replace(/[éëèê]/g, "e")
+        .replace(/[íïìî]/g, "i")
+        .replace(/[óöòôõ]/g, "o")
+        .replace(/[úüùû]/g, "u")
+        .replace(/ñ/g, "n");
+    const terminoBusqueda = limpiarTexto(inputOriginal);
 
     contenedorResultados.innerHTML = `<p class="placeholder-text">Buscando en las Escrituras...</p>`;
 
@@ -473,34 +439,35 @@ document
       const datos = await respuesta.json();
       let encontrados = [];
 
-      // 1. Buscamos en el versículo de Juan 1:14 (o los que estén en testamentos)
-      if (datos.testamentos && datos.testamentos.nuevo) {
-        datos.testamentos.nuevo.forEach((libro) => {
-          Object.entries(libro.capitulos || {}).forEach(
-            ([numCap, versiculos]) => {
-              Object.entries(versiculos || {}).forEach(([numVer, texto]) => {
-                if (
-                  texto.toLowerCase().includes(inputTexto) ||
-                  libro.nombre.toLowerCase().includes(inputTexto)
-                ) {
-                  encontrados.push({
-                    referencia: `${libro.nombre} ${numCap}:${numVer} (${datos.version})`,
-                    texto: texto,
-                  });
-                }
-              });
-            },
-          );
+      // 1. Buscamos en el arreglo "verses" de la BLP
+      if (datos.verses && Array.isArray(datos.verses)) {
+        datos.verses.forEach((item) => {
+          const textoLimpio = limpiarTexto(item.text || "");
+          const libroLimpio = limpiarTexto(item.book_name || "");
+
+          if (
+            textoLimpio.includes(terminoBusqueda) ||
+            libroLimpio.includes(terminoBusqueda)
+          ) {
+            encontrados.push({
+              referencia: `${item.book_name} ${item.chapter}:${item.verse} (${datos.metadata?.translation || "Biblia"})`,
+              texto: item.text,
+            });
+          }
         });
       }
 
-      // 2. Buscamos también en los estados litúrgicos si coinciden
+      // 2. Buscamos también en los estados litúrgicos
       if (datos.estados_liturgicos) {
         Object.entries(datos.estados_liturgicos).forEach(([estado, info]) => {
+          const textoEstado = limpiarTexto(info.texto || "");
+          const citaEstado = limpiarTexto(info.cita || "");
+          const nombreEstado = limpiarTexto(estado);
+
           if (
-            info.texto.toLowerCase().includes(inputTexto) ||
-            info.cita.toLowerCase().includes(inputTexto) ||
-            estado.toLowerCase().includes(inputTexto)
+            textoEstado.includes(terminoBusqueda) ||
+            citaEstado.includes(terminoBusqueda) ||
+            nombreEstado.includes(terminoBusqueda)
           ) {
             encontrados.push({
               referencia: `Camino de Emaús (${estado.toUpperCase()}): ${info.cita}`,
@@ -510,9 +477,10 @@ document
         });
       }
 
-      // 3. Mostramos los resultados o el aviso de versión beta
+      // 3. Renderizamos resultados
       if (encontrados.length > 0) {
-        contenedorResultados.innerHTML = encontrados
+        const resultadosLimitados = encontrados.slice(0, 100);
+        contenedorResultados.innerHTML = resultadosLimitados
           .map(
             (item) => `
         <div class="search-result-item" style="margin-bottom: 15px; border-bottom: 1px solid rgba(212,175,55,0.2); padding-bottom: 10px;">
@@ -522,11 +490,15 @@ document
       `,
           )
           .join("");
+
+        if (encontrados.length > 100) {
+          contenedorResultados.innerHTML += `<p style="text-align: center; color: var(--gold); font-size: 0.85rem; margin-top: 10px;">Mostrando los primeros 100 resultados de ${encontrados.length} encontrados.</p>`;
+        }
       } else {
         contenedorResultados.innerHTML = `
         <div style="text-align: center; padding: 10px;">
-          <p style="color: #d4af37; font-weight: bold; margin-bottom: 5px;">Fragmento no disponible en esta versión beta</p>
-          <p class="placeholder-text">Aún no hemos cargado este pasaje en el archivo local. ¡Probá buscando "Verbo", "carne", "Dios" o revisá los estados de Emaús!</p>
+          <p style="color: #d4af37; font-weight: bold; margin-bottom: 5px;">Sin resultados</p>
+          <p class="placeholder-text">No se encontraron pasajes con el término "${inputOriginal}".</p>
         </div>`;
       }
     } catch (error) {
@@ -534,3 +506,178 @@ document
       contenedorResultados.innerHTML = `<p class="placeholder-text" style="color: #e34234;">Ocurrió un error al realizar la búsqueda.</p>`;
     }
   });
+// --- NUEVAS FUNCIONES DE NAVEGACIÓN PARA LA PANTALLA 3A ---
+function abrirAntiguoTestamento() {
+  console.log("Abriendo la pantalla de libros del Antiguo Testamento...");
+  // Acá vamos a conectar la pantalla dedicada del Antiguo Testamento
+}
+
+function abrirNuevoTestamento() {
+  console.log("Abriendo la pantalla de libros del Nuevo Testamento...");
+  // Acá vamos a conectar la pantalla dedicada del Nuevo Testamento
+}
+// --- DATOS Y FUNCIONES PARA EL ANTIGUO TESTAMENTO ---
+const listaLibrosAntiguo = [
+  "Génesis",
+  "Éxodo",
+  "Levítico",
+  "Números",
+  "Deuteronomio",
+  "Josué",
+  "Jueces",
+  "Rut",
+  "1 Samuel",
+  "2 Samuel",
+  "1 Reyes",
+  "2 Reyes",
+  "1 Crónicas",
+  "2 Crónicas",
+  "Esdras",
+  "Nehemías",
+  "Tobías",
+  "Judit",
+  "Ester",
+  "1 Macabeos",
+  "2 Macabeos",
+  "Job",
+  "Salmos",
+  "Proverbios",
+  "Eclesiastés",
+  "Cantar de los Cantares",
+  "Sabiduría",
+  "Eclesiástico",
+  "Isaías",
+  "Jeremías",
+  "Lamentaciones",
+  "Baruc",
+  "Ezequiel",
+  "Daniel",
+  "Oseas",
+  "Joel",
+  "Amós",
+  "Abdías",
+  "Jonás",
+  "Miqueas",
+  "Nahúm",
+  "Habacuc",
+  "Sofonías",
+  "Hageo",
+  "Zacarías",
+  "Malaquías",
+];
+
+function abrirAntiguoTestamento() {
+  // 1. Cambiamos a la pantalla del Antiguo Testamento
+  changeScreen(screenAntiguo);
+
+  // 2. Cargamos los libros si el contenedor está vacío
+  const contenedor = document.getElementById("lista-libros-antiguo");
+  if (contenedor.innerHTML.trim() === "") {
+    listaLibrosAntiguo.forEach((libro) => {
+      const btn = document.createElement("div");
+      // Le damos un diseño en grilla tipo tarjetas
+      btn.style.cssText =
+        "border: 1px solid var(--gold); border-radius: 8px; padding: 15px; text-align: center; cursor: pointer; background: rgba(255,255,255,0.05); color: #fff; font-size: 0.9rem; transition: transform 0.2s;";
+      btn.innerText = libro;
+
+      // Qué pasa al hacer clic en un libro
+      btn.addEventListener("click", () => {
+        console.log("Elegiste el libro:", libro);
+        // Acá luego abriremos la pantalla de capítulos
+      });
+
+      contenedor.appendChild(btn);
+    });
+  }
+}
+async function abrirAntiguoTestamento() {
+  changeScreen(screenAntiguo);
+
+  const contenedor = document.getElementById("lista-libros-antiguo");
+  if (contenedor.innerHTML.trim() === "") {
+    try {
+      const respuesta = await fetch("biblia.json");
+      const datos = await respuesta.json();
+
+      listaLibrosAntiguo.forEach((nombreLibro) => {
+        const btn = document.createElement("div");
+        btn.style.cssText =
+          "border: 1px solid var(--gold); border-radius: 8px; padding: 15px; text-align: center; cursor: pointer; background: rgba(255,255,255,0.05); color: #fff; font-size: 0.9rem; transition: transform 0.2s;";
+        btn.innerText = nombreLibro;
+
+        btn.addEventListener("click", () => {
+          cargarCapitulosLibro(nombreLibro, datos.verses);
+        });
+
+        contenedor.appendChild(btn);
+      });
+    } catch (error) {
+      console.error(
+        "Error al cargar los libros del Antiguo Testamento:",
+        error,
+      );
+    }
+  }
+}
+
+// Función para mostrar los capítulos y leer el libro elegido
+function cargarCapitulosLibro(nombreLibro, versesArray) {
+  changeScreen(screenCapitulos);
+
+  const tituloLibro = document.getElementById("titulo-libro-seleccionado");
+  const gridCapitulos = document.getElementById("grid-capitulos");
+  const areaVersiculos = document.getElementById("texto-versiculos-area");
+
+  tituloLibro.textContent = nombreLibro;
+  gridCapitulos.innerHTML = "";
+  areaVersiculos.innerHTML = `<em style="color: var(--gold);">Elegí un capítulo arriba para comenzar la lectura.</em>`;
+
+  // Filtramos los versículos que pertenecen a este libro
+  const versosLibro = versesArray.filter((v) => v.book_name === nombreLibro);
+
+  // Averiguamos cuáles son los capítulos disponibles de forma única y ordenada
+  const capitulosSet = new Set(versosLibro.map((v) => v.chapter));
+  const capitulosOrdenados = Array.from(capitulosSet).sort((a, b) => a - b);
+
+  // Creamos un botoncito por cada capítulo
+  capitulosOrdenados.forEach((numCap) => {
+    const btnCap = document.createElement("button");
+    btnCap.className = "btn-capitulo";
+    btnCap.style.cssText =
+      "background: rgba(212,175,55,0.1); border: 1px solid var(--gold); color: #fff; padding: 8px 14px; border-radius: 6px; cursor: pointer; font-weight: bold;";
+    btnCap.textContent = numCap;
+
+    btnCap.addEventListener("click", () => {
+      renderizarVersiculosCapitulo(nombreLibro, numCap, versosLibro);
+    });
+
+    gridCapitulos.appendChild(btnCap);
+  });
+}
+// Función para volcar los versículos en la nueva pantalla dedicada a la lectura
+function renderizarVersiculosCapitulo(nombreLibro, numCapitulo, versosLibro) {
+  // 1. Cambiamos a la pantalla de lectura dedicada
+  changeScreen(screenLectura);
+
+  const tituloLectura = document.getElementById("titulo-lectura-completa");
+  const areaLectura = document.getElementById("texto-lectura-final");
+
+  // Título claro arriba
+  tituloLectura.textContent = `${nombreLibro} - Cap. ${numCapitulo}`;
+
+  // Filtramos y ordenamos los versículos
+  const versosFiltrados = versosLibro.filter((v) => v.chapter === numCapitulo);
+  versosFiltrados.sort((a, b) => a.verse - b.verse);
+
+  let htmlVersos = `<div style="max-width: 600px; margin: 0 auto; padding-bottom: 40px;">`;
+  versosFiltrados.forEach((v) => {
+    htmlVersos += `<p style="margin-bottom: 14px;"><sup style="color: var(--gold); font-weight: bold; margin-right: 8px; font-size: 0.85rem;">${v.verse}</sup>${v.text}</p>`;
+  });
+  htmlVersos += `</div>`;
+
+  areaLectura.innerHTML = htmlVersos;
+
+  // Subimos el scroll arriba de todo en la nueva pantalla
+  const mainArea = screenLectura.querySelector(".content-area");
+  if (mainArea) mainArea.scrollTop = 0;
+}

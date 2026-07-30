@@ -1102,3 +1102,41 @@ body.light-mode .split-block p {
   font-style: italic;
   text-align: center;
 }
+.books-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+  gap: 8px;
+  max-height: 220px;
+  overflow-y: auto;
+  padding-right: 4px;
+}
+
+.libro-item-card {
+  background: rgba(212, 175, 55, 0.08);
+  border: 1px solid rgba(212, 175, 55, 0.2);
+  padding: 8px 10px;
+  border-radius: 6px;
+  cursor: pointer;
+  text-align: center;
+  transition: all 0.2s;
+}
+
+.libro-item-card:hover {
+  background: rgba(212, 175, 55, 0.25);
+  border-color: var(--gold);
+}
+
+.btn-capitulo {
+  background: var(--gold);
+  color: #121212;
+  border: none;
+  padding: 6px 12px;
+  border-radius: 4px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: opacity 0.2s;
+}
+
+.btn-capitulo:hover {
+  opacity: 0.85;
+}
