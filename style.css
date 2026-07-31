@@ -1140,3 +1140,42 @@ body.light-mode .split-block p {
 .btn-capitulo:hover {
   opacity: 0.85;
 }
+/* Estilo unificado para los isologos redondos con aro dorado */
+.nav-brand-icon,
+.sidebar-brand-icon {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  border: 2px solid var(--gold);
+  object-fit: cover;
+  box-shadow: 0 0 6px rgba(212, 175, 55, 0.4);
+}
+/* Hace que la imagen del splash respire con un brillo suave */
+.splash-content-imagen img {
+  animation: pulsoGeneral 5s ease-in-out infinite;
+}
+
+@keyframes pulsoGeneral {
+  0%,
+  100% {
+    filter: brightness(1);
+  }
+  50% {
+    filter: brightness(1.15);
+  }
+}
+.splash-content-imagen img {
+  animation: pulsoZoom 4s ease-in-out infinite;
+}
+
+@keyframes pulsoZoom {
+  0%,
+  100% {
+    filter: brightness(1);
+    transform: scale(1);
+  }
+  50% {
+    filter: brightness(1.2); /* Brillo un poco más intenso */
+    transform: scale(1.03); /* Se acerca un 3% sutilmente */
+  }
+}

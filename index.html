@@ -166,6 +166,23 @@
     </main>
   </div>
 </div>
+<!-- PANTALLA 3E: NUEVO TESTAMENTO (Lista de Libros) -->
+<div id="screen-nuevo" class="screen">
+  <div class="app-container">
+    <header class="main-header">
+      <!-- Este botón vuelve a la pantalla de las dos cajitas (screenBibleDetail) -->
+      <button class="btn-back" onclick="changeScreen(screenBibleDetail)">←</button>
+      <h1 class="brand-title">Nuevo Testamento</h1>
+      <p class="header-statement">Seleccioná un libro para continuar.</p>
+    </header>
+
+    <main class="content-area" style="padding: 20px;">
+      <!-- Acá se van a cargar los botones de los libros del Nuevo Testamento con JS -->
+      <div id="lista-libros-nuevo" style="display: grid; grid-template-columns: repeat(auto-fill, minmax(130px, 1fr)); gap: 12px; margin-top: 10px;">
+      </div>
+    </main>
+  </div>
+</div>
 
 
             <!-- Panel en Abanico Tradicional abajo -->

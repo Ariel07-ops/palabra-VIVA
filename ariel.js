@@ -17,6 +17,7 @@ const screenBuscar = document.getElementById("screen-buscar");
 const screenAntiguo = document.getElementById("screen-antiguo");
 const screenCapitulos = document.getElementById("screen-capitulos");
 const screenLectura = document.getElementById("screen-lectura");
+const screenNuevo = document.getElementById("screen-nuevo");
 
 // 2. CAPTURAR BOTONES INTERACTIVOS (Sin el btnEnter que ya no existe)
 const btnGotoBible = document.getElementById("btn-goto-bible");
@@ -50,6 +51,7 @@ function changeScreen(screenToShow) {
     screenAntiguo,
     screenCapitulos,
     screenLectura,
+    screenNuevo,
   ].forEach((screen) => {
     if (screen) {
       screen.classList.remove("active");
@@ -680,4 +682,110 @@ function renderizarVersiculosCapitulo(nombreLibro, numCapitulo, versosLibro) {
   // Subimos el scroll arriba de todo en la nueva pantalla
   const mainArea = screenLectura.querySelector(".content-area");
   if (mainArea) mainArea.scrollTop = 0;
+}
+// --- DATOS Y FUNCIONES PARA EL NUEVO TESTAMENTO ---
+const listaLibrosNuevo = [
+  "Mateo",
+  "Marcos",
+  "Lucas",
+  "Juan",
+  "Hechos",
+  "Romanos",
+  "1 Corintios",
+  "2 Corintios",
+  "Gálatas",
+  "Efesios",
+  "Filipenses",
+  "Colosenses",
+  "1 Tesalonicenses",
+  "2 Tesalonicenses",
+  "1 Timoteo",
+  "2 Timoteo",
+  "Tito",
+  "Filemón",
+  "Hebreos",
+  "Santiago",
+  "1 Pedro",
+  "2 Pedro",
+  "1 Juan",
+  "2 Juan",
+  "3 Juan",
+  "Judas",
+  "Apocalipsis",
+];
+
+function abrirNuevoTestamento() {
+  changeScreen(screenNuevo);
+
+  const contenedor = document.getElementById("lista-libros-nuevo");
+  if (contenedor.innerHTML.trim() === "") {
+    try {
+      // Usamos fetch para asegurarnos de tener los versículos listos al hacer clic en un libro
+      fetch("biblia.json")
+        .then((res) => res.json())
+        .then((datos) => {
+          listaLibrosNuevo.forEach((nombreLibro) => {
+            const btn = document.createElement("div");
+            btn.style.cssText =
+              "border: 1px solid var(--gold); border-radius: 8px; padding: 15px; text-align: center; cursor: pointer; background: rgba(255,255,255,0.05); color: #fff; font-size: 0.9rem; transition: transform 0.2s;";
+            btn.innerText = nombreLibro;
+
+            btn.addEventListener("click", () => {
+              // Reutilizamos la misma lógica de capítulos y lectura que ya armamos
+              cargarCapitulosLibroNuevo(nombreLibro, datos.verses);
+            });
+
+            contenedor.appendChild(btn);
+          });
+        });
+    } catch (error) {
+      console.error("Error al cargar los libros del Nuevo Testamento:", error);
+    }
+  }
+}
+
+// Función específica para los capítulos del Nuevo Testamento (apunta al botón Volver correcto: screenNuevo)
+function cargarCapitulosLibroNuevo(nombreLibro, versesArray) {
+  // Cambiamos el botón "Volver" de la pantalla de capítulos para que regrese al Nuevo Testamento
+  const btnVolverCapitulos = document.querySelector(
+    "#screen-capitulos .btn-back",
+  );
+  if (btnVolverCapitulos) {
+    btnVolverCapitulos.onclick = () => changeScreen(screenNuevo);
+  }
+
+  changeScreen(screenCapitulos);
+
+  const tituloLibro = document.getElementById("titulo-libro-seleccionado");
+  const gridCapitulos = document.getElementById("grid-capitulos");
+  const areaVersiculos = document.getElementById("texto-versiculos-area");
+
+  tituloLibro.textContent = nombreLibro;
+  gridCapitulos.innerHTML = "";
+  areaVersiculos.innerHTML = `<em style="color: var(--gold);">Elegí un capítulo arriba para comenzar la lectura.</em>`;
+
+  const versosLibro = versesArray.filter((v) => v.book_name === nombreLibro);
+  const capitulosSet = new Set(versosLibro.map((v) => v.chapter));
+  const capitulosOrdenados = Array.from(capitulosSet).sort((a, b) => a - b);
+
+  capitulosOrdenados.forEach((numCap) => {
+    const btnCap = document.createElement("button");
+    btnCap.className = "btn-capitulo";
+    btnCap.style.cssText =
+      "background: rgba(212,175,55,0.1); border: 1px solid var(--gold); color: #fff; padding: 8px 14px; border-radius: 6px; cursor: pointer; font-weight: bold;";
+    btnCap.textContent = numCap;
+
+    btnCap.addEventListener("click", () => {
+      // Ajustamos el botón volver de la pantalla de lectura final para que regrese a esta pantalla de capítulos
+      const btnVolverLectura = document.querySelector(
+        "#screen-lectura .btn-back",
+      );
+      if (btnVolverLectura) {
+        btnVolverLectura.onclick = () => changeScreen(screenCapitulos);
+      }
+      renderizarVersiculosCapitulo(nombreLibro, numCap, versosLibro);
+    });
+
+    gridCapitulos.appendChild(btnCap);
+  });
 }
