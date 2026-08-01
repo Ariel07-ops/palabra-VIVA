@@ -108,7 +108,6 @@ btnBackBible.addEventListener("click", () => {
 });
 
 // --- INTERACTIVIDAD DEL PANEL INFERIOR (Abanico en dos niveles) ---
-// --- INTERACTIVIDAD DEL PANEL INFERIOR (Abanico en dos niveles) ---
 if (textParagraph) {
   textParagraph.addEventListener("click", () => {
     if (studyCard) studyCard.classList.toggle("hidden");
@@ -287,7 +286,7 @@ function abrirPeldaño(numero) {
   contenedor.scrollIntoView({ behavior: "smooth" });
 }
 
-// funcion para cerrar panel de la escalera de la promesa
+// Función para cerrar panel de la escalera de la promesa
 function cerrarPeldaño() {
   const contenedor = document.getElementById("contenido-peldaño");
   contenedor.classList.add("hidden");
@@ -309,11 +308,12 @@ setTimeout(() => {
       }
     }, 800);
   }
-}, 4500); // 4.5 segundos exactos
+}, 4500);
 
 console.log(
   "Script ariel.js cargado y listo para usar funciones de Biblia y Pantallas.",
 );
+
 // Activador automático para el botón de cambio de tema
 document.addEventListener("DOMContentLoaded", () => {
   const btnTheme = document.getElementById("btn-theme");
@@ -323,13 +323,13 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 });
+
 // Función para cargar y distribuir los datos del JSON en la app
 async function inicializarBibliaDinamica() {
   try {
     const respuesta = await fetch("biblia.json");
     const datos = await respuesta.json();
 
-    // 1. Inyectar versículo principal en la pantalla de detalle de la Biblia
     const textoVersiculo = document.getElementById("texto-versiculo-dinamico");
     const etiquetaVersion = document.getElementById(
       "etiqueta-version-dinamica",
@@ -343,7 +343,6 @@ async function inicializarBibliaDinamica() {
       }
     }
 
-    // 2. Inyectar dinámicamente los textos de los estados litúrgicos desde el JSON
     if (datos.estados_liturgicos) {
       for (const [estado, info] of Object.entries(datos.estados_liturgicos)) {
         const elementoCita = document.getElementById(`cita-${estado}`);
@@ -358,18 +357,20 @@ async function inicializarBibliaDinamica() {
     console.error("No se pudo cargar el archivo biblia.json:", error);
   }
 }
+
 if (btnMenu && menuLateral) {
   btnMenu.addEventListener("click", () => {
     menuLateral.classList.toggle("active");
   });
 }
-// Cerrar el menú si se hace clic fuera de él
+
 document.addEventListener("click", (event) => {
   const menuLateral = document.getElementById("menu-lateral");
   const btnMenu = document.getElementById("btn-menu");
 
-  // Si el menú está abierto, y el click NO fue ni en el menú ni en el botón de abrir...
   if (
+    menuLateral &&
+    btnMenu &&
     menuLateral.classList.contains("active") &&
     !menuLateral.contains(event.target) &&
     !btnMenu.contains(event.target)
@@ -377,23 +378,23 @@ document.addEventListener("click", (event) => {
     menuLateral.classList.remove("active");
   }
 });
-// Conectamos y damos función directamente abajo de todo
+
 document.getElementById("link-inicio")?.addEventListener("click", (e) => {
   e.preventDefault();
   changeScreen(screenMain);
-  menuLateral.classList.remove("active"); // <--- Cierra el menú
+  menuLateral.classList.remove("active");
 });
 
 document.getElementById("link-biblia")?.addEventListener("click", (e) => {
   e.preventDefault();
   changeScreen(screenBibleDetail);
-  menuLateral.classList.remove("active"); // <--- Cierra el menú
+  menuLateral.classList.remove("active");
 });
 
 document.getElementById("link-buscar")?.addEventListener("click", (e) => {
   e.preventDefault();
   changeScreen(screenBuscar);
-  menuLateral.classList.remove("active"); // <--- Cierra el menú
+  menuLateral.classList.remove("active");
 });
 
 document.getElementById("link-idioma")?.addEventListener("click", (e) => {
@@ -408,7 +409,7 @@ document.getElementById("link-sugerir")?.addEventListener("click", (e) => {
   menuLateral.classList.remove("active");
 });
 
-// --- BÚSQUEDA INTELIGENTE Y TOLERANTE A TILDES / MAYÚSCULAS ---
+// --- BÚSQUEDA INTELIGENTE CON PAGINACIÓN INTEGRADA ---
 document
   .getElementById("btn-ejecutar-busqueda")
   ?.addEventListener("click", async () => {
@@ -416,13 +417,24 @@ document
       .getElementById("input-busqueda")
       .value.trim();
     const contenedorResultados = document.getElementById("resultados-busqueda");
-
+    // --- PERMITIR BUSCAR CON LA TECLA ENTER DESDE LA COMPUTADORA ---
+    const inputBusqueda = document.getElementById("input-busqueda");
+    if (inputBusqueda) {
+      inputBusqueda.addEventListener("keydown", (event) => {
+        if (event.key === "Enter") {
+          event.preventDefault(); // Evita comportamientos por defecto del formulario si los hubiera
+          const btnBuscar = document.getElementById("btn-ejecutar-busqueda");
+          if (btnBuscar) {
+            btnBuscar.click(); // Simula el clic en el botón de búsqueda
+          }
+        }
+      });
+    }
     if (!inputOriginal) {
       contenedorResultados.innerHTML = `<p class="placeholder-text">Por favor, escribí algo para buscar.</p>`;
       return;
     }
 
-    // Función auxiliar para "limpiar" texto: quita tildes/diacríticos y pasa a minúsculas
     const limpiarTexto = (str) =>
       str
         .toLowerCase()
@@ -441,7 +453,6 @@ document
       const datos = await respuesta.json();
       let encontrados = [];
 
-      // 1. Buscamos en el arreglo "verses" de la BLP
       if (datos.verses && Array.isArray(datos.verses)) {
         datos.verses.forEach((item) => {
           const textoLimpio = limpiarTexto(item.text || "");
@@ -459,7 +470,6 @@ document
         });
       }
 
-      // 2. Buscamos también en los estados litúrgicos
       if (datos.estados_liturgicos) {
         Object.entries(datos.estados_liturgicos).forEach(([estado, info]) => {
           const textoEstado = limpiarTexto(info.texto || "");
@@ -479,45 +489,76 @@ document
         });
       }
 
-      // 3. Renderizamos resultados
       if (encontrados.length > 0) {
-        const resultadosLimitados = encontrados.slice(0, 100);
-        contenedorResultados.innerHTML = resultadosLimitados
-          .map(
-            (item) => `
-        <div class="search-result-item" style="margin-bottom: 15px; border-bottom: 1px solid rgba(212,175,55,0.2); padding-bottom: 10px;">
-          <strong style="color: var(--gold); display: block; margin-bottom: 5px;">${item.referencia}</strong>
-          <p style="color: #e0e0e0; font-size: 0.95rem; line-height: 1.4;">"${item.texto}"</p>
-        </div>
-      `,
-          )
-          .join("");
+        let paginaBusquedaActual = 1;
+        const porPagina = 20; // 20 resultados por página para que naveges cómodo
+        const totalPaginasBusqueda = Math.ceil(encontrados.length / porPagina);
 
-        if (encontrados.length > 100) {
-          contenedorResultados.innerHTML += `<p style="text-align: center; color: var(--gold); font-size: 0.85rem; margin-top: 10px;">Mostrando los primeros 100 resultados de ${encontrados.length} encontrados.</p>`;
+        function renderizarBloqueBusqueda() {
+          const inicio = (paginaBusquedaActual - 1) * porPagina;
+          const fin = paginaBusquedaActual * porPagina;
+          const loteActual = encontrados.slice(inicio, fin);
+
+          let htmlContenido = loteActual
+            .map(
+              (item) => `
+          <div class="search-result-item" style="margin-bottom: 15px; border-bottom: 1px solid rgba(212,175,55,0.2); padding-bottom: 10px;">
+            <strong style="color: var(--gold); display: block; margin-bottom: 5px;">${item.referencia}</strong>
+            <p style="color: #e0e0e0; font-size: 0.95rem; line-height: 1.4;">"${item.texto}"</p>
+          </div>
+        `,
+            )
+            .join("");
+
+          if (totalPaginasBusqueda > 1) {
+            htmlContenido += `
+            <div class="paginador-busqueda-interno" style="display: flex; justify-content: space-between; align-items: center; margin-top: 25px; padding: 15px 0; border-top: 1px solid var(--gold);">
+              <button id="btn-ant-busqueda" style="background: rgba(212,175,55,0.1); border: 1px solid var(--gold); color: #fff; padding: 8px 14px; border-radius: 6px; cursor: pointer;" ${paginaBusquedaActual === 1 ? 'disabled style="opacity: 0.4; cursor: default;"' : ""}>⬅ Anterior</button>
+              <span style="color: var(--gold); font-size: 0.85rem; text-align: center;">Pág. ${paginaBusquedaActual} / ${totalPaginasBusqueda}<br><small style="color:#aaa;">(${encontrados.length} encontrados)</small></span>
+              <button id="btn-sig-busqueda" style="background: rgba(212,175,55,0.1); border: 1px solid var(--gold); color: #fff; padding: 8px 14px; border-radius: 6px; cursor: pointer;" ${paginaBusquedaActual === totalPaginasBusqueda ? 'disabled style="opacity: 0.4; cursor: default;"' : ""}>Siguiente ➡</button>
+            </div>
+          `;
+          }
+
+          contenedorResultados.innerHTML = htmlContenido;
+
+          if (totalPaginasBusqueda > 1) {
+            document
+              .getElementById("btn-ant-busqueda")
+              ?.addEventListener("click", () => {
+                if (paginaBusquedaActual > 1) {
+                  paginaBusquedaActual--;
+                  renderizarBloqueBusqueda();
+                  contenedorResultados.scrollIntoView({ behavior: "smooth" });
+                }
+              });
+
+            document
+              .getElementById("btn-sig-busqueda")
+              ?.addEventListener("click", () => {
+                if (paginaBusquedaActual < totalPaginasBusqueda) {
+                  paginaBusquedaActual++;
+                  renderizarBloqueBusqueda();
+                  contenedorResultados.scrollIntoView({ behavior: "smooth" });
+                }
+              });
+          }
         }
+
+        renderizarBloqueBusqueda();
       } else {
         contenedorResultados.innerHTML = `
-        <div style="text-align: center; padding: 10px;">
-          <p style="color: #d4af37; font-weight: bold; margin-bottom: 5px;">Sin resultados</p>
-          <p class="placeholder-text">No se encontraron pasajes con el término "${inputOriginal}".</p>
-        </div>`;
+      <div style="text-align: center; padding: 10px;">
+        <p style="color: #d4af37; font-weight: bold; margin-bottom: 5px;">Sin resultados</p>
+        <p class="placeholder-text">No se encontraron pasajes con el término "${inputOriginal}".</p>
+      </div>`;
       }
     } catch (error) {
       console.error("Error en la búsqueda:", error);
       contenedorResultados.innerHTML = `<p class="placeholder-text" style="color: #e34234;">Ocurrió un error al realizar la búsqueda.</p>`;
     }
   });
-// --- NUEVAS FUNCIONES DE NAVEGACIÓN PARA LA PANTALLA 3A ---
-function abrirAntiguoTestamento() {
-  console.log("Abriendo la pantalla de libros del Antiguo Testamento...");
-  // Acá vamos a conectar la pantalla dedicada del Antiguo Testamento
-}
 
-function abrirNuevoTestamento() {
-  console.log("Abriendo la pantalla de libros del Nuevo Testamento...");
-  // Acá vamos a conectar la pantalla dedicada del Nuevo Testamento
-}
 // --- DATOS Y FUNCIONES PARA EL ANTIGUO TESTAMENTO ---
 const listaLibrosAntiguo = [
   "Génesis",
@@ -568,35 +609,11 @@ const listaLibrosAntiguo = [
   "Malaquías",
 ];
 
-function abrirAntiguoTestamento() {
-  // 1. Cambiamos a la pantalla del Antiguo Testamento
-  changeScreen(screenAntiguo);
-
-  // 2. Cargamos los libros si el contenedor está vacío
-  const contenedor = document.getElementById("lista-libros-antiguo");
-  if (contenedor.innerHTML.trim() === "") {
-    listaLibrosAntiguo.forEach((libro) => {
-      const btn = document.createElement("div");
-      // Le damos un diseño en grilla tipo tarjetas
-      btn.style.cssText =
-        "border: 1px solid var(--gold); border-radius: 8px; padding: 15px; text-align: center; cursor: pointer; background: rgba(255,255,255,0.05); color: #fff; font-size: 0.9rem; transition: transform 0.2s;";
-      btn.innerText = libro;
-
-      // Qué pasa al hacer clic en un libro
-      btn.addEventListener("click", () => {
-        console.log("Elegiste el libro:", libro);
-        // Acá luego abriremos la pantalla de capítulos
-      });
-
-      contenedor.appendChild(btn);
-    });
-  }
-}
 async function abrirAntiguoTestamento() {
   changeScreen(screenAntiguo);
 
   const contenedor = document.getElementById("lista-libros-antiguo");
-  if (contenedor.innerHTML.trim() === "") {
+  if (contenedor && contenedor.innerHTML.trim() === "") {
     try {
       const respuesta = await fetch("biblia.json");
       const datos = await respuesta.json();
@@ -622,8 +639,15 @@ async function abrirAntiguoTestamento() {
   }
 }
 
-// Función para mostrar los capítulos y leer el libro elegido
+// Función para mostrar los capítulos y leer el libro elegido (Antiguo)
 function cargarCapitulosLibro(nombreLibro, versesArray) {
+  const btnVolverCapitulos = document.querySelector(
+    "#screen-capitulos .btn-back",
+  );
+  if (btnVolverCapitulos) {
+    btnVolverCapitulos.onclick = () => changeScreen(screenAntiguo);
+  }
+
   changeScreen(screenCapitulos);
 
   const tituloLibro = document.getElementById("titulo-libro-seleccionado");
@@ -634,14 +658,10 @@ function cargarCapitulosLibro(nombreLibro, versesArray) {
   gridCapitulos.innerHTML = "";
   areaVersiculos.innerHTML = `<em style="color: var(--gold);">Elegí un capítulo arriba para comenzar la lectura.</em>`;
 
-  // Filtramos los versículos que pertenecen a este libro
   const versosLibro = versesArray.filter((v) => v.book_name === nombreLibro);
-
-  // Averiguamos cuáles son los capítulos disponibles de forma única y ordenada
   const capitulosSet = new Set(versosLibro.map((v) => v.chapter));
   const capitulosOrdenados = Array.from(capitulosSet).sort((a, b) => a - b);
 
-  // Creamos un botoncito por cada capítulo
   capitulosOrdenados.forEach((numCap) => {
     const btnCap = document.createElement("button");
     btnCap.className = "btn-capitulo";
@@ -650,39 +670,19 @@ function cargarCapitulosLibro(nombreLibro, versesArray) {
     btnCap.textContent = numCap;
 
     btnCap.addEventListener("click", () => {
+      const btnVolverLectura = document.querySelector(
+        "#screen-lectura .btn-back",
+      );
+      if (btnVolverLectura) {
+        btnVolverLectura.onclick = () => changeScreen(screenCapitulos);
+      }
       renderizarVersiculosCapitulo(nombreLibro, numCap, versosLibro);
     });
 
     gridCapitulos.appendChild(btnCap);
   });
 }
-// Función para volcar los versículos en la nueva pantalla dedicada a la lectura
-function renderizarVersiculosCapitulo(nombreLibro, numCapitulo, versosLibro) {
-  // 1. Cambiamos a la pantalla de lectura dedicada
-  changeScreen(screenLectura);
 
-  const tituloLectura = document.getElementById("titulo-lectura-completa");
-  const areaLectura = document.getElementById("texto-lectura-final");
-
-  // Título claro arriba
-  tituloLectura.textContent = `${nombreLibro} - Cap. ${numCapitulo}`;
-
-  // Filtramos y ordenamos los versículos
-  const versosFiltrados = versosLibro.filter((v) => v.chapter === numCapitulo);
-  versosFiltrados.sort((a, b) => a.verse - b.verse);
-
-  let htmlVersos = `<div style="max-width: 600px; margin: 0 auto; padding-bottom: 40px;">`;
-  versosFiltrados.forEach((v) => {
-    htmlVersos += `<p style="margin-bottom: 14px;"><sup style="color: var(--gold); font-weight: bold; margin-right: 8px; font-size: 0.85rem;">${v.verse}</sup>${v.text}</p>`;
-  });
-  htmlVersos += `</div>`;
-
-  areaLectura.innerHTML = htmlVersos;
-
-  // Subimos el scroll arriba de todo en la nueva pantalla
-  const mainArea = screenLectura.querySelector(".content-area");
-  if (mainArea) mainArea.scrollTop = 0;
-}
 // --- DATOS Y FUNCIONES PARA EL NUEVO TESTAMENTO ---
 const listaLibrosNuevo = [
   "Mateo",
@@ -714,39 +714,35 @@ const listaLibrosNuevo = [
   "Apocalipsis",
 ];
 
-function abrirNuevoTestamento() {
+async function abrirNuevoTestamento() {
   changeScreen(screenNuevo);
 
   const contenedor = document.getElementById("lista-libros-nuevo");
-  if (contenedor.innerHTML.trim() === "") {
+  if (contenedor && contenedor.innerHTML.trim() === "") {
     try {
-      // Usamos fetch para asegurarnos de tener los versículos listos al hacer clic en un libro
-      fetch("biblia.json")
-        .then((res) => res.json())
-        .then((datos) => {
-          listaLibrosNuevo.forEach((nombreLibro) => {
-            const btn = document.createElement("div");
-            btn.style.cssText =
-              "border: 1px solid var(--gold); border-radius: 8px; padding: 15px; text-align: center; cursor: pointer; background: rgba(255,255,255,0.05); color: #fff; font-size: 0.9rem; transition: transform 0.2s;";
-            btn.innerText = nombreLibro;
+      const respuesta = await fetch("biblia.json");
+      const datos = await respuesta.json();
 
-            btn.addEventListener("click", () => {
-              // Reutilizamos la misma lógica de capítulos y lectura que ya armamos
-              cargarCapitulosLibroNuevo(nombreLibro, datos.verses);
-            });
+      listaLibrosNuevo.forEach((nombreLibro) => {
+        const btn = document.createElement("div");
+        btn.style.cssText =
+          "border: 1px solid var(--gold); border-radius: 8px; padding: 15px; text-align: center; cursor: pointer; background: rgba(255,255,255,0.05); color: #fff; font-size: 0.9rem; transition: transform 0.2s;";
+        btn.innerText = nombreLibro;
 
-            contenedor.appendChild(btn);
-          });
+        btn.addEventListener("click", () => {
+          cargarCapitulosLibroNuevo(nombreLibro, datos.verses);
         });
+
+        contenedor.appendChild(btn);
+      });
     } catch (error) {
       console.error("Error al cargar los libros del Nuevo Testamento:", error);
     }
   }
 }
 
-// Función específica para los capítulos del Nuevo Testamento (apunta al botón Volver correcto: screenNuevo)
+// Función específica para los capítulos del Nuevo Testamento
 function cargarCapitulosLibroNuevo(nombreLibro, versesArray) {
-  // Cambiamos el botón "Volver" de la pantalla de capítulos para que regrese al Nuevo Testamento
   const btnVolverCapitulos = document.querySelector(
     "#screen-capitulos .btn-back",
   );
@@ -776,7 +772,6 @@ function cargarCapitulosLibroNuevo(nombreLibro, versesArray) {
     btnCap.textContent = numCap;
 
     btnCap.addEventListener("click", () => {
-      // Ajustamos el botón volver de la pantalla de lectura final para que regrese a esta pantalla de capítulos
       const btnVolverLectura = document.querySelector(
         "#screen-lectura .btn-back",
       );
@@ -788,4 +783,83 @@ function cargarCapitulosLibroNuevo(nombreLibro, versesArray) {
 
     gridCapitulos.appendChild(btnCap);
   });
+}
+
+// --- FUNCIÓN GENERAL PARA RENDERIZAR VERSÍCULOS ---
+// --- FUNCIÓN GENERAL PARA RENDERIZAR VERSÍCULOS CON NAVEGACIÓN DE CAPÍTULOS ---
+function renderizarVersiculosCapitulo(nombreLibro, numCapitulo, versosLibro) {
+  changeScreen(screenLectura);
+
+  const tituloLectura = document.getElementById("titulo-lectura-completa");
+  const areaLectura = document.getElementById("texto-lectura-final");
+
+  tituloLectura.textContent = `${nombreLibro} - Cap. ${numCapitulo}`;
+
+  // Obtenemos todos los capítulos disponibles de este libro ordenados numéricamente
+  const capitulosSet = new Set(
+    versosLibro
+      .filter((v) => v.book_name === nombreLibro)
+      .map((v) => v.chapter),
+  );
+  const capitulosOrdenados = Array.from(capitulosSet).sort((a, b) => a - b);
+
+  const indiceCapActual = capitulosOrdenados.indexOf(numCapitulo);
+  const capAnterior =
+    indiceCapActual > 0 ? capitulosOrdenados[indiceCapActual - 1] : null;
+  const capSiguiente =
+    indiceCapActual < capitulosOrdenados.length - 1
+      ? capitulosOrdenados[indiceCapActual + 1]
+      : null;
+
+  const versosFiltrados = versosLibro.filter(
+    (v) => v.book_name === nombreLibro && v.chapter === numCapitulo,
+  );
+  versosFiltrados.sort((a, b) => a.verse - b.verse);
+
+  let htmlVersos = `<div style="max-width: 600px; margin: 0 auto; padding-bottom: 20px;">`;
+  versosFiltrados.forEach((v) => {
+    htmlVersos += `<p style="margin-bottom: 14px;"><sup style="color: var(--gold); font-weight: bold; margin-right: 8px; font-size: 0.85rem;">${v.verse}</sup>${v.text}</p>`;
+  });
+  htmlVersos += `</div>`;
+
+  // Agregamos la botonera de Anterior / Siguiente al pie de la lectura
+  htmlVersos += `
+    <div style="max-width: 600px; margin: 30px auto 50px auto; display: flex; justify-content: space-between; align-items: center; border-top: 1px solid rgba(212,175,55,0.3); padding-top: 20px;">
+      <button id="btn-cap-anterior" style="background: rgba(212,175,55,0.1); border: 1px solid var(--gold); color: #fff; padding: 10px 16px; border-radius: 6px; cursor: pointer; font-size: 0.9rem; ${!capAnterior ? "opacity: 0.3; pointer-events: none;" : ""}">
+        ⬅ Capítulo Anterior
+      </button>
+      <span style="color: var(--gold); font-size: 0.85rem;">Capítulo ${numCapitulo}</span>
+      <button id="btn-cap-siguiente" style="background: rgba(212,175,55,0.1); border: 1px solid var(--gold); color: #fff; padding: 10px 16px; border-radius: 6px; cursor: pointer; font-size: 0.9rem; ${!capSiguiente ? "opacity: 0.3; pointer-events: none;" : ""}">
+        Capítulo Siguiente ➡
+      </button>
+    </div>
+  `;
+
+  if (areaLectura) areaLectura.innerHTML = htmlVersos;
+
+  // Reactivamos los eventos de los botones de capítulos
+  if (capAnterior) {
+    document
+      .getElementById("btn-cap-anterior")
+      ?.addEventListener("click", () => {
+        renderizarVersiculosCapitulo(nombreLibro, capAnterior, versosLibro);
+        const mainArea = screenLectura.querySelector(".content-area") || window;
+        if (mainArea.scrollTo)
+          mainArea.scrollTo({ top: 0, behavior: "smooth" });
+      });
+  }
+
+  if (capSiguiente) {
+    document
+      .getElementById("btn-cap-siguiente")
+      ?.addEventListener("click", () => {
+        renderizarVersiculosCapitulo(nombreLibro, capSiguiente, versosLibro);
+        const mainArea = screenLectura.querySelector(".content-area") || window;
+        if (mainArea.scrollTo)
+          mainArea.scrollTo({ top: 0, behavior: "smooth" });
+      });
+  }
+
+  const mainArea = screenLectura.querySelector(".content-area");
+  if (mainArea) mainArea.scrollTop = 0;
 }
