@@ -646,7 +646,7 @@ function cargarCapitulosLibro(nombreLibro, versesArray) {
     const btnCap = document.createElement("button");
     btnCap.className = "btn-capitulo";
     btnCap.style.cssText =
-      "background: rgba(212,175,55,0.1); border: 1px solid var(--gold); color: #fff; padding: 10px 14px; border-radius: 6px; cursor: pointer; font-weight: bold; display: flex;";
+      "background: rgba(212,175,55,0.1); border: 1px solid var(--gold); color: #fff; padding: 8px 14px; border-radius: 6px; cursor: pointer; font-weight: bold;";
     btnCap.textContent = numCap;
 
     btnCap.addEventListener("click", () => {
@@ -727,7 +727,7 @@ function abrirNuevoTestamento() {
           listaLibrosNuevo.forEach((nombreLibro) => {
             const btn = document.createElement("div");
             btn.style.cssText =
-              "border: 1px solid var(--gold); border-radius: 10px; padding: 20px; text-align: center; cursor: pointer; background: rgba(255,255,255,0.05); color: #fff; font-size: 0.9rem; transition: transform 0.2s;";
+              "border: 1px solid var(--gold); border-radius: 8px; padding: 15px; text-align: center; cursor: pointer; background: rgba(255,255,255,0.05); color: #fff; font-size: 0.9rem; transition: transform 0.2s;";
             btn.innerText = nombreLibro;
 
             btn.addEventListener("click", () => {
@@ -762,6 +762,7 @@ function cargarCapitulosLibroNuevo(nombreLibro, versesArray) {
 
   tituloLibro.textContent = nombreLibro;
   gridCapitulos.innerHTML = "";
+  areaVersiculos.innerHTML = `<em style="color: var(--gold);">Elegí un capítulo arriba para comenzar la lectura.</em>`;
 
   const versosLibro = versesArray.filter((v) => v.book_name === nombreLibro);
   const capitulosSet = new Set(versosLibro.map((v) => v.chapter));
