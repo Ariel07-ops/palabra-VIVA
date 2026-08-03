@@ -466,7 +466,7 @@ body {
   margin: 0;
   padding: 0;
   height: 100%;
-  overflow: hidden; /* Saca la scrollbar global principal */
+  overflow: auto; /* Saca la scrollbar global principal */
 }
 
 body {

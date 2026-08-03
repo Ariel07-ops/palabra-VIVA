@@ -1000,3 +1000,39 @@ function abrirPasoEmaus(numero) {
 
   changeScreen(screenEmausDetalle);
 }
+const catecismoData = [
+  {
+    id: 1,
+    seccion: "El Credo",
+    titulo: "El deseo de Dios",
+    resumen: "El hombre ha sido creado por Dios y para Dios...",
+    texto:
+      "El hombre ha sido creado por Dios y para Dios, y Dios no cesa de atraer al hombre hacia sí. Sólo en Dios encontrará el hombre la verdad y la dicha que busca sin tregua: 'Muchas veces en la historia, y hasta el día de hoy, los hombres han manifestado esta inagotable búsqueda de Dios por medio de sus creencias y de sus comportamientos religiosos'.",
+  },
+  {
+    id: 2,
+    seccion: "La Profesión de la Fe",
+    titulo: "¿Cómo conocer a Dios con la sola luz de la razón?",
+    resumen:
+      "El mundo y el hombre atestiguan que tienen a Dios por principio y fin...",
+    texto:
+      "Desde la creación del mundo, 'per Deum', Dios, origen y fin de todo, puede ser conocido con certeza mediante las obras creadas, con la luz de la razón humana. Sin embargo, el hombre necesita de la Revelación divina para poder conocer las realidades divinas sin error y con absoluta certeza.",
+  },
+  {
+    id: 3,
+    seccion: "Los Sacramentos",
+    titulo: "La Eucaristía en la vida de la Iglesia",
+    resumen: "Fuente y cumbre de toda la vida cristiana...",
+    texto:
+      "La Eucaristía es fuente y cumbre de toda la vida cristiana. Los demás sacramentos, y también todos los ministerios eclesiales y las obras de apostolado, están unidos a la Eucaristía y a ella ordinariamente se ordenan. La sagrada Eucaristía contiene todo el bien espiritual de la Iglesia.",
+  },
+  {
+    id: 4,
+    seccion: "La Oración Cristiana",
+    titulo: "El combate de la oración",
+    resumen:
+      "La oración es un don de la gracia y una respuesta decidida de nuestra parte...",
+    texto:
+      "La oración no es meramente el fluir de los pensamientos espontáneos; es también un combate contra uno mismo y contra las asechanzas del Tentador. El combate espiritual de la nueva vida del cristiano es inseparable de la oración.",
+  },
+];
