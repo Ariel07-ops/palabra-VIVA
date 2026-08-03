@@ -1,476 +1,699 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Palabra Viva Beta</title>
-    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Lora:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="style.css">
-</head>
-<body>
-<!-- Barra de Navegación Superior -->
-<header class="top-navbar">
-    <div class="nav-left">
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Lora:ital,wght@0,400;0,700;1,400&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <!-- Barra de Navegación Superior -->
+    <header class="top-navbar">
+      <div class="nav-left">
         <button id="btn-menu" class="nav-icon-btn" title="Menú">☰</button>
-    </div>
-    <!-- Aquí está el cambio en el centro -->
-    <div class="nav-center">
-        <!-- Ponés tu isologo redondito aquí -->
-        <img src="logo-redondo.png" alt="Isologo Palabra Viva" class="nav-brand-icon">
-        <!-- Y luego el título al lado -->
+      </div>
+      <!-- Isologo y Título -->
+      <div class="nav-center">
+        <img
+          src="logo-redondo.png"
+          alt="Isologo Palabra Viva"
+          class="nav-brand-icon"
+        />
         <span class="nav-title">Palabra Viva</span>
-    </div>
-    <div class="nav-right">
+      </div>
+      <div class="nav-right">
         <!-- Botón para alternar el modo luminoso/solemne -->
-        <button id="btn-theme" class="nav-icon-btn" title="Cambiar Modo">🌓</button>
-    </div>
-</header>
-</header>
+        <button id="btn-theme" class="nav-icon-btn" title="Cambiar Modo">
+          🌓
+        </button>
+      </div>
+    </header>
 
-<!-- MENÚ LATERAL -->
-<!-- MENÚ LATERAL -->
-<nav id="menu-lateral" class="sidebar-menu">
-    <!-- Cabecera del Menú Lateral -->
-    <div class="sidebar-header">
-        <img src="logo-redondo.png" alt="Isologo Palabra Viva" class="sidebar-brand-icon">
+    <!-- MENÚ LATERAL -->
+    <nav id="menu-lateral" class="sidebar-menu">
+      <!-- Cabecera del Menú Lateral -->
+      <div class="sidebar-header">
+        <img
+          src="logo-redondo.png"
+          alt="Isologo Palabra Viva"
+          class="sidebar-brand-icon"
+        />
         <span class="sidebar-title">Palabra Viva</span>
-    </div>
+      </div>
 
-    <!-- Lista de Opciones -->
-    <ul>
+      <!-- Lista de Opciones -->
+      <ul>
         <li><a href="#" id="link-inicio">🏠 Inicio</a></li>
-        <li><a href="#" id= "link-biblia">📖 La Santa Biblia</a></li>
+        <li><a href="#" id="link-biblia">📖 La Santa Biblia</a></li>
         <li><a href="#" id="link-buscar">🔍 Buscar Versículo</a></li>
         <li><a href="#" id="link-idioma">🌐 Idioma</a></li>
         <li><a href="#" id="link-sugerir">💡 Sugerir Enlaces</a></li>
-    </ul>
-</nav>
-
-<!-- PANTALLA 1: BIENVENIDA (SPLASH) -->
+      </ul>
+    </nav>
 
     <!-- PANTALLA 1: BIENVENIDA (SPLASH) -->
     <div id="screen-splash" class="screen active">
-        <div class="splash-content-imagen">
-            <!-- aqui cargo la pantalla principal -->
-            <img src="splash-cruz-nitida.png" alt="Palabra Viva Portada" class="img-portada">
-            
-        </div>
+      <div class="splash-content-imagen">
+        <img
+          src="splash-cruz-nitida.png"
+          alt="Palabra Viva Portada"
+          class="img-portada"
+        />
+      </div>
     </div>
 
     <!-- PANTALLA 2: DIVISIÓN PRINCIPAL -->
     <div id="screen-main" class="screen">
-        <div class="split-container">
-            <!-- Bloque Superior: La Sagrada Escritura -->
-            <div id="btn-goto-bible" class="split-block block-top">
-                <div class="block-overlay">
-                    <h2>LA SANTA BIBLIA</h2>
-                    <p>Lectura, Filología y Tradición Eclesial</p>
-                </div>
-            </div>
-            <!-- Bloque Inferior: El Camino Personal -->
-            <div id="btn-goto-path" class="split-block block-bottom">
-                <div class="block-overlay">
-                    <h2>CAMINANDO CON JESÚS</h2>
-                    <p>El Camino de Emaús y Tu Ruta Diaria</p>
-                </div>
-            </div>
+      <div class="split-container">
+        <!-- Bloque Superior: La Sagrada Escritura -->
+        <div id="btn-goto-bible" class="split-block block-top">
+          <div class="block-overlay">
+            <h2>LA SANTA BIBLIA</h2>
+            <p>Lectura, Filología y Tradición Eclesial</p>
+          </div>
         </div>
+        <!-- Bloque Inferior: El Camino Personal -->
+        <div id="btn-goto-path" class="split-block block-bottom">
+          <div class="block-overlay">
+            <h2>CAMINANDO CON JESÚS</h2>
+            <p>El Camino de Emaús y Tu Ruta Diaria</p>
+          </div>
+        </div>
+      </div>
     </div>
 
-    <!-- PANTALLA 3A: DETALLE DE LA BIBLIA (Tu pantalla anterior mejorada) -->
-<!-- PANTALLA 3A: LA SANTA BIBLIA (Selector de Testamentos) -->
-<div id="screen-bible-detail" class="screen">
-  <div class="app-container">
-    <header class="main-header">
-      <button class="btn-back" onclick="changeScreen(screenMain)">←</button>
-      <h1 class="brand-title">La Sagrada Escritura</h1>
-      <p class="header-statement">Seleccioná un testamento para comenzar.</p>
-    </header>
+    <!-- PANTALLA 3A: LA SANTA BIBLIA (Selector de Testamentos) -->
+    <div id="screen-bible-detail" class="screen">
+      <div class="app-container">
+        <header class="main-header">
+          <button class="btn-back" onclick="changeScreen(screenMain)">←</button>
+          <h1 class="brand-title">La Sagrada Escritura</h1>
+          <p class="header-statement">
+            Seleccioná un testamento para comenzar.
+          </p>
+        </header>
 
-    <main class="content-area" style="padding: 20px;">
-      
-      <!-- Contenedor exclusivo para los dos botones principales -->
-      <div class="testamentos-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; margin-top: 20px;">
-        
-        <!-- Cajita Antiguo Testamento -->
-        <div class="testamento-card" onclick="abrirAntiguoTestamento()" style="border: 2px solid var(--gold); border-radius: 12px; padding: 25px; text-align: center; cursor: pointer; background: var(--card-bg, rgba(255,255,255,0.05)); transition: transform 0.2s;">
-          <h3 style="color: var(--gold); margin: 0;">📜 Antiguo Testamento</h3>
-          <p style="font-size: 0.9rem; color: #ccc; margin-top: 8px;">Explorar los libros históricos, poéticos y proféticos.</p>
-        </div>
-
-        <!-- Cajita Nuevo Testamento -->
-        <div class="testamento-card" onclick="abrirNuevoTestamento()" style="border: 2px solid var(--gold); border-radius: 12px; padding: 25px; text-align: center; cursor: pointer; background: var(--card-bg, rgba(255,255,255,0.05)); transition: transform 0.2s;">
-          <h3 style="color: var(--gold); margin: 0;">✨ Nuevo Testamento</h3>
-          <p style="font-size: 0.9rem; color: #ccc; margin-top: 8px;">Explorar los Evangelios, cartas y Apocalipsis.</p>
-        </div>
-
-      </div>
-
-    </main>
-  </div>
-</div>
-
-
-<!-- PANTALLA 3B: ANTIGUO TESTAMENTO (Lista de Libros) -->
-<div id="screen-antiguo" class="screen">
-  <div class="app-container">
-    <header class="main-header">
-      <!-- Este botón vuelve a la pantalla de las dos cajitas -->
-      <button class="btn-back" onclick="changeScreen(screenBibleDetail)">←</button>
-      <h1 class="brand-title">Antiguo Testamento</h1>
-      <p class="header-statement">Seleccioná un libro para continuar.</p>
-    </header>
-
-    <main class="content-area" style="padding: 20px;">
-      <!-- Acá se van a cargar los botones de los libros con JS -->
-      <div id="lista-libros-antiguo" style="display: grid; grid-template-columns: repeat(auto-fill, minmax(130px, 1fr)); gap: 12px; margin-top: 10px;">
-      </div>
-    </main>
-  </div>
-</div>
-<!-- PANTALLA 3C: CAPÍTULOS Y LECTURA DEL LIBRO -->
-<div id="screen-capitulos" class="screen">
-  <div class="app-container">
-    <header class="main-header">
-      <!-- Este botón vuelve a la lista de libros del Antiguo Testamento -->
-      <button class="btn-back" onclick="changeScreen(screenAntiguo)">←</button>
-      <h1 class="brand-title" id="titulo-libro-seleccionado">Libro</h1>
-      <p class="header-statement">Seleccioná un capítulo para leer.</p>
-    </header>
-
-    <main class="content-area" style="padding: 20px;">
-      <!-- Grilla de botones para los capítulos -->
-      <div id="grid-capitulos" style="display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 20px;"></div>
-      
-      <!-- Contenedor donde se van a cargar los versículos del capítulo -->
-      <div id="texto-versiculos-area" style="text-align: justify; line-height: 1.7; color: #e0e0e0; margin-top: 15px;">
-        <em style="color: var(--gold);">Elegí un capítulo arriba para comenzar la lectura.</em>
-      </div>
-    </main>
-  </div>
-</div>
-<!-- PANTALLA 3D: LECTURA DE CAPÍTULO DEDICADA -->
-<div id="screen-lectura" class="screen">
-  <div class="app-container">
-    <header class="main-header">
-      <!-- Este botón vuelve a la lista de capítulos del libro -->
-      <button class="btn-back" onclick="changeScreen(screenCapitulos)">←</button>
-      <h1 class="brand-title" id="titulo-lectura-completa">Lectura</h1>
-      <p class="header-statement">Texto de las Escrituras</p>
-    </header>
-
-    <main class="content-area" style="padding: 20px; overflow-y: auto;">
-      <!-- Acá va el texto limpio y grande para leer sin distracciones -->
-      <div id="texto-lectura-final" style="text-align: justify; line-height: 1.8; color: #e0e0e0; font-size: 1.05rem;">
-      </div>
-    </main>
-  </div>
-</div>
-<!-- PANTALLA 3E: NUEVO TESTAMENTO (Lista de Libros) -->
-<div id="screen-nuevo" class="screen">
-  <div class="app-container">
-    <header class="main-header">
-      <!-- Este botón vuelve a la pantalla de las dos cajitas (screenBibleDetail) -->
-      <button class="btn-back" onclick="changeScreen(screenBibleDetail)">←</button>
-      <h1 class="brand-title">Nuevo Testamento</h1>
-      <p class="header-statement">Seleccioná un libro para continuar.</p>
-    </header>
-
-    <main class="content-area" style="padding: 20px;">
-      <!-- Acá se van a cargar los botones de los libros del Nuevo Testamento con JS -->
-      <div id="lista-libros-nuevo" style="display: grid; grid-template-columns: repeat(auto-fill, minmax(130px, 1fr)); gap: 12px; margin-top: 10px;">
-      </div>
-    </main>
-  </div>
-</div>
-
-
-            <!-- Panel en Abanico Tradicional abajo -->
-            <div id="study-card" class="study-card-panel hidden">
-                <div class="panel-handle"></div>
-                   <div class="columns-container">
-                    <div class="fan-column col-1">
-                        <button class="btn-close-extended">✕ Cerrar</button>
-                        <h3>Raíces y Filología</h3>
-                        <p class="focus-text">Análisis del texto original (griego/arameo). Ej: LOGOS y Sárx.</p>
-                        <div class="extended-text">
-                            <strong>Estudio Profundo del término LOGOS:</strong><br><br>
-                            En el griego clásico, 'Logos' no es solo una palabra hablada, sino el principio ordenador del universo. San Juan rompe la historia al decir que este Principio Universal se hizo 'Sárx' (carne frágil, mortal). No es una apariencia, es una asunción real de nuestra naturaleza humana.
-                        </div>
-                    </div>
-                    <div class="fan-column col-2">
-                        <button class="btn-close-extended">✕ Cerrar</button>
-                        <h3>Sucesión Apostólica</h3>
-                        <p class="focus-text">El misterio de la Iglesia y la continuidad de la misión.</p>
-                        <div class="extended-text">
-                            <strong>Tradición Eclesial Viva:</strong><br><br>
-                            Desde San Ignacio de Antioquía hasta el magisterio actual, la Iglesia custodia que la transmisión del Verbo encarnado no sufra alteraciones. Los Apóstoles vieron la Gloria del Padre y esa misma experiencia se transmite en la sucesión ininterrumpida de los obispos.
-                        </div>
-                    </div>
-                    <div class="fan-column col-3">
-                        <button class="btn-close-extended">✕ Cerrar</button>
-                        <h3>Contexto Histórico</h3>
-                        <p class="focus-text">Evidencia externa y auxiliar (Flavio Josefo, Tácito).</p>
-                        <div class="extended-text">
-                            <strong>Datación y Entorno:</strong><br><br>
-                            El Evangelio de Juan se consolida hacia finales del siglo I en Éfeso. Frente a las primeras desviaciones gnósticas que decían que Jesús era un fantasma, el contexto histórico y arqueológico reafirma el realismo de los pasajes en Judea y Galilea.
-                        </div>
-                    </div>
-                    <div class="fan-column col-4">
-                        <button class="btn-close-extended">✕ Cerrar</button>
-                        <h3>Apologética</h3>
-                        <p class="focus-text">Defensa de la fe basada en la caridad y la verdad eclesial.</p>
-                        <div class="extended-text">
-                            <strong>Defensa de la Encarnación:</strong><br><br>
-                            Contra los ataques antiguos y modernos que buscan separar al 'Jesús histórico' del 'Cristo de la fe', la apologética católica demuestra que el diseño de los Evangelios es textualmente fiel y lógicamente coherente con las profecías del Antiguo Testamento.
-                        </div>
-                    </div>
-                </div> 
-                </div>
+        <main class="content-area" style="padding: 20px">
+          <div
+            class="testamentos-grid"
+            style="
+              display: grid;
+              grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+              gap: 20px;
+              margin-top: 20px;
+            "
+          >
+            <!-- Cajita Antiguo Testamento -->
+            <div
+              class="testamento-card"
+              onclick="abrirAntiguoTestamento()"
+              style="
+                border: 2px solid var(--gold);
+                border-radius: 12px;
+                padding: 25px;
+                text-align: center;
+                cursor: pointer;
+                background: var(--card-bg, rgba(255, 255, 255, 0.05));
+                transition: transform 0.2s;
+              "
+            >
+              <h3 style="color: var(--gold); margin: 0">
+                📜 Antiguo Testamento
+              </h3>
+              <p style="font-size: 0.9rem; color: #ccc; margin-top: 8px">
+                Explorar los libros históricos, poéticos y proféticos.
+              </p>
             </div>
+
+            <!-- Cajita Nuevo Testamento -->
+            <div
+              class="testamento-card"
+              onclick="abrirNuevoTestamento()"
+              style="
+                border: 2px solid var(--gold);
+                border-radius: 12px;
+                padding: 25px;
+                text-align: center;
+                cursor: pointer;
+                background: var(--card-bg, rgba(255, 255, 255, 0.05));
+                transition: transform 0.2s;
+              "
+            >
+              <h3 style="color: var(--gold); margin: 0">✨ Nuevo Testamento</h3>
+              <p style="font-size: 0.9rem; color: #ccc; margin-top: 8px">
+                Explorar los Evangelios, cartas y Apocalipsis.
+              </p>
+            </div>
+          </div>
+        </main>
+      </div>
+    </div>
+
+    <!-- PANTALLA 3B: ANTIGUO TESTAMENTO (Lista de Libros) -->
+    <div id="screen-antiguo" class="screen">
+      <div class="app-container">
+        <header class="main-header">
+          <button class="btn-back" onclick="changeScreen(screenBibleDetail)">
+            ←
+          </button>
+          <h1 class="brand-title">Antiguo Testamento</h1>
+          <p class="header-statement">Seleccioná un libro para continuar.</p>
+        </header>
+
+        <main class="content-area" style="padding: 20px">
+          <div
+            id="lista-libros-antiguo"
+            style="
+              display: grid;
+              grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
+              gap: 12px;
+              margin-top: 10px;
+            "
+          ></div>
+        </main>
+      </div>
+    </div>
+
+    <!-- PANTALLA 3C: CAPÍTULOS Y LECTURA DEL LIBRO -->
+    <div id="screen-capitulos" class="screen">
+      <div class="app-container">
+        <header class="main-header">
+          <button class="btn-back" onclick="changeScreen(screenAntiguo)">
+            ←
+          </button>
+          <h1 class="brand-title" id="titulo-libro-seleccionado">Libro</h1>
+          <p class="header-statement">Seleccioná un capítulo para leer.</p>
+        </header>
+
+        <main class="content-area" style="padding: 20px">
+          <div
+            id="grid-capitulos"
+            style="
+              display: flex;
+              flex-wrap: wrap;
+              gap: 8px;
+              margin-bottom: 20px;
+            "
+          ></div>
+          <div
+            id="texto-versiculos-area"
+            style="
+              text-align: justify;
+              line-height: 1.7;
+              color: #e0e0e0;
+              margin-top: 15px;
+            "
+          >
+            <em style="color: var(--gold)"
+              >Elegí un capítulo arriba para comenzar la lectura.</em
+            >
+          </div>
+        </main>
+      </div>
+    </div>
+
+    <!-- PANTALLA 3D: LECTURA DE CAPÍTULO DEDICADA -->
+    <div id="screen-lectura" class="screen">
+      <div class="app-container">
+        <header class="main-header">
+          <button class="btn-back" onclick="changeScreen(screenCapitulos)">
+            ←
+          </button>
+          <h1 class="brand-title" id="titulo-lectura-completa">Lectura</h1>
+          <p class="header-statement">Texto de las Escrituras</p>
+        </header>
+
+        <main class="content-area" style="padding: 20px; overflow-y: auto">
+          <div
+            id="texto-lectura-final"
+            style="
+              text-align: justify;
+              line-height: 1.8;
+              color: #e0e0e0;
+              font-size: 1.05rem;
+            "
+          ></div>
+        </main>
+      </div>
+    </div>
+
+    <!-- PANTALLA 3E: NUEVO TESTAMENTO (Lista de Libros) -->
+    <div id="screen-nuevo" class="screen">
+      <div class="app-container">
+        <header class="main-header">
+          <button class="btn-back" onclick="changeScreen(screenBibleDetail)">
+            ←
+          </button>
+          <h1 class="brand-title">Nuevo Testamento</h1>
+          <p class="header-statement">Seleccioná un libro para continuar.</p>
+        </header>
+
+        <main class="content-area" style="padding: 20px">
+          <div
+            id="lista-libros-nuevo"
+            style="
+              display: grid;
+              grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
+              gap: 12px;
+              margin-top: 10px;
+            "
+          ></div>
+        </main>
+      </div>
+    </div>
+
+    <!-- Panel en Abanico Tradicional abajo -->
+    <div id="study-card" class="study-card-panel hidden">
+      <div class="panel-handle"></div>
+      <div class="columns-container">
+        <div class="fan-column col-1">
+          <button class="btn-close-extended">✕ Cerrar</button>
+          <h3>Raíces y Filología</h3>
+          <p class="focus-text">
+            Análisis del texto original (griego/arameo). Ej: LOGOS y Sárx.
+          </p>
+          <div class="extended-text">
+            <strong>Estudio Profundo del término LOGOS:</strong><br /><br />
+            En el griego clásico, 'Logos' no es solo una palabra hablada, sino
+            el principio ordenador del universo. San Juan rompe la historia al
+            decir que este Principio Universal se hizo 'Sárx' (carne frágil,
+            mortal). No es una apariencia, es una asunción real de nuestra
+            naturaleza humana.
+          </div>
         </div>
+        <div class="fan-column col-2">
+          <button class="btn-close-extended">✕ Cerrar</button>
+          <h3>Sucesión Apostólica</h3>
+          <p class="focus-text">
+            El misterio de la Iglesia y la continuidad de la misión.
+          </p>
+          <div class="extended-text">
+            <strong>Tradición Eclesial Viva:</strong><br /><br />
+            Desde San Ignacio de Antioquía hasta el magisterio actual, la
+            Iglesia custodia que la transmisión del Verbo encarnado no sufra
+            alteraciones. Los Apóstoles vieron la Gloria del Padre y esa misma
+            experiencia se transmite en la sucesión ininterrumpida de los
+            obispos.
+          </div>
+        </div>
+        <div class="fan-column col-3">
+          <button class="btn-close-extended">✕ Cerrar</button>
+          <h3>Contexto Histórico</h3>
+          <p class="focus-text">
+            Evidencia externa y auxiliar (Flavio Josefo, Tácito).
+          </p>
+          <div class="extended-text">
+            <strong>Datación y Entorno:</strong><br /><br />
+            El Evangelio de Juan se consolida hacia finales del siglo I en
+            Éfeso. Frente a las primeras desviaciones doctrinales que negaban la
+            carne de Cristo, el contexto histórico y arqueológico reafirma el
+            realismo de los pasajes en Judea y Galilea.
+          </div>
+        </div>
+        <div class="fan-column col-4">
+          <button class="btn-close-extended">✕ Cerrar</button>
+          <h3>Apologética</h3>
+          <p class="focus-text">
+            Defensa de la fe basada en la caridad y la verdad eclesial.
+          </p>
+          <div class="extended-text">
+            <strong>Defensa de la Encarnación:</strong><br /><br />
+            Contra los ataques antiguos y modernos que buscan separar al 'Jesús
+            histórico' del 'Cristo de la fe', la apologética católica demuestra
+            que el diseño de los Evangelios es textualmente fiel y lógicamente
+            coherente con las profecías del Antiguo Testamento.
+          </div>
+        </div>
+      </div>
     </div>
 
     <!-- PANTALLA 3B: DETALLE DEL CAMINO PERSONAL -->
     <div id="screen-path-detail" class="screen">
-        <div class="app-container path-theme">
-            <header class="main-header">
-                <button class="btn-back" onclick="changeScreen(screenMain)">⬅</button>
-                <h1 class="brand-title text-gold">CAMINEMOS CON JESÚS</h1>
-                <p class="header-statement text-italic">Tu encuentro hoy con Él en tu ruta diaria.</p>
-            </header>
+      <div class="app-container path-theme">
+        <header class="main-header">
+          <button class="btn-back" onclick="changeScreen(screenMain)">⬅</button>
+          <h1 class="brand-title text-gold">CAMINEMOS CON JESÚS</h1>
+          <p class="header-statement text-italic">
+            Tu encuentro hoy con Él en tu ruta diaria.
+          </p>
+        </header>
 
-            <main class="path-content">
-                <div class="path-card">
-                    <h3>1. Mi Punto de Partida</h3>
-                    <p class="question">¿Cómo está tu corazón hoy?</p>
-                    <div class="mood-buttons">
-                        <span class="btn-emaus"onclick="redirigir('bendecido')">Bendecido</span>
-                        <span class="btn-emaus"onclick="redirigir('optimo')">Óptimo</span>
-                        <span class="btn-emaus"onclick="redirigir('feliz')">Feliz</span>
-                        <span class="btn-emaus"onclick="redirigir('cansado')">Cansado</span>
-                        <span class="btn-emaus"onclick="redirigir('triste')">Triste</span>
-                        <span class="btn-emaus"onclick="redirigir('ansioso')">Ansioso</span>
-                        <span class="btn-emaus"onclick="redirigir('preocupado')">Preocupado</span>
-                        <span class="btn-emaus"onclick="redirigir('temeroso')">Temeroso</span>
-                    </div>
-                </div>
-    <!-- Necesitaras en js tener los nombres screen optimo, screen bendecido etc -->
-                <div class="path-card">
-                    <h3>2. La Ruta de Emaús</h3>
-                    <p class="reflection"><em>"Reconocer Su Presencia en los pequeños detalles del día, como el calor de la familia, es el primer paso para ver Su magia."</em></p>
-                   <!-- Botón para iniciar el recorrido de Emaús --> 
-                    <button class="btn-emaus"onclick="changeScreen(screenEmaus)">Inicia tu recorrido</button>
-                <!-- Nuevo boton para la escalera de la promesa -->
-                 <button class="btn-emaus"onclick="changeScreen(screenPromesa)" style="margin-left: 10px;">La Escalera de la Promesa</button>
-                </div>
-            </main>
-        </div>
+        <main class="path-content">
+          <div class="path-card">
+            <h3>1. Mi Punto de Partida</h3>
+            <p class="question">¿Cómo está tu corazón hoy?</p>
+            <div class="mood-buttons">
+              <span class="btn-emaus" onclick="redirigir('bendecido')"
+                >Bendecido</span
+              >
+              <span class="btn-emaus" onclick="redirigir('optimo')"
+                >Óptimo</span
+              >
+              <span class="btn-emaus" onclick="redirigir('feliz')">Feliz</span>
+              <span class="btn-emaus" onclick="redirigir('cansado')"
+                >Cansado</span
+              >
+              <span class="btn-emaus" onclick="redirigir('triste')"
+                >Triste</span
+              >
+              <span class="btn-emaus" onclick="redirigir('ansioso')"
+                >Ansioso</span
+              >
+              <span class="btn-emaus" onclick="redirigir('preocupado')"
+                >Preocupado</span
+              >
+              <span class="btn-emaus" onclick="redirigir('temeroso')"
+                >Temeroso</span
+              >
+            </div>
+          </div>
+
+          <div class="path-card">
+            <h3>2. La Ruta de Emaús</h3>
+            <!-- Ajuste doctrinal: cambio de "su magia" por "su gracia" o "su providencia" -->
+            <p class="reflection">
+              <em
+                >"Reconocer Su presencia en los pequeños detalles del día, como
+                el calor de la familia, es el primer paso para contemplar Su
+                gracia obrando en nosotros."</em
+              >
+            </p>
+            <button class="btn-emaus" onclick="changeScreen(screenEmaus)">
+              Inicia tu recorrido
+            </button>
+            <button
+              class="btn-emaus"
+              onclick="changeScreen(screenPromesa)"
+              style="margin-left: 10px"
+            >
+              La Escalera de la Promesa
+            </button>
+          </div>
+        </main>
+      </div>
     </div>
+
     <!-- Pantallas de Estado en el camino de Emaus -->
     <div id="screen-optimo" class="screen">
-    <button class="btn-back-path">⬅</button>
-        <h2>Pantalla: Óptimo</h2>
-
-    <p id="cita-optimo" style="color: #d4af37; font-weight: bold;"></p>
-    <br>
-    <p>El evangelio del día nos lleva a reflexionar en nuestro interior, es un mensaje de Dios, que resuena en las fibras mas profundas de nuestro ser, como propuesta personal 
-       para que podamos seguir adelante en nuestro camino de fe y de amor, con la certeza de que Dios nos acompaña en cada momento de nuestra vida.
-       Pidamos a Dios con confiaza que nos lleve a la santidad y que su luz se refleje en nosotros hacia los demas, Amen.
-    </p>
-    
-</div>
-
-<div id="screen-cansado" class="screen">
-    <button class="btn-back-path">⬅</button>
-    <h2>Pantalla: Cansado</h2>
-    <p id="cita-cansado" style="color: #d4af37; font-weight: bold;"></p>
-    <p>En los momentos de cansancio, recordemos que Dios nos da la fuerza para seguir adelante. Su presencia nos acompaña y nos renueva, incluso cuando sentimos que nuestras fuerzas flaquean. Confiemos en Él y busquemos descanso en Su amor.</p>
-    
-
-</div>
-
-<div id="screen-bendecido" class="screen">
-    <button class="btn-back-path">⬅</button>
-    <h2>Pantalla: Bendecido</h2>
-
-    <p id="cita-bendecido" style="color: #d4af37; font-weight: bold;"></p>
-    <p>Estamos bendecidos por las bendiciones que Dios nos ha dado, y por la gracia que nos permite seguir adelante en nuestro camino de fe. Su amor nos sostiene en los momentos difíciles y nos llena de esperanza en los momentos de alegría.</p>
-    
-</div>
-<div id="screen-feliz" class="screen">
-    <button class="btn-back-path">⬅</button>
-    <h2>Pantalla: Feliz</h2>
-
-   <p id="cita-feliz" style="color: #d4af37; font-weight: bold;"></p>
-    <p>En los momentos de felicidad, recordemos que Dios nos da la fuerza para seguir adelante. Su presencia nos acompaña y nos renueva, incluso cuando sentimos que nuestras fuerzas flaquean. Confiemos en Él y busquemos descanso en Su amor.</p>
-    <p>El que todo lo llena en todos es quien nos regala estos momentos.</p>
-
-</div>
-<div id="screen-triste" class="screen">
-    <button class="btn-back-path">⬅</button>
-    <h2>Pantalla: Triste</h2>
-    
-    <p id="cita-triste" style="color: #d4af37; font-weight: bold;"></p>
-    <p>En los momentos de tristeza, recordemos que Dios nos da la fuerza para seguir adelante. Su presencia nos acompaña y nos renueva, incluso cuando sentimos que nuestras fuerzas flaquean. Confiemos en Él y busquemos descanso en Su amor.</p>
-    
-
-</div>
-<div id="screen-temeroso" class="screen">
-    <button class="btn-back-path">⬅</button>
-    <h2>Pantalla: Temeroso</h2>
-    
-    <p id="cita-temeroso" style="color: #d4af37; font-weight: bold;"></p>
-    <p>En los momentos de temor, recordemos que Dios nos da la fuerza para seguir adelante. Su presencia nos acompaña y nos renueva, incluso cuando sentimos que nuestras fuerzas flaquean. Confiemos en Él y busquemos descanso en Su amor.</p>
-    
-
-</div>
-<div id="screen-ansioso" class="screen">
-    <button class="btn-back-path">⬅</button>
-    <h2>Pantalla: Ansioso</h2>
-
-    <p id="cita-ansioso" style="color: #d4af37; font-weight: bold;"></p>
-    <p>En los momentos de ansiedad, recordemos que Dios nos da la fuerza para seguir adelante. Su presencia nos acompaña y nos renueva, incluso cuando sentimos que nuestras fuerzas flaquean. Confiemos en Él y busquemos descanso en Su amor.</p>
-    
-
-</div>
-<div id="screen-preocupado" class="screen">
-    <button class="btn-back-path">⬅</button>
-    <h2>Pantalla: Preocupado</h2>
-
-    <p id="cita-preocupado" style="color: #d4af37; font-weight: bold;"></p>
-    
-    <p>En los momentos de preocupación, recordemos que Dios nos da la fuerza para seguir adelante. Su presencia nos acompaña y nos renueva, incluso cuando sentimos que nuestras fuerzas flaquean. Confiemos en Él y busquemos descanso en Su amor.</p>
-    
-
-</div>
-<!-- PANTALLA NUEVA DEL CAMINO DE EMAÚS -->
-<div id="screen-emaus" class="screen header">
-    <button class="btn-back-path">⬅</button>
-    <div class="header-emaus">
-        <h1 class="brand-title text-gold">El camino de Emaus</h1>
-        <p class="header-statement text-italic">Este camino es tu camino personal con Jesús. De lo oculto a lo infinito.
+      <button class="btn-back-path">⬅</button>
+      <h2>Pantalla: Óptimo</h2>
+      <p id="cita-optimo" style="color: #d4af37; font-weight: bold"></p>
+      <br />
+      <p>
+        El Evangelio del día nos invita a una profunda introspección, resonando
+        en lo íntimo de nuestro ser como llamada a caminar con fidelidad y amor,
+        seguros de la compañía constante de Dios. Con confianza filial, pidamos
+        la gracia de la santidad para que Su luz se refleje en nuestras obras
+        hacia el prójimo. Amén.
+      </p>
     </div>
-    
-    <!-- Contenedor del Camino de Huellas Progresivas -->
-    <div class="path-journey-container">
-        
-        <!-- Huella 1: El Inicio (Pequeñita) -->
+
+    <div id="screen-cansado" class="screen">
+      <button class="btn-back-path">⬅</button>
+      <h2>Pantalla: Cansado</h2>
+      <p id="cita-cansado" style="color: #d4af37; font-weight: bold"></p>
+      <p>
+        En los momentos de fatiga, recordemos la promesa del Señor: Él fortalece
+        al cansado y acrecienta las fuerzas del desvalido. Confiemos en Su
+        providencia y acojamos el reposo que Él mismo nos ofrece en Su amor.
+      </p>
+    </div>
+
+    <div id="screen-bendecido" class="screen">
+      <button class="btn-back-path">⬅</button>
+      <h2>Pantalla: Bendecido</h2>
+      <p id="cita-bendecido" style="color: #d4af37; font-weight: bold"></p>
+      <p>
+        Reconocemos con gratitud los dones derramados por la bondad divina y la
+        gracia que nos sostiene en el camino de la fe. Su amor misericordioso
+        nos conforta en la prueba y renueva nuestra esperanza cotidiana.
+      </p>
+    </div>
+
+    <div id="screen-feliz" class="screen">
+      <button class="btn-back-path">⬅</button>
+      <h2>Pantalla: Feliz</h2>
+      <p id="cita-feliz" style="color: #d4af37; font-weight: bold"></p>
+      <p>
+        En el gozo de estos instantes, bendecimos al Señor, fuente de todo bien.
+        Quien todo lo llena en todos nos concede experimentar anticipos de Su
+        alegría eterna. Custodiemos este gozo en comunión de gracia.
+      </p>
+    </div>
+
+    <div id="screen-triste" class="screen">
+      <button class="btn-back-path">⬅</button>
+      <h2>Pantalla: Triste</h2>
+      <p id="cita-triste" style="color: #d4af37; font-weight: bold"></p>
+      <p>
+        En la hora del dolor y la aflicción, el Señor está cerca de los
+        quebrantados de corazón. Entreguemos nuestra cruz al Padre, sabiendo que
+        ningún sufrimiento es estéril cuando se une al sacrificio redentor de
+        Cristo.
+      </p>
+    </div>
+
+    <div id="screen-temeroso" class="screen">
+      <button class="btn-back-path">⬅</button>
+      <h2>Pantalla: Temeroso</h2>
+      <p id="cita-temeroso" style="color: #d4af37; font-weight: bold"></p>
+      <p>
+        Cuando el temor intente doblegarnos, recordemos la exhortación constante
+        de las Escrituras: "No temáis". La fe en la protección providente de
+        Dios disipa las sombras del miedo y nos devuelve la paz.
+      </p>
+    </div>
+
+    <div id="screen-ansioso" class="screen">
+      <button class="btn-back-path">⬅</button>
+      <h2>Pantalla: Ansioso</h2>
+      <p id="cita-ansioso" style="color: #d4af37; font-weight: bold"></p>
+      <p>
+        Depositemos toda nuestra ansiedad en Aquél que cuida de nosotros con
+        amor de Padre. La oración perseverante y la confianza en Su tiempo
+        perfecto aquietan el espíritu y devuelven la serenidad.
+      </p>
+    </div>
+
+    <div id="screen-preocupado" class="screen">
+      <button class="btn-back-path">⬅</button>
+      <h2>Pantalla: Preocupado</h2>
+      <p id="cita-preocupado" style="color: #d4af37; font-weight: bold"></p>
+      <p>
+        Ante las cargas de la vida diaria, escuchemos la invitación del Maestro
+        a buscar primeramente el Reino de Dios y su justicia, confiando en que
+        lo demás nos será dado por añadidura.
+      </p>
+    </div>
+
+    <!-- PANTALLA NUEVA DEL CAMINO DE EMAÚS -->
+    <div id="screen-emaus" class="screen header">
+      <button class="btn-back-path">⬅</button>
+      <div class="header-emaus">
+        <h1 class="brand-title text-gold">El Camino de Emaús</h1>
+        <p class="header-statement text-italic">
+          Este camino es tu itinerario personal con Cristo. De la oscuridad a la
+          luz de la fe.
+        </p>
+      </div>
+
+      <div class="path-journey-container">
         <div class="huella-paso huella-1" onclick="abrirPasoEmaus(1)">
-            <span class="icono-huella">👣</span>
-            <span class="etiqueta-paso">1. El inicio en lo oculto</span>
+          <span class="icono-huella">👣</span>
+          <span class="etiqueta-paso">1. El inicio en lo oculto</span>
         </div>
-
-        <!-- Huella 2: El Camino Cotidiano (Mediana) -->
         <div class="huella-paso huella-2" onclick="abrirPasoEmaus(2)">
-            <span class="icono-huella">👣</span>
-            <span class="etiqueta-paso">2. El caminar diario</span>
+          <span class="icono-huella">👣</span>
+          <span class="etiqueta-paso">2. El caminar diario</span>
         </div>
-
-        <!-- Huella 3: El Reconocimiento (Grande) -->
         <div class="huella-paso huella-3" onclick="abrirPasoEmaus(3)">
-            <span class="icono-huella">👣</span>
-            <span class="etiqueta-paso">3. La fracción del pan</span>
+          <span class="icono-huella">👣</span>
+          <span class="etiqueta-paso">3. La fracción del pan</span>
         </div>
-
-        <!-- Huella 4: La Plenitud / Infinito (Gigante y luminosa) -->
         <div class="huella-paso huella-4" onclick="abrirPasoEmaus(4)">
-            <span class="icono-huella">👣✨</span>
-            <span class="etiqueta-paso">4. Hacia el Infinito</span>
+          <span class="icono-huella">👣✨</span>
+          <span class="etiqueta-paso">4. Hacia la Plenitud</span>
         </div>
-
+      </div>
     </div>
 
-    <!-- Panel de Contenido Dinámico (Donde se muestra el texto bíblico y la reflexión del paso seleccionado) -->
-    <div id="contenido-paso-emaus" class="path-card hidden">
-        <h3 id="titulo-paso">Selecciona una huella</h3>
-        <p id="texto-biblico-paso" class="scripture-preview">Aquí aparecerá el texto sagrado...</p>
-        <p id="reflexion-paso" class="reflection">Aquí aparecerá la enseñanza o reflexión...</p>
-    </div>
-</div>
-<!-- PANTALLA NUEVA: LA ESCALERA DE LA PROMESA -->
-<div id="screen-promesa" class="screen">
-    
-    <div class="app-container path-theme">
+    <!-- PANTALLA NUEVA: LA ESCALERA DE LA PROMESA -->
+    <div id="screen-promesa" class="screen">
+      <div class="app-container path-theme">
         <header class="main-header">
-            <button class="btn-back-path" onclick="changeScreen(screenPathDetail)">⬅</button>
-            <h1 class="brand-title text-gold">LA ESCALERA DE LA PROMESA</h1>
-            <p class="header-statement text-italic">El hilo conductor de la salvación: desde el principio eterno hasta Pentecostés.</p>
+          <button
+            class="btn-back-path"
+            onclick="changeScreen(screenPathDetail)"
+          >
+            ⬅
+          </button>
+          <h1 class="brand-title text-gold">LA ESCALERA DE LA PROMESA</h1>
+          <p class="header-statement text-italic">
+            El hilo conductor de la Divina Revelación: desde el principio eterno
+            hasta Pentecostés.
+          </p>
         </header>
-    
-    <div class="path-journey-container">
-        <div class="huella-paso" onclick="abrirPeldaño(1)">
+
+        <div class="path-journey-container">
+          <div class="huella-paso" onclick="abrirPeldaño(1)">
             <span class="icono-huella">✨</span>
             <span class="etiqueta-paso">1. El Principio Eterno (Génesis)</span>
-        </div>
-        <div class="huella-paso" onclick="abrirPeldaño(2)">
+          </div>
+          <div class="huella-paso" onclick="abrirPeldaño(2)">
             <span class="icono-huella">🍞</span>
-            <span class="etiqueta-paso">2. La Sombra y el Pan Oculto (Melquisedec)</span>
-        </div>
-        <div class="huella-paso" onclick="abrirPeldaño(3)">
+            <span class="etiqueta-paso"
+              >2. La Sombra y el Pan Oculto (Melquisedec)</span
+            >
+          </div>
+          <div class="huella-paso" onclick="abrirPeldaño(3)">
             <span class="icono-huella">📜</span>
-            <span class="etiqueta-paso">3. La Voz de los Profetas (Isaías)</span>
-        </div>
-        <div class="huella-paso" onclick="abrirPeldaño(4)">
+            <span class="etiqueta-paso"
+              >3. La Voz de los Profetas (Isaías)</span
+            >
+          </div>
+          <div class="huella-paso" onclick="abrirPeldaño(4)">
             <span class="icono-huella">🕊️</span>
-            <span class="etiqueta-paso">4. El Sí que abre el Cielo (La Anunciación)</span>
-        </div>
-        <div class="huella-paso" onclick="abrirPeldaño(5)">
+            <span class="etiqueta-paso"
+              >4. El Fiat que abre el Cielo (La Anunciación)</span
+            >
+          </div>
+          <div class="huella-paso" onclick="abrirPeldaño(5)">
             <span class="icono-huella">⭐</span>
-            <span class="etiqueta-paso">5. La Luz en la Intemperie (El Pesebre)</span>
-        </div>
-        <div class="huella-paso" onclick="abrirPeldaño(6)">
+            <span class="etiqueta-paso"
+              >5. La Luz en la Intemperie (El Pesebre)</span
+            >
+          </div>
+          <div class="huella-paso" onclick="abrirPeldaño(6)">
             <span class="icono-huella">👣</span>
-            <span class="etiqueta-paso">6. Las Huellas del Maestro (Vida Pública)</span>
-        </div>
-        <div class="huella-paso" onclick="abrirPeldaño(7)">
+            <span class="etiqueta-paso"
+              >6. Las Huellas del Maestro (Vida Pública)</span
+            >
+          </div>
+          <div class="huella-paso" onclick="abrirPeldaño(7)">
             <span class="icono-huella">✝️</span>
-            <span class="etiqueta-paso">7. La Victoria sobre la Muerte (Pascua)</span>
-        </div>
-        <div class="huella-paso" onclick="abrirPeldaño(8)">
+            <span class="etiqueta-paso"
+              >7. La Victoria sobre la Muerte (Pascua)</span
+            >
+          </div>
+          <div class="huella-paso" onclick="abrirPeldaño(8)">
             <span class="icono-huella">🔥</span>
-            <span class="etiqueta-paso">8. La Promesa Cumplida (Pentecostés)</span>
+            <span class="etiqueta-paso"
+              >8. La Promesa Cumplida (Pentecostés)</span
+            >
+          </div>
         </div>
-        <!-- Panel de contenido para la Escalera -->
-        <div id="contenido-peldaño" class="path-card hidden" style="max-width: 600px; margin: 20px auto; position:relative;">
-           <button class="btn-close-extended" style="display: block; float: right;" onclick="cerrarPeldaño()">✕ Cerrar</button>
-        <h3 id="titulo-peldaño">Selecciona un peldaño</h3>
-        <p id="texto-peldaño" class="reflection">Aquí aparecerá el contenido histórico y doctrinal...</p>
-        </div>
+      </div>
     </div>
- </div>
- <!-- Panel de contenido para la Escalera -->
-        <div id="contenido-peldaño" class="path-card hidden" style="max-width: 600px; margin: 20px auto; position:relative;">
-            <button class="btn-close-extended" style="display: block; float: right;" onclick="cerrarPeldaño()">✕ Cerrar</button>
-            <h3 id="titulo-peldaño">Selecciona un peldaño</h3>
-            <p id="texto-peldaño" class="reflection">Aquí aparecerá el contenido histórico y doctrinal...</p>
-        </div>
-    </div> <!-- Cierra path-journey-container -->
-</div> <!-- Cierra screen-promesa -->
 
-<!-- Pantalla de Búsqueda -->
-<section id="screen-buscar" class="screen">
-    <div class="search-container">
+    <!-- PANTALLA DEDICADA: DETALLE DE UN PELDAÑO DE LA PROMESA -->
+    <div id="screen-peldaño-detalle" class="screen">
+      <div class="app-container path-theme">
+        <header class="main-header">
+          <!-- Botón para volver a la Escalera de la Promesa -->
+          <button class="btn-back-path" onclick="changeScreen(screenPromesa)">
+            ⬅
+          </button>
+          <h1 class="brand-title text-gold" id="titulo-peldaño-detalle">
+            Peldaño
+          </h1>
+          <p class="header-statement text-italic">
+            Itinerario de la Revelación
+          </p>
+        </header>
+
+        <main class="content-area" style="padding: 20px; overflow-y: auto">
+          <!-- Contenedor para la imagen histórica / arqueológica -->
+          <div
+            id="contenedor-imagen-peldaño"
+            style="text-align: center; margin-bottom: 20px"
+          >
+            <!-- Acá inyectarás la imagen de los lugares donde anduvo Jesús -->
+          </div>
+
+          <!-- Texto doctrinal, histórico y bíblico -->
+          <div
+            id="texto-peldaño-detalle"
+            style="
+              text-align: justify;
+              line-height: 1.8;
+              color: #e0e0e0;
+              font-size: 1rem;
+            "
+          >
+            <!-- El contenido detallado se cargará por JavaScript -->
+          </div>
+        </main>
+      </div>
+    </div>
+    <!-- PANTALLA DEDICADA: DETALLE DE UN PASO DE EMAÚS -->
+    <div id="screen-emaus-detalle" class="screen">
+      <div class="app-container path-theme">
+        <header class="main-header">
+          <button class="btn-back-path" onclick="changeScreen(screenEmaus)">
+            ⬅
+          </button>
+          <h1 class="brand-title text-gold" id="titulo-emaus-detalle">
+            Paso de Emaús
+          </h1>
+          <p class="header-statement text-italic">De la oscuridad a la luz</p>
+        </header>
+
+        <main class="content-area" style="padding: 20px; overflow-y: auto">
+          <!-- Contenedor para imagen o ilustración del paso -->
+          <div
+            id="contenedor-imagen-emaus"
+            style="text-align: center; margin-bottom: 20px"
+          ></div>
+
+          <!-- Texto bíblico y reflexión -->
+          <div
+            id="texto-emaus-detalle"
+            style="
+              text-align: justify;
+              line-height: 1.8;
+              color: #e0e0e0;
+              font-size: 1rem;
+            "
+          ></div>
+        </main>
+      </div>
+    </div>
+
+    <!-- Pantalla de Búsqueda -->
+    <section id="screen-buscar" class="screen">
+      <div class="search-container">
         <h2>Buscar en las Escrituras</h2>
         <div class="search-box-wrapper">
-            <input type="text" id="input-busqueda" placeholder="Escribe una palabra o versículo (ej: Juan 3:16)...">
-            <button id="btn-ejecutar-busqueda">Buscar</button>
+          <input
+            type="text"
+            id="input-busqueda"
+            placeholder="Escribe una palabra o versículo (ej: Juan 3:16)..."
+          />
+          <button id="btn-ejecutar-busqueda">Buscar</button>
         </div>
         <div id="resultados-busqueda" class="results-list">
-            <!-- Acá van a aparecer los resultados encontrados -->
-            <p class="placeholder-text">Los resultados de tu búsqueda aparecerán aquí.</p>
+          <p class="placeholder-text">
+            Los resultados de tu búsqueda aparecerán aquí.
+          </p>
         </div>
-        <!-- Dentro de tu pantalla de búsqueda, donde muestras los resultados -->
-        <div id="resultados-busqueda"></div>
-
-<!-- Contenedor para la paginación del buscador -->
-        <div id="contenedor-paginacion-busqueda" style="display: flex; justify-content: space-between; align-items: center; margin-top: 20px; padding: 10px 0;">
-    <!-- Aquí el JavaScript inyectará dinámicamente los botones de Anterior / Siguiente y el total -->
-        </div>
-    </div>
-</section>
-
+        <!-- Contenedor para la paginación del buscador -->
+        <div
+          id="contenedor-paginacion-busqueda"
+          style="
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 20px;
+            padding: 10px 0;
+          "
+        ></div>
+      </div>
+    </section>
 
     <script src="ariel.js"></script>
-</body>
+  </body>
 </html>

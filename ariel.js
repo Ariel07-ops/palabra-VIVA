@@ -18,7 +18,7 @@ const screenAntiguo = document.getElementById("screen-antiguo");
 const screenCapitulos = document.getElementById("screen-capitulos");
 const screenLectura = document.getElementById("screen-lectura");
 const screenNuevo = document.getElementById("screen-nuevo");
-
+const screenPeldañoDetalle = document.getElementById("screen-peldaño-detalle");
 // 2. CAPTURAR BOTONES INTERACTIVOS (Sin el btnEnter que ya no existe)
 const btnGotoBible = document.getElementById("btn-goto-bible");
 const btnGotoPath = document.getElementById("btn-goto-path");
@@ -28,6 +28,7 @@ const menuLateral = document.getElementById("menu-lateral");
 const textParagraph = document.querySelector(".interact-paragraph");
 const studyCard = document.getElementById("study-card");
 const panelHandle = document.querySelector(".panel-handle");
+const screenEmausDetalle = document.getElementById("screen-emaus-detalle");
 
 // --- FUNCIÓN AUXILIAR PARA CAMBIAR DE PANTALLA ---
 function changeScreen(screenToShow) {
@@ -52,6 +53,8 @@ function changeScreen(screenToShow) {
     screenCapitulos,
     screenLectura,
     screenNuevo,
+    screenPeldañoDetalle,
+    screenEmausDetalle,
   ].forEach((screen) => {
     if (screen) {
       screen.classList.remove("active");
@@ -444,6 +447,13 @@ document
         .replace(/[óöòôõ]/g, "o")
         .replace(/[úüùû]/g, "u")
         .replace(/ñ/g, "n");
+
+    // Dividimos la búsqueda en palabras individuales, descartando palabras muy cortas (como "de", "el", "a") para afinar la puntería
+    const palabrasBusqueda = limpiarTexto(inputOriginal)
+      .split(/\s+/)
+      .filter((p) => p.length > 2);
+
+    // Si el usuario escribió puras palabras cortas, usamos el texto completo limpio
     const terminoBusqueda = limpiarTexto(inputOriginal);
 
     contenedorResultados.innerHTML = `<p class="placeholder-text">Buscando en las Escrituras...</p>`;
@@ -458,10 +468,20 @@ document
           const textoLimpio = limpiarTexto(item.text || "");
           const libroLimpio = limpiarTexto(item.book_name || "");
 
-          if (
+          // Verificamos si contiene la frase completa O si contiene las palabras clave principales
+          const coincideFraseCompleta =
             textoLimpio.includes(terminoBusqueda) ||
-            libroLimpio.includes(terminoBusqueda)
-          ) {
+            libroLimpio.includes(terminoBusqueda);
+
+          // Coincidencia inteligente: si al menos la mitad de las palabras clave están en el versículo
+          const palabrasCoincidentes = palabrasBusqueda.filter((palabra) =>
+            textoLimpio.includes(palabra),
+          );
+          const coincidePalabrasClave =
+            palabrasBusqueda.length > 0 &&
+            palabrasCoincidentes.length >= Math.min(palabrasBusqueda.length, 3);
+
+          if (coincideFraseCompleta || coincidePalabrasClave) {
             encontrados.push({
               referencia: `${item.book_name} ${item.chapter}:${item.verse} (${datos.metadata?.translation || "Biblia"})`,
               texto: item.text,
@@ -469,7 +489,6 @@ document
           }
         });
       }
-
       if (datos.estados_liturgicos) {
         Object.entries(datos.estados_liturgicos).forEach(([estado, info]) => {
           const textoEstado = limpiarTexto(info.texto || "");
@@ -860,4 +879,124 @@ function renderizarVersiculosCapitulo(nombreLibro, numCapitulo, versosLibro) {
 
   const mainArea = screenLectura.querySelector(".content-area");
   if (mainArea) mainArea.scrollTop = 0;
+}
+function abrirPeldaño(numero) {
+  // Definición de los textos, títulos e imágenes para cada peldaño
+  const peldañosData = {
+    1: {
+      titulo: "1. El Principio Eterno (Génesis)",
+      imagen: "", // Acá podés poner la ruta de tu imagen más adelante, ej: "img/genesis.jpg"
+      texto:
+        "Desde el principio, antes de la fundación del mundo, el Verbo ya existía en Dios. En el relato de la creación del Génesis contemplamos el designio amoroso del Padre, donde el hombre es creado a imagen y semejanza...",
+    },
+    2: {
+      titulo: "2. La Sombra y el Pan Oculto (Melquisedec)",
+      imagen: "",
+      texto:
+        "La figura misteriosa de Melquisedec, rey de Salem y sacerdote del Dios Altísimo, ofrece pan y vino prefigurando el sacrificio eucarístico perfecto que Cristo instituirá en la Última Cena...",
+    },
+    3: {
+      titulo: "3. La Voz de los Profetas (Isaías)",
+      imagen: "",
+      texto:
+        "A través de los siglos, la voz de los profetas mantuvo encendida la esperanza del pueblo. Isaías anticipa de manera luminosa al Servidor Doliente y al Emmanuel, Dios con nosotros...",
+    },
+    4: {
+      titulo: "4. El Fiat que abre el Cielo (La Anunciación)",
+      imagen: "",
+      texto:
+        "El 'Sí' humilde y total de la Virgen María desata el nudo de la desobediencia antigua. En su seno virginal, el Verbo se hace carne y habita entre nosotros.",
+    },
+    5: {
+      titulo: "5. La Luz en la Intemperie (El Pesebre)",
+      imagen: "",
+      texto:
+        "En la humildad de Belén, la luz bruelve en las tinieblas. Dios se hace frágil y pequeño para que ningún ser humano tenga miedo de acercarse a su Creador.",
+    },
+    6: {
+      titulo: "6. Las Huellas del Maestro (Vida Pública)",
+      imagen: "",
+      texto:
+        "Durante su vida pública, Jesús recorre los caminos de Galilea y Judea enseñando con autoridad, sanando a los enfermos y revelando el rostro misericordioso del Padre.",
+    },
+    7: {
+      titulo: "7. La Victoria sobre la Muerte (Pascua)",
+      imagen: "",
+      texto:
+        "A través de la Cruz y la gloriosa Resurrección, Cristo vence al pecado y a la muerte. El sepulcro vacío es la prueba definitiva de que la vida eterna nos ha sido abierta.",
+    },
+    8: {
+      titulo: "8. La Promesa Cumplida (Pentecostés)",
+      imagen: "",
+      texto:
+        "Con la efusión del Espíritu Santo sobre la Iglesia naciente, la promesa se consuma. Los Apóstoles salen a anunciar la Buena Nueva con valentía, guiados por el Paráclito hasta los confines de la tierra.",
+    },
+  };
+
+  const datos = peldañosData[numero];
+  if (!datos) return;
+
+  // Inyectar el título
+  document.getElementById("titulo-peldaño-detalle").innerText = datos.titulo;
+
+  // Inyectar la imagen (si la hay) o limpiar el espacio
+  const contenedorImg = document.getElementById("contenedor-imagen-peldaño");
+  if (datos.imagen) {
+    contenedorImg.innerHTML = `<img src="${datos.imagen}" alt="${datos.titulo}" style="max-width: 100%; height: auto; border-radius: 12px; border: 2px solid var(--gold);">`;
+  } else {
+    contenedorImg.innerHTML = ""; // Por ahora queda vacío hasta que sumemos las imágenes
+  }
+
+  // Inyectar el texto teológico/histórico
+  document.getElementById("texto-peldaño-detalle").innerHTML = datos.texto;
+
+  // Cambiar a la pantalla dedicada usando tu función existente (asegurate de pasarle el elemento o la variable de la pantalla según cómo lo manejes)
+  const pantallaDetalle = document.getElementById("screen-peldaño-detalle");
+  if (typeof changeScreen === "function") {
+    changeScreen(pantallaDetalle);
+  }
+}
+function abrirPasoEmaus(numero) {
+  const pasosEmausData = {
+    1: {
+      titulo: "1. El inicio en lo oculto",
+      imagen: "",
+      texto:
+        "Los discípulos caminan hacia Emaús con el rostro sombrío y el corazón cargado de desilusión. Jesús mismo se acerca y camina con ellos, pero sus ojos estaban retenidos para que no le reconocieran. Así camina muchas veces el Señor a nuestro lado en medio de nuestras tristezas cotidianas.",
+    },
+    2: {
+      titulo: "2. El caminar diario",
+      imagen: "",
+      texto:
+        "Mientras van de camino, Él les explica las Escrituras comenzando por Moisés y todos los profetas. El calor de su palabra va encendiendo lentamente el fuego en sus corazones cansados, enseñándonos que la oración y la lectura meditada de la Palabra son el sustento del peregrino.",
+    },
+    3: {
+      titulo: "3. La fracción del pan",
+      imagen: "",
+      texto:
+        "Al llegar a la aldea, lo imitan a quedarse y, sentado a la mesa, toma el pan, pronuncia la bendición, lo parte y se lo da. En este gesto supremo se abren sus ojos y lo reconocen. Es el misterio de la Eucaristía, centro y cumbre de nuestra vida cristiana.",
+    },
+    4: {
+      titulo: "4. Hacia la Plenitud",
+      imagen: "",
+      texto:
+        "Recobrada la luz y la esperanza, se levantan al instante y regresan a Jerusalén para anunciar la Buena Nueva a los hermanos: '¡El Señor ha resucitado verdaderamente!'. El camino que comenzó en la tristeza culmina en el testimonio y en la alegría desbordante del Resucitado.",
+    },
+  };
+
+  const datos = pasosEmausData[numero];
+  if (!datos) return;
+
+  document.getElementById("titulo-emaus-detalle").innerText = datos.titulo;
+
+  const contenedorImg = document.getElementById("contenedor-imagen-emaus");
+  if (datos.imagen) {
+    contenedorImg.innerHTML = `<img src="${datos.imagen}" alt="${datos.titulo}" style="max-width: 100%; height: auto; border-radius: 12px; border: 2px solid var(--gold);">`;
+  } else {
+    contenedorImg.innerHTML = "";
+  }
+
+  document.getElementById("texto-emaus-detalle").innerHTML = datos.texto;
+
+  changeScreen(screenEmausDetalle);
 }

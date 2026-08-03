@@ -93,7 +93,433 @@ body.light-mode .testamento-card p {
   font-family: serif;
 }
 
-/* Se elimina la regla de .top-navbar en light-mode para que conserve su diseño original */
+.nav-center {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex: 1;
+  justify-content: center;
+}
+
+.nav-brand-icon,
+.sidebar-brand-icon {
+  width: 36px;
+  height: 36px;
+  max-width: 36px;
+  border-radius: 50%;
+  border: 2px solid var(--gold);
+  object-fit: cover;
+  box-shadow: 0 0 6px rgba(212, 175, 55, 0.4);
+}
+
+.nav-title {
+  font-family: var(--font-roman);
+  font-size: 1.35rem;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  background: linear-gradient(180deg, #fceea7 0%, #d4af37 50%, #aa7c11 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  filter: drop-shadow(0px 1px 2px rgba(0, 0, 0, 0.9));
+}
+
+.nav-icon-btn {
+  background: transparent;
+  border: none;
+  color: #d4af37;
+  font-size: 1.4rem;
+  cursor: pointer;
+  padding: 5px;
+  transition: color 0.2s ease;
+}
+
+body.light-mode .nav-icon-btn {
+  color: #d4af37 !important; /* Mantiene el color dorado clásico en la barra incluso en modo claro */
+}
+
+.nav-icon-btn:hover {
+  color: #fceea7;
+}
+
+/* Menú Lateral (Sidebar) */
+.sidebar-menu {
+  position: fixed;
+  top: 0;
+  margin-top: 0;
+  left: -280px;
+  width: 220px;
+  height: 100%;
+  background-color: #000000;
+  border-right: 2px solid #d4af37;
+  transition: left 0.35s ease-in-out;
+  z-index: 2000;
+  padding-top: 0px;
+  box-shadow: 5px 0px 15px rgba(0, 0, 0, 0.5);
+}
+
+.sidebar-menu.active {
+  left: 0;
+}
+
+.sidebar-menu ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.sidebar-menu li a {
+  padding: 16px 22px;
+  color: #f4f4f4;
+  text-decoration: none;
+  font-size: 1.05rem;
+  border-bottom: 1px solid rgba(212, 175, 55, 0.15);
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  transition:
+    background-color 0.2s,
+    color 0.2s;
+}
+
+.sidebar-menu li a:hover {
+  background-color: rgba(212, 175, 55, 0.12);
+  color: #d4af37;
+}
+
+.sidebar-title {
+  font-family: var(--font-roman);
+  color: #d4af37;
+  font-size: 1.05rem;
+  font-weight: bold;
+}
+
+/* ==========================================
+   3. SISTEMA DE PANTALLAS Y SPLASH
+   ========================================== */
+.screen {
+  position: fixed;
+  top: 65px;
+  left: 0;
+  width: 100%;
+  height: calc(100vh - 65px);
+  display: none;
+  background-color: var(--bg-dark);
+  z-index: 10;
+  overflow-y: auto;
+  padding-top: 10px;
+}
+
+.screen.active {
+  display: block;
+}
+
+#screen-splash {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: #000;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+  overflow: hidden;
+}
+
+#screen-splash img {
+  max-width: 100%;
+  max-height: 90vh;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  animation: pulsoZoom 4s ease-in-out infinite;
+}
+
+@keyframes pulsoZoom {
+  0%,
+  100% {
+    filter: brightness(1);
+    transform: scale(1);
+  }
+  50% {
+    filter: brightness(1.2);
+    transform: scale(1.03);
+  }
+}
+
+/* ==========================================
+   4. PANTALLA PARTIDA (SPLIT CONTAINER)
+   ========================================== */
+.split-container {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+}
+
+.split-block {
+  flex: 1;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: transform 0.5s;
+  overflow: hidden;
+}
+
+.block-top {
+  border-bottom: 2px solid var(--gold);
+  background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.9));
+}
+
+.block-bottom {
+  background: linear-gradient(rgba(0, 0, 0, 0.9), rgba(0, 0, 0, 0.7));
+}
+
+.block-overlay {
+  text-align: center;
+  padding: 20px;
+  z-index: 2;
+}
+
+.split-block h2 {
+  font-family: var(--font-roman);
+  color: var(--gold);
+  letter-spacing: 3px;
+  font-size: 1.6rem;
+  margin-bottom: 10px;
+}
+
+.split-block p {
+  font-size: 0.9rem;
+  color: #aaa;
+  font-style: italic;
+}
+
+.split-block:hover {
+  filter: brightness(1.3);
+}
+
+/* ==========================================
+   5. CONTENEDORES, TARJETAS Y PANELES
+   ========================================== */
+.app-container,
+.card,
+.path-card,
+.study-card-panel,
+.fan-column,
+#contenido-peldaño {
+  background-color: var(--bg-panel);
+  color: var(--text-light);
+  border: 1px solid rgba(212, 175, 55, 0.2);
+  border-radius: 12px;
+}
+
+body.light-mode .app-container,
+body.light-mode .card,
+body.light-mode .path-card,
+body.light-mode .study-card-panel,
+body.light-mode .fan-column,
+body.light-mode #contenido-peldaño {
+  background-color: #e8e4dc !important;
+  color: #2b2b2b !important;
+  border-color: #b39353 !important;
+}
+
+.main-header {
+  text-align: center;
+  border-bottom: 1px solid rgba(212, 175, 55, 0.2);
+  padding-bottom: 15px;
+  margin-bottom: 25px;
+}
+
+.brand-title {
+  font-family: var(--font-roman);
+  color: var(--gold);
+  letter-spacing: 4px;
+  font-size: 1.8rem;
+}
+
+.btn-back,
+.btn-back-path,
+.btn-volver {
+  background: rgba(212, 175, 55, 0.1);
+  border: 2px solid rgba(212, 175, 55, 0.3);
+  color: #d4af37;
+  font-size: 1.5rem;
+  width: 45px;
+  height: 45px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  margin-bottom: 15px;
+  transition: all 0.3s;
+}
+
+.btn-back:hover,
+.btn-back-path:hover,
+.btn-volver:hover {
+  background: rgba(212, 175, 55, 0.2);
+  border-color: var(--gold);
+  color: var(--gold);
+}
+
+.text-gold {
+  color: var(--gold);
+}
+
+/* ==========================================
+   6. GRILLA DE CAPÍTULOS SIMÉTRICA (5 COLUMNAS)
+   ========================================== */
+.grid-capitulos,
+.capitulos-container,
+#grid-capitulos {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  width: 100%;
+  max-width: 480px;
+  margin: 0 auto 20px auto;
+  padding: 15px;
+  box-sizing: border-box;
+  justify-content: flex-start;
+}
+
+.btn-capitulo,
+.capitulo-card,
+#grid-capitulos .btn-capitulo {
+  flex: 0 0 calc(20% - 7px) !important; /* Fuerza exactamente 5 columnas por renglón */
+  aspect-ratio: 1 !important; /* Cuadrados perfectos */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(212, 175, 55, 0.08);
+  border: 1px solid rgba(212, 175, 55, 0.4);
+  color: var(--gold-light);
+  font-size: 1.1rem;
+  font-weight: bold;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  box-sizing: border-box;
+}
+
+.btn-capitulo:hover,
+.capitulo-card:hover {
+  background: var(--gold);
+  color: #000;
+  transform: scale(1.05);
+}
+
+.texto-ayuda-capitulos,
+.help-text-capitulos {
+  width: 100%;
+  text-align: center;
+  margin-top: 15px;
+  color: #aaa;
+  font-style: italic;
+  font-size: 0.9rem;
+}
+
+/* ==========================================
+   1. VARIABLES DE DISEÑO Y CONFIGURACIÓN BASE
+   ========================================== */
+:root {
+  --bg-dark: #000000;
+  --bg-panel: #121212;
+  --gold: #d4af37;
+  --gold-light: #f8edc1;
+  --text-light: #e0e0e0;
+  --font-serif: "Lora", Georgia, serif;
+  --font-roman: "Cinzel", serif;
+
+  /* Variables de Tema Noche (Por defecto) */
+  --bg-color: #121212;
+  --text-color: #f3e5ab;
+  --card-bg: rgba(255, 255, 255, 0.05);
+  --border-color: rgba(212, 175, 55, 0.3);
+}
+
+/* --- TEMA CLARO (Modo Luminoso) --- */
+body.light-mode {
+  --bg-dark: #fcfbfa;
+  --bg-panel: #e8e4dc;
+  --bg-color: #fcfbfa !important;
+  --text-color: #2c2c2c !important;
+  --text-light: #2c2c2c !important;
+  --border-color: #b39353;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  overflow: hidden; /* Saca la scrollbar global principal */
+}
+
+body {
+  padding-top: 65px; /* Empuja todo el contenido para que la barra superior clásica no tape nada */
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  font-family: var(--font-serif);
+  transition:
+    background-color 0.3s ease,
+    color 0.3s ease;
+}
+
+/* Forzar colores de textos principales en modo claro */
+body.light-mode p,
+body.light-mode span,
+body.light-mode h1,
+body.light-mode h2,
+body.light-mode h3,
+body.light-mode .split-block p,
+body.light-mode .header-statement,
+body.light-mode .reflection,
+body.light-mode .focus-text {
+  color: #2c2c2c !important;
+}
+
+/* Forzar subtítulos claros explícitamente en modo noche para que no queden grises */
+.split-block p,
+.testamento-card p {
+  color: #d1d1d1;
+}
+body.light-mode .split-block p,
+body.light-mode .testamento-card p {
+  color: #4a4a4a !important;
+}
+
+/* ==========================================
+   2. BARRA DE NAVEGACIÓN Y MENÚ LATERAL
+   ========================================== */
+.top-navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1000;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 65px;
+  padding: 0 15px;
+  background-color: #0b0c10; /* Color oscuro original inalterable */
+  border-bottom: 2px solid #d4af37; /* Borde dorado clásico */
+  font-family: serif;
+}
 
 .nav-center {
   display: flex;
@@ -431,31 +857,53 @@ body.light-mode #contenido-peldaño {
 /* ==========================================
    7. PANEL INFERIOR Y ESTUDIO (ABANICO)
    ========================================== */
-.study-card-panel {
-  position: fixed;
-  bottom: 0;
-  left: 0;
-  width: 100%;
-  height: 50vh;
-  border-top: 4px solid var(--gold);
-  border-radius: 15px 15px 0 0;
-  padding: 10px;
-  transform: translateY(0);
-  transition: transform 0.4s ease-out;
-  z-index: 100;
+/* ==========================================
+   7. PANEL INFERIOR Y ESTUDIO (ABANICO)
+   ========================================== */
+
+/* Por defecto en toda la aplicación el panel no se muestra */
+#study-card {
+  display: none !important;
 }
 
-.study-card-panel.hidden {
-  transform: translateY(calc(100% - 25px));
+/* Conectamos los cables: se muestra fijo abajo cuando la pantalla de lectura está activa */
+#screen-lectura.active ~ #study-card,
+#screen-lectura.active #study-card,
+body:has(#screen-lectura.active) #study-card {
+  display: block !important;
+  position: fixed !important;
+  bottom: -15px !important;
+  left: 0 !important;
+  width: 100% !important;
+  height: 50vh !important;
+  z-index: 100 !important;
+  background-color: var(--bg-panel);
+  border-top: 4px solid var(--gold);
+  border-radius: 15px 15px 0 0;
+  padding: 6px;
+  box-sizing: border-box;
+  transform: translateY();
+  transition: transform 0.4s ease-out;
+}
+
+/* Estado contraído mediante el tirador */
+#study-card.hidden {
+  transform: translateY(calc(100% - 35px)) !important;
 }
 
 .panel-handle {
-  width: 40px;
-  height: 4px;
-  background-color: #333;
-  border-radius: 2px;
+  width: 50px;
+  height: 5px;
+  background-color: var(--gold);
+  border-radius: 3px;
   margin: 0 auto 15px auto;
   cursor: pointer;
+  opacity: 0.8;
+  transition: opacity 0.2s;
+}
+
+.panel-handle:hover {
+  opacity: 1;
 }
 
 .columns-container {
@@ -463,15 +911,447 @@ body.light-mode #contenido-peldaño {
   grid-template-columns: repeat(2, 1fr);
   grid-template-rows: repeat(2, 1fr);
   gap: 8px;
+  height: calc(100% - 25px);
 }
 
 .fan-column {
-  padding: 20px;
+  padding: 15px;
   border-radius: 10px;
   background-color: rgba(255, 255, 255, 0.03);
   border-top: 4px solid #333;
+  overflow-y: auto;
 }
 
+.col-1 {
+  border-top-color: #800080;
+}
+.col-2 {
+  border-top-color: #b8860b;
+}
+.col-3 {
+  border-top-color: #e6d7b2;
+}
+.col-4 {
+  border-top-color: #e34234;
+}
+
+.fan-column h3 {
+  font-family: var(--font-roman);
+  font-size: 0.85rem;
+  margin-bottom: 5px;
+  color: var(--gold);
+}
+
+.focus-text {
+  font-size: 0.85rem;
+  color: #999;
+  line-height: 1.4;
+}
+
+/* Estilos de expansión para leer el contenido profundo */
+.fan-column.expanded-full {
+  grid-column: span 2;
+  position: fixed !important;
+  top: auto !important; /* Desactiva el tope superior antiguo */
+  bottom: 0 !important; /* Arranca desde abajo del todo */
+  left: 0 !important;
+  right: 0 !important;
+  width: 100% !important;
+  height: 48vh !important; /* Ocupa exactamente casi la mitad de la pantalla */
+  max-height: 48vh !important;
+  z-index: 1500 !important;
+  background-color: var(--bg-panel);
+  border-top: 3px solid var(--gold);
+  border-radius: 18px 18px 0 0;
+  padding: 20px 20px 25px 20px !important;
+  overflow-y: auto !important;
+  box-shadow: 0 -10px 30px rgba(0, 0, 0, 0.8);
+  animation: deslizarArriba 0.3s ease-out;
+}
+
+/* Animación suave para que suba como un panel deslizable */
+@keyframes deslizarArriba {
+  from {
+    transform: translateY(100%);
+  }
+  to {
+    transform: translateY(0);
+  }
+}
+
+/* Botón de cerrar bien cómodo flotando arriba a la derecha dentro de su panel */
+.fan-column.expanded-full .btn-close-extended {
+  display: block !important;
+  position: sticky !important;
+  top: 0 !important;
+  float: right !important;
+  z-index: 10 !important;
+  background: var(--gold);
+  color: #000;
+  border: none;
+  padding: 5px 12px;
+  font-family: var(--font-roman);
+  font-size: 0.75rem;
+  font-weight: bold;
+  cursor: pointer;
+  border-radius: 4px;
+  margin-bottom: 8px;
+}
+.extended-text {
+  display: none;
+  margin-top: 10px;
+  font-size: 0.95rem;
+  line-height: 1.6;
+  color: #ccc;
+  text-align: justify;
+  border-top: 1px solid rgba(212, 175, 55, 0.2);
+  padding-top: 10px;
+}
+
+.fan-column.expanded-full .extended-text {
+  display: block;
+}
+
+.btn-close-extended {
+  display: none;
+  background: var(--gold);
+  color: black;
+  border: none;
+  padding: 5px 12px;
+  font-family: var(--font-roman);
+  font-size: 0.75rem;
+  cursor: pointer;
+  float: right;
+  border-radius: 3px;
+  margin-bottom: 10px;
+}
+
+.fan-column.expanded-full .btn-close-extended {
+  display: block;
+}
+
+/* Adaptación para modo claro en el abanico */
+body.light-mode #study-card {
+  background: #f4f1ea !important;
+}
+
+body.light-mode .fan-column {
+  background: #ffffff !important;
+  border-color: rgba(180, 140, 40, 0.4) !important;
+}
+
+body.light-mode .fan-column p,
+body.light-mode .fan-column span,
+body.light-mode .extended-text {
+  color: #2c2c2c !important;
+}
+
+body.light-mode .fan-column.expanded-full {
+  background-color: #f4f1ea !important;
+}
+/* ==========================================
+   COLORES DE LAS LÍNEAS SUPERIORES (FAN COLUMNS)
+   ========================================== */
+
+/* Colores en Modo Oscuro (por defecto) */
+.fan-column.col-1 {
+  border-top-color: #800080 !important;
+}
+.fan-column.col-2 {
+  border-top-color: #b8860b !important;
+}
+.fan-column.col-3 {
+  border-top-color: #e6d7b2 !important;
+}
+.fan-column.col-4 {
+  border-top-color: #e34234 !important;
+}
+
+/* Colores en Modo Claro */
+body.light-mode .fan-column.col-1 {
+  border-top-color: #800080 !important;
+}
+body.light-mode .fan-column.col-2 {
+  border-top-color: #b8860b !important;
+}
+body.light-mode .fan-column.col-3 {
+  border-top-color: #a38a54 !important;
+}
+body.light-mode .fan-column.col-4 {
+  border-top-color: #e34234 !important;
+}
+/* ==========================================
+   8. COMPONENTES Y BOTONES DE ESTADO (EMAÚS)
+   ========================================== */
+.mood-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 12px;
+  margin: 15px 0;
+}
+
+.btn-emaus {
+  flex: 1 1 120px;
+  max-width: 250px;
+  display: inline-block;
+  background-color: transparent;
+  color: #d4af37;
+  border: 1px solid #d4af37;
+  padding: 10px 15px;
+  border-radius: 20px;
+  font-size: 0.9rem;
+  cursor: pointer;
+  text-align: center;
+  transition: all 0.3s ease;
+}
+
+.btn-emaus:hover {
+  background-color: #d4af37;
+  color: #121212;
+}
+
+.path-journey-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+  padding: 20px 0;
+}
+
+.huella-paso {
+  width: 100%;
+  max-width: 500px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 15px;
+  background: rgba(212, 175, 55, 0.1);
+  border: 1px solid rgba(212, 175, 55, 0.3);
+  border-radius: 50px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  padding: 12px 25px;
+  box-sizing: border-box;
+  margin: 0 auto;
+}
+
+.huella-paso:hover {
+  background: rgba(212, 175, 55, 0.25);
+  transform: scale(1.05);
+}
+
+.huella-paso .icono-huella {
+  font-size: 1.2rem;
+}
+
+.huella-paso .etiqueta-paso {
+  text-align: left;
+  font-size: 0.95rem;
+}
+
+/* ==========================================
+   9. MEDIA QUERIES (ADAPTACIÓN PC / TABLET)
+   ========================================== */
+@media (min-width: 600px) {
+  .columns-container {
+    grid-template-columns: repeat(4, 1fr);
+    height: 100%;
+    align-items: stretch;
+  }
+
+  .split-container {
+    flex-direction: row;
+  }
+
+  .block-top {
+    border-bottom: none;
+    border-right: 2px solid var(--gold);
+  }
+
+  .main-header {
+    position: relative;
+  }
+
+  .btn-back,
+  .btn-back-path {
+    position: absolute;
+    left: 20px;
+    top: 10px;
+  }
+}
+
+@media (min-width: 800px) {
+  .fan-column.expanded-full {
+    grid-column: span 4;
+    max-width: 900px;
+    width: 90%;
+    margin: 0 auto;
+    top: 55%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    right: auto;
+    height: auto;
+    max-height: 75vh;
+    display: flex;
+    flex-direction: column;
+    overflow-y: auto;
+    padding-top: 50px;
+  }
+
+  .fan-column.expanded-full .btn-close-extended {
+    position: absolute;
+    top: 15px;
+    right: 20px;
+    z-index: 10;
+  }
+}
+
+/* --- Correcciones de Modo Claro y Búsqueda --- */
+body.light-mode #screen-main {
+  background-color: #fcfbfa !important;
+}
+
+body.light-mode #screen-main .split-block.block-top,
+body.light-mode #screen-main .split-block.block-bottom {
+  background: #e8e4dc !important;
+  border-color: #b39353 !important;
+}
+
+body.light-mode #screen-main .split-block h2 {
+  color: #2c2c2c !important;
+}
+
+body.light-mode #screen-main .split-block p {
+  color: #555555 !important;
+}
+
+body.light-mode .btn-capitulo *,
+body.light-mode .capitulo-card *,
+body.light-mode #grid-capitulos .btn-capitulo * {
+  color: #2c2c2c !important;
+}
+
+body.light-mode .btn-capitulo:hover *,
+body.light-mode .capitulo-card:hover * {
+  color: #fcfbfa !important;
+}
+
+body.light-mode .grid-capitulos *,
+body.light-mode .capitulos-container *,
+body.light-mode #grid-capitulos *,
+body.light-mode .texto-ayuda-capitulos,
+body.light-mode .help-text-capitulos,
+body.light-mode h2,
+body.light-mode h3 {
+  color: #1a1a1a !important;
+}
+
+body.light-mode .testamento-card,
+body.light-mode [class*="testamento"],
+body.light-mode [class*="card"] {
+  color: #1a1a1a !important;
+  background-color: #f4f0ea !important;
+  border-color: #b39353 !important;
+}
+
+body.light-mode .testamento-card *,
+body.light-mode [class*="testamento"] *,
+body.light-mode [class*="card"] * {
+  color: #1a1a1a !important;
+}
+
+body.light-mode .libro-btn,
+body.light-mode .btn-libro,
+body.light-mode [onclick*="abrirLibro"],
+body.light-mode [onclick*="cargarLibro"],
+body.light-mode [class*="libro"] {
+  color: #1a1a1a !important;
+  background-color: #f4f0ea !important;
+  border-color: #b39353 !important;
+}
+
+body.light-mode [onclick*="abrirLibro"] *,
+body.light-mode [onclick*="cargarLibro"] * {
+  color: #1a1a1a !important;
+}
+
+body.light-mode #titulo-libro-seleccionado {
+  color: #1a1a1a !important;
+}
+
+body.light-mode #lista-libros-antiguo > div,
+body.light-mode #lista-libros-nuevo > div {
+  color: #1a1a1a !important;
+  background-color: #f4f0ea !important;
+  border-color: #b39353 !important;
+}
+
+#screen-buscar {
+  padding-bottom: 50px !important;
+}
+
+#screen-buscar h2 {
+  color: var(--gold) !important;
+  margin-left: 12px !important;
+}
+
+#screen-buscar input[type="text"] {
+  padding: 6px 10px !important;
+  font-size: 0.95rem !important;
+}
+
+#screen-buscar button,
+#screen-buscar input[type="submit"] {
+  padding: 6px 14px !important;
+  font-size: 0.95rem !important;
+  border-radius: 4px !important;
+  border: 1px solid var(--gold) !important;
+  background-color: var(--gold) !important;
+  color: #1a1a1a !important;
+  font-weight: 600 !important;
+  cursor: pointer !important;
+}
+
+#screen-buscar .search-box-wrapper {
+  margin-left: 15px !important;
+  margin-right: 15px !important;
+}
+
+#resultados-busqueda {
+  margin-bottom: 30px !important;
+}
+
+#resultados-busqueda .search-result-item {
+  margin-top: 15px !important;
+  margin-left: 12px !important;
+  margin-right: 12px !important;
+}
+
+body.light-mode .search-result-item {
+  color: #1a1a1a !important;
+}
+
+body:not(.light-mode) .search-result-item {
+  color: #f4f0ea !important;
+}
+
+body.light-mode .search-result-item *,
+body.light-mode div[style*="space-between"] * {
+  color: #1a1a1a !important;
+}
+
+body:not(.light-mode) .search-result-item *,
+body:not(.light-mode) div[style*="space-between"] * {
+  color: #f4f0ea !important;
+}
+
+.search-result-item h3,
+.search-result-item h4,
+.search-result-item strong,
+.search-result-item [style*="color"] {
+  color: var(--gold) !important;
+}
 .col-1 {
   border-top-color: #800080;
 }
@@ -497,6 +1377,23 @@ body.light-mode #contenido-peldaño {
   line-height: 1.4;
 }
 
+/* Estilos del abanico en Modo Claro */
+body.light-mode #study-card {
+  background: #f4f1ea !important;
+}
+
+body.light-mode .fan-column,
+body.light-mode .study-card-item {
+  background: #ffffff !important;
+  border-color: rgba(180, 140, 40, 0.4) !important;
+  color: #2c2c2c !important;
+}
+
+body.light-mode .fan-column p,
+body.light-mode .fan-column span {
+  color: #4a4a4a !important;
+}
+
 /* Expansión de tarjetas del abanico */
 .fan-column.expanded-full {
   grid-column: span 2;
@@ -515,6 +1412,10 @@ body.light-mode #contenido-peldaño {
   box-shadow: 0 -10px 30px rgba(0, 0, 0, 0.8);
 }
 
+body.light-mode .fan-column.expanded-full {
+  background-color: #f4f1ea !important;
+}
+
 .extended-text {
   display: none;
   margin-top: 10px;
@@ -524,6 +1425,10 @@ body.light-mode #contenido-peldaño {
   text-align: justify;
   border-top: 1px solid rgba(212, 175, 55, 0.2);
   padding-top: 10px;
+}
+
+body.light-mode .extended-text {
+  color: #2c2c2c !important;
 }
 
 .fan-column.expanded-full .extended-text {
@@ -674,7 +1579,8 @@ body.light-mode #contenido-peldaño {
     z-index: 10;
   }
 }
-/* --- Corrección para Pantalla Principal (screen-main) en Modo Claro --- */
+
+/* --- Correcciones de Modo Claro y Búsqueda --- */
 body.light-mode #screen-main {
   background-color: #fcfbfa !important;
 }
@@ -692,19 +1598,18 @@ body.light-mode #screen-main .split-block h2 {
 body.light-mode #screen-main .split-block p {
   color: #555555 !important;
 }
-/* --- Forzar color oscuro en los números y textos de los botones de capítulos en Modo Claro --- */
+
 body.light-mode .btn-capitulo *,
 body.light-mode .capitulo-card *,
 body.light-mode #grid-capitulos .btn-capitulo * {
   color: #2c2c2c !important;
 }
 
-/* Y aseguramos que al pasar el mouse por encima en modo claro se inviertan bien */
 body.light-mode .btn-capitulo:hover *,
 body.light-mode .capitulo-card:hover * {
   color: #fcfbfa !important;
 }
-/* --- Martillo final para forzar textos y títulos de la Biblia a negro en modo claro --- */
+
 body.light-mode .grid-capitulos *,
 body.light-mode .capitulos-container *,
 body.light-mode #grid-capitulos *,
@@ -714,7 +1619,7 @@ body.light-mode h2,
 body.light-mode h3 {
   color: #1a1a1a !important;
 }
-/* --- Forzar el color de los botones/tarjetas de libros de los Testamentos en Modo Claro --- */
+
 body.light-mode .testamento-card,
 body.light-mode [class*="testamento"],
 body.light-mode [class*="card"] {
@@ -728,13 +1633,7 @@ body.light-mode [class*="testamento"] *,
 body.light-mode [class*="card"] * {
   color: #1a1a1a !important;
 }
-/* --- Destruir estilos en línea de los botones de libros individuales en Modo Claro --- */
-body.light-mode button[style],
-body.light-mode div[style] {
-  /* Si el elemento está dentro de la grilla de capítulos/libros, lo forzamos */
-}
 
-/* O atacando directamente cualquier selector que tenga texto de libro */
 body.light-mode .libro-btn,
 body.light-mode .btn-libro,
 body.light-mode [onclick*="abrirLibro"],
@@ -749,68 +1648,32 @@ body.light-mode [onclick*="abrirLibro"] *,
 body.light-mode [onclick*="cargarLibro"] * {
   color: #1a1a1a !important;
 }
-/* --- Forzar color oscuro en el título del libro seleccionado por JS --- */
+
 body.light-mode #titulo-libro-seleccionado {
   color: #1a1a1a !important;
 }
-/* --- Forzar color oscuro en los divs de libros inyectados por JS en Modo Claro --- */
-body.light-mode #lista-libros-antiguo div,
-body.light-mode #lista-libros-nuevo div {
-  color: #1a1a1a !important;
-  background-color: #f4f0ea !important;
-  border-color: #b39353 !important;
-}
-/* --- Forzar color y fondo solo en los botones de libros individuales --- */
+
 body.light-mode #lista-libros-antiguo > div,
 body.light-mode #lista-libros-nuevo > div {
   color: #1a1a1a !important;
   background-color: #f4f0ea !important;
   border-color: #b39353 !important;
 }
-/* --- Ajuste seguro para la pantalla de búsqueda --- */
-#screen-buscar h2 {
-  margin-left: 15px !important;
+
+#screen-buscar {
+  padding-bottom: 50px !important;
 }
 
-#screen-buscar .search-box-wrapper {
-  margin-left: 15px !important;
-  margin-right: 15px !important;
-}
-/* --- Color dorado prolijo para el título de búsqueda --- */
 #screen-buscar h2 {
   color: var(--gold) !important;
   margin-left: 12px !important;
 }
-/* --- Ajuste fino de tamaño para el input y estilo para el botón de búsqueda --- */
+
 #screen-buscar input[type="text"] {
   padding: 6px 10px !important;
   font-size: 0.95rem !important;
 }
 
-#screen-buscar button,
-#screen-buscar input[type="submit"] {
-  padding: 6px 12px !important;
-  font-size: 0.95rem !important;
-  border-radius: 4px !important;
-  border: 1px solid var(--gold) !important;
-  background-color: transparent !important;
-  color: var(--gold) !important;
-  cursor: pointer !important;
-}
-/* --- Darle respiro al pie de la pantalla de búsqueda --- */
-#screen-buscar {
-  padding-bottom: 40px !important;
-}
-/* --- Respiro inferior para los resultados de búsqueda --- */
-#screen-buscar {
-  padding-bottom: 50px !important;
-}
-
-#resultados-busqueda {
-  margin-bottom: 30px !important;
-}
-
-/* --- Botón de búsqueda prolijo y firme --- */
 #screen-buscar button,
 #screen-buscar input[type="submit"] {
   padding: 6px 14px !important;
@@ -822,21 +1685,30 @@ body.light-mode #lista-libros-nuevo > div {
   font-weight: 600 !important;
   cursor: pointer !important;
 }
-/* --- Respiro perfecto y prolijo para cada resultado de búsqueda --- */
+
+#screen-buscar .search-box-wrapper {
+  margin-left: 15px !important;
+  margin-right: 15px !important;
+}
+
+#resultados-busqueda {
+  margin-bottom: 30px !important;
+}
+
 #resultados-busqueda .search-result-item {
   margin-top: 15px !important;
   margin-left: 12px !important;
   margin-right: 12px !important;
 }
-/* --- Limpiar el selector anterior de capítulos --- */
-.chapter-header,
-.capitulo-header {
-  display: revert !important;
-  flex-direction: revert !important;
-  align-items: revert !important;
-  text-align: revert !important;
+
+body.light-mode .search-result-item {
+  color: #1a1a1a !important;
 }
-/* --- Color automático de textos según el modo de la app --- */
+
+body:not(.light-mode) .search-result-item {
+  color: #f4f0ea !important;
+}
+
 body.light-mode .search-result-item *,
 body.light-mode div[style*="space-between"] * {
   color: #1a1a1a !important;
@@ -846,27 +1718,22 @@ body:not(.light-mode) .search-result-item *,
 body:not(.light-mode) div[style*="space-between"] * {
   color: #f4f0ea !important;
 }
-/* --- Color de texto general en resultados según el tema --- */
-body.light-mode .search-result-item {
-  color: #1a1a1a !important;
-}
 
-body:not(.light-mode) .search-result-item {
-  color: #f4f0ea !important;
-}
-/* --- Color de texto general en resultados según el tema --- */
-body.light-mode .search-result-item {
-  color: #1a1a1a !important;
-}
-
-body:not(.light-mode) .search-result-item {
-  color: #f4f0ea !important;
-}
-
-/* --- Devolver el dorado original a los títulos y referencias dentro de los resultados --- */
 .search-result-item h3,
 .search-result-item h4,
 .search-result-item strong,
 .search-result-item [style*="color"] {
   color: var(--gold) !important;
+}
+/* Ajuste de legibilidad para los textos y títulos de los peldaños en modo claro */
+body.light-mode #texto-peldaño-detalle,
+body.light-mode #titulo-peldaño-detalle {
+  color: #1a1a1a !important; /* Un tono oscuro profundo para que resalte en fondo claro */
+  font-weight: 700; /* Los deja en negrita */
+}
+/* Ajuste de legibilidad para los textos y títulos de Emaús en modo claro */
+body.light-mode #texto-emaus-detalle,
+body.light-mode #titulo-emaus-detalle {
+  color: #1a1a1a !important; /* Tono oscuro profundo */
+  font-weight: 700; /* Negrita */
 }
