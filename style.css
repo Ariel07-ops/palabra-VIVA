@@ -1,4 +1,6 @@
-/* Variables de Diseño de Alta Gama */
+/* ==========================================
+   1. VARIABLES DE DISEÑO Y CONFIGURACIÓN BASE
+   ========================================== */
 :root {
   --bg-dark: #000000;
   --bg-panel: #121212;
@@ -7,6 +9,22 @@
   --text-light: #e0e0e0;
   --font-serif: "Lora", Georgia, serif;
   --font-roman: "Cinzel", serif;
+
+  /* Variables de Tema Noche (Por defecto) */
+  --bg-color: #121212;
+  --text-color: #f3e5ab;
+  --card-bg: rgba(255, 255, 255, 0.05);
+  --border-color: rgba(212, 175, 55, 0.3);
+}
+
+/* --- TEMA CLARO (Modo Luminoso) --- */
+body.light-mode {
+  --bg-dark: #fcfbfa;
+  --bg-panel: #e8e4dc;
+  --bg-color: #fcfbfa !important;
+  --text-color: #2c2c2c !important;
+  --text-light: #2c2c2c !important;
+  --border-color: #b39353;
 }
 
 * {
@@ -15,87 +33,228 @@
   padding: 0;
 }
 
-* {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-}
-
-/* Y acá le sumamos el margen superior para que la barra no tape nada */
-body {
-  padding-top: 80px; /* Empuja todo el contenido hacia abajo */
-  background-color: #0b0c10;
-  color: #ffffff;
-  font-family: serif;
-}
-
-/* SISTEMA DE PANTALLAS (Manejo de navegación) */
-.screen {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  display: none; /* Ocultas por defecto */
-  background-color: var(--bg-dark);
-  z-index: 10;
-  overflow-y: auto;
-}
-
-.screen.active {
-  display: block; /* Solo la pantalla activa se ve */
-}
 html,
 body {
   margin: 0;
   padding: 0;
-  overflow: hidden; /* <-- ESTA ES LA CLAVE. Saca la scrollbar */
   height: 100%;
+  overflow: hidden; /* Saca la scrollbar global principal */
 }
-/* Hacemos que cada pantalla respete el espacio de la barra superior fija */
-.screen {
+
+body {
+  padding-top: 65px; /* Empuja todo el contenido para que la barra superior clásica no tape nada */
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  font-family: var(--font-serif);
+  transition:
+    background-color 0.3s ease,
+    color 0.3s ease;
+}
+
+/* Forzar colores de textos principales en modo claro */
+body.light-mode p,
+body.light-mode span,
+body.light-mode h1,
+body.light-mode h2,
+body.light-mode h3,
+body.light-mode .split-block p,
+body.light-mode .header-statement,
+body.light-mode .reflection,
+body.light-mode .focus-text {
+  color: #2c2c2c !important;
+}
+
+/* Forzar subtítulos claros explícitamente en modo noche para que no queden grises */
+.split-block p,
+.testamento-card p {
+  color: #d1d1d1;
+}
+body.light-mode .split-block p,
+body.light-mode .testamento-card p {
+  color: #4a4a4a !important;
+}
+
+/* ==========================================
+   2. BARRA DE NAVEGACIÓN Y MENÚ LATERAL
+   ========================================== */
+.top-navbar {
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
+  z-index: 1000;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 65px;
+  padding: 0 15px;
+  background-color: #0b0c10; /* Color oscuro original inalterable */
+  border-bottom: 2px solid #d4af37; /* Borde dorado clásico */
+  font-family: serif;
+}
+
+/* Se elimina la regla de .top-navbar en light-mode para que conserve su diseño original */
+
+.nav-center {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex: 1;
+  justify-content: center;
+}
+
+.nav-brand-icon,
+.sidebar-brand-icon {
+  width: 36px;
+  height: 36px;
+  max-width: 36px;
+  border-radius: 50%;
+  border: 2px solid var(--gold);
+  object-fit: cover;
+  box-shadow: 0 0 6px rgba(212, 175, 55, 0.4);
+}
+
+.nav-title {
+  font-family: var(--font-roman);
+  font-size: 1.35rem;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  background: linear-gradient(180deg, #fceea7 0%, #d4af37 50%, #aa7c11 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  filter: drop-shadow(0px 1px 2px rgba(0, 0, 0, 0.9));
+}
+
+.nav-icon-btn {
+  background: transparent;
+  border: none;
+  color: #d4af37;
+  font-size: 1.4rem;
+  cursor: pointer;
+  padding: 5px;
+  transition: color 0.2s ease;
+}
+
+body.light-mode .nav-icon-btn {
+  color: #d4af37 !important; /* Mantiene el color dorado clásico en la barra incluso en modo claro */
+}
+
+.nav-icon-btn:hover {
+  color: #fceea7;
+}
+
+/* Menú Lateral (Sidebar) */
+.sidebar-menu {
+  position: fixed;
+  top: 0;
+  margin-top: 0;
+  left: -280px;
+  width: 220px;
   height: 100%;
+  background-color: #000000;
+  border-right: 2px solid #d4af37;
+  transition: left 0.35s ease-in-out;
+  z-index: 2000;
+  padding-top: 0px;
+  box-shadow: 5px 0px 15px rgba(0, 0, 0, 0.5);
+}
+
+.sidebar-menu.active {
+  left: 0;
+}
+
+.sidebar-menu ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.sidebar-menu li a {
+  padding: 16px 22px;
+  color: #f4f4f4;
+  text-decoration: none;
+  font-size: 1.05rem;
+  border-bottom: 1px solid rgba(212, 175, 55, 0.15);
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  transition:
+    background-color 0.2s,
+    color 0.2s;
+}
+
+.sidebar-menu li a:hover {
+  background-color: rgba(212, 175, 55, 0.12);
+  color: #d4af37;
+}
+
+.sidebar-title {
+  font-family: var(--font-roman);
+  color: #d4af37;
+  font-size: 1.05rem;
+  font-weight: bold;
+}
+
+/* ==========================================
+   3. SISTEMA DE PANTALLAS Y SPLASH
+   ========================================== */
+.screen {
+  position: fixed;
+  top: 65px;
+  left: 0;
+  width: 100%;
+  height: calc(100vh - 65px);
   display: none;
   background-color: var(--bg-dark);
   z-index: 10;
   overflow-y: auto;
-
-  /* ESTO ES LO QUE FALTABA: Empuja el contenido adentro de la pantalla hacia abajo */
-  padding-top: 75px;
+  padding-top: 10px;
 }
 
 .screen.active {
   display: block;
 }
-/* Pantalla splash que cubre todo */
+
 #screen-splash {
   position: fixed;
   top: 0;
   left: 0;
   width: 100vw;
   height: 100vh;
-  background: #000; /* Fondo negro alrededor */
+  background: #000;
   display: flex;
   justify-content: center;
   align-items: center;
-  z-index: 9999; /* Para que quede arriba de todo hasta que el JS la oculte */
+  z-index: 9999;
   overflow: hidden;
 }
 
-/* La imagen de la cruz y la paloma */
 #screen-splash img {
   max-width: 100%;
   max-height: 90vh;
   width: 100%;
   height: 100%;
-  object-fit: contain; /* Asegura que la imagen se vea entera sin recortarse */
+  object-fit: contain;
+  animation: pulsoZoom 4s ease-in-out infinite;
 }
 
-/* --- PANTALLA 2: DIVISIÓN PRINCIPAL (PANTALLA PARTIDA) --- */
+@keyframes pulsoZoom {
+  0%,
+  100% {
+    filter: brightness(1);
+    transform: scale(1);
+  }
+  50% {
+    filter: brightness(1.2);
+    transform: scale(1.03);
+  }
+}
+
+/* ==========================================
+   4. PANTALLA PARTIDA (SPLIT CONTAINER)
+   ========================================== */
 .split-container {
   display: flex;
   flex-direction: column;
@@ -113,7 +272,6 @@ body {
   overflow: hidden;
 }
 
-/* Línea divisoria elegante */
 .block-top {
   border-bottom: 2px solid var(--gold);
   background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.9));
@@ -147,16 +305,31 @@ body {
   filter: brightness(1.3);
 }
 
-/* --- PANTALLAS DE DETALLE (CONTENEDORES) --- */
-.app-container {
-  display: flex;
-  flex-direction: column;
-  min-height: 100vh;
-  padding: 25px;
-  position: relative;
+/* ==========================================
+   5. CONTENEDORES, TARJETAS Y PANELES
+   ========================================== */
+.app-container,
+.card,
+.path-card,
+.study-card-panel,
+.fan-column,
+#contenido-peldaño {
+  background-color: var(--bg-panel);
+  color: var(--text-light);
+  border: 1px solid rgba(212, 175, 55, 0.2);
+  border-radius: 12px;
 }
 
-/* Botones de volver */
+body.light-mode .app-container,
+body.light-mode .card,
+body.light-mode .path-card,
+body.light-mode .study-card-panel,
+body.light-mode .fan-column,
+body.light-mode #contenido-peldaño {
+  background-color: #e8e4dc !important;
+  color: #2b2b2b !important;
+  border-color: #b39353 !important;
+}
 
 .main-header {
   text-align: center;
@@ -171,8 +344,10 @@ body {
   letter-spacing: 4px;
   font-size: 1.8rem;
 }
+
 .btn-back,
-.btn-back-path {
+.btn-back-path,
+.btn-volver {
   background: rgba(212, 175, 55, 0.1);
   border: 2px solid rgba(212, 175, 55, 0.3);
   color: #d4af37;
@@ -189,2262 +364,509 @@ body {
 }
 
 .btn-back:hover,
-.btn-back-path:hover {
+.btn-back-path:hover,
+.btn-volver:hover {
   background: rgba(212, 175, 55, 0.2);
   border-color: var(--gold);
   color: var(--gold);
 }
+
 .text-gold {
   color: var(--gold);
 }
 
-.header-statement {
-  font-size: 0.85rem;
-  font-style: italic;
-  color: #666;
-  margin-top: 6px;
-}
-
-/* Área Biblia */
-.content-area {
-  flex: 1;
-  display: flex;
-  align-items: flex-start;
-  max-width: 600px;
-  margin: 0 auto;
-  padding-top: 10px;
-}
-
-.interact-paragraph {
-  font-size: 1.25rem;
-  line-height: 1.6;
-  text-align: justify;
-  cursor: pointer;
-}
-
-.drop-cap {
-  font-family: var(--font-roman);
-  font-size: 3.2rem;
-  float: left;
-  line-height: 0.8;
-  margin-right: 8px;
-  color: var(--gold);
-  font-weight: bold;
-}
-
-.version-tag {
-  display: block;
-  text-align: right;
-  margin-top: 15px;
-  color: #555;
-  font-size: 0.8rem;
-}
-
-/* Panel Abanico Abajo */
-.study-card-panel {
-  position: fixed;
-  bottom: 0;
-  left: 0;
-  width: 100%;
-  height: 50vh;
-  background-color: var(--bg-panel);
-  border-top: 4px solid var(--gold);
-  border-radius: 15px 15px 0 0;
-  padding: 1px;
-  transform: translateY(0);
-  transition: transform 0.4s ease-out;
-  z-index: 100;
-}
-
-.study-card-panel.hidden {
-  transform: translateY(calc(100% - 25px)); /*oculta el avanico hacia abajo */
-}
-
-.panel-handle {
-  width: 40px;
-  height: 4px;
-  background-color: #333;
-  border-radius: 2px;
-  margin: 0 auto 15px auto;
-  cursor: pointer;
-}
-
-.columns-container {
-  display: grid;
-  grid-template-columns: repeat(
-    2,
-    1fr
-  ); /* 2x2 para que entre bien en pantallas chicas */
-  grid-template-rows: repeat(2, 1fr);
-  gap: 8px;
-}
-
-.fan-column {
-  padding: 20px;
-  border-radius: 10px;
-  background-color: rgba(255, 255, 255, 0.03);
-  border-top: 4px solid #333;
-}
-.col-1 {
-  border-top-color: #800080;
-}
-.col-2 {
-  border-top-color: #b8860b;
-}
-.col-3 {
-  border-top-color: #e6d7b2;
-}
-.col-4 {
-  border-top-color: #e34234;
-}
-
-.fan-column h3 {
-  font-family: var(--font-roman);
-  font-size: 0.85rem;
-  margin-bottom: 5px;
-}
-.focus-text {
-  font-size: 0.85rem;
-  color: #999;
-  line-height: 1.4;
-}
-/* modificamos la posicion del titulo El camino de Emaus */
-.header-emaus {
-  display: flex;
-  align-items: center;
-  flex-wrap: wrap; /* Permite que el párrafo baje prolijo a la línea siguiente */
-  gap: 15px;
-  margin-bottom: 20px;
-  padding-left: 30px !important; /* Espacio a la izquierda para que el botón de volver no quede pegado al borde */
-  padding-right: 20px !important;
-}
-
-.header-emaus h2 {
-  margin: 0;
-  flex-grow: 1; /* Hace que el título ocupe el espacio disponible */
-}
-
-.header-emaus p {
-  width: 100%; /* Manda el subtítulo/párrafo abajo de todo el encabezado */
-  margin: 5px 0 0 0;
-}
-
-/* --- DETALLE CAMINO (Caminemos con Jesús) --- */
-.path-content {
-  display: flex;
-  flex-direction: column;
-  gap: 20px;
-  max-width: 500px;
-  margin: 0 auto;
-}
-
-.path-card {
-  background-color: var(--bg-panel);
-  border: 1px solid rgba(212, 175, 55, 0.1);
-  padding: 20px;
-  border-radius: 10px;
-}
-
-.path-card h3 {
-  font-family: var(--font-roman);
-  color: var(--gold);
-  font-size: 1.1rem;
-  margin-bottom: 10px;
-}
-
-.question {
-  font-size: 0.95rem;
-  color: #cccccc;
-  margin-bottom: 12px;
-}
-
-.mood-buttons {
-  display: flex;
-  gap: 10px;
-}
-
-.reflection {
-  font-size: 0.95rem;
-  line-height: 1.5;
-  color: #bbb;
-}
-
-/* Animación del destello */
-@keyframes pulseGlow {
-  0% {
-    transform: scale(0.9);
-    opacity: 0.5;
-  }
-  100% {
-    transform: scale(1.1);
-    opacity: 0.8;
-  }
-}
-/* --- PANTALA CAMINIEMOS CON JESUS  (El camino de emaus opcion OPTIMO, AGRADECIDO, CANSADO,) --- */
-/* --- CAMINIEMOS CON JESUS  (opcion OPTIMO) --- */
-#screen-optimo h2 {
-  font-size: 26px;
-  text-align: center;
-  margin-bottom: 20px;
-  color: #d4af37;
-  padding: 15px 25px;
-}
-
-#screen-optimo p {
-  font-size: 16px;
-  text-align: justify;
-  line-height: 1.6;
-  color: #ccc;
-  margin-bottom: 15px;
-  padding: 15px 25px;
-}
-#screen-temeroso h2 {
-  font-size: 26px;
-  text-align: center;
-  margin-bottom: 20px;
-  color: #d4af37;
-  padding: 15px 25px;
-}
-#screen-temeroso p {
-  font-size: 16px;
-  text-align: justify;
-  line-height: 1.6;
-  color: #ccc;
-  margin-bottom: 15px;
-  padding: 15px 25px;
-}
-#screen-preocupado h2 {
-  font-size: 26px;
-  text-align: center;
-  margin-bottom: 20px;
-  color: #d4af37;
-  padding: 15px 25px;
-}
-#screen-preocupado p {
-  font-size: 16px;
-  text-align: justify;
-  line-height: 1.6;
-  color: #ccc;
-  margin-bottom: 15px;
-  padding: 15px 25px;
-}
-
-#screen-feliz h2 {
-  font-size: 26px;
-  text-align: center;
-  margin-bottom: 20px;
-  color: #d4af37;
-  padding: 15px 25px;
-}
-#screen-feliz p {
-  font-size: 16px;
-  text-align: justify;
-  line-height: 1.6;
-  color: #ccc;
-  margin-bottom: 15px;
-  padding: 15px 25px;
-}
-
-#screen-ansioso h2 {
-  font-size: 26px;
-  text-align: center;
-  margin-bottom: 20px;
-  color: #d4af37;
-  padding: 15px 25px;
-}
-#screen-ansioso p {
-  font-size: 16px;
-  text-align: justify;
-  line-height: 1.6;
-  color: #ccc;
-  margin-bottom: 15px;
-  padding: 15px 25px;
-}
-
-#screen-triste h2 {
-  font-size: 26px;
-  text-align: center;
-  margin-bottom: 20px;
-  color: #d4af37;
-  padding: 15px 25px;
-}
-#screen-triste p {
-  font-size: 16px;
-  text-align: justify;
-  line-height: 1.6;
-  color: #ccc;
-  margin-bottom: 15px;
-  padding: 15px 25px;
-}
-/* --- CAMINIEMOS CON JESUS  (opcion agradecido) --- */
-#screen-bendecido h2 {
-  font-size: 26px;
-  text-align: center;
-  margin-bottom: 20px;
-  color: #d4af37;
-  padding: 15px 25px;
-}
-#screen-bendecido p {
-  font-size: 16px;
-  text-align: justify;
-  line-height: 1.6;
-  color: #ccc;
-  margin-bottom: 15px;
-  padding: 15px 25px;
-}
-/* --- CAMINIEMOS CON JESUS  (opcion cansado) --- */
-#screen-cansado h2 {
-  font-size: 26px;
-  text-align: center;
-  margin-bottom: 20px;
-  color: #d4af37;
-  padding: 15px 25px;
-}
-#screen-cansado p {
-  font-size: 16px;
-  text-align: justify;
-  line-height: 1.6;
-  color: #ccc;
-  margin-bottom: 15px;
-  padding: 15px 25px;
-}
-.card {
-  background-color: #121212;
-  border: 1px solid #2a2a2a;
-  border-radius: 12px;
-  padding: 20px;
-  margin-bottom: 20px;
-  color: #e0e0e0;
-}
-/* Botón elegante para iniciar el recorrido de Emaús */
-.btn-emaus {
-  display: inline-block;
-  margin-top: 15px;
-  background-color: transparent;
-  color: #d4af37; /* Tono dorado elegante */
-  border: 1px solid #d4af37;
-  padding: 10px 20px;
-  border-radius: 20px;
-  font-size: 0.9rem;
-  cursor: pointer;
-  transition: all 0.3s ease;
-}
-
-.btn-emaus:hover {
-  background-color: #d4af37;
-  color: #121212;
-}
-/* Contenedor del camino */
-.path-journey-container {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 20px;
-  padding: 20px 0;
-}
-
-/* Estilo base de las huellas */
-.huella-paso {
-  display: flex;
-  align-items: center;
-  gap: 15px;
-  background: rgba(212, 175, 55, 0.1); /* Toque dorado suave */
-  border: 1px solid rgba(212, 175, 55, 0.3);
-  border-radius: 50px;
-  cursor: pointer;
-  transition: all 0.3s ease;
-  padding: 10px 20px;
-}
-
-.huella-paso:hover {
-  background: rgba(212, 175, 55, 0.25);
-  transform: scale(1.05);
-}
-
-/* Crecimiento progresivo de las huellas (de cero a infinito) */
-.huella-1 {
-  font-size: 0.85rem;
-  width: 60%;
-}
-.huella-2 {
-  font-size: 1rem;
-  width: 70%;
-}
-.huella-3 {
-  font-size: 1.15rem;
-  width: 80%;
-}
-.huella-4 {
-  font-size: 1.3rem;
-  width: 90%;
-  background: linear-gradient(
-    135deg,
-    rgba(212, 175, 55, 0.3),
-    rgba(255, 215, 0, 0.5)
-  );
-  border-color: #d4af37;
-  box-shadow: 0 0 15px rgba(212, 175, 55, 0.4);
-}
-
-/* Utilidad para ocultar elementos temporalmente */
-.hidden {
-  display: none;
-}
-/* Control de vistas */
-.vista {
-  display: none;
-}
-
-.vista.active {
-  display: block;
-}
-
-/* Estilo para el botón de volver (coincidiendo con tu estética) */
-.btn-volver {
-  background: rgba(212, 175, 55, 0.1);
-  border: 2px solid rgba(212, 175, 55, 0.3);
-  color: #d4af37;
-  font-size: 1.5rem;
-  width: 50px;
-  height: 45px;
-  border-radius: 50%;
-  cursor: pointer;
-  display: flex;
-  margin-bottom: 10px;
-  align-items: center;
-}
-
-/* Estilo unificado y prolijo para los botones de la Escalera */
-.path-journey-container .huella-paso {
-  width: 100%; /* Hacemos que todos ocupen el mismo ancho máximo */
-  max-width: 500px; /* Limitamos para que no se estiren demasiado en la PC */
-  justify-content: flex-start; /* Alineamos el contenido a la izquierda dentro del botón */
-  padding: 12px 25px; /* Espaciado interno cómodo */
-  margin: 0 auto; /* Centrados en la pantalla */
-  box-sizing: border-box;
-}
-
-/* Para que el ícono y el texto tengan su espacio ordenado */
-.huella-paso .icono-huella {
-  margin-right: 15px;
-  font-size: 1.2rem;
-}
-
-.huella-paso .etiqueta-paso {
-  text-align: left;
-  font-size: 0.95rem;
-}
-.btn-volver:hover {
-  text-decoration: underline;
-}
-/* para que el titulo quede fijo */
-/* Hace que el encabezado de esta pantalla (título y botón volver) se quede fijo arriba */
-#screen-promesa .main-header {
-  position: sticky !important;
-  top: 0 !important;
-  background-color: #000000 !important; /* El color de fondo oscuro de tu app para que haga de cortina */
-  z-index: 50 !important;
-  padding-bottom: 15px !important;
-  border-bottom: 1px solid rgba(212, 175, 55, 0.2); /* Una línea dorada sutil opcional para separar */
-}
-/* Estilo unificado para el título y subtítulo de la pantalla de Emaús */
-
-/* para adaptar el peldaño de la escalera de la revelacion a toda la pantalla y que se vea bien en celular y computadora, se agregan los siguientes estilos: */
-#contenido-peldaño {
-  position: fixed !important;
-  top: 125px !important;
-  bottom: 1px !important;
-  left: 52% !important;
-  transform: translateX(
-    -53%
-  ) !important; /* El ajuste fino de izquierda que logramos */
-  width: 97% !important; /* En el celu ocupa casi todo el ancho disponible con margen */
-  max-width: 600px !important; /* En la PC nunca pasa de este tamaño fijo en píxeles */
-  overflow-y: auto !important;
-  background-color: #121821 !important;
-  border: 1px solid #d4af37 !important;
-  border-radius: 16px !important;
-  padding: 20px !important;
-  z-index: 99999 !important;
-  box-shadow: 0 15px 50px rgba(0, 0, 0, 0.95) !important;
-}
-
-/* --- ADAPTACIÓN INTELIGENTE (Celular y Computadora) --- */
-.screen-header {
-  display: flex;
-  align-items: center;
-  flex-wrap: wrap; /* Permite que el párrafo baje prolijo a la línea siguiente */
-  gap: 15px;
-  margin-bottom: 20px;
-  padding-left: 20px; /* Espacio a la izquierda para que el botón de volver no quede pegado al borde */
-  padding-right: 20px; /* Espacio a la derecha para que el texto no quede pegado al borde */
-}
-
-.screen-header h2 {
-  margin: 0;
-  flex-grow: 1; /* Hace que el título ocupe el espacio disponible junto a la flecha */
-}
-
-.screen-header p {
-  width: 100%; /* Manda el subtítulo/párrafo abajo de todo el encabezado */
-  margin: 5px 0 0 0;
-}
-
-/* Cuando la pantalla sea ancha (como en la Computadora) */
-@media (min-width: 600px) {
-  .columns-container {
-    grid-template-columns: repeat(
-      4,
-      1fr
-    ); /* Las 4 columnas se ponen en una sola línea */
-    height: 100%;
-    align-items: stretch;
-  }
-
-  .split-container {
-    flex-direction: row; /* La pantalla principal se divide izquierda y derecha, no arriba y abajo */
-  }
-
-  .block-top {
-    border-bottom: none;
-    border-right: 2px solid var(--gold); /* Línea divisoria vertical */
-  }
-
-  .main-header {
-    position: relative;
-  }
-
-  .btn-back,
-  .btn-back-path {
-    position: absolute;
-    left: 20px;
-    top: 10px;
-  }
-} /* --- EXPANSIÓN DE TARJETAS EN DOS NIVELES --- */
-
-/* Cuando una tarjeta se expande a pantalla casi grande */
-.fan-column.expanded-full {
-  grid-column: span 2; /* Ocupa todo el ancho en el celular */
-  position: fixed;
-  top: 0%; /* Deja un 25% libre arriba para que se lea la Biblia */
-  left: 10px;
-  right: 10px;
-  bottom: 20px;
-  height: auto;
-  min-height: 60vh;
-  padding-bottom: 40px;
-  z-index: 150;
-  background-color: #1a1a1a;
-  border: 2px solid var(--gold);
-  padding: 20px;
-  overflow-y: auto;
-  box-shadow: 0 -10px 30px rgba(0, 0, 0, 0.8);
-  transition: all 0.3s ease-in-out;
-}
-
-/* En computadora, que ocupe el centro con elegancia */
-@media (min-width: 800px) {
-  .fan-column.expanded-full {
-    grid-column: span 4;
-    max-width: 900px;
-    width: 90%;
-    margin: 0 auto;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%); /* Centrado absoluto perfecto en la PC */
-    right: auto;
-    height: auto;
-    max-height: 80vh;
-    display: flex;
-    flex-direction: column;
-    overflow-y: auto; /* Scroll interno si el texto es muy largo */
-  }
-}
-
-/* Estilo para el texto largo de lectura interna */
-.extended-text {
-  display: none;
-  margin-top: 10px;
-  font-size: 0.95rem;
-  line-height: 1.6;
-  color: #ccc;
-  text-align: justify;
-  border-top: 1px solid rgba(212, 175, 55, 0.2);
-  padding-top: 10px;
-}
-
-.fan-column.expanded-full .extended-text {
-  display: block; /* Solo se muestra cuando se abre grande */
-}
-
-/* Botón flotante para cerrar la lectura grande */
-.btn-close-extended {
-  display: none;
-  background: var(--gold);
-  color: black;
-  border: none;
-  padding: 5px 12px;
-  font-family: var(--font-roman);
-  font-size: 0.75rem;
-  cursor: pointer;
-  float: right;
-  border-radius: 3px;
-  margin-bottom: 10px;
-}
-
-.fan-column.expanded-full .btn-close-extended {
-  display: block;
-}
-/* --- AJUSTES FINALES PARA COMPUTADORA (FAN Y BIBLIA) --- */
-@media (min-width: 800px) {
-  /* 1. Centrar el abanico expandido de forma limpia */
-  .fan-column.expanded-full {
-    grid-column: span 4;
-    max-width: 900px;
-    width: 90%;
-    margin: 0 auto;
-    top: 55%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    right: auto;
-    height: auto;
-    max-height: 75vh;
-    display: flex;
-    flex-direction: column;
-    overflow-y: auto;
-    padding-top: 50px; /* Más espacio arriba para que el botón de cerrar quede cómodo */
-  }
-
-  /* Asegurar que el botón de cerrar quede libre arriba a la derecha */
-  .fan-column.expanded-full .btn-close-extended {
-    position: absolute;
-    top: 15px;
-    right: 20px;
-    z-index: 10;
-    background-color: var(--gold);
-    color: black;
-    padding: 6px 14px;
-    font-weight: bold;
-  }
-
-  /* 2. Ampliar el contenedor de la Biblia a lo ancho */
-  .content-area {
-    max-width: 1000px;
-    padding: 0 40px;
-  }
-
-  .interact-paragraph {
-    font-size: 1.4rem;
-  }
-}
-/* Contenedor de los botones para que se acomoden solos */
-.mood-buttons {
-  display: flex;
-  flex-wrap: wrap; /* Hace que bajen de renglón prolijamente si no entran en la pantalla */
-  gap: 12px; /* Espacio exacto y parejo entre botón y botón (adiós desfasajes) */
-  justify-content: center; /* Centrados en la pantalla con elegancia */
-  margin: 15px 0;
-}
-
-/* Estilo unificado para los botoncitos */
-.mood-buttons .btn-emaus {
-  flex: 1 1 auto; /* Se estiran de forma inteligente según el espacio */
-  min-width: 110px; /* Ancho mínimo para que el texto nunca quede apretado */
-  text-align: center;
-  margin: 0; /* Borramos márgenes raros viejos */
-}
 /* ==========================================
-   BARRA DE NAVEGACIÓN SUPERIOR
-   ================================---------- */
-.top-navbar {
-  position: sticky;
-  top: 0;
-  z-index: 1000;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 10px 15px;
-  background-color: #0b0c10; /* Fondo negro solemne por defecto */
-  border-bottom: 2px solid #d4af37; /* Línea dorada */
-  font-family: serif;
-}
-
-/* Contenedor central para alinear el iconito y el título */
-.nav-center {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  flex: 1;
-  justify-content: center;
-}
-
-/* Isologo circular de la barra (opcional si ponés la imagen) */
-.nav-brand-icon {
-  width: 35px;
-  height: 35px;
-  border-radius: 50%;
-  object-fit: cover;
-  border: 1.5px solid #d4af37;
-}
-
-/* Título con el degradado dorado de la portada */
-.nav-title {
-  font-family: serif;
-  font-size: 1.35rem;
-  font-weight: 700;
-  letter-spacing: 1.5px;
-  text-transform: uppercase;
-
-  /* Degradado dorado idéntico al splash */
-  background: linear-gradient(180deg, #fceea7 0%, #d4af37 50%, #aa7c11 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  filter: drop-shadow(0px 1px 2px rgba(0, 0, 0, 0.9));
-}
-
-/* Botones de la barra (menú y cambio de modo) */
-.nav-icon-btn {
-  background: transparent;
-  border: none;
-  color: #d4af37;
-  font-size: 1.4rem;
-  cursor: pointer;
-  padding: 5px;
-  transition: color 0.2s ease;
-}
-
-.nav-icon-btn:hover {
-  color: #fceea7;
-}
-
-/* ==========================================
-   MODO LUMINOSO COMPLETO (Fondo y Letras)
+   6. GRILLA DE CAPÍTULOS SIMÉTRICA (5 COLUMNAS)
    ========================================== */
-
-body.light-mode {
-  background-color: #f4f1ea !important;
-  color: #2b2b2b !important; /* Cambia el color de todo el texto general a oscuro */
-}
-
-/* Cambiar la barra superior */
-body.light-mode .top-navbar {
-  background-color: #e6e2d8 !important;
-  border-bottom: 2px solid #b39353 !important;
-}
-
-body.light-mode .nav-icon-btn {
-  color: #3a3a3a !important;
-}
-
-/* Cambiar los paneles y tarjetas oscuras a un tono claro elegante */
-body.light-mode .bg-panel,
-body.light-mode .path-card,
-body.light-mode .study-card-panel,
-body.light-mode .fan-column,
-body.light-mode #contenido-peldaño {
-  background-color: #e8e4dc !important;
-  color: #2b2b2b !important;
-  border-color: #b39353 !important;
-}
-
-/* Asegurar que los párrafos y textos secundarios también se lean en oscuro */
-body.light-mode p,
-body.light-mode .interact-paragraph,
-body.light-mode .question,
-body.light-mode .reflection,
-body.light-mode .focus-text,
-body.light-mode .split-block p {
-  color: #333333 !important;
-}
-/* Contenedor de los botones de estado (Emaús / Punto de partida) */
-.mood-buttons {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 10px; /* Espacio prolijo entre cada botoncito */
-  margin-top: 15px;
-}
-
-/* Estilo unificado para cada botoncito de estado */
-.btn-emaus {
-  flex: 1 1 120px; /* Se adaptan solos al ancho del celular sin amontonarse */
-  max-width: 250px;
-  text-align: center;
-  padding: 10px 12px;
-  box-sizing: border-box;
-  cursor: pointer;
-  /* (Mantené los colores o bordes que ya tenías para estos botones) */
-}
-/* Estilos para el Menú Lateral Desplegable */
-.sidebar-menu {
-  position: fixed;
-  top: 0;
-  left: -280px; /* Oculto por defecto fuera de la pantalla a la izquierda */
-  width: 190px;
-  height: 100%;
-  background-color: #000000; /* Fondo oscuro elegante */
-  border-right: 2px solid #d4af37; /* Borde dorado sobrio */
-  transition: left 0.35s ease-in-out;
-  z-index: 2000;
-  padding-top: 15px;
-  box-shadow: 5px 0px 15px rgba(0, 0, 0, 0.5);
-}
-
-/* Cuando JavaScript le agrega la clase 'active', se desliza hacia la pantalla */
-.sidebar-menu.active {
-  left: 0;
-}
-
-.sidebar-menu ul {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-}
-
-.sidebar-menu li a {
-  padding: 16px 22px;
-  color: #f4f4f4;
-  text-decoration: none;
-  font-size: 1.05rem;
-  border-bottom: 1px solid rgba(212, 175, 55, 0.15);
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  transition:
-    background-color 0.2s,
-    color 0.2s;
-}
-
-.sidebar-menu li a:hover {
-  background-color: rgba(212, 175, 55, 0.12);
-  color: #d4af37;
-}
-.sidebar-brand-icon {
-  width: 32px !important;
-  height: 32px !important;
-  max-width: 32px !important;
-  object-fit: contain;
-}
-.sidebar-title {
-  font-family: "cinzel", serif;
-  border-right: 2px;
-  color: #d4af37;
-  font-size: 1.05rem;
-  font-weight: bold;
-}
-.screen {
-  display: none;
-}
-
-.screen.active {
-  display: block;
-}
-/* Estilo para el contenedor de búsqueda */
-#screen-buscar {
-  background-color: var(--bg-dark);
-  padding: 30px 20px;
-}
-
-.search-container {
-  max-width: 600px;
-  margin: 0 auto;
-  display: flex;
-  flex-direction: column;
-  gap: 20px;
-}
-
-.search-box-wrapper {
-  display: flex;
-  gap: 10px;
-}
-
-.search-box-wrapper input {
-  flex: 1;
-  padding: 12px 50px;
-  background-color: var(--bg-panel);
-  border: 1px solid rgba(212, 175, 55, 0.3);
-  border-radius: 8px;
-  color: #fff;
-  font-size: 1rem;
-}
-
-.search-box-wrapper input:focus {
-  outline: none;
-  border-color: var(--gold);
-}
-
-.search-box-wrapper button {
-  background-color: var(--gold);
-  color: #e2d2d2;
-  border: none;
-  padding: 0 20px;
-  border-radius: 8px;
-  font-family: var(--font-roman);
-  font-weight: bold;
-  cursor: pointer;
-  transition: opacity 0.2s;
-}
-
-.search-box-wrapper button:hover {
-  opacity: 0.9;
-}
-
-.results-list {
-  background-color: var(--bg-panel);
-  border: 1px solid rgba(212, 175, 55, 0.15);
-  border-radius: 10px;
-  padding: 20px;
-  min-height: 150px;
-}
-
-.placeholder-text {
-  color: #888;
-  font-style: italic;
-  text-align: center;
-}
-.books-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
-  gap: 8px;
-  max-height: 220px;
-  overflow-y: auto;
-  padding-right: 4px;
-}
-
-.libro-item-card {
-  background: rgba(212, 175, 55, 0.08);
-  border: 1px solid rgba(212, 175, 55, 0.2);
-  padding: 8px 30px;
-  border-radius: 6px;
-  cursor: pointer;
-  text-align: center;
-  transition: all 0.2s;
-  width: 30%;
-}
-
-.libro-item-card:hover {
-  background: rgba(212, 175, 55, 0.25);
-  border-color: var(--gold);
-}
-
-.btn-capitulo {
-  background: var(--gold);
-  color: #121212;
-  border: none;
-  padding: 6px 12px;
-  border-radius: 4px;
-  font-weight: bold;
-  cursor: pointer;
-  transition: opacity 0.2s;
-}
-
-.btn-capitulo:hover {
-  opacity: 0.85;
-}
-/* Estilo unificado para los isologos redondos con aro dorado */
-.nav-brand-icon,
-.sidebar-brand-icon {
-  width: 36px;
-  height: 36px;
-  border-radius: 50%;
-  border: 2px solid var(--gold);
-  object-fit: cover;
-  box-shadow: 0 0 6px rgba(212, 175, 55, 0.4);
-}
-/* Hace que la imagen del splash respire con un brillo suave */
-.splash-content-imagen img {
-  animation: pulsoGeneral 5s ease-in-out infinite;
-}
-
-@keyframes pulsoGeneral {
-  0%,
-  100% {
-    filter: brightness(1);
-  }
-  50% {
-    filter: brightness(1.15);
-  }
-}
-.splash-content-imagen img {
-  animation: pulsoZoom 4s ease-in-out infinite;
-}
-
-@keyframes pulsoZoom {
-  0%,
-  100% {
-    filter: brightness(1);
-    transform: scale(1);
-  }
-  50% {
-    filter: brightness(1.2); /* Brillo un poco más intenso */
-    transform: scale(1.03); /* Se acerca un 3% sutilmente */
-  }
-}
-.nav-title {
-  -webkit-background-clip: text;
-  background-clip: text; /* Propiedad estándar */
-}
-/* Variables de Diseño de Alta Gama */
-:root {
-  --bg-dark: #000000;
-  --bg-panel: #121212;
-  --gold: #d4af37;
-  --gold-light: #f8edc1;
-  --text-light: #e0e0e0;
-  --font-serif: "Lora", Georgia, serif;
-  --font-roman: "Cinzel", serif;
-}
-
-* {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-}
-
-* {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-}
-
-/* Y acá le sumamos el margen superior para que la barra no tape nada */
-body {
-  padding-top: 80px; /* Empuja todo el contenido hacia abajo */
-  background-color: #0b0c10;
-  color: #ffffff;
-  font-family: serif;
-}
-
-/* SISTEMA DE PANTALLAS (Manejo de navegación) */
-.screen {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  display: none; /* Ocultas por defecto */
-  background-color: var(--bg-dark);
-  z-index: 10;
-  overflow-y: auto;
-}
-
-.screen.active {
-  display: block; /* Solo la pantalla activa se ve */
-}
-html,
-body {
-  margin: 0;
-  padding: 0;
-  overflow: hidden; /* <-- ESTA ES LA CLAVE. Saca la scrollbar */
-  height: 100%;
-}
-/* Hacemos que cada pantalla respete el espacio de la barra superior fija */
-.screen {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  display: none;
-  background-color: var(--bg-dark);
-  z-index: 10;
-  overflow-y: auto;
-
-  /* ESTO ES LO QUE FALTABA: Empuja el contenido adentro de la pantalla hacia abajo */
-  padding-top: 75px;
-}
-
-.screen.active {
-  display: block;
-}
-/* Pantalla splash que cubre todo */
-#screen-splash {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100vw;
-  height: 100vh;
-  background: #000; /* Fondo negro alrededor */
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  z-index: 9999; /* Para que quede arriba de todo hasta que el JS la oculte */
-  overflow: hidden;
-}
-
-/* La imagen de la cruz y la paloma */
-#screen-splash img {
-  max-width: 100%;
-  max-height: 90vh;
-  width: 100%;
-  height: 100%;
-  object-fit: contain; /* Asegura que la imagen se vea entera sin recortarse */
-}
-
-/* --- PANTALLA 2: DIVISIÓN PRINCIPAL (PANTALLA PARTIDA) --- */
-.split-container {
-  display: flex;
-  flex-direction: column;
-  height: 100vh;
-}
-
-.split-block {
-  flex: 1;
-  position: relative;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  cursor: pointer;
-  transition: transform 0.5s;
-  overflow: hidden;
-}
-
-/* Línea divisoria elegante */
-.block-top {
-  border-bottom: 2px solid var(--gold);
-  background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.9));
-}
-
-.block-bottom {
-  background: linear-gradient(rgba(0, 0, 0, 0.9), rgba(0, 0, 0, 0.7));
-}
-
-.block-overlay {
-  text-align: center;
-  padding: 20px;
-  z-index: 2;
-}
-
-.split-block h2 {
-  font-family: var(--font-roman);
-  color: var(--gold);
-  letter-spacing: 3px;
-  font-size: 1.6rem;
-  margin-bottom: 10px;
-}
-
-.split-block p {
-  font-size: 0.9rem;
-  color: #aaa;
-  font-style: italic;
-}
-
-.split-block:hover {
-  filter: brightness(1.3);
-}
-
-/* --- PANTALLAS DE DETALLE (CONTENEDORES) --- */
-.app-container {
-  display: flex;
-  flex-direction: column;
-  min-height: 100vh;
-  padding: 25px;
-  position: relative;
-}
-
-/* Botones de volver */
-
-.main-header {
-  text-align: center;
-  border-bottom: 1px solid rgba(212, 175, 55, 0.2);
-  padding-bottom: 15px;
-  margin-bottom: 25px;
-}
-
-.brand-title {
-  font-family: var(--font-roman);
-  color: var(--gold);
-  letter-spacing: 4px;
-  font-size: 1.8rem;
-}
-.btn-back,
-.btn-back-path {
-  background: rgba(212, 175, 55, 0.1);
-  border: 2px solid rgba(212, 175, 55, 0.3);
-  color: #d4af37;
-  font-size: 1.5rem;
-  width: 45px;
-  height: 45px;
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  cursor: pointer;
-  margin-bottom: 15px;
-  transition: all 0.3s;
-}
-
-.btn-back:hover,
-.btn-back-path:hover {
-  background: rgba(212, 175, 55, 0.2);
-  border-color: var(--gold);
-  color: var(--gold);
-}
-.text-gold {
-  color: var(--gold);
-}
-
-.header-statement {
-  font-size: 0.85rem;
-  font-style: italic;
-  color: #666;
-  margin-top: 6px;
-}
-
-/* Área Biblia */
-.content-area {
-  flex: 1;
-  display: flex;
-  align-items: flex-start;
-  max-width: 600px;
-  margin: 0 auto;
-  padding-top: 10px;
-}
-
-.interact-paragraph {
-  font-size: 1.25rem;
-  line-height: 1.6;
-  text-align: justify;
-  cursor: pointer;
-}
-
-.drop-cap {
-  font-family: var(--font-roman);
-  font-size: 3.2rem;
-  float: left;
-  line-height: 0.8;
-  margin-right: 8px;
-  color: var(--gold);
-  font-weight: bold;
-}
-
-.version-tag {
-  display: block;
-  text-align: right;
-  margin-top: 15px;
-  color: #555;
-  font-size: 0.8rem;
-}
-
-/* Panel Abanico Abajo */
-.study-card-panel {
-  position: fixed;
-  bottom: 0;
-  left: 0;
-  width: 100%;
-  height: 50vh;
-  background-color: var(--bg-panel);
-  border-top: 4px solid var(--gold);
-  border-radius: 15px 15px 0 0;
-  padding: 1px;
-  transform: translateY(0);
-  transition: transform 0.4s ease-out;
-  z-index: 100;
-}
-
-.study-card-panel.hidden {
-  transform: translateY(calc(100% - 25px)); /*oculta el avanico hacia abajo */
-}
-
-.panel-handle {
-  width: 40px;
-  height: 4px;
-  background-color: #333;
-  border-radius: 2px;
-  margin: 0 auto 15px auto;
-  cursor: pointer;
-}
-
-.columns-container {
-  display: grid;
-  grid-template-columns: repeat(
-    2,
-    1fr
-  ); /* 2x2 para que entre bien en pantallas chicas */
-  grid-template-rows: repeat(2, 1fr);
-  gap: 8px;
-}
-
-.fan-column {
-  padding: 20px;
-  border-radius: 10px;
-  background-color: rgba(255, 255, 255, 0.03);
-  border-top: 4px solid #333;
-}
-.col-1 {
-  border-top-color: #800080;
-}
-.col-2 {
-  border-top-color: #b8860b;
-}
-.col-3 {
-  border-top-color: #e6d7b2;
-}
-.col-4 {
-  border-top-color: #e34234;
-}
-
-.fan-column h3 {
-  font-family: var(--font-roman);
-  font-size: 0.85rem;
-  margin-bottom: 5px;
-}
-.focus-text {
-  font-size: 0.85rem;
-  color: #999;
-  line-height: 1.4;
-}
-/* modificamos la posicion del titulo El camino de Emaus */
-.header-emaus {
-  display: flex;
-  align-items: center;
-  flex-wrap: wrap; /* Permite que el párrafo baje prolijo a la línea siguiente */
-  gap: 15px;
-  margin-bottom: 20px;
-  padding-left: 30px !important; /* Espacio a la izquierda para que el botón de volver no quede pegado al borde */
-  padding-right: 20px !important;
-}
-
-.header-emaus h2 {
-  margin: 0;
-  flex-grow: 1; /* Hace que el título ocupe el espacio disponible */
-}
-
-.header-emaus p {
-  width: 100%; /* Manda el subtítulo/párrafo abajo de todo el encabezado */
-  margin: 5px 0 0 0;
-}
-
-/* --- DETALLE CAMINO (Caminemos con Jesús) --- */
-.path-content {
-  display: flex;
-  flex-direction: column;
-  gap: 20px;
-  max-width: 500px;
-  margin: 0 auto;
-}
-
-.path-card {
-  background-color: var(--bg-panel);
-  border: 1px solid rgba(212, 175, 55, 0.1);
-  padding: 20px;
-  border-radius: 10px;
-}
-
-.path-card h3 {
-  font-family: var(--font-roman);
-  color: var(--gold);
-  font-size: 1.1rem;
-  margin-bottom: 10px;
-}
-
-.question {
-  font-size: 0.95rem;
-  color: #cccccc;
-  margin-bottom: 12px;
-}
-
-.mood-buttons {
-  display: flex;
-  gap: 10px;
-}
-
-.reflection {
-  font-size: 0.95rem;
-  line-height: 1.5;
-  color: #bbb;
-}
-
-/* Animación del destello */
-@keyframes pulseGlow {
-  0% {
-    transform: scale(0.9);
-    opacity: 0.5;
-  }
-  100% {
-    transform: scale(1.1);
-    opacity: 0.8;
-  }
-}
-/* --- PANTALA CAMINIEMOS CON JESUS  (El camino de emaus opcion OPTIMO, AGRADECIDO, CANSADO,) --- */
-/* --- CAMINIEMOS CON JESUS  (opcion OPTIMO) --- */
-#screen-optimo h2 {
-  font-size: 26px;
-  text-align: center;
-  margin-bottom: 20px;
-  color: #d4af37;
-  padding: 15px 25px;
-}
-
-#screen-optimo p {
-  font-size: 16px;
-  text-align: justify;
-  line-height: 1.6;
-  color: #ccc;
-  margin-bottom: 15px;
-  padding: 15px 25px;
-}
-#screen-temeroso h2 {
-  font-size: 26px;
-  text-align: center;
-  margin-bottom: 20px;
-  color: #d4af37;
-  padding: 15px 25px;
-}
-#screen-temeroso p {
-  font-size: 16px;
-  text-align: justify;
-  line-height: 1.6;
-  color: #ccc;
-  margin-bottom: 15px;
-  padding: 15px 25px;
-}
-#screen-preocupado h2 {
-  font-size: 26px;
-  text-align: center;
-  margin-bottom: 20px;
-  color: #d4af37;
-  padding: 15px 25px;
-}
-#screen-preocupado p {
-  font-size: 16px;
-  text-align: justify;
-  line-height: 1.6;
-  color: #ccc;
-  margin-bottom: 15px;
-  padding: 15px 25px;
-}
-
-#screen-feliz h2 {
-  font-size: 26px;
-  text-align: center;
-  margin-bottom: 20px;
-  color: #d4af37;
-  padding: 15px 25px;
-}
-#screen-feliz p {
-  font-size: 16px;
-  text-align: justify;
-  line-height: 1.6;
-  color: #ccc;
-  margin-bottom: 15px;
-  padding: 15px 25px;
-}
-
-#screen-ansioso h2 {
-  font-size: 26px;
-  text-align: center;
-  margin-bottom: 20px;
-  color: #d4af37;
-  padding: 15px 25px;
-}
-#screen-ansioso p {
-  font-size: 16px;
-  text-align: justify;
-  line-height: 1.6;
-  color: #ccc;
-  margin-bottom: 15px;
-  padding: 15px 25px;
-}
-
-#screen-triste h2 {
-  font-size: 26px;
-  text-align: center;
-  margin-bottom: 20px;
-  color: #d4af37;
-  padding: 15px 25px;
-}
-#screen-triste p {
-  font-size: 16px;
-  text-align: justify;
-  line-height: 1.6;
-  color: #ccc;
-  margin-bottom: 15px;
-  padding: 15px 25px;
-}
-/* --- CAMINIEMOS CON JESUS  (opcion agradecido) --- */
-#screen-bendecido h2 {
-  font-size: 26px;
-  text-align: center;
-  margin-bottom: 20px;
-  color: #d4af37;
-  padding: 15px 25px;
-}
-#screen-bendecido p {
-  font-size: 16px;
-  text-align: justify;
-  line-height: 1.6;
-  color: #ccc;
-  margin-bottom: 15px;
-  padding: 15px 25px;
-}
-/* --- CAMINIEMOS CON JESUS  (opcion cansado) --- */
-#screen-cansado h2 {
-  font-size: 26px;
-  text-align: center;
-  margin-bottom: 20px;
-  color: #d4af37;
-  padding: 15px 25px;
-}
-#screen-cansado p {
-  font-size: 16px;
-  text-align: justify;
-  line-height: 1.6;
-  color: #ccc;
-  margin-bottom: 15px;
-  padding: 15px 25px;
-}
-.card {
-  background-color: #121212;
-  border: 1px solid #2a2a2a;
-  border-radius: 12px;
-  padding: 20px;
-  margin-bottom: 20px;
-  color: #e0e0e0;
-}
-/* Botón elegante para iniciar el recorrido de Emaús */
-.btn-emaus {
-  display: inline-block;
-  margin-top: 15px;
-  background-color: transparent;
-  color: #d4af37; /* Tono dorado elegante */
-  border: 1px solid #d4af37;
-  padding: 10px 20px;
-  border-radius: 20px;
-  font-size: 0.9rem;
-  cursor: pointer;
-  transition: all 0.3s ease;
-}
-
-.btn-emaus:hover {
-  background-color: #d4af37;
-  color: #121212;
-}
-/* Contenedor del camino */
-.path-journey-container {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 20px;
-  padding: 20px 0;
-}
-
-/* Estilo base de las huellas */
-.huella-paso {
-  display: flex;
-  align-items: center;
-  gap: 15px;
-  background: rgba(212, 175, 55, 0.1); /* Toque dorado suave */
-  border: 1px solid rgba(212, 175, 55, 0.3);
-  border-radius: 50px;
-  cursor: pointer;
-  transition: all 0.3s ease;
-  padding: 10px 20px;
-}
-
-.huella-paso:hover {
-  background: rgba(212, 175, 55, 0.25);
-  transform: scale(1.05);
-}
-
-/* Crecimiento progresivo de las huellas (de cero a infinito) */
-.huella-1 {
-  font-size: 0.85rem;
-  width: 60%;
-}
-.huella-2 {
-  font-size: 1rem;
-  width: 70%;
-}
-.huella-3 {
-  font-size: 1.15rem;
-  width: 80%;
-}
-.huella-4 {
-  font-size: 1.3rem;
-  width: 90%;
-  background: linear-gradient(
-    135deg,
-    rgba(212, 175, 55, 0.3),
-    rgba(255, 215, 0, 0.5)
-  );
-  border-color: #d4af37;
-  box-shadow: 0 0 15px rgba(212, 175, 55, 0.4);
-}
-
-/* Utilidad para ocultar elementos temporalmente */
-.hidden {
-  display: none;
-}
-/* Control de vistas */
-.vista {
-  display: none;
-}
-
-.vista.active {
-  display: block;
-}
-
-/* Estilo para el botón de volver (coincidiendo con tu estética) */
-.btn-volver {
-  background: rgba(212, 175, 55, 0.1);
-  border: 2px solid rgba(212, 175, 55, 0.3);
-  color: #d4af37;
-  font-size: 1.5rem;
-  width: 50px;
-  height: 45px;
-  border-radius: 50%;
-  cursor: pointer;
-  display: flex;
-  margin-bottom: 10px;
-  align-items: center;
-}
-
-/* Estilo unificado y prolijo para los botones de la Escalera */
-.path-journey-container .huella-paso {
-  width: 100%; /* Hacemos que todos ocupen el mismo ancho máximo */
-  max-width: 500px; /* Limitamos para que no se estiren demasiado en la PC */
-  justify-content: flex-start; /* Alineamos el contenido a la izquierda dentro del botón */
-  padding: 12px 25px; /* Espaciado interno cómodo */
-  margin: 0 auto; /* Centrados en la pantalla */
-  box-sizing: border-box;
-}
-
-/* Para que el ícono y el texto tengan su espacio ordenado */
-.huella-paso .icono-huella {
-  margin-right: 15px;
-  font-size: 1.2rem;
-}
-
-.huella-paso .etiqueta-paso {
-  text-align: left;
-  font-size: 0.95rem;
-}
-.btn-volver:hover {
-  text-decoration: underline;
-}
-/* para que el titulo quede fijo */
-/* Hace que el encabezado de esta pantalla (título y botón volver) se quede fijo arriba */
-#screen-promesa .main-header {
-  position: sticky !important;
-  top: 0 !important;
-  background-color: #000000 !important; /* El color de fondo oscuro de tu app para que haga de cortina */
-  z-index: 50 !important;
-  padding-bottom: 15px !important;
-  border-bottom: 1px solid rgba(212, 175, 55, 0.2); /* Una línea dorada sutil opcional para separar */
-}
-/* Estilo unificado para el título y subtítulo de la pantalla de Emaús */
-
-/* para adaptar el peldaño de la escalera de la revelacion a toda la pantalla y que se vea bien en celular y computadora, se agregan los siguientes estilos: */
-#contenido-peldaño {
-  position: fixed !important;
-  top: 125px !important;
-  bottom: 1px !important;
-  left: 52% !important;
-  transform: translateX(
-    -53%
-  ) !important; /* El ajuste fino de izquierda que logramos */
-  width: 97% !important; /* En el celu ocupa casi todo el ancho disponible con margen */
-  max-width: 600px !important; /* En la PC nunca pasa de este tamaño fijo en píxeles */
-  overflow-y: auto !important;
-  background-color: #121821 !important;
-  border: 1px solid #d4af37 !important;
-  border-radius: 16px !important;
-  padding: 20px !important;
-  z-index: 99999 !important;
-  box-shadow: 0 15px 50px rgba(0, 0, 0, 0.95) !important;
-}
-
-/* --- ADAPTACIÓN INTELIGENTE (Celular y Computadora) --- */
-.screen-header {
-  display: flex;
-  align-items: center;
-  flex-wrap: wrap; /* Permite que el párrafo baje prolijo a la línea siguiente */
-  gap: 15px;
-  margin-bottom: 20px;
-  padding-left: 20px; /* Espacio a la izquierda para que el botón de volver no quede pegado al borde */
-  padding-right: 20px; /* Espacio a la derecha para que el texto no quede pegado al borde */
-}
-
-.screen-header h2 {
-  margin: 0;
-  flex-grow: 1; /* Hace que el título ocupe el espacio disponible junto a la flecha */
-}
-
-.screen-header p {
-  width: 100%; /* Manda el subtítulo/párrafo abajo de todo el encabezado */
-  margin: 5px 0 0 0;
-}
-
-/* Cuando la pantalla sea ancha (como en la Computadora) */
-@media (min-width: 600px) {
-  .columns-container {
-    grid-template-columns: repeat(
-      4,
-      1fr
-    ); /* Las 4 columnas se ponen en una sola línea */
-    height: 100%;
-    align-items: stretch;
-  }
-
-  .split-container {
-    flex-direction: row; /* La pantalla principal se divide izquierda y derecha, no arriba y abajo */
-  }
-
-  .block-top {
-    border-bottom: none;
-    border-right: 2px solid var(--gold); /* Línea divisoria vertical */
-  }
-
-  .main-header {
-    position: relative;
-  }
-
-  .btn-back,
-  .btn-back-path {
-    position: absolute;
-    left: 20px;
-    top: 10px;
-  }
-} /* --- EXPANSIÓN DE TARJETAS EN DOS NIVELES --- */
-
-/* Cuando una tarjeta se expande a pantalla casi grande */
-.fan-column.expanded-full {
-  grid-column: span 2; /* Ocupa todo el ancho en el celular */
-  position: fixed;
-  top: 0%; /* Deja un 25% libre arriba para que se lea la Biblia */
-  left: 10px;
-  right: 10px;
-  bottom: 20px;
-  height: auto;
-  min-height: 60vh;
-  padding-bottom: 40px;
-  z-index: 150;
-  background-color: #1a1a1a;
-  border: 2px solid var(--gold);
-  padding: 20px;
-  overflow-y: auto;
-  box-shadow: 0 -10px 30px rgba(0, 0, 0, 0.8);
-  transition: all 0.3s ease-in-out;
-}
-
-/* En computadora, que ocupe el centro con elegancia */
-@media (min-width: 800px) {
-  .fan-column.expanded-full {
-    grid-column: span 4;
-    max-width: 900px;
-    width: 90%;
-    margin: 0 auto;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%); /* Centrado absoluto perfecto en la PC */
-    right: auto;
-    height: auto;
-    max-height: 80vh;
-    display: flex;
-    flex-direction: column;
-    overflow-y: auto; /* Scroll interno si el texto es muy largo */
-  }
-}
-
-/* Estilo para el texto largo de lectura interna */
-.extended-text {
-  display: none;
-  margin-top: 10px;
-  font-size: 0.95rem;
-  line-height: 1.6;
-  color: #ccc;
-  text-align: justify;
-  border-top: 1px solid rgba(212, 175, 55, 0.2);
-  padding-top: 10px;
-}
-
-.fan-column.expanded-full .extended-text {
-  display: block; /* Solo se muestra cuando se abre grande */
-}
-
-/* Botón flotante para cerrar la lectura grande */
-.btn-close-extended {
-  display: none;
-  background: var(--gold);
-  color: black;
-  border: none;
-  padding: 5px 12px;
-  font-family: var(--font-roman);
-  font-size: 0.75rem;
-  cursor: pointer;
-  float: right;
-  border-radius: 3px;
-  margin-bottom: 10px;
-}
-
-.fan-column.expanded-full .btn-close-extended {
-  display: block;
-}
-/* --- AJUSTES FINALES PARA COMPUTADORA (FAN Y BIBLIA) --- */
-@media (min-width: 800px) {
-  /* 1. Centrar el abanico expandido de forma limpia */
-  .fan-column.expanded-full {
-    grid-column: span 4;
-    max-width: 900px;
-    width: 90%;
-    margin: 0 auto;
-    top: 55%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    right: auto;
-    height: auto;
-    max-height: 75vh;
-    display: flex;
-    flex-direction: column;
-    overflow-y: auto;
-    padding-top: 50px; /* Más espacio arriba para que el botón de cerrar quede cómodo */
-  }
-
-  /* Asegurar que el botón de cerrar quede libre arriba a la derecha */
-  .fan-column.expanded-full .btn-close-extended {
-    position: absolute;
-    top: 15px;
-    right: 20px;
-    z-index: 10;
-    background-color: var(--gold);
-    color: black;
-    padding: 6px 14px;
-    font-weight: bold;
-  }
-
-  /* 2. Ampliar el contenedor de la Biblia a lo ancho */
-  .content-area {
-    max-width: 1000px;
-    padding: 0 40px;
-  }
-
-  .interact-paragraph {
-    font-size: 1.4rem;
-  }
-}
-/* Contenedor de los botones para que se acomoden solos */
-.mood-buttons {
-  display: flex;
-  flex-wrap: wrap; /* Hace que bajen de renglón prolijamente si no entran en la pantalla */
-  gap: 12px; /* Espacio exacto y parejo entre botón y botón (adiós desfasajes) */
-  justify-content: center; /* Centrados en la pantalla con elegancia */
-  margin: 15px 0;
-}
-
-/* Estilo unificado para los botoncitos */
-.mood-buttons .btn-emaus {
-  flex: 1 1 auto; /* Se estiran de forma inteligente según el espacio */
-  min-width: 110px; /* Ancho mínimo para que el texto nunca quede apretado */
-  text-align: center;
-  margin: 0; /* Borramos márgenes raros viejos */
-}
-/* ==========================================
-   BARRA DE NAVEGACIÓN SUPERIOR
-   ================================---------- */
-.top-navbar {
-  position: sticky;
-  top: 0;
-  z-index: 1000;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 10px 15px;
-  background-color: #0b0c10; /* Fondo negro solemne por defecto */
-  border-bottom: 2px solid #d4af37; /* Línea dorada */
-  font-family: serif;
-}
-
-/* Contenedor central para alinear el iconito y el título */
-.nav-center {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  flex: 1;
-  justify-content: center;
-}
-
-/* Isologo circular de la barra (opcional si ponés la imagen) */
-.nav-brand-icon {
-  width: 35px;
-  height: 35px;
-  border-radius: 50%;
-  object-fit: cover;
-  border: 1.5px solid #d4af37;
-}
-
-/* Título con el degradado dorado de la portada */
-.nav-title {
-  font-family: serif;
-  font-size: 1.35rem;
-  font-weight: 700;
-  letter-spacing: 1.5px;
-  text-transform: uppercase;
-
-  /* Degradado dorado idéntico al splash */
-  background: linear-gradient(180deg, #fceea7 0%, #d4af37 50%, #aa7c11 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  filter: drop-shadow(0px 1px 2px rgba(0, 0, 0, 0.9));
-}
-
-/* Botones de la barra (menú y cambio de modo) */
-.nav-icon-btn {
-  background: transparent;
-  border: none;
-  color: #d4af37;
-  font-size: 1.4rem;
-  cursor: pointer;
-  padding: 5px;
-  transition: color 0.2s ease;
-}
-
-.nav-icon-btn:hover {
-  color: #fceea7;
-}
-
-/* ==========================================
-   MODO LUMINOSO COMPLETO (Fondo y Letras)
-   ========================================== */
-
-body.light-mode {
-  background-color: #f4f1ea !important;
-  color: #2b2b2b !important; /* Cambia el color de todo el texto general a oscuro */
-}
-
-/* Cambiar la barra superior */
-body.light-mode .top-navbar {
-  background-color: #e6e2d8 !important;
-  border-bottom: 2px solid #b39353 !important;
-}
-
-body.light-mode .nav-icon-btn {
-  color: #3a3a3a !important;
-}
-
-/* Cambiar los paneles y tarjetas oscuras a un tono claro elegante */
-body.light-mode .bg-panel,
-body.light-mode .path-card,
-body.light-mode .study-card-panel,
-body.light-mode .fan-column,
-body.light-mode #contenido-peldaño {
-  background-color: #e8e4dc !important;
-  color: #2b2b2b !important;
-  border-color: #b39353 !important;
-}
-
-/* Asegurar que los párrafos y textos secundarios también se lean en oscuro */
-body.light-mode p,
-body.light-mode .interact-paragraph,
-body.light-mode .question,
-body.light-mode .reflection,
-body.light-mode .focus-text,
-body.light-mode .split-block p {
-  color: #333333 !important;
-}
-/* Contenedor de los botones de estado (Emaús / Punto de partida) */
-.mood-buttons {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 10px; /* Espacio prolijo entre cada botoncito */
-  margin-top: 15px;
-}
-
-/* Estilo unificado para cada botoncito de estado */
-.btn-emaus {
-  flex: 1 1 120px; /* Se adaptan solos al ancho del celular sin amontonarse */
-  max-width: 250px;
-  text-align: center;
-  padding: 10px 12px;
-  box-sizing: border-box;
-  cursor: pointer;
-  /* (Mantené los colores o bordes que ya tenías para estos botones) */
-}
-/* Estilos para el Menú Lateral Desplegable */
-.sidebar-menu {
-  position: fixed;
-  top: 0;
-  left: -280px; /* Oculto por defecto fuera de la pantalla a la izquierda */
-  width: 190px;
-  height: 100%;
-  background-color: #000000; /* Fondo oscuro elegante */
-  border-right: 2px solid #d4af37; /* Borde dorado sobrio */
-  transition: left 0.35s ease-in-out;
-  z-index: 2000;
-  padding-top: 15px;
-  box-shadow: 5px 0px 15px rgba(0, 0, 0, 0.5);
-}
-
-/* Cuando JavaScript le agrega la clase 'active', se desliza hacia la pantalla */
-.sidebar-menu.active {
-  left: 0;
-}
-
-.sidebar-menu ul {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-}
-
-.sidebar-menu li a {
-  padding: 16px 22px;
-  color: #f4f4f4;
-  text-decoration: none;
-  font-size: 1.05rem;
-  border-bottom: 1px solid rgba(212, 175, 55, 0.15);
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  transition:
-    background-color 0.2s,
-    color 0.2s;
-}
-
-.sidebar-menu li a:hover {
-  background-color: rgba(212, 175, 55, 0.12);
-  color: #d4af37;
-}
-.sidebar-brand-icon {
-  width: 32px !important;
-  height: 32px !important;
-  max-width: 32px !important;
-  object-fit: contain;
-}
-.sidebar-title {
-  font-family: "cinzel", serif;
-  border-right: 2px;
-  color: #d4af37;
-  font-size: 1.05rem;
-  font-weight: bold;
-}
-.screen {
-  display: none;
-}
-
-.screen.active {
-  display: block;
-}
-/* Estilo para el contenedor de búsqueda */
-#screen-buscar {
-  background-color: var(--bg-dark);
-  padding: 30px 20px;
-}
-
-.search-container {
-  max-width: 600px;
-  margin: 0 auto;
-  display: flex;
-  flex-direction: column;
-  gap: 20px;
-}
-
-.search-box-wrapper {
-  display: flex;
-  gap: 10px;
-}
-
-.search-box-wrapper input {
-  flex: 1;
-  padding: 12px 50px;
-  background-color: var(--bg-panel);
-  border: 1px solid rgba(212, 175, 55, 0.3);
-  border-radius: 8px;
-  color: #fff;
-  font-size: 1rem;
-}
-
-.search-box-wrapper input:focus {
-  outline: none;
-  border-color: var(--gold);
-}
-
-.search-box-wrapper button {
-  background-color: var(--gold);
-  color: #e2d2d2;
-  border: none;
-  padding: 0 20px;
-  border-radius: 8px;
-  font-family: var(--font-roman);
-  font-weight: bold;
-  cursor: pointer;
-  transition: opacity 0.2s;
-}
-
-.search-box-wrapper button:hover {
-  opacity: 0.9;
-}
-
-.results-list {
-  background-color: var(--bg-panel);
-  border: 1px solid rgba(212, 175, 55, 0.15);
-  border-radius: 10px;
-  padding: 20px;
-  min-height: 150px;
-}
-
-.placeholder-text {
-  color: #888;
-  font-style: italic;
-  text-align: center;
-}
-.books-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
-  gap: 8px;
-  max-height: 220px;
-  overflow-y: auto;
-  padding-right: 4px;
-}
-
-.libro-item-card {
-  background: rgba(212, 175, 55, 0.08);
-  border: 1px solid rgba(212, 175, 55, 0.2);
-  padding: 8px 30px;
-  border-radius: 6px;
-  cursor: pointer;
-  text-align: center;
-  transition: all 0.2s;
-  width: 30%;
-}
-
-.libro-item-card:hover {
-  background: rgba(212, 175, 55, 0.25);
-  border-color: var(--gold);
-}
-
-.btn-capitulo {
-  background: var(--gold);
-  color: #121212;
-  border: none;
-  padding: 6px 12px;
-  border-radius: 4px;
-  font-weight: bold;
-  cursor: pointer;
-  transition: opacity 0.2s;
-}
-
-.btn-capitulo:hover {
-  opacity: 0.85;
-}
-/* Estilo unificado para los isologos redondos con aro dorado */
-.nav-brand-icon,
-.sidebar-brand-icon {
-  width: 36px;
-  height: 36px;
-  border-radius: 50%;
-  border: 2px solid var(--gold);
-  object-fit: cover;
-  box-shadow: 0 0 6px rgba(212, 175, 55, 0.4);
-}
-/* Hace que la imagen del splash respire con un brillo suave */
-.splash-content-imagen img {
-  animation: pulsoGeneral 5s ease-in-out infinite;
-}
-
-@keyframes pulsoGeneral {
-  0%,
-  100% {
-    filter: brightness(1);
-  }
-  50% {
-    filter: brightness(1.15);
-  }
-}
-.splash-content-imagen img {
-  animation: pulsoZoom 4s ease-in-out infinite;
-}
-
-@keyframes pulsoZoom {
-  0%,
-  100% {
-    filter: brightness(1);
-    transform: scale(1);
-  }
-  50% {
-    filter: brightness(1.2); /* Brillo un poco más intenso */
-    transform: scale(1.03); /* Se acerca un 3% sutilmente */
-  }
-}
-.nav-title {
-  -webkit-background-clip: text;
-  background-clip: text; /* Propiedad estándar */
-}
-/* --- GRILLA DE CAPÍTULOS SIMÉTRICA (5 Columnas) --- */
 .grid-capitulos,
-.capitulos-container {
-  display: grid;
-  grid-template-columns: repeat(5, 1fr) !important; /* Estricto a 5 columnas */
-  gap: 10px;
+.capitulos-container,
+#grid-capitulos {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
   width: 100%;
   max-width: 480px;
-  margin: 0 auto;
+  margin: 0 auto 20px auto;
   padding: 15px;
   box-sizing: border-box;
+  justify-content: flex-start;
 }
 
-/* Cada caja de número cuadrada y pareja */
 .btn-capitulo,
-.capitulo-card {
-  aspect-ratio: 1 !important;
+.capitulo-card,
+#grid-capitulos .btn-capitulo {
+  flex: 0 0 calc(20% - 7px) !important; /* Fuerza exactamente 5 columnas por renglón */
+  aspect-ratio: 1 !important; /* Cuadrados perfectos */
   display: flex;
   align-items: center;
   justify-content: center;
-  background: rgba(212, 175, 55, 0.08) !important;
-  border: 1px solid rgba(212, 175, 55, 0.4) !important;
-  color: var(--gold-light) !important;
+  background: rgba(212, 175, 55, 0.08);
+  border: 1px solid rgba(212, 175, 55, 0.4);
+  color: var(--gold-light);
   font-size: 1.1rem;
   font-weight: bold;
   border-radius: 8px;
   cursor: pointer;
   transition: all 0.2s ease;
+  box-sizing: border-box;
 }
 
 .btn-capitulo:hover,
 .capitulo-card:hover {
-  background: var(--gold) !important;
-  color: #000 !important;
+  background: var(--gold);
+  color: #000;
   transform: scale(1.05);
 }
 
-/* Texto de ayuda al costado o abajo para que no rompa la grilla */
 .texto-ayuda-capitulos,
 .help-text-capitulos {
-  grid-column: 1 / -1;
+  width: 100%;
   text-align: center;
   margin-top: 15px;
   color: #aaa;
   font-style: italic;
   font-size: 0.9rem;
 }
-/* Vacía u oculta cualquier texto por defecto en el área de versículos */
-#texto-versiculos-area:empty,
-#texto-versiculos-area {
-  /* Si querés que no muestre texto inicial, podés vaciarlo o estilizarlo */
-  color: transparent;
-}
-/* Elimina o contrae cualquier residuo de texto lateral en las áreas de capítulos */
-#screen-antiguo #texto-versiculos-area,
-#screen-capitulos #texto-versiculos-area {
-  display: none !important;
-}
-/* El contenedor flexible que ya tenías en el HTML */
-#grid-capitulos,
-.grid-capitulos {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 8px;
-  margin-bottom: 20px;
-  justify-content: flex-start; /* O center, según prefieras */
+
+/* ==========================================
+   7. PANEL INFERIOR Y ESTUDIO (ABANICO)
+   ========================================== */
+.study-card-panel {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 50vh;
+  border-top: 4px solid var(--gold);
+  border-radius: 15px 15px 0 0;
+  padding: 10px;
+  transform: translateY(0);
+  transition: transform 0.4s ease-out;
+  z-index: 100;
 }
 
-/* Cada botoncito que crea el JavaScript toma este tamaño automático perfecto */
-#grid-capitulos .btn-capitulo,
-.grid-capitulos .btn-capitulo {
-  flex: 0 0 calc(20% - 7px) !important; /* Fuerza a que entren exactamente 5 por renglón */
-  aspect-ratio: 1 !important; /* Los hace cuadrados perfectos */
-  box-sizing: border-box;
+.study-card-panel.hidden {
+  transform: translateY(calc(100% - 25px));
+}
+
+.panel-handle {
+  width: 40px;
+  height: 4px;
+  background-color: #333;
+  border-radius: 2px;
+  margin: 0 auto 15px auto;
+  cursor: pointer;
+}
+
+.columns-container {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: repeat(2, 1fr);
+  gap: 8px;
+}
+
+.fan-column {
+  padding: 20px;
+  border-radius: 10px;
+  background-color: rgba(255, 255, 255, 0.03);
+  border-top: 4px solid #333;
+}
+
+.col-1 {
+  border-top-color: #800080;
+}
+.col-2 {
+  border-top-color: #b8860b;
+}
+.col-3 {
+  border-top-color: #e6d7b2;
+}
+.col-4 {
+  border-top-color: #e34234;
+}
+
+.fan-column h3 {
+  font-family: var(--font-roman);
+  font-size: 0.85rem;
+  margin-bottom: 5px;
+}
+
+.focus-text {
+  font-size: 0.85rem;
+  color: #999;
+  line-height: 1.4;
+}
+
+/* Expansión de tarjetas del abanico */
+.fan-column.expanded-full {
+  grid-column: span 2;
+  position: fixed;
+  top: 10px;
+  left: 10px;
+  right: 10px;
+  bottom: 20px;
+  height: auto;
+  min-height: 60vh;
+  z-index: 150;
+  background-color: #1a1a1a;
+  border: 2px solid var(--gold);
+  padding: 20px;
+  overflow-y: auto;
+  box-shadow: 0 -10px 30px rgba(0, 0, 0, 0.8);
+}
+
+.extended-text {
+  display: none;
+  margin-top: 10px;
+  font-size: 0.95rem;
+  line-height: 1.6;
+  color: #ccc;
+  text-align: justify;
+  border-top: 1px solid rgba(212, 175, 55, 0.2);
+  padding-top: 10px;
+}
+
+.fan-column.expanded-full .extended-text {
+  display: block;
+}
+
+.btn-close-extended {
+  display: none;
+  background: var(--gold);
+  color: black;
+  border: none;
+  padding: 5px 12px;
+  font-family: var(--font-roman);
+  font-size: 0.75rem;
+  cursor: pointer;
+  float: right;
+  border-radius: 3px;
+  margin-bottom: 10px;
+}
+
+.fan-column.expanded-full .btn-close-extended {
+  display: block;
+}
+
+/* ==========================================
+   8. COMPONENTES Y BOTONES DE ESTADO (EMAÚS)
+   ========================================== */
+.mood-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 12px;
+  margin: 15px 0;
+}
+
+.btn-emaus {
+  flex: 1 1 120px;
+  max-width: 250px;
+  display: inline-block;
+  background-color: transparent;
+  color: #d4af37;
+  border: 1px solid #d4af37;
+  padding: 10px 15px;
+  border-radius: 20px;
+  font-size: 0.9rem;
+  cursor: pointer;
+  text-align: center;
+  transition: all 0.3s ease;
+}
+
+.btn-emaus:hover {
+  background-color: #d4af37;
+  color: #121212;
+}
+
+.path-journey-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+  padding: 20px 0;
+}
+
+.huella-paso {
+  width: 100%;
+  max-width: 500px;
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-start;
+  gap: 15px;
+  background: rgba(212, 175, 55, 0.1);
+  border: 1px solid rgba(212, 175, 55, 0.3);
+  border-radius: 50px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  padding: 12px 25px;
+  box-sizing: border-box;
+  margin: 0 auto;
+}
+
+.huella-paso:hover {
+  background: rgba(212, 175, 55, 0.25);
+  transform: scale(1.05);
+}
+
+.huella-paso .icono-huella {
+  font-size: 1.2rem;
+}
+
+.huella-paso .etiqueta-paso {
+  text-align: left;
+  font-size: 0.95rem;
+}
+
+/* ==========================================
+   9. MEDIA QUERIES (ADAPTACIÓN PC / TABLET)
+   ========================================== */
+@media (min-width: 600px) {
+  .columns-container {
+    grid-template-columns: repeat(4, 1fr);
+    height: 100%;
+    align-items: stretch;
+  }
+
+  .split-container {
+    flex-direction: row;
+  }
+
+  .block-top {
+    border-bottom: none;
+    border-right: 2px solid var(--gold);
+  }
+
+  .main-header {
+    position: relative;
+  }
+
+  .btn-back,
+  .btn-back-path {
+    position: absolute;
+    left: 20px;
+    top: 10px;
+  }
+}
+
+@media (min-width: 800px) {
+  .fan-column.expanded-full {
+    grid-column: span 4;
+    max-width: 900px;
+    width: 90%;
+    margin: 0 auto;
+    top: 55%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    right: auto;
+    height: auto;
+    max-height: 75vh;
+    display: flex;
+    flex-direction: column;
+    overflow-y: auto;
+    padding-top: 50px;
+  }
+
+  .fan-column.expanded-full .btn-close-extended {
+    position: absolute;
+    top: 15px;
+    right: 20px;
+    z-index: 10;
+  }
+}
+/* --- Corrección para Pantalla Principal (screen-main) en Modo Claro --- */
+body.light-mode #screen-main {
+  background-color: #fcfbfa !important;
+}
+
+body.light-mode #screen-main .split-block.block-top,
+body.light-mode #screen-main .split-block.block-bottom {
+  background: #e8e4dc !important;
+  border-color: #b39353 !important;
+}
+
+body.light-mode #screen-main .split-block h2 {
+  color: #2c2c2c !important;
+}
+
+body.light-mode #screen-main .split-block p {
+  color: #555555 !important;
+}
+/* --- Forzar color oscuro en los números y textos de los botones de capítulos en Modo Claro --- */
+body.light-mode .btn-capitulo *,
+body.light-mode .capitulo-card *,
+body.light-mode #grid-capitulos .btn-capitulo * {
+  color: #2c2c2c !important;
+}
+
+/* Y aseguramos que al pasar el mouse por encima en modo claro se inviertan bien */
+body.light-mode .btn-capitulo:hover *,
+body.light-mode .capitulo-card:hover * {
+  color: #fcfbfa !important;
+}
+/* --- Martillo final para forzar textos y títulos de la Biblia a negro en modo claro --- */
+body.light-mode .grid-capitulos *,
+body.light-mode .capitulos-container *,
+body.light-mode #grid-capitulos *,
+body.light-mode .texto-ayuda-capitulos,
+body.light-mode .help-text-capitulos,
+body.light-mode h2,
+body.light-mode h3 {
+  color: #1a1a1a !important;
+}
+/* --- Forzar el color de los botones/tarjetas de libros de los Testamentos en Modo Claro --- */
+body.light-mode .testamento-card,
+body.light-mode [class*="testamento"],
+body.light-mode [class*="card"] {
+  color: #1a1a1a !important;
+  background-color: #f4f0ea !important;
+  border-color: #b39353 !important;
+}
+
+body.light-mode .testamento-card *,
+body.light-mode [class*="testamento"] *,
+body.light-mode [class*="card"] * {
+  color: #1a1a1a !important;
+}
+/* --- Destruir estilos en línea de los botones de libros individuales en Modo Claro --- */
+body.light-mode button[style],
+body.light-mode div[style] {
+  /* Si el elemento está dentro de la grilla de capítulos/libros, lo forzamos */
+}
+
+/* O atacando directamente cualquier selector que tenga texto de libro */
+body.light-mode .libro-btn,
+body.light-mode .btn-libro,
+body.light-mode [onclick*="abrirLibro"],
+body.light-mode [onclick*="cargarLibro"],
+body.light-mode [class*="libro"] {
+  color: #1a1a1a !important;
+  background-color: #f4f0ea !important;
+  border-color: #b39353 !important;
+}
+
+body.light-mode [onclick*="abrirLibro"] *,
+body.light-mode [onclick*="cargarLibro"] * {
+  color: #1a1a1a !important;
+}
+/* --- Forzar color oscuro en el título del libro seleccionado por JS --- */
+body.light-mode #titulo-libro-seleccionado {
+  color: #1a1a1a !important;
+}
+/* --- Forzar color oscuro en los divs de libros inyectados por JS en Modo Claro --- */
+body.light-mode #lista-libros-antiguo div,
+body.light-mode #lista-libros-nuevo div {
+  color: #1a1a1a !important;
+  background-color: #f4f0ea !important;
+  border-color: #b39353 !important;
+}
+/* --- Forzar color y fondo solo en los botones de libros individuales --- */
+body.light-mode #lista-libros-antiguo > div,
+body.light-mode #lista-libros-nuevo > div {
+  color: #1a1a1a !important;
+  background-color: #f4f0ea !important;
+  border-color: #b39353 !important;
+}
+/* --- Ajuste seguro para la pantalla de búsqueda --- */
+#screen-buscar h2 {
+  margin-left: 15px !important;
+}
+
+#screen-buscar .search-box-wrapper {
+  margin-left: 15px !important;
+  margin-right: 15px !important;
+}
+/* --- Color dorado prolijo para el título de búsqueda --- */
+#screen-buscar h2 {
+  color: var(--gold) !important;
+  margin-left: 12px !important;
+}
+/* --- Ajuste fino de tamaño para el input y estilo para el botón de búsqueda --- */
+#screen-buscar input[type="text"] {
+  padding: 6px 10px !important;
+  font-size: 0.95rem !important;
+}
+
+#screen-buscar button,
+#screen-buscar input[type="submit"] {
+  padding: 6px 12px !important;
+  font-size: 0.95rem !important;
+  border-radius: 4px !important;
+  border: 1px solid var(--gold) !important;
+  background-color: transparent !important;
+  color: var(--gold) !important;
+  cursor: pointer !important;
+}
+/* --- Darle respiro al pie de la pantalla de búsqueda --- */
+#screen-buscar {
+  padding-bottom: 40px !important;
+}
+/* --- Respiro inferior para los resultados de búsqueda --- */
+#screen-buscar {
+  padding-bottom: 50px !important;
+}
+
+#resultados-busqueda {
+  margin-bottom: 30px !important;
+}
+
+/* --- Botón de búsqueda prolijo y firme --- */
+#screen-buscar button,
+#screen-buscar input[type="submit"] {
+  padding: 6px 14px !important;
+  font-size: 0.95rem !important;
+  border-radius: 4px !important;
+  border: 1px solid var(--gold) !important;
+  background-color: var(--gold) !important;
+  color: #1a1a1a !important;
+  font-weight: 600 !important;
+  cursor: pointer !important;
+}
+/* --- Respiro perfecto y prolijo para cada resultado de búsqueda --- */
+#resultados-busqueda .search-result-item {
+  margin-top: 15px !important;
+  margin-left: 12px !important;
+  margin-right: 12px !important;
+}
+/* --- Limpiar el selector anterior de capítulos --- */
+.chapter-header,
+.capitulo-header {
+  display: revert !important;
+  flex-direction: revert !important;
+  align-items: revert !important;
+  text-align: revert !important;
+}
+/* --- Color automático de textos según el modo de la app --- */
+body.light-mode .search-result-item *,
+body.light-mode div[style*="space-between"] * {
+  color: #1a1a1a !important;
+}
+
+body:not(.light-mode) .search-result-item *,
+body:not(.light-mode) div[style*="space-between"] * {
+  color: #f4f0ea !important;
+}
+/* --- Color de texto general en resultados según el tema --- */
+body.light-mode .search-result-item {
+  color: #1a1a1a !important;
+}
+
+body:not(.light-mode) .search-result-item {
+  color: #f4f0ea !important;
+}
+/* --- Color de texto general en resultados según el tema --- */
+body.light-mode .search-result-item {
+  color: #1a1a1a !important;
+}
+
+body:not(.light-mode) .search-result-item {
+  color: #f4f0ea !important;
+}
+
+/* --- Devolver el dorado original a los títulos y referencias dentro de los resultados --- */
+.search-result-item h3,
+.search-result-item h4,
+.search-result-item strong,
+.search-result-item [style*="color"] {
+  color: var(--gold) !important;
 }

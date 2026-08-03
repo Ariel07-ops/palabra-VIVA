@@ -784,8 +784,6 @@ function cargarCapitulosLibroNuevo(nombreLibro, versesArray) {
     gridCapitulos.appendChild(btnCap);
   });
 }
-
-// --- FUNCIÓN GENERAL PARA RENDERIZAR VERSÍCULOS ---
 // --- FUNCIÓN GENERAL PARA RENDERIZAR VERSÍCULOS CON NAVEGACIÓN DE CAPÍTULOS ---
 function renderizarVersiculosCapitulo(nombreLibro, numCapitulo, versosLibro) {
   changeScreen(screenLectura);
@@ -828,7 +826,7 @@ function renderizarVersiculosCapitulo(nombreLibro, numCapitulo, versosLibro) {
       <button id="btn-cap-anterior" style="background: rgba(212,175,55,0.1); border: 1px solid var(--gold); color: #fff; padding: 10px 16px; border-radius: 6px; cursor: pointer; font-size: 0.9rem; ${!capAnterior ? "opacity: 0.3; pointer-events: none;" : ""}">
         ⬅ Capítulo Anterior
       </button>
-      <span style="color: var(--gold); font-size: 0.85rem;">Capítulo ${numCapitulo}</span>
+      <span style="color: var(--gold); font-size: 0.85rem; display: flex; align-items: center; text-align: center;">Capítulo ${numCapitulo}</span>
       <button id="btn-cap-siguiente" style="background: rgba(212,175,55,0.1); border: 1px solid var(--gold); color: #fff; padding: 10px 16px; border-radius: 6px; cursor: pointer; font-size: 0.9rem; ${!capSiguiente ? "opacity: 0.3; pointer-events: none;" : ""}">
         Capítulo Siguiente ➡
       </button>
