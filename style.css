@@ -3,7 +3,7 @@
    ========================================== */
 :root {
   --bg-dark: #000000;
-  --bg-panel: #121212;
+  --bg-panel: #000000;
   --gold: #d4af37;
   --gold-light: #f8edc1;
   --text-light: #e0e0e0;
@@ -38,7 +38,7 @@ body {
   margin: 0;
   padding: 0;
   height: 100%;
-  overflow: hidden; /* Saca la scrollbar global principal */
+  overflow: auto; /* Saca la scrollbar global principal */
 }
 
 body {
@@ -857,9 +857,6 @@ body.light-mode #contenido-peldaño {
 /* ==========================================
    7. PANEL INFERIOR Y ESTUDIO (ABANICO)
    ========================================== */
-/* ==========================================
-   7. PANEL INFERIOR Y ESTUDIO (ABANICO)
-   ========================================== */
 
 /* Por defecto en toda la aplicación el panel no se muestra */
 #study-card {
@@ -1131,13 +1128,13 @@ body.light-mode .fan-column.col-4 {
   border-radius: 50px;
   cursor: pointer;
   transition: all 0.3s ease;
-  padding: 12px 25px;
+  padding: 12px 20px;
   box-sizing: border-box;
   margin: 0 auto;
 }
 
 .huella-paso:hover {
-  background: rgba(212, 175, 55, 0.25);
+  background: rgba(204, 196, 202, 0.25);
   transform: scale(1.05);
 }
 
@@ -1689,6 +1686,7 @@ body.light-mode #lista-libros-nuevo > div {
 #screen-buscar .search-box-wrapper {
   margin-left: 15px !important;
   margin-right: 15px !important;
+  font-style: italic;
 }
 
 #resultados-busqueda {
@@ -1736,4 +1734,49 @@ body.light-mode #texto-emaus-detalle,
 body.light-mode #titulo-emaus-detalle {
   color: #1a1a1a !important; /* Tono oscuro profundo */
   font-weight: 700; /* Negrita */
+}
+/* Contenedor general para adaptabilidad móvil */
+.container,
+.app-container {
+  width: 100%;
+  max-width: 100vw;
+  padding: 10px;
+  box-sizing: border-box;
+}
+
+/* Contenedor de los libros en hilera (scroll horizontal) */
+.testament-row,
+.books-row {
+  display: flex;
+  flex-direction: row;
+  overflow-x: auto;
+  gap: 10px;
+  padding-bottom: 10px;
+  width: 100%;
+  scroll-snap-type: x mandatory;
+  -webkit-overflow-scrolling: touch;
+}
+
+/* Estilo individual para cada caja/botón de libro en la hilera */
+.book-item {
+  flex: 0 0 auto; /* Evita que se encojan y fuerza que queden en una hilera */
+  min-width: 100px;
+  text-align: center;
+  scroll-snap-align: start;
+}
+
+/* Ajustes generales para celulares */
+@media screen and (max-width: 768px) {
+  body {
+    font-size: 14px;
+    margin: 0;
+    padding: 0;
+  }
+
+  /* Asegurar que las grillas o paneles principales se apilen verticalmente en celu */
+  .main-layout,
+  .dashboard-grid {
+    display: flex;
+    flex-direction: column;
+  }
 }
