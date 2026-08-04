@@ -18,6 +18,8 @@ const screenAntiguo = document.getElementById("screen-antiguo");
 const screenCapitulos = document.getElementById("screen-capitulos");
 const screenLectura = document.getElementById("screen-lectura");
 const screenNuevo = document.getElementById("screen-nuevo");
+const screenIdioma = document.getElementById("screen-idioma");
+const screenSugerir = document.getElementById("screen-sugerir");
 const screenPeldañoDetalle = document.getElementById("screen-peldaño-detalle");
 // 2. CAPTURAR BOTONES INTERACTIVOS (Sin el btnEnter que ya no existe)
 const btnGotoBible = document.getElementById("btn-goto-bible");
@@ -55,6 +57,8 @@ function changeScreen(screenToShow) {
     screenNuevo,
     screenPeldañoDetalle,
     screenEmausDetalle,
+    screenIdioma,
+    screenSugerir,
   ].forEach((screen) => {
     if (screen) {
       screen.classList.remove("active");
@@ -402,13 +406,13 @@ document.getElementById("link-buscar")?.addEventListener("click", (e) => {
 
 document.getElementById("link-idioma")?.addEventListener("click", (e) => {
   e.preventDefault();
-  alert("Próximamente: Selector de idioma.");
+  changeScreen(screenIdioma);
   menuLateral.classList.remove("active");
 });
 
 document.getElementById("link-sugerir")?.addEventListener("click", (e) => {
   e.preventDefault();
-  alert("Próximamente: Sugerir enlaces.");
+  changeScreen(screenSugerir);
   menuLateral.classList.remove("active");
 });
 
@@ -1036,3 +1040,39 @@ const catecismoData = [
       "La oración no es meramente el fluir de los pensamientos espontáneos; es también un combate contra uno mismo y contra las asechanzas del Tentador. El combate espiritual de la nueva vida del cristiano es inseparable de la oración.",
   },
 ];
+
+// Agregar las pantallas a la función changeScreen (incluirlas en la lista del array)
+// *Asegurate de agregarlas dentro de la función changeScreen que ya tenés:*
+/*
+  [..., screenIdioma, screenSugerir].forEach(...)
+*/
+
+// Eventos del Menú Lateral para Idioma y Sugerencias
+document.getElementById("link-idioma")?.addEventListener("click", (e) => {
+  e.preventDefault();
+  changeScreen(screenIdioma);
+  menuLateral.classList.remove("active");
+});
+
+document.getElementById("link-sugerir")?.addEventListener("click", (e) => {
+  e.preventDefault();
+  changeScreen(screenSugerir);
+  menuLateral.classList.remove("active");
+});
+
+// Botones de retorno (flechita atrás) para estas dos pantallas
+document
+  .getElementById("btn-volver-idioma")
+  ?.addEventListener("click", () => changeScreen(screenMain));
+document
+  .getElementById("btn-volver-sugerir")
+  ?.addEventListener("click", () => changeScreen(screenMain));
+
+// Función simple para el selector de idioma
+function cambiarIdioma(lang) {
+  if (lang === "en") {
+    alert("English mode integration is prepared for future expansions.");
+  } else {
+    alert("Idioma cambiado a Español correctamente.");
+  }
+}

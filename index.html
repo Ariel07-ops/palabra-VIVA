@@ -688,6 +688,117 @@
         ></div>
       </div>
     </section>
+    <!-- PANTALLA / MODAL DE IDIOMA -->
+    <div id="screen-idioma" class="screen" style="display: padding 20px">
+      <button class="btn-back" id="btn-volver-idioma">⬅</button>
+      <h2
+        class="text-gold"
+        style="font-family: var(--font-roman); margin-bottom: 20px"
+      >
+        Selector de Idioma / Language
+      </h2>
+      <div
+        style="
+          max-width: 400px;
+          margin: 0 auto;
+          display: flex;
+          flex-direction: column;
+          gap: 15px;
+        "
+      >
+        <button
+          class="btn-emaus active"
+          onclick="cambiarIdioma('es')"
+          style="width: 100%; max-width: 100%"
+        >
+          🇪🇸 Español (Predeterminado)
+        </button>
+        <button
+          class="btn-emaus"
+          onclick="cambiarIdioma('en')"
+          style="width: 100%; max-width: 100%"
+        >
+          🇬🇧 English (Coming soon)
+        </button>
+      </div>
+    </div>
+
+    <!-- PANTALLA / MODAL DE SUGERIR ENLACES -->
+    <div id="screen-sugerir" class="screen" style="display: padding 20px">
+      <button class="btn-back" id="btn-volver-sugerir">⬅</button>
+      <div style="max-width: 500px; margin: 0 auto; text-align: center">
+        <h2
+          class="text-gold"
+          style="font-family: var(--font-roman); margin-bottom: 15px"
+        >
+          Enlaces de Interés
+        </h2>
+        <p
+          style="
+            color: var(--text-light);
+            margin-bottom: 25px;
+            font-size: 0.95rem;
+          "
+        >
+          Recursos recomendados para profundizar en el estudio y la lectura:
+        </p>
+
+        <div
+          style="
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            text-align: left;
+          "
+        >
+          <a
+            href="https://www.youtube.com"
+            target="_blank"
+            style="
+              display: block;
+              background: rgba(212, 175, 55, 0.1);
+              border: 1px solid var(--gold);
+              padding: 15px;
+              border-radius: 8px;
+              color: inherit;
+              text-decoration: none;
+              transition: background 0.2s;
+            "
+          >
+            <strong
+              style="color: var(--gold); display: block; margin-bottom: 5px"
+              >🎥 Canal de Reflexión en YouTube</strong
+            >
+            <span style="font-size: 0.85rem; color: #aaa"
+              >Explorá contenidos audiovisuales y charlas inspiradoras.</span
+            >
+          </a>
+
+          <a
+            href="https://github.com"
+            target="_blank"
+            style="
+              display: block;
+              background: rgba(212, 175, 55, 0.1);
+              border: 1px solid var(--gold);
+              padding: 15px;
+              border-radius: 8px;
+              color: inherit;
+              text-decoration: none;
+              transition: background 0.2s;
+            "
+          >
+            <strong
+              style="color: var(--gold); display: block; margin-bottom: 5px"
+              >📖 Biblioteca y Recursos Abiertos</strong
+            >
+            <span style="font-size: 0.85rem; color: #aaa"
+              >Documentos y escritos complementarios de apoyo.</span
+            >
+          </a>
+        </div>
+      </div>
+    </div>
 
     <script src="ariel.js"></script>
   </body>

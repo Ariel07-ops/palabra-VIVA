@@ -795,3 +795,19 @@ body.light-mode .fan-column.col-3 {
 body.light-mode .fan-column.col-4 {
   border-top: 4px solid #e34234 !important;
 }
+body.light-mode #screen-idioma,
+body.light-mode #screen-sugerir {
+  background-color: var(--bg-color) !important;
+  color: #2c2c2c !important;
+}
+
+body.light-mode #screen-sugerir a {
+  background: rgba(179, 147, 83, 0.1) !important;
+  border-color: #b39353 !important;
+  color: #2c2c2c !important;
+}
+
+body.light-mode #screen-sugerir a:hover {
+  background: #b39353 !important;
+  color: #ffffff !important;
+}
