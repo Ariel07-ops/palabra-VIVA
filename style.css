@@ -26,6 +26,18 @@ body.light-mode {
   --text-light: #2c2c2c !important;
   --border-color: #b39353;
 }
+/* Regla general para todas las pantallas de la aplicación */
+.screen {
+  box-sizing: border-box;
+  max-height: 100vh;
+  max-height: 100dvh; /* Se adapta perfecto a la pantalla real del celular */
+  overflow-y: auto; /* Solo permite bajar con el dedo si el texto es realmente más largo que la pantalla */
+}
+
+/* Excepción para la pantalla principal partida a la mitad para que no se mueva nada */
+#screen-main {
+  overflow: hidden; /* Corta cualquier rebote para que los dos bloques queden fijos y exactos */
+}
 
 * {
   box-sizing: border-box;
@@ -1745,7 +1757,7 @@ body.light-mode #titulo-emaus-detalle {
 }
 
 /* Contenedor de los libros en hilera (scroll horizontal) */
-.testament-row,
+.testamento-card,
 .books-row {
   display: flex;
   flex-direction: row;
