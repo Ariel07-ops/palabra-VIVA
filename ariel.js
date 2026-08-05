@@ -1092,3 +1092,26 @@ if (btnVolverAcerca) {
     changeScreen(document.getElementById("screen-main"));
   });
 }
+document.getElementById("btn-hablar")?.addEventListener("click", () => {
+  if ("speechSynthesis" in window) {
+    // Cancela cualquier audio previo para que no se encimen las voces
+    window.speechSynthesis.cancel();
+
+    // Busca el texto dentro de la tarjeta o párrafo principal
+    const elementoTexto =
+      document.querySelector(".ruta-emaus-texto") ||
+      document.querySelector("main p") ||
+      document.querySelector("p");
+    const textoALeer = elementoTexto
+      ? elementoTexto.innerText
+      : "No se encontró texto para leer.";
+
+    const utterance = new SpeechSynthesisUtterance(textoALeer);
+    utterance.lang = "es-AR"; // Configurado para español de Argentina
+    utterance.rate = 1.0; // Velocidad normal
+
+    window.speechSynthesis.speak(utterance);
+  } else {
+    alert("Tu dispositivo no soporta la función de lectura de voz.");
+  }
+});

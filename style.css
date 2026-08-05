@@ -597,17 +597,23 @@ body.light-mode .fan-column.expanded-full {
 /* ==========================================
    8. COMPONENTES Y BOTONES DE ESTADO (EMAÚS)
    ========================================== */
+/* El contenedor de los estados de ánimo (carrusel horizontal) */
 .mood-buttons {
   display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 12px;
+  flex-wrap: nowrap;
+  overflow-x: auto;
+  justify-content: flex-start;
+  gap: 10px;
+  padding: 10px 10px 15px 10px;
   margin: 15px 0;
+  scroll-snap-type: x mandatory;
+  -webkit-overflow-scrolling: touch;
+  width: 100%;
+  box-sizing: border-box;
 }
 
+/* ESTILO GENERAL para todos los botones .btn-emaus del sistema (tus otros botones normales) */
 .btn-emaus {
-  flex: 1 1 120px;
-  max-width: 250px;
   background-color: transparent;
   color: #d4af37;
   border: 1px solid #d4af37;
@@ -617,8 +623,20 @@ body.light-mode .fan-column.expanded-full {
   cursor: pointer;
   text-align: center;
   transition: all 0.3s ease;
+  /* Dejamos que mantengan su comportamiento normal sin ancho fijo */
 }
 
+/* EXCLUSIVO para los botones que están DENTRO del carrusel horizontal de estados */
+.mood-buttons .btn-emaus {
+  flex: 0 0 auto;
+  width: 100px;
+  min-height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  scroll-snap-align: start;
+  padding: 10px 5px; /* Padding ajustado para este ancho fijo */
+}
 .btn-emaus:hover,
 .btn-emaus.active {
   background-color: #d4af37;
@@ -867,12 +885,7 @@ body.light-mode #screen-sugerir a:hover {
 }
 
 /* Cada uno de los span / botones (btn-emaus) */
-.mood-buttons .btn-emaus {
-  flex: 0 0 auto; /* Evita que se aplasten */
-  min-width: 100px; /* Ancho mínimo uniforme para cada uno */
-  text-align: center;
-  scroll-snap-align: start;
-}
+
 .mood-buttons {
   display: flex;
   flex-wrap: nowrap; /* ESTO ES LA CLAVE: Evita que bajen a la segunda línea */
@@ -887,16 +900,9 @@ body.light-mode #screen-sugerir a:hover {
 
 .mood-buttons .btn-emaus {
   flex: 0 0 auto; /* Evita que se achiquen */
-  width: 110px; /* O un ancho fijo para que todos midan lo mismo */
+  width: 100px; /* O un ancho fijo para que todos midan lo mismo */
   text-align: center;
   scroll-snap-align: start;
-}
-.mood-buttons .btn-emaus {
-  flex: 0 0 auto;
-  width: 110px;
-  text-align: center;
-  scroll-snap-align: start;
-
   /* Agregá estas tres líneas para centrarlo perfecto */
   display: flex;
   align-items: center;
@@ -911,4 +917,24 @@ body.light-mode #screen-sugerir a:hover {
   font-style: italic; /* Esa cursiva delicada que queda genial */
   font-size: 0.95rem;
   font-family: serif; /* O la tipografía delicada que esté usando la Biblia */
+}
+.btn-audio {
+  background: transparent;
+  border: 1px solid rgba(212, 175, 55, 0.6);
+  color: #d4af37; /* Dorado */
+  padding: 8px 14px;
+  border-radius: 20px;
+  cursor: pointer;
+  font-size: 0.9rem;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 15px;
+  transition:
+    background 0.3s,
+    color 0.3s;
+}
+
+.btn-audio:hover {
+  background: rgba(212, 175, 55, 0.15);
 }
