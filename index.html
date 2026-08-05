@@ -9,6 +9,10 @@
       rel="stylesheet"
     />
     <link rel="stylesheet" href="style.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
   </head>
   <body>
     <!-- Barra de Navegación Superior -->
@@ -52,6 +56,11 @@
         <li><a href="#" id="link-buscar">🔍 Buscar Versículo</a></li>
         <li><a href="#" id="link-idioma">🌐 Idioma</a></li>
         <li><a href="#" id="link-sugerir">💡 Sugerir Enlaces</a></li>
+        <li>
+          <a href="#" id="link-acerca">
+            <i class="fas fa-info-circle"></i> Acerca de Palabra Viva</a
+          >
+        </li>
       </ul>
     </nav>
 
@@ -688,6 +697,7 @@
         ></div>
       </div>
     </section>
+
     <!-- PANTALLA / MODAL DE IDIOMA -->
     <div id="screen-idioma" class="screen" style="display: padding 20px">
       <button class="btn-back" id="btn-volver-idioma">⬅</button>
@@ -799,7 +809,43 @@
         </div>
       </div>
     </div>
-
+    <div id="screen-acerca" class="screen" style="display: padding 20px">
+      <button class="btn-back" id="btn-volver-acerca">←</button>
+      <h2
+        class="text-gold"
+        style="font-family: var(--font-roman); margin-bottom: 20px"
+      >
+        Nuestra Misión
+      </h2>
+      <div
+        style="
+          max-width: 600px;
+          margin: 0 auto;
+          text-align: left;
+          line-height: 1.6;
+        "
+      >
+        <p style="margin-bottom: 15px">
+          <em>Palabra Viva</em> nace para servir a Jesucristo, que es el Camino,
+          la Verdad y la Vida. Deseamos ayudar a que todas las personas puedan
+          acercarse a la Sagrada Escritura, comprenderla con seriedad, orarla
+          con fe y llevarla a la vida cotidiana.
+        </p>
+        <p style="margin-bottom: 15px">
+          Sabemos que la Palabra de Dios no es un producto ni una simple fuente
+          de información: es una llamada al encuentro con Cristo. Por eso
+          procuramos trabajar con seriedad, transparencia y compromiso con la
+          verdad, respetando la libertad, la dignidad y la intimidad de cada
+          persona.
+        </p>
+        <p
+          style="text-align: center; font-weight: bold; margin-top: 20px"
+          class="text-gold"
+        >
+          Todo lo que hacemos es para Él.
+        </p>
+      </div>
+    </div>
     <script src="ariel.js"></script>
   </body>
 </html>

@@ -21,6 +21,9 @@ const screenNuevo = document.getElementById("screen-nuevo");
 const screenIdioma = document.getElementById("screen-idioma");
 const screenSugerir = document.getElementById("screen-sugerir");
 const screenPeldañoDetalle = document.getElementById("screen-peldaño-detalle");
+const screenAcerca = document.getElementById("screen-acerca");
+const btnVolverAcerca = document.getElementById("btn-volver-acerca");
+
 // 2. CAPTURAR BOTONES INTERACTIVOS (Sin el btnEnter que ya no existe)
 const btnGotoBible = document.getElementById("btn-goto-bible");
 const btnGotoPath = document.getElementById("btn-goto-path");
@@ -59,6 +62,7 @@ function changeScreen(screenToShow) {
     screenEmausDetalle,
     screenIdioma,
     screenSugerir,
+    screenAcerca,
   ].forEach((screen) => {
     if (screen) {
       screen.classList.remove("active");
@@ -413,6 +417,11 @@ document.getElementById("link-idioma")?.addEventListener("click", (e) => {
 document.getElementById("link-sugerir")?.addEventListener("click", (e) => {
   e.preventDefault();
   changeScreen(screenSugerir);
+  menuLateral.classList.remove("active");
+});
+document.getElementById("link-acerca")?.addEventListener("click", (e) => {
+  e.preventDefault();
+  changeScreen(screenAcerca); // Asegurate de que el nombre de la constante de tu pantalla sea este o cambialo por el que uses
   menuLateral.classList.remove("active");
 });
 
@@ -1075,4 +1084,11 @@ function cambiarIdioma(lang) {
   } else {
     alert("Idioma cambiado a Español correctamente.");
   }
+}
+
+if (btnVolverAcerca) {
+  btnVolverAcerca.addEventListener("click", () => {
+    // Acá volvés a la pantalla principal o anterior según tu lógica
+    changeScreen(document.getElementById("screen-main"));
+  });
 }
