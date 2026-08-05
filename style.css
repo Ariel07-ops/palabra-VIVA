@@ -844,3 +844,71 @@ body.light-mode #screen-sugerir a:hover {
 #grid-capitulos {
   padding-bottom: 40px;
 }
+/* Contenedor exacto de tus botones de estado de ánimo */
+.mood-buttons {
+  display: flex;
+  overflow-x: auto;
+  gap: 12px;
+  padding: 10px 4px 15px 4px;
+  scroll-snap-type: x mandatory;
+  -webkit-overflow-scrolling: touch; /* Desplazamiento fluido en celulares */
+  width: 100%;
+  box-sizing: border-box;
+}
+
+/* Barra de desplazamiento sutil y prolija */
+.mood-buttons::-webkit-scrollbar {
+  height: 6px;
+}
+
+.mood-buttons::-webkit-scrollbar-thumb {
+  background-color: rgba(212, 175, 55, 0.4); /* Dorado sutil */
+  border-radius: 10px;
+}
+
+/* Cada uno de los span / botones (btn-emaus) */
+.mood-buttons .btn-emaus {
+  flex: 0 0 auto; /* Evita que se aplasten */
+  min-width: 100px; /* Ancho mínimo uniforme para cada uno */
+  text-align: center;
+  scroll-snap-align: start;
+}
+.mood-buttons {
+  display: flex;
+  flex-wrap: nowrap; /* ESTO ES LA CLAVE: Evita que bajen a la segunda línea */
+  overflow-x: auto;
+  gap: 12px;
+  padding: 10px 4px 15px 4px;
+  scroll-snap-type: x mandatory;
+  -webkit-overflow-scrolling: touch;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.mood-buttons .btn-emaus {
+  flex: 0 0 auto; /* Evita que se achiquen */
+  width: 110px; /* O un ancho fijo para que todos midan lo mismo */
+  text-align: center;
+  scroll-snap-align: start;
+}
+.mood-buttons .btn-emaus {
+  flex: 0 0 auto;
+  width: 110px;
+  text-align: center;
+  scroll-snap-align: start;
+
+  /* Agregá estas tres líneas para centrarlo perfecto */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 45px; /* O la altura que tengan tus botones */
+}
+/* Textos descriptivos y subtítulos en las pantallas de contenido */
+.screen-content p,
+.path-card .question,
+.subtitulo-ruta {
+  color: #d0d0d0; /* Un gris suave y elegante, no blanco puro */
+  font-style: italic; /* Esa cursiva delicada que queda genial */
+  font-size: 0.95rem;
+  font-family: serif; /* O la tipografía delicada que esté usando la Biblia */
+}
