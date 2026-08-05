@@ -811,3 +811,36 @@ body.light-mode #screen-sugerir a:hover {
   background: #b39353 !important;
   color: #ffffff !important;
 }
+/* ==========================================
+   CORRECCIÓN DE ALTURAS Y CAJITAS (15 min fix)
+   ========================================== */
+
+/* 1. Forzar altura automática y segura en las tarjetas de libros */
+#lista-libros-antiguo > div,
+#lista-libros-nuevo > div {
+  min-height: 55px;
+  height: auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+}
+
+/* 2. Asegurar espacio al final de las pantallas con scroll para que la última fila no quede pegada al borde */
+.screen {
+  padding-bottom: 50px; /* Margen de respiro inferior */
+}
+
+/* 3. Garantizar que las tarjetas de estados y caminos respiren bien */
+.btn-emaus,
+.huella-paso {
+  min-height: 48px;
+  height: auto;
+}
+
+/* 4. Prevenir que las grillas de capítulos colapsen en pantallas muy chicas */
+.grid-capitulos,
+.capitulos-container,
+#grid-capitulos {
+  padding-bottom: 40px;
+}
