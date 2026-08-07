@@ -780,3 +780,67 @@ fanColumns.forEach((col) => {
     });
   }
 });
+function toggleStudyCard() {
+  if (studyCard) {
+    studyCard.classList.toggle("hidden");
+
+    if (!studyCard.classList.contains("hidden")) {
+      // Buscamos todas las columnas
+      fanColumns.forEach((col) => {
+        // Solo se prende si tiene la clase "needs-highlight" que vos le pongas a mano
+        if (col.classList.contains("needs-highlight")) {
+          col.classList.add("has-content");
+        } else {
+          col.classList.remove("has-content");
+        }
+      });
+    }
+  }
+}
+// Función que recibe los datos del JSON y enciende la columna correspondiente
+function procesarYResaltarDesdeJSON(datosCapitulo) {
+  const fanColumns = document.querySelectorAll(".fan-column");
+
+  // 1. Apagamos todas primero para limpiar la pantalla
+  fanColumns.forEach((col) => col.classList.remove("has-content"));
+
+  // 2. Recorremos el JSON o evaluamos sus propiedades
+  // Por ejemplo, si tu JSON tiene campos como: { seccion1: "texto", seccion2: "", ... }
+
+  if (datosCapitulo.opcion1 && datosCapitulo.opcion1.trim() !== "") {
+    fanColumns[0].classList.add("has-content"); // Prende la primera
+  }
+
+  if (datosCapitulo.opcion2 && datosCapitulo.opcion2.trim() !== "") {
+    fanColumns[1].classList.add("has-content"); // Prende la segunda
+  }
+
+  if (datosCapitulo.opcion3 && datosCapitulo.opcion3.trim() !== "") {
+    fanColumns[2].classList.add("has-content"); // Prende la tercera
+  }
+
+  // Y así sucesivamente según cómo armes la estructura de tu JSON
+}
+function toggleStudyCard(datosDelLibroActual) {
+  if (studyCard) {
+    studyCard.classList.toggle("hidden");
+
+    // Si se acaba de abrir, evaluamos el JSON cargado
+    if (!studyCard.classList.contains("hidden")) {
+      procesarYResaltarDesdeJSON(datosDelLibroActual);
+    }
+  }
+}
+// Función para encender una columna específica de a una
+function encenderColumna(numeroColumna) {
+  const fanColumns = document.querySelectorAll(".fan-column");
+
+  // 1. Apagamos todas las columnas primero
+  fanColumns.forEach((col) => col.classList.remove("has-content"));
+
+  // 2. Si el número es válido, encendemos solo esa (restamos 1 porque los índices empiezan en 0)
+  const index = numeroColumna - 1;
+  if (fanColumns[index]) {
+    fanColumns[index].classList.add("has-content");
+  }
+}

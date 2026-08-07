@@ -938,3 +938,34 @@ body.light-mode #screen-sugerir a:hover {
 .btn-audio:hover {
   background: rgba(212, 175, 55, 0.15);
 }
+/* Las columnas arrancan tenues (apagaditas) */
+.fan-column {
+  opacity: 0.4;
+  transition: opacity 0.3s ease;
+  border-left: 4px solid transparent; /* Esta es tu línea de color */
+}
+
+/* Cuando le damos la clase "has-content", brilla y se pinta */
+.fan-column.has-content {
+  opacity: 1;
+  border-left-color: gold; /* La línea dorada */
+  background: rgba(
+    255,
+    255,
+    255,
+    0.05
+  ); /* Un toquecito de fondo para resaltar */
+}
+
+/* Esto es lo único que debería controlar la opacidad base */
+.fan-column {
+  opacity: 0.3;
+  transition: opacity 0.3s ease;
+  border-left: 4px solid transparent;
+}
+
+/* Solo las que tienen contenido se prenden */
+.fan-column.has-content {
+  opacity: 1;
+  border-left-color: gold;
+}
