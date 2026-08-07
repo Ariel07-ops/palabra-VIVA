@@ -969,3 +969,31 @@ body.light-mode #screen-sugerir a:hover {
   opacity: 1;
   border-left-color: gold;
 }
+.subrayado-filologia {
+  border-bottom: 2px solid #9b59b6;
+} /* Púrpura */
+.subrayado-historico {
+  border-bottom: 2px solid #ecf0f1;
+} /* Plata / Blanco */
+.subrayado-apologetica {
+  border-bottom: 2px solid #e74c3c;
+} /* Rojo */
+.subrayado-sucesion {
+  border-bottom: 2px solid #f1c40f;
+} /* Amarillo */
+
+.subrayado-multicolor {
+  border-bottom: 3px solid;
+  border-image: linear-gradient(to right, #9b59b6, #ecf0f1, #e74c3c, #f1c40f) 1;
+}
+/* Soporte para combinaciones dinámicas de degradados */
+.subrayado-combinado {
+  border-bottom: 3px solid;
+  border-image: linear-gradient(to right, var(--colores-degradado)) 1;
+}
+/* Cuando la columna está expandida a pantalla completa dentro del abanico */
+.fan-column.expanded-full {
+  background-color: #121212 !important; /* Fondo sólido oscuro para que tape lo de atrás */
+  z-index: 50;
+  opacity: 1 !important;
+}

@@ -45,6 +45,11 @@ function changeScreen(screenToShow) {
     const btnAudio = document.getElementById("btn-hablar-lectura");
     if (btnAudio)
       btnAudio.innerHTML = '<i class="fas fa-volume-up"></i> Escuchar';
+    document
+      .querySelectorAll(".expanded-full")
+      .forEach((el) => el.classList.remove("expanded-full"));
+    const studyCard = document.getElementById("study-card");
+    if (studyCard) studyCard.classList.add("hidden");
   }
 
   [
@@ -599,7 +604,7 @@ function cargarCapitulosLibro(nombreLibro, versesArray, pantallaOrigen) {
     gridCapitulos.appendChild(btnCap);
   });
 }
-
+// funcion para buscar capitulos y subrayar esplicaciones
 function renderizarVersiculosCapitulo(nombreLibro, numCapitulo, versosLibro) {
   if ("speechSynthesis" in window) {
     window.speechSynthesis.cancel();
@@ -639,7 +644,8 @@ function renderizarVersiculosCapitulo(nombreLibro, numCapitulo, versosLibro) {
 
   let htmlVersos = `<div style="max-width: 600px; margin: 0 auto; padding-bottom: 20px;">`;
   versosFiltrados.forEach((v) => {
-    htmlVersos += `<p style="margin-bottom: 14px;"><sup style="color: var(--gold); font-weight: bold; margin-right: 8px; font-size: 0.85rem;">${v.verse}</sup>${v.text}</p>`;
+    // AQUÍ ESTÁ EL GATILLO: data-versiculo="${v.verse}"
+    htmlVersos += `<p data-versiculo="${v.verse}" style="margin-bottom: 14px;"><sup style="color: var(--gold); font-weight: bold; margin-right: 8px; font-size: 0.85rem;">${v.verse}</sup>${v.text}</p>`;
   });
   htmlVersos += `</div>`;
 
@@ -652,6 +658,10 @@ function renderizarVersiculosCapitulo(nombreLibro, numCapitulo, versosLibro) {
   `;
 
   if (areaLectura) areaLectura.innerHTML = htmlVersos;
+
+  // Disparamos pasando el nombre del libro y el capítulo actual
+  aplicarSubrayadosCapitulo(nombreLibro, numCapitulo);
+  // 🚀 DISPARADOR: Llamamos a la función para que lea el JSON y aplique los subrayados al capítulo actual
 
   if (capAnterior) {
     document
@@ -688,42 +698,33 @@ function ejecutarLecturaVoz() {
     return;
   }
 
+  // Si ya se está reproduciendo, el botón actúa como DETENER (Stop) y resetea
+  if (estaReproduciendo) {
+    window.speechSynthesis.cancel();
+    estaReproduciendo = false;
+    textoCompletoActual = "";
+    if (btnAudio)
+      btnAudio.innerHTML = '<i class="fas fa-volume-up"></i> Escuchar';
+    return;
+  }
+
+  // Preparamos el texto limpio sin los números de los versículos
   const clone = areaLecturaFinal.cloneNode(true);
   clone.querySelectorAll("sup").forEach((sup) => sup.remove());
   const textoEnPantalla = clone.innerText.trim();
 
   if (!textoEnPantalla) return;
 
-  if (textoCompletoActual !== textoEnPantalla) {
-    window.speechSynthesis.cancel();
-    textoCompletoActual = textoEnPantalla;
-    estaReproduciendo = false;
-    estaPausado = false;
-  }
-
-  if (estaReproduciendo && !estaPausado) {
-    window.speechSynthesis.pause();
-    estaPausado = true;
-    if (btnAudio) btnAudio.innerHTML = '<i class="fas fa-play"></i> Continuar';
-    return;
-  }
-
-  if (estaPausado) {
-    window.speechSynthesis.resume();
-    estaPausado = false;
-    if (btnAudio) btnAudio.innerHTML = '<i class="fas fa-pause"></i> Pausa';
-    return;
-  }
-
+  // Cancelamos cualquier locución previa por seguridad
   window.speechSynthesis.cancel();
 
+  textoCompletoActual = textoEnPantalla;
   utteranceActual = new SpeechSynthesisUtterance(textoCompletoActual);
   utteranceActual.lang = "es-AR";
   utteranceActual.rate = 0.95;
 
   utteranceActual.onend = () => {
     estaReproduciendo = false;
-    estaPausado = false;
     textoCompletoActual = "";
     if (btnAudio)
       btnAudio.innerHTML = '<i class="fas fa-volume-up"></i> Escuchar';
@@ -731,39 +732,38 @@ function ejecutarLecturaVoz() {
 
   utteranceActual.onerror = () => {
     estaReproduciendo = false;
-    estaPausado = false;
     if (btnAudio)
       btnAudio.innerHTML = '<i class="fas fa-volume-up"></i> Escuchar';
   };
 
   estaReproduciendo = true;
-  estaPausado = false;
-  if (btnAudio) btnAudio.innerHTML = '<i class="fas fa-pause"></i> Pausa';
+  if (btnAudio) btnAudio.innerHTML = '<i class="fas fa-stop"></i> Detener';
 
   window.speechSynthesis.speak(utteranceActual);
 }
-
 // --- INTERACTIVIDAD DEL PANEL INFERIOR (Abanico en dos niveles) ---
 // --- Lógica del Panel de Estudio (Abanico) ---
 
 const fanColumns = document.querySelectorAll(".fan-column");
 
 // Función para alternar el estado del panel
-function toggleStudyCard() {
-  if (studyCard) {
-    studyCard.classList.toggle("hidden");
-  }
-}
-
-// Evento para abrir/cerrar desde la barrita dorada
+// Evento para cerrar desde la barrita dorada (ya no abre por casualidad)
 if (panelHandle) {
-  panelHandle.addEventListener("click", toggleStudyCard);
+  panelHandle.addEventListener("click", () => {
+    if (studyCard) {
+      studyCard.classList.add("hidden");
+    }
+  });
 }
-
 // Evento para expandir cada columna
 fanColumns.forEach((col) => {
   col.addEventListener("click", (e) => {
-    // Si el usuario hace clic en el botón de cerrar de la columna, no expandas
+    // 1. SI ESTÁ APAGADA (no tiene contenido), NO HACE NADA
+    if (!col.classList.contains("has-content")) {
+      return;
+    }
+
+    // Si el usuario hace clic en el botón de cerrar interno de la columna, no expandas
     if (e.target.classList.contains("btn-close-extended")) return;
 
     // Quitamos la expansión de todas y expandimos la seleccionada
@@ -780,23 +780,7 @@ fanColumns.forEach((col) => {
     });
   }
 });
-function toggleStudyCard() {
-  if (studyCard) {
-    studyCard.classList.toggle("hidden");
 
-    if (!studyCard.classList.contains("hidden")) {
-      // Buscamos todas las columnas
-      fanColumns.forEach((col) => {
-        // Solo se prende si tiene la clase "needs-highlight" que vos le pongas a mano
-        if (col.classList.contains("needs-highlight")) {
-          col.classList.add("has-content");
-        } else {
-          col.classList.remove("has-content");
-        }
-      });
-    }
-  }
-}
 // Función que recibe los datos del JSON y enciende la columna correspondiente
 function procesarYResaltarDesdeJSON(datosCapitulo) {
   const fanColumns = document.querySelectorAll(".fan-column");
@@ -843,4 +827,153 @@ function encenderColumna(numeroColumna) {
   if (fanColumns[index]) {
     fanColumns[index].classList.add("has-content");
   }
+}
+async function aplicarSubrayadosCapitulo(numeroCapitulo) {
+  try {
+    // 1. Creado o llamado al JSON central (se puede guardar en caché si prefieres)
+    let respuesta = await fetch("contenido.json");
+    let datos = await respuesta.json();
+
+    // 2. Extraemos SOLAMENTE el capítulo actual que se está mostrando
+    let capituloData = datos.libros.marcos.capitulos[numeroCapitulo];
+
+    if (!capituloData) {
+      console.log("No hay contenido especial para este capítulo.");
+      return;
+    }
+
+    // 3. Suponemos que tus versículos en pantalla tienen un identificador o clase, por ejemplo: [data-versiculo="1"]
+    for (let numVersiculo in capituloData.versiculos) {
+      let v = capituloData.versiculos[numVersiculo];
+      let elementoVersiculo = document.querySelector(
+        `[data-versiculo="${numVersiculo}"]`,
+      );
+
+      if (elementoVersiculo) {
+        // Limpiamos clases previas por si cambia de capítulo
+        elementoVersiculo.className = "";
+
+        // Evaluamos qué categorías están activas en este versículo
+        let cats = v.categorias;
+        let activas = Object.keys(cats).filter((key) => cats[key] === true);
+
+        // Aplicamos el color según la cantidad de activaciones
+        if (activas.length === 4) {
+          elementoVersiculo.classList.add("subrayado-multicolor");
+        } else if (activas.length === 1) {
+          elementoVersiculo.classList.add(`subrayado-${activas[0]}`);
+        } else if (activas.length > 1) {
+          // Si tiene 2 o 3, puedes definir una clase mixta o la lógica que prefieras
+          elementoVersiculo.classList.add("subrayado-multicolor");
+        }
+      }
+    }
+  } catch (error) {
+    console.error("Error al procesar los subrayados del capítulo:", error);
+  }
+}
+async function aplicarSubrayadosCapitulo(nombreLibro, numeroCapitulo) {
+  try {
+    let respuesta = await fetch("contenido.json");
+    let datos = await respuesta.json();
+
+    // 1. Normalizamos el nombre del libro para que coincida con la llave del JSON (ej: "Marcos" -> "marcos")
+    let keyLibro = nombreLibro.toLowerCase().trim();
+
+    // 2. Verificamos si el libro y el capítulo existen en el JSON
+    if (
+      !datos.libros ||
+      !datos.libros[keyLibro] ||
+      !datos.libros[keyLibro].capitulos[numeroCapitulo]
+    ) {
+      console.log(
+        `No hay contenido especial para ${nombreLibro} cap. ${numeroCapitulo}.`,
+      );
+      return;
+    }
+
+    let capituloData = datos.libros[keyLibro].capitulos[numeroCapitulo];
+
+    // Mapa de colores exactos para los gradientes
+    const mapaColoresHex = {
+      filologia: "#9b59b6", // Púrpura
+      historico: "#ecf0f1", // Plata/Blanco
+      apologetica: "#e74c3c", // Rojo
+      sucesion: "#f1c40f", // Amarillo
+    };
+
+    for (let numVersiculo in capituloData.versiculos) {
+      let v = capituloData.versiculos[numVersiculo];
+      let elementoVersiculo = document.querySelector(
+        `[data-versiculo="${numVersiculo}"]`,
+      );
+
+      if (elementoVersiculo) {
+        // Limpiamos estilos previos por si acaso
+        elementoVersiculo.className = "";
+        elementoVersiculo.style.borderBottom = "";
+        elementoVersiculo.style.borderImage = "";
+
+        let cats = v.categorias;
+        let activas = Object.keys(cats).filter((key) => cats[key] === true);
+
+        if (activas.length === 1) {
+          elementoVersiculo.classList.add(`subrayado-${activas[0]}`);
+        } else if (activas.length > 1) {
+          let coloresActivos = activas
+            .map((cat) => mapaColoresHex[cat])
+            .join(", ");
+          elementoVersiculo.style.borderBottom = "3px solid";
+          elementoVersiculo.style.borderImage = `linear-gradient(to right, ${coloresActivos}) 1`;
+        }
+
+        // Interactividad de clics para abrir el abanico
+        if (activas.length > 0) {
+          elementoVersiculo.style.cursor = "pointer";
+          elementoVersiculo.title =
+            "Tocá para ver el estudio de este versículo";
+
+          elementoVersiculo.onclick = () => {
+            const studyCard = document.getElementById("study-card");
+            if (studyCard) {
+              studyCard.classList.remove("hidden");
+            }
+
+            const fanColumns = document.querySelectorAll(".fan-column");
+            fanColumns.forEach((col) => col.classList.remove("has-content"));
+
+            const mapaColumnas = {
+              filologia: 0,
+              sucesion: 1,
+              historico: 2,
+              apologetica: 3,
+            };
+
+            activas.forEach((catKey) => {
+              let indexColumna = mapaColumnas[catKey];
+              if (indexColumna !== undefined && fanColumns[indexColumna]) {
+                fanColumns[indexColumna].classList.add("has-content");
+              }
+            });
+          };
+        }
+      }
+    }
+  } catch (error) {
+    console.error("Error al procesar los subrayados:", error);
+  }
+}
+// Función para cerrar las columnas y ocultar el panel al cambiar de sección
+function cerrarAbanicoAlCambiar() {
+  // 1. Oculta el panel principal usando la misma lógica que el panelHandle
+  const studyCard = document.getElementById("study-card");
+  if (studyCard) {
+    studyCard.classList.add("hidden");
+  }
+
+  // 2. Limpia la expansión de todas las columnas individuales
+  const fanColumns = document.querySelectorAll(".fan-column");
+  fanColumns.forEach((col) => {
+    col.classList.remove("expanded-full");
+  });
 }

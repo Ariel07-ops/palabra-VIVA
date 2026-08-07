@@ -1,0 +1,70 @@
+{
+  "libros": {
+    "marcos": {
+      "nombre": "Evangelio según San Marcos",
+      "capitulos": {
+        "1": {
+          "versiculos": {
+            "1": {
+              "texto": "Principio del Evangelio de Jesucristo, Hijo de Dios.",
+              "categorias": {
+                "filologia": true,
+                "historico": false,
+                "apologetica": false,
+                "sucesion": false
+              }
+            },
+            "2": {
+              "texto": "Como está escrito en el profeta Isaías...",
+              "categorias": {
+                "filologia": false,
+                "historico": true,
+                "apologetica": false,
+                "sucesion": false
+              }
+            }
+          }
+        },
+        "2": {
+          "versiculos": {
+            "1": {
+              "texto": "Entró Jesús otra vez en Capernaum después de algunos días...",
+              "categorias": {
+                "filologia": false,
+                "historico": false,
+                "apologetica": true,
+                "sucesion": true
+              }
+            }
+          }
+        },
+        "3": {
+          "versiculos": {
+            "1": {
+              "texto": "Otra vez entró Jesús en la sinagoga; y había allí un hombre que tenía seca una mano.",
+              "categorias": {
+                "filologia": false,
+                "historico": true,
+                "apologetica": false,
+                "sucesion": true
+              }
+            }
+          }
+        },
+        "4": {
+          "versiculos": {
+            "1": {
+              "texto": "Otra vez comenzó Jesús a enseñar junto al mar...",
+              "categorias": {
+                "filologia": true,
+                "historico": true,
+                "apologetica": true,
+                "sucesion": true
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
