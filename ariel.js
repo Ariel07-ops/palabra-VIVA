@@ -21,10 +21,10 @@ const screenNuevo = document.getElementById("screen-nuevo");
 const screenIdioma = document.getElementById("screen-idioma");
 const screenSugerir = document.getElementById("screen-sugerir");
 const screenPeldañoDetalle = document.getElementById("screen-peldaño-detalle");
+const screenEmausDetalle = document.getElementById("screen-emaus-detalle");
 const screenAcerca = document.getElementById("screen-acerca");
-const btnVolverAcerca = document.getElementById("btn-volver-acerca");
 
-// 2. CAPTURAR BOTONES INTERACTIVOS (Sin el btnEnter que ya no existe)
+// 2. CAPTURAR BOTONES INTERACTIVOS
 const btnGotoBible = document.getElementById("btn-goto-bible");
 const btnGotoPath = document.getElementById("btn-goto-path");
 const btnBackBible = document.querySelector(".btn-back");
@@ -33,11 +33,20 @@ const menuLateral = document.getElementById("menu-lateral");
 const textParagraph = document.querySelector(".interact-paragraph");
 const studyCard = document.getElementById("study-card");
 const panelHandle = document.querySelector(".panel-handle");
-const screenEmausDetalle = document.getElementById("screen-emaus-detalle");
+const btnVolverAcerca = document.getElementById("btn-volver-acerca");
 
 // --- FUNCIÓN AUXILIAR PARA CAMBIAR DE PANTALLA ---
 function changeScreen(screenToShow) {
-  // Ocultamos todas las pantallas sacándoles la clase 'active'
+  // --- FRENAR AUDIO SIEMPRE QUE CAMBIAMOS DE PANTALLA ---
+  if ("speechSynthesis" in window) {
+    window.speechSynthesis.cancel();
+    if (typeof estaReproduciendo !== "undefined") estaReproduciendo = false;
+    if (typeof estaPausado !== "undefined") estaPausado = false;
+    const btnAudio = document.getElementById("btn-hablar-lectura");
+    if (btnAudio)
+      btnAudio.innerHTML = '<i class="fas fa-volume-up"></i> Escuchar';
+  }
+
   [
     screenSplash,
     screenMain,
@@ -68,34 +77,30 @@ function changeScreen(screenToShow) {
       screen.classList.remove("active");
     }
   });
-  // Mostramos solo la pantalla elegida agregándole 'active'
-  screenToShow.classList.add("active");
+  if (screenToShow) {
+    screenToShow.classList.add("active");
+  }
 }
 
 // --- FUNCIÓN PARA REDIRIGIR SEGÚN EL ESTADO ---
 function redirigir(estado) {
-  if (estado === "optimo") {
-    changeScreen(screenOptimo);
-  } else if (estado === "bendecido") {
-    changeScreen(screenBendecido);
-  } else if (estado === "cansado") {
-    changeScreen(screenCansado);
-  } else if (estado === "feliz") {
-    changeScreen(screenFeliz);
-  } else if (estado === "triste") {
-    changeScreen(screenTriste);
-  } else if (estado === "ansioso") {
-    changeScreen(screenAnsioso);
-  } else if (estado === "temeroso") {
-    changeScreen(screenTemeroso);
-  } else if (estado === "preocupado") {
-    changeScreen(screenPreocupado);
+  const estadosMap = {
+    optimo: screenOptimo,
+    bendecido: screenBendecido,
+    cansado: screenCansado,
+    feliz: screenFeliz,
+    triste: screenTriste,
+    ansioso: screenAnsioso,
+    temeroso: screenTemeroso,
+    preocupado: screenPreocupado,
+  };
+  if (estadosMap[estado]) {
+    changeScreen(estadosMap[estado]);
   }
 }
 
 // --- ACTIVAR BOTONES DE ESTADO DE ÁNIMO ---
 const moodButtons = document.querySelectorAll(".btn-emaus");
-
 moodButtons.forEach((button) => {
   button.addEventListener("click", () => {
     moodButtons.forEach((btn) => btn.classList.remove("active"));
@@ -103,229 +108,130 @@ moodButtons.forEach((button) => {
   });
 });
 
-// De Pantalla Partida a Detalle de la Biblia (Bloque Superior)
-btnGotoBible.addEventListener("click", () => {
-  changeScreen(screenBibleDetail);
-});
-
-// De Pantalla Partida a Detalle del Camino (Bloque Inferior)
-btnGotoPath.addEventListener("click", () => {
-  changeScreen(screenPathDetail);
-});
-
-// Botón Volver de la Biblia a la Pantalla Partida
-btnBackBible.addEventListener("click", () => {
-  changeScreen(screenMain);
-});
-
-// --- INTERACTIVIDAD DEL PANEL INFERIOR (Abanico en dos niveles) ---
-if (textParagraph) {
-  textParagraph.addEventListener("click", () => {
-    if (studyCard) studyCard.classList.toggle("hidden");
-  });
-}
-
-if (panelHandle) {
-  panelHandle.addEventListener("click", () => {
-    if (studyCard) studyCard.classList.toggle("hidden");
-  });
-}
-
-const columns = document.querySelectorAll(".fan-column");
-
-columns.forEach((col) => {
-  col.addEventListener("click", (e) => {
-    if (e.target.classList.contains("btn-close-extended")) return;
-
-    if (!studyCard.classList.contains("hidden")) {
-      columns.forEach((c) => c.classList.remove("expanded-full"));
-      col.classList.add("expanded-full");
-    }
-  });
-
-  const btnClose = col.querySelector(".btn-close-extended");
-  btnClose.addEventListener("click", (e) => {
-    e.stopPropagation();
-    col.classList.remove("expanded-full");
-  });
-});
+if (btnGotoBible)
+  btnGotoBible.addEventListener("click", () => changeScreen(screenBibleDetail));
+if (btnGotoPath)
+  btnGotoPath.addEventListener("click", () => changeScreen(screenPathDetail));
+if (btnBackBible)
+  btnBackBible.addEventListener("click", () => changeScreen(screenMain));
 
 // --- BOTONES VOLVER DE LAS PANTALLAS DE ESTADO ---
-const btnBackOptimo = document.querySelector("#screen-optimo .btn-back-path");
-const btnBackCansado = document.querySelector("#screen-cansado .btn-back-path");
-const btnBackBendecido = document.querySelector(
-  "#screen-bendecido .btn-back-path",
-);
-const btnBackFeliz = document.querySelector("#screen-feliz .btn-back-path");
-const btnBackTriste = document.querySelector("#screen-triste .btn-back-path");
-const btnBackAnsioso = document.querySelector("#screen-ansioso .btn-back-path");
-const btnBackTemeroso = document.querySelector(
-  "#screen-temeroso .btn-back-path",
-);
-const btnBackPreocupado = document.querySelector(
-  "#screen-preocupado .btn-back-path",
-);
-
-if (btnBackOptimo) {
-  btnBackOptimo.addEventListener("click", () => {
-    changeScreen(screenPathDetail);
-  });
-}
-if (btnBackCansado) {
-  btnBackCansado.addEventListener("click", () => {
-    changeScreen(screenPathDetail);
-  });
-}
-if (btnBackBendecido) {
-  btnBackBendecido.addEventListener("click", () => {
-    changeScreen(screenPathDetail);
-  });
-}
-if (btnBackFeliz) {
-  btnBackFeliz.addEventListener("click", () => {
-    changeScreen(screenPathDetail);
-  });
-}
-if (btnBackTriste) {
-  btnBackTriste.addEventListener("click", () => {
-    changeScreen(screenPathDetail);
-  });
-}
-if (btnBackAnsioso) {
-  btnBackAnsioso.addEventListener("click", () => {
-    changeScreen(screenPathDetail);
-  });
-}
-if (btnBackTemeroso) {
-  btnBackTemeroso.addEventListener("click", () => {
-    changeScreen(screenPathDetail);
-  });
-}
-if (btnBackPreocupado) {
-  btnBackPreocupado.addEventListener("click", () => {
-    changeScreen(screenPathDetail);
-  });
-}
+[
+  "optimo",
+  "cansado",
+  "bendecido",
+  "feliz",
+  "triste",
+  "ansioso",
+  "temeroso",
+  "preocupado",
+].forEach((est) => {
+  const btn = document.querySelector(`#screen-${est} .btn-back-path`);
+  if (btn) btn.addEventListener("click", () => changeScreen(screenPathDetail));
+});
 
 const btnBackEmaus = document.querySelector("#screen-emaus .btn-back-path");
-if (btnBackEmaus) {
-  btnBackEmaus.addEventListener("click", () => {
-    changeScreen(screenPathDetail);
-  });
+if (btnBackEmaus)
+  btnBackEmaus.addEventListener("click", () => changeScreen(screenPathDetail));
+
+// --- FUNCIONES DE DETALLE PARA EMAÚS Y PROMESA ---
+function abrirPasoEmaus(numero) {
+  const pasosEmausData = {
+    1: {
+      titulo: "1. El inicio en lo oculto",
+      texto:
+        "Los discípulos caminan hacia Emaús con el rostro sombrío y el corazón cargado de desilusión. Jesús mismo se acerca y camina con ellos, pero sus ojos estaban retenidos para que no le reconocieran. Así camina muchas veces el Señor a nuestro lado en medio de nuestras tristezas cotidianas.",
+    },
+    2: {
+      titulo: "2. El caminar diario",
+      texto:
+        "Mientras van de camino, Él les explica las Escrituras comenzando por Moisés y todos los profetas. El calor de su palabra va encendiendo lentamente el fuego en sus corazones cansados, enseñándonos que la oración y la lectura meditada de la Palabra son el sustento del peregrino.",
+    },
+    3: {
+      titulo: "3. La fracción del pan",
+      texto:
+        "Al llegar a la aldea, lo invitan a quedarse y, sentado a la mesa, toma el pan, pronuncia la bendición, lo parte y se lo da. En este gesto supremo se abren sus ojos y lo reconocen. Es el misterio de la Eucaristía, centro y cumbre de nuestra vida cristiana.",
+    },
+    4: {
+      titulo: "4. Hacia la Plenitud",
+      texto:
+        "Recobrada la luz y la esperanza, se levantan al instante y regresan a Jerusalén para anunciar la Buena Nueva a los hermanos: '¡El Señor ha resucitado verdaderamente!'. El camino que comenzó en la tristeza culmina en el testimonio y en la alegría desbordante del Resucitado.",
+    },
+  };
+
+  const datos = pasosEmausData[numero];
+  if (!datos) return;
+
+  document.getElementById("titulo-emaus-detalle").innerText = datos.titulo;
+  document.getElementById("texto-emaus-detalle").innerHTML = datos.texto;
+  changeScreen(screenEmausDetalle);
 }
 
-// Función para mostrar el contenido de cada huella del Camino de Emaús
-function abrirPasoEmaus(numeroPaso) {
-  const contenedorContenido = document.getElementById("contenido-paso-emaus");
-  const tituloPaso = document.getElementById("titulo-paso");
-  const textoBiblico = document.getElementById("texto-biblico-paso");
-  const reflexionPaso = document.getElementById("reflexion-paso");
-
-  contenedorContenido.classList.remove("hidden");
-
-  if (numeroPaso === 1) {
-    tituloPaso.innerText = "1. El inicio en lo oculto (La Encarnación)";
-    textoBiblico.innerText =
-      "«Y el Verbo se hizo carne, y habitó entre nosotros...» (Jn 1:14)";
-    reflexionPaso.innerText =
-      "Todo gran camino comienza en el silencio y lo oculto, como Jesús en el seno de María. En lo cotidiano más pequeño Dios ya está obrando.";
-  } else if (numeroPaso === 2) {
-    tituloPaso.innerText = "2. El caminar diario (Las enseñanzas)";
-    textoBiblico.innerText =
-      "«¿No ardía nuestro corazón en nosotros mientras nos hablaba en el camino...?» (Lc 24:32)";
-    reflexionPaso.innerText =
-      "Caminar con Jesús es dejar que Su Palabra ordene nuestros pasos. A veces caminamos ciegos por las preocupaciones, pero Él va a nuestro lado.";
-  } else if (numeroPaso === 3) {
-    tituloPaso.innerText = "3. La fracción del pan (El Sacramento)";
-    textoBiblico.innerText =
-      "«Y los ojos de ellos se abrieron, y le reconocieron...» (Lc 24:31)";
-    reflexionPaso.innerText =
-      "El punto de inflexión. Es en la Eucaristía y en el dar y compartir fraterno donde cae el velo y se revela la presencia viva del Señor.";
-  } else if (numeroPaso === 4) {
-    tituloPaso.innerText = "4. Hacia el Infinito (La misión sin fin)";
-    textoBiblico.innerText =
-      "«Y levantándose en la misma hora, volvieron a Jerusalén...» (Lc 24:33)";
-    reflexionPaso.innerText =
-      "El encuentro con el Resucitado no nos encierra; nos proyecta hacia la eternidad y hacia el hermano. Cada paso terrenal es ya un eco del Cielo.";
-  }
-
-  contenedorContenido.scrollIntoView({ behavior: "smooth" });
-}
-
-// Función para mostrar el contenido de cada peldaño de la Escalera de la Promesa
 function abrirPeldaño(numero) {
-  const contenedor = document.getElementById("contenido-peldaño");
-  const titulo = document.getElementById("titulo-peldaño");
-  const texto = document.getElementById("texto-peldaño");
+  const peldañosData = {
+    1: {
+      titulo: "1. El Principio Eterno (Génesis)",
+      texto:
+        "Desde el principio, antes de la fundación del mundo, el Verbo ya existía en Dios. En el relato de la creación del Génesis contemplamos el designio amoroso del Padre, donde el hombre es creado a imagen y semejanza...",
+    },
+    2: {
+      titulo: "2. La Sombra y el Pan Oculto (Melquisedec)",
+      texto:
+        "La figura misteriosa de Melquisedec, rey de Salem y sacerdote del Dios Altísimo, ofrece pan y vino prefigurando el sacrificio eucarístico perfecto que Cristo instituirá en la Última Cena...",
+    },
+    3: {
+      titulo: "3. La Voz de los Profetas (Isaías)",
+      texto:
+        "A través de los siglos, la voz de los profetas mantuvo encendida la esperanza del pueblo. Isaías anticipa de manera luminosa al Servidor Doliente y al Emmanuel, Dios con nosotros...",
+    },
+    4: {
+      titulo: "4. El Fiat que abre el Cielo (La Anunciación)",
+      texto:
+        "El 'Sí' humilde y total de la Virgen María desata el nudo de la desobediencia antigua. En su seno virginal, el Verbo se hace carne y habita entre nosotros.",
+    },
+    5: {
+      titulo: "5. La Luz en la Intemperie (El Pesebre)",
+      texto:
+        "En la humildad de Belén, la luz brota en las tinieblas. Dios se hace frágil y pequeño para que ningún ser humano tenga miedo de acercarse a su Creador.",
+    },
+    6: {
+      titulo: "6. Las Huellas del Maestro (Vida Pública)",
+      texto:
+        "Durante su vida pública, Jesús recorre los caminos de Galilea y Judea enseñando con autoridad, sanando a los enfermos y revelando el rostro misericordioso del Padre.",
+    },
+    7: {
+      titulo: "7. La Victoria sobre la Muerte (Pascua)",
+      texto:
+        "A través de la Cruz y la gloriosa Resurrección, Cristo vence al pecado y a la muerte. El sepulcro vacío es la prueba definitiva de que la vida eterna nos ha sido abierta.",
+    },
+    8: {
+      titulo: "8. La Promesa Cumplida (Pentecostés)",
+      texto:
+        "Con la efusión del Espíritu Santo sobre la Iglesia naciente, la promesa se consuma. Los Apóstoles salen a anunciar la Buena Nueva con valentía, guiados por el Paráclito hasta los confines de la tierra.",
+    },
+  };
 
-  contenedor.classList.remove("hidden");
+  const datos = peldañosData[numero];
+  if (!datos) return;
 
-  if (numero === 1) {
-    titulo.innerText = "1. El Principio Eterno (Génesis)";
-    texto.innerText =
-      "«En el principio ya era el Verbo, y el Verbo estaba con Dios, y el Verbo era Dios.» La creación entera nace de este diseño de amor eterno entre el Padre y el Hijo.";
-  } else if (numero === 2) {
-    titulo.innerText = "2. La Sombra y el Pan Oculto (Melquisedec)";
-    texto.innerText =
-      "En el Antiguo Testamento, el rey Melquisedec ofrece pan y vino a Abraham (Génesis 14), anticipando de forma misteriosa el sacerdocio eterno de Cristo y la Eucaristía.";
-  } else if (numero === 3) {
-    titulo.innerText = "3. La Voz de los Profetas (Isaías)";
-    texto.innerText =
-      "Las profecías anuncian al Emmanuel ('Dios con nosotros') y al siervo que cargará con nuestras culpas, preparando el corazón de Israel para la llegada del Salvador.";
-  } else if (numero === 4) {
-    titulo.innerText = "4. El Sí que abre el Cielo (La Anunciación)";
-    texto.innerText =
-      "El arcángel Gabriel y la respuesta humilde de María en Nazaret. El Verbo empieza a latir en lo oculto de su seno, asumiendo nuestra carne frágil.";
-  } else if (numero === 5) {
-    titulo.innerText = "5. La Luz en la Intemperie (El Pesebre)";
-    texto.innerText =
-      "Dios se hace niño y nace en la pobreza de Belén. La grandeza infinita se esconde en la absoluta pequeñez para que nadie tenga miedo de acercarse.";
-  } else if (numero === 6) {
-    titulo.innerText = "6. Las Huellas del Maestro (Vida Pública)";
-    texto.innerText =
-      "Los caminos de Galilea, las parábolas, los milagros y la enseñanza profunda que sacude el corazón humano y revela el rostro misericordioso del Padre.";
-  } else if (numero === 7) {
-    titulo.innerText = "7. La Victoria sobre la Muerte (Pascua)";
-    texto.innerText =
-      "La cruz como el trono de la entrega total por amor, seguida por el sepulcro vacío. La muerte ha sido vencida y la vida se abre paso para siempre.";
-  } else if (numero === 8) {
-    titulo.innerText = "8. La Promesa Cumplida (Pentecostés)";
-    texto.innerText =
-      "Jesús asciende al Padre y desciende el fuego del Espíritu Santo sobre la Iglesia naciente, sellando la morada de Dios dentro del corazón del creyente.";
-  }
-
-  contenedor.scrollIntoView({ behavior: "smooth" });
-}
-
-// Función para cerrar panel de la escalera de la promesa
-function cerrarPeldaño() {
-  const contenedor = document.getElementById("contenido-peldaño");
-  contenedor.classList.add("hidden");
+  document.getElementById("titulo-peldaño-detalle").innerText = datos.titulo;
+  document.getElementById("texto-peldaño-detalle").innerHTML = datos.texto;
+  changeScreen(screenPeldañoDetalle);
 }
 
 // --- TRANSICIÓN AUTOMÁTICA DEL SPLASH ---
 setTimeout(() => {
-  const splash = document.getElementById("screen-splash");
-  const mainScreen = document.getElementById("screen-main");
-
-  if (splash) {
-    splash.style.transition = "opacity 0.8s ease";
-    splash.style.opacity = "0";
-
+  if (screenSplash) {
+    screenSplash.style.transition = "opacity 0.8s ease";
+    screenSplash.style.opacity = "0";
     setTimeout(() => {
-      splash.style.display = "none";
-      if (mainScreen) {
-        mainScreen.classList.add("active");
-      }
+      screenSplash.style.display = "none";
+      if (screenMain) screenMain.classList.add("active");
     }, 800);
   }
 }, 4500);
 
-console.log(
-  "Script ariel.js cargado y listo para usar funciones de Biblia y Pantallas.",
-);
-
-// Activador automático para el botón de cambio de tema
+// --- CAMBIO DE TEMA ---
 document.addEventListener("DOMContentLoaded", () => {
   const btnTheme = document.getElementById("btn-theme");
   if (btnTheme) {
@@ -335,50 +241,14 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 });
 
-// Función para cargar y distribuir los datos del JSON en la app
-async function inicializarBibliaDinamica() {
-  try {
-    const respuesta = await fetch("biblia.json");
-    const datos = await respuesta.json();
-
-    const textoVersiculo = document.getElementById("texto-versiculo-dinamico");
-    const etiquetaVersion = document.getElementById(
-      "etiqueta-version-dinamica",
-    );
-
-    if (textoVersiculo && datos.testamentos && datos.testamentos.nuevo) {
-      const juanCap1 = datos.testamentos.nuevo.find((lib) => lib.id === "jn");
-      if (juanCap1 && juanCap1.capitulos["1"]["14"]) {
-        textoVersiculo.innerHTML = `<span class="drop-cap">Y</span> ${juanCap1.capitulos["1"]["14"]}`;
-        etiquetaVersion.textContent = `${datos.version} - Juan 1:14`;
-      }
-    }
-
-    if (datos.estados_liturgicos) {
-      for (const [estado, info] of Object.entries(datos.estados_liturgicos)) {
-        const elementoCita = document.getElementById(`cita-${estado}`);
-        if (elementoCita) {
-          elementoCita.innerHTML = `<strong>${info.cita}:</strong> ${info.texto}`;
-        }
-      }
-    }
-
-    console.log("Biblia y estados cargados correctamente desde el JSON.");
-  } catch (error) {
-    console.error("No se pudo cargar el archivo biblia.json:", error);
-  }
-}
-
+// --- MENÚ LATERAL Y ENLACES ---
 if (btnMenu && menuLateral) {
-  btnMenu.addEventListener("click", () => {
-    menuLateral.classList.toggle("active");
-  });
+  btnMenu.addEventListener("click", () =>
+    menuLateral.classList.toggle("active"),
+  );
 }
 
 document.addEventListener("click", (event) => {
-  const menuLateral = document.getElementById("menu-lateral");
-  const btnMenu = document.getElementById("btn-menu");
-
   if (
     menuLateral &&
     btnMenu &&
@@ -395,25 +265,21 @@ document.getElementById("link-inicio")?.addEventListener("click", (e) => {
   changeScreen(screenMain);
   menuLateral.classList.remove("active");
 });
-
 document.getElementById("link-biblia")?.addEventListener("click", (e) => {
   e.preventDefault();
   changeScreen(screenBibleDetail);
   menuLateral.classList.remove("active");
 });
-
 document.getElementById("link-buscar")?.addEventListener("click", (e) => {
   e.preventDefault();
   changeScreen(screenBuscar);
   menuLateral.classList.remove("active");
 });
-
 document.getElementById("link-idioma")?.addEventListener("click", (e) => {
   e.preventDefault();
   changeScreen(screenIdioma);
   menuLateral.classList.remove("active");
 });
-
 document.getElementById("link-sugerir")?.addEventListener("click", (e) => {
   e.preventDefault();
   changeScreen(screenSugerir);
@@ -421,11 +287,30 @@ document.getElementById("link-sugerir")?.addEventListener("click", (e) => {
 });
 document.getElementById("link-acerca")?.addEventListener("click", (e) => {
   e.preventDefault();
-  changeScreen(screenAcerca); // Asegurate de que el nombre de la constante de tu pantalla sea este o cambialo por el que uses
+  changeScreen(screenAcerca);
   menuLateral.classList.remove("active");
 });
 
-// --- BÚSQUEDA INTELIGENTE CON PAGINACIÓN INTEGRADA ---
+document
+  .getElementById("btn-volver-idioma")
+  ?.addEventListener("click", () => changeScreen(screenMain));
+document
+  .getElementById("btn-volver-sugerir")
+  ?.addEventListener("click", () => changeScreen(screenMain));
+if (btnVolverAcerca)
+  btnVolverAcerca.addEventListener("click", () => changeScreen(screenMain));
+
+// --- BÚSQUEDA INTELIGENTE CON ENTER Y PAGINACIÓN ---
+const inputBusquedaEl = document.getElementById("input-busqueda");
+if (inputBusquedaEl) {
+  inputBusquedaEl.addEventListener("keydown", (event) => {
+    if (event.key === "Enter") {
+      event.preventDefault();
+      document.getElementById("btn-ejecutar-busqueda")?.click();
+    }
+  });
+}
+
 document
   .getElementById("btn-ejecutar-busqueda")
   ?.addEventListener("click", async () => {
@@ -433,19 +318,7 @@ document
       .getElementById("input-busqueda")
       .value.trim();
     const contenedorResultados = document.getElementById("resultados-busqueda");
-    // --- PERMITIR BUSCAR CON LA TECLA ENTER DESDE LA COMPUTADORA ---
-    const inputBusqueda = document.getElementById("input-busqueda");
-    if (inputBusqueda) {
-      inputBusqueda.addEventListener("keydown", (event) => {
-        if (event.key === "Enter") {
-          event.preventDefault(); // Evita comportamientos por defecto del formulario si los hubiera
-          const btnBuscar = document.getElementById("btn-ejecutar-busqueda");
-          if (btnBuscar) {
-            btnBuscar.click(); // Simula el clic en el botón de búsqueda
-          }
-        }
-      });
-    }
+
     if (!inputOriginal) {
       contenedorResultados.innerHTML = `<p class="placeholder-text">Por favor, escribí algo para buscar.</p>`;
       return;
@@ -461,12 +334,9 @@ document
         .replace(/[úüùû]/g, "u")
         .replace(/ñ/g, "n");
 
-    // Dividimos la búsqueda en palabras individuales, descartando palabras muy cortas (como "de", "el", "a") para afinar la puntería
     const palabrasBusqueda = limpiarTexto(inputOriginal)
       .split(/\s+/)
       .filter((p) => p.length > 2);
-
-    // Si el usuario escribió puras palabras cortas, usamos el texto completo limpio
     const terminoBusqueda = limpiarTexto(inputOriginal);
 
     contenedorResultados.innerHTML = `<p class="placeholder-text">Buscando en las Escrituras...</p>`;
@@ -481,12 +351,9 @@ document
           const textoLimpio = limpiarTexto(item.text || "");
           const libroLimpio = limpiarTexto(item.book_name || "");
 
-          // Verificamos si contiene la frase completa O si contiene las palabras clave principales
           const coincideFraseCompleta =
             textoLimpio.includes(terminoBusqueda) ||
             libroLimpio.includes(terminoBusqueda);
-
-          // Coincidencia inteligente: si al menos la mitad de las palabras clave están en el versículo
           const palabrasCoincidentes = palabrasBusqueda.filter((palabra) =>
             textoLimpio.includes(palabra),
           );
@@ -502,28 +369,10 @@ document
           }
         });
       }
-      if (datos.estados_liturgicos) {
-        Object.entries(datos.estados_liturgicos).forEach(([estado, info]) => {
-          const textoEstado = limpiarTexto(info.texto || "");
-          const citaEstado = limpiarTexto(info.cita || "");
-          const nombreEstado = limpiarTexto(estado);
-
-          if (
-            textoEstado.includes(terminoBusqueda) ||
-            citaEstado.includes(terminoBusqueda) ||
-            nombreEstado.includes(terminoBusqueda)
-          ) {
-            encontrados.push({
-              referencia: `Camino de Emaús (${estado.toUpperCase()}): ${info.cita}`,
-              texto: info.texto,
-            });
-          }
-        });
-      }
 
       if (encontrados.length > 0) {
         let paginaBusquedaActual = 1;
-        const porPagina = 20; // 20 resultados por página para que naveges cómodo
+        const porPagina = 20;
         const totalPaginasBusqueda = Math.ceil(encontrados.length / porPagina);
 
         function renderizarBloqueBusqueda() {
@@ -534,22 +383,22 @@ document
           let htmlContenido = loteActual
             .map(
               (item) => `
-          <div class="search-result-item" style="margin-bottom: 15px; border-bottom: 1px solid rgba(212,175,55,0.2); padding-bottom: 10px;">
-            <strong style="color: var(--gold); display: block; margin-bottom: 5px;">${item.referencia}</strong>
-            <p style="color: #e0e0e0; font-size: 0.95rem; line-height: 1.4;">"${item.texto}"</p>
-          </div>
-        `,
+        <div class="search-result-item" style="margin-bottom: 15px; border-bottom: 1px solid rgba(212,175,55,0.2); padding-bottom: 10px;">
+          <strong style="color: var(--gold); display: block; margin-bottom: 5px;">${item.referencia}</strong>
+          <p style="color: #e0e0e0; font-size: 0.95rem; line-height: 1.4;">"${item.texto}"</p>
+        </div>
+      `,
             )
             .join("");
 
           if (totalPaginasBusqueda > 1) {
             htmlContenido += `
-            <div class="paginador-busqueda-interno" style="display: flex; justify-content: space-between; align-items: center; margin-top: 25px; padding: 15px 0; border-top: 1px solid var(--gold);">
-              <button id="btn-ant-busqueda" style="background: rgba(212,175,55,0.1); border: 1px solid var(--gold); color: #fff; padding: 8px 14px; border-radius: 6px; cursor: pointer;" ${paginaBusquedaActual === 1 ? 'disabled style="opacity: 0.4; cursor: default;"' : ""}>⬅ Anterior</button>
-              <span style="color: var(--gold); font-size: 0.85rem; text-align: center;">Pág. ${paginaBusquedaActual} / ${totalPaginasBusqueda}<br><small style="color:#aaa;">(${encontrados.length} encontrados)</small></span>
-              <button id="btn-sig-busqueda" style="background: rgba(212,175,55,0.1); border: 1px solid var(--gold); color: #fff; padding: 8px 14px; border-radius: 6px; cursor: pointer;" ${paginaBusquedaActual === totalPaginasBusqueda ? 'disabled style="opacity: 0.4; cursor: default;"' : ""}>Siguiente ➡</button>
-            </div>
-          `;
+          <div class="paginador-busqueda-interno" style="display: flex; justify-content: space-between; align-items: center; margin-top: 25px; padding: 15px 0; border-top: 1px solid var(--gold);">
+            <button id="btn-ant-busqueda" style="background: rgba(212,175,55,0.1); border: 1px solid var(--gold); color: #fff; padding: 8px 14px; border-radius: 6px; cursor: pointer;" ${paginaBusquedaActual === 1 ? 'disabled style="opacity: 0.4; cursor: default;"' : ""}>⬅ Anterior</button>
+            <span style="color: var(--gold); font-size: 0.85rem; text-align: center;">Pág. ${paginaBusquedaActual} / ${totalPaginasBusqueda}<br><small style="color:#aaa;">(${encontrados.length} encontrados)</small></span>
+            <button id="btn-sig-busqueda" style="background: rgba(212,175,55,0.1); border: 1px solid var(--gold); color: #fff; padding: 8px 14px; border-radius: 6px; cursor: pointer;" ${paginaBusquedaActual === totalPaginasBusqueda ? 'disabled style="opacity: 0.4; cursor: default;"' : ""}>Siguiente ➡</button>
+          </div>
+        `;
           }
 
           contenedorResultados.innerHTML = htmlContenido;
@@ -580,10 +429,10 @@ document
         renderizarBloqueBusqueda();
       } else {
         contenedorResultados.innerHTML = `
-      <div style="text-align: center; padding: 10px;">
-        <p style="color: #d4af37; font-weight: bold; margin-bottom: 5px;">Sin resultados</p>
-        <p class="placeholder-text">No se encontraron pasajes con el término "${inputOriginal}".</p>
-      </div>`;
+    <div style="text-align: center; padding: 10px;">
+      <p style="color: #d4af37; font-weight: bold; margin-bottom: 5px;">Sin resultados</p>
+      <p class="placeholder-text">No se encontraron pasajes con el término "${inputOriginal}".</p>
+    </div>`;
       }
     } catch (error) {
       console.error("Error en la búsqueda:", error);
@@ -591,7 +440,7 @@ document
     }
   });
 
-// --- DATOS Y FUNCIONES PARA EL ANTIGUO TESTAMENTO ---
+// --- ANTIGUO Y NUEVO TESTAMENTO (LISTAS Y CAPÍTULOS) ---
 const listaLibrosAntiguo = [
   "Génesis",
   "Éxodo",
@@ -641,81 +490,6 @@ const listaLibrosAntiguo = [
   "Malaquías",
 ];
 
-async function abrirAntiguoTestamento() {
-  changeScreen(screenAntiguo);
-
-  const contenedor = document.getElementById("lista-libros-antiguo");
-  if (contenedor && contenedor.innerHTML.trim() === "") {
-    try {
-      const respuesta = await fetch("biblia.json");
-      const datos = await respuesta.json();
-
-      listaLibrosAntiguo.forEach((nombreLibro) => {
-        const btn = document.createElement("div");
-        btn.style.cssText =
-          "border: 1px solid var(--gold); border-radius: 8px; padding: 15px; text-align: center; cursor: pointer; background: rgba(255,255,255,0.05); color: #fff; font-size: 0.9rem; transition: transform 0.2s;";
-        btn.innerText = nombreLibro;
-
-        btn.addEventListener("click", () => {
-          cargarCapitulosLibro(nombreLibro, datos.verses);
-        });
-
-        contenedor.appendChild(btn);
-      });
-    } catch (error) {
-      console.error(
-        "Error al cargar los libros del Antiguo Testamento:",
-        error,
-      );
-    }
-  }
-}
-
-// Función para mostrar los capítulos y leer el libro elegido (Antiguo)
-function cargarCapitulosLibro(nombreLibro, versesArray) {
-  const btnVolverCapitulos = document.querySelector(
-    "#screen-capitulos .btn-back",
-  );
-  if (btnVolverCapitulos) {
-    btnVolverCapitulos.onclick = () => changeScreen(screenAntiguo);
-  }
-
-  changeScreen(screenCapitulos);
-
-  const tituloLibro = document.getElementById("titulo-libro-seleccionado");
-  const gridCapitulos = document.getElementById("grid-capitulos");
-  const areaVersiculos = document.getElementById("texto-versiculos-area");
-
-  tituloLibro.textContent = nombreLibro;
-  gridCapitulos.innerHTML = "";
-  areaVersiculos.innerHTML = `<em style="color: var(--gold);">Elegí un capítulo arriba para comenzar la lectura.</em>`;
-
-  const versosLibro = versesArray.filter((v) => v.book_name === nombreLibro);
-  const capitulosSet = new Set(versosLibro.map((v) => v.chapter));
-  const capitulosOrdenados = Array.from(capitulosSet).sort((a, b) => a - b);
-
-  capitulosOrdenados.forEach((numCap) => {
-    const btnCap = document.createElement("button");
-    btnCap.className = "btn-capitulo";
-    btnCap.style.cssText =
-      "background: rgba(212,175,55,0.1); border: 1px solid var(--gold); color: #fff; padding: 8px 14px; border-radius: 6px; cursor: pointer; font-weight: bold;";
-    btnCap.textContent = numCap;
-
-    btnCap.addEventListener("click", () => {
-      const btnVolverLectura = document.querySelector(
-        "#screen-lectura .btn-back",
-      );
-      if (btnVolverLectura) {
-        btnVolverLectura.onclick = () => changeScreen(screenCapitulos);
-      }
-      renderizarVersiculosCapitulo(nombreLibro, numCap, versosLibro);
-    });
-
-    gridCapitulos.appendChild(btnCap);
-  });
-}
-
-// --- DATOS Y FUNCIONES PARA EL NUEVO TESTAMENTO ---
 const listaLibrosNuevo = [
   "Mateo",
   "Marcos",
@@ -746,41 +520,58 @@ const listaLibrosNuevo = [
   "Apocalipsis",
 ];
 
+async function abrirAntiguoTestamento() {
+  changeScreen(screenAntiguo);
+  const contenedor = document.getElementById("lista-libros-antiguo");
+  if (contenedor && contenedor.innerHTML.trim() === "") {
+    try {
+      const respuesta = await fetch("biblia.json");
+      const datos = await respuesta.json();
+      listaLibrosAntiguo.forEach((nombreLibro) => {
+        const btn = document.createElement("div");
+        btn.style.cssText =
+          "border: 1px solid var(--gold); border-radius: 8px; padding: 15px; text-align: center; cursor: pointer; background: rgba(255,255,255,0.05); color: #fff; font-size: 0.9rem;";
+        btn.innerText = nombreLibro;
+        btn.addEventListener("click", () =>
+          cargarCapitulosLibro(nombreLibro, datos.verses, screenAntiguo),
+        );
+        contenedor.appendChild(btn);
+      });
+    } catch (error) {
+      console.error("Error al cargar AT:", error);
+    }
+  }
+}
+
 async function abrirNuevoTestamento() {
   changeScreen(screenNuevo);
-
   const contenedor = document.getElementById("lista-libros-nuevo");
   if (contenedor && contenedor.innerHTML.trim() === "") {
     try {
       const respuesta = await fetch("biblia.json");
       const datos = await respuesta.json();
-
       listaLibrosNuevo.forEach((nombreLibro) => {
         const btn = document.createElement("div");
         btn.style.cssText =
-          "border: 1px solid var(--gold); border-radius: 8px; padding: 15px; text-align: center; cursor: pointer; background: rgba(255,255,255,0.05); color: #fff; font-size: 0.9rem; transition: transform 0.2s;";
+          "border: 1px solid var(--gold); border-radius: 8px; padding: 15px; text-align: center; cursor: pointer; background: rgba(255,255,255,0.05); color: #fff; font-size: 0.9rem;";
         btn.innerText = nombreLibro;
-
-        btn.addEventListener("click", () => {
-          cargarCapitulosLibroNuevo(nombreLibro, datos.verses);
-        });
-
+        btn.addEventListener("click", () =>
+          cargarCapitulosLibro(nombreLibro, datos.verses, screenNuevo),
+        );
         contenedor.appendChild(btn);
       });
     } catch (error) {
-      console.error("Error al cargar los libros del Nuevo Testamento:", error);
+      console.error("Error al cargar NT:", error);
     }
   }
 }
 
-// Función específica para los capítulos del Nuevo Testamento
-function cargarCapitulosLibroNuevo(nombreLibro, versesArray) {
+function cargarCapitulosLibro(nombreLibro, versesArray, pantallaOrigen) {
   const btnVolverCapitulos = document.querySelector(
     "#screen-capitulos .btn-back",
   );
-  if (btnVolverCapitulos) {
-    btnVolverCapitulos.onclick = () => changeScreen(screenNuevo);
-  }
+  if (btnVolverCapitulos)
+    btnVolverCapitulos.onclick = () => changeScreen(pantallaOrigen);
 
   changeScreen(screenCapitulos);
 
@@ -802,22 +593,23 @@ function cargarCapitulosLibroNuevo(nombreLibro, versesArray) {
     btnCap.style.cssText =
       "background: rgba(212,175,55,0.1); border: 1px solid var(--gold); color: #fff; padding: 8px 14px; border-radius: 6px; cursor: pointer; font-weight: bold;";
     btnCap.textContent = numCap;
-
-    btnCap.addEventListener("click", () => {
-      const btnVolverLectura = document.querySelector(
-        "#screen-lectura .btn-back",
-      );
-      if (btnVolverLectura) {
-        btnVolverLectura.onclick = () => changeScreen(screenCapitulos);
-      }
-      renderizarVersiculosCapitulo(nombreLibro, numCap, versosLibro);
-    });
-
+    btnCap.addEventListener("click", () =>
+      renderizarVersiculosCapitulo(nombreLibro, numCap, versosLibro),
+    );
     gridCapitulos.appendChild(btnCap);
   });
 }
-// --- FUNCIÓN GENERAL PARA RENDERIZAR VERSÍCULOS CON NAVEGACIÓN DE CAPÍTULOS ---
+
 function renderizarVersiculosCapitulo(nombreLibro, numCapitulo, versosLibro) {
+  if ("speechSynthesis" in window) {
+    window.speechSynthesis.cancel();
+    textoCompletoActual = "";
+    estaReproduciendo = false;
+    estaPausado = false;
+    const btnAudio = document.getElementById("btn-hablar-lectura");
+    if (btnAudio)
+      btnAudio.innerHTML = '<i class="fas fa-volume-up"></i> Escuchar';
+  }
   changeScreen(screenLectura);
 
   const tituloLectura = document.getElementById("titulo-lectura-completa");
@@ -825,7 +617,6 @@ function renderizarVersiculosCapitulo(nombreLibro, numCapitulo, versosLibro) {
 
   tituloLectura.textContent = `${nombreLibro} - Cap. ${numCapitulo}`;
 
-  // Obtenemos todos los capítulos disponibles de este libro ordenados numéricamente
   const capitulosSet = new Set(
     versosLibro
       .filter((v) => v.book_name === nombreLibro)
@@ -852,30 +643,21 @@ function renderizarVersiculosCapitulo(nombreLibro, numCapitulo, versosLibro) {
   });
   htmlVersos += `</div>`;
 
-  // Agregamos la botonera de Anterior / Siguiente al pie de la lectura
   htmlVersos += `
     <div style="max-width: 600px; margin: 30px auto 50px auto; display: flex; justify-content: space-between; align-items: center; border-top: 1px solid rgba(212,175,55,0.3); padding-top: 20px;">
-      <button id="btn-cap-anterior" style="background: rgba(212,175,55,0.1); border: 1px solid var(--gold); color: #fff; padding: 10px 16px; border-radius: 6px; cursor: pointer; font-size: 0.9rem; ${!capAnterior ? "opacity: 0.3; pointer-events: none;" : ""}">
-        ⬅ Capítulo Anterior
-      </button>
-      <span style="color: var(--gold); font-size: 0.85rem; display: flex; align-items: center; text-align: center;">Capítulo ${numCapitulo}</span>
-      <button id="btn-cap-siguiente" style="background: rgba(212,175,55,0.1); border: 1px solid var(--gold); color: #fff; padding: 10px 16px; border-radius: 6px; cursor: pointer; font-size: 0.9rem; ${!capSiguiente ? "opacity: 0.3; pointer-events: none;" : ""}">
-        Capítulo Siguiente ➡
-      </button>
+      <button id="btn-cap-anterior" style="background: rgba(212,175,55,0.1); border: 1px solid var(--gold); color: #fff; padding: 10px 16px; border-radius: 6px; cursor: pointer; font-size: 0.9rem; ${!capAnterior ? "opacity: 0.3; pointer-events: none;" : ""}">⬅ Anterior</button>
+      <span style="color: var(--gold); font-size: 0.85rem;">Capítulo ${numCapitulo}</span>
+      <button id="btn-cap-siguiente" style="background: rgba(212,175,55,0.1); border: 1px solid var(--gold); color: #fff; padding: 10px 16px; border-radius: 6px; cursor: pointer; font-size: 0.9rem; ${!capSiguiente ? "opacity: 0.3; pointer-events: none;" : ""}">Siguiente ➡</button>
     </div>
   `;
 
   if (areaLectura) areaLectura.innerHTML = htmlVersos;
 
-  // Reactivamos los eventos de los botones de capítulos
   if (capAnterior) {
     document
       .getElementById("btn-cap-anterior")
       ?.addEventListener("click", () => {
         renderizarVersiculosCapitulo(nombreLibro, capAnterior, versosLibro);
-        const mainArea = screenLectura.querySelector(".content-area") || window;
-        if (mainArea.scrollTo)
-          mainArea.scrollTo({ top: 0, behavior: "smooth" });
       });
   }
 
@@ -884,234 +666,117 @@ function renderizarVersiculosCapitulo(nombreLibro, numCapitulo, versosLibro) {
       .getElementById("btn-cap-siguiente")
       ?.addEventListener("click", () => {
         renderizarVersiculosCapitulo(nombreLibro, capSiguiente, versosLibro);
-        const mainArea = screenLectura.querySelector(".content-area") || window;
-        if (mainArea.scrollTo)
-          mainArea.scrollTo({ top: 0, behavior: "smooth" });
       });
   }
-
-  const mainArea = screenLectura.querySelector(".content-area");
-  if (mainArea) mainArea.scrollTop = 0;
 }
-function abrirPeldaño(numero) {
-  // Definición de los textos, títulos e imágenes para cada peldaño
-  const peldañosData = {
-    1: {
-      titulo: "1. El Principio Eterno (Génesis)",
-      imagen: "", // Acá podés poner la ruta de tu imagen más adelante, ej: "img/genesis.jpg"
-      texto:
-        "Desde el principio, antes de la fundación del mundo, el Verbo ya existía en Dios. En el relato de la creación del Génesis contemplamos el designio amoroso del Padre, donde el hombre es creado a imagen y semejanza...",
-    },
-    2: {
-      titulo: "2. La Sombra y el Pan Oculto (Melquisedec)",
-      imagen: "",
-      texto:
-        "La figura misteriosa de Melquisedec, rey de Salem y sacerdote del Dios Altísimo, ofrece pan y vino prefigurando el sacrificio eucarístico perfecto que Cristo instituirá en la Última Cena...",
-    },
-    3: {
-      titulo: "3. La Voz de los Profetas (Isaías)",
-      imagen: "",
-      texto:
-        "A través de los siglos, la voz de los profetas mantuvo encendida la esperanza del pueblo. Isaías anticipa de manera luminosa al Servidor Doliente y al Emmanuel, Dios con nosotros...",
-    },
-    4: {
-      titulo: "4. El Fiat que abre el Cielo (La Anunciación)",
-      imagen: "",
-      texto:
-        "El 'Sí' humilde y total de la Virgen María desata el nudo de la desobediencia antigua. En su seno virginal, el Verbo se hace carne y habita entre nosotros.",
-    },
-    5: {
-      titulo: "5. La Luz en la Intemperie (El Pesebre)",
-      imagen: "",
-      texto:
-        "En la humildad de Belén, la luz bruelve en las tinieblas. Dios se hace frágil y pequeño para que ningún ser humano tenga miedo de acercarse a su Creador.",
-    },
-    6: {
-      titulo: "6. Las Huellas del Maestro (Vida Pública)",
-      imagen: "",
-      texto:
-        "Durante su vida pública, Jesús recorre los caminos de Galilea y Judea enseñando con autoridad, sanando a los enfermos y revelando el rostro misericordioso del Padre.",
-    },
-    7: {
-      titulo: "7. La Victoria sobre la Muerte (Pascua)",
-      imagen: "",
-      texto:
-        "A través de la Cruz y la gloriosa Resurrección, Cristo vence al pecado y a la muerte. El sepulcro vacío es la prueba definitiva de que la vida eterna nos ha sido abierta.",
-    },
-    8: {
-      titulo: "8. La Promesa Cumplida (Pentecostés)",
-      imagen: "",
-      texto:
-        "Con la efusión del Espíritu Santo sobre la Iglesia naciente, la promesa se consuma. Los Apóstoles salen a anunciar la Buena Nueva con valentía, guiados por el Paráclito hasta los confines de la tierra.",
-    },
-  };
+let utteranceActual = null;
+let textoCompletoActual = "";
+let estaReproduciendo = false;
+let estaPausado = false;
 
-  const datos = peldañosData[numero];
-  if (!datos) return;
-
-  // Inyectar el título
-  document.getElementById("titulo-peldaño-detalle").innerText = datos.titulo;
-
-  // Inyectar la imagen (si la hay) o limpiar el espacio
-  const contenedorImg = document.getElementById("contenedor-imagen-peldaño");
-  if (datos.imagen) {
-    contenedorImg.innerHTML = `<img src="${datos.imagen}" alt="${datos.titulo}" style="max-width: 100%; height: auto; border-radius: 12px; border: 2px solid var(--gold);">`;
-  } else {
-    contenedorImg.innerHTML = ""; // Por ahora queda vacío hasta que sumemos las imágenes
+function ejecutarLecturaVoz() {
+  if (!("speechSynthesis" in window)) {
+    alert("Tu dispositivo no soporta la síntesis de voz.");
+    return;
   }
 
-  // Inyectar el texto teológico/histórico
-  document.getElementById("texto-peldaño-detalle").innerHTML = datos.texto;
+  const btnAudio = document.getElementById("btn-hablar-lectura");
+  const areaLecturaFinal = document.getElementById("texto-lectura-final");
 
-  // Cambiar a la pantalla dedicada usando tu función existente (asegurate de pasarle el elemento o la variable de la pantalla según cómo lo manejes)
-  const pantallaDetalle = document.getElementById("screen-peldaño-detalle");
-  if (typeof changeScreen === "function") {
-    changeScreen(pantallaDetalle);
-  }
-}
-function abrirPasoEmaus(numero) {
-  const pasosEmausData = {
-    1: {
-      titulo: "1. El inicio en lo oculto",
-      imagen: "",
-      texto:
-        "Los discípulos caminan hacia Emaús con el rostro sombrío y el corazón cargado de desilusión. Jesús mismo se acerca y camina con ellos, pero sus ojos estaban retenidos para que no le reconocieran. Así camina muchas veces el Señor a nuestro lado en medio de nuestras tristezas cotidianas.",
-    },
-    2: {
-      titulo: "2. El caminar diario",
-      imagen: "",
-      texto:
-        "Mientras van de camino, Él les explica las Escrituras comenzando por Moisés y todos los profetas. El calor de su palabra va encendiendo lentamente el fuego en sus corazones cansados, enseñándonos que la oración y la lectura meditada de la Palabra son el sustento del peregrino.",
-    },
-    3: {
-      titulo: "3. La fracción del pan",
-      imagen: "",
-      texto:
-        "Al llegar a la aldea, lo imitan a quedarse y, sentado a la mesa, toma el pan, pronuncia la bendición, lo parte y se lo da. En este gesto supremo se abren sus ojos y lo reconocen. Es el misterio de la Eucaristía, centro y cumbre de nuestra vida cristiana.",
-    },
-    4: {
-      titulo: "4. Hacia la Plenitud",
-      imagen: "",
-      texto:
-        "Recobrada la luz y la esperanza, se levantan al instante y regresan a Jerusalén para anunciar la Buena Nueva a los hermanos: '¡El Señor ha resucitado verdaderamente!'. El camino que comenzó en la tristeza culmina en el testimonio y en la alegría desbordante del Resucitado.",
-    },
-  };
-
-  const datos = pasosEmausData[numero];
-  if (!datos) return;
-
-  document.getElementById("titulo-emaus-detalle").innerText = datos.titulo;
-
-  const contenedorImg = document.getElementById("contenedor-imagen-emaus");
-  if (datos.imagen) {
-    contenedorImg.innerHTML = `<img src="${datos.imagen}" alt="${datos.titulo}" style="max-width: 100%; height: auto; border-radius: 12px; border: 2px solid var(--gold);">`;
-  } else {
-    contenedorImg.innerHTML = "";
+  if (!areaLecturaFinal || areaLecturaFinal.innerText.trim() === "") {
+    alert("Por favor, abrí un capítulo para poder escucharlo.");
+    return;
   }
 
-  document.getElementById("texto-emaus-detalle").innerHTML = datos.texto;
+  const clone = areaLecturaFinal.cloneNode(true);
+  clone.querySelectorAll("sup").forEach((sup) => sup.remove());
+  const textoEnPantalla = clone.innerText.trim();
 
-  changeScreen(screenEmausDetalle);
-}
-const catecismoData = [
-  {
-    id: 1,
-    seccion: "El Credo",
-    titulo: "El deseo de Dios",
-    resumen: "El hombre ha sido creado por Dios y para Dios...",
-    texto:
-      "El hombre ha sido creado por Dios y para Dios, y Dios no cesa de atraer al hombre hacia sí. Sólo en Dios encontrará el hombre la verdad y la dicha que busca sin tregua: 'Muchas veces en la historia, y hasta el día de hoy, los hombres han manifestado esta inagotable búsqueda de Dios por medio de sus creencias y de sus comportamientos religiosos'.",
-  },
-  {
-    id: 2,
-    seccion: "La Profesión de la Fe",
-    titulo: "¿Cómo conocer a Dios con la sola luz de la razón?",
-    resumen:
-      "El mundo y el hombre atestiguan que tienen a Dios por principio y fin...",
-    texto:
-      "Desde la creación del mundo, 'per Deum', Dios, origen y fin de todo, puede ser conocido con certeza mediante las obras creadas, con la luz de la razón humana. Sin embargo, el hombre necesita de la Revelación divina para poder conocer las realidades divinas sin error y con absoluta certeza.",
-  },
-  {
-    id: 3,
-    seccion: "Los Sacramentos",
-    titulo: "La Eucaristía en la vida de la Iglesia",
-    resumen: "Fuente y cumbre de toda la vida cristiana...",
-    texto:
-      "La Eucaristía es fuente y cumbre de toda la vida cristiana. Los demás sacramentos, y también todos los ministerios eclesiales y las obras de apostolado, están unidos a la Eucaristía y a ella ordinariamente se ordenan. La sagrada Eucaristía contiene todo el bien espiritual de la Iglesia.",
-  },
-  {
-    id: 4,
-    seccion: "La Oración Cristiana",
-    titulo: "El combate de la oración",
-    resumen:
-      "La oración es un don de la gracia y una respuesta decidida de nuestra parte...",
-    texto:
-      "La oración no es meramente el fluir de los pensamientos espontáneos; es también un combate contra uno mismo y contra las asechanzas del Tentador. El combate espiritual de la nueva vida del cristiano es inseparable de la oración.",
-  },
-];
+  if (!textoEnPantalla) return;
 
-// Agregar las pantallas a la función changeScreen (incluirlas en la lista del array)
-// *Asegurate de agregarlas dentro de la función changeScreen que ya tenés:*
-/*
-  [..., screenIdioma, screenSugerir].forEach(...)
-*/
-
-// Eventos del Menú Lateral para Idioma y Sugerencias
-document.getElementById("link-idioma")?.addEventListener("click", (e) => {
-  e.preventDefault();
-  changeScreen(screenIdioma);
-  menuLateral.classList.remove("active");
-});
-
-document.getElementById("link-sugerir")?.addEventListener("click", (e) => {
-  e.preventDefault();
-  changeScreen(screenSugerir);
-  menuLateral.classList.remove("active");
-});
-
-// Botones de retorno (flechita atrás) para estas dos pantallas
-document
-  .getElementById("btn-volver-idioma")
-  ?.addEventListener("click", () => changeScreen(screenMain));
-document
-  .getElementById("btn-volver-sugerir")
-  ?.addEventListener("click", () => changeScreen(screenMain));
-
-// Función simple para el selector de idioma
-function cambiarIdioma(lang) {
-  if (lang === "en") {
-    alert("English mode integration is prepared for future expansions.");
-  } else {
-    alert("Idioma cambiado a Español correctamente.");
-  }
-}
-
-if (btnVolverAcerca) {
-  btnVolverAcerca.addEventListener("click", () => {
-    // Acá volvés a la pantalla principal o anterior según tu lógica
-    changeScreen(document.getElementById("screen-main"));
-  });
-}
-document.getElementById("btn-hablar")?.addEventListener("click", () => {
-  if ("speechSynthesis" in window) {
-    // Cancela cualquier audio previo para que no se encimen las voces
+  if (textoCompletoActual !== textoEnPantalla) {
     window.speechSynthesis.cancel();
+    textoCompletoActual = textoEnPantalla;
+    estaReproduciendo = false;
+    estaPausado = false;
+  }
 
-    // Busca el texto dentro de la tarjeta o párrafo principal
-    const elementoTexto =
-      document.querySelector(".ruta-emaus-texto") ||
-      document.querySelector("main p") ||
-      document.querySelector("p");
-    const textoALeer = elementoTexto
-      ? elementoTexto.innerText
-      : "No se encontró texto para leer.";
+  if (estaReproduciendo && !estaPausado) {
+    window.speechSynthesis.pause();
+    estaPausado = true;
+    if (btnAudio) btnAudio.innerHTML = '<i class="fas fa-play"></i> Continuar';
+    return;
+  }
 
-    const utterance = new SpeechSynthesisUtterance(textoALeer);
-    utterance.lang = "es-AR"; // Configurado para español de Argentina
-    utterance.rate = 1.0; // Velocidad normal
+  if (estaPausado) {
+    window.speechSynthesis.resume();
+    estaPausado = false;
+    if (btnAudio) btnAudio.innerHTML = '<i class="fas fa-pause"></i> Pausa';
+    return;
+  }
 
-    window.speechSynthesis.speak(utterance);
-  } else {
-    alert("Tu dispositivo no soporta la función de lectura de voz.");
+  window.speechSynthesis.cancel();
+
+  utteranceActual = new SpeechSynthesisUtterance(textoCompletoActual);
+  utteranceActual.lang = "es-AR";
+  utteranceActual.rate = 0.95;
+
+  utteranceActual.onend = () => {
+    estaReproduciendo = false;
+    estaPausado = false;
+    textoCompletoActual = "";
+    if (btnAudio)
+      btnAudio.innerHTML = '<i class="fas fa-volume-up"></i> Escuchar';
+  };
+
+  utteranceActual.onerror = () => {
+    estaReproduciendo = false;
+    estaPausado = false;
+    if (btnAudio)
+      btnAudio.innerHTML = '<i class="fas fa-volume-up"></i> Escuchar';
+  };
+
+  estaReproduciendo = true;
+  estaPausado = false;
+  if (btnAudio) btnAudio.innerHTML = '<i class="fas fa-pause"></i> Pausa';
+
+  window.speechSynthesis.speak(utteranceActual);
+}
+
+// --- INTERACTIVIDAD DEL PANEL INFERIOR (Abanico en dos niveles) ---
+// --- Lógica del Panel de Estudio (Abanico) ---
+
+const fanColumns = document.querySelectorAll(".fan-column");
+
+// Función para alternar el estado del panel
+function toggleStudyCard() {
+  if (studyCard) {
+    studyCard.classList.toggle("hidden");
+  }
+}
+
+// Evento para abrir/cerrar desde la barrita dorada
+if (panelHandle) {
+  panelHandle.addEventListener("click", toggleStudyCard);
+}
+
+// Evento para expandir cada columna
+fanColumns.forEach((col) => {
+  col.addEventListener("click", (e) => {
+    // Si el usuario hace clic en el botón de cerrar de la columna, no expandas
+    if (e.target.classList.contains("btn-close-extended")) return;
+
+    // Quitamos la expansión de todas y expandimos la seleccionada
+    fanColumns.forEach((c) => c.classList.remove("expanded-full"));
+    col.classList.add("expanded-full");
+  });
+
+  // Botón de cierre específico de cada columna expandida
+  const btnClose = col.querySelector(".btn-close-extended");
+  if (btnClose) {
+    btnClose.addEventListener("click", (e) => {
+      e.stopPropagation(); // Evita que se dispare el evento del padre
+      col.classList.remove("expanded-full");
+    });
   }
 });

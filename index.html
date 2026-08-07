@@ -195,9 +195,7 @@
           <button class="btn-back" onclick="changeScreen(screenAntiguo)">
             ←
           </button>
-          <button id="btn-hablar" class="btn-audio" title="Escuchar lectura">
-            <i class="fas fa-volume-up"></i> Escuchar
-          </button>
+
           <h1 class="brand-title" id="titulo-libro-seleccionado">Libro</h1>
           <p class="header-statement">Seleccioná un capítulo para leer.</p>
         </header>
@@ -233,11 +231,41 @@
     <div id="screen-lectura" class="screen">
       <div class="app-container">
         <header class="main-header">
-          <button class="btn-back" onclick="changeScreen(screenCapitulos)">
-            ←
-          </button>
-
-          <h1 class="brand-title" id="titulo-lectura-completa">Lectura</h1>
+          <div
+            style="
+              display: flex;
+              justify-content: space-between;
+              align-items: center;
+              width: 100%;
+            "
+          >
+            <button class="btn-back" onclick="changeScreen(screenCapitulos)">
+              ←
+            </button>
+            <button
+              id="btn-hablar-lectura"
+              class="btn-audio"
+              onclick="ejecutarLecturaVoz()"
+              title="Escuchar lectura"
+              style="
+                background: rgba(212, 175, 55, 0.2);
+                border: 1px solid var(--gold);
+                color: #fff;
+                padding: 6px 12px;
+                border-radius: 6px;
+                cursor: pointer;
+              "
+            >
+              <i class="fas fa-volume-up"></i> Escuchar
+            </button>
+          </div>
+          <h1
+            class="brand-title"
+            id="titulo-lectura-completa"
+            style="margin-top: 10px"
+          >
+            Lectura
+          </h1>
           <p class="header-statement">Texto de las Escrituras</p>
         </header>
 
@@ -279,8 +307,15 @@
         </main>
       </div>
     </div>
+    <!-- BARRITA INFERIOR / TIRADOR (GEMITA) -->
+    <div
+      class="linea-handle"
+      style="text-align: center; cursor: pointer; padding: 10px"
+    >
+      <span style="color: var(--gold); font-size: 1.2rem">🪭</span>
+    </div>
 
-    <!-- Panel en Abanico Tradicional abajo -->
+    <!-- PANEL EN ABANICO TRADICIONAL ABAJO -->
     <div id="study-card" class="study-card-panel hidden">
       <div class="panel-handle"></div>
       <div class="columns-container">
@@ -388,7 +423,6 @@
 
           <div class="path-card">
             <h3>2. La Ruta de Emaús</h3>
-            <!-- Ajuste doctrinal: cambio de "su magia" por "su gracia" o "su providencia" -->
             <p class="reflection">
               <em
                 >"Reconocer Su presencia en los pequeños detalles del día, como
@@ -607,7 +641,6 @@
     <div id="screen-peldaño-detalle" class="screen">
       <div class="app-container path-theme">
         <header class="main-header">
-          <!-- Botón para volver a la Escalera de la Promesa -->
           <button class="btn-back-path" onclick="changeScreen(screenPromesa)">
             ⬅
           </button>
@@ -620,15 +653,10 @@
         </header>
 
         <main class="content-area" style="padding: 20px; overflow-y: auto">
-          <!-- Contenedor para la imagen histórica / arqueológica -->
           <div
             id="contenedor-imagen-peldaño"
             style="text-align: center; margin-bottom: 20px"
-          >
-            <!-- Acá inyectarás la imagen de los lugares donde anduvo Jesús -->
-          </div>
-
-          <!-- Texto doctrinal, histórico y bíblico -->
+          ></div>
           <div
             id="texto-peldaño-detalle"
             style="
@@ -637,12 +665,11 @@
               color: #e0e0e0;
               font-size: 1rem;
             "
-          >
-            <!-- El contenido detallado se cargará por JavaScript -->
-          </div>
+          ></div>
         </main>
       </div>
     </div>
+
     <!-- PANTALLA DEDICADA: DETALLE DE UN PASO DE EMAÚS -->
     <div id="screen-emaus-detalle" class="screen">
       <div class="app-container path-theme">
@@ -657,13 +684,10 @@
         </header>
 
         <main class="content-area" style="padding: 20px; overflow-y: auto">
-          <!-- Contenedor para imagen o ilustración del paso -->
           <div
             id="contenedor-imagen-emaus"
             style="text-align: center; margin-bottom: 20px"
           ></div>
-
-          <!-- Texto bíblico y reflexión -->
           <div
             id="texto-emaus-detalle"
             style="
@@ -694,7 +718,6 @@
             Los resultados de tu búsqueda aparecerán aquí.
           </p>
         </div>
-        <!-- Contenedor para la paginación del buscador -->
         <div
           id="contenedor-paginacion-busqueda"
           style="
@@ -709,7 +732,7 @@
     </section>
 
     <!-- PANTALLA / MODAL DE IDIOMA -->
-    <div id="screen-idioma" class="screen" style="display: padding 20px">
+    <div id="screen-idioma" class="screen">
       <button class="btn-back" id="btn-volver-idioma">⬅</button>
       <h2
         class="text-gold"
@@ -744,9 +767,9 @@
     </div>
 
     <!-- PANTALLA / MODAL DE SUGERIR ENLACES -->
-    <div id="screen-sugerir" class="screen" style="display: padding 20px">
-      <button class="btn-back" id="btn-volver-sugerir">⬅</button>
+    <div id="screen-sugerir" class="screen">
       <div style="max-width: 500px; margin: 0 auto; text-align: center">
+        <button class="btn-back" id="btn-volver-sugerir">⬅</button>
         <h2
           class="text-gold"
           style="font-family: var(--font-roman); margin-bottom: 15px"
@@ -819,43 +842,36 @@
         </div>
       </div>
     </div>
-    <div id="screen-acerca" class="screen" style="display: padding 20px">
-      <button class="btn-back" id="btn-volver-acerca">←</button>
-      <h2
-        class="text-gold"
-        style="font-family: var(--font-roman); margin-bottom: 20px"
-      >
-        Nuestra Misión
-      </h2>
-      <div
-        style="
-          max-width: 600px;
-          margin: 0 auto;
-          text-align: left;
-          line-height: 1.6;
-        "
-      >
-        <p style="margin-bottom: 15px">
-          <em>Palabra Viva</em> nace para servir a Jesucristo, que es el Camino,
-          la Verdad y la Vida. Deseamos ayudar a que todas las personas puedan
-          acercarse a la Sagrada Escritura, comprenderla con seriedad, orarla
-          con fe y llevarla a la vida cotidiana.
-        </p>
-        <p style="margin-bottom: 15px">
-          Sabemos que la Palabra de Dios no es un producto ni una simple fuente
-          de información: es una llamada al encuentro con Cristo. Por eso
-          procuramos trabajar con seriedad, transparencia y compromiso con la
-          verdad, respetando la libertad, la dignidad y la intimidad de cada
-          persona.
-        </p>
-        <p
-          style="text-align: center; font-weight: bold; margin-top: 20px"
-          class="text-gold"
-        >
-          Todo lo que hacemos es para Él.
-        </p>
+
+    <!-- PANTALLA ACERCA DE -->
+    <div id="screen-acerca" class="screen">
+      <div class="app-container">
+        <header class="main-header">
+          <button class="btn-back" id="btn-volver-acerca">←</button>
+          <h1 class="brand-title text-gold">Nuestra Misión</h1>
+        </header>
+        <main class="content-area" style="padding: 20px; line-height: 1.6">
+          <p style="margin-bottom: 15px">
+            <em>Palabra Viva</em> nace para servir a Jesucristo, que es el
+            Camino, la Verdad y la Vida. Deseamos ayudar a que todas las
+            personas puedan acercarse a la Sagrada Escritura, comprenderla con
+            seriedad, orarla con fe y llevarla a la vida cotidiana.
+          </p>
+          <p style="margin-bottom: 15px">
+            Sabemos que la Palabra de Dios no es un producto ni una simple
+            fuente de información: es una llamada al encuentro con Cristo. Por
+            eso procuramos trabajar con seriedad, transparencia y compromiso con
+            la verdad, respetando la libertad, la dignidad y la intimidad de
+            cada persona.
+          </p>
+          <p
+            style="text-align: center; font-weight: bold; margin-top: 20px"
+            class="text-gold"
+          >
+            Todo lo que hacemos es para Él.
+          </p>
+        </main>
       </div>
     </div>
-    <script src="ariel.js"></script>
   </body>
 </html>
