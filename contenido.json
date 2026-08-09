@@ -1,7 +1,6 @@
 {
   "libros": {
     "marcos": {
-      "nombre": "Evangelio según San Marcos",
       "capitulos": {
         "1": {
           "versiculos": {
@@ -9,57 +8,60 @@
               "texto": "Principio del Evangelio de Jesucristo, Hijo de Dios.",
               "categorias": {
                 "filologia": true,
-                "historico": false,
-                "apologetica": false,
+                "historico": true,
+                "apologetica": true,
                 "sucesion": false
+              },
+              "textos": {
+                "filologia": "La palabra griega 'Evangelion' (euangelion) significaba originalmente una buena noticia militar o política (el nacimiento de un emperador). Aquí adquiere un sentido teológico radical: la 'buena noticia' no es un decreto político, sino la persona misma de Jesucristo.",
+                "historico": "Escrito en un contexto donde el Imperio Romano exigía cultho al César proclamándolo 'Hijo de Dios' y 'Salvador'. Marcos subvierte este título y se lo aplica a un carpintero ajusticiado en una cruz, confrontando directamente la ideología imperial.",
+                "apologetica": "La afirmación 'Hijo de Dios' no es una exageración poética ni una adopción simbólica, sino la declaración explícita de la divinidad de Jesús, dogma central de la fe católica frente a las corrientes que reducían a Cristo a un mero profeta.",
+                "sucesion": "."
               }
             },
             "2": {
-              "texto": "Como está escrito en el profeta Isaías...",
+              "texto": "Como está escrito en el profeta Isaías: He aquí yo envío mi mensajero delante de tu faz, el cual preparará tu camino delante de ti.",
               "categorias": {
-                "filologia": false,
-                "historico": true,
-                "apologetica": false,
-                "sucesion": false
-              }
-            }
-          }
-        },
-        "2": {
-          "versiculos": {
-            "1": {
-              "texto": "Entró Jesús otra vez en Capernaum después de algunos días...",
-              "categorias": {
-                "filologia": false,
+                "filologia": true,
                 "historico": false,
                 "apologetica": true,
                 "sucesion": true
+              },
+              "textos": {
+                "filologia": "Marcos hace una cita mixta combinando textos de Éxodo, Malaquías e Isaías, utilizando el término 'Angelon' (mensajero/ángel) para denotar a Juan el Bautista como el precursor divinamente designado.",
+                "historico": ".",
+                "apologetica": "Demuestra la unidad orgánica entre el Antiguo y el Nuevo Testamento. La Iglesia Católica enseña que las Escrituras forman un solo cuerpo donde las profecías encuentran su cumplimiento histórico en Cristo.",
+                "sucesion": "Según el Catecismo de la Iglesia Católica (CIC 522), Juan el Bautista es el último profeta del Antiguo Testamento, inaugurando la transición hacia la era de la gracia y prefigurando el ministerio apostólico de preparar los caminos para el Señor."
               }
-            }
-          }
-        },
-        "3": {
-          "versiculos": {
-            "1": {
-              "texto": "Otra vez entró Jesús en la sinagoga; y había allí un hombre que tenía seca una mano.",
+            },
+            "3": {
+              "texto": "Voz del que clama en el desierto: Preparad el camino del Señor, enderezad sus sendas.",
               "categorias": {
-                "filologia": false,
+                "filologia": true,
                 "historico": true,
                 "apologetica": false,
-                "sucesion": true
+                "sucesion": false
+              },
+              "textos": {
+                "filologia": "La expresión griega 'Boē en te erēmō' evoca la imagen del Éxodo en el desierto, el lugar de la prueba, del encuentro íntimo con Dios y de la renovación de la alianza.",
+                "historico": "En el judaísmo del siglo I, el 'desierto' era considerado el lugar geográfico y espiritual donde Dios volvería a visitar a su pueblo para liberarlo, tal como lo hizo en el éxodo de Egipto.",
+                "apologetica": ".",
+                "sucesion": " . "
               }
-            }
-          }
-        },
-        "4": {
-          "versiculos": {
-            "1": {
-              "texto": "Otra vez comenzó Jesús a enseñar junto al mar...",
+            },
+            "4": {
+              "texto": "Bautizaba Juan en el desierto, y predicaba el bautismo de arrepentimiento para remisión de los pecados.",
               "categorias": {
                 "filologia": true,
                 "historico": true,
                 "apologetica": true,
                 "sucesion": true
+              },
+              "textos": {
+                "filologia": "El término 'Baptisma' viene de 'bapto' (sumergir, teñir). No se trata de una mera purificación ritual superficial, sino de una inmersión profunda que transforma la existencia.",
+                "historico": "Los bautismos de purificación eran comunes en sectas judías de la época (como los esenios en Qumrán), pero el de Juan tenía un carácter escatológico y único de conversión urgente ante la inminencia del Mesías.",
+                "apologetica": "Frente a las posturas que niegan la eficacia de los sacramentos instituidos, este paso anticipa la economía sacramental: Dios utiliza elementos materiales y gestos visibles (el agua, la inmersión) para obrar una gracia espiritual invisible en el hombre.",
+                "sucesion": "El Catecismo (CIC 1217) señala que el bautismo de Juan era una figura preparatoria. La autoridad de perdonar y regenerar plenamente se transmite luego a los Apóstoles y a la Iglesia mediante el sacramento cristiano instituido por Cristo."
               }
             }
           }

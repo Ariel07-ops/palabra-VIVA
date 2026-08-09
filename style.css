@@ -997,3 +997,31 @@ body.light-mode #screen-sugerir a:hover {
   z-index: 50;
   opacity: 1 !important;
 }
+/* Borramos el efecto de atenuar los demás para que queden normales */
+.linea-versiculo.atenuada {
+  opacity: 1 !important;
+}
+
+/* El versículo seleccionado se tiñe con un toque doradito elegante */
+.linea-versiculo.activa {
+  background-color: rgba(
+    212,
+    175,
+    55,
+    0.08
+  ); /* Un fondo dorado muy sutil y translúcido */
+  border-left: 3px solid var(--gold); /* Una barrita dorada a la izquierda para ubicarlo al toque */
+  padding-left: 10px; /* Un pequeño respiro para que quede prolijo */
+  transition: all 0.3s ease;
+}
+/* El texto nunca pierde opacidad, se lee perfecto */
+.linea-versiculo.atenuada {
+  opacity: 1 !important;
+}
+
+/* Pero las rayitas de colores de los versículos no seleccionados se apagan (se ponen transparentes o grises muy sutiles) */
+.linea-versiculo.atenuada span,
+.linea-versiculo.atenuada {
+  border-bottom-color: rgba(255, 255, 255, 0.05) !important;
+  border-image: none !important;
+}

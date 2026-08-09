@@ -645,7 +645,7 @@ function renderizarVersiculosCapitulo(nombreLibro, numCapitulo, versosLibro) {
   let htmlVersos = `<div style="max-width: 600px; margin: 0 auto; padding-bottom: 20px;">`;
   versosFiltrados.forEach((v) => {
     // AQUÍ ESTÁ EL GATILLO: data-versiculo="${v.verse}"
-    htmlVersos += `<p data-versiculo="${v.verse}" style="margin-bottom: 14px;"><sup style="color: var(--gold); font-weight: bold; margin-right: 8px; font-size: 0.85rem;">${v.verse}</sup>${v.text}</p>`;
+    htmlVersos += `<p class="linea-versiculo" data-versiculo="${v.verse}" style="margin-bottom: 14px;"><sup style="color: var(--gold); font-weight: bold; margin-right: 8px; font-size: 0.85rem;">${v.verse}</sup>${v.text}</p>`;
   });
   htmlVersos += `</div>`;
 
@@ -828,59 +828,13 @@ function encenderColumna(numeroColumna) {
     fanColumns[index].classList.add("has-content");
   }
 }
-async function aplicarSubrayadosCapitulo(numeroCapitulo) {
-  try {
-    // 1. Creado o llamado al JSON central (se puede guardar en caché si prefieres)
-    let respuesta = await fetch("contenido.json");
-    let datos = await respuesta.json();
-
-    // 2. Extraemos SOLAMENTE el capítulo actual que se está mostrando
-    let capituloData = datos.libros.marcos.capitulos[numeroCapitulo];
-
-    if (!capituloData) {
-      console.log("No hay contenido especial para este capítulo.");
-      return;
-    }
-
-    // 3. Suponemos que tus versículos en pantalla tienen un identificador o clase, por ejemplo: [data-versiculo="1"]
-    for (let numVersiculo in capituloData.versiculos) {
-      let v = capituloData.versiculos[numVersiculo];
-      let elementoVersiculo = document.querySelector(
-        `[data-versiculo="${numVersiculo}"]`,
-      );
-
-      if (elementoVersiculo) {
-        // Limpiamos clases previas por si cambia de capítulo
-        elementoVersiculo.className = "";
-
-        // Evaluamos qué categorías están activas en este versículo
-        let cats = v.categorias;
-        let activas = Object.keys(cats).filter((key) => cats[key] === true);
-
-        // Aplicamos el color según la cantidad de activaciones
-        if (activas.length === 4) {
-          elementoVersiculo.classList.add("subrayado-multicolor");
-        } else if (activas.length === 1) {
-          elementoVersiculo.classList.add(`subrayado-${activas[0]}`);
-        } else if (activas.length > 1) {
-          // Si tiene 2 o 3, puedes definir una clase mixta o la lógica que prefieras
-          elementoVersiculo.classList.add("subrayado-multicolor");
-        }
-      }
-    }
-  } catch (error) {
-    console.error("Error al procesar los subrayados del capítulo:", error);
-  }
-}
 async function aplicarSubrayadosCapitulo(nombreLibro, numeroCapitulo) {
   try {
     let respuesta = await fetch("contenido.json");
     let datos = await respuesta.json();
 
-    // 1. Normalizamos el nombre del libro para que coincida con la llave del JSON (ej: "Marcos" -> "marcos")
     let keyLibro = nombreLibro.toLowerCase().trim();
 
-    // 2. Verificamos si el libro y el capítulo existen en el JSON
     if (
       !datos.libros ||
       !datos.libros[keyLibro] ||
@@ -894,12 +848,11 @@ async function aplicarSubrayadosCapitulo(nombreLibro, numeroCapitulo) {
 
     let capituloData = datos.libros[keyLibro].capitulos[numeroCapitulo];
 
-    // Mapa de colores exactos para los gradientes
     const mapaColoresHex = {
-      filologia: "#9b59b6", // Púrpura
-      historico: "#ecf0f1", // Plata/Blanco
-      apologetica: "#e74c3c", // Rojo
-      sucesion: "#f1c40f", // Amarillo
+      filologia: "#9b59b6",
+      historico: "#ecf0f1",
+      apologetica: "#e74c3c",
+      sucesion: "#f1c40f",
     };
 
     for (let numVersiculo in capituloData.versiculos) {
@@ -909,7 +862,6 @@ async function aplicarSubrayadosCapitulo(nombreLibro, numeroCapitulo) {
       );
 
       if (elementoVersiculo) {
-        // Limpiamos estilos previos por si acaso
         elementoVersiculo.className = "";
         elementoVersiculo.style.borderBottom = "";
         elementoVersiculo.style.borderImage = "";
@@ -927,20 +879,38 @@ async function aplicarSubrayadosCapitulo(nombreLibro, numeroCapitulo) {
           elementoVersiculo.style.borderImage = `linear-gradient(to right, ${coloresActivos}) 1`;
         }
 
-        // Interactividad de clics para abrir el abanico
+        // Interactividad de clics: Gatillo directo para pintar de dorado e iluminar el abanico
         if (activas.length > 0) {
           elementoVersiculo.style.cursor = "pointer";
           elementoVersiculo.title =
             "Tocá para ver el estudio de este versículo";
 
           elementoVersiculo.onclick = () => {
+            // 1. Limpiamos el fondo dorado de cualquier otro versículo previo
+            document.querySelectorAll("[data-versiculo]").forEach((el) => {
+              el.style.backgroundColor = "transparent";
+              el.style.padding = "0px";
+            });
+
+            // 2. Pintamos y destacamos directamente el versículo seleccionado
+            elementoVersiculo.style.backgroundColor = "rgba(212, 175, 55, 0.1)";
+            elementoVersiculo.style.borderRadius = "6px";
+            elementoVersiculo.style.padding = "4px 8px";
+            elementoVersiculo.style.transition = "all 0.3s ease";
+
+            // 3. Mostrar la tarjeta de estudio
             const studyCard = document.getElementById("study-card");
             if (studyCard) {
               studyCard.classList.remove("hidden");
             }
 
             const fanColumns = document.querySelectorAll(".fan-column");
-            fanColumns.forEach((col) => col.classList.remove("has-content"));
+            fanColumns.forEach((col) => {
+              col.classList.remove("expanded-full");
+              col.classList.remove("has-content");
+              let textoExt = col.querySelector(".extended-text");
+              if (textoExt) textoExt.innerHTML = "";
+            });
 
             const mapaColumnas = {
               filologia: 0,
@@ -949,10 +919,18 @@ async function aplicarSubrayadosCapitulo(nombreLibro, numeroCapitulo) {
               apologetica: 3,
             };
 
+            let textosVersiculo = v.textos || {};
+
             activas.forEach((catKey) => {
               let indexColumna = mapaColumnas[catKey];
               if (indexColumna !== undefined && fanColumns[indexColumna]) {
                 fanColumns[indexColumna].classList.add("has-content");
+
+                let textoExt =
+                  fanColumns[indexColumna].querySelector(".extended-text");
+                if (textoExt && textosVersiculo[catKey]) {
+                  textoExt.innerHTML = textosVersiculo[catKey];
+                }
               }
             });
           };
@@ -963,17 +941,22 @@ async function aplicarSubrayadosCapitulo(nombreLibro, numeroCapitulo) {
     console.error("Error al procesar los subrayados:", error);
   }
 }
-// Función para cerrar las columnas y ocultar el panel al cambiar de sección
+
+// Función para cerrar las columnas, ocultar el panel y limpiar los estilos al cambiar
 function cerrarAbanicoAlCambiar() {
-  // 1. Oculta el panel principal usando la misma lógica que el panelHandle
   const studyCard = document.getElementById("study-card");
   if (studyCard) {
     studyCard.classList.add("hidden");
   }
 
-  // 2. Limpia la expansión de todas las columnas individuales
   const fanColumns = document.querySelectorAll(".fan-column");
   fanColumns.forEach((col) => {
     col.classList.remove("expanded-full");
+  });
+
+  // Limpiamos los fondos dorados de los versículos
+  document.querySelectorAll("[data-versiculo]").forEach((linea) => {
+    linea.style.backgroundColor = "transparent";
+    linea.style.padding = "0px";
   });
 }
