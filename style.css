@@ -451,6 +451,36 @@ body:has(#screen-lectura.active) #study-card {
 #study-card.hidden {
   transform: translateY(calc(100% - 35px)) !important;
 }
+/* Animación suave de pulso y brillo para la barrita de cierre */
+@keyframes pulsoBrillo {
+  0% {
+    opacity: 0.4;
+    box-shadow: 0 0 2px var(--gold);
+  }
+  50% {
+    opacity: 1;
+    box-shadow: 0 0 8px var(--gold);
+  }
+  100% {
+    opacity: 0.4;
+    box-shadow: 0 0 2px var(--gold);
+  }
+}
+
+/* Aplicamos la animación a la barrita dorada existente */
+#study-card .panel-handle {
+  background-color: var(--gold);
+  border-radius: 4px;
+  animation: pulsoBrillo 2.5s infinite ease-in-out;
+  cursor: pointer;
+}
+/* Cuando el panel está cerrado (oculto), lo bajamos casi por completo 
+   dejando asomar únicamente la barrita dorada */
+#study-card.hidden {
+  transform: translateY(calc(100% - 25px)) !important;
+  /* O si usas bottom: */
+  /* bottom: -350px; (dejando solo los píxeles de la barrita visibles) */
+}
 
 .panel-handle {
   width: 50px;
@@ -1008,15 +1038,11 @@ body.light-mode #screen-sugerir a:hover {
     212,
     175,
     55,
-    0.08
-  ); /* Un fondo dorado muy sutil y translúcido */
-  border-left: 3px solid var(--gold); /* Una barrita dorada a la izquierda para ubicarlo al toque */
+    0.18
+  ); /* Subimos de 0.08 a 0.18 para que gane cuerpo en modo claro */
+  border-left: 3px solid var(--gold); /* Una barrita dorada a la izquierda para enmarcarlo */
   padding-left: 10px; /* Un pequeño respiro para que quede prolijo */
   transition: all 0.3s ease;
-}
-/* El texto nunca pierde opacidad, se lee perfecto */
-.linea-versiculo.atenuada {
-  opacity: 1 !important;
 }
 
 /* Pero las rayitas de colores de los versículos no seleccionados se apagan (se ponen transparentes o grises muy sutiles) */
@@ -1024,4 +1050,33 @@ body.light-mode #screen-sugerir a:hover {
 .linea-versiculo.atenuada {
   border-bottom-color: rgba(255, 255, 255, 0.05) !important;
   border-image: none !important;
+}
+/* Estilo para los títulos de las columnas (Raíces, Sucesión, etc.) */
+.column-title {
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: var(--gold);
+  margin-bottom: 6px;
+  font-weight: bold;
+  text-align: center;
+}
+
+/* Subtítulos de las columnas en el panel en abanico */
+#study-card .column-subtitle {
+  font-family: var(--font-serif, serif);
+  font-size: 0.95rem;
+  font-weight: normal;
+  font-style: italic;
+  line-height: 1.4;
+  text-align: center;
+
+  /* Por defecto toma el gris plata para el modo oscuro */
+  color: #cccccc !important;
+}
+
+/* Si tu app activa una clase de modo claro, cambia automáticamente a un gris oscuro elegante */
+body.light-mode #study-card .column-subtitle,
+.light-theme #study-card .column-subtitle {
+  color: #333333 !important;
 }
