@@ -2,21 +2,6 @@
   "seccion": "caminemos_con_jesus",
   "pregunta": "¿Cómo está tu corazón hoy?",
   "estados": {
-    "optimo": {
-      "titulo": "Qué hermoso caminar con un corazón disponible",
-      "acogida": "Qué bueno que hoy te sientas bien. Recibe este momento con gratitud, sin olvidar que toda vida atraviesa también días difíciles.",
-      "evangelio": {
-        "referencia": "Juan 15,11",
-        "texto": "Les he dicho esto para que mi alegría esté en ustedes y su alegría sea completa.",
-        "meditacion": "La alegría cristiana no consiste solamente en que todo salga bien. Nace de permanecer cerca de Jesús y de reconocer que su amor sostiene tu vida."
-      },
-      "oracion": "Jesús, gracias por este día y por la vida que me regalas. Conserva mi corazón humilde, alegre y disponible para hacer el bien. Amén.",
-      "companero_de_camino": {
-        "santo": "San Felipe Neri",
-        "recomendacion": "Vive tu alegría con sencillez y regala hoy una palabra que anime a otra persona."
-      },
-      "paso_de_hoy": "Agradece a Dios por tres cosas concretas y comparte tu alegría con alguien."
-    },
     "feliz": {
       "titulo": "Tu alegría también puede ser una forma de dar gracias",
       "acogida": "Qué bueno que hoy haya alegría en tu corazón. No la guardes como algo aislado: puede convertirse en gratitud, servicio y esperanza para otros.",
@@ -47,7 +32,7 @@
       },
       "paso_de_hoy": "Escribe o di en voz alta tres motivos concretos por los cuales dar gracias hoy."
     },
-    "en_paz": {
+    "en-paz": {
       "titulo": "Conserva esa paz que el mundo no puede dar",
       "acogida": "La paz interior es un regalo frágil pero firme cuando se apoia en la confianza en el Señor.",
       "evangelio": {
@@ -200,6 +185,37 @@
         "recomendacion": "Busca un signo pequeño de belleza o bondad hoy que te recuerde que la vida es un don."
       },
       "paso_de_hoy": "Comparte una palabra de aliento con alguien o contempla un detalle de la creación."
+    },
+    "bendecido": {
+      "titulo": "Reconoce los dones con los que Dios te bendice hoy",
+      "acogida": "Sentirte bendecido no es un privilegio exclusivo, sino una llamada a mirar tu vida con gratitud y a convertirte vos mismo en bendición para otros.",
+      "evangelio": {
+        "referencia": "Efesios 1,3",
+        "texto": "Bendito sea Dios, Padre de nuestro Señor Jesucristo, que nos ha bendecido en Cristo con toda clase de bendiciones espirituales en los cielos.",
+        "meditacion": "La bendición de Dios sostiene tus pasos cotidianos. Reconocerla te devuelve la paz y te llena de confianza para seguir adelante."
+      },
+      "oracion": "Señor, gracias por tu bendición inmerecida en mi vida. Haz que mi corazón sepa valorar tus dones y compártelos con generosidad. Amén.",
+      "companero_de_camino": {
+        "santo": "San Juan Bosco",
+        "recomendacion": "Haz el bien siempre que puedas y alegra el día de alguien con una palabra fraterna."
+      },
+      "paso_de_hoy": "Reconoce un don recibido hoy y agradécelo de corazón."
+    },
+    "temeroso": {
+      "titulo": "No temas, porque el Señor está con vos",
+      "acogida": "El miedo es una reacción humana muy real frente a la incertidumbre o el peligro. Dios no te reprocha el miedo; te invita a ponerlo en sus manos.",
+      "evangelio": {
+        "referencia": "Isaías 41,10",
+        "texto": "No temas, porque yo estoy contigo; no desmayes, porque yo soy tu Dios que te fortalezco; siempre te ayudaré, siempre te sustentaré con la diestra de mi justicia.",
+        "meditacion": "El miedo empequeñece el horizonte, pero la presencia de Dios lo transforma en confianza. No tenés que enfrentar tus temores completamente solo."
+      },
+      "oracion": "Jesús, cuando el miedo me paralice, dame la gracia de mirar tu rostro y recordar que sos más fuerte que cualquier tormenta. Amén.",
+      "companero_de_camino": {
+        "santo": "Santa Teresa de Calcuta",
+        "recomendacion": "Haz las cosas pequeñas de hoy con amor y entrega tus temores al Señor en silencio."
+      },
+      "paso_de_hoy": "Respira hondo tres veces, encomienda tu miedo a Dios y da un paso pequeño a la vez.",
+      "no_te_cierres": "Compartir tus miedos con alguien de confianza o con un profesional te ayuda a ponerles perspectiva y a no cargar con todo el peso en soledad."
     }
   }
 }

@@ -373,8 +373,8 @@
               <span class="btn-emaus" onclick="redirigir('bendecido')"
                 >Bendecido</span
               >
-              <span class="btn-emaus" onclick="redirigir('optimo')"
-                >Óptimo</span
+              <span class="btn-emaus" onclick="redirigir('agradecido')"
+                >Agradecido</span
               >
               <span class="btn-emaus" onclick="redirigir('feliz')">Feliz</span>
               <span class="btn-emaus" onclick="redirigir('cansado')"
@@ -391,6 +391,9 @@
               >
               <span class="btn-emaus" onclick="redirigir('temeroso')"
                 >Temeroso</span
+              >
+              <span class="btn-emaus" onclick="redirigir('en-paz')"
+                >En paz</span
               >
             </div>
           </div>
@@ -418,98 +421,166 @@
         </main>
       </div>
     </div>
+    <!-- Pantallas de Estado en el camino de Emaus (Alimentadas 100% desde caminemos.json) -->
 
-    <!-- Pantallas de Estado en el camino de Emaus -->
-    <div id="screen-optimo" class="screen">
+    <div id="screen-agradecido" class="screen">
       <button class="btn-back-path">⬅</button>
-      <h2>Pantalla: Óptimo</h2>
-      <p id="cita-optimo" style="color: #d4af37; font-weight: bold"></p>
-      <br />
-      <p>
-        El Evangelio del día nos invita a una profunda introspección, resonando
-        en lo íntimo de nuestro ser como llamada a caminar con fidelidad y amor,
-        seguros de la compañía constante de Dios. Con confianza filial, pidamos
-        la gracia de la santidad para que Su luz se refleje en nuestras obras
-        hacia el prójimo. Amén.
-      </p>
+      <h2 class="titulo-estado"></h2>
+      <p class="acogida-estado" style="color: #d4af37; font-weight: bold"></p>
+
+      <!-- Bloque de Evangelio -->
+      <div class="bloque-evangelio">
+        <span class="evangelio-referencia"></span>
+        <p class="evangelio-texto"></p>
+        <p class="evangelio-meditacion"></p>
+      </div>
+
+      <!-- Oración -->
+      <p class="oracion-texto"></p>
+
+      <!-- Compañero de Camino -->
+      <div class="bloque-santo">
+        <span class="santo-nombre"></span>
+        <p class="santo-recomendacion"></p>
+      </div>
+
+      <!-- Paso de hoy -->
+      <p class="paso-hoy-texto"></p>
     </div>
 
     <div id="screen-cansado" class="screen">
       <button class="btn-back-path">⬅</button>
-      <h2>Pantalla: Cansado</h2>
-      <p id="cita-cansado" style="color: #d4af37; font-weight: bold"></p>
-      <p>
-        En los momentos de fatiga, recordemos la promesa del Señor: Él fortalece
-        al cansado y acrecienta las fuerzas del desvalido. Confiemos en Su
-        providencia y acojamos el reposo que Él mismo nos ofrece en Su amor.
-      </p>
+      <h2 class="titulo-estado"></h2>
+      <p class="acogida-estado" style="color: #d4af37; font-weight: bold"></p>
+      <div class="bloque-evangelio">
+        <span class="evangelio-referencia"></span>
+        <p class="evangelio-texto"></p>
+        <p class="evangelio-meditacion"></p>
+      </div>
+      <p class="oracion-texto"></p>
+      <div class="bloque-santo">
+        <span class="santo-nombre"></span>
+        <p class="santo-recomendacion"></p>
+      </div>
+      <p class="paso-hoy-texto"></p>
     </div>
 
     <div id="screen-bendecido" class="screen">
       <button class="btn-back-path">⬅</button>
-      <h2>Pantalla: Bendecido</h2>
-      <p id="cita-bendecido" style="color: #d4af37; font-weight: bold"></p>
-      <p>
-        Reconocemos con gratitud los dones derramados por la bondad divina y la
-        gracia que nos sostiene en el camino de la fe. Su amor misericordioso
-        nos conforta en la prueba y renueva nuestra esperanza cotidiana.
-      </p>
+      <h2 class="titulo-estado"></h2>
+      <p class="acogida-estado" style="color: #d4af37; font-weight: bold"></p>
+      <div class="bloque-evangelio">
+        <span class="evangelio-referencia"></span>
+        <p class="evangelio-texto"></p>
+        <p class="evangelio-meditacion"></p>
+      </div>
+      <p class="oracion-texto"></p>
+      <div class="bloque-santo">
+        <span class="santo-nombre"></span>
+        <p class="santo-recomendacion"></p>
+      </div>
+      <p class="paso-hoy-texto"></p>
     </div>
 
     <div id="screen-feliz" class="screen">
       <button class="btn-back-path">⬅</button>
-      <h2>Pantalla: Feliz</h2>
-      <p id="cita-feliz" style="color: #d4af37; font-weight: bold"></p>
-      <p>
-        En el gozo de estos instantes, bendecimos al Señor, fuente de todo bien.
-        Quien todo lo llena en todos nos concede experimentar anticipos de Su
-        alegría eterna. Custodiemos este gozo en comunión de gracia.
-      </p>
+      <h2 class="titulo-estado"></h2>
+      <p class="acogida-estado" style="color: #d4af37; font-weight: bold"></p>
+      <div class="bloque-evangelio">
+        <span class="evangelio-referencia"></span>
+        <p class="evangelio-texto"></p>
+        <p class="evangelio-meditacion"></p>
+      </div>
+      <p class="oracion-texto"></p>
+      <div class="bloque-santo">
+        <span class="santo-nombre"></span>
+        <p class="santo-recomendacion"></p>
+      </div>
+      <p class="paso-hoy-texto"></p>
     </div>
 
     <div id="screen-triste" class="screen">
       <button class="btn-back-path">⬅</button>
-      <h2>Pantalla: Triste</h2>
-      <p id="cita-triste" style="color: #d4af37; font-weight: bold"></p>
-      <p>
-        En la hora del dolor y la aflicción, el Señor está cerca de los
-        quebrantados de corazón. Entreguemos nuestra cruz al Padre, sabiendo que
-        ningún sufrimiento es estéril cuando se une al sacrificio redentor de
-        Cristo.
-      </p>
+      <h2 class="titulo-estado"></h2>
+      <p class="acogida-estado" style="color: #d4af37; font-weight: bold"></p>
+      <div class="bloque-evangelio">
+        <span class="evangelio-referencia"></span>
+        <p class="evangelio-texto"></p>
+        <p class="evangelio-meditacion"></p>
+      </div>
+      <p class="oracion-texto"></p>
+      <div class="bloque-santo">
+        <span class="santo-nombre"></span>
+        <p class="santo-recomendacion"></p>
+      </div>
+      <p class="paso-hoy-texto"></p>
     </div>
 
     <div id="screen-temeroso" class="screen">
       <button class="btn-back-path">⬅</button>
-      <h2>Pantalla: Temeroso</h2>
-      <p id="cita-temeroso" style="color: #d4af37; font-weight: bold"></p>
-      <p>
-        Cuando el temor intente doblegarnos, recordemos la exhortación constante
-        de las Escrituras: "No temáis". La fe en la protección providente de
-        Dios disipa las sombras del miedo y nos devuelve la paz.
-      </p>
+      <h2 class="titulo-estado"></h2>
+      <p class="acogida-estado" style="color: #d4af37; font-weight: bold"></p>
+      <div class="bloque-evangelio">
+        <span class="evangelio-referencia"></span>
+        <p class="evangelio-texto"></p>
+        <p class="evangelio-meditacion"></p>
+      </div>
+      <p class="oracion-texto"></p>
+      <div class="bloque-santo">
+        <span class="santo-nombre"></span>
+        <p class="santo-recomendacion"></p>
+      </div>
+      <p class="paso-hoy-texto"></p>
     </div>
 
     <div id="screen-ansioso" class="screen">
       <button class="btn-back-path">⬅</button>
-      <h2>Pantalla: Ansioso</h2>
-      <p id="cita-ansioso" style="color: #d4af37; font-weight: bold"></p>
-      <p>
-        Depositemos toda nuestra ansiedad en Aquél que cuida de nosotros con
-        amor de Padre. La oración perseverante y la confianza en Su tiempo
-        perfecto aquietan el espíritu y devuelven la serenidad.
-      </p>
+      <h2 class="titulo-estado"></h2>
+      <p class="acogida-estado" style="color: #d4af37; font-weight: bold"></p>
+      <div class="bloque-evangelio">
+        <span class="evangelio-referencia"></span>
+        <p class="evangelio-texto"></p>
+        <p class="evangelio-meditacion"></p>
+      </div>
+      <p class="oracion-texto"></p>
+      <div class="bloque-santo">
+        <span class="santo-nombre"></span>
+        <p class="santo-recomendacion"></p>
+      </div>
+      <p class="paso-hoy-texto"></p>
     </div>
 
     <div id="screen-preocupado" class="screen">
       <button class="btn-back-path">⬅</button>
-      <h2>Pantalla: Preocupado</h2>
-      <p id="cita-preocupado" style="color: #d4af37; font-weight: bold"></p>
-      <p>
-        Ante las cargas de la vida diaria, escuchemos la invitación del Maestro
-        a buscar primeramente el Reino de Dios y su justicia, confiando en que
-        lo demás nos será dado por añadidura.
-      </p>
+      <h2 class="titulo-estado"></h2>
+      <p class="acogida-estado" style="color: #d4af37; font-weight: bold"></p>
+      <div class="bloque-evangelio">
+        <span class="evangelio-referencia"></span>
+        <p class="evangelio-texto"></p>
+        <p class="evangelio-meditacion"></p>
+      </div>
+      <p class="oracion-texto"></p>
+      <div class="bloque-santo">
+        <span class="santo-nombre"></span>
+        <p class="santo-recomendacion"></p>
+      </div>
+      <p class="paso-hoy-texto"></p>
+    </div>
+    <div id="screen-en-paz" class="screen">
+      <button class="btn-back-path">⬅</button>
+      <h2 class="titulo-estado"></h2>
+      <p class="acogida-estado" style="color: #d4af37; font-weight: bold"></p>
+      <div class="bloque-evangelio">
+        <span class="evangelio-referencia"></span>
+        <p class="evangelio-texto"></p>
+        <p class="evangelio-meditacion"></p>
+      </div>
+      <p class="oracion-texto"></p>
+      <div class="bloque-santo">
+        <span class="santo-nombre"></span>
+        <p class="santo-recomendacion"></p>
+      </div>
+      <p class="paso-hoy-texto"></p>
     </div>
 
     <!-- PANTALLA NUEVA DEL CAMINO DE EMAÚS -->

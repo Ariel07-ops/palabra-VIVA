@@ -3,7 +3,7 @@ const screenSplash = document.getElementById("screen-splash");
 const screenMain = document.getElementById("screen-main");
 const screenBibleDetail = document.getElementById("screen-bible-detail");
 const screenPathDetail = document.getElementById("screen-path-detail");
-const screenOptimo = document.getElementById("screen-optimo");
+const screenAgradecido = document.getElementById("screen-agradecido");
 const screenBendecido = document.getElementById("screen-bendecido");
 const screenPromesa = document.getElementById("screen-promesa");
 const screenPreocupado = document.getElementById("screen-preocupado");
@@ -23,6 +23,7 @@ const screenSugerir = document.getElementById("screen-sugerir");
 const screenPeldañoDetalle = document.getElementById("screen-peldaño-detalle");
 const screenEmausDetalle = document.getElementById("screen-emaus-detalle");
 const screenAcerca = document.getElementById("screen-acerca");
+const screenEnpaz = document.getElementById("screen-en-paz");
 
 // 2. CAPTURAR BOTONES INTERACTIVOS
 const btnGotoBible = document.getElementById("btn-goto-bible");
@@ -57,7 +58,8 @@ function changeScreen(screenToShow) {
     screenMain,
     screenBibleDetail,
     screenPathDetail,
-    screenOptimo,
+    screenAgradecido,
+    screenEnpaz,
     screenCansado,
     screenBendecido,
     screenPreocupado,
@@ -86,11 +88,10 @@ function changeScreen(screenToShow) {
     screenToShow.classList.add("active");
   }
 }
-
 // --- FUNCIÓN PARA REDIRIGIR SEGÚN EL ESTADO ---
 function redirigir(estado) {
   const estadosMap = {
-    optimo: screenOptimo,
+    agradecido: screenAgradecido,
     bendecido: screenBendecido,
     cansado: screenCansado,
     feliz: screenFeliz,
@@ -98,8 +99,11 @@ function redirigir(estado) {
     ansioso: screenAnsioso,
     temeroso: screenTemeroso,
     preocupado: screenPreocupado,
+    "en-paz": screenEnpaz,
   };
+
   if (estadosMap[estado]) {
+    cargarEstadoAnimo(estado); // <--- ¡AQUÍ ESTÁ LA MAGIA! Inyecta los datos del JSON antes de cambiar
     changeScreen(estadosMap[estado]);
   }
 }
@@ -122,7 +126,7 @@ if (btnBackBible)
 
 // --- BOTONES VOLVER DE LAS PANTALLAS DE ESTADO ---
 [
-  "optimo",
+  "agradecido",
   "cansado",
   "bendecido",
   "feliz",
@@ -130,6 +134,7 @@ if (btnBackBible)
   "ansioso",
   "temeroso",
   "preocupado",
+  "en-paz",
 ].forEach((est) => {
   const btn = document.querySelector(`#screen-${est} .btn-back-path`);
   if (btn) btn.addEventListener("click", () => changeScreen(screenPathDetail));
@@ -959,4 +964,63 @@ function cerrarAbanicoAlCambiar() {
     linea.style.backgroundColor = "transparent";
     linea.style.padding = "0px";
   });
+}
+// ==========================================
+// INYECTOR MAESTRO DE ESTADOS DESDE caminemos.json
+// ==========================================
+
+async function cargarEstadoAnimo(nombreEstado) {
+  try {
+    // 1. Leemos el archivo JSON
+    const respuesta = await fetch("caminemos.json");
+    const data = await respuesta.json();
+
+    // 2. Extraemos los datos del estado correspondiente (ej: 'optimo', 'feliz', etc.)
+    const datosEstado = data.estados[nombreEstado];
+
+    if (!datosEstado) {
+      console.warn("No se encontró el estado en el JSON:", nombreEstado);
+      return;
+    }
+
+    // 3. Buscamos la pantalla contenedora en el HTML
+    const pantalla = document.getElementById(`screen-${nombreEstado}`);
+    if (!pantalla) return;
+
+    // 4. Inyectamos cada pieza de contenido en su lugar correspondiente
+    const elTitulo = pantalla.querySelector(".titulo-estado");
+    if (elTitulo)
+      elTitulo.textContent = `Pantalla: ${nombreEstado.charAt(0).toUpperCase() + nombreEstado.slice(1)}`;
+
+    const elAcogida = pantalla.querySelector(".acogida-estado");
+    if (elAcogida) elAcogida.textContent = datosEstado.acogida;
+
+    // Evangelio
+    const elRef = pantalla.querySelector(".evangelio-referencia");
+    if (elRef) elRef.textContent = datosEstado.evangelio.referencia;
+
+    const elTxt = pantalla.querySelector(".evangelio-texto");
+    if (elTxt) elTxt.textContent = datosEstado.evangelio.texto;
+
+    const elMed = pantalla.querySelector(".evangelio-meditacion");
+    if (elMed) elMed.textContent = datosEstado.evangelio.meditacion;
+
+    // Oración
+    const elOracion = pantalla.querySelector(".oracion-texto");
+    if (elOracion) elOracion.textContent = datosEstado.oracion;
+
+    // Santo / Compañero de camino
+    const elSanto = pantalla.querySelector(".santo-nombre");
+    if (elSanto) elSanto.textContent = datosEstado.companero_de_camino.santo;
+
+    const elRec = pantalla.querySelector(".santo-recomendacion");
+    if (elRec)
+      elRec.textContent = datosEstado.companero_de_camino.recomendacion;
+
+    // Paso de hoy
+    const elPaso = pantalla.querySelector(".paso-hoy-texto");
+    if (elPaso) elPaso.textContent = datosEstado.paso_de_hoy;
+  } catch (error) {
+    console.error("Error al inyectar los datos del estado:", error);
+  }
 }
