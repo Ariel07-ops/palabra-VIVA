@@ -360,9 +360,9 @@
         <header class="main-header">
           <button class="btn-back" onclick="changeScreen(screenMain)">⬅</button>
           <h1 class="brand-title text-gold">CAMINEMOS CON JESÚS</h1>
-          <p class="header-statement text-italic">
+          <h2 class="header-statement text-italic">
             Tu encuentro hoy con Él en tu ruta diaria.
-          </p>
+          </h2>
         </header>
 
         <main class="path-content">
@@ -417,6 +417,18 @@
             >
               La Escalera de la Promesa
             </button>
+          </div>
+          <!-- PIE DE PÁGINA DE REFLEXIÓN -->
+          <div class="footer-reflexion">
+            <p>
+              <em>
+                "Recordá: Dios nos da la vida y también los medios materiales
+                para cuidarla. La fe no reemplaza el salvavidas, la canoa o el
+                médico; la fe nos da la sabiduría para aceptar y aprovechar
+                responsablemente las herramientas que Él pone en nuestro camino
+                para protegernos y ayudarnos."
+              </em>
+            </p>
           </div>
         </main>
       </div>
@@ -616,10 +628,10 @@
       <button class="btn-back-path">⬅</button>
       <div class="header-emaus">
         <h1 class="brand-title text-gold">El Camino de Emaús</h1>
-        <p class="header-statement text-italic">
+        <h2 class="header-statement text-italic">
           Este camino es tu itinerario personal con Cristo. De la oscuridad a la
           luz de la fe.
-        </p>
+        </h2>
       </div>
 
       <div class="path-journey-container">
@@ -840,79 +852,166 @@
     </div>
 
     <!-- PANTALLA / MODAL DE SUGERIR ENLACES -->
+    <!-- PANTALLA / MODAL DE SUGERIR ENLACES -->
     <div id="screen-sugerir" class="screen">
       <div style="max-width: 500px; margin: 0 auto; text-align: center">
-        <button class="btn-back" id="btn-volver-sugerir">⬅</button>
+        <button class="btn-back" id="btn-volver-sugerir">←</button>
+
         <h2
           class="text-gold"
           style="font-family: var(--font-roman); margin-bottom: 15px"
+          data-es="Enlaces de Interés"
+          data-en="Useful Links"
         >
           Enlaces de Interés
         </h2>
+
         <p
           style="
             color: var(--text-light);
             margin-bottom: 25px;
             font-size: 0.95rem;
           "
+          data-es="Recursos recomendados para profundizar en el estudio y la lectura:"
+          data-en="Recommended resources to deepen study and reading:"
         >
           Recursos recomendados para profundizar en el estudio y la lectura:
         </p>
 
-        <div
+        <!-- Enlace 1: YouTube -->
+        <a
+          href="https://www.youtube.com/@vaticannewsES"
+          target="_blank"
           style="
-            display: flex;
-            flex-direction: column;
-            gap: 15px;
+            display: block;
+            background: rgba(212, 175, 55, 0.1);
+            border: 1px solid var(--gold);
+            padding: 15px;
+            border-radius: 8px;
+            color: inherit;
+            text-decoration: none;
+            transition: background 0.2s;
+            margin-bottom: 15px;
             text-align: left;
           "
         >
-          <a
-            href="https://www.youtube.com"
-            target="_blank"
-            style="
-              display: block;
-              background: rgba(212, 175, 55, 0.1);
-              border: 1px solid var(--gold);
-              padding: 15px;
-              border-radius: 8px;
-              color: inherit;
-              text-decoration: none;
-              transition: background 0.2s;
-            "
+          <strong
+            style="color: var(--gold); display: block; margin-bottom: 5px"
+            data-es="Canal de Reflexión en YouTube"
+            data-en="Reflection Channel on YouTube"
           >
-            <strong
-              style="color: var(--gold); display: block; margin-bottom: 5px"
-              >🎥 Canal de Reflexión en YouTube</strong
-            >
-            <span style="font-size: 0.85rem; color: #aaa"
-              >Explorá contenidos audiovisuales y charlas inspiradoras.</span
-            >
-          </a>
+            Canal de Reflexión en YouTube
+          </strong>
+          <span
+            style="font-size: 0.85rem; color: #ccc"
+            data-es="Explorá contenidos audiovisuales, transmisiones y charlas inspiradoras oficiales."
+            data-en="Explore official audiovisual content, broadcasts, and inspiring talks."
+          >
+            Explorá contenidos audiovisuales, transmisiones y charlas
+            inspiradoras oficiales.
+          </span>
+        </a>
 
-          <a
-            href="https://github.com"
-            target="_blank"
-            style="
-              display: block;
-              background: rgba(212, 175, 55, 0.1);
-              border: 1px solid var(--gold);
-              padding: 15px;
-              border-radius: 8px;
-              color: inherit;
-              text-decoration: none;
-              transition: background 0.2s;
-            "
+        <!-- Enlace 2: Magisterium AI -->
+        <a
+          href="https://www.magisterium.com"
+          target="_blank"
+          style="
+            display: block;
+            background: rgba(212, 175, 55, 0.1);
+            border: 1px solid var(--gold);
+            padding: 15px;
+            border-radius: 8px;
+            color: inherit;
+            text-decoration: none;
+            transition: background 0.2s;
+            margin-bottom: 12px;
+            text-align: left;
+          "
+        >
+          <strong
+            style="color: var(--gold); display: block; margin-bottom: 5px"
+            data-es="Magisterium AI - Asistente de Estudio"
+            data-en="Magisterium AI - Study Assistant"
           >
-            <strong
-              style="color: var(--gold); display: block; margin-bottom: 5px"
-              >📖 Biblioteca y Recursos Abiertos</strong
-            >
-            <span style="font-size: 0.85rem; color: #aaa"
-              >Documentos y escritos complementarios de apoyo.</span
-            >
-          </a>
-        </div>
+            Magisterium AI - Asistente de Estudio
+          </strong>
+          <span
+            style="font-size: 0.85rem; color: #ccc"
+            data-es="Herramienta de inteligencia artificial orientada a la consulta de documentos eclesiásticos."
+            data-en="Artificial intelligence tool designed for consulting ecclesiastical documents."
+          >
+            Herramienta de inteligencia artificial orientada a la consulta de
+            documentos eclesiásticos.
+          </span>
+        </a>
+
+        <!-- Enlace 3: Vaticano -->
+        <a
+          href="https://www.vatican.va/content/vatican/es.html"
+          target="_blank"
+          style="
+            display: block;
+            background: rgba(212, 175, 55, 0.1);
+            border: 1px solid var(--gold);
+            padding: 15px;
+            border-radius: 8px;
+            color: inherit;
+            text-decoration: none;
+            transition: background 0.2s;
+            margin-bottom: 12px;
+            text-align: left;
+          "
+        >
+          <strong
+            style="color: var(--gold); display: block; margin-bottom: 5px"
+            data-es="Biblioteca y Recursos Abiertos - Magisterio"
+            data-en="Open Library and Resources - Magisterium"
+          >
+            Biblioteca y Recursos Abiertos - Magisterio
+          </strong>
+          <span
+            style="font-size: 0.85rem; color: #ccc"
+            data-es="Documentos oficiales, encíclicas y escritos fundamentales de la Iglesia."
+            data-en="Official documents, encyclicals, and fundamental writings of the Church."
+          >
+            Documentos oficiales, encíclicas y escritos fundamentales de la
+            Iglesia.
+          </span>
+        </a>
+
+        <!-- Enlace 4: Archivo -->
+        <a
+          href="https://www.vatican.va/archive/index_sp.htm"
+          target="_blank"
+          style="
+            display: block;
+            background: rgba(212, 175, 55, 0.1);
+            border: 1px solid var(--gold);
+            padding: 15px;
+            border-radius: 8px;
+            color: inherit;
+            text-decoration: none;
+            transition: background 0.2s;
+            text-align: left;
+          "
+        >
+          <strong
+            style="color: var(--gold); display: block; margin-bottom: 5px"
+            data-es="Archivo y Textos de Estudio"
+            data-en="Archive and Study Texts"
+          >
+            Archivo y Textos de Estudio
+          </strong>
+          <span
+            style="font-size: 0.85rem; color: #ccc"
+            data-es="Recursos complementarios de apoyo para la lectura doctrinal y litúrgica."
+            data-en="Supplementary support resources for doctrinal and liturgical reading."
+          >
+            Recursos complementarios de apoyo para la lectura doctrinal y
+            litúrgica.
+          </span>
+        </a>
       </div>
     </div>
 

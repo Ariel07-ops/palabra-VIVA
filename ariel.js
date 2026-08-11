@@ -1024,3 +1024,21 @@ async function cargarEstadoAnimo(nombreEstado) {
     console.error("Error al inyectar los datos del estado:", error);
   }
 }
+function cambiarIdioma(lang) {
+  console.log("Cambiando idioma a: ", lang);
+
+  // Buscamos todos los elementos que tengan atributos de traducción en la app
+  const elementosTraducibles = document.querySelectorAll("[data-es][data-en]");
+
+  elementosTraducibles.forEach((el) => {
+    if (lang === "en") {
+      el.innerText = el.getAttribute("data-en");
+    } else {
+      el.innerText = el.getAttribute("data-es");
+    }
+  });
+
+  // Actualizamos clases activas en los botones de selección de idioma si los hubiera
+  const botonesIdioma = document.querySelectorAll("#screen-idioma button");
+  botonesIdioma.forEach((btn) => btn.classList.remove("active"));
+}

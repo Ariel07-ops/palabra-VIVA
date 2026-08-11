@@ -1193,3 +1193,260 @@ body.light-mode #study-card .column-subtitle,
   margin-bottom: 8px;
   margin-left: 10px;
 }
+/* ==========================================================================
+   ESTILOS MEJORADOS: PANTALLA CAMINEMOS CON JESÚS (screen-path-detail)
+   ========================================================================== */
+
+/* Asegurar que la pantalla respire y permita scroll cómodo */
+#screen-path-detail .path-content {
+  padding: 20px 16px 40px 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+/* Corregir subtítulos y textos que quedaban blancos o desentonaban */
+#screen-path-detail .header-statement {
+  color: #cccccc !important; /* Dorado sutil en lugar de blanco puro */
+  opacity: 0.9;
+  font-size: 1.1rem;
+  line-height: 1.6;
+  margin-bottom: 15px;
+  font-family: "Cinzel", serif;
+  font-style: italic;
+  font-weight: 400;
+}
+
+/* Tarjetas individuales con diseño limpio y malla/borde dorado */
+#screen-path-detail .path-card {
+  background: rgba(20, 20, 20, 0.75);
+  border: 1px solid rgba(212, 175, 55, 0.4);
+  border-radius: 12px;
+  padding: 22px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+  position: relative;
+}
+
+/* Encabezados dentro de las tarjetas (Mi Punto de Partida / La Ruta de Emaús) con acento dorado */
+
+/* Preguntas y reflexiones interiores legibles */
+#screen-path-detail .path-card .question,
+#screen-path-detail .path-card .reflection {
+  color: #cccccc !important;
+  font-size: 0.95rem;
+  line-height: 1.6;
+  margin-bottom: 15px;
+}
+
+/* Botones de estado (emociones) ordenados y con buen espacio */
+#screen-path-detail .mood-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 10px;
+}
+
+#screen-path-detail .mood-buttons .btn-emaus {
+  flex: 1 1 calc(33.333% - 10px);
+  min-width: 100px;
+  text-align: center;
+  padding: 10px 12px;
+  font-size: 0.9rem;
+  background: rgba(212, 175, 55, 0.1);
+  border: 1px solid rgba(212, 175, 55, 0.5);
+  border-radius: 8px;
+  color: #fff;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+#screen-path-detail .mood-buttons .btn-emaus:hover {
+  background: rgba(212, 175, 55, 0.25);
+  border-color: #d4af37;
+  box-shadow: 0 0 10px rgba(212, 175, 55, 0.3);
+}
+
+/* Botones de acción principales de la segunda tarjeta */
+#screen-path-detail .path-card .btn-emaus {
+  display: inline-block;
+  margin-top: 8px;
+  margin-right: 8px;
+  padding: 10px 18px;
+  background: rgba(212, 175, 55, 0.15);
+  border: 1px solid #d4af37;
+  border-radius: 8px;
+  color: #fff;
+  text-decoration: none;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+#screen-path-detail .path-card .btn-emaus:hover {
+  background: #d4af37;
+  color: #000;
+}
+
+/* ==========================================================================
+   ESTILO PARA EL PIE DE PÁGINA REFLEXIVO (EL "SALVAVIDAS")
+   ========================================================================== */
+.footer-reflexion {
+  background: linear-gradient(
+    135deg,
+    rgba(212, 175, 55, 0.08),
+    rgba(20, 20, 20, 0.9)
+  );
+  border: 1px solid rgba(212, 175, 55, 0.6);
+  border-radius: 12px;
+  padding: 20px;
+  margin-top: 10px;
+  text-align: center;
+  box-shadow: 0 0 20px rgba(212, 175, 55, 0.15); /* Efecto de iluminación sutil */
+}
+
+.footer-reflexion p {
+  color: #f3e5ab; /* Tono marfil/dorado claro para destacar la lectura */
+  font-size: 0.92rem;
+  line-height: 1.7;
+  margin: 0;
+  font-style: italic;
+}
+/* ==========================================================================
+   PIE DE PÁGINA REFLEXIVO CON BRILLO SUTIL (SHIMMER)
+   ========================================================================== */
+.footer-reflexion {
+  position: relative;
+  overflow: hidden; /* Contiene el brillo dentro de la tarjeta */
+  background: linear-gradient(
+    135deg,
+    rgba(212, 175, 55, 0.08),
+    rgba(20, 20, 20, 0.9)
+  );
+  border: 1px solid rgba(212, 175, 55, 0.4);
+  border-radius: 12px;
+  padding: 20px;
+  margin-top: 15px;
+  text-align: center;
+  box-shadow: 0 0 15px rgba(212, 175, 55, 0.1);
+}
+
+/* El haz de luz suave que cruza de lado a lado */
+.footer-reflexion::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -150%;
+  width: 150%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.08),
+    rgba(212, 175, 55, 0.2),
+    rgba(255, 255, 255, 0.08),
+    transparent
+  );
+  transform: skewX(-20deg);
+  animation: brillo-suave 6s ease-in-out infinite;
+}
+
+@keyframes brillo-suave {
+  0% {
+    left: -150%;
+  }
+  50% {
+    left: 150%;
+  }
+  100% {
+    left: 150%;
+  }
+}
+
+.footer-reflexion p {
+  color: #e0d5b5; /* Tono marfil apagado y sumamente legible */
+  font-size: 0.92rem;
+  line-height: 1.7;
+  margin: 0;
+  font-style: italic;
+  position: relative;
+  z-index: 1; /* Asegura que el texto quede por encima del brillo */
+}
+
+/* --- Cirugía para centrar el título de Emaús --- */
+
+#screen-emaus h1.brand-title {
+  text-align: center !important; /* El !important fuerza el centrado */
+  display: block; /* Asegura que el h1 ocupe el ancho necesario para centrarse */
+  margin: 0 auto; /* Centra el bloque en sí mismo */
+  width: 100%; /* Asegura que tenga el ancho completo para que el centrado funcione */
+}
+/* --- Cirugía de precisión para el subtítulo de Emaús --- */
+
+#screen-emaus h2.header-statement {
+  /* Aquí adentro ponés tus reglas CSS */
+  /* Por ejemplo, para el color gris plata: */
+  color: #cccccc !important;
+
+  /* Para la fuente Cinzel cursiva (si ya la tenés importada): */
+  font-family: "Cinzel", serif;
+  font-style: italic;
+  opacity: 0.9;
+  font-size: 1.1rem;
+  line-height: 1.6;
+  margin-bottom: 15px;
+  font-weight: 400;
+}
+/* ==========================================================================
+   CIRUGÍA DEFINITIVA: PANTALLA BUSCAR EN LAS ESCRITURAS
+   ========================================================================== */
+
+/* 1. Título principal en dorado estándar */
+#screen-buscar h2 {
+  color: #d4af37 !important;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+/* 2. Contenedor que une la caja y el botón en una misma línea prolija */
+#screen-buscar .search-box-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  width: 100%;
+}
+
+/* 3. Agrandar la caja de texto y evitar que se corte el versículo */
+#screen-buscar input#input-busqueda {
+  flex: 1; /* Hace que ocupe todo el espacio disponible */
+  height: 48px; /* Altura cómoda y elegante */
+  padding: 0 16px; /* Espacio interno para que el texto respire */
+  font-size: 0.95rem; /* Tamaño equilibrado para que no se corte */
+  box-sizing: border-box;
+  border-radius: 8px;
+  border: 1px solid rgba(212, 175, 55, 0.4);
+  background: rgba(255, 255, 255, 0.05);
+  color: #fff;
+}
+
+/* 4. Agrandar y emparejar el botón de búsqueda con la caja */
+#screen-buscar button#btn-ejecutar-busqueda {
+  height: 48px; /* Exactamente la misma altura que el input */
+  padding: 0 20px;
+  border-radius: 8px;
+  flex-shrink: 0; /* Evita que el botón se deforme */
+  cursor: pointer;
+}
+
+/* 5. Resultados de búsqueda en blanco plata / Cinzel cursiva */
+#screen-buscar .results-list,
+#screen-buscar .placeholder-text {
+  font-family: "Cinzel", serif;
+  font-weight: 400;
+  font-style: italic;
+  color: #cccccc !important;
+  font-size: 0.92rem;
+  line-height: 1.5;
+  margin-top: 15px;
+}
