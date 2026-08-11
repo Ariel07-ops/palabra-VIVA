@@ -1081,36 +1081,41 @@ body.light-mode #study-card .column-subtitle,
   color: #333333 !important;
 }
 .titulo-estado {
-  font-size: 1.2rem;
-  font-weight: bold;
-  color: #a59049; /* Dorado elegante */
-  text-align: center;
-  margin-bottom: 10px;
+  display: none;
 }
-.light-theme .titulo-estado {
-  color: #b39353 !important; /* Dorado más suave para modo claro */
-  font-weight: bold;
-  text-align: center;
-  margin-bottom: 10px;
-}
+
 /* aquí le damos detlle dorado al subtitulo de los estados */
+/* Ajuste para el título principal en modo oscuro */
 .acogida-estado {
-  font-size: 1.1rem;
-  color: #a59049; /* Dorado elegante */
+  font-size: 1.5rem; /* Ya lo agrandamos, mantenemos acá */
+  font-weight: 600; /* Un pelín más de peso para que luzca el metal */
+
+  /* --- NUEVO EFECTO DORADO METÁLICO --- */
+  background: linear-gradient(135deg, #e6cf8a 0%, #a59049 50%, #5c4d1b 100%);
+  background-clip: text;
+  -webkit-background-clip: text; /* Para compatibilidad con navegadores */
+  color: transparent; /* Hacemos el texto transparente para que se vea el fondo de degradado */
+  /* ---------------------------------- */
+
   text-align: center;
   margin-bottom: 15px;
-  font-style: italic; /* Cursiva elegante */
-  font-family: serif; /* Tipografía clásica */
-  margin-left: auto;
-}
-.light-theme .acogida-estado {
-  color: #b39353 !important; /* Dorado más suave para modo claro */
   font-style: italic;
   font-family: serif;
-  text-align: center;
-  margin-bottom: 15px;
   margin-left: auto;
+
+  /* Un pequeño brillo suave (opcional) para realzar */
+  text-shadow: 0px 1px 2px rgba(0, 0, 0, 0.3);
 }
+/* Ajuste para el título principal en modo claro */
+.light-theme .acogida-estado {
+  /* --- NUEVO EFECTO DORADO METÁLICO (versión clara) --- */
+  background: linear-gradient(135deg, #d4a746 0%, #b39353 50%, #8c743b 100%);
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent; /* Mismo truco de transparencia */
+  /* ---------------------------------- */
+}
+
 .evangelio-referencia {
   font-size: 1.2rem;
   line-height: 1.5;
@@ -1118,7 +1123,7 @@ body.light-mode #study-card .column-subtitle,
   font-style: italic; /* Cursiva elegante */
   font-family: serif; /* Tipografía clásica */
   margin-bottom: 15px;
-  margin-left: 10px;
+  margin-left: 5px;
 }
 .bloque-evangelio {
   font-size: 1.1rem;
@@ -1162,6 +1167,7 @@ body.light-mode #study-card .column-subtitle,
   margin: 0 auto;
   margin-bottom: auto;
   margin-left: 0px;
+  margin-top: 10px;
 }
 .paso-hoy-texto {
   color: #8a5e5e; /* Un gris suave y elegante, no blanco puro */
@@ -1171,5 +1177,19 @@ body.light-mode #study-card .column-subtitle,
   margin: 0 auto;
   margin-bottom: auto;
   padding-top: 20px;
+  margin-left: 10px;
+}
+.oracion-titulo {
+  font-size: 1.2rem;
+
+  font-style: italic;
+  font-family: serif;
+  /* Aplicamos el mismo degradado metálico con el toque que te gusta */
+  background: linear-gradient(135deg, #ad7f7f 0%, #a59049 50%, #5c4d1b 100%);
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+  display: block;
+  margin-bottom: 8px;
   margin-left: 10px;
 }
