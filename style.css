@@ -1450,3 +1450,62 @@ body.light-mode #study-card .column-subtitle,
   line-height: 1.5;
   margin-top: 15px;
 }
+/* =========================================
+   CORRECCIONES PARA EL MODO CLARO
+   ========================================= */
+
+/* 1. Textos de la pantalla de búsqueda */
+body.light-mode #screen-buscar .results-list,
+body.light-mode #screen-buscar .placeholder-text {
+  color: #333333 !important; /* Gris bien oscuro casi negro */
+}
+
+/* El texto que uno escribe en la caja de búsqueda */
+body.light-mode #screen-buscar input#input-busqueda {
+  color: #333333;
+  background: rgba(
+    0,
+    0,
+    0,
+    0.05
+  ); /* Fondo apenitas gris para que se note la caja */
+  border: 1px solid rgba(0, 0, 0, 0.2);
+}
+/* =========================================
+   AJUSTE DE CONTRASTE PARA MODO CLARO
+   Subtítulos y textos secundarios
+   ========================================= */
+
+body.light-mode .subtitulo-caminemos,
+body.light-mode .card-subtitle,
+body.light-mode .seccion-descripcion,
+body.light-mode p.subtitulo,
+body.light-mode .descripcion-recorrido {
+  color: #222222 !important;
+}
+/* --- Modo claro para el subtítulo de Emaús y similares --- */
+body.light-mode #screen-emaus h2.header-statement {
+  color: #222222 !important;
+}
+/* --- Modo claro para Caminemos con Jesús y Emaús (subtítulos y rutas) --- */
+body.light-mode #screen-path-detail .header-statement,
+body.light-mode .path-card .question,
+body.light-mode .path-card .reflection,
+body.light-mode .subtitulo-ruta {
+  color: #222222 !important;
+}
+/* Corrección de color para La Ruta de Emaús y reflexiones en Modo Claro */
+body.light-mode .path-card .reflection,
+body.light-mode .path-card .question {
+  color: #333333 !important;
+}
+
+/* Si el título "2. La Ruta de Emaús" también se pierde, agregale esto: */
+body.light-mode .path-card h3 {
+  color: #111111 !important;
+}
+/* --- Rebelión aplacada: Modo claro obligatorio para tarjetas de ruta --- */
+body.light-mode #screen-path-detail .path-card,
+body.light-mode #screen-path-detail .path-card * {
+  color: #2b2b2b !important;
+}
