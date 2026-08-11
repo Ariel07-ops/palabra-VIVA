@@ -1080,3 +1080,96 @@ body.light-mode #study-card .column-subtitle,
 .light-theme #study-card .column-subtitle {
   color: #333333 !important;
 }
+.titulo-estado {
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: #a59049; /* Dorado elegante */
+  text-align: center;
+  margin-bottom: 10px;
+}
+.light-theme .titulo-estado {
+  color: #b39353 !important; /* Dorado más suave para modo claro */
+  font-weight: bold;
+  text-align: center;
+  margin-bottom: 10px;
+}
+/* aquí le damos detlle dorado al subtitulo de los estados */
+.acogida-estado {
+  font-size: 1.1rem;
+  color: #a59049; /* Dorado elegante */
+  text-align: center;
+  margin-bottom: 15px;
+  font-style: italic; /* Cursiva elegante */
+  font-family: serif; /* Tipografía clásica */
+  margin-left: auto;
+}
+.light-theme .acogida-estado {
+  color: #b39353 !important; /* Dorado más suave para modo claro */
+  font-style: italic;
+  font-family: serif;
+  text-align: center;
+  margin-bottom: 15px;
+  margin-left: auto;
+}
+.evangelio-referencia {
+  font-size: 1.2rem;
+  line-height: 1.5;
+  color: #ad7f7f; /* Gris suave para lectura cómoda */
+  font-style: italic; /* Cursiva elegante */
+  font-family: serif; /* Tipografía clásica */
+  margin-bottom: 15px;
+  margin-left: 10px;
+}
+.bloque-evangelio {
+  font-size: 1.1rem;
+  line-height: 1.5;
+  color: #d0d0d0; /* Gris suave para lectura cómoda */
+  font-style: italic; /* Cursiva elegante */
+  font-family: serif; /* Tipografía clásica */
+  margin-bottom: 15px;
+  margin-left: 10px;
+}
+.oracion-texto {
+  font-size: 1.1rem;
+  line-height: 1.5;
+  color: #d0d0d0; /* Gris suave para lectura cómoda */
+  font-style: italic; /* Cursiva elegante */
+  font-family: serif; /* Tipografía clásica */
+  margin-bottom: 15px;
+  margin-left: 10px;
+}
+.light-theme .oracion-texto {
+  color: #554d4d !important; /* Gris oscuro para modo claro */
+  font-style: italic;
+  font-family: serif;
+  margin-left: 10px;
+}
+/* aquí aplicamos un poco de estilos a los bloques de santo y recomendaciones para que se vean más elegantes y legibles, evitando el blanco puro y usando un gris suave con cursiva. Esto ayuda a mantener la estética general de la aplicación y mejora la experiencia de lectura. */
+.bloque-santo {
+  color: #ad7f7f; /* Un gris suave y elegante, no blanco puro */
+  font-style: italic; /* Esa cursiva delicada que queda genial */
+  font-size: 1.2rem;
+  font-family: serif; /* O la tipografía delicada que esté usando la Biblia */
+  margin: 0 auto;
+  margin-bottom: auto;
+  margin-left: 10px;
+}
+.santo-recomendacion {
+  color: #ddd0d0; /* Un gris suave y elegante, no blanco puro */
+  font-style: italic; /* Esa cursiva delicada que queda genial */
+  font-size: 1.1rem;
+  font-family: serif; /* O la tipografía delicada que esté usando la Biblia */
+  margin: 0 auto;
+  margin-bottom: auto;
+  margin-left: 0px;
+}
+.paso-hoy-texto {
+  color: #8a5e5e; /* Un gris suave y elegante, no blanco puro */
+  font-style: italic; /* Esa cursiva delicada que queda genial */
+  font-size: 1.1rem;
+  font-family: serif; /* O la tipografía delicada que esté usando la Biblia */
+  margin: 0 auto;
+  margin-bottom: auto;
+  padding-top: 20px;
+  margin-left: 10px;
+}
