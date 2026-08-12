@@ -232,7 +232,7 @@ body.light-mode .nav-icon-btn {
   width: 100%;
   height: 100%;
   object-fit: contain;
-  animation: pulsoZoom 4s ease-in-out infinite;
+  animation: pulsoZoom 3s ease-in-out infinite;
 }
 
 @keyframes pulsoZoom {
@@ -332,12 +332,12 @@ body.light-mode #contenido-peldaño {
   padding-bottom: 15px;
   margin-bottom: 25px;
 }
-
+/* titulos como por ejemplo caminemos con Jesus la sagrada escritura */
 .brand-title {
   font-family: var(--font-roman);
   color: var(--gold);
   letter-spacing: 4px;
-  font-size: 1.8rem;
+  font-size: 1.4rem;
 }
 
 .btn-back,
@@ -513,16 +513,16 @@ body:has(#screen-lectura.active) #study-card {
 }
 
 .col-1 {
-  border-top: 4px solid #800080 !important;
+  border-top: 6px solid #800080 !important;
 }
 .col-2 {
-  border-top: 4px solid #b8860b !important;
+  border-top: 6px solid #b8860b !important;
 }
 .col-3 {
-  border-top: 4px solid #e6d7b2 !important;
+  border-top: 6px solid #e6d7b2 !important;
 }
 .col-4 {
-  border-top: 4px solid #e34234 !important;
+  border-top: px solid #e34234 !important;
 }
 
 body.light-mode .col-3 {
@@ -570,11 +570,18 @@ body.light-mode .col-3 {
     transform: translateY(0);
   }
 }
+.column-header .column-title {
+  font-size: 1rem;
+  color: var(--gold);
+  text-align: center;
+  margin-bottom: 8px;
+}
 
+/* esto modifica el texto del panel de estudio que abre el abanico */
 .extended-text {
   display: none;
   margin-top: 10px;
-  font-size: 0.95rem;
+  font-size: 1rem;
   line-height: 1.6;
   color: #ccc;
   text-align: justify;
@@ -1511,4 +1518,16 @@ body.light-mode #screen-path-detail .path-card * {
 }
 .modal-oculto {
   display: none !important;
+}
+body {
+  background-color: #121212; /* Asegura que el fondo sea oscuro pleno */
+
+  /* Esto hace que el contenido respete las barras del celular de forma elegante */
+  padding-top: env(safe-area-inset-top);
+  padding-bottom: env(safe-area-inset-bottom);
+}
+
+/* Si tu barra de navegación superior o menú flotante toca arriba */
+header.top-navbar {
+  padding-top: env(safe-area-inset-top);
 }
