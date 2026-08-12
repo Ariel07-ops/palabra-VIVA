@@ -1531,3 +1531,8 @@ body {
 header.top-navbar {
   padding-top: env(safe-area-inset-top);
 }
+html {
+  background-color: #000000;
+  /* Esto le avisa a los navegadores modernos de Android que fuercen un esquema oscuro en la IU del sistema */
+  color-scheme: dark;
+}
