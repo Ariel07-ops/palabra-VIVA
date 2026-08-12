@@ -15,6 +15,7 @@
   --text-color: #f3e5ab;
   --card-bg: rgba(255, 255, 255, 0.05);
   --border-color: rgba(212, 175, 55, 0.3);
+  color-scheme: light dark;
 }
 
 /* --- TEMA CLARO (Modo Luminoso) --- */
