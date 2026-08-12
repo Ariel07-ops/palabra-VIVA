@@ -36,6 +36,9 @@ const studyCard = document.getElementById("study-card");
 const panelHandle = document.querySelector(".panel-handle");
 const btnVolverAcerca = document.getElementById("btn-volver-acerca");
 
+// --- VARIABLE GLOBAL PARA EL BUSCADOR ---
+let resultadosBusquedaActuales = [];
+
 // --- FUNCIÓN AUXILIAR PARA CAMBIAR DE PANTALLA ---
 function changeScreen(screenToShow) {
   // --- FRENAR AUDIO SIEMPRE QUE CAMBIAMOS DE PANTALLA ---
@@ -88,6 +91,7 @@ function changeScreen(screenToShow) {
     screenToShow.classList.add("active");
   }
 }
+
 // --- FUNCIÓN PARA REDIRIGIR SEGÚN EL ESTADO ---
 function redirigir(estado) {
   const estadosMap = {
@@ -103,7 +107,7 @@ function redirigir(estado) {
   };
 
   if (estadosMap[estado]) {
-    cargarEstadoAnimo(estado); // <--- ¡AQUÍ ESTÁ LA MAGIA! Inyecta los datos del JSON antes de cambiar
+    cargarEstadoAnimo(estado);
     changeScreen(estadosMap[estado]);
   }
 }
@@ -390,10 +394,13 @@ document
           const fin = paginaBusquedaActual * porPagina;
           const loteActual = encontrados.slice(inicio, fin);
 
+          // Guardamos los resultados globales para usarlos al hacer clic
+          resultadosBusquedaActuales = encontrados;
+
           let htmlContenido = loteActual
             .map(
-              (item) => `
-        <div class="search-result-item" style="margin-bottom: 15px; border-bottom: 1px solid rgba(212,175,55,0.2); padding-bottom: 10px;">
+              (item, index) => `
+        <div class="search-result-item" onclick='abrirResultadoPorIndice(${(paginaBusquedaActual - 1) * porPagina + index})' style="margin-bottom: 15px; border-bottom: 1px solid rgba(212,175,55,0.2); padding-bottom: 10px; cursor: pointer;">
           <strong style="color: var(--gold); display: block; margin-bottom: 5px;">${item.referencia}</strong>
           <p style="color: #e0e0e0; font-size: 0.95rem; line-height: 1.4;">"${item.texto}"</p>
         </div>
@@ -609,7 +616,7 @@ function cargarCapitulosLibro(nombreLibro, versesArray, pantallaOrigen) {
     gridCapitulos.appendChild(btnCap);
   });
 }
-// funcion para buscar capitulos y subrayar esplicaciones
+
 function renderizarVersiculosCapitulo(nombreLibro, numCapitulo, versosLibro) {
   if ("speechSynthesis" in window) {
     window.speechSynthesis.cancel();
@@ -649,7 +656,6 @@ function renderizarVersiculosCapitulo(nombreLibro, numCapitulo, versosLibro) {
 
   let htmlVersos = `<div style="max-width: 600px; margin: 0 auto; padding-bottom: 20px;">`;
   versosFiltrados.forEach((v) => {
-    // AQUÍ ESTÁ EL GATILLO: data-versiculo="${v.verse}"
     htmlVersos += `<p class="linea-versiculo" data-versiculo="${v.verse}" style="margin-bottom: 14px;"><sup style="color: var(--gold); font-weight: bold; margin-right: 8px; font-size: 0.85rem;">${v.verse}</sup>${v.text}</p>`;
   });
   htmlVersos += `</div>`;
@@ -664,9 +670,7 @@ function renderizarVersiculosCapitulo(nombreLibro, numCapitulo, versosLibro) {
 
   if (areaLectura) areaLectura.innerHTML = htmlVersos;
 
-  // Disparamos pasando el nombre del libro y el capítulo actual
   aplicarSubrayadosCapitulo(nombreLibro, numCapitulo);
-  // 🚀 DISPARADOR: Llamamos a la función para que lea el JSON y aplique los subrayados al capítulo actual
 
   if (capAnterior) {
     document
@@ -684,6 +688,7 @@ function renderizarVersiculosCapitulo(nombreLibro, numCapitulo, versosLibro) {
       });
   }
 }
+
 let utteranceActual = null;
 let textoCompletoActual = "";
 let estaReproduciendo = false;
@@ -703,7 +708,6 @@ function ejecutarLecturaVoz() {
     return;
   }
 
-  // Si ya se está reproduciendo, el botón actúa como DETENER (Stop) y resetea
   if (estaReproduciendo) {
     window.speechSynthesis.cancel();
     estaReproduciendo = false;
@@ -713,14 +717,12 @@ function ejecutarLecturaVoz() {
     return;
   }
 
-  // Preparamos el texto limpio sin los números de los versículos
   const clone = areaLecturaFinal.cloneNode(true);
   clone.querySelectorAll("sup").forEach((sup) => sup.remove());
   const textoEnPantalla = clone.innerText.trim();
 
   if (!textoEnPantalla) return;
 
-  // Cancelamos cualquier locución previa por seguridad
   window.speechSynthesis.cancel();
 
   textoCompletoActual = textoEnPantalla;
@@ -746,13 +748,10 @@ function ejecutarLecturaVoz() {
 
   window.speechSynthesis.speak(utteranceActual);
 }
-// --- INTERACTIVIDAD DEL PANEL INFERIOR (Abanico en dos niveles) ---
-// --- Lógica del Panel de Estudio (Abanico) ---
 
+// --- INTERACTIVIDAD DEL PANEL INFERIOR ---
 const fanColumns = document.querySelectorAll(".fan-column");
 
-// Función para alternar el estado del panel
-// Evento para cerrar desde la barrita dorada (ya no abre por casualidad)
 if (panelHandle) {
   panelHandle.addEventListener("click", () => {
     if (studyCard) {
@@ -760,79 +759,27 @@ if (panelHandle) {
     }
   });
 }
-// Evento para expandir cada columna
+
 fanColumns.forEach((col) => {
   col.addEventListener("click", (e) => {
-    // 1. SI ESTÁ APAGADA (no tiene contenido), NO HACE NADA
     if (!col.classList.contains("has-content")) {
       return;
     }
-
-    // Si el usuario hace clic en el botón de cerrar interno de la columna, no expandas
     if (e.target.classList.contains("btn-close-extended")) return;
 
-    // Quitamos la expansión de todas y expandimos la seleccionada
     fanColumns.forEach((c) => c.classList.remove("expanded-full"));
     col.classList.add("expanded-full");
   });
 
-  // Botón de cierre específico de cada columna expandida
   const btnClose = col.querySelector(".btn-close-extended");
   if (btnClose) {
     btnClose.addEventListener("click", (e) => {
-      e.stopPropagation(); // Evita que se dispare el evento del padre
+      e.stopPropagation();
       col.classList.remove("expanded-full");
     });
   }
 });
 
-// Función que recibe los datos del JSON y enciende la columna correspondiente
-function procesarYResaltarDesdeJSON(datosCapitulo) {
-  const fanColumns = document.querySelectorAll(".fan-column");
-
-  // 1. Apagamos todas primero para limpiar la pantalla
-  fanColumns.forEach((col) => col.classList.remove("has-content"));
-
-  // 2. Recorremos el JSON o evaluamos sus propiedades
-  // Por ejemplo, si tu JSON tiene campos como: { seccion1: "texto", seccion2: "", ... }
-
-  if (datosCapitulo.opcion1 && datosCapitulo.opcion1.trim() !== "") {
-    fanColumns[0].classList.add("has-content"); // Prende la primera
-  }
-
-  if (datosCapitulo.opcion2 && datosCapitulo.opcion2.trim() !== "") {
-    fanColumns[1].classList.add("has-content"); // Prende la segunda
-  }
-
-  if (datosCapitulo.opcion3 && datosCapitulo.opcion3.trim() !== "") {
-    fanColumns[2].classList.add("has-content"); // Prende la tercera
-  }
-
-  // Y así sucesivamente según cómo armes la estructura de tu JSON
-}
-function toggleStudyCard(datosDelLibroActual) {
-  if (studyCard) {
-    studyCard.classList.toggle("hidden");
-
-    // Si se acaba de abrir, evaluamos el JSON cargado
-    if (!studyCard.classList.contains("hidden")) {
-      procesarYResaltarDesdeJSON(datosDelLibroActual);
-    }
-  }
-}
-// Función para encender una columna específica de a una
-function encenderColumna(numeroColumna) {
-  const fanColumns = document.querySelectorAll(".fan-column");
-
-  // 1. Apagamos todas las columnas primero
-  fanColumns.forEach((col) => col.classList.remove("has-content"));
-
-  // 2. Si el número es válido, encendemos solo esa (restamos 1 porque los índices empiezan en 0)
-  const index = numeroColumna - 1;
-  if (fanColumns[index]) {
-    fanColumns[index].classList.add("has-content");
-  }
-}
 async function aplicarSubrayadosCapitulo(nombreLibro, numeroCapitulo) {
   try {
     let respuesta = await fetch("contenido.json");
@@ -845,9 +792,6 @@ async function aplicarSubrayadosCapitulo(nombreLibro, numeroCapitulo) {
       !datos.libros[keyLibro] ||
       !datos.libros[keyLibro].capitulos[numeroCapitulo]
     ) {
-      console.log(
-        `No hay contenido especial para ${nombreLibro} cap. ${numeroCapitulo}.`,
-      );
       return;
     }
 
@@ -884,26 +828,22 @@ async function aplicarSubrayadosCapitulo(nombreLibro, numeroCapitulo) {
           elementoVersiculo.style.borderImage = `linear-gradient(to right, ${coloresActivos}) 1`;
         }
 
-        // Interactividad de clics: Gatillo directo para pintar de dorado e iluminar el abanico
         if (activas.length > 0) {
           elementoVersiculo.style.cursor = "pointer";
           elementoVersiculo.title =
             "Tocá para ver el estudio de este versículo";
 
           elementoVersiculo.onclick = () => {
-            // 1. Limpiamos el fondo dorado de cualquier otro versículo previo
             document.querySelectorAll("[data-versiculo]").forEach((el) => {
               el.style.backgroundColor = "transparent";
               el.style.padding = "0px";
             });
 
-            // 2. Pintamos y destacamos directamente el versículo seleccionado
             elementoVersiculo.style.backgroundColor = "rgba(212, 175, 55, 0.1)";
             elementoVersiculo.style.borderRadius = "6px";
             elementoVersiculo.style.padding = "4px 8px";
             elementoVersiculo.style.transition = "all 0.3s ease";
 
-            // 3. Mostrar la tarjeta de estudio
             const studyCard = document.getElementById("study-card");
             if (studyCard) {
               studyCard.classList.remove("hidden");
@@ -947,47 +887,19 @@ async function aplicarSubrayadosCapitulo(nombreLibro, numeroCapitulo) {
   }
 }
 
-// Función para cerrar las columnas, ocultar el panel y limpiar los estilos al cambiar
-function cerrarAbanicoAlCambiar() {
-  const studyCard = document.getElementById("study-card");
-  if (studyCard) {
-    studyCard.classList.add("hidden");
-  }
-
-  const fanColumns = document.querySelectorAll(".fan-column");
-  fanColumns.forEach((col) => {
-    col.classList.remove("expanded-full");
-  });
-
-  // Limpiamos los fondos dorados de los versículos
-  document.querySelectorAll("[data-versiculo]").forEach((linea) => {
-    linea.style.backgroundColor = "transparent";
-    linea.style.padding = "0px";
-  });
-}
-// ==========================================
-// INYECTOR MAESTRO DE ESTADOS DESDE caminemos.json
-// ==========================================
-
+// --- INYECTOR MAESTRO DE ESTADOS DESDE caminemos.json ---
 async function cargarEstadoAnimo(nombreEstado) {
   try {
-    // 1. Leemos el archivo JSON
     const respuesta = await fetch("caminemos.json");
     const data = await respuesta.json();
 
-    // 2. Extraemos los datos del estado correspondiente (ej: 'optimo', 'feliz', etc.)
     const datosEstado = data.estados[nombreEstado];
 
-    if (!datosEstado) {
-      console.warn("No se encontró el estado en el JSON:", nombreEstado);
-      return;
-    }
+    if (!datosEstado) return;
 
-    // 3. Buscamos la pantalla contenedora en el HTML
     const pantalla = document.getElementById(`screen-${nombreEstado}`);
     if (!pantalla) return;
 
-    // 4. Inyectamos cada pieza de contenido en su lugar correspondiente
     const elTitulo = pantalla.querySelector(".titulo-estado");
     if (elTitulo)
       elTitulo.textContent = `Pantalla: ${nombreEstado.charAt(0).toUpperCase() + nombreEstado.slice(1)}`;
@@ -995,7 +907,6 @@ async function cargarEstadoAnimo(nombreEstado) {
     const elAcogida = pantalla.querySelector(".acogida-estado");
     if (elAcogida) elAcogida.textContent = datosEstado.acogida;
 
-    // Evangelio
     const elRef = pantalla.querySelector(".evangelio-referencia");
     if (elRef) elRef.textContent = datosEstado.evangelio.referencia;
 
@@ -1005,11 +916,9 @@ async function cargarEstadoAnimo(nombreEstado) {
     const elMed = pantalla.querySelector(".evangelio-meditacion");
     if (elMed) elMed.textContent = datosEstado.evangelio.meditacion;
 
-    // Oración
     const elOracion = pantalla.querySelector(".oracion-texto");
     if (elOracion) elOracion.textContent = datosEstado.oracion;
 
-    // Santo / Compañero de camino
     const elSanto = pantalla.querySelector(".santo-nombre");
     if (elSanto) elSanto.textContent = datosEstado.companero_de_camino.santo;
 
@@ -1017,17 +926,14 @@ async function cargarEstadoAnimo(nombreEstado) {
     if (elRec)
       elRec.textContent = datosEstado.companero_de_camino.recomendacion;
 
-    // Paso de hoy
     const elPaso = pantalla.querySelector(".paso-hoy-texto");
     if (elPaso) elPaso.textContent = datosEstado.paso_de_hoy;
   } catch (error) {
     console.error("Error al inyectar los datos del estado:", error);
   }
 }
-function cambiarIdioma(lang) {
-  console.log("Cambiando idioma a: ", lang);
 
-  // Buscamos todos los elementos que tengan atributos de traducción en la app
+function cambiarIdioma(lang) {
   const elementosTraducibles = document.querySelectorAll("[data-es][data-en]");
 
   elementosTraducibles.forEach((el) => {
@@ -1038,7 +944,45 @@ function cambiarIdioma(lang) {
     }
   });
 
-  // Actualizamos clases activas en los botones de selección de idioma si los hubiera
   const botonesIdioma = document.querySelectorAll("#screen-idioma button");
   botonesIdioma.forEach((btn) => btn.classList.remove("active"));
+}
+
+// --- FUNCIONES FINALES DE APERTURA DESDE EL BUSCADOR ---
+function cerrarCajita() {
+  const modalVentana = document.getElementById("modal-versiculo");
+  if (modalVentana) {
+    modalVentana.style.display = "none";
+  }
+}
+
+function abrirResultadoPorIndice(indiceGlobal) {
+  console.log("Índice recibido:", indiceGlobal);
+  console.log("Array actual:", resultadosBusquedaActuales);
+
+  const item = resultadosBusquedaActuales[indiceGlobal];
+  if (!item) {
+    console.warn("¡O atención! No se encontró ningún item en ese índice.");
+    return;
+  }
+
+  console.log("Item encontrado:", item);
+
+  const modalTexto = document.getElementById("texto-versiculo");
+  const modalVentana = document.getElementById("modal-versiculo");
+
+  if (modalTexto) {
+    modalTexto.innerHTML = `<strong style="color: var(--gold);">${item.referencia}</strong><br><br>"${item.texto}"`;
+  } else {
+    console.error("¡Che! No encuentro el div #texto-versiculo en el HTML.");
+  }
+
+  // En lugar de style.display, probamos con className
+
+  if (modalVentana) {
+    modalVentana.style.setProperty("display", "flex", "important");
+    console.log("¡Forzando apertura de modal!");
+  } else {
+    console.error("¡No encuentro el elemento #modal-versiculo!");
+  }
 }
