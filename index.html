@@ -31,6 +31,20 @@
     <link rel="manifest" href="manifest.json" />
     <!-- Script principal -->
     <script src="ariel.js" defer></script>
+    <script>
+      if ("serviceWorker" in navigator) {
+        window.addEventListener("load", () => {
+          navigator.serviceWorker
+            .register("./sw.js")
+            .then((reg) =>
+              console.log("Service Worker registrado con éxito:", reg.scope),
+            )
+            .catch((err) =>
+              console.log("Fallo al registrar el Service Worker:", err),
+            );
+        });
+      }
+    </script>
   </head>
   <body>
     <!-- Barra de Navegación Superior -->
