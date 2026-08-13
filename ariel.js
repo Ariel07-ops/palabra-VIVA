@@ -315,16 +315,6 @@ if (btnVolverAcerca)
   btnVolverAcerca.addEventListener("click", () => changeScreen(screenMain));
 
 // --- BÚSQUEDA INTELIGENTE CON ENTER Y PAGINACIÓN ---
-const inputBusquedaEl = document.getElementById("input-busqueda");
-if (inputBusquedaEl) {
-  inputBusquedaEl.addEventListener("keydown", (event) => {
-    if (event.key === "Enter") {
-      event.preventDefault();
-      document.getElementById("btn-ejecutar-busqueda")?.click();
-    }
-  });
-}
-
 document
   .getElementById("btn-ejecutar-busqueda")
   ?.addEventListener("click", async () => {
@@ -361,25 +351,63 @@ document
       let encontrados = [];
 
       if (datos.verses && Array.isArray(datos.verses)) {
+        const inputLimpio = limpiarTexto(inputOriginal);
+
+        // Detectamos si es una cita con versículo (ej: 1:1) o un capítulo entero (ej: Mateo 1)
+        const esCitaConVersiculo = /\d+[:\s]\d+/.test(inputOriginal);
+
         datos.verses.forEach((item) => {
           const textoLimpio = limpiarTexto(item.text || "");
-          const libroLimpio = limpiarTexto(item.book_name || "");
+          const libroLimpioItem = limpiarTexto(item.book_name || "");
 
-          const coincideFraseCompleta =
-            textoLimpio.includes(terminoBusqueda) ||
-            libroLimpio.includes(terminoBusqueda);
-          const palabrasCoincidentes = palabrasBusqueda.filter((palabra) =>
-            textoLimpio.includes(palabra),
-          );
-          const coincidePalabrasClave =
-            palabrasBusqueda.length > 0 &&
-            palabrasCoincidentes.length >= Math.min(palabrasBusqueda.length, 3);
+          // Verificamos si el input menciona este libro
+          const coincideLibro = inputLimpio.includes(libroLimpioItem);
+          const esCapituloEntero = coincideLibro && /\d+$/.test(inputLimpio);
 
-          if (coincideFraseCompleta || coincidePalabrasClave) {
-            encontrados.push({
-              referencia: `${item.book_name} ${item.chapter}:${item.verse} (${datos.metadata?.translation || "Biblia"})`,
-              texto: item.text,
-            });
+          if (esCitaConVersiculo) {
+            // Lógica para Versículo Específico (ej: Juan 3:16)
+            const coincideCapitulo = inputLimpio.includes(
+              item.chapter.toString(),
+            );
+            const coincideVersiculo = inputLimpio.includes(
+              item.verse.toString(),
+            );
+
+            if (coincideLibro && coincideCapitulo && coincideVersiculo) {
+              encontrados.push({
+                referencia: `${item.book_name} ${item.chapter}:${item.verse} (${datos.metadata?.translation || "Biblia"})`,
+                texto: item.text,
+              });
+            }
+          } else if (esCapituloEntero) {
+            // Lógica para Capítulo Entero (ej: Mateo 1)
+            const numeroCapituloBuscado = inputLimpio.replace(/\D/g, "");
+
+            if (item.chapter.toString() === numeroCapituloBuscado) {
+              encontrados.push({
+                referencia: `${item.book_name} ${item.chapter}:${item.verse} (${datos.metadata?.translation || "Biblia"})`,
+                texto: item.text,
+              });
+            }
+          } else {
+            // Lógica original para Búsqueda por Palabras
+            const coincideFraseCompleta =
+              textoLimpio.includes(terminoBusqueda) ||
+              libroLimpioItem.includes(terminoBusqueda);
+            const palabrasCoincidentes = palabrasBusqueda.filter((palabra) =>
+              textoLimpio.includes(palabra),
+            );
+            const coincidePalabrasClave =
+              palabrasBusqueda.length > 0 &&
+              palabrasCoincidentes.length >=
+                Math.min(palabrasBusqueda.length, 3);
+
+            if (coincideFraseCompleta || coincidePalabrasClave) {
+              encontrados.push({
+                referencia: `${item.book_name} ${item.chapter}:${item.verse} (${datos.metadata?.translation || "Biblia"})`,
+                texto: item.text,
+              });
+            }
           }
         });
       }
@@ -456,7 +484,6 @@ document
       contenedorResultados.innerHTML = `<p class="placeholder-text" style="color: #e34234;">Ocurrió un error al realizar la búsqueda.</p>`;
     }
   });
-
 // --- ANTIGUO Y NUEVO TESTAMENTO (LISTAS Y CAPÍTULOS) ---
 const listaLibrosAntiguo = [
   "Génesis",
@@ -694,6 +721,7 @@ let textoCompletoActual = "";
 let estaReproduciendo = false;
 let estaPausado = false;
 
+// aca esta el motor de audio
 function ejecutarLecturaVoz() {
   if (!("speechSynthesis" in window)) {
     alert("Tu dispositivo no soporta la síntesis de voz.");
