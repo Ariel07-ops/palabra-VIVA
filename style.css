@@ -192,6 +192,24 @@ body.light-mode .nav-icon-btn {
   font-size: 1.05rem;
   font-weight: bold;
 }
+/* Estilo básico para el panel de herramientas (modal) */
+/* En tu CSS puedes tener esto para controlar las vistas */
+.vista-seccion {
+  display: none;
+}
+
+.vista-seccion.activo {
+  display: block; /* o flex */
+}
+#modal-herramientas {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.85); /* Fondo oscuro semitransparente */
+  z-index: 9999; /* Para que quede arriba de todo */
+}
 
 /* ==========================================
    3. SISTEMA DE PANTALLAS Y SPLASH
@@ -1536,4 +1554,52 @@ html {
   background-color: #000000;
   /* Esto le avisa a los navegadores modernos de Android que fuercen un esquema oscuro en la IU del sistema */
   color-scheme: dark;
+}
+/* --- MODO SEPIA TOTAL --- */
+html.modo-sepia,
+body.modo-sepia {
+  background-color: #f4ecd8 !important;
+  color: #4b3621 !important;
+}
+
+/* Forzamos que cualquier contenedor principal, tarjeta o fondo general adopte el tono sepia */
+body.modo-sepia div,
+body.modo-sepia section,
+body.modo-sepia main,
+body.modo-sepia header,
+body.modo-sepia nav,
+body.modo-sepia aside {
+  background-color: inherit; /* Heredan el fondo sepia a menos que tengan una razón de ser */
+}
+
+/* Excepciones específicas para que las cajas de texto y barras queden prolijas en sepia */
+body.modo-sepia header,
+body.modo-sepia nav,
+body.modo-sepia .sidebar,
+body.modo-sepia .contenido-principal {
+  background-color: #f4ecd8 !important;
+  color: #4b3621 !important;
+}
+
+/* Textos, títulos y etiquetas bien legibles */
+body.modo-sepia p,
+body.modo-sepia span,
+body.modo-sepia a,
+body.modo-sepia h1,
+body.modo-sepia h2,
+body.modo-sepia h3,
+body.modo-sepia li {
+  color: #4b3621 !important;
+}
+body.light-mode p,
+body.light-mode span,
+body.light-mode h1,
+body.light-mode h2,
+body.light-mode h3,
+body.light-mode .split-block p,
+body.light-mode .header-statement,
+body.light-mode .reflection,
+body.light-mode .focus-text {
+  color: #2c2c2c !important;
+  --text-color: #2c2c2c !important;
 }

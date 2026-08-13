@@ -245,75 +245,127 @@ setTimeout(() => {
   }
 }, 4500);
 
-// --- CAMBIO DE TEMA ---
+// --- INICIALIZACIÓN GENERAL DE LA APP ---
 document.addEventListener("DOMContentLoaded", () => {
+  // 1. Cambio de Tema (Luminoso / Oscuro)
+  // 1. Cambio de Tema (Luminoso / Oscuro)
   const btnTheme = document.getElementById("btn-theme");
   if (btnTheme) {
     btnTheme.addEventListener("click", () => {
+      // --- LIMPIEZA DE SEPIA AL TOCAR EL BOTÓN DE ARRIBA ---
+      document.body.classList.remove("modo-sepia");
+      document.documentElement.classList.remove("modo-sepia");
+
+      const indicador = document.getElementById("indicador-sepia");
+      if (indicador) {
+        indicador.style.display = "none";
+      }
+      // ----------------------------------------------------
+
+      // Tu código original que cambia el modo normal/claro
       document.body.classList.toggle("light-mode");
     });
   }
-});
 
-// --- MENÚ LATERAL Y ENLACES ---
-if (btnMenu && menuLateral) {
-  btnMenu.addEventListener("click", () =>
-    menuLateral.classList.toggle("active"),
-  );
-}
+  // Referencias comunes del menú lateral
+  const btnMenu = document.getElementById("btn-menu");
+  const menuLateral = document.getElementById("menu-lateral");
 
-document.addEventListener("click", (event) => {
-  if (
-    menuLateral &&
-    btnMenu &&
-    menuLateral.classList.contains("active") &&
-    !menuLateral.contains(event.target) &&
-    !btnMenu.contains(event.target)
-  ) {
-    menuLateral.classList.remove("active");
+  // 2. Comportamiento del Menú Lateral
+  if (btnMenu && menuLateral) {
+    btnMenu.addEventListener("click", () => {
+      menuLateral.classList.toggle("active");
+    });
+  }
+
+  // Cerrar menú al hacer clic fuera
+  document.addEventListener("click", (event) => {
+    if (
+      menuLateral &&
+      btnMenu &&
+      menuLateral.classList.contains("active") &&
+      !menuLateral.contains(event.target) &&
+      !btnMenu.contains(event.target)
+    ) {
+      menuLateral.classList.remove("active");
+    }
+  });
+
+  // 3. Enlaces del Menú Lateral
+  document.getElementById("link-inicio")?.addEventListener("click", (e) => {
+    e.preventDefault();
+    changeScreen(screenMain);
+    menuLateral?.classList.remove("active");
+  });
+
+  document.getElementById("link-biblia")?.addEventListener("click", (e) => {
+    e.preventDefault();
+    changeScreen(screenBibleDetail);
+    menuLateral?.classList.remove("active");
+  });
+
+  document.getElementById("link-buscar")?.addEventListener("click", (e) => {
+    e.preventDefault();
+    changeScreen(screenBuscar);
+    menuLateral?.classList.remove("active");
+  });
+
+  document.getElementById("link-idioma")?.addEventListener("click", (e) => {
+    e.preventDefault();
+    changeScreen(screenIdioma);
+    menuLateral?.classList.remove("active");
+  });
+
+  document.getElementById("link-sugerir")?.addEventListener("click", (e) => {
+    e.preventDefault();
+    changeScreen(screenSugerir);
+    menuLateral?.classList.remove("active");
+  });
+  document.getElementById("link-acerca").addEventListener("click", (e) => {
+    e.preventDefault();
+    changeScreen(screenAcerca);
+    menuLateral?.classList.remove("active");
+  });
+
+  // Versión segura que no se rompe si el elemento no existe todavía
+  const linkHerramientas = document.getElementById("link-herramientas");
+  if (linkHerramientas) {
+    linkHerramientas.addEventListener("click", (e) => {
+      e.preventDefault();
+      console.log("¡Hice clic en el botón de herramientas!");
+      const modal = document.getElementById("modal-herramientas");
+      if (modal) {
+        console.log("Modal encontrado:", modal);
+        modal.style.display = "flex";
+      }
+      menuLateral?.classList.remove("active");
+    });
+  }
+
+  document
+    .getElementById("link-herramientas")
+    .addEventListener("click", (e) => {
+      e.preventDefault();
+      console.log("¡Hice clic en el botón de herramientas!"); // Agregá esta línea
+      const modal = document.getElementById("modal-herramientas");
+      if (modal) {
+        console.log("Modal encontrado:", modal); // Y esta otra
+        modal.style.display = "flex";
+      }
+    });
+  // 5. Botones de Retorno (Volver)
+  document
+    .getElementById("btn-volver-idioma")
+    ?.addEventListener("click", () => changeScreen(screenMain));
+  document
+    .getElementById("btn-volver-sugerir")
+    ?.addEventListener("click", () => changeScreen(screenMain));
+
+  const btnVolverAcerca = document.getElementById("btn-volver-acerca");
+  if (btnVolverAcerca) {
+    btnVolverAcerca.addEventListener("click", () => changeScreen(screenMain));
   }
 });
-
-document.getElementById("link-inicio")?.addEventListener("click", (e) => {
-  e.preventDefault();
-  changeScreen(screenMain);
-  menuLateral.classList.remove("active");
-});
-document.getElementById("link-biblia")?.addEventListener("click", (e) => {
-  e.preventDefault();
-  changeScreen(screenBibleDetail);
-  menuLateral.classList.remove("active");
-});
-document.getElementById("link-buscar")?.addEventListener("click", (e) => {
-  e.preventDefault();
-  changeScreen(screenBuscar);
-  menuLateral.classList.remove("active");
-});
-document.getElementById("link-idioma")?.addEventListener("click", (e) => {
-  e.preventDefault();
-  changeScreen(screenIdioma);
-  menuLateral.classList.remove("active");
-});
-document.getElementById("link-sugerir")?.addEventListener("click", (e) => {
-  e.preventDefault();
-  changeScreen(screenSugerir);
-  menuLateral.classList.remove("active");
-});
-document.getElementById("link-acerca")?.addEventListener("click", (e) => {
-  e.preventDefault();
-  changeScreen(screenAcerca);
-  menuLateral.classList.remove("active");
-});
-
-document
-  .getElementById("btn-volver-idioma")
-  ?.addEventListener("click", () => changeScreen(screenMain));
-document
-  .getElementById("btn-volver-sugerir")
-  ?.addEventListener("click", () => changeScreen(screenMain));
-if (btnVolverAcerca)
-  btnVolverAcerca.addEventListener("click", () => changeScreen(screenMain));
-
 // --- BÚSQUEDA INTELIGENTE CON ENTER Y PAGINACIÓN ---
 document
   .getElementById("btn-ejecutar-busqueda")
@@ -1012,5 +1064,35 @@ function abrirResultadoPorIndice(indiceGlobal) {
     console.log("¡Forzando apertura de modal!");
   } else {
     console.error("¡No encuentro el elemento #modal-versiculo!");
+  }
+}
+// --- FUNCIÓN PARA CERRAR EL MODAL DE HERRAMIENTAS ---
+function cerrarModalHerramientas() {
+  const modal = document.getElementById("modal-herramientas");
+  if (modal) {
+    modal.style.display = "none";
+  }
+}
+function alternarSepia() {
+  const body = document.body;
+  const htmlTag = document.documentElement;
+  const indicador = document.getElementById("indicador-sepia");
+
+  // Alternamos la clase sepia
+  body.classList.toggle("modo-sepia");
+  htmlTag.classList.toggle("modo-sepia");
+
+  // Si el elemento indicador existe, mostramos u ocultamos el cartelito
+  if (indicador) {
+    if (body.classList.contains("modo-sepia")) {
+      indicador.style.display = "inline-block";
+    } else {
+      indicador.style.display = "none";
+    }
+  }
+
+  // Cerramos el modal de forma segura
+  if (typeof cerrarModalHerramientas === "function") {
+    cerrarModalHerramientas();
   }
 }
