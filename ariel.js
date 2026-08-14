@@ -793,10 +793,24 @@ function ejecutarLecturaVoz() {
     return;
   }
 
-  // 1. Limpieza total y segura del clon
+  // 1. Hacemos el clon y barremos con TODO lo que sea filología, cajas, sup, títulos, etc.
   const clone = areaLecturaFinal.cloneNode(true);
+
+  // Borramos superíndices (números de versículo si molestan)
   clone.querySelectorAll("sup").forEach((sup) => sup.remove());
+
+  // Borramos encabezados
   clone.querySelectorAll("h1, h2, h3").forEach((el) => el.remove());
+
+  // 🔥 NUEVO: Borrar explícitamente cualquier caja de filología, subrayados o elementos flotantes
+  // (Ajustá estas clases si tus cajas tienen nombres específicos en el HTML, ej: .filologia, .caja-subrayada, span con estilos, etc.)
+  clone
+    .querySelectorAll(".filologia, .caja-filologica, ins, u")
+    .forEach((el) => {
+      // Si querés conservar el texto de adentro pero sin el formato, podés hacer que se desarmen,
+      // o si querés que la voz los ignore por completo, los removemos:
+      el.remove();
+    });
 
   // 2. Extraer y limpiar caracteres raros y saltos de línea para el celu
   let textoLimpio = clone.innerText
@@ -806,7 +820,10 @@ function ejecutarLecturaVoz() {
     .replace(/\s+/g, " ") // Normalizar espacios
     .trim();
 
-  if (!textoLimpio) return;
+  if (!textoLimpio) {
+    console.log("El texto quedó vacío después de limpiar la filología.");
+    return;
+  }
 
   // 3. Forzar reseteo total y despertar el motor de voz (evita el error 'interrupted' en Android)
   window.speechSynthesis.cancel();
