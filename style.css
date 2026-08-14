@@ -786,7 +786,7 @@ body.light-mode .fan-column.expanded-full {
 }
 
 body.light-mode #screen-main {
-  background-color: #fcfbfa !important;
+  background-color: #e8e4dc !important;
 }
 body.light-mode #screen-main .split-block {
   background: #e8e4dc !important;
@@ -1602,4 +1602,127 @@ body.light-mode .reflection,
 body.light-mode .focus-text {
   color: #2c2c2c !important;
   --text-color: #2c2c2c !important;
+}
+/* --- Ajustes finos para el Modo Sepia --- */
+
+/* 1. Asegurar que los párrafos y textos de lectura tengan un tono marrón oscuro bien legible */
+body.modo-sepia p,
+body.modo-sepia span,
+body.modo-sepia li,
+body.modo-sepia .reflection,
+body.modo-sepia .focus-text {
+  color: #3b2a1a !important; /* Un tono marrón más profundo y fácil de leer */
+}
+
+/* 2. Evitar bloques negros o grises, dándoles un tono sepia cálido y contrastado */
+body.modo-sepia .card,
+body.modo-sepia .tarjeta,
+body.modo-sepia div[class*="box"],
+body.modo-sepia section:not(.header) {
+  background-color: #e9e8e6 !important; /* Un tono crema/sepia más tostado para los contenedores */
+  color: #d3c5b9 !important;
+}
+
+/* 3. Mejorar los botones interactivos dentro del modo sepia */
+body.modo-sepia button,
+body.modo-sepia .btn {
+  background-color: #bdb6a7 !important;
+  color: #3b2a1a !important;
+  border-color: #b59a64 !important;
+}
+/* --- CORRECCIÓN GENERAL PARA EL MODO SEPIA --- */
+
+/* 1. Todos los subtítulos, textos secundarios y encabezados menores en sepia */
+body.modo-sepia h2,
+body.modo-sepia h3,
+body.modo-sepia h4,
+body.modo-sepia p,
+body.modo-sepia span,
+body.modo-sepia .header-statement,
+body.modo-sepia .italic,
+body.modo-sepia .text-italic {
+  color: #4b3621 !important; /* Marrón cálido y legible */
+}
+
+/* 2. Botones de Emaús, opciones del menú y tarjetas de testamentos/libros */
+body.modo-sepia .btn-emaus,
+body.modo-sepia .testamento-card,
+body.modo-sepia .huella-paso,
+body.modo-sepia button:not(.nav-icon-btn) {
+  background-color: #f4ebd0 !important;
+  color: #4b3621 !important;
+  border-color: #b59a64 !important;
+}
+
+/* 3. Textos y etiquetas dentro de las huellas y botones de Emaús */
+body.modo-sepia .huella-paso .etiqueta-paso,
+body.modo-sepia .testamento-card h3,
+body.modo-sepia .testamento-card p {
+  color: #4b3621 !important;
+}
+
+/* 4. Listados dinámicos de los libros de la Biblia (Antiguo y Nuevo Testamento) */
+body.modo-sepia #lista-libros-antiguo button,
+body.modo-sepia #lista-libros-nuevo button,
+body.modo-sepia [id*="lista-libros"] div,
+body.modo-sepia .libro-btn {
+  background-color: #f4ebd0 !important;
+  color: #4b3621 !important;
+  border: 1px solid #b59a64 !important;
+}
+/* Estilos en Modo Sepia para el Camino Personal / Emaús */
+body.modo-sepia .path-theme .path-card h3,
+body.modo-sepia .path-theme .path-card .question {
+  color: #4b3621 !important;
+}
+
+body.modo-sepia .path-theme .path-card {
+  background-color: #f4ebd0 !important;
+  border-color: #bbae93 !important;
+}
+/* --- BLOQUES PRINCIPALES DE LA PANTALLA DE INICIO --- */
+
+/* Estilo por defecto (modo normal) */
+#btn-goto-bible,
+#btn-goto-path {
+  background-color: #1a1a1a; /* Fondo oscuro elegante */
+  border: 1px solid #d4af37; /* Detalle dorado sutil */
+}
+
+/* Estilo cuando el Modo Sepia está activo */
+body.modo-sepia #btn-goto-bible,
+body.modo-sepia #btn-goto-path {
+  background-color: #f4ebd0 !important; /* Crema cálido del sepia */
+  border: 1px solid #b59a64 !important;
+}
+
+/* Textos y subtítulos dentro de los bloques principales en modo sepia */
+body.modo-sepia #btn-goto-bible h2,
+body.modo-sepia #btn-goto-bible p,
+body.modo-sepia #btn-goto-path h2,
+body.modo-sepia #btn-goto-path p {
+  color: #4b3621 !important; /* Marrón legible y cálido */
+}
+body.modo-sepia .split-container {
+  background-color: #f4ebd0 !important; /* Fondo sepia para los bloques */
+  color: #4b3621 !important; /* Texto marrón legible */
+  border: 1px solid #b59a64 !important; /* Borde dorado cálido */
+  border-radius: 12px;
+  padding: 20px;
+  box-sizing: border-box;
+}
+body.modo-sepia .split-block {
+  background-color: #f4ebd0 !important; /* Fondo sepia para cada bloque */
+  color: #d48637 !important; /* Texto marrón legible */
+  border: 1px solid #f4ebd0 !important; /* Borde dorado cálido */
+  border-radius: 8px;
+  padding: 15px;
+  box-sizing: border-box;
+}
+body.modo-sepia .screen.active {
+  background-color: #f4ebd0 !important;
+}
+
+body.light-sepia #screen-main .split-block {
+  background: #e8e4dc !important;
 }
