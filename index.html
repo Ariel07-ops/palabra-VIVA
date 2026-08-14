@@ -291,6 +291,7 @@
             <button class="btn-back" onclick="changeScreen(screenCapitulos)">
               ←
             </button>
+
             <button
               id="btn-hablar-lectura"
               class="btn-audio"
@@ -304,10 +305,35 @@
                 border-radius: 6px;
                 cursor: pointer;
                 display: flex;
+                align-items: center;
+                gap: 6px;
               "
             >
               <i class="fas fa-volume-up"></i> Escuchar
             </button>
+            <!-- El indicador "Pro" flotante con clase directa -->
+            <div id="indicador-estatus-letra" class="indicador-minimo">
+              <span id="texto-estado">A+</span>
+              <span id="valor-estado">20px</span>
+            </div>
+            <!-- El nuevo indicador "Pro" (oculto por defecto) -->
+            <div
+              id="indicador-estatus-letra"
+              style="
+                display: none;
+                margin-left: 10px;
+                padding: 5px 10px;
+                border: 1px solid #d4af37;
+                border-radius: 4px;
+                color: #d4af37;
+                font-size: 12px;
+                font-weight: bold;
+                cursor: pointer;
+              "
+            >
+              <span id="texto-estado">A+</span>
+              <span id="valor-estado">20px</span>
+            </div>
           </div>
           <h1
             class="brand-title"
@@ -1191,6 +1217,16 @@
           >
             A+
           </button>
+          <span
+            id="indicador-tamano"
+            style="
+              font-size: 14px;
+              font-weight: bold;
+              color: #d4af37;
+              margin: 0 10px;
+            "
+            >18px</span
+          >
           <button
             onclick="cambiarTamanio(-2)"
             style="

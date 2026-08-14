@@ -3498,3 +3498,25 @@ body.modo-sepia #btn-goto-path {
   border: 1px solid #b59a64 !important; /* El borde que le da forma */
   box-shadow: none !important; /* Le saca cualquier sombra rara que lo ensucie */
 }
+.indicador-minimo {
+  display: flex; /* Usamos flex para centrar el texto adentro */
+  align-items: center; /* Centrado vertical */
+  justify-content: center;
+  position: absolute; /* Para moverlo con libertad */
+  right: 20px; /* Distancia del borde derecho */
+  top: 80px; /* Ajustá este valor para que quede a la altura del botón */
+  padding: 6px 8px; /* Un poquito más de aire */
+  border: 1px solid var(--gold); /* Usamos tu variable de color */
+  border-radius: 6px; /* Mismo redondeado que el botón */
+  color: var(--gold);
+  font-size: 14px; /* Un poquito más grande para que se lea mejor */
+  font-weight: bold;
+  background: rgba(0, 0, 0, 0.8);
+  height: 38px; /* Igualamos la altura al botón de "Escuchar" */
+}
+body.light-mode/* Solo el indicador de numeritos se adapta en modo claro */
+.indicador-minimo {
+  background: #f4ebd0;
+  border: 1px solid #333;
+  color: #333;
+}
