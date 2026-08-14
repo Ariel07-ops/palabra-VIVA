@@ -1620,16 +1620,17 @@ header.top-navbar {
   padding-top: env(safe-area-inset-top);
 }
 .brand-icon-superior {
-  margin-top: 2px;
   width: 36px;
   height: 36px;
-  max-width: 36px;
   border-radius: 50%;
   border: 2px solid var(--gold);
   object-fit: cover;
   box-shadow: 0 0 6px rgba(212, 175, 55, 0.4);
   margin-left: 5px;
-  margin-top: -5px;
+
+  /* ESTO ES LO QUE LO VA A DEJAR CENTRADO A LA PERFECCIÓN */
+  vertical-align: middle;
+  display: inline-block;
 }
 
 html {
