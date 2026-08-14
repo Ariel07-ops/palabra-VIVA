@@ -793,46 +793,42 @@ function ejecutarLecturaVoz() {
     return;
   }
 
-  // 1. Hacemos el clon y barremos con TODO lo que sea filología, cajas, sup, títulos, etc.
+  // 1. Hacemos el clon y barremos con elementos que puedan ensuciar
   const clone = areaLecturaFinal.cloneNode(true);
-
-  // Borramos superíndices (números de versículo si molestan)
   clone.querySelectorAll("sup").forEach((sup) => sup.remove());
-
-  // Borramos encabezados
   clone.querySelectorAll("h1, h2, h3").forEach((el) => el.remove());
-
-  // 🔥 NUEVO: Borrar explícitamente cualquier caja de filología, subrayados o elementos flotantes
-  // (Ajustá estas clases si tus cajas tienen nombres específicos en el HTML, ej: .filologia, .caja-subrayada, span con estilos, etc.)
   clone
     .querySelectorAll(".filologia, .caja-filologica, ins, u")
     .forEach((el) => {
-      // Si querés conservar el texto de adentro pero sin el formato, podés hacer que se desarmen,
-      // o si querés que la voz los ignore por completo, los removemos:
       el.remove();
     });
 
-  // 2. Extraer y limpiar caracteres raros y saltos de línea para el celu
+  // 2. Limpieza de fuerza bruta: solo dejamos letras, números y puntuación básica
   let textoLimpio = clone.innerText
+    .replace(/[^\w\sáéíóúÁÉÍÓÚüÜñÑ.,!?;]/g, "") // Borra cualquier carácter extraño invisible
     .replace(/\n/g, " ") // Reemplazar saltos de línea por espacios
-    .replace(/[–—]/g, " ") // Guiones largos
-    .replace(/["'“”]/g, "") // Quitar comillas que rompen el motor
-    .replace(/\s+/g, " ") // Normalizar espacios
+    .replace(/\s+/g, " ") // Normalizar espacios múltiples
     .trim();
 
+  // 3. Seguridad por si el capítulo es demasiado largo para el buffer del celu
+  if (textoLimpio.length > 4000) {
+    console.log("Capítulo muy largo, recortando por seguridad...");
+    textoLimpio = textoLimpio.substring(0, 4000);
+  }
+
   if (!textoLimpio) {
-    console.log("El texto quedó vacío después de limpiar la filología.");
+    console.log("El texto quedó vacío después de la limpieza.");
     return;
   }
 
-  // 3. Forzar reseteo total y despertar el motor de voz (evita el error 'interrupted' en Android)
+  // 4. Forzar reseteo total y despertar el motor de voz de Android
   window.speechSynthesis.cancel();
 
   const despertar = new SpeechSynthesisUtterance("");
   window.speechSynthesis.speak(despertar);
   window.speechSynthesis.cancel();
 
-  // 4. Discurso real con un pequeño retraso de seguridad
+  // 5. Discurso real con retraso de seguridad
   setTimeout(() => {
     utteranceActual = new SpeechSynthesisUtterance(textoLimpio);
     utteranceActual.lang = "es-ES";
