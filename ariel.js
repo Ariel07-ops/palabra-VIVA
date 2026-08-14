@@ -775,8 +775,6 @@ let estaPausado = false;
 
 // aca esta el motor de audio
 function ejecutarLecturaVoz() {
-  console.log("Intentando ejecutar lectura..."); // Esto nos dirá si el botón hace algo
-
   if (!("speechSynthesis" in window)) {
     alert("Tu dispositivo no soporta la síntesis de voz.");
     return;
@@ -785,10 +783,7 @@ function ejecutarLecturaVoz() {
   const btnAudio = document.getElementById("btn-hablar-lectura");
   const areaLecturaFinal = document.getElementById("texto-lectura-final");
 
-  if (!areaLecturaFinal) {
-    console.log("No se encontró el área de texto");
-    return;
-  }
+  if (!areaLecturaFinal) return;
 
   if (estaReproduciendo) {
     window.speechSynthesis.cancel();
@@ -798,31 +793,45 @@ function ejecutarLecturaVoz() {
     return;
   }
 
-  // Clonamos y limpiamos
+  // 1. Limpieza profunda del clon
   const clone = areaLecturaFinal.cloneNode(true);
   clone.querySelectorAll("sup").forEach((sup) => sup.remove());
-  const textoEnPantalla = clone.innerText.trim();
+  clone.querySelectorAll("h1, h2, h3").forEach((el) => el.remove());
 
-  if (!textoEnPantalla) {
-    console.log("El texto está vacío");
-    return;
-  }
+  // 2. Extraer y limpiar a nivel de caracteres para que el celu no se ahogue
+  let textoLimpio = clone.innerText
+    .replace(/[–—]/g, " ") // Cambiar guiones largos por espacios
+    .replace(/\s+/g, " ") // Normalizar espacios múltiples
+    .trim();
 
-  console.log("Texto detectado, preparando síntesis...");
+  if (!textoLimpio) return;
+
+  // 3. Forzar reseteo total del sintetizador (clave para Android)
   window.speechSynthesis.cancel();
 
-  // Quitamos el setTimeout por un momento para ver si es eso lo que lo traba
-  utteranceActual = new SpeechSynthesisUtterance(textoEnPantalla);
-  utteranceActual.lang = "es-ES";
-  utteranceActual.rate = 0.95;
+  setTimeout(() => {
+    utteranceActual = new SpeechSynthesisUtterance(textoLimpio);
+    utteranceActual.lang = "es-ES";
+    utteranceActual.rate = 0.95;
 
-  utteranceActual.onstart = () => console.log("La síntesis empezó a hablar");
-  utteranceActual.onerror = (e) => console.log("Error en síntesis:", e);
+    utteranceActual.onend = () => {
+      estaReproduciendo = false;
+      if (btnAudio)
+        btnAudio.innerHTML = '<i class="fas fa-volume-up"></i> Escuchar';
+    };
 
-  estaReproduciendo = true;
-  if (btnAudio) btnAudio.innerHTML = '<i class="fas fa-stop"></i> Detener';
+    utteranceActual.onerror = (e) => {
+      console.error("Error nativo de voz en celu:", e);
+      estaReproduciendo = false;
+      if (btnAudio)
+        btnAudio.innerHTML = '<i class="fas fa-volume-up"></i> Escuchar';
+    };
 
-  window.speechSynthesis.speak(utteranceActual);
+    estaReproduciendo = true;
+    if (btnAudio) btnAudio.innerHTML = '<i class="fas fa-stop"></i> Detener';
+
+    window.speechSynthesis.speak(utteranceActual);
+  }, 150);
 }
 
 // --- INTERACTIVIDAD DEL PANEL INFERIOR ---
