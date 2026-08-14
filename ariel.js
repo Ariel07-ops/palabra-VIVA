@@ -1096,3 +1096,7 @@ function alternarSepia() {
     cerrarModalHerramientas();
   }
 }
+document.querySelectorAll("#btn-goto-bible, #btn-goto-path").forEach((el) => {
+  el.style.setProperty("background-color", "#f4ebd0", "important");
+  el.style.setProperty("color", "#4b3621", "important");
+});
