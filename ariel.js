@@ -793,26 +793,37 @@ function ejecutarLecturaVoz() {
     return;
   }
 
-  // 1. Limpieza profunda del clon
+  // 1. Limpieza total y segura del clon
   const clone = areaLecturaFinal.cloneNode(true);
   clone.querySelectorAll("sup").forEach((sup) => sup.remove());
   clone.querySelectorAll("h1, h2, h3").forEach((el) => el.remove());
 
-  // 2. Extraer y limpiar a nivel de caracteres para que el celu no se ahogue
+  // 2. Extraer y limpiar caracteres raros y saltos de línea para el celu
   let textoLimpio = clone.innerText
-    .replace(/[–—]/g, " ") // Cambiar guiones largos por espacios
-    .replace(/\s+/g, " ") // Normalizar espacios múltiples
+    .replace(/\n/g, " ") // Reemplazar saltos de línea por espacios
+    .replace(/[–—]/g, " ") // Guiones largos
+    .replace(/["'“”]/g, "") // Quitar comillas que rompen el motor
+    .replace(/\s+/g, " ") // Normalizar espacios
     .trim();
 
   if (!textoLimpio) return;
 
-  // 3. Forzar reseteo total del sintetizador (clave para Android)
+  // 3. Forzar reseteo total y despertar el motor de voz (evita el error 'interrupted' en Android)
   window.speechSynthesis.cancel();
 
+  const despertar = new SpeechSynthesisUtterance("");
+  window.speechSynthesis.speak(despertar);
+  window.speechSynthesis.cancel();
+
+  // 4. Discurso real con un pequeño retraso de seguridad
   setTimeout(() => {
     utteranceActual = new SpeechSynthesisUtterance(textoLimpio);
     utteranceActual.lang = "es-ES";
     utteranceActual.rate = 0.95;
+
+    utteranceActual.onstart = () => {
+      console.log("La síntesis empezó a hablar");
+    };
 
     utteranceActual.onend = () => {
       estaReproduciendo = false;
@@ -831,7 +842,7 @@ function ejecutarLecturaVoz() {
     if (btnAudio) btnAudio.innerHTML = '<i class="fas fa-stop"></i> Detener';
 
     window.speechSynthesis.speak(utteranceActual);
-  }, 150);
+  }, 300);
 }
 
 // --- INTERACTIVIDAD DEL PANEL INFERIOR ---
