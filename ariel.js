@@ -775,6 +775,8 @@ let estaPausado = false;
 
 // aca esta el motor de audio
 function ejecutarLecturaVoz() {
+  console.log("Intentando ejecutar lectura..."); // Esto nos dirá si el botón hace algo
+
   if (!("speechSynthesis" in window)) {
     alert("Tu dispositivo no soporta la síntesis de voz.");
     return;
@@ -783,45 +785,39 @@ function ejecutarLecturaVoz() {
   const btnAudio = document.getElementById("btn-hablar-lectura");
   const areaLecturaFinal = document.getElementById("texto-lectura-final");
 
-  if (!areaLecturaFinal || areaLecturaFinal.innerText.trim() === "") {
-    alert("Por favor, abrí un capítulo para poder escucharlo.");
+  if (!areaLecturaFinal) {
+    console.log("No se encontró el área de texto");
     return;
   }
 
   if (estaReproduciendo) {
     window.speechSynthesis.cancel();
     estaReproduciendo = false;
-    textoCompletoActual = "";
     if (btnAudio)
       btnAudio.innerHTML = '<i class="fas fa-volume-up"></i> Escuchar';
     return;
   }
 
+  // Clonamos y limpiamos
   const clone = areaLecturaFinal.cloneNode(true);
   clone.querySelectorAll("sup").forEach((sup) => sup.remove());
   const textoEnPantalla = clone.innerText.trim();
 
-  if (!textoEnPantalla) return;
+  if (!textoEnPantalla) {
+    console.log("El texto está vacío");
+    return;
+  }
 
+  console.log("Texto detectado, preparando síntesis...");
   window.speechSynthesis.cancel();
 
-  textoCompletoActual = textoEnPantalla;
-  utteranceActual = new SpeechSynthesisUtterance(textoCompletoActual);
-  utteranceActual.lang = "es-AR";
+  // Quitamos el setTimeout por un momento para ver si es eso lo que lo traba
+  utteranceActual = new SpeechSynthesisUtterance(textoEnPantalla);
+  utteranceActual.lang = "es-ES";
   utteranceActual.rate = 0.95;
 
-  utteranceActual.onend = () => {
-    estaReproduciendo = false;
-    textoCompletoActual = "";
-    if (btnAudio)
-      btnAudio.innerHTML = '<i class="fas fa-volume-up"></i> Escuchar';
-  };
-
-  utteranceActual.onerror = () => {
-    estaReproduciendo = false;
-    if (btnAudio)
-      btnAudio.innerHTML = '<i class="fas fa-volume-up"></i> Escuchar';
-  };
+  utteranceActual.onstart = () => console.log("La síntesis empezó a hablar");
+  utteranceActual.onerror = (e) => console.log("Error en síntesis:", e);
 
   estaReproduciendo = true;
   if (btnAudio) btnAudio.innerHTML = '<i class="fas fa-stop"></i> Detener';
