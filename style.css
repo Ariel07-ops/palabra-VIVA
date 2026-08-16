@@ -3529,3 +3529,9 @@ body {
   padding-top: env(safe-area-inset-top);
   padding-bottom: env(safe-area-inset-bottom);
 }
+body {
+  /* Esto es lo que hace que se extienda a toda la pantalla */
+  padding-top: env(safe-area-inset-top);
+  padding-bottom: env(safe-area-inset-bottom);
+  background-color: #000000;
+}
