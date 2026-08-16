@@ -2,220 +2,257 @@
   "seccion": "caminemos_con_jesus",
   "pregunta": "¿Cómo está tu corazón hoy?",
   "estados": {
-    "feliz": {
-      "titulo": "Tu alegría también puede ser una forma de dar gracias",
-      "acogida": "Qué bueno que hoy haya alegría en tu corazón. No la guardes como algo aislado: puede convertirse en gratitud, servicio y esperanza para otros.",
-      "evangelio": {
-        "referencia": "Lucas 1,46-49",
-        "texto": "Mi alma canta la grandeza del Señor y mi espíritu se alegra en Dios, mi Salvador.",
-        "meditacion": "María no vive la alegría encerrada en sí misma. La transforma en alabanza y reconoce que Dios está obrando en su vida."
+    "feliz": [
+      {
+        "dia": 1,
+        "titulo": "Tu alegría también puede ser una forma de dar gracias",
+        "acogida": "Qué bueno que hoy haya alegría en tu corazón. No la guardes como algo aislado: puede convertirse en gratitud, servicio y esperanza para otros.",
+        "evangelio": {
+          "referencia": "Lucas 1,46-49",
+          "texto": "Mi alma canta la grandeza del Señor y mi espíritu se alegra en Dios, mi Salvador.",
+          "meditacion": "María no vive la alegría encerrada en sí misma. La transforma en alabanza y reconoce que Dios está obrando en su vida."
+        },
+        "oracion": "Señor, gracias por la alegría que hoy habita en mí. Enséñame a recibirla con humildad y a compartirla con caridad. Amén.",
+        "companero_de_camino": {
+          "santo": "Santa Teresa de Jesús",
+          "recomendacion": "Haz de tu alegría una presencia luminosa para alguien que hoy esté pasando un momento difícil."
+        },
+        "paso_de_hoy": "Envía un mensaje de aliento a una persona que necesite sentirse recordada."
+      }
+    ],
+    "agradecido": [
+      {
+        "dia": 1,
+        "titulo": "El corazón que agradece reconoce la presencia de Dios",
+        "acogida": "Dar gracias ensancha el alma y te permite ver los pequeños dones cotidianos que a veces pasan desapercibidos.",
+        "evangelio": {
+          "referencia": "Lucas 17,15-16",
+          "texto": "Uno de ellos, al verse curado, volvió alabando a Dios en voz alta, y se postró a los pies de Jesús dándole gracias.",
+          "meditacion": "La gratitud completa el milagro. Saber reconocer de dónde viene el bien recibido nos devuelve a la fuente de todo amor."
+        },
+        "oracion": "Señor, gracias por tanto recibido inmerecidamente. Que mi agradecimiento se vuelva servicio generoso hacia los demás. Amén.",
+        "companero_de_camino": {
+          "santo": "San Ignacio de Loyola",
+          "recomendacion": "Haz memoria hoy de un don recibido y ofrécelo como oración de alabanza."
+        },
+        "paso_de_hoy": "Escribe o di en voz alta tres motivos concretos por los cuales dar gracias hoy."
+      }
+    ],
+    "en-paz": [
+      {
+        "dia": 1,
+        "titulo": "Conserva esa paz que el mundo no puede dar",
+        "acogida": "La paz interior es un regalo frágil pero firme cuando se apoya en la confianza en el Señor.",
+        "evangelio": {
+          "referencia": "Juan 14,27",
+          "texto": "La paz les dejo, mi paz les doy; no se la doy como la da el mundo.",
+          "meditacion": "La paz de Jesús no es ausencia de problemas, sino la certeza íntima de que Él sostiene el timón de tu barca."
+        },
+        "oracion": "Jesús, quédate con esta paz y protégela de las urgencias del día. Amén.",
+        "companero_de_camino": {
+          "santo": "San Francisco de Asís",
+          "recomendacion": "Sé instrumento de esa misma paz en tu entorno con un gesto amable."
+        },
+        "paso_de_hoy": "Dedica cinco minutos en silencio a respirar hondo sabiéndote habitado por Dios."
+      }
+    ],
+    "ansioso": [
+      {
+        "dia": 1,
+        "titulo": "No tienes que resolver toda tu vida en este momento",
+        "acogida": "La ansiedad puede hacer que el futuro parezca demasiado grande y el presente demasiado difícil. Quédate con Jesús en este momento concreto.",
+        "evangelio": {
+          "referencia": "Mateo 6, 25-27",
+          "texto": "No se angustien por su vida...",
+          "meditacion": "A veces creemos que nuestra preocupación es lo que mantiene todo bajo control. Pero el Señor nos recuerda que nuestra vida está en manos de un Padre que nos cuida."
+        },
+        "oracion": "Señor, pongo en tus manos esta inquietud. Amén.",
+        "companero_de_camino": {
+          "santo": "San Francisco de Sales",
+          "recomendacion": "Vive este día, este momento."
+        },
+        "paso_de_hoy": "Escribe: 'Señor, esto es tuyo'."
       },
-      "oracion": "Señor, gracias por la alegría que hoy habita en mí. Enséñame a recibirla con humildad y a compartirla con caridad. Amén.",
-      "companero_de_camino": {
-        "santo": "Santa Teresa de Jesús",
-        "recomendacion": "Haz de tu alegría una presencia luminosa para alguien que hoy esté pasando un momento difícil."
+      {
+        "dia": 2,
+        "titulo": "Tu descanso es una forma de oración",
+        "acogida": "La ansiedad suele decirte que si no estás haciendo algo, estás fallando.",
+        "evangelio": {
+          "referencia": "Mateo 11, 28",
+          "texto": "Vengan a mí..."
+        },
+        "oracion": "Jesús, acepto tu invitación.",
+        "companero_de_camino": {
+          "santo": "San José",
+          "recomendacion": "No pretendas cargar con todo."
+        },
+        "paso_de_hoy": "Haz una pausa de 5 minutos."
       },
-      "paso_de_hoy": "Envía un mensaje de aliento a una persona que necesite sentirse recordada."
-    },
-    "agradecido": {
-      "titulo": "El corazón que agradece reconoce la presencia de Dios",
-      "acogida": "Dar gracias ensancha el alma y te permite ver los pequeños dones cotidianos que a veces pasan desapercibidos.",
-      "evangelio": {
-        "referencia": "Lucas 17,15-16",
-        "texto": "Uno de ellos, al verse curado, volvió alabando a Dios en voz alta, y se postró a los pies de Jesús dándole gracias.",
-        "meditacion": "La gratitud completa el milagro. Saber reconocer de dónde viene el bien recibido nos devuelve a la fuente de todo amor."
+      {
+        "dia": 3,
+        "titulo": "Cuando las olas son más altas que tu fe",
+        "acogida": "A veces, la ansiedad es como una tormenta.",
+        "evangelio": {
+          "referencia": "Mateo 14, 31",
+          "texto": "Jesús extendió la mano."
+        },
+        "oracion": "Señor, me siento hundido. Agárrame fuerte.",
+        "companero_de_camino": {
+          "santo": "San Pedro",
+          "recomendacion": "Busca el rostro de Jesús."
+        },
+        "paso_de_hoy": "Di: 'Señor, sálvame'."
       },
-      "oracion": "Señor, gracias por tanto recibido inmerecidamente. Que mi agradecimiento se vuelva servicio generoso hacia los demás. Amén.",
-      "companero_de_camino": {
-        "santo": "San Ignacio de Loyola",
-        "recomendacion": "Haz memoria hoy de un don recibido y ofrécelo como oración de alabanza."
+      {
+        "dia": 4,
+        "titulo": "La paz no es ausencia de problemas",
+        "acogida": "La paz es una presencia.",
+        "evangelio": {
+          "referencia": "Juan 14, 27",
+          "texto": "Les doy mi paz."
+        },
+        "oracion": "Señor, gracias por tu paz.",
+        "companero_de_camino": {
+          "santo": "Santa Teresa",
+          "recomendacion": "Solo Dios basta."
+        },
+        "paso_de_hoy": "Repetí: 'Jesús, confío en tu paz'."
       },
-      "paso_de_hoy": "Escribe o di en voz alta tres motivos concretos por los cuales dar gracias hoy."
-    },
-    "en-paz": {
-      "titulo": "Conserva esa paz que el mundo no puede dar",
-      "acogida": "La paz interior es un regalo frágil pero firme cuando se apoya en la confianza en el Señor.",
-      "evangelio": {
-        "referencia": "Juan 14,27",
-        "texto": "La paz les dejo, mi paz les doy; no se la doy como la da el mundo.",
-        "meditacion": "La paz de Jesús no es ausencia de problemas, sino la certeza íntima de que Él sostiene el timón de tu barca."
+      {
+        "dia": 5,
+        "titulo": "El poder de soltar",
+        "acogida": "La ansiedad se alimenta del control.",
+        "evangelio": {
+          "referencia": "1 Pedro 5, 7",
+          "texto": "Depositen en Él sus preocupaciones."
+        },
+        "oracion": "Padre, te entrego mis preocupaciones.",
+        "companero_de_camino": {
+          "santo": "San Agustín",
+          "recomendacion": "Dios es más grande que nuestro corazón."
+        },
+        "paso_de_hoy": "Abrí las manos y decí: 'Lo suelto'."
       },
-      "oracion": "Jesús, quédate con esta paz y protégela de las urgencias del día. Amén.",
-      "companero_de_camino": {
-        "santo": "San Francisco de Asís",
-        "recomendacion": "Sé instrumento de esa misma paz en tu entorno con un gesto amable."
+      {
+        "dia": 6,
+        "titulo": "No estás solo en la barca",
+        "acogida": "La fe te recuerda la compañía.",
+        "evangelio": {
+          "referencia": "Mateo 28, 20",
+          "texto": "Yo estoy con ustedes."
+        },
+        "oracion": "Gracias, Jesús, por tu compañía.",
+        "companero_de_camino": {
+          "santo": "San Juan de la Cruz",
+          "recomendacion": "La luz de la fe es el guía seguro."
+        },
+        "paso_de_hoy": "Recordá: 'Él está conmigo'."
       },
-      "paso_de_hoy": "Dedica cinco minutos en silencio a respirar hondo sabiéndote habitado por Dios."
-    },
-    "cansado": {
-      "titulo": "Jesús también te invita a descansar",
-      "acogida": "No todo cansancio es falta de voluntad. A veces tu cuerpo, tu mente y tu corazón necesitan detenerse y recibir cuidado.",
-      "evangelio": {
-        "referencia": "Marcos 6,31",
-        "texto": "Vengan ustedes solos a un lugar desierto, para descansar un poco.",
-        "meditacion": "Jesús no trata el cansancio como una culpa. Él conoce el límite humano y enseña que también el descanso puede ser un modo de confiar."
-      },
-      "oracion": "Jesús, recibo este cansancio delante de Ti. Ayúdame a reconocer mis límites, a descansar sin culpa y a ordenar lo que hoy realmente importa. Amén.",
-      "companero_de_camino": {
-        "santo": "San José",
-        "recomendacion": "Haz tu deber de hoy con fidelidad, pero no pretendas cargar en un solo día todo lo que corresponde a una vida entera."
-      },
-      "paso_de_hoy": "Elige una tarea que pueda esperar, descansa unos minutos y comunica a alguien cómo te encuentras."
-    },
-    "preocupado": {
-      "titulo": "Pon tus cargas en manos del Señor",
-      "acogida": "Preocuparse no añade horas a la vida, pero sí quita la paz del momento presente. Vamos a ordenar lo que sí podés manejar hoy.",
-      "evangelio": {
-        "referencia": "Mateo 6,34",
-        "texto": "No se inquieten por el día de mañana; el mañana se preocupará por sí mismo.",
-        "meditacion": "El Señor te pide vivir un día a la vez, confiando en que su providencia no te faltará."
-      },
-      "oracion": "Señor, te entrego esto que me quita el sueño. Dame sabiduría para lo que me toca hacer y confianza para lo que no puedo resolver. Amén.",
-      "companero_de_camino": {
-        "santo": "San Antonio de Padua",
-        "recomendacion": "Suelta el control absoluto y haz solo aquello que está en tus manos hoy."
-      },
-      "paso_de_hoy": "Anota tu preocupación principal en un papel y déjala en un lugar visible como signo de entrega a Dios."
-    },
-    "ansioso": {
-      "titulo": "No tienes que resolver toda tu vida en este momento",
-      "acogida": "La ansiedad puede hacer que el futuro parezca demasiado grande y el presente demasiado difícil. Quédate con Jesús en este momento concreto.",
-      "evangelio": {
-        "referencia": "Marcos 4,39-40",
-        "texto": "¡Silencio! ¡Cállate!",
-        "meditacion": "Jesús no niega que exista la tormenta. Se hace presente en medio de ella. Hoy no necesitas controlar todo: necesitas atravesar este momento acompañado."
-      },
-      "oracion": "Señor Jesús, entra en mi inquietud. Dame paz para este momento, claridad para el próximo paso y humildad para aceptar ayuda. Amén.",
-      "companero_de_camino": {
-        "santo": "San Francisco de Sales",
-        "recomendacion": "No tomes decisiones importantes desde la agitación. Detente, respira, habla con alguien y realiza solamente el próximo paso posible."
-      },
-      "paso_de_hoy": "Respira lentamente, toma agua y contacta a una persona de confianza.",
-      "no_te_cierres": "No atravieses la ansiedad completamente solo. Puedes acudir a tu familia, a un sacerdote, a un amigo y también a profesionales de la salud.",
-      "ayuda_profesional": "Si la ansiedad se repite, te impide dormir, trabajar o relacionarte, o se vuelve insoportable, busca atención psicológica o médica."
-    },
-    "triste": {
-      "titulo": "Jesús se acerca también a tu tristeza",
-      "acogida": "No tienes que fingir que estás bien delante de Dios. Puedes presentarte ante Jesús tal como estás, incluso sin palabras.",
-      "evangelio": {
-        "referencia": "Juan 11,35",
-        "texto": "Jesús lloró.",
-        "meditacion": "Jesús no contempla el dolor humano desde lejos. Llora ante la muerte de Lázaro y se acerca a quienes sufren. Tu tristeza no te hace menos digno del amor de Dios."
-      },
-      "oracion": "Jesús, quédate conmigo en esta tristeza. Recibe lo que no puedo explicar y dame la fuerza para dar hoy un pequeño paso. Amén.",
-      "companero_de_camino": {
-        "santo": "Santa Mónica",
-        "recomendacion": "Persevera en la esperanza, pero no te encierres: habla con alguien que pueda escucharte con paciencia."
-      },
-      "paso_de_hoy": "Escribe a una persona de confianza: “Hoy estoy triste y necesito hablar un poco”.",
-      "no_te_cierres": "La fe no te pide sufrir en soledad. La amistad, la familia, la comunidad cristiana y los profesionales de la salud pueden ser instrumentos concretos del cuidado de Dios.",
-      "ayuda_profesional": "Si esta tristeza es intensa, persiste, afecta tu vida cotidiana o viene acompañada de desesperanza, busca ayuda de un psicólogo, psiquiatra o médico. Pedir ayuda no significa falta de fe."
-    },
-    "solo": {
-      "titulo": "Jesús se acerca a tu soledad",
-      "acogida": "Sentirse solo puede doler incluso cuando hay personas alrededor. Tu deseo de compañía no es una debilidad: expresa que fuiste creado para el amor y la comunión.",
-      "evangelio": {
-        "referencia": "Mateo 28,20",
-        "texto": "Yo estoy con ustedes todos los días, hasta el fin del mundo.",
-        "meditacion": "La presencia de Jesús no es una idea lejana. Él permanece contigo y también puede acercarte a otros mediante vínculos concretos de amistad, familia y comunidad."
-      },
-      "oracion": "Jesús, acompáñame en esta soledad. Abre mi corazón a tu presencia y ayúdame a dar un paso hacia los demás. Amén.",
-      "companero_de_camino": {
-        "santo": "San Juan de Dios",
-        "recomendacion": "Busca una comunidad concreta donde puedas servir, conversar o simplemente estar junto a otros."
-      },
-      "paso_de_hoy": "Llama a alguien o acércate a una persona con la que puedas compartir un momento sencillo."
-    },
-    "confundido": {
-      "titulo": "Luz para tus decisiones y claridad para el camino",
-      "acogida": "Cuando el camino no se ve claro, la prisa suele ser mala consejera. Detente un instante y pídele al Espíritu Santo discernimiento.",
-      "evangelio": {
-        "referencia": "Salmos 119,105",
-        "texto": "Lámpara es tu palabra para mis pasos, luz en mi sendero.",
-        "meditacion": "No necesitas ver todo el horizonte de golpe; basta con que la luz de Dios te muestre el siguiente paso."
-      },
-      "oracion": "Espíritu Santo, disipa mis dudas y dame la certeza interior para elegir el bien y la verdad. Amén.",
-      "companero_de_camino": {
-        "santo": "San Juan Vianney (el Cura de Ars)",
-        "recomendacion": "Consulta con un consejero espiritual o una persona sabia antes de decidir."
-      },
-      "paso_de_hoy": "Escribe en un papel las opciones que tenés y ponelas en oración sin forzar una respuesta hoy."
-    },
-    "herido": {
-      "titulo": "El Señor sana los corazones destrozados",
-      "acogida": "El dolor de una herida necesita tiempo, bálsamo y cuidado tierno. Jesús es el buen Samaritano que se detiene junto a vos.",
-      "evangelio": {
-        "referencia": "Lucas 10,33-34",
-        "texto": "Al verlo, tuvo compasión, se acercó, vendó sus heridas cubriéndolas con aceite y vino.",
-        "meditacion": "Jesús no pasa de largo ante tu dolor. Toma la iniciativa de curarte y restaurarte con paciencia."
-      },
-      "oracion": "Señor, pon tu aceite consolador sobre mis heridas y enséñame a perdonar y sanar con tu gracia. Amén.",
-      "companero_de_camino": {
-        "santo": "Nuestra Señora de los Dolores",
-        "recomendacion": "Permítete llorar y sanar sin exigirte una fortaleza que hoy no tenés."
-      },
-      "paso_de_hoy": "Dedica un momento a encomendar tu herida al Señor y descansa en su regazo."
-    },
-    "sin_ganas": {
-      "titulo": "Incluso cuando cuesta arrancar, Jesús te acompaña",
-      "acogida": "Hay días en que la energía interior parece apagarse. Está bien aceptarlo y no exigirse heroicidades.",
-      "evangelio": {
-        "referencia": "1 Reyes 19,7",
-        "texto": "El ángel del Señor se acercó de nuevo, la tocó y le dijo: «Levántate y come, porque el camino es demasiado largo para ti».",
-        "meditacion": "Dios conoce tus fuerzas limitadas y te alimenta pacientemente antes de pedirte que continúes."
-      },
-      "oracion": "Jesús, dame pan y aliento para este tramo en que me faltan las ganas. Amén.",
-      "companero_de_camino": {
-        "santo": "San Benito",
-        "recomendacion": "Haz lo mínimo indispensable hoy con paz y encomienda el resto."
-      },
-      "paso_de_hoy": "Haz una pausa, toma un vaso de agua fresca y acepta tu día tal cual viene."
-    },
-    "necesito_esperanza": {
-      "titulo": "Una luz que no se apaga en medio de la noche",
-      "acogida": "Cuando el horizonte se ve oscuro, la esperanza cristiana no es un optimismo ingenuo, sino la certeza de que Dios abre caminos nuevos.",
-      "evangelio": {
-        "referencia": "Romanos 15,13",
-        "texto": "Que el Dios de la esperanza los colme de toda alegría y paz en la fe, para que su esperanza crezca con la fuerza del Espíritu Santo.",
-        "meditacion": "La esperanza nunca defrauda porque el amor de Dios ha sido derramado en nuestros corazones."
-      },
-      "oracion": "Dios de la vida, enciende de nuevo la chispa de la esperanza en mi interior. Amén.",
-      "companero_de_camino": {
-        "santo": "San Judas Tadeo",
-        "recomendacion": "Busca un signo pequeño de belleza o bondad hoy que te recuerde que la vida es un don."
-      },
-      "paso_de_hoy": "Comparte una palabra de aliento con alguien o contempla un detalle de la creación."
-    },
-    "bendecido": {
-      "titulo": "Reconoce los dones con los que Dios te bendice hoy",
-      "acogida": "Sentirte bendecido no es un privilegio exclusivo, sino una llamada a mirar tu vida con gratitud y a convertirte vos mismo en bendición para otros.",
-      "evangelio": {
-        "referencia": "Efesios 1,3",
-        "texto": "Bendito sea Dios, Padre de nuestro Señor Jesucristo, que nos ha bendecido en Cristo con toda clase de bendiciones espirituales en los cielos.",
-        "meditacion": "La bendición de Dios sostiene tus pasos cotidianos. Reconocerla te devuelve la paz y te llena de confianza para seguir adelante."
-      },
-      "oracion": "Señor, gracias por tu bendición inmerecida en mi vida. Haz que mi corazón sepa valorar tus dones y compártelos con generosidad. Amén.",
-      "companero_de_camino": {
-        "santo": "San Juan Bosco",
-        "recomendacion": "Haz el bien siempre que puedas y alegra el día de alguien con una palabra fraterna."
-      },
-      "paso_de_hoy": "Reconoce un don recibido hoy y agradécelo de corazón."
-    },
-    "temeroso": {
-      "titulo": "No temas, porque el Señor está con vos",
-      "acogida": "El miedo es una reacción humana muy real frente a la incertidumbre o el peligro. Dios no te reprocha el miedo; te invita a ponerlo en sus manos.",
-      "evangelio": {
-        "referencia": "Isaías 41,10",
-        "texto": "No temas, porque yo estoy contigo; no desmayes, porque yo soy tu Dios que te fortalezco; siempre te ayudaré, siempre te sustentaré con la diestra de mi justicia.",
-        "meditacion": "El miedo empequeñece el horizonte, pero la presencia de Dios lo transforma en confianza. No tenés que enfrentar tus temores completamente solo."
-      },
-      "oracion": "Jesús, cuando el miedo me paralice, dame la gracia de mirar tu rostro y recordar que sos más fuerte que cualquier tormenta. Amén.",
-      "companero_de_camino": {
-        "santo": "Santa Teresa de Calcuta",
-        "recomendacion": "Haz las cosas pequeñas de hoy con amor y entrega tus temores al Señor en silencio."
-      },
-      "paso_de_hoy": "Respira hondo tres veces, encomienda tu miedo a Dios y da un paso pequeño a la vez.",
-      "no_te_cierres": "Compartir tus miedos con alguien de confianza o con un profesional te ayuda a ponerles perspectiva y a no cargar con todo el peso en soledad."
-    }
+      {
+        "dia": 7,
+        "titulo": "La ansiedad vencida",
+        "acogida": "Has llegado al séptimo día.",
+        "evangelio": {
+          "referencia": "Filipenses 4, 6-7",
+          "texto": "No se inquieten por nada."
+        },
+        "oracion": "Señor, gracias por sostener mi mano.",
+        "companero_de_camino": {
+          "santo": "San Padre Pío",
+          "recomendacion": "Reza y no te preocupes."
+        },
+        "paso_de_hoy": "Escribí una nota de gratitud."
+      }
+    ],
+    "triste": [
+      {
+        "dia": 1,
+        "titulo": "Tu dolor no es invisible para Dios",
+        "acogida": "La tristeza puede sentirse como una nube espesa que nos aísla. Pero el Evangelio nos muestra que el corazón de Dios se conmueve profundamente ante nuestro dolor.",
+        "evangelio": {
+          "referencia": "Juan 11, 35",
+          "texto": "Jesús lloró.",
+          "meditacion": "Jesús no pasó de largo frente al sufrimiento de sus amigos. Él lloró. Eso significa que tu tristeza tiene un lugar sagrado en el corazón de Dios. No tenés que disimular ni estar bien a la fuerza. Él está ahí, en medio de tu pena, acompañándote en el silencio. Tu tristeza, cuando es entregada, se convierte en un camino de unión con Él."
+        },
+        "oracion": "Señor, hoy me duele el alma y no encuentro palabras. Gracias porque Tú no me pides que sea fuerte, sino que te permita estar conmigo. Quédate a mi lado, llórame si hace falta, y ayúdame a sentir tu compañía en este momento. Amén.",
+        "companero_de_camino": {
+          "santo": "San Juan Evangelista",
+          "recomendacion": "El 'discípulo amado' estuvo al pie de la cruz. En los momentos de mayor tristeza, aprendé a recostarte sobre el pecho de Jesús, allí donde escuchó los latidos del corazón de Dios."
+        },
+        "paso_de_hoy": "No huyas de lo que sentís. Escribí en un papel qué es lo que hoy te entristece y, al terminar, rezá un Padre Nuestro, entregando ese papel a la voluntad de Dios."
+      }
+    ],
+    "cansado": [
+      {
+        "dia": 1,
+        "titulo": "El descanso en los brazos del Padre",
+        "acogida": "El cansancio no es un error de tu vida, es una señal de tu humanidad. Jesús conoce ese agotamiento físico y espiritual; no te juzga por estar agotado, te invita a detenerte.",
+        "evangelio": {
+          "referencia": "Mateo 11, 28-29",
+          "texto": "Vengan a mí todos los que están cansados y agobiados, y yo los haré descansar.",
+          "meditacion": "A veces nos cansamos de intentar ser perfectos o de cargar problemas que no nos pertenecen. La invitación de Jesús es un intercambio: Él nos pide que le entreguemos nuestra carga y, a cambio, nos da su alivio. Descansar en Dios no es 'perder tiempo', es recuperar la perspectiva y las fuerzas que solo Él puede dar."
+        },
+        "oracion": "Señor, reconozco que estoy agotado. Mi cuerpo y mi mente piden un respiro. Hoy elijo soltar mis preocupaciones y descansar en tu amor. Sé Tú mi fuerza cuando la mía ya no alcanza. Amén.",
+        "companero_de_camino": {
+          "santo": "Santa Teresita del Niño Jesús",
+          "recomendacion": "Ella enseñó que lo que más le gusta a Dios es nuestra confianza. Descansar es el acto supremo de confianza: creer que el mundo puede seguir girando sin que yo tenga que controlarlo todo."
+        },
+        "paso_de_hoy": "Regalate 10 minutos de pausa absoluta, sin celular, sin pantallas, sin deberes. Sentate, respirá y simplemente decí: 'Jesús, me pongo en tus manos'."
+      }
+    ],
+    "bendecido": [
+      {
+        "dia": 1,
+        "titulo": "Bendecido por Dios",
+        "acogida": "Bendecir es 'decir bien'. Cuando nos sentimos bendecidos, reconocemos que nuestra vida no es una casualidad, sino un regalo constante del amor de Dios que nos sale al encuentro.",
+        "evangelio": {
+          "referencia": "Efesios 1, 3",
+          "texto": "Bendito sea Dios, el Padre de nuestro Señor Jesucristo, que nos ha bendecido con toda clase de bendiciones espirituales en los cielos.",
+          "meditacion": "A veces esperamos que la bendición sea algo extraordinario. Pero la mayor bendición es la Presencia de Dios en lo sencillo: el aire que respiramos, la gente que nos rodea, la capacidad de volver a empezar cada día. Todo es un regalo que Dios pone a la luz para que lo disfrutemos."
+        },
+        "oracion": "Señor, gracias por tu amor que me rodea y me sostiene. Abre mis ojos hoy para reconocer tu mano en cada detalle de mi jornada, y permíteme ser yo también una bendición para los demás. Amén.",
+        "companero_de_camino": {
+          "santo": "San José",
+          "recomendacion": "San José fue el custodio de Jesús. Él nos enseña que cuidar lo que recibimos de Dios, con humildad y trabajo, es la forma más alta de gratitud."
+        },
+        "paso_de_hoy": "Hoy, dedicá un momento a mirar a tu alrededor y agradecé por una bendición que hoy tenés muy presente. Algo que esté 'a la luz' y que te llene el corazón de paz."
+      }
+    ],
+    "preocupado": [
+      {
+        "dia": 1,
+        "titulo": "El cuidado del Padre",
+        "acogida": "La preocupación suele ser un exceso de futuro en nuestra mente. Hoy, Jesús nos invita a aterrizar en el presente y confiar en quien conoce el mañana mejor que nosotros.",
+        "evangelio": {
+          "referencia": "Mateo 6, 26",
+          "texto": "Miren las aves del cielo: no siembran ni cosechan, ni recogen en graneros; y, sin embargo, el Padre celestial las alimenta.",
+          "meditacion": "Preocuparse es intentar controlar lo que no nos corresponde. Dios nos invita a la 'preocupación santa': ocuparnos de lo que podemos hacer hoy, y dejar en sus manos el resultado de mañana. No es falta de responsabilidad, es un exceso de confianza en el Amor."
+        },
+        "oracion": "Padre, hoy te traigo esta preocupación que me ronda la cabeza. Reconozco que no puedo cambiar el mañana, pero puedo confiar en que Tú ya estás allí esperándome. Ayúdame a descansar en tu providencia. Amén.",
+        "companero_de_camino": {
+          "santo": "San Padre Pío",
+          "recomendacion": "Su famosa frase: 'Reza, espera y no te preocupes'. La preocupación es inútil, pero la oración activa la paz que Dios quiere darte."
+        },
+        "paso_de_hoy": "Escribí tu preocupación en un papel, doblalo y ponelo debajo de un crucifijo o en un lugar donde pongas tu Biblia. Hacé el gesto físico de dejarla allí: 'Señor, esto es tuyo, yo ya hice lo que pude'."
+      }
+    ],
+    "temeroso": [
+      {
+        "dia": 1,
+        "titulo": "El miedo no tiene la última palabra",
+        "acogida": "Es humano sentir miedo ante la incertidumbre, pero el miedo no define quién sos ni hacia dónde vas. Hoy recordamos que no caminás solo.",
+        "evangelio": {
+          "referencia": "Isaías 41, 10",
+          "texto": "No temas, porque yo estoy contigo; no te angusties, porque yo soy tu Dios. Te fortaleceré y te ayudaré.",
+          "meditacion": "Cuando el miedo aparece, intenta cerrar nuestro horizonte. Pero la promesa de Dios es una presencia constante. Invocarlo no hace que el miedo desaparezca instantáneamente, pero cambia tu forma de enfrentarlo: ya no estás solo frente a la amenaza."
+        },
+        "oracion": "Jesús, mi valentía eres Tú. Cuando el miedo me paralice, ayúdame a recordar que estás a mi lado. Que tu presencia disipe mis sombras y me permita confiar un paso más. Amén.",
+        "companero_de_camino": {
+          "santo": "San Miguel Arcángel",
+          "recomendacion": "Como a San Miguel se le pide protección contra las acechanzas del mal, recordá que tu mayor enemigo es el miedo que te hace dudar del amor de Dios. La fe es tu escudo."
+        },
+        "paso_de_hoy": "Identificá un miedo que te esté frenando hoy. Para vencerlo, hacé un acto de servicio por alguien más: al enfocarte en ayudar a otro, el miedo pierde su poder. Usá tus talentos hoy para iluminar la vida de alguien."
+      }
+    ]
   }
 }

@@ -1001,47 +1001,77 @@ async function cargarEstadoAnimo(nombreEstado) {
   try {
     const respuesta = await fetch("caminemos.json");
     const data = await respuesta.json();
+    let estadosArray = data.estados[nombreEstado];
 
-    const datosEstado = data.estados[nombreEstado];
+    if (!estadosArray || estadosArray.length === 0) return;
 
-    if (!datosEstado) return;
+    // 1. Obtener fecha de hoy (formato: "2026-08-16")
+    const hoy = new Date().toISOString().split("T")[0];
 
+    // 2. Recuperar progreso del localStorage
+    let progreso = JSON.parse(
+      localStorage.getItem(`progreso_${nombreEstado}`),
+    ) || { dia: 0, fecha: "" };
+
+    // 3. Lógica: ¿Es un día nuevo?
+    if (progreso.fecha !== hoy) {
+      progreso.dia = (progreso.dia + 1) % estadosArray.length;
+      progreso.fecha = hoy;
+      localStorage.setItem(
+        `progreso_${nombreEstado}`,
+        JSON.stringify(progreso),
+      );
+    }
+
+    const datosEstado = estadosArray[progreso.dia];
+
+    // ... (El resto de la inyección sigue igual, no lo toques)
     const pantalla = document.getElementById(`screen-${nombreEstado}`);
     if (!pantalla) return;
 
+    // Inyección de datos
     const elTitulo = pantalla.querySelector(".titulo-estado");
     if (elTitulo)
       elTitulo.textContent = `Pantalla: ${nombreEstado.charAt(0).toUpperCase() + nombreEstado.slice(1)}`;
 
+    // ... [Aquí va todo tu código de elAcogida, elRef, etc., igual que antes]
     const elAcogida = pantalla.querySelector(".acogida-estado");
-    if (elAcogida) elAcogida.textContent = datosEstado.acogida;
+    if (elAcogida && datosEstado.acogida)
+      elAcogida.textContent = datosEstado.acogida;
 
     const elRef = pantalla.querySelector(".evangelio-referencia");
-    if (elRef) elRef.textContent = datosEstado.evangelio.referencia;
+    if (elRef && datosEstado.evangelio?.referencia)
+      elRef.textContent = datosEstado.evangelio.referencia;
 
     const elTxt = pantalla.querySelector(".evangelio-texto");
-    if (elTxt) elTxt.textContent = datosEstado.evangelio.texto;
+    if (elTxt && datosEstado.evangelio?.texto)
+      elTxt.textContent = datosEstado.evangelio.texto;
 
     const elMed = pantalla.querySelector(".evangelio-meditacion");
-    if (elMed) elMed.textContent = datosEstado.evangelio.meditacion;
+    if (elMed && datosEstado.evangelio?.meditacion)
+      elMed.textContent = datosEstado.evangelio.meditacion;
 
     const elOracion = pantalla.querySelector(".oracion-texto");
-    if (elOracion) elOracion.textContent = datosEstado.oracion;
+    if (elOracion && datosEstado.oracion)
+      elOracion.textContent = datosEstado.oracion;
 
     const elSanto = pantalla.querySelector(".santo-nombre");
-    if (elSanto) elSanto.textContent = datosEstado.companero_de_camino.santo;
+    if (elSanto && datosEstado.companero_de_camino?.santo)
+      elSanto.textContent = datosEstado.companero_de_camino.santo;
 
     const elRec = pantalla.querySelector(".santo-recomendacion");
-    if (elRec)
+    if (elRec && datosEstado.companero_de_camino?.recomendacion)
       elRec.textContent = datosEstado.companero_de_camino.recomendacion;
 
     const elPaso = pantalla.querySelector(".paso-hoy-texto");
-    if (elPaso) elPaso.textContent = datosEstado.paso_de_hoy;
+    if (elPaso && datosEstado.paso_de_hoy)
+      elPaso.textContent = datosEstado.paso_de_hoy;
   } catch (error) {
     console.error("Error al inyectar los datos del estado:", error);
   }
 }
 
+// funcion idiomas
 function cambiarIdioma(lang) {
   const elementosTraducibles = document.querySelectorAll("[data-es][data-en]");
 
