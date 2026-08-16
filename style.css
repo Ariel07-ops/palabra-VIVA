@@ -42,15 +42,26 @@ body {
   overflow: auto;
 }
 body {
-  /* CAMBIA ESTO: antes tenías padding-top: 65px; */
-  padding-top: env(safe-area-inset-top);
-  padding-bottom: env(safe-area-inset-bottom);
-  background-color: var(--bg-color);
-  color: var(--text-color);
-  font-family: var(--font-serif);
   margin: 0;
-  height: 100vh; /* Asegura que ocupe toda la altura */
-  overflow: auto;
+  padding: 0;
+  width: 100%;
+  height: 100vh;
+  background-color: #000000;
+  /* Esto es la clave para que no corte nada */
+  padding-bottom: env(safe-area-inset-bottom);
+  padding-top: env(safe-area-inset-top);
+}
+.screen {
+  position: fixed;
+  top: 65px; /* Tu navbar queda arriba */
+  left: 0;
+  width: 100%;
+  height: calc(
+    100vh - 65px + env(safe-area-inset-bottom)
+  ); /* Esto cubre hasta el fondo */
+  background-color: #000000;
+  z-index: 10;
+  overflow-y: auto;
 }
 
 /* Forzar colores de textos principales en modo claro */
@@ -88,12 +99,18 @@ body.light-mode .testamento-card p {
   justify-content: space-between;
   align-items: center;
   height: 65px;
-  /* Agregamos esto para que el navbar empiece debajo de la barra de estado */
   padding-top: env(safe-area-inset-top);
   padding-left: 15px;
   padding-right: 15px;
-  background-color: #0b0c10;
-  border-bottom: 2px solid #d4af37;
+
+  /* --- EFECTO VIDRIO ES MERILADO TRANSLÚCIDO --- */
+  background-color: rgba(11, 12, 16, 0.75); /* El 0.75 le da la transparencia */
+  backdrop-filter: blur(
+    10px
+  ); /* Esto hace que lo que pasa por abajo se vea esfumado */
+  -webkit-backdrop-filter: blur(10px); /* Para iPhone y Chrome Android */
+
+  border-bottom: 1px solid rgba(212, 175, 55, 0.4);
 }
 .nav-center {
   display: flex;
@@ -3525,15 +3542,11 @@ body.light-mode/* Solo el indicador de numeritos se adapta en modo claro */
 body {
   margin: 0;
   padding: 0;
-  background-color: #000; /* Negro para que combine con tus paneles */
   height: 100vh;
-  /* Esto ayuda a que el contenido no quede tapado por la muesca de la cámara */
-  padding-top: env(safe-area-inset-top);
-  padding-bottom: env(safe-area-inset-bottom);
-}
-body {
-  /* Esto es lo que hace que se extienda a toda la pantalla */
-  padding-top: env(safe-area-inset-top);
-  padding-bottom: env(safe-area-inset-bottom);
+  /* Esto es fundamental para que el "fondo" de la barra de navegación sea negro */
   background-color: #000000;
+
+  /* Y esto para que el contenido no quede pegado al borde del celular */
+  padding-bottom: env(safe-area-inset-bottom);
+  padding-top: env(safe-area-inset-top);
 }
