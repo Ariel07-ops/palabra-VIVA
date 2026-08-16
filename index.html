@@ -1281,5 +1281,16 @@
         </button>
       </div>
     </div>
+    <script>
+      // Forzar la reproducción del audio al cargar la página
+      window.addEventListener("DOMContentLoaded", (event) => {
+        const audioIntro = document.getElementById("musica-inicio");
+        if (audioIntro) {
+          audioIntro.play().catch((error) => {
+            console.log("El navegador bloqueó el autoplay automático:", error);
+          });
+        }
+      });
+    </script>
   </body>
 </html>
