@@ -3,8 +3,8 @@
   "short_name": "PalabraViva",
   "start_url": "./index.html",
   "display": "standalone",
-  "background_color": "#121212",
-  "theme_color": "#d4af37",
+  "background_color": "#000000",
+  "theme_color": "#000000",
   "description": "Aplicación de estudio, lectura y reflexión espiritual.",
   "icons": [
     {
