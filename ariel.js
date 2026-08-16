@@ -1217,3 +1217,22 @@ function actualizarIndicadorVisual() {
     indicadorModal.innerText = tamanoActual + "px";
   }
 }
+function comenzarExperiencia() {
+  const audio = document.getElementById("musica-inicio");
+  audio.volume = 0.3; // Volumen inicial al 30% (podes ajustar 0.1 a 1.0)
+  audio.play();
+
+  // Esperamos 2.5 segundos (de los 3 totales) para empezar a bajar el volumen
+  setTimeout(() => {
+    let fadeOut = setInterval(() => {
+      if (audio.volume > 0.05) {
+        audio.volume -= 0.05;
+      } else {
+        clearInterval(fadeOut);
+        audio.pause();
+        document.getElementById("screen-splash").style.display = "none";
+        document.getElementById("screen-main").style.display = "block";
+      }
+    }, 50); // Ajusta la velocidad del fade
+  }, 2500);
+}

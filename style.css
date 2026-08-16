@@ -3520,3 +3520,12 @@ body.light-mode/* Solo el indicador de numeritos se adapta en modo claro */
   border: 1px solid #333;
   color: #333;
 }
+body {
+  margin: 0;
+  padding: 0;
+  background-color: #000; /* Negro para que combine con tus paneles */
+  height: 100vh;
+  /* Esto ayuda a que el contenido no quede tapado por la muesca de la cámara */
+  padding-top: env(safe-area-inset-top);
+  padding-bottom: env(safe-area-inset-bottom);
+}
