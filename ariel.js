@@ -1219,14 +1219,14 @@ function actualizarIndicadorVisual() {
 }
 function comenzarExperiencia() {
   const audio = document.getElementById("musica-inicio");
-  audio.volume = 0.1; // Volumen inicial al 30% (podes ajustar 0.1 a 1.0)
+  audio.volume = 0.3; // Volumen inicial al 30% (podes ajustar 0.1 a 1.0)
   audio.play();
 
   // Esperamos 2.5 segundos (de los 3 totales) para empezar a bajar el volumen
   setTimeout(() => {
     let fadeOut = setInterval(() => {
-      if (audio.volume > 0.07) {
-        audio.volume -= 0.07;
+      if (audio.volume > 0.1) {
+        audio.volume -= 0.1;
       } else {
         clearInterval(fadeOut);
         audio.pause();

@@ -41,15 +41,16 @@ body {
   height: 100%;
   overflow: auto;
 }
-
 body {
-  padding-top: 65px;
+  /* CAMBIA ESTO: antes tenías padding-top: 65px; */
+  padding-top: env(safe-area-inset-top);
+  padding-bottom: env(safe-area-inset-bottom);
   background-color: var(--bg-color);
   color: var(--text-color);
   font-family: var(--font-serif);
-  transition:
-    background-color 0.3s ease,
-    color 0.3s ease;
+  margin: 0;
+  height: 100vh; /* Asegura que ocupe toda la altura */
+  overflow: auto;
 }
 
 /* Forzar colores de textos principales en modo claro */
@@ -87,12 +88,13 @@ body.light-mode .testamento-card p {
   justify-content: space-between;
   align-items: center;
   height: 65px;
-  padding: 0 15px;
+  /* Agregamos esto para que el navbar empiece debajo de la barra de estado */
+  padding-top: env(safe-area-inset-top);
+  padding-left: 15px;
+  padding-right: 15px;
   background-color: #0b0c10;
   border-bottom: 2px solid #d4af37;
-  font-family: serif;
 }
-
 .nav-center {
   display: flex;
   align-items: center;
