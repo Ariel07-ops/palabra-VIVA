@@ -9,7 +9,7 @@
   --text-light: #e0e0e0;
   --font-serif: "Lora", Georgia, serif;
   --font-roman: "Cinzel", serif;
-
+  color-scheme: dark; /* Esto ayuda a que el navegador sepa que debe usar barras oscuras */
   /* Variables de Tema Noche (Por defecto) */
   --bg-color: #121212;
   --text-color: #f3e5ab;
