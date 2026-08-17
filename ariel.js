@@ -1219,20 +1219,24 @@ function actualizarIndicadorVisual() {
 }
 function comenzarExperiencia() {
   const audio = document.getElementById("musica-inicio");
-  audio.volume = 0.3; // Volumen inicial al 30% (podes ajustar 0.1 a 1.0)
+
+  // 1. Bajamos el volumen inicial para que sea una caricia, no un golpe
+  audio.volume = 0.15; // Empezamos al 15% en vez del 30%
   audio.play();
 
-  // Esperamos 2.5 segundos (de los 3 totales) para empezar a bajar el volumen
+  // 2. Esperamos, pero bajamos el volumen de forma mucho más gradual
   setTimeout(() => {
     let fadeOut = setInterval(() => {
-      if (audio.volume > 0.1) {
-        audio.volume -= 0.1;
+      // Bajamos de a 0.01 en vez de 0.1
+      if (audio.volume > 0.02) {
+        audio.volume -= 0.01;
       } else {
         clearInterval(fadeOut);
         audio.pause();
+        audio.currentTime = 0;
         document.getElementById("screen-splash").style.display = "none";
         document.getElementById("screen-main").style.display = "block";
       }
-    }, 50); // Ajusta la velocidad del fade
+    }, 50); // Mantenemos la velocidad de 50ms, pero con pasos minúsculos
   }, 2500);
 }
