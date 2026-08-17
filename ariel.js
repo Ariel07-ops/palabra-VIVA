@@ -1222,33 +1222,23 @@ function comenzarExperiencia() {
   const splash = document.getElementById("screen-splash");
   const main = document.getElementById("screen-main");
 
-  // 1. Configuración inicial
-  audio.volume = 0.14;
+  // BAJAMOS A 0.02 (Es casi nada, apenas un hilo de sonido)
+  audio.volume = 0.02;
 
-  // 2. Intentar reproducir con protección de error
-  audio.play().catch((error) => {
-    console.log(
-      "Reproducción automática bloqueada por el navegador, continuando en silencio.",
-    );
-  });
+  audio.play().catch(() => {});
 
-  // 3. Esperamos 2.5 segundos de "presencia" sonora
   setTimeout(() => {
-    // 4. Fade out gradual
     const fadeOut = setInterval(() => {
-      // Verificamos si aún hay volumen para seguir bajando
-      if (audio.volume > 0.02) {
-        audio.volume = Math.max(0, audio.volume - 0.01);
+      // Bajamos mucho más rápido para que desaparezca pronto
+      if (audio.volume > 0.005) {
+        audio.volume -= 0.005;
       } else {
-        // Finalizamos el ciclo
         clearInterval(fadeOut);
         audio.pause();
         audio.currentTime = 0;
-
-        // Cambio de pantalla
         splash.style.display = "none";
         main.style.display = "block";
       }
-    }, 50); // 50ms por paso es un ritmo muy suave y profesional
+    }, 50);
   }, 2500);
 }
