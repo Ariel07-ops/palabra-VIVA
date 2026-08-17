@@ -1219,24 +1219,36 @@ function actualizarIndicadorVisual() {
 }
 function comenzarExperiencia() {
   const audio = document.getElementById("musica-inicio");
+  const splash = document.getElementById("screen-splash");
+  const main = document.getElementById("screen-main");
 
-  // 1. Bajamos el volumen inicial para que sea una caricia, no un golpe
-  audio.volume = 0.14; // Empezamos al 15% en vez del 30%
-  audio.play();
+  // 1. Configuración inicial
+  audio.volume = 0.14;
 
-  // 2. Esperamos, pero bajamos el volumen de forma mucho más gradual
+  // 2. Intentar reproducir con protección de error
+  audio.play().catch((error) => {
+    console.log(
+      "Reproducción automática bloqueada por el navegador, continuando en silencio.",
+    );
+  });
+
+  // 3. Esperamos 2.5 segundos de "presencia" sonora
   setTimeout(() => {
-    let fadeOut = setInterval(() => {
-      // Bajamos de a 0.01 en vez de 0.1
+    // 4. Fade out gradual
+    const fadeOut = setInterval(() => {
+      // Verificamos si aún hay volumen para seguir bajando
       if (audio.volume > 0.02) {
-        audio.volume -= 0.01;
+        audio.volume = Math.max(0, audio.volume - 0.01);
       } else {
+        // Finalizamos el ciclo
         clearInterval(fadeOut);
         audio.pause();
         audio.currentTime = 0;
-        document.getElementById("screen-splash").style.display = "none";
-        document.getElementById("screen-main").style.display = "block";
+
+        // Cambio de pantalla
+        splash.style.display = "none";
+        main.style.display = "block";
       }
-    }, 50); // Mantenemos la velocidad de 50ms, pero con pasos minúsculos
+    }, 50); // 50ms por paso es un ritmo muy suave y profesional
   }, 2500);
 }
