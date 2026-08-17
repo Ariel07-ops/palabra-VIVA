@@ -1221,7 +1221,7 @@ function comenzarExperiencia() {
   const audio = document.getElementById("musica-inicio");
 
   // 1. Bajamos el volumen inicial para que sea una caricia, no un golpe
-  audio.volume = 0.15; // Empezamos al 15% en vez del 30%
+  audio.volume = 0.14; // Empezamos al 15% en vez del 30%
   audio.play();
 
   // 2. Esperamos, pero bajamos el volumen de forma mucho más gradual
