@@ -1,10 +1,19 @@
-const CACHE_NAME = "palabra-viva-v3";
+const CACHE_NAME = "palabra-viva-v4";
 const urlsToCache = [
   "./",
   "./index.html",
-  "./biblia.json",
-  "./caminemos.json",
-  "./contenido.json",
+  "./data/biblia.json",
+  "./manifest.json",
+  "./data/estados.json",
+  "./data/contenido.json",
+  "./data/camino.json",
+  "./data/promesa.json",
+  "./assets/imagen/logo-redondo.png",
+  "./assets/imagen/cruz-nitida.png",
+  "./assets/audio/intro.mp3",
+  "./css/style.css",
+  "./js/ariel.js",
+
   // Si tenés estilos CSS propios o iconos, agregalos acá también
 ];
 

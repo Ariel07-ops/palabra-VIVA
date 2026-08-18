@@ -17,14 +17,14 @@
     <meta name="theme-color" content="#000000" />
     <meta name="color-scheme" content="dark only" />
 
-    <link rel="apple-touch-icon" href="logo-redondo.png" />
+    <link rel="apple-touch-icon" href="assets/imagen/logo-redondo.png" />
     <!-- Fuentes de Google -->
     <link
       href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&display=swap"
       rel="stylesheet"
     />
     <!-- Estilos propios -->
-    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="css/style.css" />
     <!-- Font Awesome para los íconos -->
     <link
       rel="stylesheet"
@@ -33,7 +33,7 @@
     />
     <link rel="manifest" href="manifest.json" />
     <!-- Script principal -->
-    <script src="ariel.js" defer></script>
+    <script src="js/ariel.js" defer></script>
     <script>
       if ("serviceWorker" in navigator) {
         window.addEventListener("load", () => {
@@ -58,7 +58,7 @@
       <!-- Isologo y Título -->
       <div class="nav-center">
         <img
-          src="logo-redondo.png"
+          src="assets/imagen/logo-redondo.png"
           alt="Isologo Palabra Viva"
           class="brand-icon-superior"
         />
@@ -94,7 +94,7 @@
       <!-- Cabecera del Menú Lateral -->
       <div class="sidebar-header">
         <img
-          src="logo-redondo.png"
+          src="assets/imagen/logo-redondo.png"
           alt="Isologo Palabra Viva"
           class="sidebar-brand-icon"
         />
@@ -126,13 +126,13 @@
     <div id="screen-splash" class="screen active">
       <div class="splash-content-imagen">
         <img
-          src="splash-cruz-nitida.png"
+          src="assets/imagen/splash-cruz-nitida.png"
           alt="Palabra Viva Portada"
           class="img-portada"
         />
 
         <audio id="musica-inicio" autoplay>
-          <source src="intro.mp3" type="audio/mpeg" />
+          <source src="assets/audio/intro.mp3" type="audio/mpeg" />
         </audio>
       </div>
     </div>
@@ -515,7 +515,7 @@
         </main>
       </div>
     </div>
-    <!-- Pantallas de Estado en el camino de Emaus (Alimentadas 100% desde caminemos.json) -->
+    <!-- Pantallas de Estado en el camino de Emaus (Alimentadas 100% desde Estados.json) -->
 
     <div id="screen-agradecido" class="screen">
       <button class="btn-back-path">⬅</button>

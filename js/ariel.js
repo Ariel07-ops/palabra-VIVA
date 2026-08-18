@@ -398,7 +398,7 @@ document
     contenedorResultados.innerHTML = `<p class="placeholder-text">Buscando en las Escrituras...</p>`;
 
     try {
-      const respuesta = await fetch("biblia.json");
+      const respuesta = await fetch("data/biblia.json");
       const datos = await respuesta.json();
       let encontrados = [];
 
@@ -621,7 +621,7 @@ async function abrirAntiguoTestamento() {
   const contenedor = document.getElementById("lista-libros-antiguo");
   if (contenedor && contenedor.innerHTML.trim() === "") {
     try {
-      const respuesta = await fetch("biblia.json");
+      const respuesta = await fetch("data/biblia.json");
       const datos = await respuesta.json();
       listaLibrosAntiguo.forEach((nombreLibro) => {
         const btn = document.createElement("div");
@@ -644,7 +644,7 @@ async function abrirNuevoTestamento() {
   const contenedor = document.getElementById("lista-libros-nuevo");
   if (contenedor && contenedor.innerHTML.trim() === "") {
     try {
-      const respuesta = await fetch("biblia.json");
+      const respuesta = await fetch("data/biblia.json");
       const datos = await respuesta.json();
       listaLibrosNuevo.forEach((nombreLibro) => {
         const btn = document.createElement("div");
@@ -891,7 +891,7 @@ fanColumns.forEach((col) => {
 
 async function aplicarSubrayadosCapitulo(nombreLibro, numeroCapitulo) {
   try {
-    let respuesta = await fetch("contenido.json");
+    let respuesta = await fetch("data/contenido.json");
     let datos = await respuesta.json();
 
     let keyLibro = nombreLibro.toLowerCase().trim();
@@ -996,10 +996,10 @@ async function aplicarSubrayadosCapitulo(nombreLibro, numeroCapitulo) {
   }
 }
 
-// --- INYECTOR MAESTRO DE ESTADOS DESDE caminemos.json ---
+// --- INYECTOR MAESTRO DE ESTADOS DESDE Estados.json ---
 async function cargarEstadoAnimo(nombreEstado) {
   try {
-    const respuesta = await fetch("caminemos.json");
+    const respuesta = await fetch("data/estados.json");
     const data = await respuesta.json();
     let estadosArray = data.estados[nombreEstado];
 

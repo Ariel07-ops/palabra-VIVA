@@ -8,7 +8,7 @@
   "description": "Aplicación de estudio, lectura y reflexión espiritual.",
   "icons": [
     {
-      "src": "logo-redondo.png",
+      "src": "assets/imagen/logo-redondo.png",
       "sizes": "512x512",
       "type": "image/png",
       "purpose": "any maskable"
