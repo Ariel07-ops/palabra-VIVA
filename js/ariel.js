@@ -149,36 +149,26 @@ if (btnBackEmaus)
   btnBackEmaus.addEventListener("click", () => changeScreen(screenPathDetail));
 
 // --- FUNCIONES DE DETALLE PARA EMAÚS Y PROMESA ---
-function abrirPasoEmaus(numero) {
-  const pasosEmausData = {
-    1: {
-      titulo: "1. El inicio en lo oculto",
-      texto:
-        "Los discípulos caminan hacia Emaús con el rostro sombrío y el corazón cargado de desilusión. Jesús mismo se acerca y camina con ellos, pero sus ojos estaban retenidos para que no le reconocieran. Así camina muchas veces el Señor a nuestro lado en medio de nuestras tristezas cotidianas.",
-    },
-    2: {
-      titulo: "2. El caminar diario",
-      texto:
-        "Mientras van de camino, Él les explica las Escrituras comenzando por Moisés y todos los profetas. El calor de su palabra va encendiendo lentamente el fuego en sus corazones cansados, enseñándonos que la oración y la lectura meditada de la Palabra son el sustento del peregrino.",
-    },
-    3: {
-      titulo: "3. La fracción del pan",
-      texto:
-        "Al llegar a la aldea, lo invitan a quedarse y, sentado a la mesa, toma el pan, pronuncia la bendición, lo parte y se lo da. En este gesto supremo se abren sus ojos y lo reconocen. Es el misterio de la Eucaristía, centro y cumbre de nuestra vida cristiana.",
-    },
-    4: {
-      titulo: "4. Hacia la Plenitud",
-      texto:
-        "Recobrada la luz y la esperanza, se levantan al instante y regresan a Jerusalén para anunciar la Buena Nueva a los hermanos: '¡El Señor ha resucitado verdaderamente!'. El camino que comenzó en la tristeza culmina en el testimonio y en la alegría desbordante del Resucitado.",
-    },
-  };
+async function abrirPasoEmaus(numero) {
+  try {
+    const respuesta = await fetch("data/camino.json");
+    const datosJson = await respuesta.json();
+    const datos = datosJson.pasos.find((p) => p.id === parseInt(numero));
 
-  const datos = pasosEmausData[numero];
-  if (!datos) return;
+    if (!datos) return;
 
-  document.getElementById("titulo-emaus-detalle").innerText = datos.titulo;
-  document.getElementById("texto-emaus-detalle").innerHTML = datos.texto;
-  changeScreen(screenEmausDetalle);
+    // Inyectamos cada cosa en su lugar correspondiente
+    document.getElementById("titulo-emaus-detalle").innerText = datos.titulo;
+    document.getElementById("texto-emaus-detalle").innerHTML = datos.texto;
+    document.getElementById("caminar-emaus-detalle").innerText =
+      "Caminar: " + datos.caminar;
+    document.getElementById("reflexion-emaus-detalle").innerText =
+      "Reflexión: " + datos.reflexion;
+
+    changeScreen(screenEmausDetalle);
+  } catch (error) {
+    console.error("Error al cargar datos:", error);
+  }
 }
 
 function abrirPeldaño(numero) {
