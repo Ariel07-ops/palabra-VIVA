@@ -3580,3 +3580,21 @@ body {
 .emaus-container .btn-emaus {
   flex: 1; /* Esto hace que se repartan el ancho igualitariamente */
 }
+/* Estilo sutil para la etiqueta 'Caminar' */
+#caminar-emaus-detalle {
+  color: #d4af37; /* Tu dorado elegante */
+  font-weight: 600; /* Un semi-negrita en lugar de negrita pesada */
+  font-size: 1rem; /* Tamaño normal, igual al resto del texto */
+  display: block;
+  margin-bottom: 4px;
+}
+
+/* Estilo sutil para la etiqueta 'Reflexión' */
+#reflexion-emaus-detalle {
+  color: #d4af37;
+  font-weight: 600;
+  font-size: 1rem;
+  display: block;
+  margin-top: 12px;
+  margin-bottom: 4px;
+}
