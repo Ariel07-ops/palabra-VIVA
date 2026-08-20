@@ -473,10 +473,6 @@ body.light-mode #contenido-peldaño {
   color: var(--gold);
 }
 
-.text-gold {
-  color: var(--gold);
-}
-
 /* ==========================================
    6. GRILLA DE CAPÍTULOS SIMÉTRICA (5 COLUMNAS)
    ========================================== */
@@ -1498,20 +1494,6 @@ body.light-mode #study-card .column-subtitle,
 }
 /* --- Cirugía de precisión para el subtítulo de Emaús --- */
 
-#screen-emaus h2.header-statement {
-  /* Aquí adentro ponés tus reglas CSS */
-  /* Por ejemplo, para el color gris plata: */
-  color: #cccccc !important;
-
-  /* Para la fuente Cinzel cursiva (si ya la tenés importada): */
-  font-family: "Cinzel", serif;
-  font-style: italic;
-  opacity: 0.9;
-  font-size: 1.1rem;
-  line-height: 1.6;
-  margin-bottom: 15px;
-  font-weight: 400;
-}
 /* ==========================================================================
    CIRUGÍA DEFINITIVA: PANTALLA BUSCAR EN LAS ESCRITURAS
    ========================================================================== */
@@ -2113,10 +2095,6 @@ body.light-mode #contenido-peldaño {
   color: var(--gold);
 }
 
-.text-gold {
-  color: var(--gold);
-}
-
 /* ==========================================
    6. GRILLA DE CAPÍTULOS SIMÉTRICA (5 COLUMNAS)
    ========================================== */
@@ -3138,20 +3116,6 @@ body.light-mode #study-card .column-subtitle,
 }
 /* --- Cirugía de precisión para el subtítulo de Emaús --- */
 
-#screen-emaus h2.header-statement {
-  /* Aquí adentro ponés tus reglas CSS */
-  /* Por ejemplo, para el color gris plata: */
-  color: #cccccc !important;
-
-  /* Para la fuente Cinzel cursiva (si ya la tenés importada): */
-  font-family: "Cinzel", serif;
-  font-style: italic;
-  opacity: 0.9;
-  font-size: 1.1rem;
-  line-height: 1.6;
-  margin-bottom: 15px;
-  font-weight: 400;
-}
 /* ==========================================================================
    CIRUGÍA DEFINITIVA: PANTALLA BUSCAR EN LAS ESCRITURAS
    ========================================================================== */
@@ -3549,4 +3513,64 @@ body {
   /* Y esto para que el contenido no quede pegado al borde del celular */
   padding-bottom: env(safe-area-inset-bottom);
   padding-top: env(safe-area-inset-top);
+}
+#titulo-emaus-detalle {
+  background-image: linear-gradient(
+    180deg,
+    #fceea7 0%,
+    #d4af37 50%,
+    #aa7c11 100%
+  );
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+/* Clase para títulos dorados */
+.text-gold {
+  background-image: linear-gradient(
+    180deg,
+    #fceea7 0%,
+    #d4af37 50%,
+    #aa7c11 100%
+  );
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* Clase para subtítulos plateados */
+.text-silver {
+  background-image: linear-gradient(
+    180deg,
+    #ffffff 0%,
+    #a0a0a0 50%,
+    #666666 100%
+  );
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-size: 0.9rem; /* O el tamaño que mejor se ajuste a tu diseño */
+  font-weight: 500; /* Por si querés que sea un poco menos grueso que el título principal */
+  max-width: 600px;
+  margin: 0 auto;
+  text-align: center;
+}
+/* Bloque unificado para todas las pantallas de estado y sus párrafos de acogida */
+#screen-agradecido .acogida-estado,
+#screen-bendecido .acogida-estado,
+#screen-cansado .acogida-estado,
+#screen-feliz .acogida-estado,
+#screen-triste .acogida-estado,
+#screen-ansioso .acogida-estado,
+#screen-preocupado .acogida-estado,
+#screen-temeroso .acogida-estado,
+#screen-en-paz .acogida-estado {
+  max-width: 600px;
+  margin: 25px auto 0 auto;
+  text-align: center;
+}
+/* Estilo aislado para los botones de abajo sin afectar el contenedor padre */
+.path-card .btn-emaus {
+  display: inline-block;
+  margin: 4px;
 }

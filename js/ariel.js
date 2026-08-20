@@ -157,12 +157,12 @@ async function abrirPasoEmaus(numero) {
 
     if (!datos) return;
 
-    // Inyectamos cada cosa en su lugar correspondiente
-    document.getElementById("titulo-emaus-detalle").innerText = datos.titulo;
+    // Inyectamos cada cosa en su lugar correspondiente en los pasos de Inicia tu recorrido
+    document.getElementById("titulo-emaus-detalle").innerHTML = datos.titulo;
     document.getElementById("texto-emaus-detalle").innerHTML = datos.texto;
-    document.getElementById("caminar-emaus-detalle").innerText =
+    document.getElementById("caminar-emaus-detalle").innerHTML =
       "Caminar: " + datos.caminar;
-    document.getElementById("reflexion-emaus-detalle").innerText =
+    document.getElementById("reflexion-emaus-detalle").innerHTML =
       "Reflexión: " + datos.reflexion;
 
     changeScreen(screenEmausDetalle);
