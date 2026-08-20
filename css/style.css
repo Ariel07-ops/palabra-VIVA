@@ -3569,8 +3569,14 @@ body {
   margin: 25px auto 0 auto;
   text-align: center;
 }
-/* Estilo aislado para los botones de abajo sin afectar el contenedor padre */
-.path-card .btn-emaus {
-  display: inline-block;
-  margin: 4px;
+.emaus-container {
+  display: flex;
+  justify-content: center; /* Los centra */
+  gap: 10px; /* Un poquito de aire entre ellos */
+  width: 100%;
+}
+
+/* Ajuste para que los botones dentro del div se vean bien */
+.emaus-container .btn-emaus {
+  flex: 1; /* Esto hace que se repartan el ancho igualitariamente */
 }
