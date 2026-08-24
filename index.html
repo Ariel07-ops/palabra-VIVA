@@ -119,6 +119,7 @@
             <i class="fas fa-info-circle"></i> Acerca de Palabra Viva</a
           >
         </li>
+        <li><a href="#" id="link-asistente">💬 Asistente de Apoyo</a></li>
       </ul>
     </nav>
 
@@ -1354,6 +1355,35 @@
         >
           Cerrar
         </button>
+      </div>
+    </div>
+    <!-- Vista del Asistente de Apoyo -->
+    <div id="screen-asistente" class="screen">
+      <div class="asistente-header">
+        <button class="btn-back" onclick="changeScreen(screenMain)">←</button>
+        <h2 class="brand-title text-gold">💬 Asistente de Apoyo</h2>
+        <p class="header-statement text-italic text-silver">
+          Un espacio seguro y confidencial para reflexionar y conversar.
+        </p>
+      </div>
+
+      <!-- Contenedor donde se mostrarán los mensajes del chat -->
+      <div id="chat-mensajes" class="chat-mensajes-container">
+        <div class="mensaje asistente">
+          Hola, estoy aquí para escucharte y compartir un momento de reflexión
+          con vos. ¿Cómo te sentís hoy?
+        </div>
+      </div>
+
+      <!-- Barra de entrada para escribir el mensaje -->
+      <div class="chat-input-container">
+        <input
+          type="text"
+          id="chat-input"
+          placeholder="Escribí tu mensaje aquí..."
+          autocomplete="off"
+        />
+        <button id="chat-btn-enviar" class="btn-enviar">Enviar</button>
       </div>
     </div>
     <script>

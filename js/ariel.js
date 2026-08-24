@@ -24,6 +24,7 @@ const screenPeldañoDetalle = document.getElementById("screen-peldaño-detalle")
 const screenEmausDetalle = document.getElementById("screen-emaus-detalle");
 const screenAcerca = document.getElementById("screen-acerca");
 const screenEnpaz = document.getElementById("screen-en-paz");
+const screenAsistente = document.getElementById("screen-asistente");
 
 // 2. CAPTURAR BOTONES INTERACTIVOS
 const btnGotoBible = document.getElementById("btn-goto-bible");
@@ -35,7 +36,7 @@ const textParagraph = document.querySelector(".interact-paragraph");
 const studyCard = document.getElementById("study-card");
 const panelHandle = document.querySelector(".panel-handle");
 const btnVolverAcerca = document.getElementById("btn-volver-acerca");
-
+const linkAsistente = document.getElementById("link-asistente");
 // --- VARIABLE GLOBAL PARA EL BUSCADOR ---
 let resultadosBusquedaActuales = [];
 
@@ -82,6 +83,7 @@ function changeScreen(screenToShow) {
     screenIdioma,
     screenSugerir,
     screenAcerca,
+    screenAsistente,
   ].forEach((screen) => {
     if (screen) {
       screen.classList.remove("active");
@@ -1232,3 +1234,128 @@ function comenzarExperiencia() {
     }, 50);
   }, 2500);
 }
+// Acá está la función para conectar el asistente o el chatbot
+if (linkAsistente) {
+  linkAsistente.addEventListener("click", (e) => {
+    e.preventDefault();
+    changeScreen(screenAsistente);
+    menuLateral?.classList.remove("active");
+  });
+}
+// Variable para recordar el último tema conversado 🧠
+let ultimoTema = null;
+
+// Función asincrónica para procesar el mensaje con soporte local y externo
+async function procesarMensaje(texto, contenedorMensajes) {
+  const t = texto.toLowerCase();
+
+  // 1. Saludos comunes 👋
+  if (t === "hola" || t === "buenos días" || t === "buenas") {
+    return "¡Hola! Qué bueno encontrarte por aquí. Estoy para ayudarte a explorar Palabra Viva 📱. ¿Qué te gustaría saber?";
+  }
+
+  // 2. Comprobar respuestas afirmativas cortas ("sí", "si", etc.)
+  if (t === "sí" || t === "si" || t === "por favor" || t === "claro") {
+    if (ultimoTema === "biblia") {
+      ultimoTema = null;
+      return "¡Excelente! Al tocar un versículo subrayado podrás ver el origen de las palabras, el contexto social y notas formativas. ¿Te gustaría saber algo más?";
+    } else if (ultimoTema === "menu") {
+      ultimoTema = null;
+      return "Perfecto. En el menú lateral también puedes cambiar el idioma y sugerir enlaces recomendados. ¿Hay otra herramienta que quieras explorar?";
+    }
+    return "¿Sobre qué sección específica de la aplicación te gustaría saber más?";
+  }
+
+  // 3. Evaluaciones locales rápidas ⚡
+  if (
+    t.includes("para qué sirve") ||
+    t.includes("qué puedo hacer") ||
+    t.includes("programa") ||
+    t.includes("palabra viva")
+  ) {
+    ultimoTema = "programa";
+    return "Palabra Viva es un programa diseñado para acompañar tanto el estudio de la Sagrada Escritura 📖 como el desarrollo de tu camino espiritual personal 🌟. ¿Sobre qué sección te gustaría saber más?";
+  } else if (
+    t.includes("menu") ||
+    t.includes("rayitas") ||
+    t.includes("opciones")
+  ) {
+    ultimoTema = "menu";
+    return "En la barra superior encontrarás tres rayitas 📱 que abren la barra lateral con todas las herramientas de la app. ¿Te gustaría saber más sobre alguna de ellas?";
+  } else if (
+    t.includes("biblia") ||
+    t.includes("escritura") ||
+    t.includes("versículo") ||
+    t.includes("profundizar")
+  ) {
+    ultimoTema = "biblia";
+    return "En la sección de la Sagrada Escritura 📖 puedes seleccionar testamentos y encontrar textos subrayados con opciones de profundización. ¿Te gustaría saber más?";
+  }
+
+  // 4. Si no está en lo local, consultamos al servidor externo 🌐
+  const idMensajeTemporal = "temp-" + Date.now();
+  contenedorMensajes.innerHTML += `<p id="${idMensajeTemporal}"><em>⏳ Buscando respuesta en la fuente externa, espere un momento...</em></p>`;
+  contenedorMensajes.scrollTop = contenedorMensajes.scrollHeight;
+
+  try {
+    const controller = new AbortController();
+    const timeoutId = setTimeout(() => controller.abort(), 10000);
+
+    const respuestaApi = await fetch("https://tu-api-externa.com/consultar", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ pregunta: texto }),
+      signal: controller.signal,
+    });
+
+    clearTimeout(timeoutId);
+
+    if (!respuestaApi.ok) {
+      throw new Error("Error en la respuesta del servidor");
+    }
+
+    const datos = await respuestaApi.json();
+    document.getElementById(idMensajeTemporal)?.remove();
+    return datos.respuesta || "Respuesta recibida del servidor externo.";
+  } catch (error) {
+    document.getElementById(idMensajeTemporal)?.remove();
+    if (error.name === "AbortError") {
+      return "⚠️ La consulta al servidor externo tardó demasiado. En este momento operas en modo offline, pero las herramientas locales siguen funcionando perfectamente.";
+    } else {
+      return "⚠️ En este momento no hay conexión con el servidor externo para responder consultas doctrinales profundas, pero todo lo local sigue operativo.";
+    }
+  }
+}
+
+// 5. Esperamos a que cargue todo el HTML para conectar los botones sin errores 🛡️
+document.addEventListener("DOMContentLoaded", () => {
+  const inputChat = document.getElementById("chat-input");
+  const btnEnviar = document.getElementById("chat-btn-enviar");
+  const contenedorMensajes = document.getElementById("chat-mensajes");
+
+  btnEnviar?.addEventListener("click", async () => {
+    const textoUsuario = inputChat.value.trim();
+
+    if (textoUsuario !== "") {
+      contenedorMensajes.innerHTML += `<p><strong>Tú:</strong> ${textoUsuario}</p>`;
+      inputChat.value = "";
+      contenedorMensajes.scrollTop = contenedorMensajes.scrollHeight;
+
+      const respuestaAsistente = await procesarMensaje(
+        textoUsuario,
+        contenedorMensajes,
+      );
+
+      contenedorMensajes.innerHTML += `<p><strong>Asistente:</strong> ${respuestaAsistente}</p>`;
+      contenedorMensajes.scrollTop = contenedorMensajes.scrollHeight;
+    }
+  });
+
+  inputChat?.addEventListener("keypress", (e) => {
+    if (e.key === "Enter") {
+      btnEnviar.click();
+    }
+  });
+});
