@@ -1368,12 +1368,7 @@
       </div>
 
       <!-- Contenedor donde se mostrarán los mensajes del chat -->
-      <div id="chat-mensajes" class="chat-mensajes-container">
-        <div class="mensaje asistente">
-          Hola, estoy aquí para escucharte y compartir un momento de reflexión
-          con vos. ¿Cómo te sentís hoy?
-        </div>
-      </div>
+      <div id="chat-mensajes" class="chat-mensajes-container"></div>
 
       <!-- Barra de entrada para escribir el mensaje -->
       <div class="chat-input-container">
@@ -1384,6 +1379,13 @@
           autocomplete="off"
         />
         <button id="chat-btn-enviar" class="btn-enviar">Enviar</button>
+        <button id="btnMic" class="mic-button" title="Usar micrófono">
+          🎙️
+        </button>
+        <div id="micAdvertencia" class="mic-oculto">
+          Usted está autorizando a que se active el micrófono. Toque de nuevo
+          para confirmar.
+        </div>
       </div>
     </div>
     <script>

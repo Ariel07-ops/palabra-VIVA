@@ -3598,3 +3598,6 @@ body {
   margin-top: 12px;
   margin-bottom: 4px;
 }
+.mic-oculto {
+  display: none;
+}

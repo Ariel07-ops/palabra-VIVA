@@ -37,6 +37,8 @@ const studyCard = document.getElementById("study-card");
 const panelHandle = document.querySelector(".panel-handle");
 const btnVolverAcerca = document.getElementById("btn-volver-acerca");
 const linkAsistente = document.getElementById("link-asistente");
+const btnMic = document.getElementById("btnMic");
+
 // --- VARIABLE GLOBAL PARA EL BUSCADOR ---
 let resultadosBusquedaActuales = [];
 
@@ -1244,10 +1246,27 @@ if (linkAsistente) {
 }
 // Variable para recordar el último tema conversado 🧠
 let ultimoTema = null;
+// Bandera para saber si el asistente está esperando el nombre del usuario
+let esperandoNombre = false;
 
 // Función asincrónica para procesar el mensaje con soporte local y externo
 async function procesarMensaje(texto, contenedorMensajes) {
   const t = texto.toLowerCase();
+
+  // 0. Capturar el nombre si el asistente lo estaba pidiendo 💾
+  if (esperandoNombre) {
+    // Limpiamos el texto eliminando palabras comunes al inicio
+    const nombreLimpio = texto
+      .replace(/^(soy|me llamo|mi nombre es)\s+/i, "")
+      .trim();
+
+    // Verificamos que realmente haya quedado texto después de limpiar
+    if (nombreLimpio.length > 0) {
+      localStorage.setItem("nombrePalabraViva", nombreLimpio);
+      esperandoNombre = false;
+      return `¡Mucho gusto, ${nombreLimpio}! Ya te tengo anotado. ¿En qué te puedo ayudar hoy con Palabra Viva? 🌟`;
+    }
+  }
 
   // 1. Saludos comunes 👋
   if (t === "hola" || t === "buenos días" || t === "buenas") {
@@ -1335,6 +1354,16 @@ document.addEventListener("DOMContentLoaded", () => {
   const btnEnviar = document.getElementById("chat-btn-enviar");
   const contenedorMensajes = document.getElementById("chat-mensajes");
 
+  // Verificación inicial del nombre al cargar el asistente 🔍
+  const nombreGuardado = localStorage.getItem("nombrePalabraViva");
+  if (nombreGuardado) {
+    contenedorMensajes.innerHTML += `<p><strong>Asistente:</strong> ¡Bienvenido de nuevo por acá, ${nombreGuardado}! ¿En qué te puedo ayudar hoy? 🌟</p>`;
+  } else {
+    contenedorMensajes.innerHTML += `<p><strong>Asistente:</strong> ¡Hola! Bienvenido, soy tu asistente de Palabra Viva. Decime cómo te llamás, por favor 📱.</p>`;
+    esperandoNombre = true; // Activamos la bandera para que el primer mensaje sea guardado como nombre
+  }
+  contenedorMensajes.scrollTop = contenedorMensajes.scrollHeight;
+
   btnEnviar?.addEventListener("click", async () => {
     const textoUsuario = inputChat.value.trim();
 
@@ -1358,4 +1387,36 @@ document.addEventListener("DOMContentLoaded", () => {
       btnEnviar.click();
     }
   });
+});
+let esperandoConfirmacionMic = false;
+
+btnMic.addEventListener("click", () => {
+  const micAdvertencia = document.getElementById("micAdvertencia");
+
+  if (!esperandoConfirmacionMic) {
+    // Primer clic: Muestra la advertencia
+    micAdvertencia.classList.remove("mic-oculto");
+    esperandoConfirmacionMic = true;
+  } else {
+    // Segundo clic: Oculta la advertencia y activa la voz
+    micAdvertencia.classList.add("mic-oculto");
+    esperandoConfirmacionMic = false; // Reseteamos por si quiere volver a usarlo después
+
+    const reconocimiento = new (
+      window.SpeechRecognition || window.webkitSpeechRecognition
+    )();
+    reconocimiento.lang = "es-AR"; // Idioma español
+    reconocimiento.start();
+
+    reconocimiento.onresult = (evento) => {
+      const textoCapturado = evento.results[0][0].transcript;
+      console.log("Lo que dijiste fue: " + textoCapturado);
+
+      // Si querés que se escriba solo en el input del chat:
+      const inputChat = document.getElementById("chat-input");
+      if (inputChat) {
+        inputChat.value = textoCapturado;
+      }
+    };
+  }
 });
