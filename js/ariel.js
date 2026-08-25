@@ -1420,3 +1420,69 @@ btnMic.addEventListener("click", () => {
     };
   }
 });
+// --- GESTO SWIPE-DOWN PARA CERRAR EL PANEL DE ESTUDIO ---
+document.addEventListener("DOMContentLoaded", () => {
+  const studyCard = document.getElementById("study-card"); // Asegurate que este sea el ID de tu panel
+  if (!studyCard) return;
+
+  let startY = 0;
+  let currentY = 0;
+  let isDragging = false;
+
+  // 1. Cuando el usuario toca la pantalla sobre el panel
+  studyCard.addEventListener(
+    "touchstart",
+    (e) => {
+      // Opcional: podés validar que toque la manija (.panel-handle) o el header del panel
+      startY = e.touches[0].clientY;
+      isDragging = true;
+      studyCard.style.transition = "none"; // Sacamos la transición para que siga el dedo al instante
+    },
+    { passive: true },
+  );
+
+  // 2. Mientras el usuario desliza el dedo hacia abajo
+  studyCard.addEventListener(
+    "touchmove",
+    (e) => {
+      if (!isDragging) return;
+      currentY = e.touches[0].clientY;
+      let diffY = currentY - startY;
+
+      // Solo permitimos arrastrar hacia abajo (valores positivos)
+      if (diffY > 0) {
+        studyCard.style.transform = `translateY(${diffY}px)`;
+      }
+    },
+    { passive: true },
+  );
+
+  // 3. Cuando el usuario levanta el dedo
+  studyCard.addEventListener("touchend", (e) => {
+    if (!isDragging) return;
+    isDragging = false;
+
+    let diffY = currentY - startY;
+
+    // Volvemos a activar la transición suave para el rebote o cierre
+    studyCard.style.transition = "transform 0.3s ease";
+
+    // Si lo bajó más de 100 píxeles, interpretamos que quiso cerrarlo
+    if (diffY > 100) {
+      // Acá llamás a tu función existente para cerrar el panel (o le aplicás la clase que lo oculta)
+      // Por ejemplo, si usas una clase para ocultarlo:
+      studyCard.classList.remove("expanded"); // O la clase que uses para abrirlo
+      studyCard.style.transform = "translateY(100%)"; // O lo mandás abajo del todo
+
+      // O si tenés una función específica, la ejecutas acá.
+      // cerrarPanelEstudio();
+    } else {
+      // Si no llegó a los 100px, vuelve suavemente a su lugar original
+      studyCard.style.transform = "translateY(0)";
+    }
+
+    // Limpiamos las variables
+    startY = 0;
+    currentY = 0;
+  });
+});

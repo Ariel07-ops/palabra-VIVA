@@ -418,7 +418,7 @@ body.light-mode .nav-icon-btn {
   background-color: var(--bg-panel);
   color: var(--text-light);
   border: 1px solid rgba(212, 175, 55, 0.2);
-  border-radius: 12px;
+  border-radius: 10px;
 }
 
 body.light-mode .app-container,
@@ -526,34 +526,6 @@ body.light-mode #contenido-peldaño {
   font-size: 0.9rem;
 }
 
-/* ==========================================
-   7. PANEL INFERIOR Y ESTUDIO (ABANICO)
-   ========================================== */
-#study-card {
-  display: none !important;
-}
-
-#screen-lectura.active ~ #study-card,
-#screen-lectura.active #study-card,
-body:has(#screen-lectura.active) #study-card {
-  display: block !important;
-  position: fixed !important;
-  bottom: -15px !important;
-  left: 0 !important;
-  width: 100% !important;
-  height: 50vh !important;
-  z-index: 100 !important;
-  background-color: var(--bg-panel);
-  border-top: 4px solid var(--gold);
-  border-radius: 15px 15px 0 0;
-  padding: 6px;
-  box-sizing: border-box;
-  transition: transform 0.4s ease-out;
-}
-
-#study-card.hidden {
-  transform: translateY(calc(100% - 35px)) !important;
-}
 /* Animación suave de pulso y brillo para la barrita de cierre */
 @keyframes pulsoBrillo {
   0% {
@@ -579,8 +551,8 @@ body:has(#screen-lectura.active) #study-card {
 }
 /* Cuando el panel está cerrado (oculto), lo bajamos casi por completo 
    dejando asomar únicamente la barrita dorada */
-#study-card.hidden {
-  transform: translateY(calc(100% - 25px)) !important;
+#study-card-.study-card-panel {
+  transform: translateY(calc(100% - 35px)) !important;
   /* O si usas bottom: */
   /* bottom: -350px; (dejando solo los píxeles de la barrita visibles) */
 }
@@ -616,16 +588,16 @@ body:has(#screen-lectura.active) #study-card {
 }
 
 .col-1 {
-  border-top: 6px solid #800080 !important;
+  border-top: 7px solid #800080 !important;
 }
 .col-2 {
-  border-top: 6px solid #b8860b !important;
+  border-top: 7px solid #b8860b !important;
 }
 .col-3 {
-  border-top: 6px solid #e6d7b2 !important;
+  border-top: 7px solid #e6d7b2 !important;
 }
 .col-4 {
-  border-top: px solid #e34234 !important;
+  border-top: 7px solid #e34234 !important;
 }
 
 body.light-mode .col-3 {
@@ -1145,9 +1117,9 @@ body.light-mode #screen-sugerir a:hover {
 /* El versículo seleccionado se tiñe con un toque doradito elegante */
 .linea-versiculo.activa {
   background-color: rgba(
-    212,
-    175,
-    55,
+    253,
+    228,
+    144,
     0.18
   ); /* Subimos de 0.08 a 0.18 para que gane cuerpo en modo claro */
   border-left: 3px solid var(--gold); /* Una barrita dorada a la izquierda para enmarcarlo */
@@ -2039,7 +2011,7 @@ body.light-mode .nav-icon-btn {
 #contenido-peldaño {
   background-color: var(--bg-panel);
   color: var(--text-light);
-  border: 1px solid rgba(212, 175, 55, 0.2);
+  border: 1px solid rgba(238, 200, 33, 0.911);
   border-radius: 12px;
 }
 
@@ -2090,7 +2062,7 @@ body.light-mode #contenido-peldaño {
 .btn-back:hover,
 .btn-back-path:hover,
 .btn-volver:hover {
-  background: rgba(212, 175, 55, 0.2);
+  background: rgba(221, 186, 71, 0.2);
   border-color: var(--gold);
   color: var(--gold);
 }
@@ -2160,7 +2132,7 @@ body.light-mode #contenido-peldaño {
 body:has(#screen-lectura.active) #study-card {
   display: block !important;
   position: fixed !important;
-  bottom: -15px !important;
+  bottom: -23px !important;
   left: 0 !important;
   width: 100% !important;
   height: 50vh !important;
@@ -2233,7 +2205,7 @@ body:has(#screen-lectura.active) #study-card {
 .fan-column {
   padding: 15px;
   border-radius: 10px;
-  background-color: rgba(255, 255, 255, 0.03);
+  background-color: rgba(243, 225, 225, 0.03);
   overflow-y: auto;
 }
 
