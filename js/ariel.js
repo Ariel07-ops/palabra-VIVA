@@ -1486,3 +1486,28 @@ document.addEventListener("DOMContentLoaded", () => {
     currentY = 0;
   });
 });
+// Al iniciar la aplicación o cargar la página principal: VARIABLES GLOBALES
+window.addEventListener("DOMContentLoaded", () => {
+  // Registramos el estado inicial del main si no existe
+  history.replaceState({ vista: "main" }, "", "");
+}); // Manejador global del botón "atrás" del celular para toda la app
+window.addEventListener("popstate", (event) => {
+  // Si hay un estado guardado o queremos forzar el regreso al main:
+  const studyCard = document.getElementById("study-card");
+
+  // 1. Si el panel de estudio está abierto, lo cerramos primero
+  if (studyCard && studyCard.classList.contains("expanded")) {
+    studyCard.classList.remove("expanded");
+    studyCard.style.transform = "";
+
+    // Mantenemos el estado en el historial para que la próxima vez vaya al main
+    history.pushState({ vista: "main" }, "", "");
+    return;
+  }
+
+  // 2. Si estás en otra vista interna, acá podés forzar la función que te lleva al main
+  // por ejemplo: irAlMain();
+
+  // Y volvemos a asegurar que el historial quede posicionado en el main
+  history.replaceState({ vista: "main" }, "", "");
+});

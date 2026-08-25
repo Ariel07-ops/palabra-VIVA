@@ -3573,3 +3573,6 @@ body {
 .mic-oculto {
   display: none;
 }
+body {
+  overscroll-behavior-y: contain; /* Evita el rebote y la recarga al estirar la página hacia abajo */
+}
