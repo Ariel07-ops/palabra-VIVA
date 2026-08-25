@@ -1386,21 +1386,31 @@ async function procesarMensaje(texto, contenedorMensajes) {
   }
 }
 
-// 5. Esperamos a que cargue todo el HTML para conectar los botones sin errores 🛡️
+// ==========================================
+// PALABRA VIVA - NÚCLEO JAVASCRIPT PRINCIPAL
+// ==========================================
+
+// Variables de estado global
+
+let esperandoConfirmacionMic = false;
+
 document.addEventListener("DOMContentLoaded", () => {
+  // --- 1. CHAT Y ASISTENTE ---
   const inputChat = document.getElementById("chat-input");
   const btnEnviar = document.getElementById("chat-btn-enviar");
   const contenedorMensajes = document.getElementById("chat-mensajes");
 
-  // Verificación inicial del nombre al cargar el asistente 🔍
+  // Verificación inicial del nombre al cargar
   const nombreGuardado = localStorage.getItem("nombrePalabraViva");
-  if (nombreGuardado) {
-    contenedorMensajes.innerHTML += `<p><strong>Asistente:</strong> ¡Bienvenido de nuevo por acá, ${nombreGuardado}! ¿En qué te puedo ayudar hoy? 🌟</p>`;
-  } else {
-    contenedorMensajes.innerHTML += `<p><strong>Asistente:</strong> ¡Hola! Bienvenido, soy tu asistente de Palabra Viva. Decime cómo te llamás, por favor 📱.</p>`;
-    esperandoNombre = true; // Activamos la bandera para que el primer mensaje sea guardado como nombre
+  if (contenedorMensajes) {
+    if (nombreGuardado) {
+      contenedorMensajes.innerHTML += `<p><strong>Asistente:</strong> ¡Bienvenido de nuevo por acá, ${nombreGuardado}! ¿En qué te puedo ayudar hoy? 🌟</p>`;
+    } else {
+      contenedorMensajes.innerHTML += `<p><strong>Asistente:</strong> ¡Hola! Bienvenido, soy tu asistente de Palabra Viva. Decime cómo te llamás, por favor 📱.</p>`;
+      esperandoNombre = true;
+    }
+    contenedorMensajes.scrollTop = contenedorMensajes.scrollHeight;
   }
-  contenedorMensajes.scrollTop = contenedorMensajes.scrollHeight;
 
   btnEnviar?.addEventListener("click", async () => {
     const textoUsuario = inputChat.value.trim();
@@ -1410,10 +1420,14 @@ document.addEventListener("DOMContentLoaded", () => {
       inputChat.value = "";
       contenedorMensajes.scrollTop = contenedorMensajes.scrollHeight;
 
-      const respuestaAsistente = await procesarMensaje(
-        textoUsuario,
-        contenedorMensajes,
-      );
+      // Si tenemos la función procesarMensaje definida en otro lado, la llamamos
+      let respuestaAsistente = "Entendido.";
+      if (typeof procesarMensaje === "function") {
+        respuestaAsistente = await procesarMensaje(
+          textoUsuario,
+          contenedorMensajes,
+        );
+      }
 
       contenedorMensajes.innerHTML += `<p><strong>Asistente:</strong> ${respuestaAsistente}</p>`;
       contenedorMensajes.scrollTop = contenedorMensajes.scrollHeight;
@@ -1422,133 +1436,181 @@ document.addEventListener("DOMContentLoaded", () => {
 
   inputChat?.addEventListener("keypress", (e) => {
     if (e.key === "Enter") {
-      btnEnviar.click();
+      btnEnviar?.click();
     }
   });
-});
-let esperandoConfirmacionMic = false;
 
-btnMic.addEventListener("click", () => {
-  const micAdvertencia = document.getElementById("micAdvertencia");
+  // --- FUNCIÓN PARA ABRIR EL ASISTENTE DE APOYO Y ACTIVAR SU VOZ ---
+  function abrirPantallaAsistente() {
+    // 1. Acá va la lógica que ya tenés para mostrar la pantalla del chat (ej: agregar clase 'active')
+    const screenAsistente = document.getElementById("screen-asistente");
+    if (screenAsistente) {
+      screenAsistente.classList.add("active"); // o la clase que uses para mostrarlo
+    }
 
-  if (!esperandoConfirmacionMic) {
-    // Primer clic: Muestra la advertencia
-    micAdvertencia.classList.remove("mic-oculto");
-    esperandoConfirmacionMic = true;
-  } else {
-    // Segundo clic: Oculta la advertencia y activa la voz
-    micAdvertencia.classList.add("mic-oculto");
-    esperandoConfirmacionMic = false; // Reseteamos por si quiere volver a usarlo después
-
-    const reconocimiento = new (
-      window.SpeechRecognition || window.webkitSpeechRecognition
-    )();
-    reconocimiento.lang = "es-AR"; // Idioma español
-    reconocimiento.start();
-
-    reconocimiento.onresult = (evento) => {
-      const textoCapturado = evento.results[0][0].transcript;
-      console.log("Lo que dijiste fue: " + textoCapturado);
-
-      // Si querés que se escriba solo en el input del chat:
-      const inputChat = document.getElementById("chat-input");
-      if (inputChat) {
-        inputChat.value = textoCapturado;
-      }
-    };
-  }
-});
-// --- GESTO SWIPE-DOWN PARA CERRAR EL PANEL DE ESTUDIO ---
-document.addEventListener("DOMContentLoaded", () => {
-  const studyCard = document.getElementById("study-card"); // Asegurate que este sea el ID de tu panel
-  if (!studyCard) return;
-
-  let startY = 0;
-  let currentY = 0;
-  let isDragging = false;
-  if (typeof window.restaurarLecturaNormal === "function") {
-    window.restaurarLecturaNormal();
+    // 2. Disparamos el saludo hablado EXCLUSIVAMENTE cuando entra acá
+    const mensajeBienvenida = "¡Hola! Bienvenido, soy tu asistente de apoyo.";
+    hacerHablarAlRobot(mensajeBienvenida);
   }
 
-  // 1. Cuando el usuario toca la pantalla sobre el panel
-  studyCard.addEventListener(
-    "touchstart",
-    (e) => {
-      // Opcional: podés validar que toque la manija (.panel-handle) o el header del panel
-      startY = e.touches[0].clientY;
-      isDragging = true;
-      studyCard.style.transition = "none"; // Sacamos la transición para que siga el dedo al instante
-    },
-    { passive: true },
-  );
+  // --- 2. CONTROL DEL MICRÓFONO (Limpio, sin cartelitos y con feedback visual) ---
+  const btnMic = document.getElementById("btnMic");
 
-  // 2. Mientras el usuario desliza el dedo hacia abajo
-  studyCard.addEventListener(
-    "touchmove",
-    (e) => {
-      if (!isDragging) return;
-      currentY = e.touches[0].clientY;
-      let diffY = currentY - startY;
+  btnMic?.addEventListener("click", () => {
+    const SpeechRecognition =
+      window.SpeechRecognition || window.webkitSpeechRecognition;
 
-      // Solo permitimos arrastrar hacia abajo (valores positivos)
-      if (diffY > 0) {
-        studyCard.style.transform = `translateY(${diffY}px)`;
-      }
-    },
-    { passive: true },
-  );
+    if (SpeechRecognition) {
+      const reconocimiento = new SpeechRecognition();
+      reconocimiento.lang = "es-AR";
 
-  // 3. Cuando el usuario levanta el dedo
-  studyCard.addEventListener("touchend", (e) => {
-    if (!isDragging) return;
-    isDragging = false;
+      reconocimiento.onstart = () => {
+        // Se enciende el indicador visual (le añade la clase para que titile o cambie de color)
+        btnMic.classList.add("mic-escuchando");
+      };
 
-    let diffY = currentY - startY;
+      reconocimiento.onresult = (evento) => {
+        const textoCapturado = evento.results[0][0].transcript;
+        if (inputChat) {
+          inputChat.value = textoCapturado;
+          if (inputChat) {
+            inputChat.value = textoCapturado;
+            // ¡Mandalo a hablar de una!
+            hacerHablarAlRobot("Entendido: " + textoCapturado);
+          }
+        }
+      };
 
-    // Volvemos a activar la transición suave para el rebote o cierre
-    studyCard.style.transition = "transform 0.3s ease";
+      reconocimiento.onend = () => {
+        // Se apaga el indicador cuando el reconocimiento corta solo
+        btnMic.classList.remove("mic-escuchando");
+      };
 
-    // Si lo bajó más de 100 píxeles, interpretamos que quiso cerrarlo
-    if (diffY > 100) {
-      // Acá llamás a tu función existente para cerrar el panel (o le aplicás la clase que lo oculta)
-      // Por ejemplo, si usas una clase para ocultarlo:
-      studyCard.classList.remove("expanded"); // O la clase que uses para abrirlo
-      studyCard.style.transform = "translateY(100%)"; // O lo mandás abajo del todo
+      reconocimiento.onerror = () => {
+        btnMic.classList.remove("mic-escuchando");
+      };
 
-      // O si tenés una función específica, la ejecutas acá.
-      // cerrarPanelEstudio();
+      // Arranca la escucha de inmediato al hacer clic
+      reconocimiento.start();
     } else {
-      // Si no llegó a los 100px, vuelve suavemente a su lugar original
-      studyCard.style.transform = "translateY(0)";
+      console.log(
+        "El reconocimiento de voz no está soportado en este navegador.",
+      );
+    }
+  });
+
+  // --- 3. FUNCIÓN DE SÍNTESIS DE VOZ (Texto a Voz) ---
+  function hacerHablarAlRobot(texto) {
+    if ("speechSynthesis" in window) {
+      window.speechSynthesis.cancel(); // Corta cualquier audio anterior
+
+      const utterance = new SpeechSynthesisUtterance(texto);
+      utterance.lang = "es-AR";
+      utterance.rate = 1.0;
+      utterance.pitch = 1.0;
+
+      window.speechSynthesis.speak(utterance);
+    } else {
+      console.log("Este navegador no soporta síntesis de voz.");
+    }
+  }
+
+  // --- 3. GESTO SWIPE-DOWN PARA CERRAR EL PANEL DE ESTUDIO ---
+  const studyCard = document.getElementById("study-card");
+  if (studyCard) {
+    let startY = 0;
+    let currentY = 0;
+    let isDragging = false;
+
+    if (typeof window.restaurarLecturaNormal === "function") {
+      window.restaurarLecturaNormal();
     }
 
-    // Limpiamos las variables
-    startY = 0;
-    currentY = 0;
-  });
-});
-// Al iniciar la aplicación o cargar la página principal: VARIABLES GLOBALES
-window.addEventListener("DOMContentLoaded", () => {
-  // Registramos el estado inicial del main si no existe
+    studyCard.addEventListener(
+      "touchstart",
+      (e) => {
+        startY = e.touches[0].clientY;
+        isDragging = true;
+        studyCard.style.transition = "none";
+      },
+      { passive: true },
+    );
+
+    studyCard.addEventListener(
+      "touchmove",
+      (e) => {
+        if (!isDragging) return;
+        currentY = e.touches[0].clientY;
+        let diffY = currentY - startY;
+
+        if (diffY > 0) {
+          studyCard.style.transform = `translateY(${diffY}px)`;
+        }
+      },
+      { passive: true },
+    );
+
+    studyCard.addEventListener("touchend", () => {
+      if (!isDragging) return;
+      isDragging = false;
+
+      let diffY = currentY - startY;
+      studyCard.style.transition = "transform 0.3s ease";
+
+      if (diffY > 100) {
+        studyCard.classList.remove("expanded");
+        studyCard.style.transform = "translateY(100%)";
+      } else {
+        studyCard.style.transform = "translateY(0)";
+      }
+
+      startY = 0;
+      currentY = 0;
+    });
+  }
+
+  // --- 4. HISTORIAL INICIAL PARA LA APP ---
   history.replaceState({ vista: "main" }, "", "");
-}); // Manejador global del botón "atrás" del celular para toda la app
-window.addEventListener("popstate", (event) => {
-  // Si hay un estado guardado o queremos forzar el regreso al main:
+});
+
+// --- 5. MANEJADOR GLOBAL DEL BOTÓN "ATRÁS" ---
+window.addEventListener("popstate", () => {
   const studyCard = document.getElementById("study-card");
 
-  // 1. Si el panel de estudio está abierto, lo cerramos primero
   if (studyCard && studyCard.classList.contains("expanded")) {
     studyCard.classList.remove("expanded");
     studyCard.style.transform = "";
-
-    // Mantenemos el estado en el historial para que la próxima vez vaya al main
     history.pushState({ vista: "main" }, "", "");
     return;
   }
 
-  // 2. Si estás en otra vista interna, acá podés forzar la función que te lleva al main
-  // por ejemplo: irAlMain();
-
-  // Y volvemos a asegurar que el historial quede posicionado en el main
   history.replaceState({ vista: "main" }, "", "");
 });
+function hacerHablarAlRobot(texto) {
+  // Nos aseguramos de que el navegador soporte la síntesis de voz
+  if ("speechSynthesis" in window) {
+    // Cancelamos cualquier audio anterior para que no se pisapuenten
+    window.speechSynthesis.cancel();
+
+    const utterance = new SpeechSynthesisUtterance(texto);
+
+    // Configuramos el idioma en español (podés cambiar la 'es-AR' si querés tono local)
+    utterance.lang = "es-AR";
+    utterance.rate = 1.0; // Velocidad normal (de 0.1 a 10)
+    utterance.pitch = 1.0; // Tono (de 0 a 2)
+
+    // (Opcional) Si querés sincronizar visualmente el momento en que habla:
+    utterance.onstart = () => {
+      console.log("El robot comenzó a hablar...");
+    };
+
+    utterance.onend = () => {
+      console.log("El robot terminó de hablar.");
+    };
+
+    // Disparamos la voz
+    window.speechSynthesis.speak(utterance);
+  } else {
+    console.log("Este navegador no soporta síntesis de voz.");
+  }
+}
