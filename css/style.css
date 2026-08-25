@@ -1081,28 +1081,20 @@ body.light-mode #screen-sugerir a:hover {
   opacity: 1;
   border-left-color: gold;
 }
-.subrayado-filologia {
-  border-bottom: 2px solid #9b59b6;
-} /* Púrpura */
-.subrayado-historico {
-  border-bottom: 2px solid #ecf0f1;
-} /* Plata / Blanco */
-.subrayado-apologetica {
-  border-bottom: 2px solid #e74c3c;
-} /* Rojo */
-.subrayado-sucesion {
-  border-bottom: 2px solid #f1c40f;
-} /* Amarillo */
-
-.subrayado-multicolor {
-  border-bottom: 3px solid;
-  border-image: linear-gradient(to right, #9b59b6, #ecf0f1, #e74c3c, #f1c40f) 1;
-}
-/* Soporte para combinaciones dinámicas de degradados */
+/* Gris plata sutil por defecto para todas */
+.subrayado-filologia,
+.subrayado-historico,
+.subrayado-apologetica,
+.subrayado-sucesion,
+.subrayado-multicolor,
 .subrayado-combinado {
-  border-bottom: 3px solid;
-  border-image: linear-gradient(to right, var(--colores-degradado)) 1;
+  border-bottom: 2px solid #dcdde1 !important;
+  border-image: none !important;
+  transition: all 0.3s ease;
 }
+
+/* Colores originales INJECTADOS X ARIEL JS únicamente cuando el versículo está activo */
+
 /* Cuando la columna está expandida a pantalla completa dentro del abanico */
 .fan-column.expanded-full {
   background-color: #121212 !important; /* Fondo sólido oscuro para que tape lo de atrás */
@@ -1110,10 +1102,17 @@ body.light-mode #screen-sugerir a:hover {
   opacity: 1 !important;
 }
 /* Borramos el efecto de atenuar los demás para que queden normales */
+/* Pero las rayitas de colores de los versículos no seleccionados se apagan */
+.linea-versiculo.atenuada span,
 .linea-versiculo.atenuada {
-  opacity: 1 !important;
+  border-bottom-color: rgba(255, 255, 255, 0.05) !important;
+  border-image: none !important;
 }
-
+.linea-versiculo.atenuada span,
+.linea-versiculo.atenuada {
+  border-bottom-color: #dcdde1 !important;
+  border-image: none !important;
+}
 /* El versículo seleccionado se tiñe con un toque doradito elegante */
 .linea-versiculo.activa {
   background-color: rgba(
@@ -1127,12 +1126,6 @@ body.light-mode #screen-sugerir a:hover {
   transition: all 0.3s ease;
 }
 
-/* Pero las rayitas de colores de los versículos no seleccionados se apagan (se ponen transparentes o grises muy sutiles) */
-.linea-versiculo.atenuada span,
-.linea-versiculo.atenuada {
-  border-bottom-color: rgba(255, 255, 255, 0.05) !important;
-  border-image: none !important;
-}
 /* Estilo para los títulos de las columnas (Raíces, Sucesión, etc.) */
 .column-title {
   font-size: 0.75rem;

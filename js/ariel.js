@@ -859,6 +859,9 @@ if (panelHandle) {
   panelHandle.addEventListener("click", () => {
     if (studyCard) {
       studyCard.classList.add("hidden");
+      if (typeof window.restaurarLecturaNormal === "function") {
+        window.restaurarLecturaNormal();
+      }
     }
   });
 }
@@ -882,7 +885,6 @@ fanColumns.forEach((col) => {
     });
   }
 });
-
 async function aplicarSubrayadosCapitulo(nombreLibro, numeroCapitulo) {
   try {
     let respuesta = await fetch("data/contenido.json");
@@ -907,6 +909,44 @@ async function aplicarSubrayadosCapitulo(nombreLibro, numeroCapitulo) {
       sucesion: "#f1c40f",
     };
 
+    // Función auxiliar para restaurar todo a su estado normal (ideal para cuando cierran la cajita)
+    window.restaurarLecturaNormal = function () {
+      document.querySelectorAll("[data-versiculo]").forEach((el) => {
+        if (el.style.borderBottom && el.style.borderBottom !== "none") {
+          // Vuelve a la línea fina sutil original
+          el.style.borderBottom = "1px solid rgba(150, 150, 150, 0.3)";
+        }
+        // EL TEXTO NUNCA SE APAGA: Mantenemos la opacidad siempre al 100%
+        el.style.opacity = "1";
+        el.style.backgroundColor = "transparent";
+        el.style.padding = "0px";
+      });
+
+      // Ocultamos la cajita de estudio
+      const studyCard = document.getElementById("study-card");
+      if (studyCard) {
+        studyCard.classList.add("hidden");
+      }
+
+      // Limpiamos las columnas del panel lateral
+      const fanColumns = document.querySelectorAll(".fan-column");
+      fanColumns.forEach((col) => {
+        col.classList.remove("expanded-full");
+        col.classList.remove("has-content");
+        let textoExt = col.querySelector(".extended-text");
+        if (textoExt) textoExt.innerHTML = "";
+      });
+    };
+
+    // Limpieza inicial al cambiar de capítulo
+    document.querySelectorAll("[data-versiculo]").forEach((el) => {
+      el.style.borderBottom = "none";
+      el.style.opacity = "1";
+      el.style.cursor = "default";
+      el.title = "";
+      el.onclick = null;
+    });
+
     for (let numVersiculo in capituloData.versiculos) {
       let v = capituloData.versiculos[numVersiculo];
       let elementoVersiculo = document.querySelector(
@@ -914,38 +954,36 @@ async function aplicarSubrayadosCapitulo(nombreLibro, numeroCapitulo) {
       );
 
       if (elementoVersiculo) {
-        elementoVersiculo.className = "";
-        elementoVersiculo.style.borderBottom = "";
-        elementoVersiculo.style.borderImage = "";
-
         let cats = v.categorias;
         let activas = Object.keys(cats).filter((key) => cats[key] === true);
 
-        if (activas.length === 1) {
-          elementoVersiculo.classList.add(`subrayado-${activas[0]}`);
-        } else if (activas.length > 1) {
-          let coloresActivos = activas
-            .map((cat) => mapaColoresHex[cat])
-            .join(", ");
-          elementoVersiculo.style.borderBottom = "3px solid";
-          elementoVersiculo.style.borderImage = `linear-gradient(to right, ${coloresActivos}) 1`;
-        }
-
         if (activas.length > 0) {
+          elementoVersiculo.style.borderBottom =
+            "1px solid rgba(150, 150, 150, 0.3)";
           elementoVersiculo.style.cursor = "pointer";
           elementoVersiculo.title =
             "Tocá para ver el estudio de este versículo";
 
+          let colorPrincipal = "#d4af37";
+          if (activas.length === 1) {
+            colorPrincipal = mapaColoresHex[activas[0]] || "#d4af37";
+          }
+
+          // Evento al hacer clic en el versículo
           elementoVersiculo.onclick = () => {
             document.querySelectorAll("[data-versiculo]").forEach((el) => {
+              if (el.style.borderBottom && el.style.borderBottom !== "none") {
+                // Línea más sutil para los no seleccionados, PERO OPACIDAD EN 1 (texto intacto)
+                el.style.borderBottom = "1px solid rgba(150, 150, 150, 0.15)";
+              }
+              el.style.opacity = "1"; // <--- CLAVE: El texto nunca se apaga
               el.style.backgroundColor = "transparent";
               el.style.padding = "0px";
             });
 
-            elementoVersiculo.style.backgroundColor = "rgba(212, 175, 55, 0.1)";
-            elementoVersiculo.style.borderRadius = "6px";
-            elementoVersiculo.style.padding = "4px 8px";
-            elementoVersiculo.style.transition = "all 0.3s ease";
+            // Resaltamos el elegido con línea gruesa
+            elementoVersiculo.style.borderBottom = `3px solid ${colorPrincipal}`;
+            elementoVersiculo.style.opacity = "1";
 
             const studyCard = document.getElementById("study-card");
             if (studyCard) {
@@ -1428,6 +1466,9 @@ document.addEventListener("DOMContentLoaded", () => {
   let startY = 0;
   let currentY = 0;
   let isDragging = false;
+  if (typeof window.restaurarLecturaNormal === "function") {
+    window.restaurarLecturaNormal();
+  }
 
   // 1. Cuando el usuario toca la pantalla sobre el panel
   studyCard.addEventListener(
