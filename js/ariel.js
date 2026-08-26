@@ -914,7 +914,7 @@ async function aplicarSubrayadosCapitulo(nombreLibro, numeroCapitulo) {
       document.querySelectorAll("[data-versiculo]").forEach((el) => {
         if (el.style.borderBottom && el.style.borderBottom !== "none") {
           // Vuelve a la línea fina sutil original
-          el.style.borderBottom = "1px solid rgba(150, 150, 150, 0.3)";
+          el.style.borderBottom = "3px solid rgba(150, 150, 150, 0.3)";
         }
         // EL TEXTO NUNCA SE APAGA: Mantenemos la opacidad siempre al 100%
         el.style.opacity = "1";
