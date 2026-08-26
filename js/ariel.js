@@ -853,19 +853,67 @@ function ejecutarLecturaVoz() {
 }
 
 // --- INTERACTIVIDAD DEL PANEL INFERIOR ---
+
 const fanColumns = document.querySelectorAll(".fan-column");
 
-if (panelHandle) {
-  panelHandle.addEventListener("click", () => {
-    if (studyCard) {
+// --- 1. GESTO DE DESLIZAMIENTO (SWIPE-DOWN) EN EL PANEL HANDLE ---
+
+if (panelHandle && studyCard) {
+  let startY = 0;
+  let currentY = 0;
+  let isDragging = false;
+
+  panelHandle.addEventListener("pointerdown", (e) => {
+    // Si hacen clic en una caja interna o botón, no queremos activar el drag del panel
+    if (e.target.closest(".fan-column") || e.target.closest("button")) return;
+
+    startY = e.clientY;
+    currentY = 0;
+    isDragging = true;
+    studyCard.style.transition = "none";
+  });
+
+  panelHandle.addEventListener("pointermove", (e) => {
+    if (!isDragging) return;
+    currentY = e.clientY;
+    let diffY = currentY - startY;
+
+    // Si arrastra hacia abajo, movemos la tarjeta en tiempo real
+    if (diffY > 0) {
+      studyCard.style.transform = `translateY(${diffY}px)`;
+    }
+  });
+
+  panelHandle.addEventListener("pointerup", () => {
+    if (!isDragging) return;
+    isDragging = false;
+
+    if (currentY === 0) {
+      studyCard.style.transition = "transform 0.2s ease";
+      studyCard.style.transform = "";
+      return;
+    }
+
+    let diffY = currentY - startY;
+
+    // Umbral de deslizamiento (más de 80px hacia abajo cierra el panel)
+    if (diffY > 80) {
       studyCard.classList.add("hidden");
       if (typeof window.restaurarLecturaNormal === "function") {
         window.restaurarLecturaNormal();
       }
+      studyCard.style.transform = "";
+    } else {
+      // Si no llegó al umbral, vuelve suavemente a su lugar
+      studyCard.style.transition = "transform 0.2s ease";
+      studyCard.style.transform = "";
     }
+
+    currentY = 0;
   });
 }
 
+// --- 2. INTERACTIVIDAD DE LAS COLUMNAS Y BOTONES DE CIERRE ---
 fanColumns.forEach((col) => {
   col.addEventListener("click", (e) => {
     if (!col.classList.contains("has-content")) {
@@ -885,6 +933,7 @@ fanColumns.forEach((col) => {
     });
   }
 });
+
 async function aplicarSubrayadosCapitulo(nombreLibro, numeroCapitulo) {
   try {
     let respuesta = await fetch("data/contenido.json");
