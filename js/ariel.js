@@ -1516,7 +1516,6 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   // --- 3. GESTO SWIPE-DOWN PARA CERRAR EL PANEL DE ESTUDIO ---
-  // --- 3. GESTO SWIPE-DOWN PARA CERRAR EL PANEL DE ESTUDIO ---
   const studyCard = document.getElementById("study-card");
   if (studyCard) {
     let startY = 0;
@@ -1540,7 +1539,6 @@ document.addEventListener("DOMContentLoaded", () => {
         currentY = e.touches[0].clientY;
         let diffY = currentY - startY;
 
-        // Si arrastra hacia abajo, podemos desplazar la cajita en tiempo real
         if (diffY > 0) {
           studyCard.style.transform = `translateY(${diffY}px)`;
         }
@@ -1551,21 +1549,19 @@ document.addEventListener("DOMContentLoaded", () => {
     studyCard.addEventListener("touchend", () => {
       if (!isDragging) return;
       isDragging = false;
-      let diffY = currentY - startY;
 
-      // Umbral de deslizamiento (ej: más de 80px hacia abajo)
-      if (diffY > 80) {
-        // ¡ACÁ SÍ! Ejecutamos la limpieza cuando se completa el swipe
-        if (typeof window.restaurarLecturaNormal === "function") {
-          window.restaurarLecturaNormal();
-        }
-        // Reseteamos el transform para la próxima vez que se abra
-        studyCard.style.transform = "";
+      let diffY = currentY - startY;
+      studyCard.style.transition = "transform 0.3s ease";
+
+      if (diffY > 100) {
+        studyCard.classList.remove("expanded");
+        studyCard.style.transform = "translateY(100%)";
       } else {
-        // Si no llegó al umbral, vuelve a su posición normal
-        studyCard.style.transition = "transform 0.2s ease";
-        studyCard.style.transform = "";
+        studyCard.style.transform = "translateY(0)";
       }
+
+      startY = 0;
+      currentY = 0;
     });
   }
 
