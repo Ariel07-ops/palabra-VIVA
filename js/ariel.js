@@ -959,7 +959,7 @@ async function aplicarSubrayadosCapitulo(nombreLibro, numeroCapitulo) {
 
         if (activas.length > 0) {
           elementoVersiculo.style.borderBottom =
-            "1px solid rgba(150, 150, 150, 0.3)";
+            "3px solid rgba(184, 139, 139, 0.3)";
           elementoVersiculo.style.cursor = "pointer";
           elementoVersiculo.title =
             "Tocá para ver el estudio de este versículo";
@@ -1516,55 +1516,63 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   // --- 3. GESTO SWIPE-DOWN PARA CERRAR EL PANEL DE ESTUDIO ---
+  // --- 3. GESTO SWIPE-DOWN PARA CERRAR EL PANEL DE ESTUDIO ---
   const studyCard = document.getElementById("study-card");
   if (studyCard) {
     let startY = 0;
     let currentY = 0;
     let isDragging = false;
 
-    if (typeof window.restaurarLecturaNormal === "function") {
-      window.restaurarLecturaNormal();
-    }
+    studyCard.addEventListener("pointerdown", (e) => {
+      startY = e.clientY;
+      currentY = 0;
+      isDragging = true;
+      studyCard.style.transition = "none";
+      // Esto captura el puntero para que no se pierda si salís de la cajita arrastrando
+      studyCard.setPointerCapture(e.pointerId);
+    });
 
-    studyCard.addEventListener(
-      "touchstart",
-      (e) => {
-        startY = e.touches[0].clientY;
-        isDragging = true;
-        studyCard.style.transition = "none";
-      },
-      { passive: true },
-    );
+    studyCard.addEventListener("pointermove", (e) => {
+      if (!isDragging) return;
+      currentY = e.clientY;
+      let diffY = currentY - startY;
 
-    studyCard.addEventListener(
-      "touchmove",
-      (e) => {
-        if (!isDragging) return;
-        currentY = e.touches[0].clientY;
-        let diffY = currentY - startY;
+      // Si arrastra hacia abajo, desplazamos la cajita
+      if (diffY > 0) {
+        studyCard.style.transform = `translateY(${diffY}px)`;
+      }
+    });
 
-        if (diffY > 0) {
-          studyCard.style.transform = `translateY(${diffY}px)`;
-        }
-      },
-      { passive: true },
-    );
-
-    studyCard.addEventListener("touchend", () => {
+    studyCard.addEventListener("pointerup", (e) => {
       if (!isDragging) return;
       isDragging = false;
 
-      let diffY = currentY - startY;
-      studyCard.style.transition = "transform 0.3s ease";
+      // Liberamos el puntero
+      try {
+        studyCard.releasePointerCapture(e.pointerId);
+      } catch (err) {}
 
-      if (diffY > 100) {
-        studyCard.classList.remove("expanded");
-        studyCard.style.transform = "translateY(100%)";
-      } else {
-        studyCard.style.transform = "translateY(0)";
+      // Si no hubo movimiento real, fue un simple click/tap
+      if (currentY === 0) {
+        studyCard.style.transition = "transform 0.2s ease";
+        studyCard.style.transform = "";
+        return;
       }
 
-      startY = 0;
+      let diffY = currentY - startY;
+
+      // Umbral de deslizamiento (más de 80px hacia abajo)
+      if (diffY > 80) {
+        if (typeof window.restaurarLecturaNormal === "function") {
+          window.restaurarLecturaNormal();
+        }
+        studyCard.style.transform = "";
+      } else {
+        // Vuelve a su posición normal si no llegó al umbral
+        studyCard.style.transition = "transform 0.2s ease";
+        studyCard.style.transform = "";
+      }
+
       currentY = 0;
     });
   }
