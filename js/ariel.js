@@ -857,6 +857,23 @@ function ejecutarLecturaVoz() {
 const fanColumns = document.querySelectorAll(".fan-column");
 
 // --- 1. GESTO DE DESLIZAMIENTO (SWIPE-DOWN) EN EL PANEL HANDLE ---
+// --- 1. GESTO DE DESLIZAMIENTO Y RESETEO LIMPIO ---
+
+// Función auxiliar para limpiar y dejar todo listo para la próxima apertura
+function cerrarPanelPorCompleto() {
+  if (!studyCard) return;
+
+  // Ocultamos la tarjeta
+  studyCard.classList.add("hidden");
+  studyCard.style.transform = "";
+
+  // Reseteamos todas las columnas expandidas para que no queden "trabas" en memoria
+  fanColumns.forEach((c) => c.classList.remove("expanded-full"));
+
+  if (typeof window.restaurarLecturaNormal === "function") {
+    window.restaurarLecturaNormal();
+  }
+}
 
 if (panelHandle && studyCard) {
   let startY = 0;
@@ -864,7 +881,6 @@ if (panelHandle && studyCard) {
   let isDragging = false;
 
   panelHandle.addEventListener("pointerdown", (e) => {
-    // Si hacen clic en una caja interna o botón, no queremos activar el drag del panel
     if (e.target.closest(".fan-column") || e.target.closest("button")) return;
 
     startY = e.clientY;
@@ -875,10 +891,11 @@ if (panelHandle && studyCard) {
 
   panelHandle.addEventListener("pointermove", (e) => {
     if (!isDragging) return;
+    e.preventDefault();
+
     currentY = e.clientY;
     let diffY = currentY - startY;
 
-    // Si arrastra hacia abajo, movemos la tarjeta en tiempo real
     if (diffY > 0) {
       studyCard.style.transform = `translateY(${diffY}px)`;
     }
@@ -896,15 +913,16 @@ if (panelHandle && studyCard) {
 
     let diffY = currentY - startY;
 
-    // Umbral de deslizamiento (más de 80px hacia abajo cierra el panel)
+    // Si supera los 80px hacia abajo, ejecutamos el cierre total y reseteo
     if (diffY > 80) {
-      studyCard.classList.add("hidden");
-      if (typeof window.restaurarLecturaNormal === "function") {
-        window.restaurarLecturaNormal();
-      }
-      studyCard.style.transform = "";
+      studyCard.style.transition = "transform 0.15s ease-in";
+      studyCard.style.transform = `translateY(100%)`;
+
+      setTimeout(() => {
+        cerrarPanelPorCompleto();
+      }, 150);
     } else {
-      // Si no llegó al umbral, vuelve suavemente a su lugar
+      // Vuelve a su lugar si no llegó al umbral
       studyCard.style.transition = "transform 0.2s ease";
       studyCard.style.transform = "";
     }
@@ -913,6 +931,31 @@ if (panelHandle && studyCard) {
   });
 }
 
+// --- 2. INTERACTIVIDAD DE LAS COLUMNAS Y ACORDEÓN ---
+fanColumns.forEach((col) => {
+  col.addEventListener("click", (e) => {
+    if (!col.classList.contains("has-content")) {
+      return;
+    }
+    if (e.target.classList.contains("btn-close-extended")) return;
+
+    // Alterna o expande la columna limpia
+    const yaEstabaAbierta = col.classList.contains("expanded-full");
+    fanColumns.forEach((c) => c.classList.remove("expanded-full"));
+
+    if (!yaEstabaAbierta) {
+      col.classList.add("expanded-full");
+    }
+  });
+
+  const btnClose = col.querySelector(".btn-close-extended");
+  if (btnClose) {
+    btnClose.addEventListener("click", (e) => {
+      e.stopPropagation();
+      col.classList.remove("expanded-full");
+    });
+  }
+});
 // --- 2. INTERACTIVIDAD DE LAS COLUMNAS Y BOTONES DE CIERRE ---
 fanColumns.forEach((col) => {
   col.addEventListener("click", (e) => {
@@ -1563,56 +1606,9 @@ document.addEventListener("DOMContentLoaded", () => {
       console.log("Este navegador no soporta síntesis de voz.");
     }
   }
-
-  // --- 3. GESTO SWIPE-DOWN PARA CERRAR EL PANEL DE ESTUDIO ---
+  // Boton cerrar abanico
+  const studyCard = document.getElementById("study-card");
   const panelHandle = document.getElementById("panel-handle");
-  if (panelHandle) {
-    let startY = 0;
-    let currentY = 0;
-    let isDragging = false;
-
-    panelHandle.addEventListener(
-      "touchstart",
-      (e) => {
-        startY = e.touches[0].clientY;
-        isDragging = true;
-        panelHandle.style.transition = "none";
-      },
-      { passive: true },
-    );
-
-    panelHandle.addEventListener(
-      "touchmove",
-      (e) => {
-        if (!isDragging) return;
-        currentY = e.touches[0].clientY;
-        let diffY = currentY - startY;
-
-        if (diffY > 0) {
-          panelHandle.style.transform = `translateY(${diffY}px)`;
-        }
-      },
-      { passive: true },
-    );
-
-    panelHandle.addEventListener("touchend", () => {
-      if (!isDragging) return;
-      isDragging = false;
-
-      let diffY = currentY - startY;
-      panelHandle.style.transition = "transform 0.3s ease";
-
-      if (diffY > 100) {
-        panelHandle.classList.remove("expanded");
-        panelHandle.style.transform = "translateY(100%)";
-      } else {
-        panelHandle.style.transform = "translateY(0)";
-      }
-
-      startY = 0;
-      currentY = 0;
-    });
-  }
 
   // --- 4. HISTORIAL INICIAL PARA LA APP ---
   history.replaceState({ vista: "main" }, "", "");
@@ -1658,4 +1654,21 @@ function hacerHablarAlRobot(texto) {
   } else {
     console.log("Este navegador no soporta síntesis de voz.");
   }
+}
+// --- CERRAR PANEL DE ESTUDIO Y RESTAURAR LECTURA ---
+if (panelHandle && studyCard) {
+  panelHandle.addEventListener("click", () => {
+    // 1. Ejecutamos la función de restauración para limpiar estilos y textos
+    if (typeof window.restaurarLecturaNormal === "function") {
+      window.restaurarLecturaNormal();
+    } else {
+      // Fallback por si la función global no está disponible
+      studyCard.classList.add("hidden");
+    }
+
+    // 2. Restauramos el cursor en las líneas de versículos
+    document.querySelectorAll(".linea-versiculo").forEach((verso) => {
+      verso.style.cursor = "pointer";
+    });
+  });
 }

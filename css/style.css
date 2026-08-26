@@ -543,30 +543,6 @@ body.light-mode #contenido-peldaño {
 }
 
 /* Aplicamos la animación a la barrita dorada existente */
-#study-card .panel-handle {
-  background-color: var(--gold);
-  border-radius: 4px;
-  animation: pulsoBrillo 2.5s infinite ease-in-out;
-  cursor: pointer;
-}
-/* Cuando el panel está cerrado (oculto), lo bajamos casi por completo 
-   dejando asomar únicamente la barrita dorada */
-#study-card-.study-card-panel {
-  transform: translateY(calc(100% - 35px)) !important;
-  /* O si usas bottom: */
-  /* bottom: -350px; (dejando solo los píxeles de la barrita visibles) */
-}
-
-.panel-handle {
-  width: 50px;
-  height: 5px;
-  background-color: var(--gold);
-  border-radius: 3px;
-  margin: 0 auto 15px auto;
-  cursor: pointer;
-  opacity: 0.8;
-  transition: opacity 0.2s;
-}
 
 .panel-handle:hover {
   opacity: 1;
@@ -2160,7 +2136,7 @@ body:has(#screen-lectura.active) #study-card {
 /* Aplicamos la animación a la barrita dorada existente */
 #study-card .panel-handle {
   background-color: var(--gold);
-  border-radius: 4px;
+  border-radius: 8px;
   animation: pulsoBrillo 2.5s infinite ease-in-out;
   cursor: pointer;
 }
@@ -2173,8 +2149,8 @@ body:has(#screen-lectura.active) #study-card {
 }
 
 .panel-handle {
-  width: 50px;
-  height: 5px;
+  width: 200px;
+  height: 7px;
   background-color: var(--gold);
   border-radius: 3px;
   margin: 0 auto 15px auto;
@@ -3594,4 +3570,45 @@ body {
   to {
     opacity: 0.4;
   }
+}
+
+#panel-handle {
+  width: 100%;
+  height: 40px; /* Altura generosa para una zona táctil perfecta */
+  cursor: grab;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: transparent; /* O el color sutil que prefieras para la barra */
+  touch-action: none; /* Evita que el navegador interfiera con gestos táctiles por defecto */
+}
+
+/* La barrita visual decorativa del medio */
+#panel-handle::after {
+  content: "";
+  width: 200px;
+  height: 7px;
+  background-color: rgba(
+    0,
+    0,
+    0,
+    0.2
+  ); /* Un gris sutil o el color que combine con tu diseño */
+  border-radius: 3px;
+}
+
+#panel-handle:active {
+  cursor: grabbing;
+}
+#btn-close-extended {
+  content: "";
+  width: 200px;
+  height: 7px;
+  background-color: rgba(
+    0,
+    0,
+    0,
+    0.2
+  ); /* Un gris sutil o el color que combine con tu diseño */
+  border-radius: 3px;
 }
