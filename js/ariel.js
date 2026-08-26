@@ -1523,57 +1523,49 @@ document.addEventListener("DOMContentLoaded", () => {
     let currentY = 0;
     let isDragging = false;
 
-    studyCard.addEventListener("pointerdown", (e) => {
-      startY = e.clientY;
-      currentY = 0;
-      isDragging = true;
-      studyCard.style.transition = "none";
-      // Esto captura el puntero para que no se pierda si salís de la cajita arrastrando
-      studyCard.setPointerCapture(e.pointerId);
-    });
+    studyCard.addEventListener(
+      "touchstart",
+      (e) => {
+        startY = e.touches[0].clientY;
+        isDragging = true;
+        studyCard.style.transition = "none";
+      },
+      { passive: true },
+    );
 
-    studyCard.addEventListener("pointermove", (e) => {
-      if (!isDragging) return;
-      currentY = e.clientY;
-      let diffY = currentY - startY;
+    studyCard.addEventListener(
+      "touchmove",
+      (e) => {
+        if (!isDragging) return;
+        currentY = e.touches[0].clientY;
+        let diffY = currentY - startY;
 
-      // Si arrastra hacia abajo, desplazamos la cajita
-      if (diffY > 0) {
-        studyCard.style.transform = `translateY(${diffY}px)`;
-      }
-    });
+        // Si arrastra hacia abajo, podemos desplazar la cajita en tiempo real
+        if (diffY > 0) {
+          studyCard.style.transform = `translateY(${diffY}px)`;
+        }
+      },
+      { passive: true },
+    );
 
-    studyCard.addEventListener("pointerup", (e) => {
+    studyCard.addEventListener("touchend", () => {
       if (!isDragging) return;
       isDragging = false;
-
-      // Liberamos el puntero
-      try {
-        studyCard.releasePointerCapture(e.pointerId);
-      } catch (err) {}
-
-      // Si no hubo movimiento real, fue un simple click/tap
-      if (currentY === 0) {
-        studyCard.style.transition = "transform 0.2s ease";
-        studyCard.style.transform = "";
-        return;
-      }
-
       let diffY = currentY - startY;
 
-      // Umbral de deslizamiento (más de 80px hacia abajo)
+      // Umbral de deslizamiento (ej: más de 80px hacia abajo)
       if (diffY > 80) {
+        // ¡ACÁ SÍ! Ejecutamos la limpieza cuando se completa el swipe
         if (typeof window.restaurarLecturaNormal === "function") {
           window.restaurarLecturaNormal();
         }
+        // Reseteamos el transform para la próxima vez que se abra
         studyCard.style.transform = "";
       } else {
-        // Vuelve a su posición normal si no llegó al umbral
+        // Si no llegó al umbral, vuelve a su posición normal
         studyCard.style.transition = "transform 0.2s ease";
         studyCard.style.transform = "";
       }
-
-      currentY = 0;
     });
   }
 
