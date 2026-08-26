@@ -1516,23 +1516,23 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   // --- 3. GESTO SWIPE-DOWN PARA CERRAR EL PANEL DE ESTUDIO ---
-  const studyCard = document.getElementById("study-card");
-  if (studyCard) {
+  const panelHandle = document.getElementById("panel-handle");
+  if (panelHandle) {
     let startY = 0;
     let currentY = 0;
     let isDragging = false;
 
-    studyCard.addEventListener(
+    panelHandle.addEventListener(
       "touchstart",
       (e) => {
         startY = e.touches[0].clientY;
         isDragging = true;
-        studyCard.style.transition = "none";
+        panelHandle.style.transition = "none";
       },
       { passive: true },
     );
 
-    studyCard.addEventListener(
+    panelHandle.addEventListener(
       "touchmove",
       (e) => {
         if (!isDragging) return;
@@ -1540,24 +1540,24 @@ document.addEventListener("DOMContentLoaded", () => {
         let diffY = currentY - startY;
 
         if (diffY > 0) {
-          studyCard.style.transform = `translateY(${diffY}px)`;
+          panelHandle.style.transform = `translateY(${diffY}px)`;
         }
       },
       { passive: true },
     );
 
-    studyCard.addEventListener("touchend", () => {
+    panelHandle.addEventListener("touchend", () => {
       if (!isDragging) return;
       isDragging = false;
 
       let diffY = currentY - startY;
-      studyCard.style.transition = "transform 0.3s ease";
+      panelHandle.style.transition = "transform 0.3s ease";
 
       if (diffY > 100) {
-        studyCard.classList.remove("expanded");
-        studyCard.style.transform = "translateY(100%)";
+        panelHandle.classList.remove("expanded");
+        panelHandle.style.transform = "translateY(100%)";
       } else {
-        studyCard.style.transform = "translateY(0)";
+        panelHandle.style.transform = "translateY(0)";
       }
 
       startY = 0;
