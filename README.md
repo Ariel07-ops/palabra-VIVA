@@ -1,111 +1,37 @@
-Programa palabra viva, no esta permitido modificarlo  ni se usa comercialmente. 
-# Palabra Viva 📖✨
+# Palabra Viva 📖🕊️
 
-> Un chatbot bíblico interactivo, rápido y 100% offline diseñado para buscar versículos, explorar parábolas y consultar las escrituras de forma local utilizando JavaScript puro.
+> Plataforma interactiva de estudio bíblico y acompañamiento espiritual. Un espacio diseñado para profundizar en el conocimiento de las escrituras, explorar las enseñanzas de Jesús y reflexionar en el camino personal, con un asistente conversacional de apoyo 100% offline.
 
-## 🚀 Características Principales
-* **🔍 Búsqueda Local Instantánea:** Filtra versículos y palabras clave directamente desde una base de datos local (`biblia.json`) cargada en la memoria RAM.
-* **🔌 Funcionamiento Totalmente Offline:** Diseñado para operar sin conexiones externas ni llamadas a APIs de terceros, garantizando privacidad y velocidad.
-* **📊 Control Inteligente de Resultados:** Analiza el volumen de coincidencias para evitar saturar la interfaz y ofrecer respuestas claras y ordenadas.
-* **🧭 Enfoque Temático:** Optimizado para guiar a los usuarios a través de las enseñanzas, el contexto histórico y los milagros del Nuevo Testamento.
+---
 
-## 🛠️ Tecnologías Utilizadas
-* [JavaScript (ES6+)](https://developer.mozilla.org/es/docs/Web/JavaScript)
-* [HTML5 / CSS3](https://developer.mozilla.org/es/docs/Web/HTML)
-* [JSON (Estructura de datos bíblicos)](https://www.json.org/)
+## 🌟 Propósito del Proyecto
+**Palabra Viva** no es solo un buscador o un bot de respuestas automatizadas. Es un entorno de aprendizaje y meditación que busca:
+* 🌾 **Facilitar el estudio:** Brindar acceso rápido y contextualizado a pasajes, parábolas y contextos históricos.
+* 🧭 **Acompañar la reflexión:** Servir como guía en momentos de búsqueda personal y espiritual.
+* 🔒 **Garantizar la privacidad:** Funcionar de forma totalmente offline, asegurando un espacio íntimo de consulta sin recolección de datos externos.
 
-## 📋 Requisitos Previos
-Antes de ejecutar el proyecto en tu entorno local, asegúrate de contar con:
-* Un navegador web moderno (Google Chrome, Mozilla Firefox, Microsoft Edge, etc.).
-* Una herramienta de servidor local para evitar restricciones de CORS al cargar archivos JSON locales (como la extensión **Live Server** en Visual Studio Code).
+---
 
-## 🔧 Instalación y Puesta en Marcha
+## 🛠️ Pilares del Sistema
 
-1. Clona el repositorio en tu computadora:
-   ```bash
-   git clone https://github.com/usuario/palabra-viva.git
-   ```
+| Pilar | Descripción |
+| :--- | :--- |
+| 📚 **Base de Datos Bíblica** | Almacenamiento local de textos y pasajes (`data/biblia.json`) para consultas inmediatas. |
+| 🤖 **Asistente de Apoyo Conversacional** | Interfaz inteligente en JavaScript para guiar la lectura y responder inquietudes sobre contexto o conceptos. |
+| 🛡️ **Arquitectura Offline-First** | Funcionalidad completa sin dependencia de internet, APIs de terceros ni consumo de datos de red. |
 
-2. Ingresa al directorio del proyecto:
-   ```bash
-   cd palabra-viva
-   ```
-
-3. Asegúrate de que la estructura de carpetas contenga el archivo de datos locales:
-   ```text
-   palabra-viva/
-   ├── data/
-   │   └── biblia.json
-   ├── index.html
-   └── ariel.js
-   ```
-
-## 💻 Uso
-1. Abre la carpeta del proyecto en tu editor de código (por ejemplo, VS Code).
-2. Inicia un entorno local haciendo clic en **Go Live** (usando Live Server).
-3. Escribe en el chat palabras clave, nombres o conceptos (por ejemplo: *"Jesús"*, *"amor"*, *"fe"*) para realizar búsquedas instantáneas en el texto bíblico.
-
-## 🗺️ Hoja de Ruta (Roadmap)
-- [x] Carga local de `biblia.json` en memoria RAM.
-- [x] Estabilización del código y eliminación de dependencias externas de red.
-- [ ] Integración completa de la lógica de filtrado de versículos en `procesarMensaje`.
-- [ ] Incorporación de categorías temáticas sobre geografía y milagros del Nuevo Testamento.
-
-## 📄 Licencia
-Este proyecto se distribuye bajo la Licencia MIT. Consulta el archivo `LICENSE` para más detalles.
-
-# Palabra Viva 📖✨
-
-> Un chatbot bíblico interactivo, rápido y 100% offline diseñado para buscar versículos, explorar parábolas y consultar las escrituras de forma local utilizando JavaScript puro.
+---
 
 ## 🚀 Características Principales
-* **🔍 Búsqueda Local Instantánea:** Filtra versículos y palabras clave directamente desde una base de datos local (`biblia.json`) cargada en la memoria RAM.
-* **🔌 Funcionamiento Totalmente Offline:** Diseñado para operar sin conexiones externas ni llamadas a APIs de terceros, garantizando privacidad y velocidad.
-* **📊 Control Inteligente de Resultados:** Analiza el volumen de coincidencias para evitar saturar la interfaz y ofrecer respuestas claras y ordenadas.
-* **🧭 Enfoque Temático:** Optimizado para guiar a los usuarios a través de las enseñanzas, el contexto histórico y los milagros del Nuevo Testamento.
+* 🔍 **Búsqueda y Filtrado Inteligente:** Búsqueda por palabras clave, temas o personajes (Jesús, apóstoles, parábolas).
+* 📊 **Control de Contenido:** Respuestas organizadas para evitar la saturación de información y priorizar la claridad.
+* 🗺️ **Enfoque Temático:** Énfasis en la vida, milagros y contexto geográfico/histórico del Nuevo Testamento.
 
-## 🛠️ Tecnologías Utilizadas
-* [JavaScript (ES6+)](https://developer.mozilla.org/es/docs/Web/JavaScript)
-* [HTML5 / CSS3](https://developer.mozilla.org/es/docs/Web/HTML)
-* [JSON (Estructura de datos bíblicos)](https://www.json.org/)
+---
 
-## 📋 Requisitos Previos
-Antes de ejecutar el proyecto en tu entorno local, asegúrate de contar con:
-* Un navegador web moderno (Google Chrome, Mozilla Firefox, Microsoft Edge, etc.).
-* Una herramienta de servidor local para evitar restricciones de CORS al cargar archivos JSON locales (como la extensión **Live Server** en Visual Studio Code).
+## 🔧 Instalación y Uso Local
 
-## 🔧 Instalación y Puesta en Marcha
-
-1. Clona el repositorio en tu computadora:
+1. **Clonar el repositorio:**
    ```bash
-   git clone https://github.com/usuario/palabra-viva.git
-   ```
-
-2. Ingresa al directorio del proyecto:
-   ```bash
+   git clone [https://github.com/usuario/palabra-viva.git](https://github.com/usuario/palabra-viva.git)
    cd palabra-viva
-   ```
-
-3. Asegúrate de que la estructura de carpetas contenga el archivo de datos locales:
-   ```text
-   palabra-viva/
-   ├── data/
-   │   └── biblia.json
-   ├── index.html
-   └── ariel.js
-   ```
-
-## 💻 Uso
-1. Abre la carpeta del proyecto en tu editor de código (por ejemplo, VS Code).
-2. Inicia un entorno local haciendo clic en **Go Live** (usando Live Server).
-3. Escribe en el chat palabras clave, nombres o conceptos (por ejemplo: *"Jesús"*, *"amor"*, *"fe"*) para realizar búsquedas instantáneas en el texto bíblico.
-
-## 🗺️ Hoja de Ruta (Roadmap)
-- [x] Carga local de `biblia.json` en memoria RAM.
-- [x] Estabilización del código y eliminación de dependencias externas de red.
-- [ ] Integración completa de la lógica de filtrado de versículos en `procesarMensaje`.
-- [ ] Incorporación de categorías temáticas sobre geografía y milagros del Nuevo Testamento.
-
-## 📄 Licencia
-Este proyecto se distribuye bajo la Licencia MIT. Consulta el archivo `LICENSE` para más detalles.
-
