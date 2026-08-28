@@ -41,6 +41,22 @@ const btnMic = document.getElementById("btnMic");
 
 // --- VARIABLE GLOBAL PARA EL BUSCADOR ---
 let resultadosBusquedaActuales = [];
+// Variable global para guardar la Biblia en la memoria RAM
+let bibliaData = null;
+
+// Función para cargar el archivo JSON al iniciar
+async function inicializarBiblia() {
+  try {
+    const respuesta = await fetch("./data/biblia.json");
+    bibliaData = await respuesta.json();
+    console.log("Biblia cargada correctamente en memoria 📖");
+  } catch (error) {
+    console.error("Error al cargar el archivo biblia.json:", error);
+  }
+}
+
+// Ejecutamos la carga al arrancar
+inicializarBiblia();
 
 // --- FUNCIÓN AUXILIAR PARA CAMBIAR DE PANTALLA ---
 function changeScreen(screenToShow) {
@@ -1440,7 +1456,28 @@ async function procesarMensaje(texto, contenedorMensajes) {
     ultimoTema = "biblia";
     return "En la sección de la Sagrada Escritura 📖 puedes seleccionar testamentos y encontrar textos subrayados con opciones de profundización. ¿Te gustaría saber más?";
   }
+  // Lógica de búsqueda local en el archivo biblia.json
+  const textoBuscado = texto.toLowerCase();
 
+  // 1. Filtramos los versículos que coincidan con la palabra o frase del usuario
+  // (Asumiendo que 'bibliaData' es tu JSON cargado)
+  const resultados = bibliaData.verses.filter((v) =>
+    v.text.toLowerCase().includes(textoBuscado),
+  );
+
+  // 2. Evaluamos la cantidad de resultados para no saturar la pantalla
+  if (resultados.length > 10) {
+    return `Encontré muchísimas referencias (${resultados.length}) con la palabra "${texto}". ¿Podrías especificar un poco más o darme una pista (como un tema o un testamento) para acotar la búsqueda y ayudarte mejor? 📖`;
+  } else if (resultados.length > 0) {
+    // Si son 10 o menos, armamos la respuesta formateada con los versículos
+    let respuestaFormateada = `Encontré estos pasajes para "${texto}":\n\n`;
+    resultados.forEach((v) => {
+      respuestaFormateada += `• **${v.book_name} ${v.chapter}:${v.verse}** - "${v.text}"\n`;
+    });
+    return respuestaFormateada;
+  } else {
+    return `No encontré ningún versículo exacto con "${texto}". Probá buscando con otra palabra clave o concepto.`;
+  }
   // 4. Si no está en lo local, consultamos al servidor externo 🌐
   const idMensajeTemporal = "temp-" + Date.now();
   contenedorMensajes.innerHTML += `<p id="${idMensajeTemporal}"><em>⏳ Buscando respuesta en la fuente externa, espere un momento...</em></p>`;
@@ -1450,7 +1487,7 @@ async function procesarMensaje(texto, contenedorMensajes) {
     const controller = new AbortController();
     const timeoutId = setTimeout(() => controller.abort(), 10000);
 
-    const respuestaApi = await fetch("https://tu-api-externa.com/consultar", {
+    const respuestaApi = await fetch("", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
