@@ -1,8 +1,8 @@
 {
     "metadata": {
-        "translation": "Spanish BLP (La Palabra (versión española))",
+        "translation": "Biblia Torres Amat 1825",
         "copyright": "",
-        "date": "2025-07-03 22:54:20"
+        "date": "2026-04-12"
     },
     "verses": [
         {
@@ -10,14 +10,14 @@
             "book": 1,
             "chapter": 1,
             "verse": 1,
-            "text": "Cuando Dios, en el principio, creó los cielos y la tierra,"
+            "text": "En el principio creó Dios el cielo y la tierra."
         },
         {
             "book_name": "Génesis",
             "book": 1,
             "chapter": 1,
             "verse": 2,
-            "text": "la tierra era una masa caótica y las tinieblas cubrían el abismo, mientras el espíritu de Dios sacudía la superficie de las aguas."
+            "text": "La tierra, estaba informe y vacía, las tinieblas cubrían la superficie del abismo, y el espíritu de"
         },
         {
             "book_name": "Génesis",

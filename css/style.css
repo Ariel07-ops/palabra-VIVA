@@ -3702,3 +3702,48 @@ body {
 .imagen-facsamil:hover {
   transform: scale(1.03); /* Efecto sutil al pasar el cursor */
 }
+/* Contenedor principal del chat (asegurá que ocupe el espacio y baje el scroll) */
+#contenedorMensajes,
+.chat-mensajes {
+  display: flex;
+  flex-direction: column;
+  gap: 12px; /* Espacio generoso entre un mensaje y otro */
+  padding: 15px;
+  overflow-y: auto;
+  flex-grow: 1;
+}
+
+/* Estilo para los mensajes del usuario ("Tú") */
+.mensaje-usuario {
+  background-color: rgba(255, 255, 255, 0.08); /* Un tono sutil y oscuro */
+  color: #e0e0e0;
+  align-self: flex-end; /* Se alinean a la derecha */
+  padding: 10px 14px;
+  border-radius: 12px 12px 2px 12px;
+  max-width: 80%;
+  border-left: 3px solid #d4af37; /* Toque dorado sutil */
+}
+
+/* Estilo para los mensajes del Asistente */
+.mensaje-asistente {
+  background-color: rgba(212, 175, 55, 0.1); /* Tono dorado muy tenue */
+  color: #ffffff;
+  align-self: flex-start; /* Se alinean a la izquierda */
+  padding: 10px 14px;
+  border-radius: 12px 12px 12px 2px;
+  max-width: 85%;
+  border-left: 3px solid #4a90e2; /* Destaque pastoral/azul o dorado */
+  line-height: 1.4;
+}
+
+/* Barra inferior fija para la entrada de texto */
+.chat-input-container,
+.input-area {
+  position: sticky;
+  bottom: 0;
+  background-color: #121212; /* Ajustalo al color de fondo de tu app */
+  padding: 12px;
+  display: flex;
+  gap: 8px;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+}

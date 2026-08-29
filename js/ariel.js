@@ -1515,12 +1515,10 @@ async function procesarMensaje(texto, contenedorMensajes) {
   }
 }
 
-// ==========================================
 // PALABRA VIVA - NÚCLEO JAVASCRIPT PRINCIPAL
 // ==========================================
 
 // Variables de estado global
-
 let esperandoConfirmacionMic = false;
 
 document.addEventListener("DOMContentLoaded", () => {
@@ -1533,32 +1531,138 @@ document.addEventListener("DOMContentLoaded", () => {
   const nombreGuardado = localStorage.getItem("nombrePalabraViva");
   if (contenedorMensajes) {
     if (nombreGuardado) {
-      contenedorMensajes.innerHTML += `<p><strong>Asistente:</strong> ¡Bienvenido de nuevo por acá, ${nombreGuardado}! ¿En qué te puedo ayudar hoy? 🌟</p>`;
+      contenedorMensajes.innerHTML += `<div class="mensaje-asistente"><strong>Asistente:</strong> ¡Qué alegría enc...</div>`;
     } else {
-      contenedorMensajes.innerHTML += `<p><strong>Asistente:</strong> ¡Hola! Bienvenido, soy tu asistente de Palabra Viva. Decime cómo te llamás, por favor 📱.</p>`;
+      contenedorMensajes.innerHTML += `<div class="mensaje-asistente"><strong>Asistente:</strong> ¡Hola! ¡Qué alegr...</div>`;
       esperandoNombre = true;
     }
     contenedorMensajes.scrollTop = contenedorMensajes.scrollHeight;
   }
 
+  // --- EVENTO DE ENVÍO UNIFICADO CON DOBLE JSON ---
   btnEnviar?.addEventListener("click", async () => {
     const textoUsuario = inputChat.value.trim();
+    const textoLimpio = textoUsuario.toLowerCase();
 
     if (textoUsuario !== "") {
-      contenedorMensajes.innerHTML += `<p><strong>Tú:</strong> ${textoUsuario}</p>`;
+      contenedorMensajes.innerHTML += `<div class="mensaje-usuario"><strong>Tú:</strong> ${textoUsuario}</div>`;
       inputChat.value = "";
       contenedorMensajes.scrollTop = contenedorMensajes.scrollHeight;
 
-      // Si tenemos la función procesarMensaje definida en otro lado, la llamamos
-      let respuestaAsistente = "Entendido.";
-      if (typeof procesarMensaje === "function") {
-        respuestaAsistente = await procesarMensaje(
-          textoUsuario,
-          contenedorMensajes,
-        );
-      }
+      let respuestaAsistente = "";
 
-      contenedorMensajes.innerHTML += `<p><strong>Asistente:</strong> ${respuestaAsistente}</p>`;
+      try {
+        // 1. Si estamos esperando el nombre por primera vez (y no nos metió "hola" de nombre)
+        if (esperandoNombre) {
+          const nombreIngresado = textoUsuario.split(" ")[0];
+          // Evitamos que guarde palabras comunes como nombre si el usuario se confundió
+          if (
+            nombreIngresado.length > 2 &&
+            !["hola", "buen", "dia", "soy", "decime", "mi", "nombre"].includes(
+              nombreIngresado.toLowerCase(),
+            )
+          ) {
+            localStorage.setItem("nombrePalabraViva", nombreIngresado);
+            esperandoNombre = false;
+            respuestaAsistente = `¡Mucho gusto, ${nombreIngresado}! Ya guardé tu nombre en este dispositivo. Podés preguntarme por una cita (ej. 'Juan 1,1'), un tema o pedirme la guía.`;
+          } else {
+            respuestaAsistente =
+              "Por favor, escribime.... ¿ cuál es tu nombre de pila? , para guardarlo y saludarte mejor.";
+          }
+        } else {
+          // 2. Cargamos el JSON de respuestas del asistente para evaluar saludos, guías o intenciones generales
+          const resRespuestas = await fetch("data/respuestas_asistente.json");
+          const datosAsistente = await resRespuestas.json();
+
+          // Evaluamos si pide guía, ayuda o tutorial
+          if (
+            textoLimpio.includes("guia") ||
+            textoLimpio.includes("que puedo hacer") ||
+            textoLimpio.includes("para que sirve") ||
+            textoLimpio.includes("ayuda") ||
+            textoLimpio.includes("tutorial") ||
+            textoLimpio.includes("como uso")
+          ) {
+            const guia = datosAsistente.guia_uso;
+            respuestaAsistente =
+              `<strong>${guia.titulo}</strong><br>${guia.mensaje}<br>` +
+              guia.opciones.map((opt) => `• ${opt}`).join("<br>");
+          }
+          // Evaluamos saludos comunes
+          else if (
+            textoLimpio.includes("hola") ||
+            textoLimpio.includes("buenos dias") ||
+            textoLimpio.includes("buenas") ||
+            textoLimpio.includes("buenas noches")
+          ) {
+            const nombreGuardado =
+              localStorage.getItem("nombrePalabraViva") || "";
+            const saludosPosibles = datosAsistente.saludos.respuestas;
+            const saludoElegido =
+              saludosPosibles[
+                Math.floor(Math.random() * saludosPosibles.length)
+              ];
+            respuestaAsistente = saludoElegido.replace(
+              "{nombre}",
+              nombreGuardado ? `, ${nombreGuardado}` : "",
+            );
+          } else {
+            // 3. Si no es un comando del asistente, consultamos el `biblia.json` para buscar citas o textos
+            const resBiblia = await fetch("data/biblia.json");
+            const datosBiblia = await resBiblia.json();
+
+            // Buscamos si ingresó una cita aproximada (ej: "juan 1:1" o "juan 1,1")
+            const partesCita = textoUsuario.match(
+              /([a-zA-Záéíóúñ]+)\s+(\d+)[:,\s]+(\d+)/i,
+            );
+
+            if (partesCita && datosBiblia.verses) {
+              const libroBuscado = partesCita[1].toLowerCase();
+              const capBuscado = parseInt(partesCita[2]);
+              const verBuscado = parseInt(partesCita[3]);
+
+              const versiculoHallado = datosBiblia.verses.find(
+                (v) =>
+                  v.book_name.toLowerCase().includes(libroBuscado) &&
+                  v.chapter === capBuscado &&
+                  v.verse === verBuscado,
+              );
+
+              if (versiculoHallado) {
+                respuestaAsistente = `<strong>${versiculoHallado.book_name} ${capBuscado},${verBuscado}</strong><br>"${versiculoHallado.text}"`;
+              } else {
+                respuestaAsistente =
+                  "No encontré exactamente ese versículo en la base de datos local. Probá revisando el número de capítulo o versículo.";
+              }
+            } else {
+              // Búsqueda general por palabra clave en la Biblia
+              const encontrados =
+                datosBiblia.verses?.filter((v) =>
+                  v.text.toLowerCase().includes(textoLimpio),
+                ) || [];
+              if (encontrados.length > 0) {
+                const muestra = encontrados.slice(0, 3); // Mostramos hasta 3 resultados para no saturar
+                respuestaAsistente =
+                  `Encontré estas referencias (${encontrados.length}):<br>` +
+                  muestra
+                    .map(
+                      (v) =>
+                        `&bull; <strong>${v.book_name} ${v.chapter}:${v.verse}</strong> - "${v.text}"`,
+                    )
+                    .join("<br>");
+              } else {
+                respuestaAsistente =
+                  "No encontré resultados ni en las respuestas del asistente ni en los textos bíblicos con ese término. Probá con una cita exacta (ej. 'Juan 1,1') o escribí 'guia'.";
+              }
+            }
+          }
+        }
+      } catch (error) {
+        console.error("Error al procesar la consulta con los JSONs:", error);
+        respuestaAsistente =
+          "Ocurrió un error al leer los archivos locales de datos.";
+      }
+      contenedorMensajes.innerHTML += `<div class="mensaje-asistente"><strong>Asistente:</strong><br>${respuestaAsistente}</div>`;
       contenedorMensajes.scrollTop = contenedorMensajes.scrollHeight;
     }
   });
@@ -1569,20 +1673,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   });
 
-  // --- FUNCIÓN PARA ABRIR EL ASISTENTE DE APOYO Y ACTIVAR SU VOZ ---
-  function abrirPantallaAsistente() {
-    // 1. Acá va la lógica que ya tenés para mostrar la pantalla del chat (ej: agregar clase 'active')
-    const screenAsistente = document.getElementById("screen-asistente");
-    if (screenAsistente) {
-      screenAsistente.classList.add("active"); // o la clase que uses para mostrarlo
-    }
-
-    // 2. Disparamos el saludo hablado EXCLUSIVAMENTE cuando entra acá
-    const mensajeBienvenida = "¡Hola! Bienvenido, soy tu asistente de apoyo.";
-    hacerHablarAlRobot(mensajeBienvenida);
-  }
-
-  // --- 2. CONTROL DEL MICRÓFONO (Limpio, sin cartelitos y con feedback visual) ---
+  // --- 2. CONTROL DEL MICRÓFONO ---
   const btnMic = document.getElementById("btnMic");
 
   btnMic?.addEventListener("click", () => {
@@ -1594,7 +1685,6 @@ document.addEventListener("DOMContentLoaded", () => {
       reconocimiento.lang = "es-AR";
 
       reconocimiento.onstart = () => {
-        // Se enciende el indicador visual (le añade la clase para que titile o cambie de color)
         btnMic.classList.add("mic-escuchando");
       };
 
@@ -1602,16 +1692,11 @@ document.addEventListener("DOMContentLoaded", () => {
         const textoCapturado = evento.results[0][0].transcript;
         if (inputChat) {
           inputChat.value = textoCapturado;
-          if (inputChat) {
-            inputChat.value = textoCapturado;
-            // ¡Mandalo a hablar de una!
-            hacerHablarAlRobot("Entendido: " + textoCapturado);
-          }
+          hacerHablarAlRobot("Entendido: " + textoCapturado);
         }
       };
 
       reconocimiento.onend = () => {
-        // Se apaga el indicador cuando el reconocimiento corta solo
         btnMic.classList.remove("mic-escuchando");
       };
 
@@ -1619,7 +1704,6 @@ document.addEventListener("DOMContentLoaded", () => {
         btnMic.classList.remove("mic-escuchando");
       };
 
-      // Arranca la escucha de inmediato al hacer clic
       reconocimiento.start();
     } else {
       console.log(
@@ -1628,28 +1712,33 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   });
 
-  // --- 3. FUNCIÓN DE SÍNTESIS DE VOZ (Texto a Voz) ---
-  function hacerHablarAlRobot(texto) {
-    if ("speechSynthesis" in window) {
-      window.speechSynthesis.cancel(); // Corta cualquier audio anterior
-
-      const utterance = new SpeechSynthesisUtterance(texto);
-      utterance.lang = "es-AR";
-      utterance.rate = 1.0;
-      utterance.pitch = 1.0;
-
-      window.speechSynthesis.speak(utterance);
-    } else {
-      console.log("Este navegador no soporta síntesis de voz.");
-    }
-  }
-  // Boton cerrar abanico
-  const studyCard = document.getElementById("study-card");
-  const panelHandle = document.getElementById("panel-handle");
-
   // --- 4. HISTORIAL INICIAL PARA LA APP ---
   history.replaceState({ vista: "main" }, "", "");
 });
+
+// --- FUNCIÓN GLOBAL DE SÍNTESIS DE VOZ (Única, sin duplicados) ---
+function hacerHablarAlRobot(texto) {
+  if ("speechSynthesis" in window) {
+    window.speechSynthesis.cancel();
+
+    const utterance = new SpeechSynthesisUtterance(texto);
+    utterance.lang = "es-AR";
+    utterance.rate = 1.0;
+    utterance.pitch = 1.0;
+
+    utterance.onstart = () => {
+      console.log("El robot comenzó a hablar...");
+    };
+
+    utterance.onend = () => {
+      console.log("El robot terminó de hablar.");
+    };
+
+    window.speechSynthesis.speak(utterance);
+  } else {
+    console.log("Este navegador no soporta síntesis de voz.");
+  }
+}
 
 // --- 5. MANEJADOR GLOBAL DEL BOTÓN "ATRÁS" ---
 window.addEventListener("popstate", () => {

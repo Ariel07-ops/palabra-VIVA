@@ -1,0 +1,95 @@
+{
+  "saludos": {
+    "respuestas": [
+      "¡Hola! Qué alegría encontrarte en Palabra Viva. ¿En qué puedo acompañarte hoy?",
+      "¡Bienvenido! Estoy aquí para ayudarte a explorar las Escrituras y reflexionar. ¿Qué te gustaría consultar?",
+      "Paz y bien. ¿Buscás algún pasaje en particular, una guía de uso o una reflexión para tu corazón?"
+    ]
+  },
+  "guia_uso": {
+    "titulo": "Guía rápida de uso de Palabra Viva",
+    "mensaje": "Podés utilizar este espacio de distintas maneras:",
+    "opciones": [
+      "Citas exactas: Escribí 'Juan 4,11', 'Jn 4,11' o 'Mateo 28:19'.",
+      "Búsquedas temáticas: Escribí palabras clave como 'Agua viva', 'Perdón' o 'Paz'.",
+      "Pasajes e historias: Buscá expresiones como 'Jesús y sus discípulos'.",
+      "Acompañamiento: Contame si estás buscando una reflexión ante algún estado de ánimo o una lectura meditada."
+    ]
+  },
+  "respuestas_pastorales": {
+    "tristeza": "En momentos de aflicción, la Palabra nos recuerda que el Señor está cerca de los que tienen el corazón roto. (Salmo 34, 19).",
+    "ansiedad": "Ante la inquietud, el apóstol Pablo nos invita a depositar la paz en la oración, sabiendo que Dios cuida de nosotros (Filipenses 4, 6-7).",
+    "perdon": "El perdón es una de las enseñanzas centrales de Jesús (Mateo 18, 21-22). Perdonar nos libera y nos acerca al amor misericordioso del Padre.",
+    "miedo": "No temas, porque el Señor tu Dios está contigo dondequiera que vayas (Josué 1, 9). La confianza en Él disipa el temor.",
+    "esperanza": "La esperanza no defrauda. Aun en tiempos difíciles, sabemos que los planes de Dios son de paz y no de desgracia (Jeremías 29, 11)."
+  },
+  "descargo_pastoral": "Puedo ayudarte a reflexionar desde la Sagrada Escritura y la enseñanza de la Iglesia, pero recordá que este es un espacio de acompañamiento espiritual y no reemplaza el consejo directo de un sacerdote o director espiritual.",
+  "preguntas_frecuentes": [
+    {
+      "tema": "que_es",
+      "palabras_clave": [
+        "que es",
+        "para que sirve",
+        "de que trata",
+        "que puedo hacer",
+        "objetivo",
+        "como funciona"
+      ],
+      "respuesta": "<strong>Palabra Viva</strong> es una aplicación diseñada para el acompañamiento espiritual, la lectura meditada y el estudio bíblico. Podés buscar citas exactas, temas del corazón, o pedirme consejos basados en las Escrituras y el Magisterio de la Iglesia."
+    },
+    {
+      "tema": "privacidad_datos",
+      "palabras_clave": [
+        "privacidad",
+        "mis datos",
+        "internet",
+        "offline",
+        "guarda",
+        "sin conexion",
+        "seguro"
+      ],
+      "respuesta": "Tu privacidad es absoluta. Esta aplicación funciona en modo 'local-first', lo que significa que tus búsquedas, tu nombre y tus preferencias se guardan únicamente en tu dispositivo. Nada se envía a servidores externos."
+    },
+    {
+      "tema": "navegacion_iconos",
+      "palabras_clave": [
+        "icono",
+        "logo",
+        "botones",
+        "arriba",
+        "menu",
+        "barra",
+        "donde esta"
+      ],
+      "respuesta": "La interfaz está pensada para ser muy sencilla. El <strong>logotipo superior</strong> sirve como atajo para abrir este chat en cualquier momento. También encontrarás botones para activar el dictado por voz y menús para explorar los pasajes bíblicos guardados."
+    },
+    {
+      "tema": "tutorial_video",
+      "palabras_clave": [
+        "tutorial",
+        "video",
+        "paso a paso",
+        "enseñame",
+        "guia visual",
+        "ver como se usa"
+      ],
+      "respuesta": "Pronto habilitaremos un pequeño video tutorial. Por ahora, podés tocar el logotipo de Palabra Viva en la barra de arriba en cualquier momento para abrir este asistente, o simplemente escribirme la palabra 'guía' para ver las instrucciones rápidas."
+    },
+    {
+      "tema": "identidad_asistente",
+      "palabras_clave": [
+        "quien sos",
+        "sos un robot",
+        "inteligencia artificial",
+        "como te llamas",
+        "humano"
+      ],
+      "respuesta": "Soy el asistente de apoyo integrado en Palabra Viva. Mi propósito es facilitar tu encuentro con la Palabra de Dios, buscar pasajes rápido y ofrecerte pequeñas reflexiones espirituales para tu día a día."
+    },
+    {
+      "tema": "version_programa",
+      "palabras_clave": ["version", "actualizacion", "que version"],
+      "respuesta": "Actualmente estás utilizando <strong>Palabra Viva Beta</strong>. Seguimos trabajando para incorporar más reflexiones pastorales y respuestas profundas sobre la fe y la Iglesia."
+    }
+  ]
+}
