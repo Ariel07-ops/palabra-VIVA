@@ -54,6 +54,18 @@ async function inicializarBiblia() {
     console.error("Error al cargar el archivo biblia.json:", error);
   }
 }
+function escaparHTML(texto) {
+  return texto
+    .replace(/&/g, "&amp;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;")
+    .replace(/"/g, "&quot;")
+    .replace(/'/g, "&#039;");
+}
+
+document.addEventListener("DOMContentLoaded", () => {
+  // El resto de tu código de inicialización y eventos del chat...
+});
 
 // Ejecutamos la carga al arrancar
 inicializarBiblia();
@@ -379,16 +391,18 @@ document.addEventListener("DOMContentLoaded", () => {
 // --- BÚSQUEDA INTELIGENTE CON ENTER Y PAGINACIÓN ---
 document
   .getElementById("btn-ejecutar-busqueda")
-  ?.addEventListener("click", async () => {
-    const inputOriginal = document
-      .getElementById("input-busqueda")
-      .value.trim();
+  .addEventListener("click", async () => {
+    const inputOriginal = escaparHTML(
+      document.getElementById("input-busqueda").value.trim(),
+    );
     const contenedorResultados = document.getElementById("resultados-busqueda");
 
     if (!inputOriginal) {
-      contenedorResultados.innerHTML = `<p class="placeholder-text">Por favor, escribí algo para buscar.</p>`;
+      contenedorResultados.innerHTML = `<p class="placeholder-text">Escribí algo para buscar...</p>`;
       return;
     }
+
+    // El resto de tu lógica de limpieza y búsqueda...
 
     const limpiarTexto = (str) =>
       str
@@ -1514,8 +1528,7 @@ async function procesarMensaje(texto, contenedorMensajes) {
     }
   }
 }
-
-// PALABRA VIVA - NÚCLEO JAVASCRIPT PRINCIPAL
+// 📂 PALABRA VIVA - NÚCLEO JAVASCRIPT PRINCIPAL
 // ==========================================
 
 // Variables de estado global
@@ -1526,36 +1539,41 @@ document.addEventListener("DOMContentLoaded", () => {
   const inputChat = document.getElementById("chat-input");
   const btnEnviar = document.getElementById("chat-btn-enviar");
   const contenedorMensajes = document.getElementById("chat-mensajes");
+  inputChat?.addEventListener("keypress", (e) => {
+    if (e.key === "Enter") {
+      btnEnviar?.click();
+    }
+  });
 
   // Verificación inicial del nombre al cargar
   const nombreGuardado = localStorage.getItem("nombrePalabraViva");
   if (contenedorMensajes) {
     if (nombreGuardado) {
-      contenedorMensajes.innerHTML += `<div class="mensaje-asistente"><strong>Asistente:</strong> ¡Qué alegría enc...</div>`;
+      contenedorMensajes.innerHTML += `<div class="mensaje-asistente"><strong>Asistente:</strong> ¡Qué alegría encontrarte de nuevo, ${nombreGuardado}! ¿De qué te gustaría que hablemos hoy sobre nuestra fe 🕊️?</div>`;
     } else {
-      contenedorMensajes.innerHTML += `<div class="mensaje-asistente"><strong>Asistente:</strong> ¡Hola! ¡Qué alegr...</div>`;
+      contenedorMensajes.innerHTML += `<div class="mensaje-asistente"><strong>Asistente:</strong> ¡Hola ✨! ¡Qué alegría darte la bienvenida a Palabra Viva! Para empezar, ¿cuál es tu nombre de pila?</div>`;
       esperandoNombre = true;
     }
     contenedorMensajes.scrollTop = contenedorMensajes.scrollHeight;
   }
 
-  // --- EVENTO DE ENVÍO UNIFICADO CON DOBLE JSON ---
+  // --- EVENTO DE ENVÍO UNIFICADO (EXCLUSIVO CATEQUESIS Y GUÍA) ---
   btnEnviar?.addEventListener("click", async () => {
-    const textoUsuario = inputChat.value.trim();
+    // 🛡️ Sanitizamos la entrada del chat de forma segura
+    const textoUsuario = escaparHTML(inputChat.value.trim());
     const textoLimpio = textoUsuario.toLowerCase();
 
     if (textoUsuario !== "") {
-      contenedorMensajes.innerHTML += `<div class="mensaje-usuario"><strong>Tú:</strong> ${textoUsuario}</div>`;
+      contenedorMensajes.innerHTML += `<div class="mensaje-usuario">${textoUsuario}</div>`;
       inputChat.value = "";
       contenedorMensajes.scrollTop = contenedorMensajes.scrollHeight;
 
       let respuestaAsistente = "";
 
       try {
-        // 1. Si estamos esperando el nombre por primera vez (y no nos metió "hola" de nombre)
+        // 1. Si estamos esperando el nombre por primera vez
         if (esperandoNombre) {
           const nombreIngresado = textoUsuario.split(" ")[0];
-          // Evitamos que guarde palabras comunes como nombre si el usuario se confundió
           if (
             nombreIngresado.length > 2 &&
             !["hola", "buen", "dia", "soy", "decime", "mi", "nombre"].includes(
@@ -1564,13 +1582,13 @@ document.addEventListener("DOMContentLoaded", () => {
           ) {
             localStorage.setItem("nombrePalabraViva", nombreIngresado);
             esperandoNombre = false;
-            respuestaAsistente = `¡Mucho gusto, ${nombreIngresado}! Ya guardé tu nombre en este dispositivo. Podés preguntarme por una cita (ej. 'Juan 1,1'), un tema o pedirme la guía.`;
+            respuestaAsistente = `¡Mucho gusto, ${nombreIngresado} 🌟! Ya guardé tu nombre. Podés preguntarme sobre temas de fe, catequesis o escribir 'guia' para conocer más.`;
           } else {
             respuestaAsistente =
-              "Por favor, escribime.... ¿ cuál es tu nombre de pila? , para guardarlo y saludarte mejor.";
+              "Por favor, escribime cuál es tu nombre de pila para poder saludarte mejor 💬.";
           }
         } else {
-          // 2. Cargamos el JSON de respuestas del asistente para evaluar saludos, guías o intenciones generales
+          // 2. Cargamos el JSON de respuestas del asistente (guías, saludos)
           const resRespuestas = await fetch("data/respuestas_asistente.json");
           const datosAsistente = await resRespuestas.json();
 
@@ -1585,7 +1603,7 @@ document.addEventListener("DOMContentLoaded", () => {
           ) {
             const guia = datosAsistente.guia_uso;
             respuestaAsistente =
-              `<strong>${guia.titulo}</strong><br>${guia.mensaje}<br>` +
+              `<strong>🧭 ${guia.titulo}</strong><br>${guia.mensaje}<br>` +
               guia.opciones.map((opt) => `• ${opt}`).join("<br>");
           }
           // Evaluamos saludos comunes
@@ -1595,7 +1613,7 @@ document.addEventListener("DOMContentLoaded", () => {
             textoLimpio.includes("buenas") ||
             textoLimpio.includes("buenas noches")
           ) {
-            const nombreGuardado =
+            const nombreActual =
               localStorage.getItem("nombrePalabraViva") || "";
             const saludosPosibles = datosAsistente.saludos.respuestas;
             const saludoElegido =
@@ -1604,117 +1622,89 @@ document.addEventListener("DOMContentLoaded", () => {
               ];
             respuestaAsistente = saludoElegido.replace(
               "{nombre}",
-              nombreGuardado ? `, ${nombreGuardado}` : "",
+              nombreActual ? `, ${nombreActual}` : "",
             );
-          } else {
-            // 3. Si no es un comando del asistente, consultamos el `biblia.json` para buscar citas o textos
-            const resBiblia = await fetch("data/biblia.json");
-            const datosBiblia = await resBiblia.json();
+          }
+          // 3. Búsqueda exclusiva en el archivo `catequesis.json`
+          else {
+            const resCatequesis = await fetch("data/catequesis.json");
+            const baseDatosCatequesis = await resCatequesis.json();
 
-            // Buscamos si ingresó una cita aproximada (ej: "juan 1:1" o "juan 1,1")
-            const partesCita = textoUsuario.match(
-              /([a-zA-Záéíóúñ]+)\s+(\d+)[:,\s]+(\d+)/i,
+            const resultadoCatequesis = buscarEnCatequesis(
+              textoUsuario,
+              baseDatosCatequesis,
             );
 
-            if (partesCita && datosBiblia.verses) {
-              const libroBuscado = partesCita[1].toLowerCase();
-              const capBuscado = parseInt(partesCita[2]);
-              const verBuscado = parseInt(partesCita[3]);
-
-              const versiculoHallado = datosBiblia.verses.find(
-                (v) =>
-                  v.book_name.toLowerCase().includes(libroBuscado) &&
-                  v.chapter === capBuscado &&
-                  v.verse === verBuscado,
-              );
-
-              if (versiculoHallado) {
-                respuestaAsistente = `<strong>${versiculoHallado.book_name} ${capBuscado},${verBuscado}</strong><br>"${versiculoHallado.text}"`;
-              } else {
-                respuestaAsistente =
-                  "No encontré exactamente ese versículo en la base de datos local. Probá revisando el número de capítulo o versículo.";
+            if (resultadoCatequesis && resultadoCatequesis.encontrado) {
+              respuestaAsistente = resultadoCatequesis.respuesta;
+              if (
+                resultadoCatequesis.fuentes &&
+                resultadoCatequesis.fuentes.length > 0
+              ) {
+                respuestaAsistente += `<br><br><small><strong>📖 Fuente:</strong> ${resultadoCatequesis.fuentes.join(", ")}</small>`;
               }
             } else {
-              // Búsqueda general por palabra clave en la Biblia
-              const encontrados =
-                datosBiblia.verses?.filter((v) =>
-                  v.text.toLowerCase().includes(textoLimpio),
-                ) || [];
-              if (encontrados.length > 0) {
-                const muestra = encontrados.slice(0, 3); // Mostramos hasta 3 resultados para no saturar
-                respuestaAsistente =
-                  `Encontré estas referencias (${encontrados.length}):<br>` +
-                  muestra
-                    .map(
-                      (v) =>
-                        `&bull; <strong>${v.book_name} ${v.chapter}:${v.verse}</strong> - "${v.text}"`,
-                    )
-                    .join("<br>");
-              } else {
-                respuestaAsistente =
-                  "No encontré resultados ni en las respuestas del asistente ni en los textos bíblicos con ese término. Probá con una cita exacta (ej. 'Juan 1,1') o escribí 'guia'.";
-              }
+              respuestaAsistente =
+                "No encontré una respuesta específica sobre ese tema espiritual en nuestra catequesis. Recordá que podés escribir 'guia' para ver las opciones o utilizar el buscador de la Biblia ubicado en la barra de navegación superior 🔍.";
             }
           }
         }
       } catch (error) {
-        console.error("Error al procesar la consulta con los JSONs:", error);
+        console.error(
+          "Error al procesar la consulta con los archivos de datos:",
+          error,
+        );
         respuestaAsistente =
-          "Ocurrió un error al leer los archivos locales de datos.";
+          "Ocurrió un error al procesar tu consulta espiritual. Por favor, intentá nuevamente ⚠️.";
       }
+
       contenedorMensajes.innerHTML += `<div class="mensaje-asistente"><strong>Asistente:</strong><br>${respuestaAsistente}</div>`;
       contenedorMensajes.scrollTop = contenedorMensajes.scrollHeight;
+      imputChat.focus();
     }
   });
-
-  inputChat?.addEventListener("keypress", (e) => {
-    if (e.key === "Enter") {
-      btnEnviar?.click();
-    }
-  });
-
-  // --- 2. CONTROL DEL MICRÓFONO ---
-  const btnMic = document.getElementById("btnMic");
-
-  btnMic?.addEventListener("click", () => {
-    const SpeechRecognition =
-      window.SpeechRecognition || window.webkitSpeechRecognition;
-
-    if (SpeechRecognition) {
-      const reconocimiento = new SpeechRecognition();
-      reconocimiento.lang = "es-AR";
-
-      reconocimiento.onstart = () => {
-        btnMic.classList.add("mic-escuchando");
-      };
-
-      reconocimiento.onresult = (evento) => {
-        const textoCapturado = evento.results[0][0].transcript;
-        if (inputChat) {
-          inputChat.value = textoCapturado;
-          hacerHablarAlRobot("Entendido: " + textoCapturado);
-        }
-      };
-
-      reconocimiento.onend = () => {
-        btnMic.classList.remove("mic-escuchando");
-      };
-
-      reconocimiento.onerror = () => {
-        btnMic.classList.remove("mic-escuchando");
-      };
-
-      reconocimiento.start();
-    } else {
-      console.log(
-        "El reconocimiento de voz no está soportado en este navegador.",
-      );
-    }
-  });
-
-  // --- 4. HISTORIAL INICIAL PARA LA APP ---
-  history.replaceState({ vista: "main" }, "", "");
 });
+
+// --- 2. CONTROL DEL MICRÓFONO ---
+
+btnMic?.addEventListener("click", () => {
+  const SpeechRecognition =
+    window.SpeechRecognition || window.webkitSpeechRecognition;
+
+  if (SpeechRecognition) {
+    const reconocimiento = new SpeechRecognition();
+    reconocimiento.lang = "es-AR";
+
+    reconocimiento.onstart = () => {
+      btnMic.classList.add("mic-escuchando");
+    };
+
+    reconocimiento.onresult = (evento) => {
+      const textoCapturado = evento.results[0][0].transcript;
+      if (inputChat) {
+        inputChat.value = textoCapturado;
+        hacerHablarAlRobot("Entendido: " + textoCapturado);
+      }
+    };
+
+    reconocimiento.onend = () => {
+      btnMic.classList.remove("mic-escuchando");
+    };
+
+    reconocimiento.onerror = () => {
+      btnMic.classList.remove("mic-escuchando");
+    };
+
+    reconocimiento.start();
+  } else {
+    console.log(
+      "El reconocimiento de voz no está soportado en este navegador.",
+    );
+  }
+});
+
+// --- 4. HISTORIAL INICIAL PARA LA APP ---
+history.replaceState({ vista: "main" }, "", "");
 
 // --- FUNCIÓN GLOBAL DE SÍNTESIS DE VOZ (Única, sin duplicados) ---
 function hacerHablarAlRobot(texto) {
@@ -1797,4 +1787,162 @@ if (panelHandle && studyCard) {
       verso.style.cursor = "pointer";
     });
   });
+}
+// ⚙️ 1. Configuración de palabras que no aportan significado doctrinal
+const palabrasIgnoradas = new Set([
+  "el",
+  "la",
+  "los",
+  "las",
+  "un",
+  "una",
+  "unos",
+  "unas",
+  "y",
+  "o",
+  "u",
+  "ni",
+  "de",
+  "del",
+  "al",
+  "a",
+  "en",
+  "por",
+  "para",
+  "con",
+  "sin",
+  "sobre",
+  "entre",
+  "hacia",
+  "hasta",
+  "desde",
+  "según",
+  "contra",
+  "tras",
+  "bajo",
+  "me",
+  "te",
+  "se",
+  "nos",
+  "os",
+  "le",
+  "les",
+  "lo",
+  "mi",
+  "tu",
+  "su",
+  "nuestro",
+  "vuestro",
+  "sus",
+  "este",
+  "esta",
+  "estos",
+  "estas",
+  "ese",
+  "esa",
+  "esos",
+  "esas",
+  "quien",
+  "quienes",
+  "cual",
+  "cuales",
+  "donde",
+  "cuando",
+  "si",
+  "ya",
+  "pero",
+  "aunque",
+  "sino",
+]);
+
+// 🧹 2. Función para normalizar texto (quita tildes y mayúsculas)
+function normalizarTexto(texto) {
+  if (!texto) return "";
+  return texto
+    .toString()
+    .toLowerCase()
+    .normalize("NFD")
+    .replace(/[\u0300-\u036f]/g, "")
+    .replace(/[¿?¡!,.;:()[\]{}"'¿?¡!]/g, " ")
+    .replace(/\s+/g, " ")
+    .trim();
+}
+
+// ✂️ 3. Extrae palabras válidas descartando las ignoradas
+function obtenerPalabras(texto) {
+  return normalizarTexto(texto)
+    .split(" ")
+    .filter((palabra) => palabra.length > 2 && !palabrasIgnoradas.has(palabra));
+}
+
+// 🔍 4. Búsqueda principal en el JSON de catequesis
+function buscarEnCatequesis(mensajeUsuario, baseDatosCatequesis) {
+  const palabrasUsuario = obtenerPalabras(mensajeUsuario);
+
+  if (palabrasUsuario.length === 0) {
+    return respuestaNoEncontrada();
+  }
+
+  let mejorCoincidencia = null;
+  let mayorPuntaje = 0;
+
+  baseDatosCatequesis.forEach((item) => {
+    const textoItem = [
+      item.pregunta_principal || "",
+      ...(item.keywords || []),
+      item.categoria || "",
+    ].join(" ");
+
+    const palabrasItem = new Set(obtenerPalabras(textoItem));
+    let puntaje = 0;
+
+    palabrasUsuario.forEach((palabra) => {
+      if (palabrasItem.has(palabra)) {
+        puntaje++;
+      }
+    });
+
+    if (puntaje >= 3) puntaje += 1;
+
+    if (puntaje > mayorPuntaje) {
+      mayorPuntaje = puntaje;
+      mejorCoincidencia = item;
+    }
+  });
+
+  if (mejorCoincidencia && mayorPuntaje >= 2) {
+    return {
+      encontrado: true,
+      respuesta: mejorCoincidencia.respuesta,
+      fuentes: mejorCoincidencia.fuentes || [],
+      categoria: mejorCoincidencia.categoria || "",
+      id: mejorCoincidencia.id || null,
+    };
+  }
+
+  return respuestaNoEncontrada();
+}
+
+// 💬 5. Respuesta por defecto cuando no hay coincidencias
+function respuestaNoEncontrada() {
+  return {
+    encontrado: false,
+    respuesta:
+      "No encontré una respuesta específica. Podés consultar una sección de Palabra Viva, como “Caminando con Jesús” o “Ruta de Emaús”, o buscar orientación en tu parroquia.",
+    fuentes: [],
+  };
+}
+
+// 🚀 6. Procesar el mensaje enviado desde la interfaz
+function procesarMensaje(baseDatosCatequesis) {
+  const entrada = document.getElementById("mensajeUsuario");
+  if (!entrada) return;
+
+  const mensaje = entrada.value.trim();
+  if (!mensaje) return;
+
+  const resultado = buscarEnCatequesis(mensaje, baseDatosCatequesis);
+
+  // Aquí podés conectar las funciones para mostrar el mensaje en pantalla
+  entrada.value = "";
 }

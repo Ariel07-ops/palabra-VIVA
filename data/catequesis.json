@@ -1,0 +1,161 @@
+[
+  {
+    "id": "fe-001",
+    "categoria": "Dios y la fe",
+    "pregunta_principal": "¿Qué es la fe católica?",
+    "keywords": ["fe", "creer", "catolica", "confianza", "Dios"],
+    "respuesta": "La fe católica es la respuesta libre del ser humano a Dios, que se revela y nos invita a entrar en comunión con Él.",
+    "fuentes": ["Catecismo de la Iglesia Católica, 142-184"]
+  },
+  {
+    "id": "fe-002",
+    "categoria": "Dios y la fe",
+    "pregunta_principal": "¿Quién es Dios?",
+    "keywords": ["fe", "Señor", "Dios", "existe", "creer"],
+    "respuesta": "Dios es la causa incausada, el Ser que existe antes del tiempo, el todopoderoso que en su inmenso amor quiso compartir su plena felicidad con los seres humanos a quienes creó a su imagen y semejanza, dotándolos de libertad y un alma inmortal la cual tiene la capacidad de poder unirse a Él.",
+    "fuentes": ["Catecismo de la Iglesia Católica, 198-231"]
+  },
+  {
+    "id": "dios-003",
+    "categoria": "Dios y la fe",
+    "pregunta_principal": "¿Qué es la Santísima Trinidad?",
+    "keywords": [
+      "Trinidad",
+      "Padre",
+      "Hijo",
+      "Espiritu Santo",
+      "tres Personas"
+    ],
+    "respuesta": "La Santísima Trinidad es el misterio de un solo Dios en tres Personas: Padre, Hijo y Espíritu Santo.",
+    "fuentes": ["Catecismo de la Iglesia Católica, 232-267"]
+  },
+  {
+    "id": "jesucristo-001",
+    "categoria": "Jesucristo",
+    "pregunta_principal": "¿Quién es Jesucristo?",
+    "keywords": ["Jesus", "Cristo", "Hijo de Dios", "Salvador", "Mesias"],
+    "respuesta": "Jesucristo es el Hijo eterno de Dios hecho hombre. Es verdadero Dios y verdadero hombre.",
+    "fuentes": ["Catecismo de la Iglesia Católica, 422-682"]
+  },
+  {
+    "id": "jesucristo-002",
+    "categoria": "Jesucristo",
+    "pregunta_principal": "¿Por qué se hizo hombre Jesús?",
+    "keywords": [
+      "encarnacion",
+      "hizo hombre",
+      "salvacion",
+      "redencion",
+      "pecado"
+    ],
+    "respuesta": "El Hijo de Dios se hizo hombre para salvarnos del pecado, revelarnos el amor del Padre y hacernos participar de la vida divina.",
+    "fuentes": ["Catecismo de la Iglesia Católica, 456-460"]
+  },
+  {
+    "id": "jesucristo-003",
+    "categoria": "Jesucristo",
+    "pregunta_principal": "¿Jesús realmente resucitó?",
+    "keywords": [
+      "resurreccion",
+      "resucito",
+      "muerte",
+      "sepulcro",
+      "vida eterna"
+    ],
+    "respuesta": "Sí. Jesús resucitó verdaderamente de entre los muertos. La Resurrección es el centro de la fe cristiana.",
+    "fuentes": ["Catecismo de la Iglesia Católica, 638-658"]
+  },
+  {
+    "id": "iglesia-001",
+    "categoria": "La Iglesia",
+    "pregunta_principal": "¿Qué es la Iglesia?",
+    "keywords": ["Iglesia", "Pueblo de Dios", "Cuerpo de Cristo", "comunidad"],
+    "respuesta": "La Iglesia es el Pueblo de Dios, el Cuerpo de Cristo y el templo del Espíritu Santo. Cristo la fundó y le confió la misión de anunciar el Evangelio.",
+    "fuentes": ["Catecismo de la Iglesia Católica, 748-810"]
+  },
+  {
+    "id": "iglesia-002",
+    "categoria": "La Iglesia",
+    "pregunta_principal": "¿Cuáles son las notas de la Iglesia?",
+    "keywords": ["una", "santa", "catolica", "apostolica", "Credo"],
+    "respuesta": "La Iglesia es una, santa, católica y apostólica.",
+    "fuentes": ["Catecismo de la Iglesia Católica, 811-870"]
+  },
+  {
+    "id": "sacramentos-001",
+    "categoria": "Sacramentos",
+    "pregunta_principal": "¿Qué es un sacramento?",
+    "keywords": ["sacramento", "gracia", "signo", "Cristo", "Iglesia"],
+    "respuesta": "Un sacramento es un signo sensible y eficaz de la gracia, instituido por Cristo y confiado a la Iglesia.",
+    "fuentes": ["Catecismo de la Iglesia Católica, 1113-1131"]
+  },
+  {
+    "id": "sacramentos-002",
+    "categoria": "Sacramentos",
+    "pregunta_principal": "¿Cuántos sacramentos hay?",
+    "keywords": [
+      "siete",
+      "Bautismo",
+      "Confirmacion",
+      "Eucaristia",
+      "Confesion",
+      "Matrimonio"
+    ],
+    "respuesta": "Hay siete sacramentos: Bautismo, Confirmación, Eucaristía, Reconciliación, Unción de los Enfermos, Orden sacerdotal y Matrimonio.",
+    "fuentes": ["Catecismo de la Iglesia Católica, 1210"]
+  },
+  {
+    "id": "sacramentos-003",
+    "categoria": "Sacramentos",
+    "pregunta_principal": "¿Qué es la Eucaristía?",
+    "keywords": [
+      "Eucaristia",
+      "Misa",
+      "Comunión",
+      "Cuerpo",
+      "Sangre",
+      "pan",
+      "vino"
+    ],
+    "respuesta": "La Eucaristía es el sacramento en el que Jesucristo está real, verdadera y sustancialmente presente bajo las especies del pan y del vino.",
+    "fuentes": ["Catecismo de la Iglesia Católica, 1322-1419"]
+  },
+  {
+    "id": "moral-001",
+    "categoria": "Vida cristiana",
+    "pregunta_principal": "¿Qué es el pecado?",
+    "keywords": ["pecado", "mal", "mandamientos", "ofensa", "Dios"],
+    "respuesta": "El pecado es una palabra, acción, deseo u omisión contraria a la voluntad de Dios. Daña la comunión con Dios, con los demás y con uno mismo.",
+    "fuentes": ["Catecismo de la Iglesia Católica, 1849-1876"]
+  },
+  {
+    "id": "maria-001",
+    "categoria": "María y los santos",
+    "pregunta_principal": "¿Quién es la Virgen María?",
+    "keywords": [
+      "Maria",
+      "Virgen",
+      "Madre de Dios",
+      "Madre de Jesus",
+      "Inmaculada"
+    ],
+    "respuesta": "María es la Madre de Jesús, verdadera Madre de Dios, siempre Virgen y modelo perfecto de discípula.",
+    "fuentes": ["Catecismo de la Iglesia Católica, 484-511"]
+  },
+  {
+    "id": "oracion-001",
+    "categoria": "Oración",
+    "pregunta_principal": "¿Qué es orar?",
+    "keywords": ["oracion", "rezar", "Padre", "peticion", "alabanza"],
+    "respuesta": "Orar es elevar el corazón y la mente a Dios, hablar con Él y permanecer en su presencia.",
+    "fuentes": ["Catecismo de la Iglesia Católica, 2558-2565"]
+  },
+  {
+    "id": "vidaeterna-001",
+    "categoria": "Vida eterna",
+    "pregunta_principal": "¿Qué ocurre después de la muerte?",
+    "keywords": ["muerte", "cielo", "infierno", "purgatorio", "juicio"],
+    "respuesta": "Después de la muerte, cada persona comparece ante Dios. La Iglesia enseña la existencia del cielo, el purgatorio y el infierno.",
+    "fuentes": ["Catecismo de la Iglesia Católica, 1020-1065"]
+  }
+]
