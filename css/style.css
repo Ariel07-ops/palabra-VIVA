@@ -3730,7 +3730,12 @@ body {
   max-width: 80%;
   border-left: 3px solid #d4af37; /* Toque dorado sutil */
 }
-
+body.modo-sepia .mensaje-usuario {
+  color: #000000;
+}
+body.light-mode .mensaje-usuario {
+  color: #000000;
+}
 /* Estilo para los mensajes del Asistente */
 .mensaje-asistente {
   background-color: rgba(212, 175, 55, 0.1); /* Tono dorado muy tenue */
@@ -3741,6 +3746,12 @@ body {
   max-width: 85%;
   border-left: 3px solid #4a90e2; /* Destaque pastoral/azul o dorado */
   line-height: 1.4;
+}
+body.modo-sepia .mensaje-asistente {
+  color: #000000;
+}
+body.light-mode .mensaje-asistente {
+  color: #000000;
 }
 .asistente-header {
   display: flex;
@@ -3788,8 +3799,4 @@ body {
   border: 2px solid #d4af37;
   border-radius: 20px;
   margin-bottom: 10px;
-}
-body.light-mode #mensaje-asistente .mensaje-usuario .mensaje-asistente {
-  font-weight: bold !important;
-  color: #000000 !important;
 }

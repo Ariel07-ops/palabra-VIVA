@@ -1,29 +1,49 @@
 {
   "saludos": {
     "respuestas": [
-      "¡Hola! Qué alegría encontrarte en Palabra Viva. ¿En qué puedo acompañarte hoy?",
-      "¡Bienvenido! Estoy aquí para ayudarte a explorar las Escrituras y reflexionar. ¿Qué te gustaría consultar?",
-      "Paz y bien. ¿Buscás algún pasaje en particular, una guía de uso o una reflexión para tu corazón?"
+      "¡Hola! Qué alegría encontrarte en Palabra Viva. ¿Cómo venís con tu día hoy?",
+      "¡Bienvenido! Este es un espacio de pausa y reflexión. ¿De qué te gustaría que charlemos un rato?",
+      "Paz y bien. ¿Buscás una palabra de aliento, un consejo para el corazón o querés conversar sobre algo que te preocupa?"
+    ]
+  },
+  "despedidas": {
+    "respuestas": [
+      "Que tengas una excelente jornada. Recordá que podés volver a abrir este chat tocando el logotipo superior cuando lo necesites.",
+      "Vaya en paz. Que el Señor bendiga tu día y guíe tus pasos.",
+      "Fue un gusto acompañarte un ratito en la reflexión. ¡Hasta la próxima!"
+    ]
+  },
+  "agradecimientos": {
+    "respuestas": [
+      "Me alegra mucho que te sirva. Para eso estamos, para hacer una pausa y mirar la vida con otros ojos.",
+      "Gracias a vos por el espacio de confianza. Que tengas mucha paz en lo que resta del día.",
+      "De nada. Recordá que siempre podés contar con este espacio para un momento de aliento."
     ]
   },
   "guia_uso": {
     "titulo": "Guía rápida de uso de Palabra Viva",
     "mensaje": "Podés utilizar este espacio de distintas maneras:",
     "opciones": [
-      "Citas exactas: Escribí 'Juan 4,11', 'Jn 4,11' o 'Mateo 28:19'.",
-      "Búsquedas temáticas: Escribí palabras clave como 'Agua viva', 'Perdón' o 'Paz'.",
-      "Pasajes e historias: Buscá expresiones como 'Jesús y sus discípulos'.",
-      "Acompañamiento: Contame si estás buscando una reflexión ante algún estado de ánimo o una lectura meditada."
+      "Diálogo espiritual: Contame si estás buscando una reflexión ante algún estado de ánimo, cansancio o momento del día.",
+      "Búsqueda bíblica: Para buscar pasajes o textos completos de forma exacta, recordá usar el buscador dedicado en la barra del menú lateral (donde podés ingresar por nombre, capítulo y versículo con dos puntos como 'Juan 1:1')."
     ]
   },
   "respuestas_pastorales": {
-    "tristeza": "En momentos de aflicción, la Palabra nos recuerda que el Señor está cerca de los que tienen el corazón roto. (Salmo 34, 19).",
-    "ansiedad": "Ante la inquietud, el apóstol Pablo nos invita a depositar la paz en la oración, sabiendo que Dios cuida de nosotros (Filipenses 4, 6-7).",
-    "perdon": "El perdón es una de las enseñanzas centrales de Jesús (Mateo 18, 21-22). Perdonar nos libera y nos acerca al amor misericordioso del Padre.",
-    "miedo": "No temas, porque el Señor tu Dios está contigo dondequiera que vayas (Josué 1, 9). La confianza en Él disipa el temor.",
-    "esperanza": "La esperanza no defrauda. Aun en tiempos difíciles, sabemos que los planes de Dios son de paz y no de desgracia (Jeremías 29, 11)."
+    "tristeza": "En momentos de aflicción, la Palabra nos recuerda que el Señor está cerca de los que tienen el corazón roto (Salmo 34, 19). No estás solo en lo que te toca transitar.",
+    "ansiedad": "Ante la inquietud y el acelere diario, el apóstol Pablo nos invita a depositar la paz en la oración, sabiendo que Dios cuida de nuestras cargas (Filipenses 4, 6-7).",
+    "perdon": "El perdón es un camino de liberación profunda que nos acerca al amor misericordioso del Padre (Mateo 18, 21-22). A veces perdonar cuesta, pero sana el alma.",
+    "miedo": "No temas, porque el Señor tu Dios está contigo dondequiera que vayas (Josué 1, 9). La confianza en Él desarma nuestros temores más hondo.",
+    "esperanza": "La esperanza no defrauda. Aun en tiempos difíciles o grises, los planes de Dios son de paz y de un futuro lleno de bien (Jeremías 29, 11).",
+    "cansancio": "Cuando el peso del día agobia, Jesús hace una invitación abierta: 'Vengan a mí los que están cansados y atareados, y yo los haré descansar' (Mateo 11, 28). Date el permiso de frenar.",
+    "soledad": "En los momentos donde el silencio pesa, recordá la promesa de lo alto: 'Yo estoy con ustedes todos los días, hasta el fin del mundo' (Mateo 28, 20).",
+    "gratitud": "Dar gracias en todo momento transforma la mirada. Reconocer los pequeños dones cotidianos es la mejor forma de empezar a sintonizar con la gracia de Dios."
   },
-  "descargo_pastoral": "Puedo ayudarte a reflexionar desde la Sagrada Escritura y la enseñanza de la Iglesia, pero recordá que este es un espacio de acompañamiento espiritual y no reemplaza el consejo directo de un sacerdote o director espiritual.",
+  "preguntas_cotidianas": {
+    "como_rezar": "Para empezar a rezar no hacen falta grandes palabras. Buscá un rincón tranquilo, respirá hondo y contale a Dios lo que te pasa hoy con total sinceridad, como un amigo le habla a otro.",
+    "tomar_decisiones": "Ante una encrucijada, vale la pena hacer silencio, repasar qué te da verdadera paz interior y qué te quita la calma, y poner la intención en manos de Dios antes de decidir apurado.",
+    "dia_caotico": "Cuando el día te desborda y parece que no llegás a nada, hacé una pausa de un minuto, cerrá los ojos y repetí en tu interior: 'Señor, en tus manos pongo este momento'."
+  },
+  "descargo_pastoral": "Puedo ayudarte a reflexionar desde la Sagrada Escritura y el espíritu de la Iglesia, pero recordá que este es un espacio de acompañamiento virtual y no reemplaza el consejo directo de un sacerdote o director espiritual.",
   "preguntas_frecuentes": [
     {
       "tema": "que_es",
@@ -35,7 +55,7 @@
         "objetivo",
         "como funciona"
       ],
-      "respuesta": "<strong>Palabra Viva</strong> es una aplicación diseñada para el acompañamiento espiritual, la lectura meditada y el estudio bíblico. Podés buscar citas exactas, temas del corazón, o pedirme consejos basados en las Escrituras y el Magisterio de la Iglesia."
+      "respuesta": "<strong>Palabra Viva</strong> es una aplicación diseñada para el acompañamiento espiritual y la reflexión diaria. Para buscar citas exactas o pasajes de la Biblia, te sugiero utilizar el buscador dedicado que está en la barra del menú lateral, donde podés ingresar por nombre, capítulo y versículo (por ejemplo, 'Juan 1:1')."
     },
     {
       "tema": "privacidad_datos",
@@ -48,7 +68,7 @@
         "sin conexion",
         "seguro"
       ],
-      "respuesta": "Tu privacidad es absoluta. Esta aplicación funciona en modo 'local-first', lo que significa que tus búsquedas, tu nombre y tus preferencias se guardan únicamente en tu dispositivo. Nada se envía a servidores externos."
+      "respuesta": "Tu privacidad es absoluta. Esta aplicación funciona en modo 'local-first', lo que significa que tus preferencias y notas se guardan únicamente en tu dispositivo. Nada se envía a servidores externos."
     },
     {
       "tema": "navegacion_iconos",
@@ -61,7 +81,7 @@
         "barra",
         "donde esta"
       ],
-      "respuesta": "La interfaz está pensada para ser muy sencilla. El <strong>logotipo superior</strong> sirve como atajo para abrir este chat en cualquier momento. También encontrarás botones para activar el dictado por voz y menús para explorar los pasajes bíblicos guardados."
+      "respuesta": "La interfaz está pensada para ser muy sencilla. El <strong>logotipo superior</strong> sirve como atajo para abrir este chat en cualquier momento. Desde el menú lateral también podés acceder al buscador especializado en textos bíblicos."
     },
     {
       "tema": "tutorial_video",
@@ -73,7 +93,7 @@
         "guia visual",
         "ver como se usa"
       ],
-      "respuesta": "Pronto habilitaremos un pequeño video tutorial. Por ahora, podés tocar el logotipo de Palabra Viva en la barra de arriba en cualquier momento para abrir este asistente, o simplemente escribirme la palabra 'guía' para ver las instrucciones rápidas."
+      "respuesta": "Pronto habilitaremos un pequeño video tutorial. Por ahora, podés tocar el logotipo de Palabra Viva en la barra de arriba en cualquier momento para abrir este asistente, o escribir la palabra 'guía'."
     },
     {
       "tema": "identidad_asistente",
@@ -84,12 +104,12 @@
         "como te llamas",
         "humano"
       ],
-      "respuesta": "Soy el asistente de apoyo integrado en Palabra Viva. Mi propósito es facilitar tu encuentro con la Palabra de Dios, buscar pasajes rápido y ofrecerte pequeñas reflexiones espirituales para tu día a día."
+      "respuesta": "Soy el asistente de apoyo integrado en Palabra Viva. Mi propósito es ofrecerte reflexiones espirituales y escucha para tu día a día. Para lecturas bíblicas textuales, recordá que tenés el buscador dedicado en la barra del menú lateral."
     },
     {
       "tema": "version_programa",
       "palabras_clave": ["version", "actualizacion", "que version"],
-      "respuesta": "Actualmente estás utilizando <strong>Palabra Viva Beta</strong>. Seguimos trabajando para incorporar más reflexiones pastorales y respuestas profundas sobre la fe y la Iglesia."
+      "respuesta": "Actualmente estás utilizando <strong>Palabra Viva Beta</strong>. Seguimos trabajando para incorporar más reflexiones pastorales y herramientas de utilidad."
     }
   ]
 }

@@ -1625,6 +1625,78 @@ document.addEventListener("DOMContentLoaded", () => {
               nombreActual ? `, ${nombreActual}` : "",
             );
           }
+          // Comodines para expresiones breves, cortas o de negación/afirmación
+          else if (
+            textoLimpio.includes("muy amable") ||
+            textoLimpio.includes("gracias")
+          ) {
+            respuestaAsistente =
+              "¡De nada! Es un gusto acompañarte en este desarrollo. Avísame si le seguimos dando forma a algo más.";
+          } else if (
+            textoLimpio.includes("nada") ||
+            textoLimpio.includes("listo") ||
+            textoLimpio.includes("por ahora no")
+          ) {
+            respuestaAsistente =
+              "Perfecto. Cuando quieras retomar o ajustar otra parte del código, acá andamos.";
+          } else if (
+            textoLimpio.includes("genial") ||
+            textoLimpio.includes("buenisimo") ||
+            textoLimpio.includes("excelente")
+          ) {
+            respuestaAsistente =
+              "¡Vamooos! Qué bueno que vaya tomando color. ¿Qué otra cosa le querés pulir?";
+          } else if (
+            textoLimpio.includes("si") ||
+            textoLimpio.includes("dale") ||
+            textoLimpio.includes("claro")
+          ) {
+            respuestaAsistente = "¡Entendido! Decime por dónde seguimos.";
+          } else if (
+            textoLimpio.includes("no se") ||
+            textoLimpio.includes("duda") ||
+            textoLimpio.includes("estoy pensando")
+          ) {
+            respuestaAsistente =
+              "Tranquilo, tómate tu tiempo. Pensalo y lo vamos estructurando sobre la marcha.";
+          }
+          // Si le preguntan cómo está o qué anda haciendo
+          else if (
+            textoLimpio.includes("como estas") ||
+            textoLimpio.includes("que tal") ||
+            textoLimpio.includes("como andas") ||
+            textoLimpio.includes("quien sos")
+          ) {
+            respuestaAsistente =
+              "Acá estoy, listo para ayudarte a buscar cosas en el programa Palabra Viva. Hablemos de lo que quieras, para eso armamos este espacio 🧉.";
+          }
+          // Si el usuario agradece o le tira buena onda
+          else if (
+            textoLimpio.includes("gracias") ||
+            textoLimpio.includes("excelente") ||
+            textoLimpio.includes("me encanta") ||
+            textoLimpio.includes("buenisimo") ||
+            textoLimpio.includes("genial")
+          ) {
+            const agrades = [
+              "¡De nada! Me alegra un montón que te sirva para armar esto 🚀.",
+              "¡Gracias a vos por meterle tantas pilas al proyecto! Acá estamos para lo que necesites.",
+              "¡Qué bueno que te guste! Vamos que va quedando un lujo.",
+            ];
+            respuestaAsistente =
+              agrades[Math.floor(Math.random() * agrades.length)];
+          }
+          // Comprobamos preguntas generales o amplias sobre la Biblia y la app
+          else if (
+            textoLimpio.includes("biblia") ||
+            textoLimpio.includes("sagrada escritura") ||
+            textoLimpio.includes("enseñame") ||
+            textoLimpio.includes("que es") ||
+            textoLimpio.includes("de que trata")
+          ) {
+            respuestaAsistente =
+              "La Biblia es la Palabra de Dios expresada en lenguaje humano. Si buscás pasajes, capítulos o versículos específicos, recordá que tenés a disposición el buscador dedicado en la barra del menú lateral para explorarla con exactitud 📖.";
+          }
           // 3. Búsqueda exclusiva en el archivo `catequesis.json`
           else {
             const resCatequesis = await fetch("data/catequesis.json");
@@ -1730,19 +1802,26 @@ function hacerHablarAlRobot(texto) {
   }
 }
 
-// --- 5. MANEJADOR GLOBAL DEL BOTÓN "ATRÁS" ---
-window.addEventListener("popstate", () => {
+// --- MANEJADOR INTELIGENTE DEL BOTÓN "ATRÁS" DEL CELULAR ---
+window.addEventListener("popstate", (event) => {
   const studyCard = document.getElementById("study-card");
 
+  // 1. Si el panel de estudio está abierto, lo cerramos primero con el botón atrás
   if (studyCard && studyCard.classList.contains("expanded")) {
     studyCard.classList.remove("expanded");
     studyCard.style.transform = "";
+    // Mantenemos la app viva inyectando estado
     history.pushState({ vista: "main" }, "", "");
     return;
   }
 
-  history.replaceState({ vista: "main" }, "", "");
+  // 2. Si está en la pantalla principal y toca atrás, evitamos que salga de la app
+  // Forzamos a que el historial siempre tenga una trampa para retenerlo
+  history.pushState({ vista: "main" }, "", "");
 });
+
+// Apenas carga la página, pisamos el estado inicial para activar la red de contención
+history.pushState({ vista: "main" }, "", "");
 function hacerHablarAlRobot(texto) {
   // Nos aseguramos de que el navegador soporte la síntesis de voz
   if ("speechSynthesis" in window) {
