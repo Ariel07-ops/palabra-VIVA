@@ -3753,9 +3753,9 @@ body {
   border-radius: 20px;
   padding: 15px;
   display: flex;
-  gap: 8px;
+  gap: 6px;
   border-top: 3px solid #d4af37;
-  align-items: center;
+  box-sizing: border-box;
 }
 #chat-mensajes {
   display: flex;
@@ -3766,23 +3766,28 @@ body {
 #chat-input {
   border: 2px solid #d4af37;
   border-radius: 20px;
-  padding: 10px 16px; /* Aumenta el espacio interior para que se vea más alta y cómoda */
+  padding: 8px 12px; /* Aumenta el espacio interior para que se vea más alta y cómoda */
   font-size: 1rem; /* Asegura que el texto se lea bien */
   flex-direction: column;
-  margin-bottom: 2px;
-  margin-left: 2px;
+  margin-bottom: 10px;
+  margin-left: 0px;
 }
 #btnMic {
-  padding: 8px 8px;
+  display: flex;
+  align-items: auto;
+  justify-content: center;
+  padding: 8px;
   border: 2px solid #d4af37;
   border-radius: 20px;
-  margin-bottom: 2px;
+  margin-bottom: 10px;
+  margin-right: 4px;
 }
 #chat-btn-enviar {
-  padding: 10px 10px;
+  display: flex;
+  padding: 8px;
   border: 2px solid #d4af37;
   border-radius: 20px;
-  margin-bottom: 2px;
+  margin-bottom: 10px;
 }
 body.light-mode #mensaje-asistente .mensaje-usuario .mensaje-asistente {
   font-weight: bold !important;
