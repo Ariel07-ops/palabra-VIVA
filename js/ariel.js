@@ -38,7 +38,7 @@ const panelHandle = document.querySelector(".panel-handle");
 const btnVolverAcerca = document.getElementById("btn-volver-acerca");
 const linkAsistente = document.getElementById("link-asistente");
 const btnMic = document.getElementById("btnMic");
-
+const inputChat = document.getElementById("chat-input");
 // --- VARIABLE GLOBAL PARA EL BUSCADOR ---
 let resultadosBusquedaActuales = [];
 // Variable global para guardar la Biblia en la memoria RAM
@@ -1682,11 +1682,11 @@ btnMic?.addEventListener("click", () => {
     reconocimiento.onresult = (evento) => {
       const textoCapturado = evento.results[0][0].transcript;
       if (inputChat) {
+        inputChat.focus();
         inputChat.value = textoCapturado;
-        hacerHablarAlRobot("Entendido: " + textoCapturado);
+        inputChat.dispatchEvent(new Event("input", { bubbles: true }));
       }
     };
-
     reconocimiento.onend = () => {
       btnMic.classList.remove("mic-escuchando");
     };

@@ -3702,7 +3702,7 @@ body {
 .imagen-facsamil:hover {
   transform: scale(1.03); /* Efecto sutil al pasar el cursor */
 }
-/* Contenedor principal del chat (asegurá que ocupe el espacio y baje el scroll) */
+/* Contenedor principal CHATBOT (asegurá que ocupe el espacio y baje el scroll) */
 #contenedorMensajes,
 .chat-mensajes {
   display: flex;
@@ -3749,15 +3749,42 @@ body {
 /* Barra inferior fija para la entrada de texto */
 .chat-input-container,
 .input-area {
-  background-color: #121212; /* Ajustalo al color de fondo de tu app */
-  padding: 20px;
+  background-color: #000000; /* Ajustalo al color de fondo de tu app */
+  border-radius: 20px;
+  padding: 15px;
   display: flex;
   gap: 8px;
-  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  border-top: 3px solid #d4af37;
+  align-items: center;
 }
 #chat-mensajes {
   display: flex;
   flex-direction: column;
   flex-grow: 1;
   overflow-y: auto;
+}
+#chat-input {
+  border: 2px solid #d4af37;
+  border-radius: 20px;
+  padding: 10px 16px; /* Aumenta el espacio interior para que se vea más alta y cómoda */
+  font-size: 1rem; /* Asegura que el texto se lea bien */
+  flex-direction: column;
+  margin-bottom: 2px;
+  margin-left: 2px;
+}
+#btnMic {
+  padding: 8px 8px;
+  border: 2px solid #d4af37;
+  border-radius: 20px;
+  margin-bottom: 2px;
+}
+#chat-btn-enviar {
+  padding: 10px 10px;
+  border: 2px solid #d4af37;
+  border-radius: 20px;
+  margin-bottom: 2px;
+}
+body.light-mode #mensaje-asistente .mensaje-usuario .mensaje-asistente {
+  font-weight: bold !important;
+  color: #000000 !important;
 }
