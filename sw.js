@@ -1,39 +1,48 @@
-const CACHE_NAME = "palabra-viva-v4";
+const CACHE_NAME = "palabra-viva-v6";
 const urlsToCache = [
   "./",
   "./index.html",
-  "./data/biblia.json",
   "./manifest.json",
+  "./css/style.css",
+  "./js/ariel.js",
+  "./assets/imagen/logo-redondo.png",
+  "./assets/imagen/splash-cruz-nitida.png",
+  "./assets/imagen/splash.png",
+  "./assets/imagen/splash1.png",
+  "./assets/imagen/pagina1.jpg",
+  "./data/biblia.json",
   "./data/estados.json",
   "./data/contenido.json",
   "./data/camino.json",
   "./data/promesa.json",
-  "./assets/imagen/logo-redondo.png",
-  "./assets/imagen/cruz-nitida.png",
-  "./css/style.css",
-  "./js/ariel.js",
-
-  // Si tenés estilos CSS propios o iconos, agregalos acá también
+  "./data/catequesis.json",
+  "./data/config.json",
+  "./data/palabraviva.json",
+  "./data/respuestas_asistente.json",
 ];
 
-// Instalación: guarda los archivos en la caché del celular
 self.addEventListener("install", (event) => {
   event.waitUntil(
-    caches.open(CACHE_NAME).then((cache) => {
+    caches.open(CACHE_NAME).then(async (cache) => {
+      console.log("Cacheando archivos...");
+      for (let url of urlsToCache) {
+        try {
+          await cache.add(url);
+        } catch (e) {
+          console.warn("No se pudo cachear", url);
+        }
+      }
       console.log("Archivos cacheados correctamente");
-      return cache.addAll(urlsToCache);
     }),
   );
 });
 
-// Activación: limpia cachés antiguas si actualizás la app
 self.addEventListener("activate", (event) => {
   event.waitUntil(
     caches.keys().then((cacheNames) => {
       return Promise.all(
         cacheNames.map((cacheName) => {
           if (cacheName !== CACHE_NAME) {
-            console.log("Borrando caché antigua:", cacheName);
             return caches.delete(cacheName);
           }
         }),
@@ -42,11 +51,9 @@ self.addEventListener("activate", (event) => {
   );
 });
 
-// Intercepta las peticiones: si no hay internet, sirve los archivos desde la caché
 self.addEventListener("fetch", (event) => {
   event.respondWith(
     caches.match(event.request).then((response) => {
-      // Si está en caché, lo devuelve. Si no, intenta buscarlo en la red.
       return response || fetch(event.request);
     }),
   );

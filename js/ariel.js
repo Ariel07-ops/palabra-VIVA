@@ -1531,22 +1531,47 @@ async function procesarMensaje(texto, contenedorMensajes) {
 // 📂 PALABRA VIVA - NÚCLEO JAVASCRIPT PRINCIPAL
 // ==========================================
 
-// Variables de estado global
+// // Variables de estado global
 let esperandoConfirmacionMic = false;
 
+function escaparHTML(texto) {
+  const div = document.createElement("div");
+  div.textContent = texto;
+  return div.innerHTML;
+}
+
+let utteranceRobot = null;
+function hacerHablarAlRobot(textoLimpio) {
+  window.speechSynthesis.cancel();
+  setTimeout(() => {
+    utteranceRobot = new SpeechSynthesisUtterance(textoLimpio);
+    utteranceRobot.lang = "es-ES";
+    utteranceRobot.rate = 0.95;
+    const voces = window.speechSynthesis.getVoices();
+    const vozEs =
+      voces.find((v) => v.lang === "es-ES") ||
+      voces.find((v) => v.lang.startsWith("es"));
+    if (vozEs) utteranceRobot.voice = vozEs;
+    window.speechSynthesis.speak(utteranceRobot);
+  }, 300);
+}
+if (typeof window.speechSynthesis !== "undefined") {
+  window.speechSynthesis.onvoiceschanged = () => {
+    window.speechSynthesis.getVoices();
+  };
+}
 
 document.addEventListener("DOMContentLoaded", () => {
-  // --- 1. CHAT Y ASISTENTE ---
   const inputChat = document.getElementById("chat-input");
   const btnEnviar = document.getElementById("chat-btn-enviar");
   const contenedorMensajes = document.getElementById("chat-mensajes");
+
   inputChat?.addEventListener("keypress", (e) => {
     if (e.key === "Enter") {
       btnEnviar?.click();
     }
   });
 
-  // Verificación inicial del nombre al cargar
   const nombreGuardado = localStorage.getItem("nombrePalabraViva");
   if (contenedorMensajes) {
     if (nombreGuardado) {
@@ -1558,10 +1583,8 @@ document.addEventListener("DOMContentLoaded", () => {
     contenedorMensajes.scrollTop = contenedorMensajes.scrollHeight;
   }
 
-  // --- EVENTO DE ENVÍO UNIFICADO (EXCLUSIVO CATEQUESIS Y GUÍA) ---
   btnEnviar?.addEventListener("click", async () => {
-    // 🛡️ Sanitizamos la entrada del chat de forma segura (asegurate de tener definida la función escaparHTML)
-    const textoUsuario = typeof escaparHTML === 'function' ? escaparHTML(inputChat.value.trim()) : inputChat.value.trim();
+    const textoUsuario = escaparHTML(inputChat.value.trim());
     const textoLimpio = textoUsuario.toLowerCase();
 
     if (textoUsuario !== "") {
@@ -1572,7 +1595,6 @@ document.addEventListener("DOMContentLoaded", () => {
       let respuestaAsistente = "";
 
       try {
-        // 1. Si estamos esperando el nombre por primera vez
         if (esperandoNombre) {
           const nombreIngresado = textoUsuario.split(" ")[0];
           if (
@@ -1589,11 +1611,9 @@ document.addEventListener("DOMContentLoaded", () => {
               "Por favor, escribime cuál es tu nombre de pila para poder saludarte mejor 💬.";
           }
         } else {
-          // 2. Cargamos el JSON de respuestas del asistente (guías, saludos)
           const resRespuestas = await fetch("data/respuestas_asistente.json");
           const datosAsistente = await resRespuestas.json();
 
-          // Evaluamos si pide guía, ayuda o tutorial
           if (
             textoLimpio.includes("guia") ||
             textoLimpio.includes("que puedo hacer") ||
@@ -1606,9 +1626,7 @@ document.addEventListener("DOMContentLoaded", () => {
             respuestaAsistente =
               `<strong>🧭 ${guia.titulo}</strong><br>${guia.mensaje}<br>` +
               guia.opciones.map((opt) => `• ${opt}`).join("<br>");
-          }
-          // Evaluamos saludos comunes
-          else if (
+          } else if (
             textoLimpio.includes("hola") ||
             textoLimpio.includes("buenos dias") ||
             textoLimpio.includes("buenas") ||
@@ -1625,9 +1643,7 @@ document.addEventListener("DOMContentLoaded", () => {
               "{nombre}",
               nombreActual ? `, ${nombreActual}` : "",
             );
-          }
-          // Si le preguntan cómo está o qué anda haciendo
-          else if (
+          } else if (
             textoLimpio.includes("como estas") ||
             textoLimpio.includes("que tal") ||
             textoLimpio.includes("como andas") ||
@@ -1635,9 +1651,7 @@ document.addEventListener("DOMContentLoaded", () => {
           ) {
             respuestaAsistente =
               "Acá estoy, listo para ayudarte a buscar cosas en el programa Palabra Viva. Hablemos de lo que quieras, para eso armamos este espacio 🧉.";
-          }
-          // Si el usuario agradece o le tira buena onda
-          else if (
+          } else if (
             textoLimpio.includes("gracias") ||
             textoLimpio.includes("excelente") ||
             textoLimpio.includes("me encanta") ||
@@ -1652,9 +1666,7 @@ document.addEventListener("DOMContentLoaded", () => {
             ];
             respuestaAsistente =
               agrades[Math.floor(Math.random() * agrades.length)];
-          }
-          // Comprobamos preguntas generales o amplias sobre la Biblia
-          else if (
+          } else if (
             textoLimpio.includes("biblia") ||
             textoLimpio.includes("sagrada escritura") ||
             textoLimpio.includes("enseñame") ||
@@ -1662,70 +1674,86 @@ document.addEventListener("DOMContentLoaded", () => {
           ) {
             respuestaAsistente =
               "La Biblia es la Palabra de Dios expresada en lenguaje humano. Si buscás pasajes, capítulos o versículos específicos, recordá que tenés a disposición el buscador dedicado en la barra del menú lateral para explorarla con exactitud 📖.";
+          } else {
+            const resCatequesis = await fetch("data/catequesis.json");
+            const baseDatosCatequesis = await resCatequesis.json();
+            let encontrada = null;
+
+            encontrada = baseDatosCatequesis.find((item) => {
+              const preguntaItem = item.pregunta_principal.toLowerCase();
+              return (
+                preguntaItem.includes(textoLimpio) ||
+                textoLimpio.includes(preguntaItem)
+              );
+            });
+
+            if (!encontrada) {
+              encontrada = baseDatosCatequesis.find((item) => {
+                return item.keywords.some((kw) => {
+                  const keywordLimpia = kw.toLowerCase();
+                  if (keywordLimpia.length <= 3) {
+                    return textoLimpio === keywordLimpia;
+                  }
+                  return textoLimpio.includes(keywordLimpia);
+                });
+              });
+            }
+
+            if (encontrada) {
+              respuestaAsistente = `<strong>${encontrada.pregunta_principal}</strong><br><br>${encontrada.respuesta_breve}`;
+              if (encontrada.paso_concreto) {
+                respuestaAsistente += `<br><br>💡 <em>Paso concreto:</em> ${encontrada.paso_concreto}`;
+              }
+              let fuentesTexto = [];
+              if (
+                encontrada.enseñanza_de_la_iglesia &&
+                encontrada.enseñanza_de_la_iglesia.length > 0
+              ) {
+                fuentesTexto = fuentesTexto.concat(
+                  encontrada.enseñanza_de_la_iglesia,
+                );
+              }
+              if (
+                encontrada.fundamento_biblico &&
+                encontrada.fundamento_biblico.length > 0
+              ) {
+                fuentesTexto = fuentesTexto.concat(
+                  encontrada.fundamento_biblico,
+                );
+              }
+              if (fuentesTexto.length > 0) {
+                respuestaAsistente += `<br><br><small><strong>📖 Fuente:</strong> ${fuentesTexto.join(" | ")}</small>`;
+              }
+            } else {
+              respuestaAsistente =
+                "No encontré una respuesta específica sobre ese tema espiritual en nuestra catequesis. Recordá que podés escribir 'guia' para ver las opciones o utilizar el buscador de la Biblia ubicado en la barra de navegación superior 🔍.";
+            }
           }
-          // 3. Búsqueda inteligente con prioridades en el archivo `catequesis.json`
-else {
-  const resCatequesis = await fetch("data/catequesis.json");
-  const baseDatosCatequesis = await resCatequesis.json();
-
-  let encontrada = null;
-
-  // PRIORIDAD 1: Buscar si la pregunta principal contiene la frase exacta del usuario (o viceversa)
-  encontrada = baseDatosCatequesis.find((item) => {
-    const preguntaItem = item.pregunta_principal.toLowerCase();
-    return preguntaItem.includes(textoLimpio) || textoLimpio.includes(preguntaItem);
-  });
-
-  // PRIORIDAD 2: Si no hubo coincidencia exacta, buscar por keywords excluyendo términos demasiado genéricos si hay ambigüedad
-  if (!encontrada) {
-    encontrada = baseDatosCatequesis.find((item) => {
-      return item.keywords.some((kw) => {
-        const keywordLimpia = kw.toLowerCase();
-        // Evitamos que palabras de 3 letras o menos disparen falsos positivos aislados
-        if (keywordLimpia.length <= 3) {
-          return textoLimpio === keywordLimpia;
-        }
-        return textoLimpio.includes(keywordLimpia);
-      });
-    });
-  }
-
-  if (encontrada) {
-    respuestaAsistente = `<strong>${encontrada.pregunta_principal}</strong><br><br>${encontrada.respuesta_breve}`;
-    
-    if (encontrada.paso_concreto) {
-      respuestaAsistente += `<br><br>💡 <em>Paso concreto:</em> ${encontrada.paso_concreto}`;
-    }
-
-    let fuentesTexto = [];
-    if (encontrada.enseñanza_de_la_iglesia && encontrada.enseñanza_de_la_iglesia.length > 0) {
-      fuentesTexto = fuentesTexto.concat(encontrada.enseñanza_de_la_iglesia);
-    }
-    if (encontrada.fundamento_biblico && encontrada.fundamento_biblico.length > 0) {
-      fuentesTexto = fuentesTexto.concat(encontrada.fundamento_biblico);
-    }
-
-    if (fuentesTexto.length > 0) {
-      respuestaAsistente += `<br><br><small><strong>📖 Fuente:</strong> ${fuentesTexto.join(" | ")}</small>`;
-    }
-  } else {
-    respuestaAsistente =
-      "No encontré una respuesta específica sobre ese tema espiritual en nuestra catequesis. Recordá que podés escribir 'guia' para ver las opciones o utilizar el buscador de la Biblia ubicado en la barra de navegación superior 🔍.";
-  }
-}
         }
       } catch (error) {
-        console.error(
-          "Error al procesar la consulta con los archivos de datos:",
-          error,
-        );
+        console.error("Error al procesar la consulta:", error);
         respuestaAsistente =
           "Ocurrió un error al procesar tu consulta espiritual. Por favor, intentá nuevamente ⚠️.";
       }
 
-      contenedorMensajes.innerHTML += `<div class="mensaje-asistente"><strong>Asistente:</strong><br>${respuestaAsistente}</div>`;
+      // --- MOSTRAR UN SOLO MENSAJE CON PARLANTE ---
+      const textoParaVoz = respuestaAsistente
+        .replace(/<[^>]*>/g, " ")
+        .replace(/\s+/g, " ")
+        .trim();
+      const divAsistente = document.createElement("div");
+      divAsistente.className = "mensaje-asistente";
+      divAsistente.innerHTML = `<strong>Asistente:</strong><br>${respuestaAsistente}<br><button class="btn-voz-robot" style="margin-top:8px; background:#000; color:#D4AF37; border:1px solid #D4AF37; border-radius:20px; padding:6px 12px; cursor:pointer; font-size:12px;">🔊 Escuchar</button>`;
+      contenedorMensajes.appendChild(divAsistente);
+
+      divAsistente
+        .querySelector(".btn-voz-robot")
+        .addEventListener("click", () => {
+          hacerHablarAlRobot(textoParaVoz);
+        });
+
       contenedorMensajes.scrollTop = contenedorMensajes.scrollHeight;
-      inputChat.focus(); // Corregido el typo anterior "imputChat"
+      inputChat.focus();
     }
   });
 });
