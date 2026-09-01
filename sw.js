@@ -10,7 +10,6 @@ const urlsToCache = [
   "./data/promesa.json",
   "./assets/imagen/logo-redondo.png",
   "./assets/imagen/cruz-nitida.png",
-  "./assets/audio/intro.mp3",
   "./css/style.css",
   "./js/ariel.js",
 

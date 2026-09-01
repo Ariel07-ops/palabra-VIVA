@@ -2,160 +2,161 @@
   {
     "id": "fe-001",
     "categoria": "Dios y la fe",
+    "subcategoria": "Naturaleza de la fe",
+    "intencion": "formacion",
+    "nivel": "inicial",
     "pregunta_principal": "¿Qué es la fe católica?",
-    "keywords": ["fe", "creer", "catolica", "confianza", "Dios"],
-    "respuesta": "La fe católica es la respuesta libre del ser humano a Dios, que se revela y nos invita a entrar en comunión con Él.",
-    "fuentes": ["Catecismo de la Iglesia Católica, 142-184"]
-  },
-  {
-    "id": "fe-002",
-    "categoria": "Dios y la fe",
-    "pregunta_principal": "¿Quién es Dios?",
-    "keywords": ["fe", "Señor", "Dios", "existe", "creer"],
-    "respuesta": "Dios es la causa incausada, el Ser que existe antes del tiempo, el todopoderoso que en su inmenso amor quiso compartir su plena felicidad con los seres humanos a quienes creó a su imagen y semejanza, dotándolos de libertad y un alma inmortal la cual tiene la capacidad de poder unirse a Él.",
-    "fuentes": ["Catecismo de la Iglesia Católica, 198-231"]
-  },
-  {
-    "id": "dios-003",
-    "categoria": "Dios y la fe",
-    "pregunta_principal": "¿Qué es la Santísima Trinidad?",
-    "keywords": [
-      "Trinidad",
-      "Padre",
-      "Hijo",
-      "Espiritu Santo",
-      "tres Personas"
+    "preguntas_relacionadas": [
+      "¿Quién es el Dios en quien creemos?",
+      "¿Por qué creemos en Jesucristo?"
     ],
-    "respuesta": "La Santísima Trinidad es el misterio de un solo Dios en tres Personas: Padre, Hijo y Espíritu Santo.",
-    "fuentes": ["Catecismo de la Iglesia Católica, 232-267"]
+    "keywords": ["fe", "creer", "catolica", "confianza" ],
+    "respuesta_breve": "La fe católica es la respuesta libre del ser humano a Dios, que se revela en Jesucristo. Es un don de la gracia y, al mismo tiempo, un acto libre de la inteligencia y de la voluntad.",
+    "respuesta_ampliada": "La fe no consiste únicamente en aceptar ideas religiosas ni en experimentar un sentimiento. Es adherirse personalmente a Dios y aceptar libremente la verdad que Él ha revelado. Por eso, la fe incluye confianza, conocimiento, obediencia y amor. El cristiano cree en Dios Padre, por Jesucristo, en el Espíritu Santo, dentro de la fe de la Iglesia.",
+    "fundamento_biblico": [
+      "Hebreos 11, 1: La fe es garantía de lo que se espera, la prueba de las realidades que no se ven."
+    ],
+    "enseñanza_de_la_iglesia": [
+      "Catecismo de la Iglesia Católica, 142-184"
+    ],
+    "aclaracion": "La fe es un don de Dios, pero no elimina la libertad ni la razón. Nadie puede ser obligado a creer; la persona responde libremente a la Revelación.",
+    "aplicacion": "Vivir la fe implica confiar en Dios, buscar conocer mejor a Jesucristo, permanecer unido a la Iglesia y dejar que la fe se manifieste en la caridad.",
+    "paso_concreto": "Rezá hoy el Credo lentamente y detenete unos instantes en una frase que te resulte especialmente difícil o significativa.",
+    "oracion_sugerida": "Señor, aumentá mi fe y ayudame a conocerte, amarte y seguirte cada día.",
+    "derivacion": {
+      "estado": "no necesaria",
+      "motivo": null
+    },
+    "respuesta_si_hay_dudas": "Tener dudas o atravesar momentos de oscuridad no significa necesariamente haber perdido la fe. Puede ser una ocasión para buscar, rezar, estudiar y pedir acompañamiento.",
+    "fuentes_prioritarias": [
+      "Catecismo de la Iglesia Católica",
+      "Sagrada Escritura"
+    ]
   },
   {
-    "id": "jesucristo-001",
+    "id": "dios-002",
+    "categoria": "Dios y la fe",
+    "subcategoria": "Misterio de Dios",
+    "intencion": "formacion",
+    "nivel": "inicial",
+    "pregunta_principal": "¿Quién es Dios?",
+    "preguntas_relacionadas": [
+      "¿Qué es la Santísima Trinidad?",
+      "¿Cómo se revela Dios al ser humano?"
+    ],
+    "keywords": ["Ser supremo","Creador", "Señor", "Dios", "existe", "creer", "padre"],
+    "respuesta_breve": "Dios es el Creador del cielo y de la tierra, el Ser infinito, eterno y amoroso que se nos ha revelado en tres Personas: Padre, Hijo y Espíritu Santo.",
+    "respuesta_ampliada": "La fe nos enseña que Dios no es una fuerza lejana o abstracta, sino un Padre amoroso que nos creó por amor y nos llama a la comunión con Él. Se ha dado a conocer plenamente a través de su Hijo Jesucristo.",
+    "fundamento_biblico": [
+      "1 Juan 4, 8: Dios es amor."
+    ],
+    "enseñanza_de_la_iglesia": [
+      "Catecismo de la Iglesia Católica, 198-231"
+    ],
+    "aclaracion": "A Dios no podemos comprenderlo por completo con nuestra mente humana, pero podemos conocerlo a través de su amor y de la creación.",
+    "aplicacion": "Saber que Dios es nuestro Padre nos libera del miedo y nos invita a vivir con confianza y esperanza cada día.",
+    "paso_concreto": "Dedicar cinco minutos en silencio para contemplar un detalle de la naturaleza y agradecer a Dios por su creación.",
+    "oracion_sugerida": "Padre nuestro, que estás en el cielo, santificado sea tu nombre...",
+    "derivacion": {
+      "estado": "no necesaria",
+      "motivo": null
+    },
+    "respuesta_si_hay_dudas": "Preguntarse por la existencia de Dios es un camino natural del corazón humano que busca sentido y verdad.",
+    "fuentes_prioritarias": [
+      "Catecismo de la Iglesia Católica"
+    ]
+  },
+  {
+    "id": "trinidad-003",
+    "categoria": "Dios y la fe",
+    "subcategoria": "Misterio central",
+    "intencion": "formacion",
+    "nivel": "intermedio",
+    "pregunta_principal": "¿Qué es la Santísima Trinidad?",
+    "preguntas_relacionadas": [
+      "¿Quién es Jesucristo?",
+      "¿Cuál es la obra del Espíritu Santo?"
+    ],
+    "keywords": ["Trinidad", "Padre", "Hijo", "Espiritu Santo", "tres Personas"],
+    "respuesta_breve": "La Santísima Trinidad es el misterio central de la fe y de la vida cristiana: un solo Dios en tres Personas distintas: el Padre, el Hijo y el Espíritu Santo.",
+    "respuesta_ampliada": "Las tres Personas divinas no son dioses separados, sino un único Dios porque cada una de ellas posee la misma e idéntica naturaleza divina. El Padre es quien engendra, el Hijo es engendrado, y el Espíritu Santo procede de ambos.",
+    "fundamento_biblico": [
+      "Mateo 28, 19: Vayan y hagan discípulos de todos los pueblos, bautizándolos en el nombre del Padre y del Hijo y del Espíritu Santo."
+    ],
+    "enseñanza_de_la_iglesia": [
+      "Catecismo de la Iglesia Católica, 232-260"
+    ],
+    "aclaracion": "Este es un misterio que supera la razón humana y solo puede ser conocido porque Dios mismo se ha dignado revelárnoslo.",
+    "aplicacion": "Fuimos creados a imagen de Dios Trino, lo que significa que estamos hechos para vivir en comunión, amor y entrega con los demás.",
+    "paso_concreto": "Hacer la señal de la cruz con conciencia y devoción, recordando que nos ponemos bajo el amparo de la Trinidad.",
+    "oracion_sugerida": "Gloria al Padre, al Hijo y al Espíritu Santo, como era en el principio, ahora y siempre.",
+    "derivacion": {
+      "estado": "no necesaria",
+      "motivo": null
+    },
+    "respuesta_si_hay_dudas": "Los misterios de la fe no se entienden por cálculo lógico, sino por la experiencia del amor de Dios en la oración.",
+    "fuentes_prioritarias": [
+      "Catecismo de la Iglesia Católica"
+    ]
+  },
+  {
+    "id": "jesus-001",
     "categoria": "Jesucristo",
     "pregunta_principal": "¿Quién es Jesucristo?",
-    "keywords": ["Jesus", "Cristo", "Hijo de Dios", "Salvador", "Mesias"],
-    "respuesta": "Jesucristo es el Hijo eterno de Dios hecho hombre. Es verdadero Dios y verdadero hombre.",
-    "fuentes": ["Catecismo de la Iglesia Católica, 422-682"]
+    "keywords": ["quien es jesus", "jesucristo", "hijo de dios", "verdadero dios y verdadero hombre", "mesias"],
+    "respuesta_breve": "Jesucristo es el Hijo de Dios hecho hombre, el Verbo encarnado. Es verdadero Dios y verdadero hombre, el único Salvador del mundo que vino a revelarnos el amor del Padre y a rescatarnos del pecado.",
+    "paso_concreto": "Dedicar unos minutos a mirar un crucificio o una imagen del Señor y repetir en silencio: 'Jesús, confío en ti y te reconozco como el centro de mi vida'.",
+    "enseñanza_de_la_iglesia": ["Catecismo de la Iglesia Católica, 456-463"],
+    "fundamento_biblico": ["Juan 1, 1-14: Y la Palabra se hizo carne", "Mateo 16, 16: Tú eres el Mesías, el Hijo de Dios vivo"]
   },
   {
-    "id": "jesucristo-002",
+    "id": "jesus-002",
     "categoria": "Jesucristo",
-    "pregunta_principal": "¿Por qué se hizo hombre Jesús?",
-    "keywords": [
-      "encarnacion",
-      "hizo hombre",
-      "salvacion",
-      "redencion",
-      "pecado"
-    ],
-    "respuesta": "El Hijo de Dios se hizo hombre para salvarnos del pecado, revelarnos el amor del Padre y hacernos participar de la vida divina.",
-    "fuentes": ["Catecismo de la Iglesia Católica, 456-460"]
+    "pregunta_principal": "¿Por qué murió y resucitó Jesús?",
+    "keywords": ["muerte y resurreccion", "por que murio jesus", "la pascua", "redencion", "cruz y resurreccion"],
+    "respuesta_breve": "Jesús entregó su vida en la cruz por amor incondicional para perdonar nuestros pecados y abrirnos las puertas del cielo. Su resurrección al tercer día venció a la muerte y nos asegura la vida eterna.",
+    "paso_concreto": "Ofrecer un pequeño sacrificio cotidiano o un acto de paciencia por amor a Jesús, recordando que su entrega en la cruz fue por cada uno de nosotros.",
+    "enseñanza_de_la_iglesia": ["Catecismo de la Iglesia Católica, 599-601 y 651-655"],
+    "fundamento_biblico": ["Romanos 4, 25: Fue entregado por nuestros pecados, y resucitó para nuestra justificación", "1 Corintios 15, 3-4"]
   },
   {
-    "id": "jesucristo-003",
+    "id": "jesus-003",
     "categoria": "Jesucristo",
-    "pregunta_principal": "¿Jesús realmente resucitó?",
-    "keywords": [
-      "resurreccion",
-      "resucito",
-      "muerte",
-      "sepulcro",
-      "vida eterna"
-    ],
-    "respuesta": "Sí. Jesús resucitó verdaderamente de entre los muertos. La Resurrección es el centro de la fe cristiana.",
-    "fuentes": ["Catecismo de la Iglesia Católica, 638-658"]
+    "pregunta_principal": "¿Qué enseñaba Jesús con las parábolas?",
+    "keywords": ["parabolas", "enseñanzas de jesus", "reino de dios", "como enseñaba jesus"],
+    "respuesta_breve": "Jesús utilizaba parábolas —narraciones sencillas tomadas de la vida cotidiana— para explicar los misterios del Reino de Dios, conmover el corazón de los oyentes y llamarlos a una conversión profunda.",
+    "paso_concreto": "Leer hoy mismo una parábola breve (como la del Hijo Pródigo o la del Sembrador) en la Biblia Torres Amat y pensar qué me quiere decir Dios hoy con ese texto.",
+    "enseñanza_de_la_iglesia": ["Catecismo de la Iglesia Católica, 546"],
+    "fundamento_biblico": ["Mateo 13, 10-13: A ustedes se les ha concedido conocer los misterios del Reino de los Cielos", "Marcos 4, 33-34"]
   },
   {
-    "id": "iglesia-001",
-    "categoria": "La Iglesia",
-    "pregunta_principal": "¿Qué es la Iglesia?",
-    "keywords": ["Iglesia", "Pueblo de Dios", "Cuerpo de Cristo", "comunidad"],
-    "respuesta": "La Iglesia es el Pueblo de Dios, el Cuerpo de Cristo y el templo del Espíritu Santo. Cristo la fundó y le confió la misión de anunciar el Evangelio.",
-    "fuentes": ["Catecismo de la Iglesia Católica, 748-810"]
+    "id": "jesus-004",
+    "categoria": "Jesucristo",
+    "pregunta_principal": "¿Por qué se bautizó Jesús en el río Jordán?",
+    "keywords": ["bautismo de jesus", "rio jordan", "juan el bautista", "bautizarse"],
+    "respuesta_breve": "Jesús se bautizó para manifestar su solidaridad con los pecadores, cumpliendo toda justicia y anticipando el bautismo de su muerte y resurrección, momento en el cual el Espíritu Santo descendió sobre Él.",
+    "paso_concreto": "Hacer memoria del propio bautismo haciendo la señal de la cruz con agua bendita al entrar o salir de casa, agradeciendo la gracia de ser hijos de Dios.",
+    "enseñanza_de_la_iglesia": ["Catecismo de la Iglesia Católica, 535-537"],
+    "fundamento_biblico": ["Mateo 3, 13-17: El bautismo de Jesús en el Jordán y la voz del Padre"]
   },
   {
-    "id": "iglesia-002",
-    "categoria": "La Iglesia",
-    "pregunta_principal": "¿Cuáles son las notas de la Iglesia?",
-    "keywords": ["una", "santa", "catolica", "apostolica", "Credo"],
-    "respuesta": "La Iglesia es una, santa, católica y apostólica.",
-    "fuentes": ["Catecismo de la Iglesia Católica, 811-870"]
+    "id": "jesus-general",
+    "categoria": "Jesucristo",
+    "pregunta_principal": "Enseñanzas sobre Jesucristo",
+    "keywords": ["jesus", "sobre jesus", "hablar de jesus", "cristo"],
+    "respuesta_breve": "¡Tengo varias enseñanzas sobre Jesús! ¿Qué te gustaría saber específicamente sobre Él? Podés preguntarme sobre:<br><br>• ¿Quién es Jesucristo?<br>• ¿Por qué murió y resucitó?<br>• ¿Qué enseñaba con las parábolas?<br>• El bautismo de Jesús en el Jordán",
+    "paso_concreto": "Elegí una de estas opciones o escribime tu duda concreta para profundizar en su vida y su mensaje.",
+    "enseñanza_de_la_iglesia": [],
+    "fundamento_biblico": []
   },
   {
-    "id": "sacramentos-001",
-    "categoria": "Sacramentos",
-    "pregunta_principal": "¿Qué es un sacramento?",
-    "keywords": ["sacramento", "gracia", "signo", "Cristo", "Iglesia"],
-    "respuesta": "Un sacramento es un signo sensible y eficaz de la gracia, instituido por Cristo y confiado a la Iglesia.",
-    "fuentes": ["Catecismo de la Iglesia Católica, 1113-1131"]
-  },
-  {
-    "id": "sacramentos-002",
-    "categoria": "Sacramentos",
-    "pregunta_principal": "¿Cuántos sacramentos hay?",
-    "keywords": [
-      "siete",
-      "Bautismo",
-      "Confirmacion",
-      "Eucaristia",
-      "Confesion",
-      "Matrimonio"
-    ],
-    "respuesta": "Hay siete sacramentos: Bautismo, Confirmación, Eucaristía, Reconciliación, Unción de los Enfermos, Orden sacerdotal y Matrimonio.",
-    "fuentes": ["Catecismo de la Iglesia Católica, 1210"]
-  },
-  {
-    "id": "sacramentos-003",
-    "categoria": "Sacramentos",
-    "pregunta_principal": "¿Qué es la Eucaristía?",
-    "keywords": [
-      "Eucaristia",
-      "Misa",
-      "Comunión",
-      "Cuerpo",
-      "Sangre",
-      "pan",
-      "vino"
-    ],
-    "respuesta": "La Eucaristía es el sacramento en el que Jesucristo está real, verdadera y sustancialmente presente bajo las especies del pan y del vino.",
-    "fuentes": ["Catecismo de la Iglesia Católica, 1322-1419"]
-  },
-  {
-    "id": "moral-001",
-    "categoria": "Vida cristiana",
-    "pregunta_principal": "¿Qué es el pecado?",
-    "keywords": ["pecado", "mal", "mandamientos", "ofensa", "Dios"],
-    "respuesta": "El pecado es una palabra, acción, deseo u omisión contraria a la voluntad de Dios. Daña la comunión con Dios, con los demás y con uno mismo.",
-    "fuentes": ["Catecismo de la Iglesia Católica, 1849-1876"]
-  },
-  {
-    "id": "maria-001",
-    "categoria": "María y los santos",
-    "pregunta_principal": "¿Quién es la Virgen María?",
-    "keywords": [
-      "Maria",
-      "Virgen",
-      "Madre de Dios",
-      "Madre de Jesus",
-      "Inmaculada"
-    ],
-    "respuesta": "María es la Madre de Jesús, verdadera Madre de Dios, siempre Virgen y modelo perfecto de discípula.",
-    "fuentes": ["Catecismo de la Iglesia Católica, 484-511"]
-  },
-  {
-    "id": "oracion-001",
-    "categoria": "Oración",
-    "pregunta_principal": "¿Qué es orar?",
-    "keywords": ["oracion", "rezar", "Padre", "peticion", "alabanza"],
-    "respuesta": "Orar es elevar el corazón y la mente a Dios, hablar con Él y permanecer en su presencia.",
-    "fuentes": ["Catecismo de la Iglesia Católica, 2558-2565"]
-  },
-  {
-    "id": "vidaeterna-001",
-    "categoria": "Vida eterna",
-    "pregunta_principal": "¿Qué ocurre después de la muerte?",
-    "keywords": ["muerte", "cielo", "infierno", "purgatorio", "juicio"],
-    "respuesta": "Después de la muerte, cada persona comparece ante Dios. La Iglesia enseña la existencia del cielo, el purgatorio y el infierno.",
-    "fuentes": ["Catecismo de la Iglesia Católica, 1020-1065"]
+    "id": "guia-general",
+    "categoria": "General",
+    "pregunta_principal": "Índice de nuestra Catequesis",
+    "keywords": ["ayuda", "temas", "que hay", "indice", "ayudame", "no se que preguntar"],
+    "respuesta_breve": "Como estamos construyendo este espacio paso a paso, todavía no tengo respuestas para todo, pero podés preguntarme sobre los siguientes temas principales:<br><br>• <strong>La Fe Católica:</strong> ¿Qué es creer y confiar en Dios?<br>• <strong>Dios:</strong> ¿Quién es el Creador y Ser Supremo?<br>• <strong>Jesucristo:</strong> Su identidad, su muerte y resurrección, sus parábolas y su bautismo.",
+    "paso_concreto": "Elegí uno de estos temas o escribime tu consulta sobre Jesús o la fe para que avancemos.",
+    "enseñanza_de_la_iglesia": [],
+    "fundamento_biblico": []
   }
 ]
