@@ -1407,7 +1407,6 @@ if (linkAsistente) {
 // Variable para recordar el último tema conversado 🧠
 let ultimoTema = null;
 // Bandera para saber si el asistente está esperando el nombre del usuario
-let esperandoNombre = false;
 
 // Función asincrónica para procesar el mensaje con soporte local y externo
 async function procesarMensaje(texto, contenedorMensajes) {
@@ -1531,8 +1530,12 @@ async function procesarMensaje(texto, contenedorMensajes) {
 // 📂 PALABRA VIVA - NÚCLEO JAVASCRIPT PRINCIPAL
 // ==========================================
 
-// // Variables de estado global
+// 📂 PALABRA VIVA - NÚCLEO JAVASCRIPT PRINCIPAL
+// ==========================================
+
+// Variables de estado global
 let esperandoConfirmacionMic = false;
+let esperandoNombre = false;
 
 function escaparHTML(texto) {
   const div = document.createElement("div");
@@ -1540,21 +1543,30 @@ function escaparHTML(texto) {
   return div.innerHTML;
 }
 
-let utteranceRobot = null;
-function hacerHablarAlRobot(textoLimpio) {
-  window.speechSynthesis.cancel();
-  setTimeout(() => {
-    utteranceRobot = new SpeechSynthesisUtterance(textoLimpio);
-    utteranceRobot.lang = "es-ES";
-    utteranceRobot.rate = 0.95;
-    const voces = window.speechSynthesis.getVoices();
-    const vozEs =
-      voces.find((v) => v.lang === "es-ES") ||
-      voces.find((v) => v.lang.startsWith("es"));
-    if (vozEs) utteranceRobot.voice = vozEs;
-    window.speechSynthesis.speak(utteranceRobot);
-  }, 300);
+// --- FUNCIÓN GLOBAL DE SÍNTESIS DE VOZ ---
+function hacerHablarAlRobot(texto) {
+  if ("speechSynthesis" in window) {
+    window.speechSynthesis.cancel();
+
+    const utterance = new SpeechSynthesisUtterance(texto);
+    utterance.lang = "es-AR";
+    utterance.rate = 1.0;
+    utterance.pitch = 1.0;
+
+    utterance.onstart = () => {
+      console.log("El robot comenzó a hablar...");
+    };
+
+    utterance.onend = () => {
+      console.log("El robot terminó de hablar.");
+    };
+
+    window.speechSynthesis.speak(utterance);
+  } else {
+    console.log("Este navegador no soporta síntesis de voz.");
+  }
 }
+
 if (typeof window.speechSynthesis !== "undefined") {
   window.speechSynthesis.onvoiceschanged = () => {
     window.speechSynthesis.getVoices();
@@ -1599,9 +1611,16 @@ document.addEventListener("DOMContentLoaded", () => {
           const nombreIngresado = textoUsuario.split(" ")[0];
           if (
             nombreIngresado.length > 2 &&
-            !["hola", "buen", "dia", "soy", "decime", "mi", "nombre"].includes(
-              nombreIngresado.toLowerCase(),
-            )
+            ![
+              "hola",
+              "buen",
+              "dia",
+              "me llamo",
+              "soy",
+              "decime",
+              "mi",
+              "nombre",
+            ].includes(nombreIngresado.toLowerCase())
           ) {
             localStorage.setItem("nombrePalabraViva", nombreIngresado);
             esperandoNombre = false;
@@ -1614,23 +1633,33 @@ document.addEventListener("DOMContentLoaded", () => {
           const resRespuestas = await fetch("data/respuestas_asistente.json");
           const datosAsistente = await resRespuestas.json();
 
+          // 1. Chequear Guía de Uso
           if (
             textoLimpio.includes("guia") ||
             textoLimpio.includes("que puedo hacer") ||
             textoLimpio.includes("para que sirve") ||
+            textoLimpio.includes("que es esto") ||
             textoLimpio.includes("ayuda") ||
             textoLimpio.includes("tutorial") ||
-            textoLimpio.includes("como uso")
+            textoLimpio.includes("mostrame las opciones")
           ) {
             const guia = datosAsistente.guia_uso;
             respuestaAsistente =
               `<strong>🧭 ${guia.titulo}</strong><br>${guia.mensaje}<br>` +
               guia.opciones.map((opt) => `• ${opt}`).join("<br>");
-          } else if (
-            textoLimpio.includes("hola") ||
-            textoLimpio.includes("buenos dias") ||
-            textoLimpio.includes("buenas") ||
-            textoLimpio.includes("buenas noches")
+          }
+          // 2. Chequear Saludos
+          else if (
+            [
+              "hola",
+              "buen dia",
+              "buenos dias",
+              "que tal",
+              "buenas tardes",
+              "como estas",
+              "buenas",
+              "lindo dia",
+            ].some((s) => textoLimpio.includes(s))
           ) {
             const nombreActual =
               localStorage.getItem("nombrePalabraViva") || "";
@@ -1643,90 +1672,117 @@ document.addEventListener("DOMContentLoaded", () => {
               "{nombre}",
               nombreActual ? `, ${nombreActual}` : "",
             );
-          } else if (
-            textoLimpio.includes("como estas") ||
-            textoLimpio.includes("que tal") ||
-            textoLimpio.includes("como andas") ||
-            textoLimpio.includes("quien sos")
+          }
+          // 3. Chequear Despedidas
+          else if (
+            [
+              "chau",
+              "adios",
+              "hasta mañana",
+              "hasta pronto",
+              "hasta el domingo",
+              "se me cierran los ojos",
+              "buenas noches",
+              "nos vemos",
+              "hasta luego",
+              "me voy",
+            ].some((s) => textoLimpio.includes(s))
           ) {
+            const despedidasPosibles = datosAsistente.despedidas.respuestas;
             respuestaAsistente =
-              "Acá estoy, listo para ayudarte a buscar cosas en el programa Palabra Viva. Hablemos de lo que quieras, para eso armamos este espacio 🧉.";
-          } else if (
-            textoLimpio.includes("gracias") ||
-            textoLimpio.includes("excelente") ||
-            textoLimpio.includes("me encanta") ||
-            textoLimpio.includes("buenisimo") ||
-            textoLimpio.includes("genial") ||
-            textoLimpio.includes("muy amable")
+              despedidasPosibles[
+                Math.floor(Math.random() * despedidasPosibles.length)
+              ];
+          }
+          // 4. Chequear Agradecimientos
+          else if (
+            [
+              "gracias",
+              "ok",
+              "bien",
+              "gracias totales",
+              "claro que sí",
+              "perfecto",
+              "tiene logica",
+              "buenisimo",
+              "muy bien",
+              "muchas gracias",
+              "te agradezco",
+              "excelente",
+              "me encanta",
+              "genial",
+            ].some((s) => textoLimpio.includes(s))
           ) {
-            const agrades = [
-              "¡De nada! Me alegra un montón que te sirva para armar esto 🚀.",
-              "¡Gracias a vos por meterle tantas pilas al proyecto! Acá estamos para lo que necesites.",
-              "¡Qué bueno que te guste! Vamos que va quedando un lujo.",
-            ];
+            const agrades = datosAsistente.agradecimientos.respuestas;
             respuestaAsistente =
               agrades[Math.floor(Math.random() * agrades.length)];
-          } else if (
-            textoLimpio.includes("biblia") ||
-            textoLimpio.includes("sagrada escritura") ||
-            textoLimpio.includes("enseñame") ||
-            textoLimpio.includes("de que trata")
-          ) {
-            respuestaAsistente =
-              "La Biblia es la Palabra de Dios expresada en lenguaje humano. Si buscás pasajes, capítulos o versículos específicos, recordá que tenés a disposición el buscador dedicado en la barra del menú lateral para explorarla con exactitud 📖.";
-          } else {
-            const resCatequesis = await fetch("data/catequesis.json");
-            const baseDatosCatequesis = await resCatequesis.json();
-            let encontrada = null;
+          }
+          // 5. Chequear Preguntas Frecuentes (FAQ del JSON)
+          else {
+            const faqEncontrada = datosAsistente.preguntas_frecuentes?.find(
+              (item) =>
+                item.palabras_clave.some((keyword) =>
+                  textoLimpio.includes(keyword),
+                ),
+            );
 
-            encontrada = baseDatosCatequesis.find((item) => {
-              const preguntaItem = item.pregunta_principal.toLowerCase();
-              return (
-                preguntaItem.includes(textoLimpio) ||
-                textoLimpio.includes(preguntaItem)
-              );
-            });
-
-            if (!encontrada) {
-              encontrada = baseDatosCatequesis.find((item) => {
-                return item.keywords.some((kw) => {
-                  const keywordLimpia = kw.toLowerCase();
-                  if (keywordLimpia.length <= 3) {
-                    return textoLimpio === keywordLimpia;
-                  }
-                  return textoLimpio.includes(keywordLimpia);
-                });
-              });
-            }
-
-            if (encontrada) {
-              respuestaAsistente = `<strong>${encontrada.pregunta_principal}</strong><br><br>${encontrada.respuesta_breve}`;
-              if (encontrada.paso_concreto) {
-                respuestaAsistente += `<br><br>💡 <em>Paso concreto:</em> ${encontrada.paso_concreto}`;
-              }
-              let fuentesTexto = [];
-              if (
-                encontrada.enseñanza_de_la_iglesia &&
-                encontrada.enseñanza_de_la_iglesia.length > 0
-              ) {
-                fuentesTexto = fuentesTexto.concat(
-                  encontrada.enseñanza_de_la_iglesia,
-                );
-              }
-              if (
-                encontrada.fundamento_biblico &&
-                encontrada.fundamento_biblico.length > 0
-              ) {
-                fuentesTexto = fuentesTexto.concat(
-                  encontrada.fundamento_biblico,
-                );
-              }
-              if (fuentesTexto.length > 0) {
-                respuestaAsistente += `<br><br><small><strong>📖 Fuente:</strong> ${fuentesTexto.join(" | ")}</small>`;
-              }
+            if (faqEncontrada) {
+              respuestaAsistente = faqEncontrada.respuesta;
             } else {
-              respuestaAsistente =
-                "No encontré una respuesta específica sobre ese tema espiritual en nuestra catequesis. Recordá que podés escribir 'guia' para ver las opciones o utilizar el buscador de la Biblia ubicado en la barra de navegación superior 🔍.";
+              // 6. Si no está en las FAQ, busca en la base de datos de Catequesis
+              const resCatequesis = await fetch("data/catequesis.json");
+              const baseDatosCatequesis = await resCatequesis.json();
+              let encontrada = null;
+
+              encontrada = baseDatosCatequesis.find((item) => {
+                const preguntaItem = item.pregunta_principal.toLowerCase();
+                return (
+                  preguntaItem.includes(textoLimpio) ||
+                  textoLimpio.includes(preguntaItem)
+                );
+              });
+
+              if (!encontrada) {
+                encontrada = baseDatosCatequesis.find((item) => {
+                  return item.keywords.some((kw) => {
+                    const keywordLimpia = kw.toLowerCase();
+                    if (keywordLimpia.length <= 3) {
+                      return textoLimpio === keywordLimpia;
+                    }
+                    return textoLimpio.includes(keywordLimpia);
+                  });
+                });
+              }
+
+              if (encontrada) {
+                respuestaAsistente = `<strong>${encontrada.pregunta_principal}</strong><br><br>${encontrada.respuesta_breve}`;
+                if (encontrada.paso_concreto) {
+                  respuestaAsistente += `<br><br>💡 <em>Paso concreto:</em> ${encontrada.paso_concreto}`;
+                }
+                let fuentesTexto = [];
+                if (
+                  encontrada.enseñanza_de_la_iglesia &&
+                  encontrada.enseñanza_de_la_iglesia.length > 0
+                ) {
+                  fuentesTexto = fuentesTexto.concat(
+                    encontrada.enseñanza_de_la_iglesia,
+                  );
+                }
+                if (
+                  encontrada.fundamento_biblico &&
+                  encontrada.fundamento_biblico.length > 0
+                ) {
+                  fuentesTexto = fuentesTexto.concat(
+                    encontrada.fundamento_biblico,
+                  );
+                }
+                if (fuentesTexto.length > 0) {
+                  respuestaAsistente += `<br><br><small><strong>📖 Fuente:</strong> ${fuentesTexto.join(" | ")}</small>`;
+                }
+              } else {
+                respuestaAsistente =
+                  "No encontré una respuesta específica sobre ese tema espiritual en nuestra catequesis. Recordá que podés escribir 'guia' para ver las opciones o utilizar el buscador de la Biblia ubicado en la barra de navegación superior 🔍.";
+              }
             }
           }
         }
@@ -1757,6 +1813,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   });
 });
+
 // --- 2. CONTROL DEL MICRÓFONO ---
 
 btnMic?.addEventListener("click", () => {
@@ -1773,6 +1830,7 @@ btnMic?.addEventListener("click", () => {
 
     reconocimiento.onresult = (evento) => {
       const textoCapturado = evento.results[0][0].transcript;
+      const inputChat = document.getElementById("chat-input");
       if (inputChat) {
         inputChat.focus();
         inputChat.value = textoCapturado;
@@ -1795,36 +1853,7 @@ btnMic?.addEventListener("click", () => {
   }
 });
 
-// --- 4. HISTORIAL INICIAL PARA LA APP ---
-history.replaceState({ vista: "main" }, "", "");
-
-// --- FUNCIÓN GLOBAL DE SÍNTESIS DE VOZ (Única, sin duplicados) ---
-function hacerHablarAlRobot(texto) {
-  if ("speechSynthesis" in window) {
-    window.speechSynthesis.cancel();
-
-    const utterance = new SpeechSynthesisUtterance(texto);
-    utterance.lang = "es-AR";
-    utterance.rate = 1.0;
-    utterance.pitch = 1.0;
-
-    utterance.onstart = () => {
-      console.log("El robot comenzó a hablar...");
-    };
-
-    utterance.onend = () => {
-      console.log("El robot terminó de hablar.");
-    };
-
-    window.speechSynthesis.speak(utterance);
-  } else {
-    console.log("Este navegador no soporta síntesis de voz.");
-  }
-}
-
 // --- MANEJADOR INTELIGENTE DEL BOTÓN "ATRÁS" DEL CELULAR ---
-// --- MANEJADOR INTELIGENTE DEL BOTÓN "ATRÁS" DEL CELU ---
-// --- MANEJADOR INTELIGENTE DEL BOTÓN "ATRÁS" DEL CELU ---
 window.addEventListener("popstate", (event) => {
   const studyCard = document.getElementById("study-card");
 
@@ -1832,7 +1861,6 @@ window.addEventListener("popstate", (event) => {
   if (studyCard && studyCard.classList.contains("expanded")) {
     studyCard.classList.remove("expanded");
     studyCard.style.transform = "";
-    // Mantenemos la app viva inyectando estado
     history.pushState({ vista: "main" }, "", "");
     return;
   }
@@ -1842,8 +1870,8 @@ window.addEventListener("popstate", (event) => {
 });
 
 // Apenas carga la página, pisamos el estado inicial para activar la red de contención
+history.replaceState({ vista: "main" }, "", "");
 history.pushState({ vista: "main" }, "", "");
-
 // --- CERRAR PANEL DE ESTUDIO Y RESTAURAR LECTURA ---
 if (panelHandle && studyCard) {
   panelHandle.addEventListener("click", () => {

@@ -1,0 +1,3802 @@
+/* ==========================================
+   1. VARIABLES DE DISEÑO Y CONFIGURACIÓN BASE
+   ========================================== */
+:root {
+  --bg-dark: #000000;
+  --bg-panel: #121212;
+  --gold: #d4af37;
+  --gold-light: #f8edc1;
+  --text-light: #e0e0e0;
+  --font-serif: "Lora", Georgia, serif;
+  --font-roman: "Cinzel", serif;
+  color-scheme: dark; /* Esto ayuda a que el navegador sepa que debe usar barras oscuras */
+  /* Variables de Tema Noche (Por defecto) */
+  --bg-color: #121212;
+  --text-color: #f3e5ab;
+  --card-bg: rgba(255, 255, 255, 0.05);
+  --border-color: rgba(212, 175, 55, 0.3);
+  color-scheme: light dark;
+}
+
+/* --- TEMA CLARO (Modo Luminoso) --- */
+body.light-mode {
+  --bg-dark: #fcfbfa;
+  --bg-panel: #e8e4dc;
+  --bg-color: #fcfbfa !important;
+  --text-color: #2c2c2c !important;
+  --text-light: #2c2c2c !important;
+  --border-color: #b39353;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  overflow: auto;
+}
+body {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100vh;
+  background-color: #000000;
+  /* Esto es la clave para que no corte nada */
+  padding-bottom: env(safe-area-inset-bottom);
+  padding-top: env(safe-area-inset-top);
+}
+.screen {
+  position: fixed;
+  top: 65px; /* Tu navbar queda arriba */
+  left: 0;
+  width: 100%;
+  height: calc(
+    100vh - 65px + env(safe-area-inset-bottom)
+  ); /* Esto cubre hasta el fondo */
+  background-color: #000000;
+  z-index: 10;
+  overflow-y: auto;
+}
+
+/* Forzar colores de textos principales en modo claro */
+body.light-mode p,
+body.light-mode span,
+body.light-mode h1,
+body.light-mode h2,
+body.light-mode h3,
+body.light-mode .split-block p,
+body.light-mode .header-statement,
+body.light-mode .reflection,
+body.light-mode .focus-text {
+  color: #2c2c2c !important;
+}
+
+.split-block p,
+.testamento-card p {
+  color: #d1d1d1;
+}
+body.light-mode .split-block p,
+body.light-mode .testamento-card p {
+  color: #4a4a4a !important;
+}
+
+/* ==========================================
+   2. BARRA DE NAVEGACIÓN Y MENÚ LATERAL
+   ========================================== */
+.top-navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1000;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 65px;
+  padding-top: env(safe-area-inset-top);
+  padding-left: 15px;
+  padding-right: 15px;
+
+  /* --- EFECTO VIDRIO ES MERILADO TRANSLÚCIDO --- */
+  background-color: rgba(11, 12, 16, 0.75); /* El 0.75 le da la transparencia */
+  backdrop-filter: blur(
+    10px
+  ); /* Esto hace que lo que pasa por abajo se vea esfumado */
+  -webkit-backdrop-filter: blur(10px); /* Para iPhone y Chrome Android */
+
+  border-bottom: 1px solid rgba(212, 175, 55, 0.4);
+}
+.nav-center {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex: 1;
+  justify-content: center;
+}
+/* acá esta el logo de la barra de nav lateral */
+
+.nav-brand-icon,
+.sidebar-brand-icon {
+  width: 36px;
+  height: 36px;
+  max-width: 36px;
+  border-radius: 50%;
+  border: 2px solid var(--gold);
+  object-fit: cover;
+  box-shadow: 0 0 6px rgba(212, 175, 55, 0.4);
+  margin-top: 10px;
+  margin-left: 5px;
+}
+/* Animación para el giro 3D */
+@keyframes moneda-giro {
+  0% {
+    transform: rotateY(0deg);
+  }
+  100% {
+    transform: rotateY(360deg);
+  }
+}
+
+/* Animación para el destello de luz sobre el metal */
+@keyframes brillo-metalico {
+  0% {
+    filter: brightness(1) drop-shadow(0 0 0px gold);
+  }
+  50% {
+    filter: brightness(1.5) drop-shadow(0 0 8px gold);
+  } /* Aquí "brilla" */
+  100% {
+    filter: brightness(1) drop-shadow(0 0 0px gold);
+  }
+}
+
+.sidebar-brand-icon {
+  /* Aplicamos ambas animaciones */
+  animation:
+    moneda-giro 6s infinite linear,
+    brillo-metalico 3s infinite ease-in-out;
+
+  /* Le damos un poco de perspectiva para que no parezca un cartón plano */
+  transform-style: preserve-3d;
+  cursor: pointer;
+}
+.sidebar-brand-icon {
+  /* ... lo que ya tenías de la animación ... */
+
+  /* Le damos cuerpo de moneda */
+  border: 3px solid #d4af37; /* Borde dorado grueso */
+  border-radius: 50%; /* Para que sea un círculo perfecto */
+  box-shadow:
+    inset 0 0 10px rgba(0, 0, 0, 0.5),
+    0 0 5px rgba(212, 175, 55, 0.5);
+
+  /* Un pequeño margen extra para que el giro no toque los bordes de la barra */
+  margin: 5px;
+}
+
+.nav-title {
+  font-family: var(--font-roman);
+  font-size: 1.35rem;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  background: linear-gradient(180deg, #fceea7 0%, #d4af37 50%, #aa7c11 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  filter: drop-shadow(0px 1px 2px rgba(0, 0, 0, 0.9));
+}
+
+.nav-icon-btn {
+  background: transparent;
+  border: none;
+  color: #d4af37;
+  font-size: 1.4rem;
+  cursor: pointer;
+  padding: 5px;
+  transition: color 0.2s ease;
+}
+
+body.light-mode .nav-icon-btn {
+  color: #d4af37 !important;
+}
+
+.nav-icon-btn:hover {
+  color: #fceea7;
+}
+
+/* Menú Lateral (Sidebar) */
+.sidebar-menu {
+  position: fixed;
+  top: 0;
+  left: -280px;
+  width: 220px;
+  height: 100%;
+  background-color: #000000;
+  border-right: 2px solid #d4af37;
+  transition: left 0.35s ease-in-out;
+  z-index: 2000;
+  box-shadow: 5px 0px 15px rgba(0, 0, 0, 0.5);
+}
+
+.sidebar-menu.active {
+  left: 0;
+}
+
+.sidebar-menu ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.sidebar-menu li a {
+  padding: 16px 22px;
+  color: #f4f4f4;
+  text-decoration: none;
+  font-size: 1.05rem;
+  border-bottom: 1px solid rgba(212, 175, 55, 0.15);
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  transition:
+    background-color 0.2s,
+    color 0.2s;
+}
+
+.sidebar-menu li a:hover {
+  background-color: rgba(212, 175, 55, 0.12);
+  color: #d4af37;
+}
+
+.sidebar-title {
+  font-family: var(--font-roman);
+  color: #d4af37;
+  font-size: 1.5rem;
+  font-weight: bold;
+  position: relative;
+  top: -8px;
+}
+.sidebar-title {
+  font-family: var(--font-roman);
+  font-size: 1.5rem;
+  font-weight: bold;
+
+  /* El dorado exacto de los títulos principales */
+  background: linear-gradient(135deg, #fff3b0 0%, #d4af37 50%, #aa8c2c 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+
+  /* Posicionamiento y brillo */
+  position: relative;
+  top: -8px;
+  filter: drop-shadow(0px 2px 4px rgba(0, 0, 0, 0.5));
+}
+
+/* Estilo básico para el panel de herramientas (modal) */
+/* En tu CSS puedes tener esto para controlar las vistas */
+.vista-seccion {
+  display: none;
+}
+
+.vista-seccion.activo {
+  display: block; /* o flex */
+}
+#modal-herramientas {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.85); /* Fondo oscuro semitransparente */
+  z-index: 9999; /* Para que quede arriba de todo */
+}
+
+/* ==========================================
+   3. SISTEMA DE PANTALLAS Y SPLASH
+   ========================================== */
+.screen {
+  position: fixed;
+  top: 65px;
+  left: 0;
+  width: 100%;
+  height: calc(100vh - 65px);
+  display: none;
+  background-color: var(--bg-dark);
+  z-index: 10;
+  overflow-y: auto;
+  padding-top: 10px;
+}
+
+.screen.active {
+  display: block;
+}
+
+#screen-splash {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: #000;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+  overflow: hidden;
+}
+
+#screen-splash img {
+  max-width: 100%;
+  max-height: 90vh;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  animation: pulsoZoom 3s ease-in-out infinite;
+}
+
+@keyframes pulsoZoom {
+  0%,
+  100% {
+    filter: brightness(1);
+    transform: scale(1);
+  }
+  50% {
+    filter: brightness(1.2);
+    transform: scale(1.03);
+  }
+}
+
+/* ==========================================
+   4. PANTALLA PARTIDA (SPLIT CONTAINER)
+   ========================================== */
+.split-container {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+}
+
+.split-block {
+  flex: 1;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: transform 0.5s;
+  overflow: hidden;
+}
+
+.block-top {
+  border-bottom: 2px solid var(--gold);
+  background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.9));
+}
+
+.block-bottom {
+  background: linear-gradient(rgba(0, 0, 0, 0.9), rgba(0, 0, 0, 0.7));
+}
+
+.block-overlay {
+  text-align: center;
+  padding: 20px;
+  z-index: 2;
+}
+
+.split-block h2 {
+  font-family: var(--font-roman);
+  color: var(--gold);
+  letter-spacing: 3px;
+  font-size: 1.6rem;
+  margin-bottom: 10px;
+}
+
+.split-block p {
+  font-size: 0.9rem;
+  color: #aaa;
+  font-style: italic;
+}
+
+.split-block:hover {
+  filter: brightness(1.3);
+}
+
+/* ==========================================
+   5. CONTENEDORES, TARJETAS Y PANELES
+   ========================================== */
+.app-container,
+.card,
+.path-card,
+.study-card-panel,
+.fan-column,
+#contenido-peldaño {
+  background-color: var(--bg-panel);
+  color: var(--text-light);
+  border: 1px solid rgba(212, 175, 55, 0.2);
+  border-radius: 10px;
+}
+
+body.light-mode .app-container,
+body.light-mode .card,
+body.light-mode .path-card,
+body.light-mode .study-card-panel,
+body.light-mode .fan-column,
+body.light-mode #contenido-peldaño {
+  background-color: #e8e4dc !important;
+  color: #2b2b2b !important;
+  border-color: #b39353 !important;
+}
+
+.main-header {
+  text-align: center;
+  border-bottom: 1px solid rgba(212, 175, 55, 0.2);
+  padding-bottom: 15px;
+  margin-bottom: 25px;
+}
+/* titulos como por ejemplo caminemos con Jesus la sagrada escritura */
+.brand-title {
+  font-family: var(--font-roman);
+  color: var(--gold);
+  letter-spacing: 4px;
+  font-size: 1.4rem;
+}
+
+.btn-back,
+.btn-back-path,
+.btn-volver {
+  background: rgba(212, 175, 55, 0.1);
+  border: 2px solid rgba(212, 175, 55, 0.3);
+  color: #d4af37;
+  font-size: 1.5rem;
+  width: 45px;
+  height: 45px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  margin-bottom: 15px;
+  transition: all 0.3s;
+  margin-right: 15px !important;
+}
+
+.btn-back:hover,
+.btn-back-path:hover,
+.btn-volver:hover {
+  background: rgba(212, 175, 55, 0.2);
+  border-color: var(--gold);
+  color: var(--gold);
+}
+
+/* ==========================================
+   6. GRILLA DE CAPÍTULOS SIMÉTRICA (5 COLUMNAS)
+   ========================================== */
+.grid-capitulos,
+.capitulos-container,
+#grid-capitulos {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  width: 100%;
+  max-width: 480px;
+  margin: 0 auto 20px auto;
+  padding: 15px;
+  box-sizing: border-box;
+  justify-content: flex-start;
+}
+
+.btn-capitulo,
+.capitulo-card,
+#grid-capitulos .btn-capitulo {
+  flex: 0 0 calc(20% - 7px) !important;
+  aspect-ratio: 1 !important;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(212, 175, 55, 0.08);
+  border: 1px solid rgba(212, 175, 55, 0.4);
+  color: var(--gold-light);
+  font-size: 1.1rem;
+  font-weight: bold;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  box-sizing: border-box;
+}
+
+.btn-capitulo:hover,
+.capitulo-card:hover {
+  background: var(--gold);
+  color: #000;
+  transform: scale(1.05);
+}
+
+.texto-ayuda-capitulos,
+.help-text-capitulos {
+  width: 100%;
+  text-align: center;
+  margin-top: 15px;
+  color: #aaa;
+  font-style: italic;
+  font-size: 0.9rem;
+}
+
+/* Animación suave de pulso y brillo para la barrita de cierre */
+@keyframes pulsoBrillo {
+  0% {
+    opacity: 0.4;
+    box-shadow: 0 0 2px var(--gold);
+  }
+  50% {
+    opacity: 1;
+    box-shadow: 0 0 8px var(--gold);
+  }
+  100% {
+    opacity: 0.4;
+    box-shadow: 0 0 2px var(--gold);
+  }
+}
+
+/* Aplicamos la animación a la barrita dorada existente */
+
+.panel-handle:hover {
+  opacity: 1;
+}
+
+.columns-container {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: repeat(2, 1fr);
+  gap: 8px;
+  height: calc(100% - 25px);
+}
+
+.fan-column {
+  padding: 15px;
+  border-radius: 10px;
+  background-color: rgba(255, 255, 255, 0.03);
+  overflow-y: auto;
+}
+
+.col-1 {
+  border-top: 7px solid #800080 !important;
+}
+.col-2 {
+  border-top: 7px solid #b8860b !important;
+}
+.col-3 {
+  border-top: 7px solid #e6d7b2 !important;
+}
+.col-4 {
+  border-top: 7px solid #e34234 !important;
+}
+
+body.light-mode .col-3 {
+  border-top-color: #a38a54 !important;
+}
+
+.fan-column h3 {
+  font-family: var(--font-roman);
+  font-size: 0.85rem;
+  margin-bottom: 5px;
+  color: var(--gold);
+}
+
+.focus-text {
+  font-size: 0.85rem;
+  color: #999;
+  line-height: 1.4;
+}
+
+.fan-column.expanded-full {
+  grid-column: span 2;
+  position: fixed !important;
+  top: auto !important;
+  bottom: 0 !important;
+  left: 0 !important;
+  right: 0 !important;
+  width: 100% !important;
+  height: 48vh !important;
+  max-height: 48vh !important;
+  z-index: 1500 !important;
+  background-color: var(--bg-panel);
+  border-top: 3px solid var(--gold);
+  border-radius: 18px 18px 0 0;
+  padding: 20px 20px 25px 20px !important;
+  overflow-y: auto !important;
+  box-shadow: 0 -10px 30px rgba(0, 0, 0, 0.8);
+  animation: deslizarArriba 0.3s ease-out;
+}
+
+@keyframes deslizarArriba {
+  from {
+    transform: translateY(100%);
+  }
+  to {
+    transform: translateY(0);
+  }
+}
+.column-header .column-title {
+  font-size: 1rem;
+  color: var(--gold);
+  text-align: center;
+  margin-bottom: 8px;
+}
+
+/* esto modifica el texto del panel de estudio que abre el abanico */
+.extended-text {
+  display: none;
+  margin-top: 10px;
+  font-size: 1rem;
+  line-height: 1.6;
+  color: #ccc;
+  text-align: justify;
+  border-top: 1px solid rgba(212, 175, 55, 0.2);
+  padding-top: 10px;
+}
+
+.fan-column.expanded-full .extended-text {
+  display: block;
+}
+
+.btn-close-extended {
+  display: none;
+  background: var(--gold);
+  color: black;
+  border: none;
+  padding: 5px 12px;
+  font-family: var(--font-roman);
+  font-size: 0.75rem;
+  cursor: pointer;
+  float: right;
+  border-radius: 3px;
+  margin-bottom: 10px;
+}
+
+.fan-column.expanded-full .btn-close-extended {
+  display: block;
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+
+body.light-mode #study-card {
+  background: #f4f1ea !important;
+}
+body.light-mode .fan-column {
+  background: #ffffff !important;
+  border-color: rgba(180, 140, 40, 0.4) !important;
+  color: #2c2c2c !important;
+}
+body.light-mode .fan-column p,
+body.light-mode .fan-column span,
+body.light-mode .extended-text {
+  color: #2c2c2c !important;
+}
+body.light-mode .fan-column.expanded-full {
+  background-color: #f4f1ea !important;
+}
+
+/* ==========================================
+   8. COMPONENTES Y BOTONES DE ESTADO (EMAÚS)
+   ========================================== */
+/* El contenedor de los estados de ánimo (carrusel horizontal) */
+.mood-buttons {
+  display: flex;
+  flex-wrap: nowrap;
+  overflow-x: auto;
+  justify-content: flex-start;
+  gap: 10px;
+  padding: 10px 10px 15px 10px;
+  margin: 15px 0;
+  scroll-snap-type: x mandatory;
+  -webkit-overflow-scrolling: touch;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+/* ESTILO GENERAL para todos los botones .btn-emaus del sistema (tus otros botones normales) */
+.btn-emaus {
+  background-color: transparent;
+  color: #d4af37;
+  border: 1px solid #d4af37;
+  padding: 10px 15px;
+  border-radius: 20px;
+  font-size: 0.9rem;
+  cursor: pointer;
+  text-align: center;
+  transition: all 0.3s ease;
+  /* Dejamos que mantengan su comportamiento normal sin ancho fijo */
+}
+
+/* EXCLUSIVO para los botones que están DENTRO del carrusel horizontal de estados */
+.mood-buttons .btn-emaus {
+  flex: 0 0 auto;
+  width: 100px;
+  min-height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  scroll-snap-align: start;
+  padding: 10px 5px; /* Padding ajustado para este ancho fijo */
+}
+.btn-emaus:hover,
+.btn-emaus.active {
+  background-color: #d4af37;
+  color: #121212;
+}
+
+.path-journey-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+  padding: 20px 0;
+}
+
+.huella-paso {
+  width: 100%;
+  max-width: 500px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 15px;
+  background: rgba(212, 175, 55, 0.1);
+  border: 1px solid rgba(212, 175, 55, 0.3);
+  border-radius: 50px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  padding: 12px 25px;
+  box-sizing: border-box;
+  margin: 0 auto;
+}
+
+.huella-paso:hover {
+  background: rgba(212, 175, 55, 0.25);
+  transform: scale(1.05);
+}
+
+.huella-paso .icono-huella {
+  font-size: 1.2rem;
+}
+.huella-paso .etiqueta-paso {
+  text-align: left;
+  font-size: 0.95rem;
+}
+
+/* ==========================================
+   9. MEDIA QUERIES & ADAPTACIONES MODO CLARO
+   ========================================== */
+@media (min-width: 600px) {
+  .columns-container {
+    grid-template-columns: repeat(4, 1fr);
+    height: 100%;
+    align-items: stretch;
+  }
+  .split-container {
+    flex-direction: row;
+  }
+  .block-top {
+    border-bottom: none;
+    border-right: 2px solid var(--gold);
+  }
+  .main-header {
+    position: relative;
+  }
+  .btn-back,
+  .btn-back-path {
+    position: absolute;
+    left: 20px;
+    top: 10px;
+  }
+}
+
+@media (min-width: 800px) {
+  .fan-column.expanded-full {
+    grid-column: span 4;
+    max-width: 900px;
+    width: 90%;
+    margin: 0 auto;
+    top: 55%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    right: auto;
+    height: auto;
+    max-height: 75vh;
+    padding-top: 50px;
+  }
+  .fan-column.expanded-full .btn-close-extended {
+    position: absolute;
+    top: 15px;
+    right: 20px;
+  }
+}
+
+body.light-mode #screen-main {
+  background-color: #e8e4dc !important;
+}
+body.light-mode #screen-main .split-block {
+  background: #e8e4dc !important;
+  border-color: #b39353 !important;
+}
+body.light-mode #screen-main .split-block h2 {
+  color: #2c2c2c !important;
+}
+body.light-mode #screen-main .split-block p {
+  color: #555555 !important;
+}
+body.light-mode #texto-peldaño-detalle,
+body.light-mode #titulo-peldaño-detalle,
+body.light-mode #texto-emaus-detalle,
+body.light-mode #titulo-emaus-detalle {
+  color: #1a1a1a !important;
+  font-weight: 700;
+}
+/* Ajuste de textos y botones de paginación en modo claro */
+body.light-mode #btn-ant-busqueda,
+body.light-mode #btn-sig-busqueda,
+body.light-mode #btn-cap-anterior,
+body.light-mode #btn-cap-siguiente,
+body.light-mode .btn-capitulo {
+  color: #2c2c2c !important;
+  border-color: #b39353 !important;
+  background-color: rgba(179, 147, 83, 0.15) !important;
+}
+
+body.light-mode #btn-ant-busqueda:hover,
+body.light-mode #btn-sig-busqueda:hover,
+body.light-mode #btn-cap-anterior:hover,
+body.light-mode #btn-cap-siguiente:hover,
+body.light-mode .btn-capitulo:hover {
+  background-color: #b39353 !important;
+  color: #ffffff !important;
+}
+/* Ajuste fino exclusivo para la pantalla principal */
+#screen-main {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding-bottom: 20px;
+}
+
+#screen-main .split-container {
+  height: calc(
+    100vh - 85px
+  ); /* Reduce levemente el alto total para centrar el contenido */
+  max-height: 600px;
+  margin: 0 auto;
+  width: 100%;
+}
+/* Ajuste de color para las tarjetas de libros (Antiguo y Nuevo Testamento) en Modo Claro */
+body.light-mode #lista-libros-antiguo > div,
+body.light-mode #lista-libros-nuevo > div {
+  background: rgba(179, 147, 83, 0.12) !important;
+  color: #2c2c2c !important;
+  border-color: #b39353 !important;
+}
+
+body.light-mode #lista-libros-antiguo > div:hover,
+body.light-mode #lista-libros-nuevo > div:hover {
+  background-color: #b39353 !important;
+  color: #ffffff !important;
+}
+/* Recuperar los bordes de colores superiores en Modo Claro para el panel de estudio */
+body.light-mode .fan-column.col-1 {
+  border-top: 4px solid #800080 !important;
+}
+
+body.light-mode .fan-column.col-2 {
+  border-top: 4px solid #b8860b !important;
+}
+
+body.light-mode .fan-column.col-3 {
+  border-top: 4px solid #a38a54 !important;
+}
+
+body.light-mode .fan-column.col-4 {
+  border-top: 4px solid #e34234 !important;
+}
+body.light-mode #screen-idioma,
+body.light-mode #screen-sugerir {
+  background-color: var(--bg-color) !important;
+  color: #2c2c2c !important;
+}
+
+body.light-mode #screen-sugerir a {
+  background: rgba(179, 147, 83, 0.1) !important;
+  border-color: #b39353 !important;
+  color: #2c2c2c !important;
+}
+
+body.light-mode #screen-sugerir a:hover {
+  background: #b39353 !important;
+  color: #ffffff !important;
+}
+/* ==========================================
+   CORRECCIÓN DE ALTURAS Y CAJITAS (15 min fix)
+   ========================================== */
+
+/* 1. Forzar altura automática y segura en las tarjetas de libros */
+#lista-libros-antiguo > div,
+#lista-libros-nuevo > div {
+  min-height: 55px;
+  height: auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+}
+
+/* 2. Asegurar espacio al final de las pantallas con scroll para que la última fila no quede pegada al borde */
+.screen {
+  padding-bottom: 50px; /* Margen de respiro inferior */
+}
+
+/* 3. Garantizar que las tarjetas de estados y caminos respiren bien */
+.btn-emaus,
+.huella-paso {
+  min-height: 48px;
+  height: auto;
+}
+
+/* 4. Prevenir que las grillas de capítulos colapsen en pantallas muy chicas */
+.grid-capitulos,
+.capitulos-container,
+#grid-capitulos {
+  padding-bottom: 40px;
+}
+/* Contenedor exacto de tus botones de estado de ánimo */
+.mood-buttons {
+  display: flex;
+  overflow-x: auto;
+  gap: 12px;
+  padding: 10px 4px 15px 4px;
+  scroll-snap-type: x mandatory;
+  -webkit-overflow-scrolling: touch; /* Desplazamiento fluido en celulares */
+  width: 100%;
+  box-sizing: border-box;
+}
+
+/* Barra de desplazamiento sutil y prolija */
+.mood-buttons::-webkit-scrollbar {
+  height: 6px;
+}
+
+.mood-buttons::-webkit-scrollbar-thumb {
+  background-color: rgba(212, 175, 55, 0.4); /* Dorado sutil */
+  border-radius: 10px;
+}
+
+/* Cada uno de los span / botones (btn-emaus) */
+
+.mood-buttons {
+  display: flex;
+  flex-wrap: nowrap; /* ESTO ES LA CLAVE: Evita que bajen a la segunda línea */
+  overflow-x: auto;
+  gap: 12px;
+  padding: 10px 4px 15px 4px;
+  scroll-snap-type: x mandatory;
+  -webkit-overflow-scrolling: touch;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.mood-buttons .btn-emaus {
+  flex: 0 0 auto; /* Evita que se achiquen */
+  width: 100px; /* O un ancho fijo para que todos midan lo mismo */
+  text-align: center;
+  scroll-snap-align: start;
+  /* Agregá estas tres líneas para centrarlo perfecto */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 45px; /* O la altura que tengan tus botones */
+}
+/* Textos descriptivos y subtítulos en las pantallas de contenido */
+.screen-content p,
+.path-card .question,
+.subtitulo-ruta {
+  color: #d0d0d0; /* Un gris suave y elegante, no blanco puro */
+  font-style: italic; /* Esa cursiva delicada que queda genial */
+  font-size: 0.95rem;
+  font-family: serif; /* O la tipografía delicada que esté usando la Biblia */
+}
+.btn-audio {
+  background: transparent;
+  border: 1px solid rgba(212, 175, 55, 0.6);
+  color: #d4af37; /* Dorado */
+  padding: 8px 14px;
+  border-radius: 20px;
+  cursor: pointer;
+  font-size: 0.9rem;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 15px;
+  transition:
+    background 0.3s,
+    color 0.3s;
+}
+
+.btn-audio:hover {
+  background: rgba(212, 175, 55, 0.15);
+}
+/* Las columnas arrancan tenues (apagaditas) */
+.fan-column {
+  opacity: 0.4;
+  transition: opacity 0.3s ease;
+  border-left: 4px solid transparent; /* Esta es tu línea de color */
+}
+
+/* Cuando le damos la clase "has-content", brilla y se pinta */
+.fan-column.has-content {
+  opacity: 1;
+  border-left-color: gold; /* La línea dorada */
+  background: rgba(
+    255,
+    255,
+    255,
+    0.05
+  ); /* Un toquecito de fondo para resaltar */
+}
+
+/* Esto es lo único que debería controlar la opacidad base */
+.fan-column {
+  opacity: 0.3;
+  transition: opacity 0.3s ease;
+  border-left: 4px solid transparent;
+}
+
+/* Solo las que tienen contenido se prenden */
+.fan-column.has-content {
+  opacity: 1;
+  border-left-color: gold;
+}
+/* Gris plata sutil por defecto para todas */
+.subrayado-filologia,
+.subrayado-historico,
+.subrayado-apologetica,
+.subrayado-sucesion,
+.subrayado-multicolor,
+.subrayado-combinado {
+  border-bottom: 2px solid #dcdde1 !important;
+  border-image: none !important;
+  transition: all 0.3s ease;
+}
+
+/* Colores originales INJECTADOS X ARIEL JS únicamente cuando el versículo está activo */
+
+/* Cuando la columna está expandida a pantalla completa dentro del abanico */
+.fan-column.expanded-full {
+  background-color: #121212 !important; /* Fondo sólido oscuro para que tape lo de atrás */
+  z-index: 50;
+  opacity: 1 !important;
+}
+/* Borramos el efecto de atenuar los demás para que queden normales */
+/* Pero las rayitas de colores de los versículos no seleccionados se apagan */
+.linea-versiculo.atenuada span,
+.linea-versiculo.atenuada {
+  border-bottom-color: rgba(255, 255, 255, 0.05) !important;
+  border-image: none !important;
+}
+.linea-versiculo.atenuada span,
+.linea-versiculo.atenuada {
+  border-bottom-color: #dcdde1 !important;
+  border-image: none !important;
+}
+/* El versículo seleccionado se tiñe con un toque doradito elegante */
+.linea-versiculo.activa {
+  background-color: rgba(
+    253,
+    228,
+    144,
+    0.18
+  ); /* Subimos de 0.08 a 0.18 para que gane cuerpo en modo claro */
+  border-left: 3px solid var(--gold); /* Una barrita dorada a la izquierda para enmarcarlo */
+  padding-left: 10px; /* Un pequeño respiro para que quede prolijo */
+  transition: all 0.3s ease;
+}
+
+/* Estilo para los títulos de las columnas (Raíces, Sucesión, etc.) */
+.column-title {
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: var(--gold);
+  margin-bottom: 6px;
+  font-weight: bold;
+  text-align: center;
+}
+
+/* Subtítulos de las columnas en el panel en abanico */
+#study-card .column-subtitle {
+  font-family: var(--font-serif, serif);
+  font-size: 0.95rem;
+  font-weight: normal;
+  font-style: italic;
+  line-height: 1.4;
+  text-align: center;
+
+  /* Por defecto toma el gris plata para el modo oscuro */
+  color: #cccccc !important;
+}
+
+/* Si tu app activa una clase de modo claro, cambia automáticamente a un gris oscuro elegante */
+body.light-mode #study-card .column-subtitle,
+.light-theme #study-card .column-subtitle {
+  color: #333333 !important;
+}
+.titulo-estado {
+  display: none;
+}
+
+/* aquí le damos detlle dorado al subtitulo de los estados */
+/* Ajuste para el título principal en modo oscuro */
+.acogida-estado {
+  font-size: 1.5rem; /* Ya lo agrandamos, mantenemos acá */
+  font-weight: 600; /* Un pelín más de peso para que luzca el metal */
+
+  /* --- NUEVO EFECTO DORADO METÁLICO --- */
+  background: linear-gradient(135deg, #e6cf8a 0%, #a59049 50%, #5c4d1b 100%);
+  background-clip: text;
+  -webkit-background-clip: text; /* Para compatibilidad con navegadores */
+  color: transparent; /* Hacemos el texto transparente para que se vea el fondo de degradado */
+  /* ---------------------------------- */
+
+  text-align: center;
+  margin-bottom: 15px;
+  font-style: italic;
+  font-family: serif;
+  margin-left: auto;
+
+  /* Un pequeño brillo suave (opcional) para realzar */
+  text-shadow: 0px 1px 2px rgba(0, 0, 0, 0.3);
+}
+/* Ajuste para el título principal en modo claro */
+.light-theme .acogida-estado {
+  /* --- NUEVO EFECTO DORADO METÁLICO (versión clara) --- */
+  background: linear-gradient(135deg, #d4a746 0%, #b39353 50%, #8c743b 100%);
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent; /* Mismo truco de transparencia */
+  /* ---------------------------------- */
+}
+
+.evangelio-referencia {
+  font-size: 1.2rem;
+  line-height: 1.5;
+  color: #ad7f7f; /* Gris suave para lectura cómoda */
+  font-style: italic; /* Cursiva elegante */
+  font-family: serif; /* Tipografía clásica */
+  margin-bottom: 15px;
+  margin-left: 5px;
+}
+.bloque-evangelio {
+  font-size: 1.1rem;
+  line-height: 1.5;
+  color: #d0d0d0; /* Gris suave para lectura cómoda */
+  font-style: italic; /* Cursiva elegante */
+  font-family: serif; /* Tipografía clásica */
+  margin-bottom: 15px;
+  margin-left: 10px;
+}
+.oracion-texto {
+  font-size: 1.1rem;
+  line-height: 1.5;
+  color: #d0d0d0; /* Gris suave para lectura cómoda */
+  font-style: italic; /* Cursiva elegante */
+  font-family: serif; /* Tipografía clásica */
+  margin-bottom: 15px;
+  margin-left: 10px;
+}
+.light-theme .oracion-texto {
+  color: #554d4d !important; /* Gris oscuro para modo claro */
+  font-style: italic;
+  font-family: serif;
+  margin-left: 10px;
+}
+/* aquí aplicamos un poco de estilos a los bloques de santo y recomendaciones para que se vean más elegantes y legibles, evitando el blanco puro y usando un gris suave con cursiva. Esto ayuda a mantener la estética general de la aplicación y mejora la experiencia de lectura. */
+.bloque-santo {
+  color: #ad7f7f; /* Un gris suave y elegante, no blanco puro */
+  font-style: italic; /* Esa cursiva delicada que queda genial */
+  font-size: 1.2rem;
+  font-family: serif; /* O la tipografía delicada que esté usando la Biblia */
+  margin: 0 auto;
+  margin-bottom: auto;
+  margin-left: 10px;
+}
+.santo-recomendacion {
+  color: #ddd0d0; /* Un gris suave y elegante, no blanco puro */
+  font-style: italic; /* Esa cursiva delicada que queda genial */
+  font-size: 1.1rem;
+  font-family: serif; /* O la tipografía delicada que esté usando la Biblia */
+  margin: 0 auto;
+  margin-bottom: auto;
+  margin-left: 0px;
+  margin-top: 10px;
+}
+.paso-hoy-texto {
+  color: #8a5e5e; /* Un gris suave y elegante, no blanco puro */
+  font-style: italic; /* Esa cursiva delicada que queda genial */
+  font-size: 1.1rem;
+  font-family: serif; /* O la tipografía delicada que esté usando la Biblia */
+  margin: 0 auto;
+  margin-bottom: auto;
+  padding-top: 20px;
+  margin-left: 10px;
+}
+.oracion-titulo {
+  font-size: 1.2rem;
+
+  font-style: italic;
+  font-family: serif;
+  /* Aplicamos el mismo degradado metálico con el toque que te gusta */
+  background: linear-gradient(135deg, #ad7f7f 0%, #a59049 50%, #5c4d1b 100%);
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+  display: block;
+  margin-bottom: 8px;
+  margin-left: 10px;
+}
+/* ==========================================================================
+   ESTILOS MEJORADOS: PANTALLA CAMINEMOS CON JESÚS (screen-path-detail)
+   ========================================================================== */
+
+/* Asegurar que la pantalla respire y permita scroll cómodo */
+#screen-path-detail .path-content {
+  padding: 20px 16px 40px 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+/* Corregir subtítulos y textos que quedaban blancos o desentonaban */
+#screen-path-detail .header-statement {
+  color: #cccccc !important; /* Dorado sutil en lugar de blanco puro */
+  opacity: 0.9;
+  font-size: 1.1rem;
+  line-height: 1.6;
+  margin-bottom: 15px;
+  font-family: "Cinzel", serif;
+  font-style: italic;
+  font-weight: 400;
+}
+
+/* Tarjetas individuales con diseño limpio y malla/borde dorado */
+#screen-path-detail .path-card {
+  background: rgba(20, 20, 20, 0.75);
+  border: 1px solid rgba(212, 175, 55, 0.4);
+  border-radius: 12px;
+  padding: 22px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+  position: relative;
+}
+
+/* Encabezados dentro de las tarjetas (Mi Punto de Partida / La Ruta de Emaús) con acento dorado */
+
+/* Preguntas y reflexiones interiores legibles */
+#screen-path-detail .path-card .question,
+#screen-path-detail .path-card .reflection {
+  color: #cccccc !important;
+  font-size: 0.95rem;
+  line-height: 1.6;
+  margin-bottom: 15px;
+}
+
+/* Botones de estado (emociones) ordenados y con buen espacio */
+#screen-path-detail .mood-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 10px;
+}
+
+#screen-path-detail .mood-buttons .btn-emaus {
+  flex: 1 1 calc(33.333% - 10px);
+  min-width: 100px;
+  text-align: center;
+  padding: 10px 12px;
+  font-size: 0.9rem;
+  background: rgba(212, 175, 55, 0.1);
+  border: 1px solid rgba(212, 175, 55, 0.5);
+  border-radius: 8px;
+  color: #fff;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+#screen-path-detail .mood-buttons .btn-emaus:hover {
+  background: rgba(212, 175, 55, 0.25);
+  border-color: #d4af37;
+  box-shadow: 0 0 10px rgba(212, 175, 55, 0.3);
+}
+
+/* Botones de acción principales de la segunda tarjeta */
+#screen-path-detail .path-card .btn-emaus {
+  display: inline-block;
+  margin-top: 8px;
+  margin-right: 8px;
+  padding: 10px 18px;
+  background: rgba(212, 175, 55, 0.15);
+  border: 1px solid #d4af37;
+  border-radius: 8px;
+  color: #fff;
+  text-decoration: none;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+#screen-path-detail .path-card .btn-emaus:hover {
+  background: #d4af37;
+  color: #000;
+}
+
+/* ==========================================================================
+   ESTILO PARA EL PIE DE PÁGINA REFLEXIVO (EL "SALVAVIDAS")
+   ========================================================================== */
+.footer-reflexion {
+  background: linear-gradient(
+    135deg,
+    rgba(212, 175, 55, 0.08),
+    rgba(20, 20, 20, 0.9)
+  );
+  border: 1px solid rgba(212, 175, 55, 0.6);
+  border-radius: 12px;
+  padding: 20px;
+  margin-top: 10px;
+  text-align: center;
+  box-shadow: 0 0 20px rgba(212, 175, 55, 0.15); /* Efecto de iluminación sutil */
+}
+
+.footer-reflexion p {
+  color: #f3e5ab; /* Tono marfil/dorado claro para destacar la lectura */
+  font-size: 0.92rem;
+  line-height: 1.7;
+  margin: 0;
+  font-style: italic;
+}
+/* ==========================================================================
+   PIE DE PÁGINA REFLEXIVO CON BRILLO SUTIL (SHIMMER)
+   ========================================================================== */
+.footer-reflexion {
+  position: relative;
+  overflow: hidden; /* Contiene el brillo dentro de la tarjeta */
+  background: linear-gradient(
+    135deg,
+    rgba(212, 175, 55, 0.08),
+    rgba(20, 20, 20, 0.9)
+  );
+  border: 1px solid rgba(212, 175, 55, 0.4);
+  border-radius: 12px;
+  padding: 20px;
+  margin-top: 15px;
+  text-align: center;
+  box-shadow: 0 0 15px rgba(212, 175, 55, 0.1);
+}
+
+/* El haz de luz suave que cruza de lado a lado */
+.footer-reflexion::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -150%;
+  width: 150%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.08),
+    rgba(212, 175, 55, 0.2),
+    rgba(255, 255, 255, 0.08),
+    transparent
+  );
+  transform: skewX(-20deg);
+  animation: brillo-suave 6s ease-in-out infinite;
+}
+
+@keyframes brillo-suave {
+  0% {
+    left: -150%;
+  }
+  50% {
+    left: 150%;
+  }
+  100% {
+    left: 150%;
+  }
+}
+
+.footer-reflexion p {
+  color: #e0d5b5; /* Tono marfil apagado y sumamente legible */
+  font-size: 0.92rem;
+  line-height: 1.7;
+  margin: 0;
+  font-style: italic;
+  position: relative;
+  z-index: 1; /* Asegura que el texto quede por encima del brillo */
+}
+
+/* --- Cirugía para centrar el título de Emaús --- */
+
+#screen-emaus h1.brand-title {
+  text-align: center !important; /* El !important fuerza el centrado */
+  display: block; /* Asegura que el h1 ocupe el ancho necesario para centrarse */
+  margin: 0 auto; /* Centra el bloque en sí mismo */
+  width: 100%; /* Asegura que tenga el ancho completo para que el centrado funcione */
+}
+/* --- Cirugía de precisión para el subtítulo de Emaús --- */
+
+/* ==========================================================================
+   CIRUGÍA DEFINITIVA: PANTALLA BUSCAR EN LAS ESCRITURAS
+   ========================================================================== */
+
+/* 1. Título principal en dorado estándar */
+#screen-buscar h2 {
+  color: #d4af37 !important;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+/* 2. Contenedor que une la caja y el botón en una misma línea prolija */
+#screen-buscar .search-box-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  width: 100%;
+}
+
+/* 3. Agrandar la caja de texto y evitar que se corte el versículo */
+#screen-buscar input#input-busqueda {
+  flex: 1; /* Hace que ocupe todo el espacio disponible */
+  height: 48px; /* Altura cómoda y elegante */
+  padding: 0 16px; /* Espacio interno para que el texto respire */
+  font-size: 0.95rem; /* Tamaño equilibrado para que no se corte */
+  box-sizing: border-box;
+  border-radius: 8px;
+  border: 1px solid rgba(212, 175, 55, 0.4);
+  background: rgba(255, 255, 255, 0.05);
+  color: #fff;
+}
+
+/* 4. Agrandar y emparejar el botón de búsqueda con la caja */
+#screen-buscar button#btn-ejecutar-busqueda {
+  height: 48px; /* Exactamente la misma altura que el input */
+  padding: 0 20px;
+  border-radius: 8px;
+  flex-shrink: 0; /* Evita que el botón se deforme */
+  cursor: pointer;
+}
+
+/* 5. Resultados de búsqueda en blanco plata / Cinzel cursiva */
+#screen-buscar .results-list,
+#screen-buscar .placeholder-text {
+  font-family: "Cinzel", serif;
+  font-weight: 400;
+  font-style: italic;
+  color: #cccccc !important;
+  font-size: 0.92rem;
+  line-height: 1.5;
+  margin-top: 15px;
+}
+/* =========================================
+   CORRECCIONES PARA EL MODO CLARO
+   ========================================= */
+
+/* 1. Textos de la pantalla de búsqueda */
+body.light-mode #screen-buscar .results-list,
+body.light-mode #screen-buscar .placeholder-text {
+  color: #333333 !important; /* Gris bien oscuro casi negro */
+}
+
+/* El texto que uno escribe en la caja de búsqueda */
+body.light-mode #screen-buscar input#input-busqueda {
+  color: #333333;
+  background: rgba(
+    0,
+    0,
+    0,
+    0.05
+  ); /* Fondo apenitas gris para que se note la caja */
+  border: 1px solid rgba(0, 0, 0, 0.2);
+}
+/* =========================================
+   AJUSTE DE CONTRASTE PARA MODO CLARO
+   Subtítulos y textos secundarios
+   ========================================= */
+
+body.light-mode .subtitulo-caminemos,
+body.light-mode .card-subtitle,
+body.light-mode .seccion-descripcion,
+body.light-mode p.subtitulo,
+body.light-mode .descripcion-recorrido {
+  color: #222222 !important;
+}
+/* --- Modo claro para el subtítulo de Emaús y similares --- */
+body.light-mode #screen-emaus h2.header-statement {
+  color: #222222 !important;
+}
+/* --- Modo claro para Caminemos con Jesús y Emaús (subtítulos y rutas) --- */
+body.light-mode #screen-path-detail .header-statement,
+body.light-mode .path-card .question,
+body.light-mode .path-card .reflection,
+body.light-mode .subtitulo-ruta {
+  color: #222222 !important;
+}
+/* Corrección de color para La Ruta de Emaús y reflexiones en Modo Claro */
+body.light-mode .path-card .reflection,
+body.light-mode .path-card .question {
+  color: #333333 !important;
+}
+
+/* Si el título "2. La Ruta de Emaús" también se pierde, agregale esto: */
+body.light-mode .path-card h3 {
+  color: #111111 !important;
+}
+/* --- Rebelión aplacada: Modo claro obligatorio para tarjetas de ruta --- */
+body.light-mode #screen-path-detail .path-card,
+body.light-mode #screen-path-detail .path-card * {
+  color: #2b2b2b !important;
+}
+.modal-oculto {
+  display: none !important;
+}
+body {
+  background-color: #121212; /* Asegura que el fondo sea oscuro pleno */
+
+  /* Esto hace que el contenido respete las barras del celular de forma elegante */
+  padding-top: env(safe-area-inset-top);
+  padding-bottom: env(safe-area-inset-bottom);
+}
+
+/* Si tu barra de navegación superior o menú flotante toca arriba */
+header.top-navbar {
+  padding-top: env(safe-area-inset-top);
+}
+.brand-icon-superior {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  border: 2px solid var(--gold);
+  object-fit: cover;
+  box-shadow: 0 0 6px rgba(212, 175, 55, 0.4);
+  margin-left: 5px;
+
+  /* ESTO ES LO QUE LO VA A DEJAR CENTRADO A LA PERFECCIÓN */
+  vertical-align: middle;
+  display: inline-block;
+}
+
+html {
+  background-color: #000000;
+  /* Esto le avisa a los navegadores modernos de Android que fuercen un esquema oscuro en la IU del sistema */
+  color-scheme: dark;
+}
+/* ==========================================
+   1. VARIABLES DE DISEÑO Y CONFIGURACIÓN BASE
+   ========================================== */
+:root {
+  --bg-dark: #000000;
+  --bg-panel: #121212;
+  --gold: #d4af37;
+  --gold-light: #f8edc1;
+  --text-light: #e0e0e0;
+  --font-serif: "Lora", Georgia, serif;
+  --font-roman: "Cinzel", serif;
+
+  /* Variables de Tema Noche (Por defecto) */
+  --bg-color: #121212;
+  --text-color: #f3e5ab;
+  --card-bg: rgba(255, 255, 255, 0.05);
+  --border-color: rgba(212, 175, 55, 0.3);
+  color-scheme: light dark;
+}
+
+/* --- TEMA CLARO (Modo Luminoso) --- */
+body.light-mode {
+  --bg-dark: #fcfbfa;
+  --bg-panel: #e8e4dc;
+  --bg-color: #fcfbfa !important;
+  --text-color: #2c2c2c !important;
+  --text-light: #2c2c2c !important;
+  --border-color: #b39353;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  overflow: auto;
+}
+
+body {
+  padding-top: 65px;
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  font-family: var(--font-serif);
+  transition:
+    background-color 0.3s ease,
+    color 0.3s ease;
+}
+
+/* Forzar colores de textos principales en modo claro */
+body.light-mode p,
+body.light-mode span,
+body.light-mode h1,
+body.light-mode h2,
+body.light-mode h3,
+body.light-mode .split-block p,
+body.light-mode .header-statement,
+body.light-mode .reflection,
+body.light-mode .focus-text {
+  color: #2c2c2c !important;
+}
+
+.split-block p,
+.testamento-card p {
+  color: #d1d1d1;
+}
+body.light-mode .split-block p,
+body.light-mode .testamento-card p {
+  color: #4a4a4a !important;
+}
+
+/* ==========================================
+   2. BARRA DE NAVEGACIÓN Y MENÚ LATERAL
+   ========================================== */
+.top-navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1000;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 65px;
+  padding: 0 15px;
+  background-color: #0b0c10;
+  border-bottom: 2px solid #d4af37;
+  font-family: serif;
+}
+
+.nav-center {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex: 1;
+  justify-content: center;
+}
+/* acá esta el logo de la barra de nav lateral */
+
+.nav-brand-icon,
+.sidebar-brand-icon {
+  width: 36px;
+  height: 36px;
+  max-width: 36px;
+  border-radius: 50%;
+  border: 2px solid var(--gold);
+  object-fit: cover;
+  box-shadow: 0 0 6px rgba(212, 175, 55, 0.4);
+  margin-top: 10px;
+  margin-left: 5px;
+}
+/* Animación para el giro 3D */
+@keyframes moneda-giro {
+  0% {
+    transform: rotateY(0deg);
+  }
+  100% {
+    transform: rotateY(360deg);
+  }
+}
+
+/* Animación para el destello de luz sobre el metal */
+@keyframes brillo-metalico {
+  0% {
+    filter: brightness(1) drop-shadow(0 0 0px gold);
+  }
+  50% {
+    filter: brightness(1.5) drop-shadow(0 0 8px gold);
+  } /* Aquí "brilla" */
+  100% {
+    filter: brightness(1) drop-shadow(0 0 0px gold);
+  }
+}
+
+.sidebar-brand-icon {
+  /* Aplicamos ambas animaciones */
+  animation:
+    moneda-giro 6s infinite linear,
+    brillo-metalico 3s infinite ease-in-out;
+
+  /* Le damos un poco de perspectiva para que no parezca un cartón plano */
+  transform-style: preserve-3d;
+  cursor: pointer;
+}
+.sidebar-brand-icon {
+  /* ... lo que ya tenías de la animación ... */
+
+  /* Le damos cuerpo de moneda */
+  border: 3px solid #d4af37; /* Borde dorado grueso */
+  border-radius: 50%; /* Para que sea un círculo perfecto */
+  box-shadow:
+    inset 0 0 10px rgba(0, 0, 0, 0.5),
+    0 0 5px rgba(212, 175, 55, 0.5);
+
+  /* Un pequeño margen extra para que el giro no toque los bordes de la barra */
+  margin: 5px;
+}
+
+.nav-title {
+  font-family: var(--font-roman);
+  font-size: 1.35rem;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  background: linear-gradient(180deg, #fceea7 0%, #d4af37 50%, #aa7c11 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  filter: drop-shadow(0px 1px 2px rgba(0, 0, 0, 0.9));
+}
+
+.nav-icon-btn {
+  background: transparent;
+  border: none;
+  color: #d4af37;
+  font-size: 1.4rem;
+  cursor: pointer;
+  padding: 5px;
+  transition: color 0.2s ease;
+}
+
+body.light-mode .nav-icon-btn {
+  color: #d4af37 !important;
+}
+
+.nav-icon-btn:hover {
+  color: #fceea7;
+}
+
+/* Menú Lateral (Sidebar) */
+.sidebar-menu {
+  position: fixed;
+  top: 0;
+  left: -280px;
+  width: 220px;
+  height: 100%;
+  background-color: #000000;
+  border-right: 2px solid #d4af37;
+  transition: left 0.35s ease-in-out;
+  z-index: 2000;
+  box-shadow: 5px 0px 15px rgba(0, 0, 0, 0.5);
+}
+
+.sidebar-menu.active {
+  left: 0;
+}
+
+.sidebar-menu ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.sidebar-menu li a {
+  padding: 16px 22px;
+  color: #f4f4f4;
+  text-decoration: none;
+  font-size: 1.05rem;
+  border-bottom: 1px solid rgba(212, 175, 55, 0.15);
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  transition:
+    background-color 0.2s,
+    color 0.2s;
+}
+
+.sidebar-menu li a:hover {
+  background-color: rgba(212, 175, 55, 0.12);
+  color: #d4af37;
+}
+
+.sidebar-title {
+  font-family: var(--font-roman);
+  color: #d4af37;
+  font-size: 1.5rem;
+  font-weight: bold;
+  position: relative;
+  top: -8px;
+}
+.sidebar-title {
+  font-family: var(--font-roman);
+  font-size: 1.5rem;
+  font-weight: bold;
+
+  /* El dorado exacto de los títulos principales */
+  background: linear-gradient(135deg, #fff3b0 0%, #d4af37 50%, #aa8c2c 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+
+  /* Posicionamiento y brillo */
+  position: relative;
+  top: -8px;
+  filter: drop-shadow(0px 2px 4px rgba(0, 0, 0, 0.5));
+}
+
+/* Estilo básico para el panel de herramientas (modal) */
+/* En tu CSS puedes tener esto para controlar las vistas */
+.vista-seccion {
+  display: none;
+}
+
+.vista-seccion.activo {
+  display: block; /* o flex */
+}
+#modal-herramientas {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.85); /* Fondo oscuro semitransparente */
+  z-index: 9999; /* Para que quede arriba de todo */
+}
+
+/* ==========================================
+   3. SISTEMA DE PANTALLAS Y SPLASH
+   ========================================== */
+.screen {
+  position: fixed;
+  top: 65px;
+  left: 0;
+  width: 100%;
+  height: calc(100vh - 65px);
+  display: none;
+  background-color: var(--bg-dark);
+  z-index: 10;
+  overflow-y: auto;
+  padding-top: 10px;
+}
+
+.screen.active {
+  display: block;
+}
+
+#screen-splash {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: #000;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+  overflow: hidden;
+}
+
+#screen-splash img {
+  max-width: 100%;
+  max-height: 90vh;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  animation: pulsoZoom 3s ease-in-out infinite;
+}
+
+@keyframes pulsoZoom {
+  0%,
+  100% {
+    filter: brightness(1);
+    transform: scale(1);
+  }
+  50% {
+    filter: brightness(1.2);
+    transform: scale(1.03);
+  }
+}
+
+/* ==========================================
+   4. PANTALLA PARTIDA (SPLIT CONTAINER)
+   ========================================== */
+.split-container {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+}
+
+.split-block {
+  flex: 1;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: transform 0.5s;
+  overflow: hidden;
+}
+
+.block-top {
+  border-bottom: 2px solid var(--gold);
+  background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.9));
+}
+
+.block-bottom {
+  background: linear-gradient(rgba(0, 0, 0, 0.9), rgba(0, 0, 0, 0.7));
+}
+
+.block-overlay {
+  text-align: center;
+  padding: 20px;
+  z-index: 2;
+}
+
+.split-block h2 {
+  font-family: var(--font-roman);
+  color: var(--gold);
+  letter-spacing: 3px;
+  font-size: 1.6rem;
+  margin-bottom: 10px;
+}
+
+.split-block p {
+  font-size: 0.9rem;
+  color: #aaa;
+  font-style: italic;
+}
+
+.split-block:hover {
+  filter: brightness(1.3);
+}
+
+/* ==========================================
+   5. CONTENEDORES, TARJETAS Y PANELES
+   ========================================== */
+.app-container,
+.card,
+.path-card,
+.study-card-panel,
+.fan-column,
+#contenido-peldaño {
+  background-color: var(--bg-panel);
+  color: var(--text-light);
+  border: 1px solid rgba(238, 200, 33, 0.911);
+  border-radius: 12px;
+}
+
+body.light-mode .app-container,
+body.light-mode .card,
+body.light-mode .path-card,
+body.light-mode .study-card-panel,
+body.light-mode .fan-column,
+body.light-mode #contenido-peldaño {
+  background-color: #e8e4dc !important;
+  color: #2b2b2b !important;
+  border-color: #b39353 !important;
+}
+
+.main-header {
+  text-align: center;
+  border-bottom: 1px solid rgba(212, 175, 55, 0.2);
+  padding-bottom: 15px;
+  margin-bottom: 25px;
+}
+/* titulos como por ejemplo caminemos con Jesus la sagrada escritura */
+.brand-title {
+  font-family: var(--font-roman);
+  color: var(--gold);
+  letter-spacing: 4px;
+  font-size: 1.4rem;
+}
+
+.btn-back,
+.btn-back-path,
+.btn-volver {
+  background: rgba(212, 175, 55, 0.1);
+  border: 2px solid rgba(212, 175, 55, 0.3);
+  color: #d4af37;
+  font-size: 1.5rem;
+  width: 45px;
+  height: 45px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  margin-bottom: 15px;
+  transition: all 0.3s;
+  margin-right: 15px !important;
+}
+
+.btn-back:hover,
+.btn-back-path:hover,
+.btn-volver:hover {
+  background: rgba(221, 186, 71, 0.2);
+  border-color: var(--gold);
+  color: var(--gold);
+}
+
+/* ==========================================
+   6. GRILLA DE CAPÍTULOS SIMÉTRICA (5 COLUMNAS)
+   ========================================== */
+.grid-capitulos,
+.capitulos-container,
+#grid-capitulos {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  width: 100%;
+  max-width: 480px;
+  margin: 0 auto 20px auto;
+  padding: 15px;
+  box-sizing: border-box;
+  justify-content: flex-start;
+}
+
+.btn-capitulo,
+.capitulo-card,
+#grid-capitulos .btn-capitulo {
+  flex: 0 0 calc(20% - 7px) !important;
+  aspect-ratio: 1 !important;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(212, 175, 55, 0.08);
+  border: 1px solid rgba(212, 175, 55, 0.4);
+  color: var(--gold-light);
+  font-size: 1.1rem;
+  font-weight: bold;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  box-sizing: border-box;
+}
+
+.btn-capitulo:hover,
+.capitulo-card:hover {
+  background: var(--gold);
+  color: #000;
+  transform: scale(1.05);
+}
+
+.texto-ayuda-capitulos,
+.help-text-capitulos {
+  width: 100%;
+  text-align: center;
+  margin-top: 15px;
+  color: #aaa;
+  font-style: italic;
+  font-size: 0.9rem;
+}
+
+/* ==========================================
+   7. PANEL INFERIOR Y ESTUDIO (ABANICO)
+   ========================================== */
+#study-card {
+  display: none !important;
+}
+
+#screen-lectura.active ~ #study-card,
+#screen-lectura.active #study-card,
+body:has(#screen-lectura.active) #study-card {
+  display: block !important;
+  position: fixed !important;
+  bottom: -23px !important;
+  left: 0 !important;
+  width: 100% !important;
+  height: 50vh !important;
+  z-index: 100 !important;
+  background-color: var(--bg-panel);
+  border-top: 4px solid var(--gold);
+  border-radius: 15px 15px 0 0;
+  padding: 6px;
+  box-sizing: border-box;
+  transition: transform 0.4s ease-out;
+}
+
+#study-card.hidden {
+  transform: translateY(calc(100% - 35px)) !important;
+}
+/* Animación suave de pulso y brillo para la barrita de cierre */
+@keyframes pulsoBrillo {
+  0% {
+    opacity: 0.4;
+    box-shadow: 0 0 2px var(--gold);
+  }
+  50% {
+    opacity: 1;
+    box-shadow: 0 0 8px var(--gold);
+  }
+  100% {
+    opacity: 0.4;
+    box-shadow: 0 0 2px var(--gold);
+  }
+}
+
+/* Aplicamos la animación a la barrita dorada existente */
+#study-card .panel-handle {
+  background-color: var(--gold);
+  border-radius: 8px;
+  animation: pulsoBrillo 2.5s infinite ease-in-out;
+  cursor: pointer;
+}
+/* Cuando el panel está cerrado (oculto), lo bajamos casi por completo 
+   dejando asomar únicamente la barrita dorada */
+#study-card.hidden {
+  transform: translateY(calc(100% - 25px)) !important;
+  /* O si usas bottom: */
+  /* bottom: -350px; (dejando solo los píxeles de la barrita visibles) */
+}
+
+.panel-handle {
+  width: 200px;
+  height: 7px;
+  background-color: var(--gold);
+  border-radius: 3px;
+  margin: 0 auto 15px auto;
+  cursor: pointer;
+  opacity: 0.8;
+  transition: opacity 0.2s;
+}
+
+.panel-handle:hover {
+  opacity: 1;
+}
+
+.columns-container {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: repeat(2, 1fr);
+  gap: 8px;
+  height: calc(100% - 25px);
+}
+
+.fan-column {
+  padding: 15px;
+  border-radius: 10px;
+  background-color: rgba(243, 225, 225, 0.03);
+  overflow-y: auto;
+}
+
+.col-1 {
+  border-top: 6px solid #800080 !important;
+}
+.col-2 {
+  border-top: 6px solid #b8860b !important;
+}
+.col-3 {
+  border-top: 6px solid #e6d7b2 !important;
+}
+.col-4 {
+  border-top: px solid #e34234 !important;
+}
+
+body.light-mode .col-3 {
+  border-top-color: #a38a54 !important;
+}
+
+.fan-column h3 {
+  font-family: var(--font-roman);
+  font-size: 0.85rem;
+  margin-bottom: 5px;
+  color: var(--gold);
+}
+
+.focus-text {
+  font-size: 0.85rem;
+  color: #999;
+  line-height: 1.4;
+}
+
+.fan-column.expanded-full {
+  grid-column: span 2;
+  position: fixed !important;
+  top: auto !important;
+  bottom: 0 !important;
+  left: 0 !important;
+  right: 0 !important;
+  width: 100% !important;
+  height: 48vh !important;
+  max-height: 48vh !important;
+  z-index: 1500 !important;
+  background-color: var(--bg-panel);
+  border-top: 3px solid var(--gold);
+  border-radius: 18px 18px 0 0;
+  padding: 20px 20px 25px 20px !important;
+  overflow-y: auto !important;
+  box-shadow: 0 -10px 30px rgba(0, 0, 0, 0.8);
+  animation: deslizarArriba 0.3s ease-out;
+}
+
+@keyframes deslizarArriba {
+  from {
+    transform: translateY(100%);
+  }
+  to {
+    transform: translateY(0);
+  }
+}
+.column-header .column-title {
+  font-size: 1rem;
+  color: var(--gold);
+  text-align: center;
+  margin-bottom: 8px;
+}
+
+/* esto modifica el texto del panel de estudio que abre el abanico */
+.extended-text {
+  display: none;
+  margin-top: 10px;
+  font-size: 1rem;
+  line-height: 1.6;
+  color: #ccc;
+  text-align: justify;
+  border-top: 1px solid rgba(212, 175, 55, 0.2);
+  padding-top: 10px;
+}
+
+.fan-column.expanded-full .extended-text {
+  display: block;
+}
+
+.btn-close-extended {
+  display: none;
+  background: var(--gold);
+  color: black;
+  border: none;
+  padding: 5px 12px;
+  font-family: var(--font-roman);
+  font-size: 0.75rem;
+  cursor: pointer;
+  float: right;
+  border-radius: 3px;
+  margin-bottom: 10px;
+}
+
+.fan-column.expanded-full .btn-close-extended {
+  display: block;
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+
+body.light-mode #study-card {
+  background: #f4f1ea !important;
+}
+body.light-mode .fan-column {
+  background: #ffffff !important;
+  border-color: rgba(180, 140, 40, 0.4) !important;
+  color: #2c2c2c !important;
+}
+body.light-mode .fan-column p,
+body.light-mode .fan-column span,
+body.light-mode .extended-text {
+  color: #2c2c2c !important;
+}
+body.light-mode .fan-column.expanded-full {
+  background-color: #f4f1ea !important;
+}
+
+/* ==========================================
+   8. COMPONENTES Y BOTONES DE ESTADO (EMAÚS)
+   ========================================== */
+/* El contenedor de los estados de ánimo (carrusel horizontal) */
+.mood-buttons {
+  display: flex;
+  flex-wrap: nowrap;
+  overflow-x: auto;
+  justify-content: flex-start;
+  gap: 10px;
+  padding: 10px 10px 15px 10px;
+  margin: 15px 0;
+  scroll-snap-type: x mandatory;
+  -webkit-overflow-scrolling: touch;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+/* ESTILO GENERAL para todos los botones .btn-emaus del sistema (tus otros botones normales) */
+.btn-emaus {
+  background-color: transparent;
+  color: #d4af37;
+  border: 1px solid #d4af37;
+  padding: 10px 15px;
+  border-radius: 20px;
+  font-size: 0.9rem;
+  cursor: pointer;
+  text-align: center;
+  transition: all 0.3s ease;
+  /* Dejamos que mantengan su comportamiento normal sin ancho fijo */
+}
+
+/* EXCLUSIVO para los botones que están DENTRO del carrusel horizontal de estados */
+.mood-buttons .btn-emaus {
+  flex: 0 0 auto;
+  width: 100px;
+  min-height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  scroll-snap-align: start;
+  padding: 10px 5px; /* Padding ajustado para este ancho fijo */
+}
+.btn-emaus:hover,
+.btn-emaus.active {
+  background-color: #d4af37;
+  color: #121212;
+}
+
+.path-journey-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+  padding: 20px 0;
+}
+
+.huella-paso {
+  width: 100%;
+  max-width: 500px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 15px;
+  background: rgba(212, 175, 55, 0.1);
+  border: 1px solid rgba(212, 175, 55, 0.3);
+  border-radius: 50px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  padding: 12px 25px;
+  box-sizing: border-box;
+  margin: 0 auto;
+}
+
+.huella-paso:hover {
+  background: rgba(212, 175, 55, 0.25);
+  transform: scale(1.05);
+}
+
+.huella-paso .icono-huella {
+  font-size: 1.2rem;
+}
+.huella-paso .etiqueta-paso {
+  text-align: left;
+  font-size: 0.95rem;
+}
+
+/* ==========================================
+   9. MEDIA QUERIES & ADAPTACIONES MODO CLARO
+   ========================================== */
+@media (min-width: 600px) {
+  .columns-container {
+    grid-template-columns: repeat(4, 1fr);
+    height: 100%;
+    align-items: stretch;
+  }
+  .split-container {
+    flex-direction: row;
+  }
+  .block-top {
+    border-bottom: none;
+    border-right: 2px solid var(--gold);
+  }
+  .main-header {
+    position: relative;
+  }
+  .btn-back,
+  .btn-back-path {
+    position: absolute;
+    left: 20px;
+    top: 10px;
+  }
+}
+
+@media (min-width: 800px) {
+  .fan-column.expanded-full {
+    grid-column: span 4;
+    max-width: 900px;
+    width: 90%;
+    margin: 0 auto;
+    top: 55%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    right: auto;
+    height: auto;
+    max-height: 75vh;
+    padding-top: 50px;
+  }
+  .fan-column.expanded-full .btn-close-extended {
+    position: absolute;
+    top: 15px;
+    right: 20px;
+  }
+}
+
+body.light-mode #screen-main {
+  background-color: #e8e4dc !important;
+}
+body.light-mode #screen-main .split-block {
+  background: #e8e4dc !important;
+  border-color: #b39353 !important;
+}
+body.light-mode #screen-main .split-block h2 {
+  color: #2c2c2c !important;
+}
+body.light-mode #screen-main .split-block p {
+  color: #555555 !important;
+}
+body.light-mode #texto-peldaño-detalle,
+body.light-mode #titulo-peldaño-detalle,
+body.light-mode #texto-emaus-detalle,
+body.light-mode #titulo-emaus-detalle {
+  color: #1a1a1a !important;
+  font-weight: 700;
+}
+/* Ajuste de textos y botones de paginación en modo claro */
+body.light-mode #btn-ant-busqueda,
+body.light-mode #btn-sig-busqueda,
+body.light-mode #btn-cap-anterior,
+body.light-mode #btn-cap-siguiente,
+body.light-mode .btn-capitulo {
+  color: #2c2c2c !important;
+  border-color: #b39353 !important;
+  background-color: rgba(179, 147, 83, 0.15) !important;
+}
+
+body.light-mode #btn-ant-busqueda:hover,
+body.light-mode #btn-sig-busqueda:hover,
+body.light-mode #btn-cap-anterior:hover,
+body.light-mode #btn-cap-siguiente:hover,
+body.light-mode .btn-capitulo:hover {
+  background-color: #b39353 !important;
+  color: #ffffff !important;
+}
+/* Ajuste fino exclusivo para la pantalla principal */
+#screen-main {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding-bottom: 20px;
+}
+
+#screen-main .split-container {
+  height: calc(
+    100vh - 85px
+  ); /* Reduce levemente el alto total para centrar el contenido */
+  max-height: 600px;
+  margin: 0 auto;
+  width: 100%;
+}
+/* Ajuste de color para las tarjetas de libros (Antiguo y Nuevo Testamento) en Modo Claro */
+body.light-mode #lista-libros-antiguo > div,
+body.light-mode #lista-libros-nuevo > div {
+  background: rgba(179, 147, 83, 0.12) !important;
+  color: #2c2c2c !important;
+  border-color: #b39353 !important;
+}
+
+body.light-mode #lista-libros-antiguo > div:hover,
+body.light-mode #lista-libros-nuevo > div:hover {
+  background-color: #b39353 !important;
+  color: #ffffff !important;
+}
+/* Recuperar los bordes de colores superiores en Modo Claro para el panel de estudio */
+body.light-mode .fan-column.col-1 {
+  border-top: 4px solid #800080 !important;
+}
+
+body.light-mode .fan-column.col-2 {
+  border-top: 4px solid #b8860b !important;
+}
+
+body.light-mode .fan-column.col-3 {
+  border-top: 4px solid #a38a54 !important;
+}
+
+body.light-mode .fan-column.col-4 {
+  border-top: 4px solid #e34234 !important;
+}
+body.light-mode #screen-idioma,
+body.light-mode #screen-sugerir {
+  background-color: var(--bg-color) !important;
+  color: #2c2c2c !important;
+}
+
+body.light-mode #screen-sugerir a {
+  background: rgba(179, 147, 83, 0.1) !important;
+  border-color: #b39353 !important;
+  color: #2c2c2c !important;
+}
+
+body.light-mode #screen-sugerir a:hover {
+  background: #b39353 !important;
+  color: #ffffff !important;
+}
+/* ==========================================
+   CORRECCIÓN DE ALTURAS Y CAJITAS (15 min fix)
+   ========================================== */
+
+/* 1. Forzar altura automática y segura en las tarjetas de libros */
+#lista-libros-antiguo > div,
+#lista-libros-nuevo > div {
+  min-height: 55px;
+  height: auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+}
+
+/* 2. Asegurar espacio al final de las pantallas con scroll para que la última fila no quede pegada al borde */
+.screen {
+  padding-bottom: 50px; /* Margen de respiro inferior */
+}
+
+/* 3. Garantizar que las tarjetas de estados y caminos respiren bien */
+.btn-emaus,
+.huella-paso {
+  min-height: 48px;
+  height: auto;
+}
+
+/* 4. Prevenir que las grillas de capítulos colapsen en pantallas muy chicas */
+.grid-capitulos,
+.capitulos-container,
+#grid-capitulos {
+  padding-bottom: 40px;
+}
+/* Contenedor exacto de tus botones de estado de ánimo */
+.mood-buttons {
+  display: flex;
+  overflow-x: auto;
+  gap: 12px;
+  padding: 10px 4px 15px 4px;
+  scroll-snap-type: x mandatory;
+  -webkit-overflow-scrolling: touch; /* Desplazamiento fluido en celulares */
+  width: 100%;
+  box-sizing: border-box;
+}
+
+/* Barra de desplazamiento sutil y prolija */
+.mood-buttons::-webkit-scrollbar {
+  height: 6px;
+}
+
+.mood-buttons::-webkit-scrollbar-thumb {
+  background-color: rgba(212, 175, 55, 0.4); /* Dorado sutil */
+  border-radius: 10px;
+}
+
+/* Cada uno de los span / botones (btn-emaus) */
+
+.mood-buttons {
+  display: flex;
+  flex-wrap: nowrap; /* ESTO ES LA CLAVE: Evita que bajen a la segunda línea */
+  overflow-x: auto;
+  gap: 12px;
+  padding: 10px 4px 15px 4px;
+  scroll-snap-type: x mandatory;
+  -webkit-overflow-scrolling: touch;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.mood-buttons .btn-emaus {
+  flex: 0 0 auto; /* Evita que se achiquen */
+  width: 100px; /* O un ancho fijo para que todos midan lo mismo */
+  text-align: center;
+  scroll-snap-align: start;
+  /* Agregá estas tres líneas para centrarlo perfecto */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 45px; /* O la altura que tengan tus botones */
+}
+/* Textos descriptivos y subtítulos en las pantallas de contenido */
+.screen-content p,
+.path-card .question,
+.subtitulo-ruta {
+  color: #d0d0d0; /* Un gris suave y elegante, no blanco puro */
+  font-style: italic; /* Esa cursiva delicada que queda genial */
+  font-size: 0.95rem;
+  font-family: serif; /* O la tipografía delicada que esté usando la Biblia */
+}
+.btn-audio {
+  background: transparent;
+  border: 1px solid rgba(212, 175, 55, 0.6);
+  color: #d4af37; /* Dorado */
+  padding: 8px 14px;
+  border-radius: 20px;
+  cursor: pointer;
+  font-size: 0.9rem;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 15px;
+  transition:
+    background 0.3s,
+    color 0.3s;
+}
+
+.btn-audio:hover {
+  background: rgba(212, 175, 55, 0.15);
+}
+/* Las columnas arrancan tenues (apagaditas) */
+.fan-column {
+  opacity: 0.4;
+  transition: opacity 0.3s ease;
+  border-left: 4px solid transparent; /* Esta es tu línea de color */
+}
+
+/* Cuando le damos la clase "has-content", brilla y se pinta */
+.fan-column.has-content {
+  opacity: 1;
+  border-left-color: gold; /* La línea dorada */
+  background: rgba(
+    255,
+    255,
+    255,
+    0.05
+  ); /* Un toquecito de fondo para resaltar */
+}
+
+/* Esto es lo único que debería controlar la opacidad base */
+.fan-column {
+  opacity: 0.3;
+  transition: opacity 0.3s ease;
+  border-left: 4px solid transparent;
+}
+
+/* Solo las que tienen contenido se prenden */
+.fan-column.has-content {
+  opacity: 1;
+  border-left-color: gold;
+}
+.subrayado-filologia {
+  border-bottom: 2px solid #9b59b6;
+} /* Púrpura */
+.subrayado-historico {
+  border-bottom: 2px solid #ecf0f1;
+} /* Plata / Blanco */
+.subrayado-apologetica {
+  border-bottom: 2px solid #e74c3c;
+} /* Rojo */
+.subrayado-sucesion {
+  border-bottom: 2px solid #f1c40f;
+} /* Amarillo */
+
+.subrayado-multicolor {
+  border-bottom: 3px solid;
+  border-image: linear-gradient(to right, #9b59b6, #ecf0f1, #e74c3c, #f1c40f) 1;
+}
+/* Soporte para combinaciones dinámicas de degradados */
+.subrayado-combinado {
+  border-bottom: 3px solid;
+  border-image: linear-gradient(to right, var(--colores-degradado)) 1;
+}
+/* Cuando la columna está expandida a pantalla completa dentro del abanico */
+.fan-column.expanded-full {
+  background-color: #121212 !important; /* Fondo sólido oscuro para que tape lo de atrás */
+  z-index: 50;
+  opacity: 1 !important;
+}
+/* Borramos el efecto de atenuar los demás para que queden normales */
+.linea-versiculo.atenuada {
+  opacity: 1 !important;
+}
+
+/* El versículo seleccionado se tiñe con un toque doradito elegante */
+.linea-versiculo.activa {
+  background-color: rgba(
+    212,
+    175,
+    55,
+    0.18
+  ); /* Subimos de 0.08 a 0.18 para que gane cuerpo en modo claro */
+  border-left: 3px solid var(--gold); /* Una barrita dorada a la izquierda para enmarcarlo */
+  padding-left: 10px; /* Un pequeño respiro para que quede prolijo */
+  transition: all 0.3s ease;
+}
+
+/* Pero las rayitas de colores de los versículos no seleccionados se apagan (se ponen transparentes o grises muy sutiles) */
+.linea-versiculo.atenuada span,
+.linea-versiculo.atenuada {
+  border-bottom-color: rgba(255, 255, 255, 0.05) !important;
+  border-image: none !important;
+}
+/* Estilo para los títulos de las columnas (Raíces, Sucesión, etc.) */
+.column-title {
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: var(--gold);
+  margin-bottom: 6px;
+  font-weight: bold;
+  text-align: center;
+}
+
+/* Subtítulos de las columnas en el panel en abanico */
+#study-card .column-subtitle {
+  font-family: var(--font-serif, serif);
+  font-size: 0.95rem;
+  font-weight: normal;
+  font-style: italic;
+  line-height: 1.4;
+  text-align: center;
+
+  /* Por defecto toma el gris plata para el modo oscuro */
+  color: #cccccc !important;
+}
+
+/* Si tu app activa una clase de modo claro, cambia automáticamente a un gris oscuro elegante */
+body.light-mode #study-card .column-subtitle,
+.light-theme #study-card .column-subtitle {
+  color: #333333 !important;
+}
+.titulo-estado {
+  display: none;
+}
+
+/* aquí le damos detlle dorado al subtitulo de los estados */
+/* Ajuste para el título principal en modo oscuro */
+.acogida-estado {
+  font-size: 1.5rem; /* Ya lo agrandamos, mantenemos acá */
+  font-weight: 600; /* Un pelín más de peso para que luzca el metal */
+
+  /* --- NUEVO EFECTO DORADO METÁLICO --- */
+  background: linear-gradient(135deg, #e6cf8a 0%, #a59049 50%, #5c4d1b 100%);
+  background-clip: text;
+  -webkit-background-clip: text; /* Para compatibilidad con navegadores */
+  color: transparent; /* Hacemos el texto transparente para que se vea el fondo de degradado */
+  /* ---------------------------------- */
+
+  text-align: center;
+  margin-bottom: 15px;
+  font-style: italic;
+  font-family: serif;
+  margin-left: auto;
+
+  /* Un pequeño brillo suave (opcional) para realzar */
+  text-shadow: 0px 1px 2px rgba(0, 0, 0, 0.3);
+}
+/* Ajuste para el título principal en modo claro */
+.light-theme .acogida-estado {
+  /* --- NUEVO EFECTO DORADO METÁLICO (versión clara) --- */
+  background: linear-gradient(135deg, #d4a746 0%, #b39353 50%, #8c743b 100%);
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent; /* Mismo truco de transparencia */
+  /* ---------------------------------- */
+}
+
+.evangelio-referencia {
+  font-size: 1.2rem;
+  line-height: 1.5;
+  color: #ad7f7f; /* Gris suave para lectura cómoda */
+  font-style: italic; /* Cursiva elegante */
+  font-family: serif; /* Tipografía clásica */
+  margin-bottom: 15px;
+  margin-left: 5px;
+}
+.bloque-evangelio {
+  font-size: 1.1rem;
+  line-height: 1.5;
+  color: #d0d0d0; /* Gris suave para lectura cómoda */
+  font-style: italic; /* Cursiva elegante */
+  font-family: serif; /* Tipografía clásica */
+  margin-bottom: 15px;
+  margin-left: 10px;
+}
+.oracion-texto {
+  font-size: 1.1rem;
+  line-height: 1.5;
+  color: #d0d0d0; /* Gris suave para lectura cómoda */
+  font-style: italic; /* Cursiva elegante */
+  font-family: serif; /* Tipografía clásica */
+  margin-bottom: 15px;
+  margin-left: 10px;
+}
+.light-theme .oracion-texto {
+  color: #554d4d !important; /* Gris oscuro para modo claro */
+  font-style: italic;
+  font-family: serif;
+  margin-left: 10px;
+}
+/* aquí aplicamos un poco de estilos a los bloques de santo y recomendaciones para que se vean más elegantes y legibles, evitando el blanco puro y usando un gris suave con cursiva. Esto ayuda a mantener la estética general de la aplicación y mejora la experiencia de lectura. */
+.bloque-santo {
+  color: #ad7f7f; /* Un gris suave y elegante, no blanco puro */
+  font-style: italic; /* Esa cursiva delicada que queda genial */
+  font-size: 1.2rem;
+  font-family: serif; /* O la tipografía delicada que esté usando la Biblia */
+  margin: 0 auto;
+  margin-bottom: auto;
+  margin-left: 10px;
+}
+.santo-recomendacion {
+  color: #ddd0d0; /* Un gris suave y elegante, no blanco puro */
+  font-style: italic; /* Esa cursiva delicada que queda genial */
+  font-size: 1.1rem;
+  font-family: serif; /* O la tipografía delicada que esté usando la Biblia */
+  margin: 0 auto;
+  margin-bottom: auto;
+  margin-left: 0px;
+  margin-top: 10px;
+}
+.paso-hoy-texto {
+  color: #8a5e5e; /* Un gris suave y elegante, no blanco puro */
+  font-style: italic; /* Esa cursiva delicada que queda genial */
+  font-size: 1.1rem;
+  font-family: serif; /* O la tipografía delicada que esté usando la Biblia */
+  margin: 0 auto;
+  margin-bottom: auto;
+  padding-top: 20px;
+  margin-left: 10px;
+}
+.oracion-titulo {
+  font-size: 1.2rem;
+
+  font-style: italic;
+  font-family: serif;
+  /* Aplicamos el mismo degradado metálico con el toque que te gusta */
+  background: linear-gradient(135deg, #ad7f7f 0%, #a59049 50%, #5c4d1b 100%);
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+  display: block;
+  margin-bottom: 8px;
+  margin-left: 10px;
+}
+/* ==========================================================================
+   ESTILOS MEJORADOS: PANTALLA CAMINEMOS CON JESÚS (screen-path-detail)
+   ========================================================================== */
+
+/* Asegurar que la pantalla respire y permita scroll cómodo */
+#screen-path-detail .path-content {
+  padding: 20px 16px 40px 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+/* Corregir subtítulos y textos que quedaban blancos o desentonaban */
+#screen-path-detail .header-statement {
+  color: #cccccc !important; /* Dorado sutil en lugar de blanco puro */
+  opacity: 0.9;
+  font-size: 1.1rem;
+  line-height: 1.6;
+  margin-bottom: 15px;
+  font-family: "Cinzel", serif;
+  font-style: italic;
+  font-weight: 400;
+}
+
+/* Tarjetas individuales con diseño limpio y malla/borde dorado */
+#screen-path-detail .path-card {
+  background: rgba(20, 20, 20, 0.75);
+  border: 1px solid rgba(212, 175, 55, 0.4);
+  border-radius: 12px;
+  padding: 22px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+  position: relative;
+}
+
+/* Encabezados dentro de las tarjetas (Mi Punto de Partida / La Ruta de Emaús) con acento dorado */
+
+/* Preguntas y reflexiones interiores legibles */
+#screen-path-detail .path-card .question,
+#screen-path-detail .path-card .reflection {
+  color: #cccccc !important;
+  font-size: 0.95rem;
+  line-height: 1.6;
+  margin-bottom: 15px;
+}
+
+/* Botones de estado (emociones) ordenados y con buen espacio */
+#screen-path-detail .mood-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 10px;
+}
+
+#screen-path-detail .mood-buttons .btn-emaus {
+  flex: 1 1 calc(33.333% - 10px);
+  min-width: 100px;
+  text-align: center;
+  padding: 10px 12px;
+  font-size: 0.9rem;
+  background: rgba(212, 175, 55, 0.1);
+  border: 1px solid rgba(212, 175, 55, 0.5);
+  border-radius: 8px;
+  color: #fff;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+#screen-path-detail .mood-buttons .btn-emaus:hover {
+  background: rgba(212, 175, 55, 0.25);
+  border-color: #d4af37;
+  box-shadow: 0 0 10px rgba(212, 175, 55, 0.3);
+}
+
+/* Botones de acción principales de la segunda tarjeta */
+#screen-path-detail .path-card .btn-emaus {
+  display: inline-block;
+  margin-top: 8px;
+  margin-right: 8px;
+  padding: 10px 18px;
+  background: rgba(212, 175, 55, 0.15);
+  border: 1px solid #d4af37;
+  border-radius: 8px;
+  color: #fff;
+  text-decoration: none;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+#screen-path-detail .path-card .btn-emaus:hover {
+  background: #d4af37;
+  color: #000;
+}
+
+/* ==========================================================================
+   ESTILO PARA EL PIE DE PÁGINA REFLEXIVO (EL "SALVAVIDAS")
+   ========================================================================== */
+.footer-reflexion {
+  background: linear-gradient(
+    135deg,
+    rgba(212, 175, 55, 0.08),
+    rgba(20, 20, 20, 0.9)
+  );
+  border: 1px solid rgba(212, 175, 55, 0.6);
+  border-radius: 12px;
+  padding: 20px;
+  margin-top: 10px;
+  text-align: center;
+  box-shadow: 0 0 20px rgba(212, 175, 55, 0.15); /* Efecto de iluminación sutil */
+}
+
+.footer-reflexion p {
+  color: #f3e5ab; /* Tono marfil/dorado claro para destacar la lectura */
+  font-size: 0.92rem;
+  line-height: 1.7;
+  margin: 0;
+  font-style: italic;
+}
+/* ==========================================================================
+   PIE DE PÁGINA REFLEXIVO CON BRILLO SUTIL (SHIMMER)
+   ========================================================================== */
+.footer-reflexion {
+  position: relative;
+  overflow: hidden; /* Contiene el brillo dentro de la tarjeta */
+  background: linear-gradient(
+    135deg,
+    rgba(212, 175, 55, 0.08),
+    rgba(20, 20, 20, 0.9)
+  );
+  border: 1px solid rgba(212, 175, 55, 0.4);
+  border-radius: 12px;
+  padding: 20px;
+  margin-top: 15px;
+  text-align: center;
+  box-shadow: 0 0 15px rgba(212, 175, 55, 0.1);
+}
+
+/* El haz de luz suave que cruza de lado a lado */
+.footer-reflexion::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -150%;
+  width: 150%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.08),
+    rgba(212, 175, 55, 0.2),
+    rgba(255, 255, 255, 0.08),
+    transparent
+  );
+  transform: skewX(-20deg);
+  animation: brillo-suave 6s ease-in-out infinite;
+}
+
+@keyframes brillo-suave {
+  0% {
+    left: -150%;
+  }
+  50% {
+    left: 150%;
+  }
+  100% {
+    left: 150%;
+  }
+}
+
+.footer-reflexion p {
+  color: #e0d5b5; /* Tono marfil apagado y sumamente legible */
+  font-size: 0.92rem;
+  line-height: 1.7;
+  margin: 0;
+  font-style: italic;
+  position: relative;
+  z-index: 1; /* Asegura que el texto quede por encima del brillo */
+}
+
+/* --- Cirugía para centrar el título de Emaús --- */
+
+#screen-emaus h1.brand-title {
+  text-align: center !important; /* El !important fuerza el centrado */
+  display: block; /* Asegura que el h1 ocupe el ancho necesario para centrarse */
+  margin: 0 auto; /* Centra el bloque en sí mismo */
+  width: 100%; /* Asegura que tenga el ancho completo para que el centrado funcione */
+}
+/* --- Cirugía de precisión para el subtítulo de Emaús --- */
+
+/* ==========================================================================
+   CIRUGÍA DEFINITIVA: PANTALLA BUSCAR EN LAS ESCRITURAS
+   ========================================================================== */
+
+/* 1. Título principal en dorado estándar */
+#screen-buscar h2 {
+  color: #d4af37 !important;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+/* 2. Contenedor que une la caja y el botón en una misma línea prolija */
+#screen-buscar .search-box-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  width: 100%;
+}
+
+/* 3. Agrandar la caja de texto y evitar que se corte el versículo */
+#screen-buscar input#input-busqueda {
+  flex: 1; /* Hace que ocupe todo el espacio disponible */
+  height: 48px; /* Altura cómoda y elegante */
+  padding: 0 16px; /* Espacio interno para que el texto respire */
+  font-size: 0.95rem; /* Tamaño equilibrado para que no se corte */
+  box-sizing: border-box;
+  border-radius: 8px;
+  border: 1px solid rgba(212, 175, 55, 0.4);
+  background: rgba(255, 255, 255, 0.05);
+  color: #fff;
+}
+
+/* 4. Agrandar y emparejar el botón de búsqueda con la caja */
+#screen-buscar button#btn-ejecutar-busqueda {
+  height: 48px; /* Exactamente la misma altura que el input */
+  padding: 0 20px;
+  border-radius: 8px;
+  flex-shrink: 0; /* Evita que el botón se deforme */
+  cursor: pointer;
+}
+
+/* 5. Resultados de búsqueda en blanco plata / Cinzel cursiva */
+#screen-buscar .results-list,
+#screen-buscar .placeholder-text {
+  font-family: "Cinzel", serif;
+  font-weight: 400;
+  font-style: italic;
+  color: #cccccc !important;
+  font-size: 0.92rem;
+  line-height: 1.5;
+  margin-top: 15px;
+}
+/* =========================================
+   CORRECCIONES PARA EL MODO CLARO
+   ========================================= */
+
+/* 1. Textos de la pantalla de búsqueda */
+body.light-mode #screen-buscar .results-list,
+body.light-mode #screen-buscar .placeholder-text {
+  color: #333333 !important; /* Gris bien oscuro casi negro */
+}
+
+/* El texto que uno escribe en la caja de búsqueda */
+body.light-mode #screen-buscar input#input-busqueda {
+  color: #333333;
+  background: rgba(
+    0,
+    0,
+    0,
+    0.05
+  ); /* Fondo apenitas gris para que se note la caja */
+  border: 1px solid rgba(0, 0, 0, 0.2);
+}
+/* =========================================
+   AJUSTE DE CONTRASTE PARA MODO CLARO
+   Subtítulos y textos secundarios
+   ========================================= */
+
+body.light-mode .subtitulo-caminemos,
+body.light-mode .card-subtitle,
+body.light-mode .seccion-descripcion,
+body.light-mode p.subtitulo,
+body.light-mode .descripcion-recorrido {
+  color: #222222 !important;
+}
+/* --- Modo claro para el subtítulo de Emaús y similares --- */
+body.light-mode #screen-emaus h2.header-statement {
+  color: #222222 !important;
+}
+/* --- Modo claro para Caminemos con Jesús y Emaús (subtítulos y rutas) --- */
+body.light-mode #screen-path-detail .header-statement,
+body.light-mode .path-card .question,
+body.light-mode .path-card .reflection,
+body.light-mode .subtitulo-ruta {
+  color: #222222 !important;
+}
+/* Corrección de color para La Ruta de Emaús y reflexiones en Modo Claro */
+body.light-mode .path-card .reflection,
+body.light-mode .path-card .question {
+  color: #333333 !important;
+}
+
+/* Si el título "2. La Ruta de Emaús" también se pierde, agregale esto: */
+body.light-mode .path-card h3 {
+  color: #111111 !important;
+}
+/* --- Rebelión aplacada: Modo claro obligatorio para tarjetas de ruta --- */
+body.light-mode #screen-path-detail .path-card,
+body.light-mode #screen-path-detail .path-card * {
+  color: #2b2b2b !important;
+}
+.modal-oculto {
+  display: none !important;
+}
+body {
+  background-color: #121212; /* Asegura que el fondo sea oscuro pleno */
+
+  /* Esto hace que el contenido respete las barras del celular de forma elegante */
+  padding-top: env(safe-area-inset-top);
+  padding-bottom: env(safe-area-inset-bottom);
+}
+
+/* Si tu barra de navegación superior o menú flotante toca arriba */
+header.top-navbar {
+  padding-top: env(safe-area-inset-top);
+}
+.brand-icon-superior {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  border: 2px solid var(--gold);
+  object-fit: cover;
+  box-shadow: 0 0 6px rgba(212, 175, 55, 0.4);
+  margin-left: 5px;
+
+  /* ESTO ES LO QUE LO VA A DEJAR CENTRADO A LA PERFECCIÓN */
+  vertical-align: middle;
+  display: inline-block;
+}
+
+html {
+  background-color: #000000;
+  /* Esto le avisa a los navegadores modernos de Android que fuercen un esquema oscuro en la IU del sistema */
+  color-scheme: dark;
+}
+/* --- MODO SEPIA TOTAL --- */
+html.modo-sepia,
+body.modo-sepia {
+  background-color: #f4ecd8 !important;
+  color: #4b3621 !important;
+}
+
+/* Forzamos que cualquier contenedor principal, tarjeta o fondo general adopte el tono sepia */
+body.modo-sepia div,
+body.modo-sepia section,
+body.modo-sepia main,
+body.modo-sepia header,
+body.modo-sepia nav,
+body.modo-sepia aside {
+  background-color: inherit; /* Heredan el fondo sepia a menos que tengan una razón de ser */
+}
+
+/* Excepciones específicas para que las cajas de texto y barras queden prolijas en sepia */
+body.modo-sepia header,
+body.modo-sepia nav,
+body.modo-sepia .sidebar,
+body.modo-sepia .contenido-principal {
+  background-color: #f4ecd8 !important;
+  color: #4b3621 !important;
+}
+
+/* Textos, títulos y etiquetas bien legibles */
+body.modo-sepia p,
+body.modo-sepia span,
+body.modo-sepia a,
+body.modo-sepia h1,
+body.modo-sepia h2,
+body.modo-sepia h3,
+body.modo-sepia li {
+  color: #4b3621 !important;
+}
+body.light-mode p,
+body.light-mode span,
+body.light-mode h1,
+body.light-mode h2,
+body.light-mode h3,
+body.light-mode .split-block p,
+body.light-mode .header-statement,
+body.light-mode .reflection,
+body.light-mode .focus-text {
+  color: #2c2c2c !important;
+  --text-color: #2c2c2c !important;
+}
+/* --- Ajustes finos para el Modo Sepia --- */
+
+/* 1. Asegurar que los párrafos y textos de lectura tengan un tono marrón oscuro bien legible */
+body.modo-sepia p,
+body.modo-sepia span,
+body.modo-sepia li,
+body.modo-sepia .reflection,
+body.modo-sepia .focus-text {
+  color: #3b2a1a !important; /* Un tono marrón más profundo y fácil de leer */
+}
+
+/* 2. Evitar bloques negros o grises, dándoles un tono sepia cálido y contrastado */
+body.modo-sepia .card,
+body.modo-sepia .tarjeta,
+body.modo-sepia div[class*="box"],
+body.modo-sepia section:not(.header) {
+  background-color: #e9e8e6 !important; /* Un tono crema/sepia más tostado para los contenedores */
+  color: #d3c5b9 !important;
+}
+
+/* 3. Mejorar los botones interactivos dentro del modo sepia */
+body.modo-sepia button,
+body.modo-sepia .btn {
+  background-color: #bdb6a7 !important;
+  color: #3b2a1a !important;
+  border-color: #b59a64 !important;
+}
+/* --- CORRECCIÓN GENERAL PARA EL MODO SEPIA --- */
+
+/* 1. Todos los subtítulos, textos secundarios y encabezados menores en sepia */
+body.modo-sepia h2,
+body.modo-sepia h3,
+body.modo-sepia h4,
+body.modo-sepia p,
+body.modo-sepia span,
+body.modo-sepia .header-statement,
+body.modo-sepia .italic,
+body.modo-sepia .text-italic {
+  color: #4b3621 !important; /* Marrón cálido y legible */
+}
+
+/* 2. Botones de Emaús, opciones del menú y tarjetas de testamentos/libros */
+body.modo-sepia .btn-emaus,
+body.modo-sepia .testamento-card,
+body.modo-sepia .huella-paso,
+body.modo-sepia button:not(.nav-icon-btn) {
+  background-color: #f4ebd0 !important;
+  color: #4b3621 !important;
+  border-color: #b59a64 !important;
+}
+
+/* 3. Textos y etiquetas dentro de las huellas y botones de Emaús */
+body.modo-sepia .huella-paso .etiqueta-paso,
+body.modo-sepia .testamento-card h3,
+body.modo-sepia .testamento-card p {
+  color: #4b3621 !important;
+}
+
+/* 4. Listados dinámicos de los libros de la Biblia (Antiguo y Nuevo Testamento) */
+body.modo-sepia #lista-libros-antiguo button,
+body.modo-sepia #lista-libros-nuevo button,
+body.modo-sepia [id*="lista-libros"] div,
+body.modo-sepia .libro-btn {
+  background-color: #f4ebd0 !important;
+  color: #4b3621 !important;
+  border: 1px solid #b59a64 !important;
+}
+/* Estilos en Modo Sepia para el Camino Personal / Emaús */
+body.modo-sepia .path-theme .path-card h3,
+body.modo-sepia .path-theme .path-card .question {
+  color: #4b3621 !important;
+}
+
+body.modo-sepia .path-theme .path-card {
+  background-color: #f4ebd0 !important;
+  border-color: #bbae93 !important;
+}
+/* --- BLOQUES PRINCIPALES DE LA PANTALLA DE INICIO --- */
+
+/* Estilo por defecto (modo normal) */
+#btn-goto-bible,
+#btn-goto-path {
+  background-color: #1a1a1a; /* Fondo oscuro elegante */
+  border: 1px solid #d4af37; /* Detalle dorado sutil */
+}
+
+/* Estilo cuando el Modo Sepia está activo */
+body.modo-sepia #btn-goto-bible,
+body.modo-sepia #btn-goto-path {
+  background-color: #f4ebd0 !important; /* Crema cálido del sepia */
+  border: 1px solid #b59a64 !important;
+}
+
+/* Textos y subtítulos dentro de los bloques principales en modo sepia */
+body.modo-sepia #btn-goto-bible h2,
+body.modo-sepia #btn-goto-bible p,
+body.modo-sepia #btn-goto-path h2,
+body.modo-sepia #btn-goto-path p {
+  color: #4b3621 !important; /* Marrón legible y cálido */
+}
+body.modo-sepia .split-container {
+  background-color: #f4ebd0 !important; /* Fondo sepia para los bloques */
+  color: #4b3621 !important; /* Texto marrón legible */
+  border: 1px solid #b59a64 !important; /* Borde dorado cálido */
+  border-radius: 12px;
+  padding: 20px;
+  box-sizing: border-box;
+}
+body.modo-sepia .split-block {
+  background-color: #f4ebd0 !important; /* Fondo sepia para cada bloque */
+  color: #d48637 !important; /* Texto marrón legible */
+  border: 1px solid #f4ebd0 !important; /* Borde dorado cálido */
+  border-radius: 8px;
+  padding: 15px;
+  box-sizing: border-box;
+}
+body.modo-sepia .screen.active {
+  background-color: #f4ebd0 !important;
+}
+
+body.light-sepia #screen-main .split-block {
+  background: #e8e4dc !important;
+}
+/* acá modificamos el boton de audio hacia la izq */
+#btn-hablar-lectura {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-left: auto;
+  margin-right: 15px;
+}
+/* Forzamos el color marrón cálido en el subtítulo del encabezado cuando está en modo sepia */
+html.modo-sepia h2.header-statement,
+body.modo-sepia h2.header-statement,
+.modo-sepia h2.header-statement {
+  color: #5c4033 !important; /* Marrón cálido legible */
+  background: none !important; /* Por si tiene algún fondo o degradé aplicado */
+  -webkit-background-clip: initial !important;
+  background-clip: initial !important; /* Propiedad estándar */
+}
+/* Combinación perfecta para Modo Sepia: Fondo cálido y texto negro bien legible */
+body.modo-sepia h2,
+body.modo-sepia #texto-peldaño-detalle,
+body.modo-sepia h3,
+body.modo-sepia p,
+body.modo-sepia span,
+body.modo-sepia .header-statement,
+body.modo-sepia .reflection,
+body.modo-sepia #texto-emaus-detalle body.modo-sepia .focus-text {
+  background-color: #f4ecd8 !important; /* Mantiene el fondo cremita/marroncito del sepia */
+  color: #1a1107 !important; /* Negro profundo / marrón negrísimo para el texto */
+  font-weight: bold !important; /* Letra en negrita para que resalte al 100% */
+  -webkit-text-fill-color: #1a1107 !important; /* Evita que los degradés vuelvan la letra gris */
+}
+
+body.modo-sepia #texto-emaus-detalle {
+  color: #1a1107 !important;
+}
+body.modo-sepia #btn-goto-bible,
+body.modo-sepia #btn-goto-path,
+html.modo-sepia #btn-goto-bible,
+html.modo-sepia #btn-goto-path {
+  background-color: rgb(244, 235, 208) !important;
+}
+/* --- CIRUGÍA DE PRECISIÓN: AISLANDO AL REBELDE EN SEPIA --- */
+body.modo-sepia #btn-goto-bible,
+body.modo-sepia #btn-goto-path {
+  background: #f4ebd0 !important; /* El fondo marroncito/crema que te gusta */
+  color: #4b3621 !important; /* El texto bien legible */
+  border: 1px solid #b59a64 !important; /* El borde que le da forma */
+  box-shadow: none !important; /* Le saca cualquier sombra rara que lo ensucie */
+}
+.indicador-minimo {
+  display: flex; /* Usamos flex para centrar el texto adentro */
+  align-items: center; /* Centrado vertical */
+  justify-content: center;
+  position: absolute; /* Para moverlo con libertad */
+  right: 20px; /* Distancia del borde derecho */
+  top: 80px; /* Ajustá este valor para que quede a la altura del botón */
+  padding: 6px 8px; /* Un poquito más de aire */
+  border: 1px solid var(--gold); /* Usamos tu variable de color */
+  border-radius: 6px; /* Mismo redondeado que el botón */
+  color: var(--gold);
+  font-size: 14px; /* Un poquito más grande para que se lea mejor */
+  font-weight: bold;
+  background: rgba(0, 0, 0, 0.8);
+  height: 38px; /* Igualamos la altura al botón de "Escuchar" */
+}
+body.light-mode/* Solo el indicador de numeritos se adapta en modo claro */
+.indicador-minimo {
+  background: #f4ebd0;
+  border: 1px solid #333;
+  color: #333;
+}
+body {
+  margin: 0;
+  padding: 0;
+  height: 100vh;
+  /* Esto es fundamental para que el "fondo" de la barra de navegación sea negro */
+  background-color: #000000;
+
+  /* Y esto para que el contenido no quede pegado al borde del celular */
+  padding-bottom: env(safe-area-inset-bottom);
+  padding-top: env(safe-area-inset-top);
+}
+#titulo-emaus-detalle {
+  background-image: linear-gradient(
+    180deg,
+    #fceea7 0%,
+    #d4af37 50%,
+    #aa7c11 100%
+  );
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+/* Clase para títulos dorados */
+.text-gold {
+  background-image: linear-gradient(
+    180deg,
+    #fceea7 0%,
+    #d4af37 50%,
+    #aa7c11 100%
+  );
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* Clase para subtítulos plateados */
+.text-silver {
+  background-image: linear-gradient(
+    180deg,
+    #ffffff 0%,
+    #a0a0a0 50%,
+    #666666 100%
+  );
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-size: 0.9rem; /* O el tamaño que mejor se ajuste a tu diseño */
+  font-weight: 500; /* Por si querés que sea un poco menos grueso que el título principal */
+  max-width: 600px;
+  margin: 0 auto;
+  text-align: center;
+}
+/* Bloque unificado para todas las pantallas de estado y sus párrafos de acogida */
+#screen-agradecido .acogida-estado,
+#screen-bendecido .acogida-estado,
+#screen-cansado .acogida-estado,
+#screen-feliz .acogida-estado,
+#screen-triste .acogida-estado,
+#screen-ansioso .acogida-estado,
+#screen-preocupado .acogida-estado,
+#screen-temeroso .acogida-estado,
+#screen-en-paz .acogida-estado {
+  max-width: 600px;
+  margin: 25px auto 0 auto;
+  text-align: center;
+}
+.emaus-container {
+  display: flex;
+  justify-content: center; /* Los centra */
+  gap: 10px; /* Un poquito de aire entre ellos */
+  width: 100%;
+}
+
+/* Ajuste para que los botones dentro del div se vean bien */
+.emaus-container .btn-emaus {
+  flex: 1; /* Esto hace que se repartan el ancho igualitariamente */
+}
+/* Estilo sutil para la etiqueta 'Caminar' */
+#caminar-emaus-detalle {
+  color: #d4af37; /* Tu dorado elegante */
+  font-weight: 600; /* Un semi-negrita en lugar de negrita pesada */
+  font-size: 1rem; /* Tamaño normal, igual al resto del texto */
+  display: block;
+  margin-bottom: 4px;
+}
+
+/* Estilo sutil para la etiqueta 'Reflexión' */
+#reflexion-emaus-detalle {
+  color: #d4af37;
+  font-weight: 600;
+  font-size: 1rem;
+  display: block;
+  margin-top: 12px;
+  margin-bottom: 4px;
+}
+.mic-oculto {
+  display: none;
+}
+/* variables globales */
+body {
+  overscroll-behavior-y: contain; /* Evita el rebote y la recarga al estirar la página hacia abajo */
+}
+html,
+body {
+  overscroll-behavior-y: none; /* Mata el pull-to-refresh global */
+  overscroll-behavior: none; /* Por las dudas, frena cualquier rebote en los costados también */
+  position: fixed; /* Fija la pantalla para que el navegador no la mueva de prepo */
+  width: 100%;
+  height: 100%;
+  overflow: hidden; /* Evita que el documento entero flote */
+  margin: 0;
+  padding: 0;
+}
+#btnMic.mic-escuchando {
+  background-color: #ff4d4d !important; /* Se pone rojo fuerte */
+  box-shadow: 0 0 10px #ff4d4d;
+  animation: titilar 1s infinite alternate;
+}
+
+@keyframes titilar {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0.4;
+  }
+}
+
+#panel-handle {
+  width: 100%;
+  height: 40px; /* Altura generosa para una zona táctil perfecta */
+  cursor: grab;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: transparent; /* O el color sutil que prefieras para la barra */
+  touch-action: none; /* Evita que el navegador interfiera con gestos táctiles por defecto */
+}
+
+/* La barrita visual decorativa del medio */
+#panel-handle::after {
+  content: "";
+  width: 200px;
+  height: 7px;
+  background-color: rgba(
+    0,
+    0,
+    0,
+    0.2
+  ); /* Un gris sutil o el color que combine con tu diseño */
+  border-radius: 3px;
+}
+
+#panel-handle:active {
+  cursor: grabbing;
+}
+#btn-close-extended {
+  content: "";
+  width: 200px;
+  height: 7px;
+  background-color: rgba(
+    0,
+    0,
+    0,
+    0.2
+  ); /* Un gris sutil o el color que combine con tu diseño */
+  border-radius: 3px;
+}
+/* Tarjeta de Aclaración Versión Bíblica */
+.card-aclaracion {
+  margin-top: 20px;
+  border: 1px solid #d4af37; /* Borde dorado */
+  border-radius: 8px;
+  padding: 15px;
+  background-color: #000000; /* Fondo negro matching el tema */
+  box-shadow: 0 2px 8px rgba(212, 175, 55, 0.15); /* Resplandor dorado suave */
+}
+
+.titulo-desplegable {
+  font-weight: bold;
+  font-size: 1.05em;
+  cursor: pointer;
+  padding: 5px 0;
+  transition: color 0.3s ease;
+}
+
+.titulo-desplegable:hover {
+  opacity: 0.9;
+}
+
+.contenido-desplegable {
+  margin-top: 15px;
+  font-size: 0.95em;
+  line-height: 1.6;
+  color: #e0e0e0;
+}
+
+.separador-suave {
+  border: 0;
+  border-top: 1px solid #333333;
+  margin: 15px 0;
+}
+
+.contenedor-imagen-facsamil {
+  margin: 15px 0;
+  text-align: center;
+}
+
+.imagen-facsamil {
+  max-width: 240px;
+  width: 100%;
+  height: auto;
+  border: 1px solid #d4af37; /* Borde dorado en la portada */
+  border-radius: 4px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.8);
+}
+
+.pie-imagen {
+  font-size: 0.85em;
+  margin-top: 8px;
+}
+
+.enlace-dorado {
+  color: #d4af37;
+  font-weight: bold;
+  text-decoration: underline;
+  transition: opacity 0.2s ease;
+}
+
+.enlace-dorado:hover {
+  opacity: 0.8;
+}
+/* Galería flexible de facsímiles */
+.galeria-facsimiles {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
+  justify-content: center;
+  margin: 15px 0;
+}
+
+.item-facsamil {
+  text-align: center;
+  max-width: 180px;
+}
+
+.imagen-facsamil {
+  width: 100%;
+  height: auto;
+  border: 1px solid #d4af37;
+  border-radius: 4px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.7);
+  transition: transform 0.2s ease;
+}
+
+.imagen-facsamil:hover {
+  transform: scale(1.03); /* Efecto sutil al pasar el cursor */
+}
+/* Contenedor principal CHATBOT (asegurá que ocupe el espacio y baje el scroll) */
+#contenedorMensajes,
+.chat-mensajes {
+  display: flex;
+  flex-direction: column;
+  gap: 12px; /* Espacio generoso entre un mensaje y otro */
+  padding: 15px;
+  overflow-y: auto;
+  flex-grow: 1;
+}
+
+/* Estilo para los mensajes del usuario ("Tú") */
+
+#screen-asistente.screen.active {
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  height: 100%;
+}
+.mensaje-usuario {
+  background-color: rgba(255, 255, 255, 0.08); /* Un tono sutil y oscuro */
+  color: #e0e0e0;
+  align-self: flex-end; /* Se alinean a la derecha */
+  padding: 10px 14px;
+  border-radius: 12px 12px 2px 12px;
+  max-width: 80%;
+  border-left: 3px solid #d4af37; /* Toque dorado sutil */
+}
+body.modo-sepia .mensaje-usuario {
+  color: #000000;
+}
+body.light-mode .mensaje-usuario {
+  color: #000000;
+}
+/* Estilo para los mensajes del Asistente */
+.mensaje-asistente {
+  background-color: rgba(212, 175, 55, 0.1); /* Tono dorado muy tenue */
+  color: #ffffff;
+  align-self: flex-start; /* Se alinean a la izquierda */
+  padding: 10px 14px;
+  border-radius: 12px 12px 12px 2px;
+  max-width: 85%;
+  border-left: 3px solid #4a90e2; /* Destaque pastoral/azul o dorado */
+  line-height: 1.4;
+}
+body.modo-sepia .mensaje-asistente {
+  color: #000000;
+}
+body.light-mode .mensaje-asistente {
+  color: #000000;
+}
+.asistente-header {
+  display: flex;
+  align-items: center;
+}
+/* Barra inferior fija para la entrada de texto */
+.chat-input-container,
+.input-area {
+  background-color: #000000; /* Ajustalo al color de fondo de tu app */
+  border-radius: 20px;
+  padding: 15px;
+  display: flex;
+  gap: 6px;
+  border-top: 3px solid #d4af37;
+  box-sizing: border-box;
+}
+#chat-mensajes {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  overflow-y: auto;
+}
+#chat-input {
+  border: 2px solid #d4af37;
+  border-radius: 20px;
+  padding: 8px 12px; /* Aumenta el espacio interior para que se vea más alta y cómoda */
+  font-size: 1rem; /* Asegura que el texto se lea bien */
+  flex-direction: column;
+  margin-bottom: 10px;
+  margin-left: 0px;
+}
+#btnMic {
+  display: flex;
+  align-items: auto;
+  justify-content: center;
+  padding: 8px;
+  border: 2px solid #d4af37;
+  border-radius: 20px;
+  margin-bottom: 10px;
+  margin-right: 4px;
+}
+#chat-btn-enviar {
+  display: flex;
+  padding: 8px;
+  border: 2px solid #d4af37;
+  border-radius: 20px;
+  margin-bottom: 10px;
+}

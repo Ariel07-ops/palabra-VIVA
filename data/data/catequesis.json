@@ -1,0 +1,250 @@
+[
+  {
+    "id": "dios-001",
+    "categoria": "Dios",
+    "pregunta_principal": "¿Quién es Dios?",
+    "keywords": ["quien es dios", "dios existe", "que es dios", "dios"],
+    "respuesta_breve": "Dios es nuestro Padre amoroso, creador del cielo y de la tierra, que nos ama infinitamente. Es uno y trino: Padre, Hijo y Espíritu Santo.",
+    "paso_concreto": "Hoy decile: 'Padre, acá estoy' 30 segundos en silencio.",
+    "enseñanza_de_la_iglesia": ["CIC 268"],
+    "fundamento_biblico": ["1 Jn 4,8 - Dios es amor"]
+  },
+  {
+    "id": "jesus-001",
+    "categoria": "Jesucristo",
+    "pregunta_principal": "¿Quién es Jesucristo?",
+    "keywords": [
+      "quien es jesus",
+      "jesucristo",
+      "jesus",
+      "quien es cristo",
+      "cristo"
+    ],
+    "respuesta_breve": "Jesucristo es el Hijo de Dios hecho hombre, que murió y resucitó por amor a vos. Es verdadero Dios y verdadero hombre, y está vivo caminando con vos.",
+    "paso_concreto": "Nombrá a Jesús en voz alta 3 veces hoy como amigo.",
+    "enseñanza_de_la_iglesia": ["CIC 430"],
+    "fundamento_biblico": ["Jn 1,14 - Y el Verbo se hizo carne"]
+  },
+  {
+    "id": "espiritu-001",
+    "categoria": "Espíritu Santo",
+    "pregunta_principal": "¿Quién es el Espíritu Santo?",
+    "keywords": ["espiritu santo", "quien es el espiritu", "espiritu"],
+    "respuesta_breve": "El Espíritu Santo es Dios amor vivo en vos. Es el que te da fuerza, te consuela, te guía y te hace amar como Jesús.",
+    "paso_concreto": "Decí hoy: 'Ven Espíritu Santo' cuando te sientas sin fuerzas.",
+    "enseñanza_de_la_iglesia": ["CIC 683"],
+    "fundamento_biblico": ["Hch 2,4"]
+  },
+  {
+    "id": "virgen-001",
+    "categoria": "Virgen María",
+    "pregunta_principal": "¿Quién es la Virgen María?",
+    "keywords": [
+      "maria",
+      "virgen maria",
+      "sobre maria",
+      "madre de dios",
+      "virgen",
+      "maria madre"
+    ],
+    "respuesta_breve": "María es la Madre de Jesús y madre nuestra. Dios la eligió, ella dijo que sí, y desde la cruz Jesús nos la dejó como Madre para que nos cuide y nos lleve a Él.",
+    "paso_concreto": "Rezale hoy un Ave María pidiéndole que te acerque más a Jesús.",
+    "enseñanza_de_la_iglesia": ["CIC 963"],
+    "fundamento_biblico": ["Lc 1,28 - Llena de gracia", "Jn 19,27"]
+  },
+  {
+    "id": "fe-001",
+    "categoria": "Fe",
+    "pregunta_principal": "¿Qué es la fe católica?",
+    "keywords": ["que es la fe", "fe catolica", "fe", "creer"],
+    "respuesta_breve": "La fe es fiarte de Dios, creerle a Él más que a tus miedos. No es solo creer que existe, es entregarle tu vida.",
+    "paso_concreto": "Hoy hacé un acto de fe: 'Jesús, confío en vos' antes de dormir.",
+    "enseñanza_de_la_iglesia": ["CIC 150"],
+    "fundamento_biblico": ["Hb 11,1"]
+  },
+  {
+    "id": "biblia-001",
+    "categoria": "Biblia",
+    "pregunta_principal": "¿Qué es la Biblia?",
+    "keywords": [
+      "que es la biblia",
+      "biblia",
+      "sagrada escritura",
+      "escritura"
+    ],
+    "respuesta_breve": "La Biblia es la carta de amor de Dios para vos. Son 73 libros inspirados por el Espíritu Santo donde Dios te habla hoy.",
+    "paso_concreto": "Leé hoy Marcos 1,1-5 y subrayá lo que te llegue.",
+    "enseñanza_de_la_iglesia": ["CIC 105"],
+    "fundamento_biblico": ["2 Tim 3,16"]
+  },
+  {
+    "id": "iglesia-001",
+    "categoria": "Iglesia",
+    "pregunta_principal": "¿Qué es la Iglesia?",
+    "keywords": ["que es la iglesia", "iglesia", "iglesia catolica"],
+    "respuesta_breve": "La Iglesia somos todos, no solo el edificio. Somos la familia de Dios, fundada por Jesús sobre Pedro.",
+    "paso_concreto": "Este domingo quedate 5 min después de misa saludando a alguien.",
+    "enseñanza_de_la_iglesia": ["CIC 752"],
+    "fundamento_biblico": ["Mt 16,18"]
+  },
+  {
+    "id": "oracion-001",
+    "categoria": "Oración",
+    "pregunta_principal": "¿Cómo puedo rezar si no sé orar?",
+    "keywords": ["como rezar", "como orar", "no se rezar", "orar", "rezar"],
+    "respuesta_breve": "Rezar es hablar con Dios como con un amigo. No necesitas palabras lindas. Contale tu día y quedate un ratito en silencio.",
+    "paso_concreto": "Poné 3 min de cronómetro y decí: 'Aquí estoy, Señor'.",
+    "enseñanza_de_la_iglesia": ["CIC 2559"],
+    "fundamento_biblico": ["Mt 6,6"]
+  },
+  {
+    "id": "oracion-002",
+    "categoria": "Oración",
+    "pregunta_principal": "¿Dios me escucha?",
+    "keywords": [
+      "dios me escucha",
+      "dios no me escucha",
+      "me escucha dios",
+      "dios me oye",
+      "me escucha"
+    ],
+    "respuesta_breve": "Sí, Dios te escucha siempre, aunque no sientas nada. Tu oración nunca cae al vacío, llega directo a su corazón de Padre.",
+    "paso_concreto": "Escribí hoy tu oración en un papel.",
+    "enseñanza_de_la_iglesia": ["CIC 2737"],
+    "fundamento_biblico": ["Sal 34,18", "1 Jn 5,14"]
+  },
+  {
+    "id": "sufrimiento-001",
+    "categoria": "Vida Cristiana",
+    "pregunta_principal": "¿Por qué Dios permite el sufrimiento?",
+    "keywords": [
+      "sufrimiento",
+      "dolor",
+      "por que sufro",
+      "por que permite dios",
+      "porque sufro",
+      "sufrir"
+    ],
+    "respuesta_breve": "Dios no quiere tu dolor, pero respeta la libertad. Él no te deja solo: lo vivió en la cruz para transformarlo en amor y salvación.",
+    "paso_concreto": "Ofrecé hoy tu cansancio por alguien que quieras.",
+    "enseñanza_de_la_iglesia": ["CIC 272"],
+    "fundamento_biblico": ["Rm 8,28"]
+  },
+  {
+    "id": "pecado-001",
+    "categoria": "Vida Cristiana",
+    "pregunta_principal": "¿Qué es el pecado?",
+    "keywords": ["que es pecado", "pecado", "pecar"],
+    "respuesta_breve": "El pecado es decirle 'no' a Dios sabiendo que te ama. Te aleja y te deja vacío, pero nunca es más grande que su misericordia.",
+    "paso_concreto": "Examiná 2 min tu día y pedí perdón por algo concreto.",
+    "enseñanza_de_la_iglesia": ["CIC 1849"],
+    "fundamento_biblico": ["Rm 3,23"]
+  },
+  {
+    "id": "confesion-001",
+    "categoria": "Sacramentos",
+    "pregunta_principal": "¿Para qué confesarme?",
+    "keywords": ["confesion", "confesarse", "confesar", "perdon", "penitencia"],
+    "respuesta_breve": "Confesarte es dejar que Jesús te abrace y te limpie el corazón. Es encontrarte con el Padre que te perdona todo y te devuelve la paz.",
+    "paso_concreto": "Buscá esta semana horario de confesión en tu parroquia.",
+    "enseñanza_de_la_iglesia": ["CIC 1440"],
+    "fundamento_biblico": ["Jn 20,23"]
+  },
+  {
+    "id": "eucaristia-001",
+    "categoria": "Sacramentos",
+    "pregunta_principal": "¿Qué es la Eucaristía?",
+    "keywords": [
+      "eucaristia",
+      "comunion",
+      "misa",
+      "cuerpo de cristo",
+      "hostia"
+    ],
+    "respuesta_breve": "La Eucaristía es Jesús mismo: su Cuerpo y Sangre que se nos da como alimento. Es donde el cielo toca la tierra.",
+    "paso_concreto": "Antes de comulgar decí: 'Señor, no soy digno, pero ven'.",
+    "enseñanza_de_la_iglesia": ["CIC 1324"],
+    "fundamento_biblico": ["Lc 22,19"]
+  },
+  {
+    "id": "vida-001",
+    "categoria": "Vida Cristiana",
+    "pregunta_principal": "Me siento solo",
+    "keywords": ["solo", "soledad", "me siento solo", "sola", "abandonado"],
+    "respuesta_breve": "No estás solo. Dios está con vos ahora mismo, aunque no lo sientas. Él te ve, te conoce y te ama en esta soledad.",
+    "paso_concreto": "Mándale un mensaje a alguien hoy y decile que pensaste en él.",
+    "enseñanza_de_la_iglesia": ["CIC 301"],
+    "fundamento_biblico": [
+      "Mt 28,20 - Yo estaré con ustedes siempre",
+      "Sal 27,10"
+    ]
+  },
+  {
+    "id": "vida-002",
+    "categoria": "Vida Cristiana",
+    "pregunta_principal": "Tengo miedo y ansiedad",
+    "keywords": ["miedo", "ansiedad", "angustia", "tengo miedo", "ansioso"],
+    "respuesta_breve": "Es humano tener miedo. Jesús también tuvo angustia. Dejalo entrar en tu miedo, no luches solo. Él te dice hoy: 'No temas, yo estoy con vos'.",
+    "paso_concreto": "Respirá hondo y repetí 5 veces: 'Jesús, confío en vos'.",
+    "enseñanza_de_la_iglesia": ["CIC 2733"],
+    "fundamento_biblico": [
+      "Is 41,10 - No temas que yo estoy contigo",
+      "Flp 4,6"
+    ]
+  },
+  {
+    "id": "vida-003",
+    "categoria": "Vida Cristiana",
+    "pregunta_principal": "¿Cuál es mi propósito?",
+    "keywords": [
+      "proposito",
+      "sentido de la vida",
+      "para que vivo",
+      "proposito de vida"
+    ],
+    "respuesta_breve": "Tu propósito es amar y ser amado. Fuiste creado por amor, para amar. Cuando amás como Jesús, tu vida se llena de sentido.",
+    "paso_concreto": "Hoy hacé un acto de amor concreto que nadie vea.",
+    "enseñanza_de_la_iglesia": ["CIC 27"],
+    "fundamento_biblico": ["Ef 1,4"]
+  },
+  {
+    "id": "rosario-001",
+    "categoria": "Oración",
+    "pregunta_principal": "¿Qué es el Rosario?",
+    "keywords": ["rosario", "rezar el rosario", "como rezar rosario"],
+    "respuesta_breve": "El Rosario es tomar de la mano a María para contemplar a Jesús. Son 50 Ave Marías meditando su vida, que te van pacificando el corazón.",
+    "paso_concreto": "Rezate hoy un misterio solo, 1 Padre Nuestro y 10 Ave Marías.",
+    "enseñanza_de_la_iglesia": ["CIC 971"],
+    "fundamento_biblico": ["Lc 1,28"]
+  },
+  {
+    "id": "santos-001",
+    "categoria": "Iglesia",
+    "pregunta_principal": "¿Quiénes son los santos?",
+    "keywords": ["santos", "que son los santos", "santo"],
+    "respuesta_breve": "Los santos son amigos nuestros que ya llegaron al cielo y nos dan una mano. No son superhéroes, son personas comunes que amaron mucho.",
+    "paso_concreto": "Elegí un santo y pedile que te acompañe esta semana.",
+    "enseñanza_de_la_iglesia": ["CIC 956"],
+    "fundamento_biblico": ["Hb 12,1"]
+  },
+  {
+    "id": "perdon-001",
+    "categoria": "Vida Cristiana",
+    "pregunta_principal": "¿Cómo perdonar si me hirieron?",
+    "keywords": ["perdonar", "perdon", "no puedo perdonar", "me hirieron"],
+    "respuesta_breve": "Perdonar no es olvidar, es soltar el veneno para sanar vos. No podés solo, pedile a Jesús que perdone por vos al principio.",
+    "paso_concreto": "Hoy rezá un Padre Nuestro por esa persona que te hirió.",
+    "enseñanza_de_la_iglesia": ["CIC 2844"],
+    "fundamento_biblico": ["Mt 6,14", "Col 3,13"]
+  },
+  {
+    "id": "muerte-001",
+    "categoria": "Vida Cristiana",
+    "pregunta_principal": "¿Qué pasa después de la muerte?",
+    "keywords": ["muerte", "que pasa despues de morir", "vida eterna", "cielo"],
+    "respuesta_breve": "La muerte no es el final. Jesús venció la muerte y nos abrió el cielo. Si vivimos con Él acá, estaremos con Él para siempre.",
+    "paso_concreto": "Rezá hoy por un ser querido que ya partió.",
+    "enseñanza_de_la_iglesia": ["CIC 1023"],
+    "fundamento_biblico": ["Jn 11,25 - Yo soy la Resurrección"]
+  }
+]

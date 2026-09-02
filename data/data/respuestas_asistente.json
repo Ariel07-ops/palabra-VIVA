@@ -24,8 +24,8 @@
     "titulo": "Guía rápida de uso de Palabra Viva",
     "mensaje": "Podés utilizar este espacio de distintas maneras:",
     "opciones": [
-      "Diálogo espiritual: Contame si estás buscando una reflexión ante algún estado de ánimo, cansancio o momento del día.",
-      "Búsqueda bíblica: Para buscar pasajes o textos completos de forma exacta, recordá usar el buscador dedicado en la barra del menú lateral (donde podés ingresar por nombre, capítulo y versículo con dos puntos como 'Juan 1:1')."
+      "Diálogo espiritual: Contame si estás buscando una reflexión ante algún estado de ánimo, o queres compartir un momento del día.",
+      "Búsqueda bíblica: Para buscar pasajes o textos completos de forma exacta, recordá usar el buscador dedicado en la barra del menú lateral (donde podés ingresar por nombre, capítulo y versículo con dos puntos como 'Juan 1:1') o consulta las sagradas escrituras en la pantalla de inicio."
     ]
   },
   "respuestas_pastorales": {
@@ -56,7 +56,7 @@
         "como funciona",
         "que es esta app"
       ],
-      "respuesta": "<strong>Palabra Viva</strong> es una aplicación diseñada para el acompañamiento espiritual y la reflexión diaria. Para buscar citas exactas o pasajes de la Biblia, te sugiero utilizar el buscador dedicado que está en la barra del menú lateral, donde podés ingresar por nombre, capítulo y versículo (por ejemplo, 'Juan 1:1'), también podes consultar la sagrada escritura en la pagina principal ."
+      "respuesta": "<strong>Palabra Viva</strong> es una aplicación diseñada para el acompañamiento espiritual, para la lectura de la biblia y la reflexión diaria. Para buscar citas exactas o pasajes de la Biblia, te sugiero utilizar el buscador dedicado que está en la barra del menú lateral, donde podés ingresar por nombre, capítulo y versículo (por ejemplo, 'Juan 1:1')."
     },
     {
       "tema": "privacidad_datos",
@@ -87,10 +87,10 @@
     {
       "tema": "tutorial_video",
       "palabras_clave": [
-        "tutorial",
+        "mostrar tutorial",
         "video",
         "paso a paso",
-        "enseñame",
+        "enseñame a usar",
         "guia visual",
         "ver como se usa"
       ],
@@ -105,7 +105,7 @@
         "como te llamas",
         "humano"
       ],
-      "respuesta": "Soy el asistente de apoyo integrado en Palabra Viva. Mi propósito es ofrecerte reflexiones espirituales y escucha para tu día a día. Para lecturas bíblicas textuales, recordá que tenés el buscador dedicado en la barra del menú lateral."
+      "respuesta": "Soy el asistente de apoyo integrado en Palabra Viva. Mi propósito es ofrecerte reflexiones espirituales y escucha para tu día a día. Para lecturas bíblicas textuales, recordá que tenés el buscador dedicado en la barra del menú lateral o podes consultar la biblia directamente en la pantalla principal."
     },
     {
       "tema": "version_programa",

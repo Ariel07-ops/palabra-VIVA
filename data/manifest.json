@@ -1,0 +1,17 @@
+{
+  "name": "Palabra Viva",
+  "short_name": "PalabraViva",
+  "start_url": "./index.html",
+  "display": "standalone",
+  "background_color": "#000000",
+  "theme_color": "#000000",
+  "description": "Aplicación de estudio, lectura y reflexión espiritual.",
+  "icons": [
+    {
+      "src": "assets/imagen/logo-redondo.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ]
+}
