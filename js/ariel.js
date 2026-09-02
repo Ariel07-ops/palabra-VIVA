@@ -66,8 +66,6 @@ function escaparHTML(texto) {
 document.addEventListener("DOMContentLoaded", () => {
   // El resto de tu código de inicialización y eventos del chat...
 });
-
-// Ejecutamos la carga al arrancar
 inicializarBiblia();
 
 // --- FUNCIÓN AUXILIAR PARA CAMBIAR DE PANTALLA ---
@@ -203,58 +201,39 @@ async function abrirPasoEmaus(numero) {
   }
 }
 
-function abrirPeldaño(numero) {
-  const peldañosData = {
-    1: {
-      titulo: "1. El Principio Eterno (Génesis)",
-      texto:
-        "Desde el principio, antes de la fundación del mundo, el Verbo ya existía en Dios. En el relato de la creación del Génesis contemplamos el designio amoroso del Padre, donde el hombre es creado a imagen y semejanza...",
-    },
-    2: {
-      titulo: "2. La Sombra y el Pan Oculto (Melquisedec)",
-      texto:
-        "La figura misteriosa de Melquisedec, rey de Salem y sacerdote del Dios Altísimo, ofrece pan y vino prefigurando el sacrificio eucarístico perfecto que Cristo instituirá en la Última Cena...",
-    },
-    3: {
-      titulo: "3. La Voz de los Profetas (Isaías)",
-      texto:
-        "A través de los siglos, la voz de los profetas mantuvo encendida la esperanza del pueblo. Isaías anticipa de manera luminosa al Servidor Doliente y al Emmanuel, Dios con nosotros...",
-    },
-    4: {
-      titulo: "4. El Fiat que abre el Cielo (La Anunciación)",
-      texto:
-        "El 'Sí' humilde y total de la Virgen María desata el nudo de la desobediencia antigua. En su seno virginal, el Verbo se hace carne y habita entre nosotros.",
-    },
-    5: {
-      titulo: "5. La Luz en la Intemperie (El Pesebre)",
-      texto:
-        "En la humildad de Belén, la luz brota en las tinieblas. Dios se hace frágil y pequeño para que ningún ser humano tenga miedo de acercarse a su Creador.",
-    },
-    6: {
-      titulo: "6. Las Huellas del Maestro (Vida Pública)",
-      texto:
-        "Durante su vida pública, Jesús recorre los caminos de Galilea y Judea enseñando con autoridad, sanando a los enfermos y revelando el rostro misericordioso del Padre.",
-    },
-    7: {
-      titulo: "7. La Victoria sobre la Muerte (Pascua)",
-      texto:
-        "A través de la Cruz y la gloriosa Resurrección, Cristo vence al pecado y a la muerte. El sepulcro vacío es la prueba definitiva de que la vida eterna nos ha sido abierta.",
-    },
-    8: {
-      titulo: "8. La Promesa Cumplida (Pentecostés)",
-      texto:
-        "Con la efusión del Espíritu Santo sobre la Iglesia naciente, la promesa se consuma. Los Apóstoles salen a anunciar la Buena Nueva con valentía, guiados por el Paráclito hasta los confines de la tierra.",
-    },
-  };
+async function abrirPeldaño(numero) {
+  try {
+    const respuesta = await fetch("data/promesa.json");
+    const datosJson = await respuesta.json();
+    const datos = datosJson.find((p) => p.id === parseInt(numero));
 
-  const datos = peldañosData[numero];
-  if (!datos) return;
+    if (!datos) return;
 
-  document.getElementById("titulo-peldaño-detalle").innerText = datos.titulo;
-  document.getElementById("texto-peldaño-detalle").innerHTML = datos.texto;
-  changeScreen(screenPeldañoDetalle);
+    // 1. Título
+    document.getElementById("titulo-peldaño-detalle").innerHTML =
+      datos.titulo || "";
+
+    // 2. Contenido completo: Imagen arriba + Todos los textos abajo
+    document.getElementById("texto-peldaño-detalle").innerHTML = `
+      ${datos.imagen ? `<img src="${datos.imagen}" alt="${datos.titulo}" style="width: 100%; max-height: 220px; object-fit: cover; border-radius: 8px; margin-bottom: 20px;">` : ""}
+      
+      <p><strong>Introducción:</strong> ${datos.introduccion || ""}</p>
+      <p style="margin-top: 15px;"><em>${datos.cita_biblica || ""}</em></p>
+      
+      <!-- Acá sumamos el desarrollo dinámico por si usas distintos nombres de campos -->
+      <p style="margin-top: 15px;">${datos.desarrollo || datos.las_obras_y_las_palabras || datos.el_sacrificio_y_la_eucaristia || datos.el_soplo_que_congrega || ""}</p>
+      
+      <p style="margin-top: 15px;"><strong>Voz de la Iglesia:</strong> ${datos.voz_de_la_iglesia || ""}</p>
+      <p style="margin-top: 15px;"><strong>Aplicación:</strong> ${datos.aplicacion_existencial || ""}</p>
+      <p style="margin-top: 15px; font-style: italic;"><strong>Oración:</strong> ${datos.oracion_breve || ""}</p>
+    `;
+
+    // 3. Cambiamos de pantalla (respetando tu ID exacto)
+    changeScreen(screenPeldañoDetalle); // O como se llame exactamente tu pantalla de detalle
+  } catch (error) {
+    console.error("Error al abrir el peldaño:", error);
+  }
 }
-
 // --- TRANSICIÓN AUTOMÁTICA DEL SPLASH ---
 setTimeout(() => {
   if (screenSplash) {
@@ -2018,4 +1997,19 @@ function procesarMensaje(baseDatosCatequesis) {
 
   // Aquí podés conectar las funciones para mostrar el mensaje en pantalla
   entrada.value = "";
+}
+
+// 3. Opcional: Mostrar o adaptar el mapa/referencia geográfica según el id
+function actualizarMapaGeografico(id) {
+  const contenedorMapa = document.getElementById("contenedor-mapa-referencia");
+  if (!contenedorMapa) return;
+
+  // Si es el escalón 1 o 2, podemos ocultar el mapa o mostrar una nota del Creciente Fértil
+  if (id === 1) {
+    contenedorMapa.innerHTML =
+      "<p class='text-italic'>Horizonte de los orígenes (sin coordenadas geográficas terrenales).</p>";
+  } else {
+    // Aquí puedes cargar la imagen del mapa correspondiente (ej: Belén, Nazaret, Jerusalén)
+    contenedorMapa.innerHTML = `<div class='mapa-card'><span>Ubicación clave: <strong>${datosPromesa[id].lugar}</strong></span></div>`;
+  }
 }

@@ -739,13 +739,12 @@
     </div>
 
     <!-- PANTALLA NUEVA: LA ESCALERA DE LA PROMESA -->
+<!-- PANTALLA NUEVA: LA ESCALERA DE LA PROMESA -->
     <div id="screen-promesa" class="screen">
+      
       <div class="app-container path-theme">
         <header class="main-header">
-          <button
-            class="btn-back-path"
-            onclick="changeScreen(screenPathDetail)"
-          >
+          <button class="btn-back-path" onclick="changeScreen(screenPathDetail)">
             ⬅
           </button>
           <h1 class="brand-title text-gold">LA ESCALERA DE LA PROMESA</h1>
@@ -807,32 +806,33 @@
     </div>
 
     <!-- PANTALLA DEDICADA: DETALLE DE UN PELDAÑO DE LA PROMESA -->
-    <div id="screen-peldaño-detalle" class="screen">
-      <div class="app-container path-theme">
-        <header class="main-header">
-          <button class="btn-back-path" onclick="changeScreen(screenPromesa)">
-            ⬅
-          </button>
-          <h1 class="brand-title text-gold" id="titulo-peldaño-detalle">
-            Peldaño
-          </h1>
-          <p class="header-statement text-italic text-silver">
-            Itinerario de la Revelación
-          </p>
-        </header>
+    <!-- PANTALLA DEDICADA: DETALLE DE UN PELDAÑO DE LA PROMESA -->
+<div id="screen-peldaño-detalle" class="screen">
+  <div class="app-container path-theme">
+    <header class="main-header">
+      <button class="btn-back-path" onclick="changeScreen(screenPromesa)">
+        ⬅
+      </button>
+      <h1 class="brand-title text-gold" id="titulo-peldaño-detalle">
+        Peldaño
+      </h1>
+      <p class="header-statement text-italic text-silver">
+        Itinerario de la Revelación
+      </p>
+    </header>
 
-        <main class="content-area" style="padding: 20px; overflow-y: auto">
-          <div
-            id="contenedor-imagen-peldaño"
-            style="text-align: center; margin-bottom: 20px"
-          ></div>
-          <div
-            id="texto-peldaño-detalle"
-            style="text-align: justify; line-height: 1.8; font-size: 1rem"
-          ></div>
-        </main>
-      </div>
-    </div>
+    <main class="content-area" style="padding: 20px; overflow-y: auto">
+      <div
+        id="contenedor-imagen-peldaño"
+        style="text-align: center; margin-bottom: 20px"
+      ></div>
+      <div
+        id="texto-peldaño-detalle"
+        style="text-align: justify; line-height: 1.8; font-size: 1rem"
+      ></div>
+    </main>
+  </div>
+</div>
 
     <!-- PANTALLA DEDICADA: DETALLE DE UN PASO DE EMAÚS -->
     <div id="screen-emaus-detalle" class="screen">
@@ -1240,16 +1240,6 @@
                           <p class="pie-imagen text-silver">Tomo IV (Nuevo Testamento)</p>
                           </div>    
                         </div>
-
-                          <!-- Las siguientes imágenes las puedes descomentar a medida que las tengas: -->
-                          <!--
-                <div class="item-facsamil">
-                    <a href="imagenes/torres-amat/tomo-primero.jpg" target="_blank">
-                        <img src="imagenes/torres-amat/tomo-primero.jpg" alt="Portadilla del Tomo I" class="imagen-facsamil">
-                    </a>
-                    <p class="pie-imagen text-silver">Tomo I</p>
-                </div>
-                -->
                         </div>
 
                         <p style="margin-top: 15px">
@@ -1482,5 +1472,10 @@
         }
       });
     </script>
-  </body>
+  
+    <footer>
+        <p>Palabra Viva • Copyright © Espíritu Santo (Obra Libre y Gratuita)</p>
+    </footer>
+</body>
+  
 </html>
