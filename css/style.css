@@ -3800,3 +3800,6 @@ body.light-mode .mensaje-asistente {
   border-radius: 20px;
   margin-bottom: 10px;
 }
+#contenedor-imagen-peldaño {
+  margin-top: 0px;
+}

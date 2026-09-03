@@ -5,28 +5,32 @@
       "titulo": "1. El inicio en lo oculto",
       "texto": "Los discípulos caminan hacia Emaús con el rostro sombrío y el corazón cargado de dudas, sin notar que el Maestro ya camina junto a ellos.",
       "caminar": "Reconocer Su presencia en los pequeños detalles.",
-      "reflexion": "Tu momento de oración y bitácora personal."
+      "reflexion": "Tu momento de oración y bitácora personal.",
+      "imagen": "assets/imagen/camino1.jpg"
     },
     {
       "id": 2,
       "titulo": "2. El caminar diario",
       "texto": "Mientras van de camino, Él les explica las Escrituras, encendiendo nuevamente la esperanza en sus corazones cansados.",
       "caminar": "Avanzar por la fe, interpretando los hechos a la luz del Evangelio.",
-      "reflexion": "El compromiso de vivir la enseñanza en la vida pública."
+      "reflexion": "El compromiso de vivir la enseñanza en la vida pública.",
+      "imagen": "assets/imagen/camino2.jpg"
     },
     {
       "id": 3,
       "titulo": "3. La fracción del pan",
       "texto": "Al llegar a la aldea, lo invitan a quedarse y, sentado a la mesa, el gesto de partir el pan les abre los ojos al reconocimiento.",
       "caminar": "Compartir la vida y los dones.",
-      "reflexion": "La Eucaristía como centro de la vida."
+      "reflexion": "La Eucaristía como centro de la vida.",
+      "imagen": "assets/imagen/camino3.jpg"
     },
     {
       "id": 4,
       "titulo": "4. Hacia la Plenitud",
       "texto": "Recobrada la luz y la esperanza, se levantan al instante y regresan al camino para anunciar la vida que ha vencido a la muerte.",
       "caminar": "Misión y alegría.",
-      "reflexion": "Testimonio del camino recorrido."
+      "reflexion": "Testimonio del camino recorrido.",
+      "imagen": "assets/imagen/camino4.jpg"
     }
   ]
 }

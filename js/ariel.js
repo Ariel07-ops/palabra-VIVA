@@ -187,20 +187,24 @@ async function abrirPasoEmaus(numero) {
 
     if (!datos) return;
 
-    // Inyectamos cada cosa en su lugar correspondiente en los pasos de Inicia tu recorrido
-    document.getElementById("titulo-emaus-detalle").innerHTML = datos.titulo;
-    document.getElementById("texto-emaus-detalle").innerHTML = datos.texto;
-    document.getElementById("caminar-emaus-detalle").innerHTML =
-      "Caminar: " + datos.caminar;
-    document.getElementById("reflexion-emaus-detalle").innerHTML =
-      "Reflexión: " + datos.reflexion;
+    // Inyectamos cada texto en su lugar correspondiente
+    document.getElementById("titulo-emaus-detalle").innerHTML =
+      datos.titulo || "";
+
+    // Armamos el contenido donde los textos van arriba y la imagen va al fondo
+    document.getElementById("texto-emaus-detalle").innerHTML = `
+            <p>${datos.texto || ""}</p>
+            <p style="margin-top: 15px;"><strong>Caminar:</strong> ${datos.caminar || ""}</p>
+            <p style="margin-top: 15px; font-style: italic;"><strong>Reflexión:</strong> ${datos.reflexion || ""}</p>
+            
+            ${datos.imagen ? `<img src="${datos.imagen}" alt="${datos.titulo}" style="width: 100%; max-height: auto; object-fit: cover; border-radius: 8px; margin-bottom: 10px; margin-top: 20px;">` : ""}
+        `;
 
     changeScreen(screenEmausDetalle);
   } catch (error) {
     console.error("Error al cargar datos:", error);
   }
 }
-
 async function abrirPeldaño(numero) {
   try {
     const respuesta = await fetch("data/promesa.json");
@@ -215,7 +219,7 @@ async function abrirPeldaño(numero) {
 
     // 2. Contenido completo: Imagen arriba + Todos los textos abajo
     document.getElementById("texto-peldaño-detalle").innerHTML = `
-      ${datos.imagen ? `<img src="${datos.imagen}" alt="${datos.titulo}" style="width: 100%; max-height: 220px; object-fit: cover; border-radius: 8px; margin-bottom: 20px;">` : ""}
+      ${datos.imagen ? `<img src="${datos.imagen}" alt="${datos.titulo}" style="width: 100%; max-height: auto; object-fit: cover; border-radius: 8px; margin-bottom: 10px;">` : ""}
       
       <p><strong>Introducción:</strong> ${datos.introduccion || ""}</p>
       <p style="margin-top: 15px;"><em>${datos.cita_biblica || ""}</em></p>
