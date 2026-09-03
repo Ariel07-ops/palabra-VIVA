@@ -2,12 +2,17 @@
 
 Una herramienta digital libre y gratuita para el acompañamiento espiritual y la reflexión bíblica.
 
-## Licencia Divina
+Plataforma interactiva de estudio bíblico y acompañamiento espiritual. Un espacio diseñado para profundizar en el conocimiento de las escrituras, explorar las enseñanzas de Jesús y reflexionar en el camino personal, con un asistente conversacional de apoyo 100% offline-first.
 
-**Copyright © Espíritu Santo.**
-_Todos los derechos reservados por el Creador. Obra de libre acceso, gratuidad y circulación universal. Si alguien intenta lucrar con ella, apropiarse indebidamente o ponerle candados comerciales, deberá arreglar las cuentas directamente con el Autor._
+## Licencia y Derechos
 
-> Plataforma interactiva de estudio bíblico y acompañamiento espiritual. Un espacio diseñado para profundizar en el conocimiento de las escrituras, explorar las enseñanzas de Jesús y reflexionar en el camino personal, con un asistente conversacional de apoyo 100% offline.
+© 2026 Palabra Viva. Todos los derechos reservados.
+
+[![Licencia Creative Commons](https://mirrors.creativecommons.org/presskit/buttons/88x31/png/by-nc-sa.png)](https://creativecommons.org/licenses/by-nc-sa/4.0/)
+
+Esta obra y su itinerario espiritual están bajo una licencia internacional [Creative Commons Atribución-NoComercial-CompartirIgual 4.0 Internacional](https://creativecommons.org/licenses/by-nc-sa/4.0/). Eres libre de copiar, distribuir y comunicar públicamente este contenido mencionando la autoría original, sin fines comerciales y bajo los mismos términos.
+
+Las citas bíblicas, textos de la Torá, el Tanaj y los documentos del Magisterio integrados en la aplicación se utilizan con fines estrictamente pastorales y contemplativos, respetando los derechos de sus respectivas fuentes y traducciones oficiales.
 
 ---
 

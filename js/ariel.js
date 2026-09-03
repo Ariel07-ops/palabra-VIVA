@@ -1379,142 +1379,9 @@ function comenzarExperiencia() {
     }, 50);
   }, 2500);
 }
-// Acá está la función para conectar el asistente o el chatbot
-if (linkAsistente) {
-  linkAsistente.addEventListener("click", (e) => {
-    e.preventDefault();
-    changeScreen(screenAsistente);
-    menuLateral?.classList.remove("active");
-  });
-}
-// Variable para recordar el último tema conversado 🧠
-let ultimoTema = null;
-// Bandera para saber si el asistente está esperando el nombre del usuario
-let esperandoNombre = false;
-
-// Función asincrónica para procesar el mensaje con soporte local y externo
-async function procesarMensaje(texto, contenedorMensajes) {
-  const t = texto.toLowerCase();
-
-  // 0. Capturar el nombre si el asistente lo estaba pidiendo 💾
-  if (esperandoNombre) {
-    // Limpiamos el texto eliminando palabras comunes al inicio
-    const nombreLimpio = texto
-      .replace(/^(soy|me llamo|mi nombre es)\s+/i, "")
-      .trim();
-
-    // Verificamos que realmente haya quedado texto después de limpiar
-    if (nombreLimpio.length > 0) {
-      localStorage.setItem("nombrePalabraViva", nombreLimpio);
-      esperandoNombre = false;
-      return `¡Mucho gusto, ${nombreLimpio}! Ya te tengo anotado. ¿En qué te puedo ayudar hoy con Palabra Viva? 🌟`;
-    }
-  }
-
-  // 1. Saludos comunes 👋
-  if (t === "hola" || t === "buenos días" || t === "buenas") {
-    return "¡Hola! Qué bueno encontrarte por aquí. Estoy para ayudarte a explorar Palabra Viva 📱. ¿Qué te gustaría saber?";
-  }
-
-  // 2. Comprobar respuestas afirmativas cortas ("sí", "si", etc.)
-  if (t === "sí" || t === "si" || t === "por favor" || t === "claro") {
-    if (ultimoTema === "biblia") {
-      ultimoTema = null;
-      return "¡Excelente! Al tocar un versículo subrayado podrás ver el origen de las palabras, el contexto social y notas formativas. ¿Te gustaría saber algo más?";
-    } else if (ultimoTema === "menu") {
-      ultimoTema = null;
-      return "Perfecto. En el menú lateral también puedes cambiar el idioma y sugerir enlaces recomendados. ¿Hay otra herramienta que quieras explorar?";
-    }
-    return "¿Sobre qué sección específica de la aplicación te gustaría saber más?";
-  }
-
-  // 3. Evaluaciones locales rápidas ⚡
-  if (
-    t.includes("para qué sirve") ||
-    t.includes("qué puedo hacer") ||
-    t.includes("programa") ||
-    t.includes("palabra viva")
-  ) {
-    ultimoTema = "programa";
-    return "Palabra Viva es un programa diseñado para acompañar tanto el estudio de la Sagrada Escritura 📖 como el desarrollo de tu camino espiritual personal 🌟. ¿Sobre qué sección te gustaría saber más?";
-  } else if (
-    t.includes("menu") ||
-    t.includes("rayitas") ||
-    t.includes("opciones")
-  ) {
-    ultimoTema = "menu";
-    return "En la barra superior encontrarás tres rayitas 📱 que abren la barra lateral con todas las herramientas de la app. ¿Te gustaría saber más sobre alguna de ellas?";
-  } else if (
-    t.includes("biblia") ||
-    t.includes("escritura") ||
-    t.includes("versículo") ||
-    t.includes("profundizar")
-  ) {
-    ultimoTema = "biblia";
-    return "En la sección de la Sagrada Escritura 📖 puedes seleccionar testamentos y encontrar textos subrayados con opciones de profundización. ¿Te gustaría saber más?";
-  }
-  // Lógica de búsqueda local en el archivo biblia.json
-  const textoBuscado = texto.toLowerCase();
-
-  // 1. Filtramos los versículos que coincidan con la palabra o frase del usuario
-  // (Asumiendo que 'bibliaData' es tu JSON cargado)
-  const resultados = bibliaData.verses.filter((v) =>
-    v.text.toLowerCase().includes(textoBuscado),
-  );
-
-  // 2. Evaluamos la cantidad de resultados para no saturar la pantalla
-  if (resultados.length > 10) {
-    return `Encontré muchísimas referencias (${resultados.length}) con la palabra "${texto}". ¿Podrías especificar un poco más o darme una pista (como un tema o un testamento) para acotar la búsqueda y ayudarte mejor? 📖`;
-  } else if (resultados.length > 0) {
-    // Si son 10 o menos, armamos la respuesta formateada con los versículos
-    let respuestaFormateada = `Encontré estos pasajes para "${texto}":\n\n`;
-    resultados.forEach((v) => {
-      respuestaFormateada += `• **${v.book_name} ${v.chapter}:${v.verse}** - "${v.text}"\n`;
-    });
-    return respuestaFormateada;
-  } else {
-    return `No encontré ningún versículo exacto con "${texto}". Probá buscando con otra palabra clave o concepto.`;
-  }
-  // 4. Si no está en lo local, consultamos al servidor externo 🌐
-  const idMensajeTemporal = "temp-" + Date.now();
-  contenedorMensajes.innerHTML += `<p id="${idMensajeTemporal}"><em>⏳ Buscando respuesta en la fuente externa, espere un momento...</em></p>`;
-  contenedorMensajes.scrollTop = contenedorMensajes.scrollHeight;
-
-  try {
-    const controller = new AbortController();
-    const timeoutId = setTimeout(() => controller.abort(), 10000);
-
-    const respuestaApi = await fetch("", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({ pregunta: texto }),
-      signal: controller.signal,
-    });
-
-    clearTimeout(timeoutId);
-
-    if (!respuestaApi.ok) {
-      throw new Error("Error en la respuesta del servidor");
-    }
-
-    const datos = await respuestaApi.json();
-    document.getElementById(idMensajeTemporal)?.remove();
-    return datos.respuesta || "Respuesta recibida del servidor externo.";
-  } catch (error) {
-    document.getElementById(idMensajeTemporal)?.remove();
-    if (error.name === "AbortError") {
-      return "⚠️ La consulta al servidor externo tardó demasiado. En este momento operas en modo offline, pero las herramientas locales siguen funcionando perfectamente.";
-    } else {
-      return "⚠️ En este momento no hay conexión con el servidor externo para responder consultas doctrinales profundas, pero todo lo local sigue operativo.";
-    }
-  }
-}
 // 📂 PALABRA VIVA - NÚCLEO JAVASCRIPT PRINCIPAL
 // ==========================================
 
-// // Variables de estado global
 let esperandoConfirmacionMic = false;
 
 function escaparHTML(texto) {
@@ -1538,6 +1405,7 @@ function hacerHablarAlRobot(textoLimpio) {
     window.speechSynthesis.speak(utteranceRobot);
   }, 300);
 }
+
 if (typeof window.speechSynthesis !== "undefined") {
   window.speechSynthesis.onvoiceschanged = () => {
     window.speechSynthesis.getVoices();
@@ -1548,6 +1416,17 @@ document.addEventListener("DOMContentLoaded", () => {
   const inputChat = document.getElementById("chat-input");
   const btnEnviar = document.getElementById("chat-btn-enviar");
   const contenedorMensajes = document.getElementById("chat-mensajes");
+  const linkAsistente = document.getElementById("link-asistente"); // Ajustá el selector si tu ID es diferente
+  const menuLateral = document.getElementById("menu-lateral"); // Ajustá según tu HTML
+
+  // Conexión del botón del asistente en el menú
+  if (linkAsistente) {
+    linkAsistente.addEventListener("click", (e) => {
+      e.preventDefault();
+      changeScreen(screenAsistente); // Descomentá si usas esta función de pantallas
+      menuLateral?.classList.remove("active");
+    });
+  }
 
   inputChat?.addEventListener("keypress", (e) => {
     if (e.key === "Enter") {
@@ -1555,7 +1434,9 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   });
 
+  let esperandoNombre = false;
   const nombreGuardado = localStorage.getItem("nombrePalabraViva");
+
   if (contenedorMensajes) {
     if (nombreGuardado) {
       contenedorMensajes.innerHTML += `<div class="mensaje-asistente"><strong>Asistente:</strong> ¡Qué alegría encontrarte de nuevo, ${nombreGuardado}! ¿De qué te gustaría que hablemos hoy sobre nuestra fe 🕊️?</div>`;
@@ -1594,10 +1475,25 @@ document.addEventListener("DOMContentLoaded", () => {
               "Por favor, escribime cuál es tu nombre de pila para poder saludarte mejor 💬.";
           }
         } else {
+          // Cargamos el JSON principal de respuestas del asistente
           const resRespuestas = await fetch("data/respuestas_asistente.json");
           const datosAsistente = await resRespuestas.json();
 
-          if (
+          // 1. Revisión inteligente de Preguntas Frecuentes mediante las palabras clave del JSON
+          let faqEncontrada = null;
+          if (datosAsistente.preguntas_frecuentes) {
+            faqEncontrada = datosAsistente.preguntas_frecuentes.find((item) => {
+              return item.palabras_clave.some((kw) =>
+                textoLimpio.includes(kw.toLowerCase()),
+              );
+            });
+          }
+
+          if (faqEncontrada) {
+            respuestaAsistente = faqEncontrada.respuesta;
+          }
+          // 2. Guía y ayuda
+          else if (
             textoLimpio.includes("guia") ||
             textoLimpio.includes("que puedo hacer") ||
             textoLimpio.includes("para que sirve") ||
@@ -1609,24 +1505,22 @@ document.addEventListener("DOMContentLoaded", () => {
             respuestaAsistente =
               `<strong>🧭 ${guia.titulo}</strong><br>${guia.mensaje}<br>` +
               guia.opciones.map((opt) => `• ${opt}`).join("<br>");
-          } else if (
+          }
+          // 3. Saludos
+          else if (
             textoLimpio.includes("hola") ||
             textoLimpio.includes("buenos dias") ||
             textoLimpio.includes("buenas") ||
             textoLimpio.includes("buenas noches")
           ) {
-            const nombreActual =
-              localStorage.getItem("nombrePalabraViva") || "";
             const saludosPosibles = datosAsistente.saludos.respuestas;
-            const saludoElegido =
+            respuestaAsistente =
               saludosPosibles[
                 Math.floor(Math.random() * saludosPosibles.length)
               ];
-            respuestaAsistente = saludoElegido.replace(
-              "{nombre}",
-              nombreActual ? `, ${nombreActual}` : "",
-            );
-          } else if (
+          }
+          // 4. Conversacionales / Identidad
+          else if (
             textoLimpio.includes("como estas") ||
             textoLimpio.includes("que tal") ||
             textoLimpio.includes("como andas") ||
@@ -1634,7 +1528,30 @@ document.addEventListener("DOMContentLoaded", () => {
           ) {
             respuestaAsistente =
               "Acá estoy, listo para ayudarte a buscar cosas en el programa Palabra Viva. Hablemos de lo que quieras, para eso armamos este espacio 🧉.";
-          } else if (
+          }
+          // 1. Identidad del asistente
+          if (
+            textoLimpio.includes("como te llamas") ||
+            textoLimpio.includes("cual es tu nombre") ||
+            textoLimpio.includes("quien sos vos")
+          ) {
+            respuestaAsistente = "Hola, yo soy asistente de Palabra Viva. 🕊️";
+          }
+          // 2. Borrar o cambiar nombre guardado (Privacidad)
+          else if (
+            textoLimpio.includes("borrar mi nombre") ||
+            textoLimpio.includes("olvidar mi nombre") ||
+            textoLimpio.includes("cambiar mi nombre")
+          ) {
+            localStorage.removeItem("nombrePalabraViva");
+            esperandoNombre = true;
+            respuestaAsistente =
+              "Listo, ya borré el nombre que tenía guardado. ¿Cómo querés que te llame ahora?";
+          }
+
+          // 3. (Aquí sigue el resto de tu código de Preguntas Frecuentes y Catequesis...)
+          // 5. Agradecimientos
+          else if (
             textoLimpio.includes("gracias") ||
             textoLimpio.includes("excelente") ||
             textoLimpio.includes("me encanta") ||
@@ -1642,74 +1559,67 @@ document.addEventListener("DOMContentLoaded", () => {
             textoLimpio.includes("genial") ||
             textoLimpio.includes("muy amable")
           ) {
-            const agrades = [
-              "¡De nada! Me alegra un montón que te sirva para armar esto 🚀.",
-              "¡Gracias a vos por meterle tantas pilas al proyecto! Acá estamos para lo que necesites.",
-              "¡Qué bueno que te guste! Vamos que va quedando un lujo.",
+            const agrades = datosAsistente.agradecimientos?.respuestas || [
+              "¡De nada! Me alegra un montón que te sirva 🚀.",
             ];
             respuestaAsistente =
               agrades[Math.floor(Math.random() * agrades.length)];
-          } else if (
-            textoLimpio.includes("biblia") ||
-            textoLimpio.includes("sagrada escritura") ||
-            textoLimpio.includes("enseñame") ||
-            textoLimpio.includes("de que trata")
-          ) {
-            respuestaAsistente =
-              "La Biblia es la Palabra de Dios expresada en lenguaje humano. Si buscás pasajes, capítulos o versículos específicos, recordá que tenés a disposición el buscador dedicado en la barra del menú lateral para explorarla con exactitud 📖.";
-          } else {
-            const resCatequesis = await fetch("data/catequesis.json");
-            const baseDatosCatequesis = await resCatequesis.json();
-            let encontrada = null;
-
-            encontrada = baseDatosCatequesis.find((item) => {
-              const preguntaItem = item.pregunta_principal.toLowerCase();
-              return (
-                preguntaItem.includes(textoLimpio) ||
-                textoLimpio.includes(preguntaItem)
+          }
+          // 6. Respuestas pastorales (tristeza, ansiedad, perdón, etc.)
+          else {
+            let encontradaPastoral = null;
+            if (datosAsistente.respuestas_pastorales) {
+              const estados = Object.keys(datosAsistente.respuestas_pastorales);
+              const estadoMatch = estados.find((est) =>
+                textoLimpio.includes(est),
               );
-            });
-
-            if (!encontrada) {
-              encontrada = baseDatosCatequesis.find((item) => {
-                return item.keywords.some((kw) => {
-                  const keywordLimpia = kw.toLowerCase();
-                  if (keywordLimpia.length <= 3) {
-                    return textoLimpio === keywordLimpia;
-                  }
-                  return textoLimpio.includes(keywordLimpia);
-                });
-              });
+              if (estadoMatch) {
+                encontradaPastoral =
+                  datosAsistente.respuestas_pastorales[estadoMatch];
+              }
             }
 
-            if (encontrada) {
-              respuestaAsistente = `<strong>${encontrada.pregunta_principal}</strong><br><br>${encontrada.respuesta_breve}`;
-              if (encontrada.paso_concreto) {
-                respuestaAsistente += `<br><br>💡 <em>Paso concreto:</em> ${encontrada.paso_concreto}`;
-              }
-              let fuentesTexto = [];
-              if (
-                encontrada.enseñanza_de_la_iglesia &&
-                encontrada.enseñanza_de_la_iglesia.length > 0
-              ) {
-                fuentesTexto = fuentesTexto.concat(
-                  encontrada.enseñanza_de_la_iglesia,
-                );
-              }
-              if (
-                encontrada.fundamento_biblico &&
-                encontrada.fundamento_biblico.length > 0
-              ) {
-                fuentesTexto = fuentesTexto.concat(
-                  encontrada.fundamento_biblico,
-                );
-              }
-              if (fuentesTexto.length > 0) {
-                respuestaAsistente += `<br><br><small><strong>📖 Fuente:</strong> ${fuentesTexto.join(" | ")}</small>`;
-              }
+            if (encontradaPastoral) {
+              respuestaAsistente = encontradaPastoral;
             } else {
-              respuestaAsistente =
-                "No encontré una respuesta específica sobre ese tema espiritual en nuestra catequesis. Recordá que podés escribir 'guia' para ver las opciones o utilizar el buscador de la Biblia ubicado en la barra de navegación superior 🔍.";
+              // 7. Búsqueda secundaria en catequesis.json si existe
+              try {
+                const resCatequesis = await fetch("data/catequesis.json");
+                const baseDatosCatequesis = await resCatequesis.json();
+
+                let encontradaCat = baseDatosCatequesis.find((item) => {
+                  const preguntaItem = item.pregunta_principal.toLowerCase();
+                  return (
+                    preguntaItem.includes(textoLimpio) ||
+                    textoLimpio.includes(preguntaItem)
+                  );
+                });
+
+                if (!encontradaCat) {
+                  encontradaCat = baseDatosCatequesis.find((item) => {
+                    return item.keywords.some((kw) => {
+                      const keywordLimpia = kw.toLowerCase();
+                      if (keywordLimpia.length <= 3)
+                        return textoLimpio === keywordLimpia;
+                      return textoLimpio.includes(keywordLimpia);
+                    });
+                  });
+                }
+
+                if (encontradaCat) {
+                  respuestaAsistente = `<strong>${encontradaCat.pregunta_principal}</strong><br><br>${encontradaCat.respuesta_breve}`;
+                  if (encontradaCat.paso_concreto) {
+                    respuestaAsistente += `<br><br>💡 <em>Paso concreto:</em> ${encontradaCat.paso_concreto}`;
+                  }
+                } else {
+                  // Si de verdad no pica en ningún lado, tiramos el desvío amable con el descargo pastoral del JSON
+                  respuestaAsistente =
+                    "No encontré una respuesta específica sobre ese tema espiritual en nuestra catequesis. Recordá que podés escribir 'guia' para ver las opciones o utilizar el buscador de la Biblia ubicado en la barra de navegación superior 🔍.";
+                }
+              } catch (errCat) {
+                respuestaAsistente =
+                  "No encontré una respuesta específica sobre ese tema espiritual en nuestra catequesis. Recordá que podés escribir 'guia' para ver las opciones o utilizar el buscador de la Biblia ubicado en la barra de navegación superior 🔍.";
+              }
             }
           }
         }
@@ -1719,11 +1629,12 @@ document.addEventListener("DOMContentLoaded", () => {
           "Ocurrió un error al procesar tu consulta espiritual. Por favor, intentá nuevamente ⚠️.";
       }
 
-      // --- MOSTRAR UN SOLO MENSAJE CON PARLANTE ---
+      // --- RENDERIZAR RESPUESTA Y BOTÓN DE VOZ ---
       const textoParaVoz = respuestaAsistente
         .replace(/<[^>]*>/g, " ")
         .replace(/\s+/g, " ")
         .trim();
+
       const divAsistente = document.createElement("div");
       divAsistente.className = "mensaje-asistente";
       divAsistente.innerHTML = `<strong>Asistente:</strong><br>${respuestaAsistente}<br><button class="btn-voz-robot" style="margin-top:8px; background:#000; color:#D4AF37; border:1px solid #D4AF37; border-radius:20px; padding:6px 12px; cursor:pointer; font-size:12px;">🔊 Escuchar</button>`;
@@ -1739,8 +1650,7 @@ document.addEventListener("DOMContentLoaded", () => {
       inputChat.focus();
     }
   });
-});
-// --- 2. CONTROL DEL MICRÓFONO ---
+}); // --- 2. CONTROL DEL MICRÓFONO ---
 
 btnMic?.addEventListener("click", () => {
   const SpeechRecognition =
