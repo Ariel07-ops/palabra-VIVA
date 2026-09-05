@@ -837,9 +837,23 @@ function ejecutarLecturaVoz() {
 
   // 5. Discurso real con retraso de seguridad
   setTimeout(() => {
+    const voces = window.speechSynthesis.getVoices();
+    // Busca la voz más dulce que tengas instalada
+    let vozDulce =
+      voces.find((v) => v.name.includes("Paulina")) ||
+      voces.find((v) => v.name.includes("Monica")) ||
+      voces.find(
+        (v) => v.lang === "es-ES" && v.name.toLowerCase().includes("female"),
+      ) ||
+      voces.find((v) => v.lang === "es-ES") ||
+      voces.find((v) => v.lang === "es-419") ||
+      voces[0];
+
     utteranceActual = new SpeechSynthesisUtterance(textoLimpio);
+    if (vozDulce) utteranceActual.voice = vozDulce;
     utteranceActual.lang = "es-ES";
-    utteranceActual.rate = 0.95;
+    utteranceActual.rate = 1.0; // un poco más lento queda más dulce
+    utteranceActual.pitch = 1.35; // 1.35 es el punto dulce, 1.4 ya es chillón
 
     utteranceActual.onstart = () => {
       console.log("La síntesis empezó a hablar");
@@ -1390,20 +1404,28 @@ function escaparHTML(texto) {
   return div.innerHTML;
 }
 
-let utteranceRobot = null;
-function hacerHablarAlRobot(textoLimpio) {
-  window.speechSynthesis.cancel();
-  setTimeout(() => {
-    utteranceRobot = new SpeechSynthesisUtterance(textoLimpio);
-    utteranceRobot.lang = "es-ES";
-    utteranceRobot.rate = 0.95;
-    const voces = window.speechSynthesis.getVoices();
-    const vozEs =
-      voces.find((v) => v.lang === "es-ES") ||
-      voces.find((v) => v.lang.startsWith("es"));
-    if (vozEs) utteranceRobot.voice = vozEs;
-    window.speechSynthesis.speak(utteranceRobot);
-  }, 300);
+// --- FUNCIÓN GLOBAL DE SÍNTESIS DE VOZ (Única, sin duplicados) ---
+function hacerHablarAlRobot(texto) {
+  if ("speechSynthesis" in window) {
+    window.speechSynthesis.cancel();
+
+    const utterance = new SpeechSynthesisUtterance(texto);
+    utterance.lang = "es-AR";
+    utterance.rate = 1.0;
+    utterance.pitch = 1.0;
+
+    utterance.onstart = () => {
+      console.log("El robot comenzó a hablar...");
+    };
+
+    utterance.onend = () => {
+      console.log("El robot terminó de hablar.");
+    };
+
+    window.speechSynthesis.speak(utterance);
+  } else {
+    console.log("Este navegador no soporta síntesis de voz.");
+  }
 }
 
 if (typeof window.speechSynthesis !== "undefined") {
@@ -1415,15 +1437,21 @@ if (typeof window.speechSynthesis !== "undefined") {
 document.addEventListener("DOMContentLoaded", () => {
   const inputChat = document.getElementById("chat-input");
   const btnEnviar = document.getElementById("chat-btn-enviar");
+  const btnMic = document.getElementById("btnMic"); // Asegurado por si lo usas
   const contenedorMensajes = document.getElementById("chat-mensajes");
-  const linkAsistente = document.getElementById("link-asistente"); // Ajustá el selector si tu ID es diferente
-  const menuLateral = document.getElementById("menu-lateral"); // Ajustá según tu HTML
+  const linkAsistente = document.getElementById("link-asistente");
+  const menuLateral = document.getElementById("menu-lateral");
 
   // Conexión del botón del asistente en el menú
   if (linkAsistente) {
     linkAsistente.addEventListener("click", (e) => {
       e.preventDefault();
-      changeScreen(screenAsistente); // Descomentá si usas esta función de pantallas
+      if (
+        typeof changeScreen === "function" &&
+        typeof screenAsistente !== "undefined"
+      ) {
+        changeScreen(screenAsistente);
+      }
       menuLateral?.classList.remove("active");
     });
   }
@@ -1449,7 +1477,10 @@ document.addEventListener("DOMContentLoaded", () => {
 
   btnEnviar?.addEventListener("click", async () => {
     const textoUsuario = escaparHTML(inputChat.value.trim());
-    const textoLimpio = textoUsuario.toLowerCase();
+    const textoLimpio = textoUsuario
+      .toLowerCase()
+      .normalize("NFD")
+      .replace(/[\u0300-\u036f]/g, "");
 
     if (textoUsuario !== "") {
       contenedorMensajes.innerHTML += `<div class="mensaje-usuario">${textoUsuario}</div>`;
@@ -1469,103 +1500,133 @@ document.addEventListener("DOMContentLoaded", () => {
           ) {
             localStorage.setItem("nombrePalabraViva", nombreIngresado);
             esperandoNombre = false;
-            respuestaAsistente = `¡Mucho gusto, ${nombreIngresado} 🌟! Ya guardé tu nombre. Podés preguntarme sobre temas de fe, catequesis o escribir 'guia' para conocer más.`;
+            respuestaAsistente = `¡Mucho gusto, ${nombreIngresado} 🌟! Ya guardé tu nombre. ¿De qué charlamos hoy?`;
           } else {
             respuestaAsistente =
-              "Por favor, escribime cuál es tu nombre de pila para poder saludarte mejor 💬.";
+              "Contame, ¿cuál es tu nombre de pila así nos conocemos mejor? 💬";
           }
         } else {
-          // Cargamos el JSON principal de respuestas del asistente
+          // Cargamos el JSON principal de respuestas
           const resRespuestas = await fetch("data/respuestas_asistente.json");
           const datosAsistente = await resRespuestas.json();
 
-          // 1. Revisión inteligente de Preguntas Frecuentes mediante las palabras clave del JSON
-          let faqEncontrada = null;
-          if (datosAsistente.preguntas_frecuentes) {
-            faqEncontrada = datosAsistente.preguntas_frecuentes.find((item) => {
-              return item.palabras_clave.some((kw) =>
-                textoLimpio.includes(kw.toLowerCase()),
-              );
-            });
-          }
-
-          if (faqEncontrada) {
-            respuestaAsistente = faqEncontrada.respuesta;
-          }
-          // 2. Guía y ayuda
-          else if (
-            textoLimpio.includes("guia") ||
-            textoLimpio.includes("que puedo hacer") ||
-            textoLimpio.includes("para que sirve") ||
-            textoLimpio.includes("ayuda") ||
-            textoLimpio.includes("tutorial") ||
-            textoLimpio.includes("como uso")
-          ) {
-            const guia = datosAsistente.guia_uso;
-            respuestaAsistente =
-              `<strong>🧭 ${guia.titulo}</strong><br>${guia.mensaje}<br>` +
-              guia.opciones.map((opt) => `• ${opt}`).join("<br>");
-          }
-          // 3. Saludos
-          else if (
-            textoLimpio.includes("hola") ||
-            textoLimpio.includes("buenos dias") ||
-            textoLimpio.includes("buenas") ||
-            textoLimpio.includes("buenas noches")
-          ) {
-            const saludosPosibles = datosAsistente.saludos.respuestas;
-            respuestaAsistente =
-              saludosPosibles[
-                Math.floor(Math.random() * saludosPosibles.length)
-              ];
-          }
-          // 4. Conversacionales / Identidad
-          else if (
-            textoLimpio.includes("como estas") ||
-            textoLimpio.includes("que tal") ||
-            textoLimpio.includes("como andas") ||
-            textoLimpio.includes("quien sos")
-          ) {
-            respuestaAsistente =
-              "Acá estoy, listo para ayudarte a buscar cosas en el programa Palabra Viva. Hablemos de lo que quieras, para eso armamos este espacio 🧉.";
-          }
-          // 1. Identidad del asistente
+          // --- 1. BLOQUE DE CONVERSACIÓN CASUAL Y ESTADOS DE ÁNIMO ---
           if (
             textoLimpio.includes("como te llamas") ||
             textoLimpio.includes("cual es tu nombre") ||
-            textoLimpio.includes("quien sos vos")
+            textoLimpio.includes("quien sos")
           ) {
-            respuestaAsistente = "Hola, yo soy asistente de Palabra Viva. 🕊️";
-          }
-          // 2. Borrar o cambiar nombre guardado (Privacidad)
-          else if (
+            respuestaAsistente =
+              "Soy el asistente de Palabra Viva, tu compañero para este espacio de fe y charla 🕊️.";
+          } else if (
             textoLimpio.includes("borrar mi nombre") ||
-            textoLimpio.includes("olvidar mi nombre") ||
-            textoLimpio.includes("cambiar mi nombre")
+            textoLimpio.includes("olvidar mi nombre")
           ) {
             localStorage.removeItem("nombrePalabraViva");
             esperandoNombre = true;
             respuestaAsistente =
-              "Listo, ya borré el nombre que tenía guardado. ¿Cómo querés que te llame ahora?";
+              "Listo, borré el nombre que tenía guardado. ¿Cómo querés que te llame ahora?";
+          } else if (
+            textoLimpio.includes("cansado") ||
+            textoLimpio.includes("agotado") ||
+            textoLimpio.includes("reventado")
+          ) {
+            respuestaAsistente = datosAsistente.respuestas_pastorales.cansado;
+          } else if (
+            textoLimpio.includes("ojos") ||
+            textoLimpio.includes("sueño") ||
+            textoLimpio.includes("dormir") ||
+            textoLimpio.includes("descansar")
+          ) {
+            respuestaAsistente = datosAsistente.respuestas_pastorales.ojos;
+          } else if (
+            textoLimpio.includes("enojado") ||
+            textoLimpio.includes("bronca") ||
+            textoLimpio.includes("pelee") ||
+            textoLimpio.includes("rabia")
+          ) {
+            respuestaAsistente = datosAsistente.respuestas_pastorales.enojado;
+          } else if (
+            textoLimpio.includes("ruido") ||
+            textoLimpio.includes("molestan") ||
+            textoLimpio.includes("volumen") ||
+            textoLimpio.includes("videos")
+          ) {
+            respuestaAsistente = datosAsistente.respuestas_pastorales.ruido;
+          } else if (
+            textoLimpio.includes("cansado") ||
+            textoLimpio.includes("agotado") ||
+            textoLimpio.includes("reventado")
+          ) {
+            respuestaAsistente =
+              "Te entiendo perfectamente. A veces el día pesa un montón. Tomate un respiro, aflojá un poco y recordá que no estás solo en esto 🧉. ¿Querés que leamos algo lindo para descansar la cabeza?";
+          } else if (
+            textoLimpio.includes("triste") ||
+            textoLimpio.includes("mal") ||
+            textoLimpio.includes("angustiado")
+          ) {
+            respuestaAsistente =
+              "Lamento que te sientas así hoy. Te mando un abrazo grande. Si querés contarme qué pasa, te leo; y si no, podemos quedarnos en silencio compartiendo este ratito de paz.";
+          } else if (
+            textoLimpio.includes("bien") ||
+            textoLimpio.includes("todo bien") ||
+            textoLimpio.includes("feliz") ||
+            textoLimpio.includes("contento")
+          ) {
+            // Nota: captura expresiones positivas cotidianas
+            respuestaAsistente =
+              "¡Qué alegrión leer eso! Me pone contento. ¿Qué andás haciendo de tu día?";
+          } else if (
+            textoLimpio.includes("hola") ||
+            textoLimpio.includes("buen dia") ||
+            textoLimpio.includes("buenas") ||
+            textoLimpio.includes("que onda")
+          ) {
+            const saludosPosibles = datosAsistente.saludos?.respuestas || [
+              "¡Hola! Qué bueno tenerte por acá. ¿Cómo viene tu día?",
+            ];
+            respuestaAsistente =
+              saludosPosibles[
+                Math.floor(Math.random() * saludosPosibles.length)
+              ];
+          } else if (
+            textoLimpio.includes("como estas") ||
+            textoLimpio.includes("que tal") ||
+            textoLimpio.includes("como andas")
+          ) {
+            respuestaAsistente =
+              "Acá andamos, firmes y listos para hacerte compañía o buscar lo que necesites en Palabra Viva 🧉.";
           }
-
-          // 3. (Aquí sigue el resto de tu código de Preguntas Frecuentes y Catequesis...)
-          // 5. Agradecimientos
+          // --- 2. GUÍA Y AYUDA ---
+          else if (
+            textoLimpio.includes("guia") ||
+            textoLimpio.includes("que puedo hacer") ||
+            textoLimpio.includes("ayuda") ||
+            textoLimpio.includes("tutorial")
+          ) {
+            const guia = datosAsistente.guia_uso;
+            if (guia) {
+              respuestaAsistente =
+                `<strong>🧭 ${guia.titulo}</strong><br>${guia.mensaje}<br>` +
+                guia.opciones.map((opt) => `• ${opt}`).join("<br>");
+            } else {
+              respuestaAsistente =
+                "Acá podés consultar temas de catequesis, buscar pasajes o charlar sobre nuestra fe. ¡Preguntame lo que quieras!";
+            }
+          }
+          // --- 3. AGRADECIMIENTOS ---
           else if (
             textoLimpio.includes("gracias") ||
             textoLimpio.includes("excelente") ||
-            textoLimpio.includes("me encanta") ||
-            textoLimpio.includes("buenisimo") ||
-            textoLimpio.includes("genial") ||
-            textoLimpio.includes("muy amable")
+            textoLimpio.includes("genial")
           ) {
             const agrades = datosAsistente.agradecimientos?.respuestas || [
-              "¡De nada! Me alegra un montón que te sirva 🚀.",
+              "¡De nada! Para eso estamos 🚀.",
             ];
             respuestaAsistente =
               agrades[Math.floor(Math.random() * agrades.length)];
           }
-          // 6. Respuestas pastorales (tristeza, ansiedad, perdón, etc.)
+          // --- 4. BÚSQUEDA EN CATEQUESIS ---
           else {
             let encontradaPastoral = null;
             if (datosAsistente.respuestas_pastorales) {
@@ -1582,7 +1643,6 @@ document.addEventListener("DOMContentLoaded", () => {
             if (encontradaPastoral) {
               respuestaAsistente = encontradaPastoral;
             } else {
-              // 7. Búsqueda secundaria en catequesis.json si existe
               try {
                 const resCatequesis = await fetch("data/catequesis.json");
                 const baseDatosCatequesis = await resCatequesis.json();
@@ -1597,7 +1657,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
                 if (!encontradaCat) {
                   encontradaCat = baseDatosCatequesis.find((item) => {
-                    return item.keywords.some((kw) => {
+                    return item.keywords?.some((kw) => {
                       const keywordLimpia = kw.toLowerCase();
                       if (keywordLimpia.length <= 3)
                         return textoLimpio === keywordLimpia;
@@ -1612,29 +1672,28 @@ document.addEventListener("DOMContentLoaded", () => {
                     respuestaAsistente += `<br><br>💡 <em>Paso concreto:</em> ${encontradaCat.paso_concreto}`;
                   }
                 } else {
-                  // Si de verdad no pica en ningún lado, tiramos el desvío amable con el descargo pastoral del JSON
+                  // --- 5. COMODÍN HUMANO (Reemplaza al error seco) ---
                   respuestaAsistente =
-                    "No encontré una respuesta específica sobre ese tema espiritual en nuestra catequesis. Recordá que podés escribir 'guia' para ver las opciones o utilizar el buscador de la Biblia ubicado en la barra de navegación superior 🔍.";
+                    "Qué temazo trajiste. No tengo una definición exacta de eso guardada en los papeles de catequesis, pero me encanta charlarlo con vos. Contame un poco más o decime si querés que busquemos algo sobre la Biblia o la guía general 🔍.";
                 }
               } catch (errCat) {
                 respuestaAsistente =
-                  "No encontré una respuesta específica sobre ese tema espiritual en nuestra catequesis. Recordá que podés escribir 'guia' para ver las opciones o utilizar el buscador de la Biblia ubicado en la barra de navegación superior 🔍.";
+                  "¡Te leo! Contame más sobre eso o decime si querés que busquemos alguna sección en particular de la app 💬.";
               }
             }
           }
         }
       } catch (error) {
-        console.error("Error al procesar la consulta:", error);
+        console.error("Error al procesar:", error);
         respuestaAsistente =
-          "Ocurrió un error al procesar tu consulta espiritual. Por favor, intentá nuevamente ⚠️.";
+          "Se me trabó un segundo la idea, pero acá sigo con vos. ¿Qué me decías?";
       }
 
-      // --- RENDERIZAR RESPUESTA Y BOTÓN DE VOZ ---
+      // Renderizado en pantalla...
       const textoParaVoz = respuestaAsistente
         .replace(/<[^>]*>/g, " ")
         .replace(/\s+/g, " ")
         .trim();
-
       const divAsistente = document.createElement("div");
       divAsistente.className = "mensaje-asistente";
       divAsistente.innerHTML = `<strong>Asistente:</strong><br>${respuestaAsistente}<br><button class="btn-voz-robot" style="margin-top:8px; background:#000; color:#D4AF37; border:1px solid #D4AF37; border-radius:20px; padding:6px 12px; cursor:pointer; font-size:12px;">🔊 Escuchar</button>`;
@@ -1650,280 +1709,252 @@ document.addEventListener("DOMContentLoaded", () => {
       inputChat.focus();
     }
   });
-}); // --- 2. CONTROL DEL MICRÓFONO ---
 
-btnMic?.addEventListener("click", () => {
-  const SpeechRecognition =
-    window.SpeechRecognition || window.webkitSpeechRecognition;
+  // --- 2. CONTROL DEL MICRÓFONO ---
 
-  if (SpeechRecognition) {
-    const reconocimiento = new SpeechRecognition();
-    reconocimiento.lang = "es-AR";
+  btnMic?.addEventListener("click", () => {
+    const SpeechRecognition =
+      window.SpeechRecognition || window.webkitSpeechRecognition;
 
-    reconocimiento.onstart = () => {
-      btnMic.classList.add("mic-escuchando");
-    };
+    if (SpeechRecognition) {
+      const reconocimiento = new SpeechRecognition();
+      reconocimiento.lang = "es-AR";
 
-    reconocimiento.onresult = (evento) => {
-      const textoCapturado = evento.results[0][0].transcript;
-      if (inputChat) {
-        inputChat.focus();
-        inputChat.value = textoCapturado;
-        inputChat.dispatchEvent(new Event("input", { bubbles: true }));
-      }
-    };
-    reconocimiento.onend = () => {
-      btnMic.classList.remove("mic-escuchando");
-    };
+      reconocimiento.onstart = () => {
+        btnMic.classList.add("mic-escuchando");
+      };
 
-    reconocimiento.onerror = () => {
-      btnMic.classList.remove("mic-escuchando");
-    };
+      reconocimiento.onresult = (evento) => {
+        const textoCapturado = evento.results[0][0].transcript;
+        const inputChat = document.getElementById("chat-input");
+        if (inputChat) {
+          inputChat.focus();
+          inputChat.value = textoCapturado;
+          inputChat.dispatchEvent(new Event("input", { bubbles: true }));
+        }
+      };
+      reconocimiento.onend = () => {
+        btnMic.classList.remove("mic-escuchando");
+      };
 
-    reconocimiento.start();
-  } else {
-    console.log(
-      "El reconocimiento de voz no está soportado en este navegador.",
-    );
-  }
-});
+      reconocimiento.onerror = () => {
+        btnMic.classList.remove("mic-escuchando");
+      };
 
-// --- 4. HISTORIAL INICIAL PARA LA APP ---
-history.replaceState({ vista: "main" }, "", "");
-
-// --- FUNCIÓN GLOBAL DE SÍNTESIS DE VOZ (Única, sin duplicados) ---
-function hacerHablarAlRobot(texto) {
-  if ("speechSynthesis" in window) {
-    window.speechSynthesis.cancel();
-
-    const utterance = new SpeechSynthesisUtterance(texto);
-    utterance.lang = "es-AR";
-    utterance.rate = 1.0;
-    utterance.pitch = 1.0;
-
-    utterance.onstart = () => {
-      console.log("El robot comenzó a hablar...");
-    };
-
-    utterance.onend = () => {
-      console.log("El robot terminó de hablar.");
-    };
-
-    window.speechSynthesis.speak(utterance);
-  } else {
-    console.log("Este navegador no soporta síntesis de voz.");
-  }
-}
-
-// --- MANEJADOR INTELIGENTE DEL BOTÓN "ATRÁS" DEL CELULAR ---
-// --- MANEJADOR INTELIGENTE DEL BOTÓN "ATRÁS" DEL CELU ---
-// --- MANEJADOR INTELIGENTE DEL BOTÓN "ATRÁS" DEL CELU ---
-window.addEventListener("popstate", (event) => {
-  const studyCard = document.getElementById("study-card");
-
-  // 1. Si el panel de estudio está abierto, lo cerramos con el botón atrás
-  if (studyCard && studyCard.classList.contains("expanded")) {
-    studyCard.classList.remove("expanded");
-    studyCard.style.transform = "";
-    // Mantenemos la app viva inyectando estado
-    history.pushState({ vista: "main" }, "", "");
-    return;
-  }
-
-  // 2. Si está en la pantalla principal y toca atrás, evitamos que salga de la app
-  history.pushState({ vista: "main" }, "", "");
-});
-
-// Apenas carga la página, pisamos el estado inicial para activar la red de contención
-history.pushState({ vista: "main" }, "", "");
-
-// --- CERRAR PANEL DE ESTUDIO Y RESTAURAR LECTURA ---
-if (panelHandle && studyCard) {
-  panelHandle.addEventListener("click", () => {
-    // 1. Ejecutamos la función de restauración para limpiar estilos y textos
-    if (typeof window.restaurarLecturaNormal === "function") {
-      window.restaurarLecturaNormal();
+      reconocimiento.start();
     } else {
-      // Fallback por si la función global no está disponible
-      studyCard.classList.add("hidden");
+      console.log(
+        "El reconocimiento de voz no está soportado en este navegador.",
+      );
+    }
+  });
+
+  // --- 4. HISTORIAL INICIAL PARA LA APP ---
+  history.replaceState({ vista: "main" }, "", "");
+
+  // --- MANEJADOR INTELIGENTE DEL BOTÓN "ATRÁS" DEL CELULAR ---
+  window.addEventListener("popstate", (event) => {
+    const studyCard = document.getElementById("study-card");
+
+    if (studyCard && studyCard.classList.contains("expanded")) {
+      studyCard.classList.remove("expanded");
+      studyCard.style.transform = "";
+      history.pushState({ vista: "main" }, "", "");
+      return;
     }
 
-    // 2. Restauramos el cursor en las líneas de versículos
-    document.querySelectorAll(".linea-versiculo").forEach((verso) => {
-      verso.style.cursor = "pointer";
-    });
+    history.pushState({ vista: "main" }, "", "");
   });
-}
-// ⚙️ 1. Configuración de palabras que no aportan significado doctrinal
-const palabrasIgnoradas = new Set([
-  "el",
-  "la",
-  "los",
-  "las",
-  "un",
-  "una",
-  "unos",
-  "unas",
-  "y",
-  "o",
-  "u",
-  "ni",
-  "de",
-  "del",
-  "al",
-  "a",
-  "en",
-  "por",
-  "para",
-  "con",
-  "sin",
-  "sobre",
-  "entre",
-  "hacia",
-  "hasta",
-  "desde",
-  "según",
-  "contra",
-  "tras",
-  "bajo",
-  "me",
-  "te",
-  "se",
-  "nos",
-  "os",
-  "le",
-  "les",
-  "lo",
-  "mi",
-  "tu",
-  "su",
-  "nuestro",
-  "vuestro",
-  "sus",
-  "este",
-  "esta",
-  "estos",
-  "estas",
-  "ese",
-  "esa",
-  "esos",
-  "esas",
-  "quien",
-  "quienes",
-  "cual",
-  "cuales",
-  "donde",
-  "cuando",
-  "si",
-  "ya",
-  "pero",
-  "aunque",
-  "sino",
-]);
 
-// 🧹 2. Función para normalizar texto (quita tildes y mayúsculas)
-function normalizarTexto(texto) {
-  if (!texto) return "";
-  return texto
-    .toString()
-    .toLowerCase()
-    .normalize("NFD")
-    .replace(/[\u0300-\u036f]/g, "")
-    .replace(/[¿?¡!,.;:()[\]{}"'¿?¡!]/g, " ")
-    .replace(/\s+/g, " ")
-    .trim();
-}
+  history.pushState({ vista: "main" }, "", "");
 
-// ✂️ 3. Extrae palabras válidas descartando las ignoradas
-function obtenerPalabras(texto) {
-  return normalizarTexto(texto)
-    .split(" ")
-    .filter((palabra) => palabra.length > 2 && !palabrasIgnoradas.has(palabra));
-}
+  // --- CERRAR PANEL DE ESTUDIO Y RESTAURAR LECTURA ---
 
-// 🔍 4. Búsqueda principal en el JSON de catequesis
-function buscarEnCatequesis(mensajeUsuario, baseDatosCatequesis) {
-  const palabrasUsuario = obtenerPalabras(mensajeUsuario);
+  if (panelHandle && studyCard) {
+    panelHandle.addEventListener("click", () => {
+      if (typeof window.restaurarLecturaNormal === "function") {
+        window.restaurarLecturaNormal();
+      } else {
+        studyCard.classList.add("hidden");
+      }
 
-  if (palabrasUsuario.length === 0) {
+      document.querySelectorAll(".linea-versiculo").forEach((verso) => {
+        verso.style.cursor = "pointer";
+      });
+    });
+  }
+
+  // ⚙️ 1. Configuración de palabras que no aportan significado doctrinal
+  const palabrasIgnoradas = new Set([
+    "el",
+    "la",
+    "los",
+    "las",
+    "un",
+    "una",
+    "unos",
+    "unas",
+    "y",
+    "o",
+    "u",
+    "ni",
+    "de",
+    "del",
+    "al",
+    "a",
+    "en",
+    "por",
+    "para",
+    "con",
+    "sin",
+    "sobre",
+    "entre",
+    "hacia",
+    "hasta",
+    "desde",
+    "según",
+    "contra",
+    "tras",
+    "bajo",
+    "me",
+    "te",
+    "se",
+    "nos",
+    "os",
+    "le",
+    "les",
+    "lo",
+    "mi",
+    "tu",
+    "su",
+    "nuestro",
+    "vuestro",
+    "sus",
+    "este",
+    "esta",
+    "estos",
+    "estas",
+    "ese",
+    "esa",
+    "esos",
+    "esas",
+    "quien",
+    "quienes",
+    "cual",
+    "cuales",
+    "donde",
+    "cuando",
+    "si",
+    "ya",
+    "pero",
+    "aunque",
+    "sino",
+  ]);
+
+  // 🧹 2. Función para normalizar texto
+  function normalizarTexto(texto) {
+    if (!texto) return "";
+    return texto
+      .toString()
+      .toLowerCase()
+      .normalize("NFD")
+      .replace(/[\u0300-\u036f]/g, "")
+      .replace(/[¿?¡!,.;:()[\]{}"'¿?¡!]/g, " ")
+      .replace(/\s+/g, " ")
+      .trim();
+  }
+
+  // ✂️ 3. Extrae palabras válidas descartando las ignoradas
+  function obtenerPalabras(texto) {
+    return normalizarTexto(texto)
+      .split(" ")
+      .filter(
+        (palabra) => palabra.length > 2 && !palabrasIgnoradas.has(palabra),
+      );
+  }
+
+  // 🔍 4. Búsqueda principal en el JSON de catequesis
+  function buscarEnCatequesis(mensajeUsuario, baseDatosCatequesis) {
+    const palabrasUsuario = obtenerPalabras(mensajeUsuario);
+
+    if (palabrasUsuario.length === 0) {
+      return respuestaNoEncontrada();
+    }
+
+    let mejorCoincidencia = null;
+    let mayorPuntaje = 0;
+
+    baseDatosCatequesis.forEach((item) => {
+      const textoItem = [
+        item.pregunta_principal || "",
+        ...(item.keywords || []),
+        item.categoria || "",
+      ].join(" ");
+
+      const palabrasItem = new Set(obtenerPalabras(textoItem));
+      let puntaje = 0;
+
+      palabrasUsuario.forEach((palabra) => {
+        if (palabrasItem.has(palabra)) {
+          puntaje++;
+        }
+      });
+
+      if (puntaje >= 3) puntaje += 1;
+
+      if (puntaje > mayorPuntaje) {
+        mayorPuntaje = puntaje;
+        mejorCoincidencia = item;
+      }
+    });
+
+    if (mejorCoincidencia && mayorPuntaje >= 2) {
+      return {
+        encontrado: true,
+        respuesta: mejorCoincidencia.respuesta,
+        fuentes: mejorCoincidencia.fuentes || [],
+        categoria: mejorCoincidencia.categoria || "",
+        id: mejorCoincidencia.id || null,
+      };
+    }
+
     return respuestaNoEncontrada();
   }
 
-  let mejorCoincidencia = null;
-  let mayorPuntaje = 0;
-
-  baseDatosCatequesis.forEach((item) => {
-    const textoItem = [
-      item.pregunta_principal || "",
-      ...(item.keywords || []),
-      item.categoria || "",
-    ].join(" ");
-
-    const palabrasItem = new Set(obtenerPalabras(textoItem));
-    let puntaje = 0;
-
-    palabrasUsuario.forEach((palabra) => {
-      if (palabrasItem.has(palabra)) {
-        puntaje++;
-      }
-    });
-
-    if (puntaje >= 3) puntaje += 1;
-
-    if (puntaje > mayorPuntaje) {
-      mayorPuntaje = puntaje;
-      mejorCoincidencia = item;
-    }
-  });
-
-  if (mejorCoincidencia && mayorPuntaje >= 2) {
+  // 💬 5. Respuesta por defecto cuando no hay coincidencias
+  function respuestaNoEncontrada() {
     return {
-      encontrado: true,
-      respuesta: mejorCoincidencia.respuesta,
-      fuentes: mejorCoincidencia.fuentes || [],
-      categoria: mejorCoincidencia.categoria || "",
-      id: mejorCoincidencia.id || null,
+      encontrado: false,
+      respuesta:
+        "No encontré una respuesta específica. Podés consultar una sección de Palabra Viva, como “Caminando con Jesús” o “Ruta de Emaús”, o buscar orientación en tu parroquia.",
+      fuentes: [],
     };
   }
 
-  return respuestaNoEncontrada();
-}
+  // 🚀 6. Procesar el mensaje enviado desde la interfaz
+  function procesarMensaje(baseDatosCatequesis) {
+    const entrada = document.getElementById("mensajeUsuario");
+    if (!entrada) return;
 
-// 💬 5. Respuesta por defecto cuando no hay coincidencias
-function respuestaNoEncontrada() {
-  return {
-    encontrado: false,
-    respuesta:
-      "No encontré una respuesta específica. Podés consultar una sección de Palabra Viva, como “Caminando con Jesús” o “Ruta de Emaús”, o buscar orientación en tu parroquia.",
-    fuentes: [],
-  };
-}
+    const mensaje = entrada.value.trim();
+    if (!mensaje) return;
 
-// 🚀 6. Procesar el mensaje enviado desde la interfaz
-function procesarMensaje(baseDatosCatequesis) {
-  const entrada = document.getElementById("mensajeUsuario");
-  if (!entrada) return;
-
-  const mensaje = entrada.value.trim();
-  if (!mensaje) return;
-
-  const resultado = buscarEnCatequesis(mensaje, baseDatosCatequesis);
-
-  // Aquí podés conectar las funciones para mostrar el mensaje en pantalla
-  entrada.value = "";
-}
-
-// 3. Opcional: Mostrar o adaptar el mapa/referencia geográfica según el id
-function actualizarMapaGeografico(id) {
-  const contenedorMapa = document.getElementById("contenedor-mapa-referencia");
-  if (!contenedorMapa) return;
-
-  // Si es el escalón 1 o 2, podemos ocultar el mapa o mostrar una nota del Creciente Fértil
-  if (id === 1) {
-    contenedorMapa.innerHTML =
-      "<p class='text-italic'>Horizonte de los orígenes (sin coordenadas geográficas terrenales).</p>";
-  } else {
-    // Aquí puedes cargar la imagen del mapa correspondiente (ej: Belén, Nazaret, Jerusalén)
-    contenedorMapa.innerHTML = `<div class='mapa-card'><span>Ubicación clave: <strong>${datosPromesa[id].lugar}</strong></span></div>`;
+    buscarEnCatequesis(mensaje, baseDatosCatequesis);
+    entrada.value = "";
   }
-}
+
+  // 3. Opcional: Mostrar o adaptar el mapa/referencia geográfica según el id
+  function actualizarMapaGeografico(id) {
+    const contenedorMapa = document.getElementById(
+      "contenedor-mapa-referencia",
+    );
+    if (!contenedorMapa) return;
+
+    if (id === 1) {
+      contenedorMapa.innerHTML =
+        "<p class='text-italic'>Horizonte de los orígenes (sin coordenadas geográficas terrenales).</p>";
+    } else {
+      contenedorMapa.innerHTML = `<div class='mapa-card'><span>Ubicación clave: <strong>${datosPromesa[id].lugar}</strong></span></div>`;
+    }
+  }
+});
