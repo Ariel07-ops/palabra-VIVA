@@ -10,6 +10,53 @@
     "fundamento_biblico": ["1 Jn 4,8 - Dios es amor"]
   },
   {
+    "id": "dios-002",
+    "categoria": "Dios",
+    "pregunta_principal": "¿Cómo puedo conocer a Dios?",
+    "keywords": ["como conocer a dios", "conocer a dios", "dios"],
+    "respuesta_breve": "Podés conocer a Dios a través de la oración, la lectura de la Biblia, la participación en los sacramentos y la vida en comunidad con otros creyentes.",
+    "paso_concreto": "Leé hoy un versículo bíblico y reflexioná sobre su mensaje.",
+    "enseñanza_de_la_iglesia": ["CIC 2565"],
+    "fundamento_biblico": ["Sal 119,105 - Tu palabra es lámpara a mis pies"]
+  },
+  {
+    "id": "dios-003",
+    "categoria": "Dios",
+    "pregunta_principal": "¿Por qué Dios permite el mal?",
+    "keywords": [
+      "porque hay mal",
+      "mal en el mundo",
+      "dios permite el mal",
+      "mal"
+    ],
+    "respuesta_breve": "Dios respeta nuestra libertad. El mal existe por nuestras decisiones, pero Dios siempre nos ofrece su amor y nos llama a elegir el bien.",
+    "paso_concreto": "Hoy pedile a Dios que te ayude a elegir el bien en una situación difícil.",
+    "enseñanza_de_la_iglesia": ["CIC 311"],
+    "fundamento_biblico": ["Rm 8,28 - Todo coopera para bien"]
+  },
+  {
+    "id": "dios-004",
+    "categoria": "Dios",
+    "pregunta_principal": "¿Cómo puedo confiar en Dios?",
+    "keywords": ["confiar en dios", "fe en dios", "dios me ayuda", "confianza"],
+    "respuesta_breve": "Confiar en Dios significa creer que Él tiene un plan para vos y que siempre está a tu lado, incluso en los momentos difíciles.",
+    "paso_concreto": "Hoy repetí 5 veces: 'Señor, confío en vos' cuando sientas miedo o incertidumbre.",
+    "enseñanza_de_la_iglesia": ["CIC 1812"],
+    "fundamento_biblico": ["Sal 56,4 - En Dios confío"]
+  },
+  {
+    "id": "dios-005",
+    "categoria": "Dios",
+    "pregunta_principal": "¿Cómo puedo sentir la presencia de Dios?",
+    "keywords": ["sentir a dios", "presencia de dios", "dios cerca", "dios"],
+    "respuesta_breve": "Podés sentir la presencia de Dios en la oración, en la naturaleza, en los momentos de silencio y en el amor que compartís con los demás.",
+    "paso_concreto": "Hoy tomá 5 minutos para estar en silencio y abrir tu corazón a Dios.",
+    "enseñanza_de_la_iglesia": ["CIC 2566"],
+    "fundamento_biblico": [
+      "Sal 46,10 - Quédense quietos y sepan que yo soy Dios"
+    ]
+  },
+  {
     "id": "jesus-001",
     "categoria": "Jesucristo",
     "pregunta_principal": "¿Quién es Jesucristo?",
@@ -24,6 +71,70 @@
     "paso_concreto": "Nombrá a Jesús en voz alta 3 veces hoy como amigo.",
     "enseñanza_de_la_iglesia": ["CIC 430"],
     "fundamento_biblico": ["Jn 1,14 - Y el Verbo se hizo carne"]
+  },
+  {
+    "id": "jesus-002",
+    "categoria": "Jesucristo",
+    "pregunta_principal": "¿Qué enseñó Jesús?",
+    "keywords": [
+      "que enseño jesus",
+      "enseñanzas de jesus",
+      "jesus ensena",
+      "jesus"
+    ],
+    "respuesta_breve": "Jesús enseñó a amar a Dios y al prójimo, a perdonar, a vivir con humildad y a buscar la justicia y la paz. Sus palabras nos guían para vivir una vida plena.",
+    "paso_concreto": "Hoy hacé un acto de bondad hacia alguien sin esperar nada a cambio.",
+    "enseñanza_de_la_iglesia": ["CIC 1691"],
+    "fundamento_biblico": [
+      "Mt 22,37-39 - Amarás al Señor tu Dios y a tu prójimo"
+    ]
+  },
+  {
+    "id": "jesus-003",
+    "categoria": "Jesucristo",
+    "pregunta_principal": "¿Por qué Jesús murió en la cruz?",
+    "keywords": [
+      "porque murio jesus",
+      "cruz de jesus",
+      "jesus crucificado",
+      "jesus murio"
+    ],
+    "respuesta_breve": "Jesús murió en la cruz para salvarnos del pecado y abrirnos las puertas del cielo. Su sacrificio es un acto de amor infinito por cada uno de nosotros.",
+    "paso_concreto": "Hoy agradecé a Jesús por su amor y sacrificio en tu oración.",
+    "enseñanza_de_la_iglesia": ["CIC 613"],
+    "fundamento_biblico": ["Jn 3,16 - Porque de tal manera amó Dios al mundo"]
+  },
+  {
+    "id": "jesus-004",
+    "categoria": "Jesucristo",
+    "pregunta_principal": "¿Cómo puedo seguir a Jesús?",
+    "keywords": [
+      "seguir a jesus",
+      "como seguir a jesus",
+      "camino de jesus",
+      "jesus"
+    ],
+    "respuesta_breve": "Seguir a Jesús significa vivir según sus enseñanzas, amar a los demás, perdonar y buscar la voluntad de Dios en tu vida diaria.",
+    "paso_concreto": "Hoy elegí una acción concreta que refleje el amor de Jesús hacia alguien cercano.",
+    "enseñanza_de_la_iglesia": ["CIC 1694"],
+    "fundamento_biblico": ["Lc 9,23 - Si alguno quiere venir en pos de mí"]
+  },
+  {
+    "id": "jesus-005",
+    "categoria": "Jesucristo",
+    "pregunta_principal": "¿Qué significa la resurrección de Jesús?",
+    "keywords": [
+      "resurreccion de jesus",
+      "jesus resucito",
+      "significado resurreccion",
+      "resurreccion"
+    ],
+    "respuesta_breve": "La resurrección de Jesús significa que la muerte no tiene la última palabra. Nos da esperanza de vida eterna y nos muestra el poder del amor de Dios.",
+    "paso_concreto": "Hoy reflexioná sobre la esperanza que la resurrección de Jesús trae a tu vida.",
+    "enseñanza_de_la_iglesia": ["CIC 638"],
+    "fundamento_biblico": [
+      "1 Cor 15,20 - Cristo ha resucitado de entre los muertos"
+    ]
   },
   {
     "id": "espiritu-001",
@@ -47,10 +158,175 @@
       "virgen",
       "maria madre"
     ],
-    "respuesta_breve": "María es la Madre de Jesús y madre nuestra. Dios la eligió, ella dijo que sí, y desde la cruz Jesús nos la dejó como Madre para que nos cuide y nos lleve a Él.",
+    "respuesta_breve": "María es la Madre de Jesús y madre nuestra. Dios la eligió, ella dijo que sí, y desde la cruz Jesús nos la dejó como Madre para que nos cuide y nos lleve a Él.\n\nSi querés seguir explorando, podés preguntarme sobre su **anunciación y su sí**, sobre las **profecías del Antiguo Testamento** que hablaban de ella, o sobre su **presencia al pie de la cruz**.",
     "paso_concreto": "Rezale hoy un Ave María pidiéndole que te acerque más a Jesús.",
     "enseñanza_de_la_iglesia": ["CIC 963"],
     "fundamento_biblico": ["Lc 1,28 - Llena de gracia", "Jn 19,27"]
+  },
+  {
+    "id": "virgen-002",
+    "categoria": "Virgen María",
+    "pregunta_principal": "La Anunciación y el 'Sí' de María",
+    "keywords": [
+      "anunciacion",
+      "el si de maria",
+      "el si",
+      "como dijo que si",
+      "angel gabriel"
+    ],
+    "respuesta_breve": "En la Anunciación, el ángel Gabriel le anunció a María que sería la Madre del Salvador. Con su 'Hágase en mí según tu palabra', ella aceptó libremente el plan de Dios, mostrando una obediencia y una confianza plenas que hicieron posible la Encarnación.",
+    "paso_concreto": "Ante una decisión difícil hoy, decile a Dios 'Hágase tu voluntad' confiando en su amor.",
+    "enseñanza_de_la_iglesia": ["CIC 484", "CIC 494"],
+    "fundamento_biblico": ["Lc 1,38"]
+  },
+  {
+    "id": "virgen-003",
+    "categoria": "Virgen María",
+    "pregunta_principal": "María en el Antiguo Testamento",
+    "keywords": [
+      "profecias",
+      "antiguo testamento",
+      "isaias",
+      "virgen concebira",
+      "prefiguracion"
+    ],
+    "respuesta_breve": "Aunque el nombre de María aparece con plenitud en el Nuevo Testamento, ya estaba prefigurada en el Antiguo. La profecía de Isaías anunciaba que 'la virgen concebirá y dará a luz un hijo', y su figura como el nuevo Arca de la Alianza preparaba el camino para la llegada de Jesús.",
+    "paso_concreto": "Leé el pasaje de Isaías 7,14 y agradecé cómo Dios va preparando la historia de nuestra salvación.",
+    "enseñanza_de_la_iglesia": ["CIC 489", "CIC 722"],
+    "fundamento_biblico": ["Is 7,14", "Gn 3,15"]
+  },
+  {
+    "id": "virgen-004",
+    "categoria": "Virgen María",
+    "pregunta_principal": "María al pie de la cruz",
+    "keywords": [
+      "cruz",
+      "el crucificado",
+      "maría al pie de la cruz",
+      "madre de nuestro señor"
+    ],
+    "respuesta_breve": "María estuvo al pie de la cruz, compartiendo el dolor de su Hijo y recibiendo a todos los creyentes como hijos suyos. Su presencia nos enseña a permanecer firmes en la fe y a confiar en el amor de Dios incluso en los momentos más difíciles.",
+    "paso_concreto": "Hoy, cuando enfrentes un momento difícil, recordá que María está con vos y pedile que te acompañe.",
+    "enseñanza_de_la_iglesia": ["CIC 964", "CIC 618"],
+    "fundamento_biblico": ["Jn 19,25-27"]
+  },
+  {
+    "id": "virgen-005",
+    "categoria": "Virgen María",
+    "pregunta_principal": "La Mujer vestida de sol en el Apocalipsis",
+    "keywords": [
+      "apocalipsis",
+      "mujer vestida de sol",
+      "apocalipsis 12",
+      "mujer del apocalipsis",
+      "fin de los tiempos"
+    ],
+    "respuesta_breve": "En el libro del Apocalipsis, la 'Mujer vestida de sol' con la luna bajo sus pies representa de forma primordial a la Virgen María en su gloria celestial, así como a la Iglesia. Nos muestra que María ya participa del triunfo de Cristo y nos cuida en medio de las batallas de la historia.",
+    "paso_concreto": "Pedile hoy a la Virgen que proteja a tu familia y a la Iglesia en las dificultades.",
+    "enseñanza_de_la_iglesia": ["CIC 972", "CIC 1137"],
+    "fundamento_biblico": ["Ap 12,1-5"]
+  },
+  {
+    "id": "catequesis-001",
+    "categoria": "Catequesis",
+    "pregunta_principal": "¿Qué es la catequesis?",
+    "keywords": [
+      "catequesis",
+      "que es catequesis",
+      "para que sirve catequesis"
+    ],
+    "respuesta_breve": "La catequesis es el proceso de enseñanza y aprendizaje de la fe cristiana. A través de ella, los creyentes profundizan en el conocimiento de Dios, la Biblia, los sacramentos y la vida cristiana.",
+    "paso_concreto": "Participá hoy en una sesión de catequesis o leé un pasaje bíblico y reflexioná sobre su mensaje.",
+    "enseñanza_de_la_iglesia": ["CIC 4", "CIC 5"],
+    "fundamento_biblico": ["Mt 28,19-20"]
+  },
+  {
+    "id": "catequesis-002",
+    "categoria": "Catequesis",
+    "pregunta_principal": "¿Cuál es el objetivo de la catequesis?",
+    "keywords": [
+      "objetivo catequesis",
+      "para que sirve catequesis",
+      "meta catequesis"
+    ],
+    "respuesta_breve": "El objetivo de la catequesis es formar discípulos de Cristo, ayudando a los creyentes a crecer en su fe, comprender la Palabra de Dios y vivir según los valores del Evangelio.",
+    "paso_concreto": "Reflexioná hoy sobre cómo podés aplicar un valor del Evangelio en tu vida diaria.",
+    "enseñanza_de_la_iglesia": ["CIC 5", "CIC 6"],
+    "fundamento_biblico": ["Lc 10,27"]
+  },
+  {
+    "id": "catequesis-003",
+    "categoria": "Catequesis",
+    "pregunta_principal": "¿Cómo se lleva a cabo la catequesis?",
+    "keywords": [
+      "como se hace catequesis",
+      "metodo catequesis",
+      "formas de catequesis"
+    ],
+    "respuesta_breve": "La catequesis se lleva a cabo mediante la enseñanza de la doctrina cristiana, la lectura y reflexión de la Biblia, la participación en los sacramentos y la vida comunitaria de la Iglesia.",
+    "paso_concreto": "Hoy, leé un pasaje bíblico y compartí tu reflexión con alguien cercano.",
+    "enseñanza_de_la_iglesia": ["CIC 5", "CIC 6"],
+    "fundamento_biblico": ["Hch 2,42"]
+  },
+  {
+    "id": "catequesis-004",
+    "categoria": "Catequesis",
+    "pregunta_principal": "¿Quiénes participan en la catequesis?",
+    "keywords": [
+      "quienes participan catequesis",
+      "participantes catequesis",
+      "quien hace catequesis"
+    ],
+    "respuesta_breve": "En la catequesis participan catequistas, que son los encargados de enseñar y guiar, y los catequizandos, que son los que reciben la enseñanza y buscan profundizar en su fe.",
+    "paso_concreto": "Si sos catequista, prepará una actividad para tus catequizandos; si sos catequizando, participá activamente en tu próxima sesión.",
+    "enseñanza_de_la_iglesia": ["CIC 5", "CIC 6"],
+    "fundamento_biblico": ["Mt 28,19-20"]
+  },
+  {
+    "id": "catequesis-005",
+    "categoria": "Catequesis",
+    "pregunta_principal": "¿Por qué es importante la catequesis?",
+    "keywords": [
+      "importancia catequesis",
+      "para que sirve catequesis",
+      "beneficios catequesis"
+    ],
+    "respuesta_breve": "La catequesis es importante porque fortalece la fe, ayuda a comprender la Palabra de Dios y prepara a los creyentes para vivir una vida cristiana plena y comprometida.",
+    "paso_concreto": "Reflexioná hoy sobre cómo la catequesis ha influido en tu vida y compartí esa experiencia con alguien.",
+    "enseñanza_de_la_iglesia": ["CIC 5", "CIC 6"],
+    "fundamento_biblico": ["Hch 2,42"]
+  },
+  {
+    "id": "catequesis-ajedrez-01",
+    "categoria": "Vida Cristiana",
+    "pregunta_principal": "¿Cómo se parece la vida de fe a una partida de ajedrez?",
+    "keywords": [
+      "ajedrez",
+      "parabola del ajedrez",
+      "piezas de ajedrez",
+      "cristocentrismo",
+      "orden de la fe"
+    ],
+    "respuesta_breve": "Toda la vida cristiana es cristocéntrica y se asemeja a una partida de ajedrez bien ordenada. Jesucristo es el Rey absoluto y el centro de todo el tablero; sin Él, la partida no tiene sentido ni destino. La Santísima Virgen María es la Reina, su madre e intercesora poderosa al lado del Rey. Los arcángeles y ángeles obran como alfiles y torres que defienden y cruzan los cielos cumpliendo la voluntad de Dios; los santos y misioneros son los caballos que saltan obstáculos para llevar la Buena Noticia a los rincones más difíciles; y nosotros somos los peones que, movidos por su gracia, avanzamos paso a paso en este mundo para alcanzar la victoria eterna.",
+    "paso_concreto": "Reconocé hoy el lugar que ocupa Cristo en tu vida y dejate mover por Él en el tablero de cada día.",
+    "enseñanza_de_la_iglesia": ["CIC 450", "CIC 795", "CIC 964"],
+    "fundamento_biblico": ["Ef 1,20-23", "Ap 19,16"]
+  },
+  {
+    "id": "catequesis-ajedrez-02",
+    "categoria": "Vida Cristiana",
+    "pregunta_principal": "¿Cómo se vincula el tablero de ajedrez con el Cuerpo Místico de Cristo?",
+    "keywords": [
+      "cuerpo mistico",
+      "cabeza y cuerpo",
+      "ajedrez y fe",
+      "iglesia",
+      "orden de la iglesia"
+    ],
+    "respuesta_breve": "La vida de fe se puede visualizar como una gran partida donde Jesucristo no es solo el Rey absoluto del tablero, sino también la Cabeza de la cual depende todo el Cuerpo Místico. La Santísima Virgen María es la Reina y madre que intercede junto al trono; los santos y misioneros actúan como los caballos que saltan los obstáculos; los arcángeles y ángeles son las torres y alfiles que defienden y custodian los caminos celestiales; y nosotros, los peones, formamos parte de ese mismo Cuerpo, movidos por su gracia para avanzar hacia la victoria eterna.",
+    "paso_concreto": "Viví hoy consciente de que sos parte viva de ese Cuerpo y que cada movimiento tuyo en comunión con Cristo edifica a toda la Iglesia.",
+    "enseñanza_de_la_iglesia": ["CIC 787", "CIC 792", "CIC 964"],
+    "fundamento_biblico": ["Col 1,18", "1 Cor 12,12-27"]
   },
   {
     "id": "fe-001",
