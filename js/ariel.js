@@ -1550,7 +1550,7 @@ document.addEventListener("DOMContentLoaded", () => {
     if (nombreGuardado) {
       contenedorMensajes.innerHTML += `<div class="mensaje-asistente"><strong>Asistente:</strong> ¡Qué alegría encontrarte de nuevo, ${nombreGuardado}! ¿De qué te gustaría que hablemos hoy sobre nuestra fe 🕊️?</div>`;
     } else {
-      contenedorMensajes.innerHTML += `<div class="mensaje-asistente"><strong>Asistente:</strong> ¡Hola ✨! ¡Qué alegría darte la bienvenida a Palabra Viva! Para empezar, ¿cuál es tu nombre de pila?</div>`;
+      contenedorMensajes.innerHTML += `<div class="mensaje-asistente"><strong>Asistente:</strong> ¡Hola ✨! ¡Qué alegría darte la bienvenida a Palabra Viva! Soy tPara empezar, ¿cuál es tu nombre de pila?</div>`;
       esperandoNombre = true;
     }
     contenedorMensajes.scrollTop = contenedorMensajes.scrollHeight;
@@ -1623,7 +1623,7 @@ document.addEventListener("DOMContentLoaded", () => {
           ) {
             respuestaAsistente =
               datosAsistente.respuestas_pastorales?.ojos ||
-              "¡Uf, se te cierran solos! Pegate una buena dormida y dejá el mundo un rato.";
+              "¡Uf, se te cierran solos los ojos! Pegate una buena dormida y dejá el mundo un rato.";
           } else if (
             textoLimpio.includes("ruido") ||
             textoLimpio.includes("molestan") ||
@@ -1639,7 +1639,7 @@ document.addEventListener("DOMContentLoaded", () => {
             textoLimpio.includes("quien sos")
           ) {
             respuestaAsistente =
-              "Soy el asistente de Palabra Viva, tu compañero para este espacio de fe y charla 🕊️.";
+              "Soy el asistente de Palabra Viva, tu compañera para este espacio de fe y charla 🕊️.";
           } else if (
             textoLimpio.includes("borrar mi nombre") ||
             textoLimpio.includes("olvidar mi nombre")
@@ -1673,7 +1673,7 @@ document.addEventListener("DOMContentLoaded", () => {
             textoLimpio.includes("como andas")
           ) {
             respuestaAsistente =
-              "Acá andamos, firmes y listos para hacerte compañía o buscar lo que necesites en Palabra Viva 🧉.";
+              "Acá Estoy!, firme y lista para hacerte compañía o buscar lo que necesites en Palabra Viva 🧉.";
           } else if (
             textoLimpio.includes("bien") ||
             textoLimpio.includes("todo bien") ||
@@ -1817,9 +1817,9 @@ document.addEventListener("DOMContentLoaded", () => {
                   } else {
                     // --- C. COMODÍN HUMANO DINÁMICO (Array aleatorio) ---
                     const comodinesHumanos = [
-                      "Qué temazo trajiste. A veces nos pasa como con los átomos o con el viento: no los vemos con nuestros ojos, pero sabemos que están ahí. Contame un poco más de lo que estás pensando.",
-                      "Esa pregunta me deja pensando. Este es un espacio para explorar la fe, la Palabra y nuestras dudas de todos los días. ¿Querés que busquemos algún versículo o charlemos sobre otro tema?",
-                      "¡Qué buena inquietud! Acá podés venir con cualquier duda, desde historias de la Biblia hasta un ratito de oración. Contame un poco más hacia dónde te gustaría llevar la charla 🧉.",
+                      "Qué tema ese. A veces nos pasa como con los átomos o con el viento: no los vemos con nuestros ojos, pero sabemos que están ahí. Contame un poco más de lo que estás pensando.",
+                      "Lo que decis me deja pensando. Este es un espacio para explorar la fe, la Palabra y nuestras dudas de todos los días. ¿Querés que busquemos algo sobre nuestra fe o charlemos sobre otro tema?",
+                      "¡Es para pensarlo! Acá podés venir con cualquier duda, desde historias de la Biblia hasta un ratito de oración. Contame un poco más hacia dónde te gustaría llevar la charla 🧉.",
                       "Interesante lo que planteás. A veces las respuestas no vienen en un manual exacto, pero las vamos descubriendo al andar. ¿Querés que veamos algo de catequesis o preferís que charlemos tranquilos?",
                     ];
 
@@ -2091,6 +2091,34 @@ document.addEventListener("DOMContentLoaded", () => {
 
     const mensaje = entrada.value.trim();
     if (!mensaje) return;
+    // 1. Radar de empatía rápido
+    const textoMinimo = mensaje.toLowerCase();
+    const palabrasDolor = [
+      "triste",
+      "llor",
+      "angust",
+      "desolad",
+      "solo",
+      "miedo",
+      "no quiero vivir",
+      "no merezco",
+      "no tiene sentido",
+      "abandonado",
+    ];
+
+    if (palabrasDolor.some((p) => textoMinimo.includes(p))) {
+      const respuestasDolor = [
+        "Escuchame: el amor de Dios no se gana con méritos, se recibe por gracia. Pensá en el buen ladrón: al lado de Jesús escuchó 'Hoy estarás conmigo en el paraíso'. Tu vida tiene un valor infinito.",
+        "Duele mucho cuando la vida se pone pesada. Acordate de María al pie de la cruz sosteniendo el dolor. Dios no te suelta la mano, de la cruz más dura saca vida.",
+        "Sentirse solo o pensar que a nadie le importamos duele en el alma. Jesús experimentó el abandono en la cruz para decirte que estás grabado en sus manos. No estás solo.",
+      ];
+      // Aquí usa la misma función que usa tu app para mostrar texto en el chat
+      mostrarRespuestaBot(
+        respuestasDolor[Math.floor(Math.random() * respuestasDolor.length)],
+      );
+      entrada.value = "";
+      return; // Corta acá para que no siga buscando en el FAQ
+    }
 
     buscarEnCatequesis(mensaje, baseDatosCatequesis);
     entrada.value = "";

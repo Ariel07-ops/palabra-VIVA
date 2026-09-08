@@ -1,5 +1,15 @@
 {
   "saludos": {
+    "palabras_clave": [
+      "hola",
+      "buen dia",
+      "buenas tardes",
+      "buenas dias",
+      "que tal",
+      "hola hola",
+      "hey",
+      "paz"
+    ],
     "respuestas": [
       "¡Hola! Qué alegría encontrarte en Palabra Viva. ¿Cómo venís con tu día hoy?",
       "¡Bienvenido! Este es un espacio de pausa y reflexión. ¿De qué te gustaría que charlemos un rato?",
@@ -7,6 +17,17 @@
     ]
   },
   "despedidas": {
+    "palabras_clave": [
+      "chau",
+      "adios",
+      "me voy",
+      "hasta mañana",
+      "buenas noches",
+      "me voy a dormir",
+      "nos vemos",
+      "chao",
+      "hasta luego"
+    ],
     "respuestas": [
       "Que tengas una excelente jornada. Recordá que podés volver a abrir este chat tocando el logotipo superior cuando lo necesites.",
       "Vaya en paz. Que el Señor bendiga tu día y guíe tus pasos.",
@@ -14,6 +35,13 @@
     ]
   },
   "agradecimientos": {
+    "palabras_clave": [
+      "gracias",
+      "muchas gracias",
+      "te agradezco",
+      "muy amable",
+      "genial"
+    ],
     "respuestas": [
       "Me alegra mucho que te sirva. Para eso estamos, para hacer una pausa y mirar la vida con otros ojos.",
       "Gracias a vos por el espacio de confianza. Que tengas mucha paz en lo que resta del día.",
@@ -25,28 +53,115 @@
     "mensaje": "Podés utilizar este espacio de distintas maneras:",
     "opciones": [
       "Diálogo espiritual: Contame si estás buscando una reflexión ante algún estado de ánimo, cansancio o momento del día.",
-      "Búsqueda bíblica: Para buscar pasajes o textos completos de forma exacta, recordá usar el buscador dedicado en la barra del menú lateral (donde podés ingresar por nombre, capítulo y versículo con dos puntos como 'Juan 1:1')."
+      "Búsqueda bíblica: Para buscar pasajes o textos completos de forma exacta, recordá usar el buscador dedicado en la barra del menú lateral (donde podés ingresar por nombre, capítulo y versículo con dos puntos como 'Juan 1:1')",
+      "también podes escribirme: infobiblica,  infolateral  o infocamino para mas info."
     ]
   },
   "respuestas_pastorales": {
-    "tristeza": "En momentos de aflicción, la Palabra nos recuerda que el Señor está cerca de los que tienen el corazón roto (Salmo 34, 19). No estás solo en lo que te toca transitar.",
-    "ansiedad": "Ante la inquietud y el acelere diario, el apóstol Pablo nos invita a depositar la paz en la oración, sabiendo que Dios cuida de nuestras cargas (Filipenses 4, 6-7).",
-    "perdon": "El perdón es un camino de liberación profunda que nos acerca al amor misericordioso del Padre (Mateo 18, 21-22). A veces perdonar cuesta, pero sana el alma.",
-    "miedo": "No temas, porque el Señor tu Dios está contigo dondequiera que vayas (Josué 1, 9). La confianza en Él desarma nuestros temores más hondo.",
-    "esperanza": "La esperanza no defrauda. Aun en tiempos difíciles o grises, los planes de Dios son de paz y de un futuro lleno de bien (Jeremías 29, 11).",
-    "cansancio": "Cuando el peso del día agobia, Jesús hace una invitación abierta: 'Vengan a mí los que están cansados y atareados, y yo los haré descansar' (Mateo 11, 28). Date el permiso de frenar.",
-    "soledad": "En los momentos donde el silencio pesa, recordá la promesa de lo alto: 'Yo estoy con ustedes todos los días, hasta el fin del mundo' (Mateo 28, 20).",
-    "ojos": "¡Uf, se te cierran los ojos solos! Cuando el cuerpo pide descanso de esa manera, no hay que forzarlo. Pegate una buena dormida y dejá el mundo un rato.",
-    "enojado": "Qué bajón arrastrar bronca. Cuando te peleás con alguien o te pasan por arriba en el día, te queda la sangre caliente. Desahogate tranquilo, te leo.",
-    "ruido": "¡Qué cosa insoportable cuando te meten ruido ajeno y te taladran los oídos! Dan ganas de mandar todo al diablo. Buscate un rincón con paz.",
-    "dormir": "Que descanses bien y recargues pilas. ¡Que tengas una hermosa noche y hasta mañana!",
-    "triste": "Lamento que te sientas así hoy. Te mando un abrazo grande. Si querés contarme qué pasa, te leo; y si no, nos quedamos en silencio.",
-    "gratitud": "Dar gracias en todo momento transforma la mirada. Reconocer los pequeños dones cotidianos es la mejor forma de empezar a sintonizar con la gracia de Dios."
+    "tristeza": {
+      "palabras_clave": [
+        "triste",
+        "tristeza",
+        "afligido",
+        "mal",
+        "llorar",
+        "dolor"
+      ],
+      "respuesta": "En momentos de aflicción, la Palabra nos recuerda que el Señor está cerca de los que tienen el corazón roto (Salmo 34, 19). No estás solo en lo que te toca transitar."
+    },
+    "ansiedad": {
+      "palabras_clave": [
+        "ansiedad",
+        "ansioso",
+        "preocupado",
+        "nervios",
+        "acelere",
+        "inquietud"
+      ],
+      "respuesta": "Ante la inquietud y el acelere diario, el apóstol Pablo nos invita a depositar la paz en la oración, sabiendo que Dios cuida de nuestras cargas (Filipenses 4, 6-7)."
+    },
+    "perdon": {
+      "palabras_clave": ["perdon", "perdonar", "rencor", "culpa", "ofensa"],
+      "respuesta": "El perdón es un camino de liberación profunda que nos acerca al amor misericordioso del Padre (Mateo 18, 21-22). A veces perdonar cuesta, pero sana el alma."
+    },
+    "miedo": {
+      "palabras_clave": ["miedo", "temor", "asustado", "incertidumbre"],
+      "respuesta": "No temas, porque el Señor tu Dios está contigo dondequiera que vayas (Josué 1, 9). La confianza en Él desarma nuestros temores más hondo."
+    },
+    "esperanza": {
+      "palabras_clave": ["esperanza", "futuro", "gris", "tiempos dificiles"],
+      "respuesta": "La esperanza no defrauda. Aun en tiempos difíciles o grises, los planes de Dios son de paz y de un futuro lleno de bien (Jeremías 29, 11)."
+    },
+    "cansancio": {
+      "palabras_clave": ["cansado", "agotado", "cansancio", "peso", "agobia"],
+      "respuesta": "Cuando el peso del día agobia, Jesús hace una invitación abierta: 'Vengan a mí los que están cansados y atareados, y yo los haré descansar' (Mateo 11, 28). Date el permiso de frenar."
+    },
+    "soledad": {
+      "palabras_clave": ["solo", "soledad", "silencio", "abandonado"],
+      "respuesta": "En los momentos donde el silencio pesa, recordá la promesa de lo alto: 'Yo estoy con ustedes todos los días, hasta el fin del mundo' (Mateo 28, 20)."
+    },
+    "ojos": {
+      "palabras_clave": [
+        "se me cierran los ojos",
+        "sueño",
+        "cansado de leer",
+        "pestañeo"
+      ],
+      "respuesta": "¡Uf, se te cierran los ojos solos! Cuando el cuerpo pide descanso de esa manera, no hay que forzarlo. Pegate una buena dormida y dejá el mundo un rato."
+    },
+    "enojado": {
+      "palabras_clave": ["enojado", "bronca", "pelea", "rabia", "disgusto"],
+      "respuesta": "Qué bajón arrastrar bronca. Cuando te peleás con alguien o te pasan por arriba en el día, te queda la sangre caliente. Desahogate tranquilo, te leo."
+    },
+    "ruido": {
+      "palabras_clave": [
+        "ruido",
+        "insoportable",
+        "griterio",
+        "molesto",
+        "paz mental"
+      ],
+      "respuesta": "¡Qué cosa insoportable cuando te meten ruido ajeno y te taladran los oídos! Dan ganas de mandar todo al diablo. Buscate un rincón con paz."
+    },
+    "dormir": {
+      "palabras_clave": ["dormir", "a dormir", "buen descanso", "a la cama"],
+      "respuesta": "Que descanses bien y recargues pilas. ¡Que tengas una hermosa noche y hasta mañana!"
+    },
+    "gratitud": {
+      "palabras_clave": [
+        "gracias dios",
+        "contento",
+        "feliz",
+        "agradecido",
+        "bendecido"
+      ],
+      "respuesta": "Dar gracias en todo momento transforma la mirada. Reconocer los pequeños dones cotidianos es la mejor forma de empezar a sintonizar con la gracia de Dios."
+    }
   },
   "preguntas_cotidianas": {
-    "como_rezar": "Para empezar a rezar no hacen falta grandes palabras. Buscá un rincón tranquilo, respirá hondo y contale a Dios lo que te pasa hoy con total sinceridad, como un amigo le habla a otro.",
-    "tomar_decisiones": "Ante una encrucijada, vale la pena hacer silencio, repasar qué te da verdadera paz interior y qué te quita la calma, y poner la intención en manos de Dios antes de decidir apurado.",
-    "dia_caotico": "Cuando el día te desborda y parece que no llegás a nada, hacé una pausa de un minuto, cerrá los ojos y repetí en tu interior: 'Señor, en tus manos pongo este momento'."
+    "como_rezar": {
+      "palabras_clave": [
+        "como rezar",
+        "como orar",
+        "no se hablar con dios",
+        "empezar a rezar"
+      ],
+      "respuesta": "Para empezar a rezar no hacen falta grandes palabras. Buscá un rincón tranquilo, respirá hondo y contale a Dios lo que te pasa hoy con total sinceridad, como un amigo le habla a otro."
+    },
+    "tomar_decisiones": {
+      "palabras_clave": [
+        "decidir",
+        "duda",
+        "eleccion",
+        "encrucijada",
+        "que hacer"
+      ],
+      "respuesta": "Ante una encrucijada, vale la pena hacer silencio, repasar qué te da verdadera paz interior y qué te quita la calma, y poner la intención en manos de Dios antes de decidir apurado."
+    },
+    "dia_caotico": {
+      "palabras_clave": ["caos", "dia caotico", "desborda", "no llego a nada"],
+      "respuesta": "Cuando el día te desborda y parece que no llegás a nada, hacé una pausa de un minuto, cerrá los ojos y repetí en tu interior: 'Señor, en tus manos pongo este momento'."
+    }
   },
   "descargo_pastoral": "Puedo ayudarte a reflexionar desde la Sagrada Escritura y el espíritu de la Iglesia, pero recordá que este es un espacio de acompañamiento virtual y no reemplaza el consejo directo de un sacerdote o director espiritual.",
   "preguntas_frecuentes": [
@@ -61,7 +176,7 @@
         "como funciona",
         "que es esta app"
       ],
-      "respuesta": "<strong>Palabra Viva</strong> es una aplicación diseñada para el acompañamiento espiritual y la reflexión diaria. Para buscar citas exactas o pasajes de la Biblia, te sugiero utilizar el buscador dedicado que está en la barra del menú lateral, donde podés ingresar por nombre, capítulo y versículo (por ejemplo, 'Juan 1:1'), también podes consultar la sagrada escritura en la pagina principal ."
+      "respuesta": "<strong>Palabra Viva</strong> es una aplicación diseñada para el acompañamiento espiritual y la reflexión diaria. Para buscar citas exactas o pasajes de la Biblia, te sugiero utilizar el buscador dedicado que está en la barra del menú lateral, donde podés ingresar por nombre, capítulo y versículo (por ejemplo, 'Juan 1:1'), también podes consultar la sagrada escritura en la pagina principal y recorda que podes escribirme: infobiblica,  infolateral  o infocamino para mas info."
     },
     {
       "tema": "privacidad_datos",
@@ -116,6 +231,32 @@
       "tema": "version_programa",
       "palabras_clave": ["version", "actualizacion", "que version"],
       "respuesta": "Actualmente estás utilizando <strong>Palabra Viva Beta</strong>. Seguimos trabajando para incorporar más reflexiones pastorales y herramientas de utilidad."
+    },
+    {
+      "tema": "seccion_biblia",
+      "palabras_clave": ["infobiblica", "torres amat"],
+      "respuesta": "La Biblia que utilizamos en Palabra Viva es la clásica y entrañable traducción de D. Félix Torres Amat, una versión en español de libre uso y sin restricciones de copyright para que la Palabra circule libremente. En esta sección vas a encontrar: el Antiguo y Nuevo Testamento completo con buscador dedicado para citas exactas (como 'Juan 1:1'), y textos subrayados interactivos que al tocarlos despliegan cajitas con opciones de filología y contexto histórico. Además, tenés un enlace directo en la app para ver las páginas originales y la carátula histórica de la edición."
+    },
+    {
+      "tema": "caminemos_con_jesus",
+      "palabras_clave": [
+        "caminemos con jesus",
+        "infocamino",
+        "estado de tu corazon",
+        "ruta de emaús",
+        "escalera de la promesa"
+      ],
+      "respuesta": "En Caminemos con Jesús tienes un espacio encontrás propuestas para detener el tiempo y cuidar el alma. Se divide en dos grandes caminos: 1) Mi punto de partida, estado de tu corazón, para elegir cómo te sentís hoy y recibir una oración, un texto bíblico, la vida de un santo y una propuesta para el día. 2) La Ruta de Emaús, Itinerarios y retiros, que incluyen'Inicia tu recorrido' (La ruta de Emaús) para hacer un pequeño retiro personal a tu ritmo durante la semana, y 'La escalera de la promesa' como hilo conductor desde el Génesis hasta Pentecostés."
+    },
+    {
+      "tema": "barra_de_navegacion",
+      "palabras_clave": [
+        "infolateral",
+        "menu lateral",
+        "seccion barra",
+        "herramientas de lectura"
+      ],
+      "respuesta": "Desde el menú lateral izquierdo tenés acceso rápido a todas las herramientas: el buscador de versículos, las herramientas de lectura para agrandar o achicar la letra y activar el modo sepia, los enlaces de interés a páginas oficiales y a la IA de magisterio, la sección 'Acerca de Palabra Viva' con los enlaces a las fotos originales de Torres Amat, y este asistente de apoyo."
     }
   ]
 }
