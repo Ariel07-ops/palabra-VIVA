@@ -1394,7 +1394,8 @@ function comenzarExperiencia() {
     }, 50);
   }, 2500);
 }
-// 📂 PALABRA VIVA - NÚCLEO JAVASCRIPT PRINCIPAL
+// 📂// ==========================================
+// PALABRA VIVA - NÚCLEO JAVASCRIPT PRINCIPAL
 // ==========================================
 
 let esperandoConfirmacionMic = false;
@@ -1403,6 +1404,93 @@ function escaparHTML(texto) {
   const div = document.createElement("div");
   div.textContent = texto;
   return div.innerHTML;
+}
+
+// ⚙️ Configuración de palabras que no aportan significado doctrinal
+const palabrasIgnoradas = new Set([
+  "el",
+  "la",
+  "los",
+  "las",
+  "un",
+  "una",
+  "unos",
+  "unas",
+  "y",
+  "o",
+  "u",
+  "ni",
+  "de",
+  "del",
+  "al",
+  "a",
+  "en",
+  "por",
+  "para",
+  "con",
+  "sin",
+  "sobre",
+  "entre",
+  "hacia",
+  "hasta",
+  "desde",
+  "según",
+  "contra",
+  "tras",
+  "bajo",
+  "me",
+  "te",
+  "se",
+  "nos",
+  "os",
+  "le",
+  "les",
+  "lo",
+  "mi",
+  "tu",
+  "su",
+  "nuestro",
+  "vuestro",
+  "sus",
+  "este",
+  "esta",
+  "estos",
+  "estas",
+  "ese",
+  "esa",
+  "esos",
+  "esas",
+  "quien",
+  "quienes",
+  "cual",
+  "cuales",
+  "donde",
+  "cuando",
+  "si",
+  "ya",
+  "pero",
+  "aunque",
+  "sino",
+]);
+
+// 🧹 Función para normalizar texto (limpia acentos, mayúsculas y símbolos)
+function normalizarTexto(texto) {
+  if (!texto) return "";
+  return texto
+    .toString()
+    .toLowerCase()
+    .normalize("NFD")
+    .replace(/[\u0300-\u036f]/g, "")
+    .replace(/[¿?¡!,.;:()[\]{}"'¿?¡!]/g, " ")
+    .replace(/\s+/g, " ")
+    .trim();
+}
+
+// ✂️ Extrae palabras válidas descartando las ignoradas (maneja espacios múltiples sin romperse)
+function obtenerPalabras(texto) {
+  return normalizarTexto(texto)
+    .split(" ")
+    .filter((palabra) => palabra.length > 2 && !palabrasIgnoradas.has(palabra));
 }
 
 // --- CLASIFICADOR PREVIO DE INTENCIÓN (El árbitro del tablero) ---
@@ -1444,15 +1532,12 @@ function clasificarConsulta(texto) {
   const resultados = categorias
     .map((categoria) => {
       let puntaje = 0;
-
       categoria.frases.forEach((frase) => {
         if (t.includes(frase)) puntaje += 5;
       });
-
       categoria.palabras.forEach((palabra) => {
         if (t.split(/\s+/).includes(palabra)) puntaje += 1;
       });
-
       return { categoria: categoria.nombre, puntaje };
     })
     .filter((resultado) => resultado.puntaje > 0)
@@ -1462,8 +1547,8 @@ function clasificarConsulta(texto) {
     return { categoria: "desconocida", requiereAclaracion: false };
   }
 
-  const mejor = resultados;
-  const segundo = resultados;
+  const mejor = resultados[0];
+  const segundo = resultados[1];
 
   if (segundo && mejor.puntaje === segundo.puntaje && mejor.puntaje < 5) {
     return {
@@ -1478,31 +1563,15 @@ function clasificarConsulta(texto) {
     requiereAclaracion: false,
   };
 }
-function normalizarTexto(texto) {
-  return texto
-    .toLowerCase()
-    .normalize("NFD")
-    .replace(/[\u0300-\u036f]/g, "");
-}
 
-// --- FUNCIÓN GLOBAL DE SÍNTESIS DE VOZ (Única, sin duplicados) ---
+// --- FUNCIÓN GLOBAL DE SÍNTESIS DE VOZ ---
 function hacerHablarAlRobot(texto) {
   if ("speechSynthesis" in window) {
     window.speechSynthesis.cancel();
-
     const utterance = new SpeechSynthesisUtterance(texto);
     utterance.lang = "es-AR";
     utterance.rate = 1.0;
     utterance.pitch = 1.0;
-
-    utterance.onstart = () => {
-      console.log("El robot comenzó a hablar...");
-    };
-
-    utterance.onend = () => {
-      console.log("El robot terminó de hablar.");
-    };
-
     window.speechSynthesis.speak(utterance);
   } else {
     console.log("Este navegador no soporta síntesis de voz.");
@@ -1515,6 +1584,19 @@ if (typeof window.speechSynthesis !== "undefined") {
   };
 }
 
+// --- MAPA GEOGRÁFICO / REFERENCIAS ---
+function actualizarMapaGeografico(id) {
+  const contenedorMapa = document.getElementById("contenedor-mapa-referencia");
+  if (!contenedorMapa) return;
+
+  if (id === 1) {
+    contenedorMapa.innerHTML =
+      "<p class='text-italic'>Horizonte de los orígenes (sin coordenadas geográficas terrenales).</p>";
+  } else if (typeof datosPromesa !== "undefined" && datosPromesa[id]) {
+    contenedorMapa.innerHTML = `<div class='mapa-card'><span>Ubicación clave: <strong>${datosPromesa[id].lugar}</strong></span></div>`;
+  }
+}
+
 document.addEventListener("DOMContentLoaded", () => {
   const inputChat = document.getElementById("chat-input");
   const btnEnviar = document.getElementById("chat-btn-enviar");
@@ -1522,6 +1604,8 @@ document.addEventListener("DOMContentLoaded", () => {
   const contenedorMensajes = document.getElementById("chat-mensajes");
   const linkAsistente = document.getElementById("link-asistente");
   const menuLateral = document.getElementById("menu-lateral");
+  const studyCard = document.getElementById("study-card");
+  const panelHandle = document.getElementById("panel-handle");
 
   // Conexión del botón del asistente en el menú
   if (linkAsistente) {
@@ -1550,16 +1634,18 @@ document.addEventListener("DOMContentLoaded", () => {
     if (nombreGuardado) {
       contenedorMensajes.innerHTML += `<div class="mensaje-asistente"><strong>Asistente:</strong> ¡Qué alegría encontrarte de nuevo, ${nombreGuardado}! ¿De qué te gustaría que hablemos hoy sobre nuestra fe 🕊️?</div>`;
     } else {
-      contenedorMensajes.innerHTML += `<div class="mensaje-asistente"><strong>Asistente:</strong> ¡Hola ✨! ¡Qué alegría darte la bienvenida a Palabra Viva! Soy tPara empezar, ¿cuál es tu nombre de pila?</div>`;
+      contenedorMensajes.innerHTML += `<div class="mensaje-asistente"><strong>Asistente:</strong> ¡Hola ✨! ¡Qué alegría darte la bienvenida a Palabra Viva! Para empezar, ¿cuál es tu nombre de pila?</div>`;
       esperandoNombre = true;
     }
     contenedorMensajes.scrollTop = contenedorMensajes.scrollHeight;
   }
 
+  // --- PROCESAMIENTO PRINCIPAL DEL CHAT ---
   btnEnviar?.addEventListener("click", async () => {
-    const textoUsuario = escaparHTML(inputChat.value.trim());
-    const textoLimpio = normalizarTexto(textoUsuario);
-    const palabrasUsuario = textoLimpio.split(/\s+/);
+    const textoUsuarioCrudo = inputChat.value.trim();
+    const textoUsuario = escaparHTML(textoUsuarioCrudo);
+    const textoLimpio = normalizarTexto(textoUsuarioCrudo);
+    const palabrasUsuario = obtenerPalabras(textoUsuarioCrudo);
 
     if (textoUsuario !== "") {
       contenedorMensajes.innerHTML += `<div class="mensaje-usuario">${textoUsuario}</div>`;
@@ -1570,7 +1656,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
       try {
         if (esperandoNombre) {
-          const nombreIngresado = textoUsuario.split(" ")[0];
+          const nombreIngresado = textoUsuarioCrudo.split(" ")[0];
           if (
             nombreIngresado.length > 2 &&
             !["hola", "buen", "dia", "soy", "decime", "mi", "nombre"].includes(
@@ -1589,47 +1675,72 @@ document.addEventListener("DOMContentLoaded", () => {
           const resRespuestas = await fetch("data/respuestas_asistente.json");
           const datosAsistente = await resRespuestas.json();
 
-          // --- 1. BLOQUE DE CONVERSACIÓN CASUAL Y PRIORIDAD EMOCIONAL ---
-          if (
-            textoLimpio.includes("enojado") ||
-            textoLimpio.includes("bronca") ||
-            textoLimpio.includes("pelee") ||
-            textoLimpio.includes("rabia")
-          ) {
+          // =========================================================================
+          // 🛡️ 1. ESCUDO ANTIRRADAR / EMPATÍA Y EXPRESIÓN EMOCIONAL (Prioridad Máxima)
+          // =========================================================================
+          const palabrasDolor = [
+            "triste",
+            "llor",
+            "angust",
+            "desolad",
+            "solo",
+            "miedo",
+            "no quiero vivir",
+            "no merezco",
+            "no tiene sentido",
+            "abandonado",
+            "llorar",
+          ];
+
+          const palabrasEnojo = [
+            "enojado",
+            "bronca",
+            "pelee",
+            "rabia",
+            "enojo",
+          ];
+          const palabrasCansancio = ["cansado", "agotado", "reventado"];
+          const palabrasSueno = ["ojos", "sueño", "dormir", "descansar"];
+          const palabrasRuido = ["ruido", "molestan", "volumen", "videos"];
+          const palabrasPositivas = [
+            "excelente",
+            "genial",
+            "gusta",
+            "encantó",
+            "es verdad",
+            "es cierto",
+            "sirve",
+            "tal cual",
+            "bueno",
+            "ok",
+            "okay",
+            "dale",
+            "ya fue",
+          ];
+
+          if (palabrasDolor.some((p) => textoLimpio.includes(p))) {
+            const respuestasDolor = [
+              "Escuchame: el amor de Dios no se gana con méritos, se recibe por gracia. Pensá en el buen ladrón: al lado de Jesús escuchó 'Hoy estarás conmigo en el paraíso'. Tu vida tiene un valor infinito.",
+              "Duele mucho cuando la vida se pone pesada. Acordate de María al pie de la cruz sosteniendo el dolor. Dios no te suelta la mano, de la cruz más dura saca vida.",
+              "Sentirse solo o pensar que a nadie le importamos duele en el alma. Jesús experimentó el abandono en la cruz para decirte que estás grabado en sus manos. No estás solo.",
+            ];
+            respuestaAsistente =
+              respuestasDolor[
+                Math.floor(Math.random() * respuestasDolor.length)
+              ];
+          } else if (palabrasEnojo.some((p) => textoLimpio.includes(p))) {
             respuestaAsistente =
               datosAsistente.respuestas_pastorales?.enojado ||
-              "Qué bajón arrastrar bronca. Desahogate tranquilo, te leo.";
-          } else if (
-            textoLimpio.includes("triste") ||
-            textoLimpio.includes("mal") ||
-            textoLimpio.includes("angustiado") ||
-            textoLimpio.includes("dolor")
-          ) {
-            respuestaAsistente =
-              "Lamento mucho que te sientas así hoy. Te mando un abrazo grande 🕊️. Si querés contarme más, te leo con atención; y si no, podemos quedarnos en silencio compartiendo este ratito.";
-          } else if (
-            textoLimpio.includes("cansado") ||
-            textoLimpio.includes("agotado") ||
-            textoLimpio.includes("reventado")
-          ) {
+              "Qué bajón arrastrar bronca o enojarse así. Desahogate tranquilo, te leo y te acompaño en este momento.";
+          } else if (palabrasCansancio.some((p) => textoLimpio.includes(p))) {
             respuestaAsistente =
               datosAsistente.respuestas_pastorales?.cansado ||
               "Te entiendo perfectamente. A veces el día pesa un montón. Tomate un respiro y aflojá un poco 🧉.";
-          } else if (
-            textoLimpio.includes("ojos") ||
-            textoLimpio.includes("sueño") ||
-            textoLimpio.includes("dormir") ||
-            textoLimpio.includes("descansar")
-          ) {
+          } else if (palabrasSueno.some((p) => textoLimpio.includes(p))) {
             respuestaAsistente =
               datosAsistente.respuestas_pastorales?.ojos ||
               "¡Uf, se te cierran solos los ojos! Pegate una buena dormida y dejá el mundo un rato.";
-          } else if (
-            textoLimpio.includes("ruido") ||
-            textoLimpio.includes("molestan") ||
-            textoLimpio.includes("volumen") ||
-            textoLimpio.includes("videos")
-          ) {
+          } else if (palabrasRuido.some((p) => textoLimpio.includes(p))) {
             respuestaAsistente =
               datosAsistente.respuestas_pastorales?.ruido ||
               "¡Qué cosa insoportable cuando te meten ruido ajeno! Buscate un rincón con paz.";
@@ -1640,6 +1751,21 @@ document.addEventListener("DOMContentLoaded", () => {
           ) {
             respuestaAsistente =
               "Soy el asistente de Palabra Viva, tu compañera para este espacio de fe y charla 🕊️.";
+          } else if (
+            textoLimpio.includes("version de biblia") ||
+            textoLimpio.includes("que biblia") ||
+            textoLimpio.includes("que traduccion") ||
+            textoLimpio.includes("biblia usamos")
+          ) {
+            respuestaAsistente =
+              "En Palabra Viva utilizamos la clásica **Biblia Torres Amat**, una hermosa traducción al español de libre circulación integrada especialmente para nuestra comunidad.";
+          } else if (
+            textoLimpio.includes("privacidad") ||
+            textoLimpio.includes("datos personales") ||
+            textoLimpio.includes("es seguro")
+          ) {
+            respuestaAsistente =
+              "¡Quedate tranquilo! Este espacio cuida tu privacidad; lo charlado queda acá entre nosotros para acompañarte en tu camino espiritual.";
           } else if (
             textoLimpio.includes("borrar mi nombre") ||
             textoLimpio.includes("olvidar mi nombre")
@@ -1658,22 +1784,16 @@ document.addEventListener("DOMContentLoaded", () => {
             ];
             respuestaAsistente =
               agrades[Math.floor(Math.random() * agrades.length)];
-          } else if (
-            palabrasUsuario.includes("dale") ||
-            palabrasUsuario.includes("okay") ||
-            palabrasUsuario.includes("ok") ||
-            palabrasUsuario.includes("bueno") ||
-            palabrasUsuario.includes("ya fue")
-          ) {
+          } else if (palabrasPositivas.some((p) => textoLimpio.includes(p))) {
             respuestaAsistente =
-              "¡Excelente! Vos decime por dónde querés seguir o qué te gustaría explorar hoy en Palabra Viva. Te escucho 🧉.";
+              "¡Qué bueno leer eso! Me alegra que te sirva. Vos decime por dónde querés seguir o qué te gustaría explorar hoy en Palabra Viva. Te escucho 🧉.";
           } else if (
             textoLimpio.includes("como estas") ||
             textoLimpio.includes("que tal") ||
             textoLimpio.includes("como andas")
           ) {
             respuestaAsistente =
-              "Acá Estoy!, firme y lista para hacerte compañía o buscar lo que necesites en Palabra Viva 🧉.";
+              "¡Acá estoy, firme y lista para hacerte compañía o buscar lo que necesites en Palabra Viva 🧉!";
           } else if (
             textoLimpio.includes("bien") ||
             textoLimpio.includes("todo bien") ||
@@ -1681,7 +1801,16 @@ document.addEventListener("DOMContentLoaded", () => {
             textoLimpio.includes("contento")
           ) {
             respuestaAsistente =
-              "¡Qué alegría leer eso! Me pone contento que marche todo bien. ¿en que te puedo ayudar hoy?  aca estoy!!";
+              "¡Qué alegría leer eso! Me pone contento que marche todo bien. ¿En qué te puedo ayudar hoy? ¡Acá estoy!";
+            // --- NUEVO FILTRO DE DESPEDIDAS ---
+          } else if (
+            textoLimpio.includes("me voy a dormir") ||
+            textoLimpio.includes("chau") ||
+            textoLimpio.includes("nos vemos") ||
+            textoLimpio.includes("hasta mañana")
+          ) {
+            respuestaAsistente =
+              "¡Descansá bien! Que tengas una buena noche. Nos vemos en el futuro..ja ja . ¡Un abrazo grande! 🧉🌙";
           } else if (
             textoLimpio.includes("hola") ||
             textoLimpio.includes("buen dia") ||
@@ -1689,7 +1818,7 @@ document.addEventListener("DOMContentLoaded", () => {
             textoLimpio.includes("que onda")
           ) {
             const saludosPosibles = datosAsistente.saludos?.respuestas || [
-              "¡Hola! Qué bueno tenerte por acá. ¿en que te puedo ayudar hoy?",
+              "¡Hola! Qué bueno tenerte por acá. ¿En qué te puedo ayudar hoy?",
             ];
             respuestaAsistente =
               saludosPosibles[
@@ -1701,32 +1830,40 @@ document.addEventListener("DOMContentLoaded", () => {
             textoLimpio.includes("guia") ||
             textoLimpio.includes("que puedo hacer") ||
             textoLimpio.includes("ayuda") ||
-            textoLimpio.includes("tutorial")
+            textoLimpio.includes("tutorial") ||
+            textoLimpio.includes("como rezo") ||
+            textoLimpio.includes("padre nuestro")
           ) {
-            const guia = datosAsistente.guia_uso;
-            if (guia) {
+            if (
+              textoLimpio.includes("padre nuestro") ||
+              textoLimpio.includes("como rezo")
+            ) {
               respuestaAsistente =
-                `<strong>🧭 ${guia.titulo}</strong><br>${guia.mensaje}<br>` +
-                guia.opciones.map((opt) => `• ${opt}`).join("<br>");
+                "Rezar el **Padre Nuestro** o un **Ave María** es abrir el corazón con sencillez, como hablaje con un amigo. Si querés, podés meditar cada frase despacito, sin apuro, poniéndole tu intención de hoy.";
             } else {
-              respuestaAsistente =
-                "Acá podés consultar temas de catequesis o charlar sobre nuestra fe. ¡Preguntame lo que quieras!";
+              const guia = datosAsistente.guia_uso;
+              if (guia) {
+                respuestaAsistente =
+                  `<strong>🧭 ${guia.titulo}</strong><br>${guia.mensaje}<br>` +
+                  guia.opciones.map((opt) => `• ${opt}`).join("<br>");
+              } else {
+                respuestaAsistente =
+                  "Acá podés consultar temas de catequesis o charlar sobre nuestra fe. ¡Preguntame lo que quieras!";
+              }
             }
           }
-          // --- 3. MOTOR DE BÚSQUEDA INTELIGENTE CON CLASIFICADOR ---
+          // --- 3. MOTOR DE BÚSQUEDA INTELIGENTE EN CATEQUESIS Y FAQ ---
           else {
             try {
-              // Aplicamos el clasificador previo para detectar cambios de carril o ambigüedades
-              const clasificacion = clasificarConsulta(textoUsuario);
+              const clasificacion = clasificarConsulta(textoUsuarioCrudo);
 
               if (clasificacion.requiereAclaracion) {
-                categoriaActiva = null; // Limpiamos memoria si hay confusión
+                categoriaActiva = null;
                 respuestaAsistente =
                   `Tu consulta puede referirse a varios temas: ` +
                   `${clasificacion.opciones.join(", ")}. ` +
                   `¿Sobre cuál de ellos querés que profundicemos en el tablero?`;
               } else {
-                // Si la clasificación detectó un tema claro, actualizamos la categoría activa
                 if (clasificacion.categoria !== "desconocida") {
                   categoriaActiva = clasificacion.categoria;
                 }
@@ -1740,7 +1877,9 @@ document.addEventListener("DOMContentLoaded", () => {
 
                 baseDatosCatequesis.forEach((item) => {
                   let puntos = 0;
-                  const preguntaItem = normalizarTexto(item.pregunta_principal);
+                  const preguntaItem = normalizarTexto(
+                    item.pregunta_principal || "",
+                  );
 
                   if (textoLimpio.includes(preguntaItem)) {
                     puntos += 10;
@@ -1749,7 +1888,6 @@ document.addEventListener("DOMContentLoaded", () => {
                   if (item.keywords && Array.isArray(item.keywords)) {
                     item.keywords.forEach((kw) => {
                       const keywordLimpia = normalizarTexto(kw);
-
                       if (keywordLimpia.length <= 3) {
                         if (palabrasUsuario.includes(keywordLimpia))
                           puntos += 3;
@@ -1758,6 +1896,11 @@ document.addEventListener("DOMContentLoaded", () => {
                       }
                     });
                   }
+
+                  // Bonificación flexible por palabras sueltas de la query en todo el texto del item
+                  palabrasUsuario.forEach((palabra) => {
+                    if (preguntaItem.includes(palabra)) puntos += 1;
+                  });
 
                   // 🌟 BONIFICACIÓN DE CONTEXTO POR CATEGORÍA ACTIVA
                   if (
@@ -1775,19 +1918,14 @@ document.addEventListener("DOMContentLoaded", () => {
                   }
                 });
 
-                // Si encontramos un buen match doctrinal en catequesis
+                // Si encontramos un buen match doctrinal en catequesis (umbral tolerante de puntos >= 2)
                 if (mejorMatchCat && maxPuntosCat >= 2) {
-                  // Sincronizamos la categoría del match ganador
-                  // if (mejorMatchCat.categoria) {
-                  //   categoriaActiva = mejorMatchCat.categoria;
-                  // }
-
                   respuestaAsistente = `<strong>${mejorMatchCat.pregunta_principal}</strong><br><br>${mejorMatchCat.respuesta_breve}`;
                   if (mejorMatchCat.paso_concreto) {
                     respuestaAsistente += `<br><br>💡 <em>Paso concreto:</em> ${mejorMatchCat.paso_concreto}`;
                   }
                 } else {
-                  // Si no matcheó en catequesis, buscamos en las Preguntas Frecuentes (FAQ)
+                  // B. Buscamos en las Preguntas Frecuentes (FAQ)
                   let mejorMatchFAQ = null;
                   let maxPuntosFAQ = 0;
 
@@ -1815,14 +1953,13 @@ document.addEventListener("DOMContentLoaded", () => {
                   if (mejorMatchFAQ && maxPuntosFAQ >= 2) {
                     respuestaAsistente = mejorMatchFAQ.respuesta;
                   } else {
-                    // --- C. COMODÍN HUMANO DINÁMICO (Array aleatorio) ---
+                    // --- C. COMODÍN HUMANO DINÁMICO ---
                     const comodinesHumanos = [
                       "Qué tema ese. A veces nos pasa como con los átomos o con el viento: no los vemos con nuestros ojos, pero sabemos que están ahí. Contame un poco más de lo que estás pensando.",
-                      "Lo que decis me deja pensando. Este es un espacio para explorar la fe, la Palabra y nuestras dudas de todos los días. ¿Querés que busquemos algo sobre nuestra fe o charlemos sobre otro tema?",
+                      "Lo que decís me deja pensando. Este es un espacio para explorar la fe, la Palabra y nuestras dudas de todos los días. ¿Querés que busquemos algo sobre nuestra fe o charlemos sobre otro tema?",
                       "¡Es para pensarlo! Acá podés venir con cualquier duda, desde historias de la Biblia hasta un ratito de oración. Contame un poco más hacia dónde te gustaría llevar la charla 🧉.",
                       "Interesante lo que planteás. A veces las respuestas no vienen en un manual exacto, pero las vamos descubriendo al andar. ¿Querés que veamos algo de catequesis o preferís que charlemos tranquilos?",
                     ];
-
                     respuestaAsistente =
                       comodinesHumanos[
                         Math.floor(Math.random() * comodinesHumanos.length)
@@ -1848,6 +1985,7 @@ document.addEventListener("DOMContentLoaded", () => {
         .replace(/<[^>]*>/g, " ")
         .replace(/\s+/g, " ")
         .trim();
+
       const divAsistente = document.createElement("div");
       divAsistente.className = "mensaje-asistente";
       divAsistente.innerHTML = `<strong>Asistente:</strong><br>${respuestaAsistente}<br><button class="btn-voz-robot" style="margin-top:8px; background:#000; color:#D4AF37; border:1px solid #D4AF37; border-radius:20px; padding:6px 12px; cursor:pointer; font-size:12px;">🔊 Escuchar</button>`;
@@ -1879,7 +2017,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
       reconocimiento.onresult = (evento) => {
         const textoCapturado = evento.results[0][0].transcript;
-        const inputChat = document.getElementById("chat-input");
         if (inputChat) {
           inputChat.focus();
           inputChat.value = textoCapturado;
@@ -1889,7 +2026,6 @@ document.addEventListener("DOMContentLoaded", () => {
       reconocimiento.onend = () => {
         btnMic.classList.remove("mic-escuchando");
       };
-
       reconocimiento.onerror = () => {
         btnMic.classList.remove("mic-escuchando");
       };
@@ -1902,27 +2038,22 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   });
 
-  // --- HISTORIAL INICIAL PARA LA APP ---
+  // --- HISTORIAL INICIAL Y MANEJADOR DEL BOTÓN "ATRÁS" ---
   history.replaceState({ vista: "main" }, "", "");
 
-  // --- MANEJADOR INTELIGENTE DEL BOTÓN "ATRÁS" DEL CELULAR ---
-  window.addEventListener("popstate", (event) => {
-    const studyCard = document.getElementById("study-card");
-
+  window.addEventListener("popstate", () => {
     if (studyCard && studyCard.classList.contains("expanded")) {
       studyCard.classList.remove("expanded");
       studyCard.style.transform = "";
       history.pushState({ vista: "main" }, "", "");
       return;
     }
-
     history.pushState({ vista: "main" }, "", "");
   });
 
   history.pushState({ vista: "main" }, "", "");
 
-  // --- CERRAR PANEL DE ESTUDIO Y RESTAURAR LECTURA ---
-
+  // --- CERRAR PANEL DE ESTUDIO ---
   if (panelHandle && studyCard) {
     panelHandle.addEventListener("click", () => {
       if (typeof window.restaurarLecturaNormal === "function") {
@@ -1935,207 +2066,5 @@ document.addEventListener("DOMContentLoaded", () => {
         verso.style.cursor = "pointer";
       });
     });
-  }
-
-  // ⚙️ 1. Configuración de palabras que no aportan significado doctrinal
-  const palabrasIgnoradas = new Set([
-    "el",
-    "la",
-    "los",
-    "las",
-    "un",
-    "una",
-    "unos",
-    "unas",
-    "y",
-    "o",
-    "u",
-    "ni",
-    "de",
-    "del",
-    "al",
-    "a",
-    "en",
-    "por",
-    "para",
-    "con",
-    "sin",
-    "sobre",
-    "entre",
-    "hacia",
-    "hasta",
-    "desde",
-    "según",
-    "contra",
-    "tras",
-    "bajo",
-    "me",
-    "te",
-    "se",
-    "nos",
-    "os",
-    "le",
-    "les",
-    "lo",
-    "mi",
-    "tu",
-    "su",
-    "nuestro",
-    "vuestro",
-    "sus",
-    "este",
-    "esta",
-    "estos",
-    "estas",
-    "ese",
-    "esa",
-    "esos",
-    "esas",
-    "quien",
-    "quienes",
-    "cual",
-    "cuales",
-    "donde",
-    "cuando",
-    "si",
-    "ya",
-    "pero",
-    "aunque",
-    "sino",
-  ]);
-
-  // 🧹 2. Función para normalizar texto
-  function normalizarTexto(texto) {
-    if (!texto) return "";
-    return texto
-      .toString()
-      .toLowerCase()
-      .normalize("NFD")
-      .replace(/[\u0300-\u036f]/g, "")
-      .replace(/[¿?¡!,.;:()[\]{}"'¿?¡!]/g, " ")
-      .replace(/\s+/g, " ")
-      .trim();
-  }
-
-  // ✂️ 3. Extrae palabras válidas descartando las ignoradas
-  function obtenerPalabras(texto) {
-    return normalizarTexto(texto)
-      .split(" ")
-      .filter(
-        (palabra) => palabra.length > 2 && !palabrasIgnoradas.has(palabra),
-      );
-  }
-
-  // 🔍 4. Búsqueda principal en el JSON de catequesis
-  function buscarEnCatequesis(mensajeUsuario, baseDatosCatequesis) {
-    const palabrasUsuario = obtenerPalabras(mensajeUsuario);
-
-    if (palabrasUsuario.length === 0) {
-      return respuestaNoEncontrada();
-    }
-
-    let mejorCoincidencia = null;
-    let mayorPuntaje = 0;
-
-    baseDatosCatequesis.forEach((item) => {
-      const textoItem = [
-        item.pregunta_principal || "",
-        ...(item.keywords || []),
-        item.categoria || "",
-      ].join(" ");
-
-      const palabrasItem = new Set(obtenerPalabras(textoItem));
-      let puntaje = 0;
-
-      palabrasUsuario.forEach((palabra) => {
-        if (palabrasItem.has(palabra)) {
-          puntaje++;
-        }
-      });
-
-      if (puntaje >= 3) puntaje += 1;
-
-      if (puntaje > mayorPuntaje) {
-        mayorPuntaje = puntaje;
-        mejorCoincidencia = item;
-      }
-    });
-
-    if (mejorCoincidencia && mayorPuntaje >= 2) {
-      return {
-        encontrado: true,
-        respuesta: mejorCoincidencia.respuesta,
-        fuentes: mejorCoincidencia.fuentes || [],
-        categoria: mejorCoincidencia.categoria || "",
-        id: mejorCoincidencia.id || null,
-      };
-    }
-
-    return respuestaNoEncontrada();
-  }
-
-  // 💬 5. Respuesta por defecto cuando no hay coincidencias
-  function respuestaNoEncontrada() {
-    return {
-      encontrado: false,
-      respuesta:
-        "No encontré una respuesta específica. Podés consultar una sección de Palabra Viva, como “Caminando con Jesús” o “Ruta de Emaús”, o buscar orientación en tu parroquia.",
-      fuentes: [],
-    };
-  }
-
-  // 🚀 6. Procesar el mensaje enviado desde la interfaz
-  function procesarMensaje(baseDatosCatequesis) {
-    const entrada = document.getElementById("mensajeUsuario");
-    if (!entrada) return;
-
-    const mensaje = entrada.value.trim();
-    if (!mensaje) return;
-    // 1. Radar de empatía rápido
-    const textoMinimo = mensaje.toLowerCase();
-    const palabrasDolor = [
-      "triste",
-      "llor",
-      "angust",
-      "desolad",
-      "solo",
-      "miedo",
-      "no quiero vivir",
-      "no merezco",
-      "no tiene sentido",
-      "abandonado",
-    ];
-
-    if (palabrasDolor.some((p) => textoMinimo.includes(p))) {
-      const respuestasDolor = [
-        "Escuchame: el amor de Dios no se gana con méritos, se recibe por gracia. Pensá en el buen ladrón: al lado de Jesús escuchó 'Hoy estarás conmigo en el paraíso'. Tu vida tiene un valor infinito.",
-        "Duele mucho cuando la vida se pone pesada. Acordate de María al pie de la cruz sosteniendo el dolor. Dios no te suelta la mano, de la cruz más dura saca vida.",
-        "Sentirse solo o pensar que a nadie le importamos duele en el alma. Jesús experimentó el abandono en la cruz para decirte que estás grabado en sus manos. No estás solo.",
-      ];
-      // Aquí usa la misma función que usa tu app para mostrar texto en el chat
-      mostrarRespuestaBot(
-        respuestasDolor[Math.floor(Math.random() * respuestasDolor.length)],
-      );
-      entrada.value = "";
-      return; // Corta acá para que no siga buscando en el FAQ
-    }
-
-    buscarEnCatequesis(mensaje, baseDatosCatequesis);
-    entrada.value = "";
-  }
-
-  // 3. Opcional: Mostrar o adaptar el mapa/referencia geográfica según el id
-  function actualizarMapaGeografico(id) {
-    const contenedorMapa = document.getElementById(
-      "contenedor-mapa-referencia",
-    );
-    if (!contenedorMapa) return;
-
-    if (id === 1) {
-      contenedorMapa.innerHTML =
-        "<p class='text-italic'>Horizonte de los orígenes (sin coordenadas geográficas terrenales).</p>";
-    } else {
-      contenedorMapa.innerHTML = `<div class='mapa-card'><span>Ubicación clave: <strong>${datosPromesa[id].lugar}</strong></span></div>`;
-    }
   }
 });
