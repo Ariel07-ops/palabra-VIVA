@@ -1730,7 +1730,7 @@ document.addEventListener("DOMContentLoaded", () => {
               ];
           } else if (palabrasEnojo.some((p) => textoLimpio.includes(p))) {
             respuestaAsistente =
-              datosAsistente.respuestas_pastorales?.enojado ||
+              datosAsistente.respuestas_pastorales?.enojado?.respuesta ||
               "Qué bajón arrastrar bronca o enojarse así. Desahogate tranquilo, te leo y te acompaño en este momento.";
           } else if (palabrasCansancio.some((p) => textoLimpio.includes(p))) {
             respuestaAsistente =
@@ -1750,7 +1750,7 @@ document.addEventListener("DOMContentLoaded", () => {
             textoLimpio.includes("quien sos")
           ) {
             respuestaAsistente =
-              "Soy el asistente de Palabra Viva, tu compañera para este espacio de fe y charla 🕊️.";
+              "Soy tu asistente de Palabra Viva, tu compañera para este espacio de fe y charla 🕊️.";
           } else if (
             textoLimpio.includes("version de biblia") ||
             textoLimpio.includes("que biblia") ||
@@ -1761,6 +1761,9 @@ document.addEventListener("DOMContentLoaded", () => {
               "En Palabra Viva utilizamos la clásica **Biblia Torres Amat**, una hermosa traducción al español de libre circulación integrada especialmente para nuestra comunidad.";
           } else if (
             textoLimpio.includes("privacidad") ||
+            textoLimpio.includes("confidencialidad") ||
+            textoLimpio.includes("privado") ||
+            textoLimpio.includes("mis datos") ||
             textoLimpio.includes("datos personales") ||
             textoLimpio.includes("es seguro")
           ) {
@@ -1830,7 +1833,15 @@ document.addEventListener("DOMContentLoaded", () => {
             textoLimpio.includes("guia") ||
             textoLimpio.includes("que puedo hacer") ||
             textoLimpio.includes("ayuda") ||
+            textoLimpio.includes("como funciona") ||
+            textoLimpio.includes("como usar") ||
+            textoLimpio.includes("como se usa") ||
+            textoLimpio.includes("infobiblica") ||
+            textoLimpio.includes("informacion") ||
+            textoLimpio.includes("infocamino") ||
+            textoLimpio.includes("infoLateral") ||
             textoLimpio.includes("tutorial") ||
+            textoLimpio.includes("como orar") ||
             textoLimpio.includes("como rezo") ||
             textoLimpio.includes("padre nuestro")
           ) {
@@ -1851,6 +1862,16 @@ document.addEventListener("DOMContentLoaded", () => {
                   "Acá podés consultar temas de catequesis o charlar sobre nuestra fe. ¡Preguntame lo que quieras!";
               }
             }
+          }
+          // --- PUENTE: CAMINO DE LA RAZÓN ---
+          else if (
+            textoLimpio.includes("razon") ||
+            textoLimpio.includes("razón") ||
+            textoLimpio.includes("ciencia") ||
+            textoLimpio.includes("orden") ||
+            pasoActualRazon > 1
+          ) {
+            respuestaAsistente = manejarCaminoRazon(textoUsuarioCrudo);
           }
           // --- 3. MOTOR DE BÚSQUEDA INTELIGENTE EN CATEQUESIS Y FAQ ---
           else {
@@ -1980,15 +2001,25 @@ document.addEventListener("DOMContentLoaded", () => {
           "Se me trabó un segundo la idea, pero acá sigo con vos. ¿Qué me decías?";
       }
 
-      // Renderizado de la respuesta en pantalla con su botón de voz
-      const textoParaVoz = respuestaAsistente
-        .replace(/<[^>]*>/g, " ")
+      // Renderizado seguro de la respuesta en pantalla
+      const textoCrudo =
+        typeof respuestaAsistente === "string"
+          ? respuestaAsistente
+          : respuestaAsistente?.toString() || "";
+
+      const textoParaVoz = textoCrudo
+        .replace(/<[^>]*>/g, "")
         .replace(/\s+/g, " ")
         .trim();
 
+      // 🛑 Limpieza de botones anteriores (usando tus variables reales)
+      const botonesViejos =
+        contenedorMensajes.querySelectorAll(".btn-voz-robot");
+      botonesViejos.forEach((btn) => btn.remove());
+
       const divAsistente = document.createElement("div");
       divAsistente.className = "mensaje-asistente";
-      divAsistente.innerHTML = `<strong>Asistente:</strong><br>${respuestaAsistente}<br><button class="btn-voz-robot" style="margin-top:8px; background:#000; color:#D4AF37; border:1px solid #D4AF37; border-radius:20px; padding:6px 12px; cursor:pointer; font-size:12px;">🔊 Escuchar</button>`;
+      divAsistente.innerHTML = `<strong>Asistente:</strong><br>${textoCrudo}<br><button class="btn-voz-robot" style="margin-top:8px; background:#000; color:#D4AF37; border:1px solid #D4AF37; border-radius:20px; padding:6px 12px; cursor:pointer; font-size:12px;">🔊 Escuchar</button>`;
       contenedorMensajes.appendChild(divAsistente);
 
       divAsistente
@@ -2008,11 +2039,19 @@ document.addEventListener("DOMContentLoaded", () => {
       window.SpeechRecognition || window.webkitSpeechRecognition;
 
     if (SpeechRecognition) {
+      // 🛑 Cortamos la voz del robot para que no se escuche a sí mismo
+      if ("speechSynthesis" in window) {
+        window.speechSynthesis.cancel();
+      }
+
       const reconocimiento = new SpeechRecognition();
       reconocimiento.lang = "es-AR";
 
       reconocimiento.onstart = () => {
         btnMic.classList.add("mic-escuchando");
+        if (inputChat) {
+          inputChat.value = ""; // Limpiamos para evitar arrastre
+        }
       };
 
       reconocimiento.onresult = (evento) => {
@@ -2068,3 +2107,123 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 });
+const caminoRazonData = [
+  {
+    paso: 1,
+    pregunta:
+      "Partamos de algo sencillo: el universo existe, posee un orden inteligible y nosotros podemos conocerlo mediante la razón y la ciencia. También existimos nosotros, capaces de preguntarnos por qué hay algo en vez de nada. ¿Te parece que la existencia del universo necesita una explicación, o considerás que es un hecho sin explicación ulterior?",
+    siguiente: 2,
+  },
+  {
+    paso: 2,
+    pregunta:
+      "La ciencia estudia cómo funcionan los fenómenos observables, mientras que la filosofía pregunta por sus fundamentos: por qué existe el universo y por qué existen seres capaces de conocer la verdad. La investigación científica y la fe no compiten, sino que se ayudan mutuamente. ¿Querés que exploremos cómo las cosas no se explican solo a sí mismas?",
+    siguiente: 3,
+  },
+  {
+    paso: 3,
+    pregunta:
+      "Muchas realidades que conocemos podrían no haber existido o ser diferentes; son contingentes. Si todo dependiera únicamente de otra realidad contingente, seguiría sin explicarse por qué existe algo. Por eso la razón se pregunta si existe una realidad necesaria. ¿Te hace sentido pensar que hay un fundamento que no recibe de otro su existencia?",
+    siguiente: 4,
+  },
+  {
+    paso: 4,
+    pregunta:
+      "El universo manifiesta orden e inteligibilidad, y en nosotros hay conciencia, libertad y capacidad de reconocer el bien. Esto permite ver que una causa inteligente y personal ofrece una explicación razonable del origen de todo. ¿Queremos dar el último paso para ver cómo esto conecta con la fe?",
+    siguiente: 5,
+  },
+  {
+    paso: 5,
+    pregunta:
+      "La razón nos conduce hasta el umbral: reconoce una causa primera, inteligente y fundamento del ser, a la que llamamos Dios. Pero para conocer su intimidad —que es Trinidad y que se ha revelado en Jesucristo— necesitamos su misma revelación. ¿Te gustaría profundizar en cómo Jesús ilumina todo este camino?",
+    siguiente: 1,
+  },
+];
+
+let pasoActualRazon = 1;
+
+function manejarCaminoRazon(mensajeUsuario) {
+  const texto = mensajeUsuario.toLowerCase().trim();
+
+  // 1. Si el usuario invoca el inicio (Paso 1: el chat le pone su audio automático, nosotros le sumamos el de avanzar)
+  if (
+    texto.includes("razón") ||
+    texto.includes("razon") ||
+    texto.includes("orden") ||
+    texto.includes("dios a través")
+  ) {
+    pasoActualRazon = 1;
+    return `
+      <div><strong>El Camino de la Razón</strong><br><br>${caminoRazonData[0].pregunta}</div>
+      <div style="margin-top: 15px; text-align: right;">
+        <button onclick="avanzarCaminoRazonAutomatico()" style="background: #2c3e50; color: white; border: none; padding: 8px 16px; border-radius: 20px; cursor: pointer; font-family: inherit; font-size: 0.9rem; box-shadow: 0 2px 5px rgba(0,0,0,0.1);">
+          Siguiente paso ➔
+        </button>
+      </div>
+    `;
+  }
+
+  // 2. Buscamos la estación actual (los satélites)
+  const estacionActual = caminoRazonData.find(
+    (e) => e.paso === pasoActualRazon,
+  );
+
+  if (!estacionActual) {
+    pasoActualRazon = 1;
+    return `Hemos recorrido las estaciones principales. ¿Querés que volvamos a empezar escribiendo "orden" o preferís charlar sobre otro tema?`;
+  }
+
+  // 3. Avanzamos al siguiente paso
+  pasoActualRazon = estacionActual.siguiente;
+  const siguienteEstacion = caminoRazonData.find(
+    (e) => e.paso === pasoActualRazon,
+  );
+
+  // Si llegamos al final del recorrido
+  if (!siguienteEstacion || pasoActualRazon === 1) {
+    pasoActualRazon = 1;
+    return `Excelente reflexión. Aquí concluye nuestro recorrido inicial por el Camino de la Razón. ¡Podemos seguir charlando de lo que gustes!`;
+  }
+
+  // Devolución de los satélites intermedios con su botón de voz y su botón de avanzar
+  return `
+    <div>Es una hermosa forma de verlo. Pensando en eso:<br><br>${siguienteEstacion.pregunta}</div>
+    <div style="margin-top: 15px; display: flex; gap: 8px; justify-content: flex-end; align-items: center;">
+      <button onclick="leerTextoDirecto('${siguienteEstacion.pregunta.replace(/'/g, "\\'")}')" style="background: #000; color: #fff; border: 1px solid #d4af37; padding: 6px 12px; border-radius: 4px; cursor: pointer; font-size: 12px; display: inline-flex; align-items: center; gap: 4px;">
+        🔊 Escuchar
+      </button>
+      <button onclick="avanzarCaminoRazonAutomatico()" style="background: #2c3e50; color: white; border: none; padding: 8px 16px; border-radius: 20px; cursor: pointer; font-family: inherit; font-size: 0.9rem; box-shadow: 0 2px 5px rgba(0,0,0,0.1);">
+        Siguiente paso ➔
+      </button>
+    </div>
+  `;
+}
+
+window.avanzarCaminoRazonAutomatico = function () {
+  // 1. Obtenemos el texto y el botón del siguiente paso
+  const siguienteTexto = manejarCaminoRazon("continuar_paso");
+
+  // 2. Buscamos el contenedor de mensajes del chat que vimos en el inspector
+  const contenedorMensajes = document.getElementById("chat-mensajes");
+
+  if (contenedorMensajes) {
+    // 3. Creamos el div con la misma estructura visual que usa el asistente
+    const nuevoMensaje = document.createElement("div");
+    nuevoMensaje.className = "mensaje-asistente";
+    nuevoMensaje.innerHTML = `<strong>Asistente:</strong><br><br>${siguienteTexto}`;
+
+    // 4. Lo sumamos al chat y hacemos scroll hacia abajo
+    contenedorMensajes.appendChild(nuevoMensaje);
+    contenedorMensajes.scrollTop = contenedorMensajes.scrollHeight;
+  }
+};
+function leerTextoDirecto(textoParaLeer) {
+  if (!("speechSynthesis" in window)) {
+    alert("Tu dispositivo no soporta la síntesis de voz.");
+    return;
+  }
+  window.speechSynthesis.cancel();
+  const utterance = new SpeechSynthesisUtterance(textoParaLeer);
+  utterance.lang = "es-ES"; // O el idioma que uses
+  window.speechSynthesis.speak(utterance);
+}
