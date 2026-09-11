@@ -903,59 +903,17 @@ function cerrarPanelPorCompleto() {
   }
 }
 
+// Control limpio y directo en el tirador neón para cerrar el panel sin fallas
 if (panelHandle && studyCard) {
-  let startY = 0;
-  let currentY = 0;
-  let isDragging = false;
+  panelHandle.addEventListener("click", () => {
+    studyCard.style.transition = "transform 0.2s ease-in";
+    studyCard.style.transform = "translateY(100%)";
 
-  panelHandle.addEventListener("pointerdown", (e) => {
-    if (e.target.closest(".fan-column") || e.target.closest("button")) return;
-
-    startY = e.clientY;
-    currentY = 0;
-    isDragging = true;
-    studyCard.style.transition = "none";
-  });
-
-  panelHandle.addEventListener("pointermove", (e) => {
-    if (!isDragging) return;
-    e.preventDefault();
-
-    currentY = e.clientY;
-    let diffY = currentY - startY;
-
-    if (diffY > 0) {
-      studyCard.style.transform = `translateY(${diffY}px)`;
-    }
-  });
-
-  panelHandle.addEventListener("pointerup", () => {
-    if (!isDragging) return;
-    isDragging = false;
-
-    if (currentY === 0) {
-      studyCard.style.transition = "transform 0.2s ease";
-      studyCard.style.transform = "";
-      return;
-    }
-
-    let diffY = currentY - startY;
-
-    // Si supera los 80px hacia abajo, ejecutamos el cierre total y reseteo
-    if (diffY > 80) {
-      studyCard.style.transition = "transform 0.15s ease-in";
-      studyCard.style.transform = `translateY(100%)`;
-
-      setTimeout(() => {
+    setTimeout(() => {
+      if (typeof cerrarPanelPorCompleto === "function") {
         cerrarPanelPorCompleto();
-      }, 150);
-    } else {
-      // Vuelve a su lugar si no llegó al umbral
-      studyCard.style.transition = "transform 0.2s ease";
-      studyCard.style.transform = "";
-    }
-
-    currentY = 0;
+      }
+    }, 200);
   });
 }
 
@@ -2091,21 +2049,6 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 
   history.pushState({ vista: "main" }, "", "");
-
-  // --- CERRAR PANEL DE ESTUDIO ---
-  if (panelHandle && studyCard) {
-    panelHandle.addEventListener("click", () => {
-      if (typeof window.restaurarLecturaNormal === "function") {
-        window.restaurarLecturaNormal();
-      } else {
-        studyCard.classList.add("hidden");
-      }
-
-      document.querySelectorAll(".linea-versiculo").forEach((verso) => {
-        verso.style.cursor = "pointer";
-      });
-    });
-  }
 });
 const caminoRazonData = [
   {
