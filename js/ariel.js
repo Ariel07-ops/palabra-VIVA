@@ -28,6 +28,7 @@ const screenAsistente = document.getElementById("screen-asistente");
 
 // 2. CAPTURAR BOTONES INTERACTIVOS
 const btnGotoBible = document.getElementById("btn-goto-bible");
+const btnAsistenteHome = document.getElementById("btn-asistente-home");
 const btnGotoPath = document.getElementById("btn-goto-path");
 const btnBackBible = document.querySelector(".btn-back");
 const btnMenu = document.getElementById("btn-menu");
@@ -2169,4 +2170,23 @@ function leerTextoDirecto(textoParaLeer) {
   const utterance = new SpeechSynthesisUtterance(textoParaLeer);
   utterance.lang = "es-ES"; // O el idioma que uses
   window.speechSynthesis.speak(utterance);
+}
+// Vinculamos el clic del isologo superior con la pantalla del asistente
+// Vinculamos el clic del isologo superior con la pantalla del asistente
+if (btnAsistenteHome && screenAsistente) {
+  btnAsistenteHome.addEventListener("click", () => {
+    // 1. Ocultamos todas las pantallas activas
+    document.querySelectorAll(".screen").forEach((screen) => {
+      screen.classList.remove("active");
+    });
+
+    // 2. Activamos la pantalla del asistente (usando tu constante global)
+    screenAsistente.classList.add("active");
+
+    // 3. Por si el menú lateral estaba abierto, lo cerramos
+    const menuLateral = document.getElementById("menu-lateral");
+    if (menuLateral) {
+      menuLateral.classList.remove("active"); // o la clase que uses
+    }
+  });
 }
