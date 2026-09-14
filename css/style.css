@@ -1247,13 +1247,22 @@ body.light-mode #study-card .column-subtitle,
 /* ==========================================================================
    ESTILOS MEJORADOS: PANTALLA CAMINEMOS CON JESÚS (screen-path-detail)
    ========================================================================== */
+#screen-path-detail .main-header {
+  padding-top: 5px;
+  padding-bottom: 5px;
+  margin-bottom: 5px;
+}
 
+#screen-path-detail .main-header h1.brand-title {
+  font-size: 1.4rem; /* Un toque más compacto si fuera necesario */
+  margin-bottom: 2px;
+}
 /* Asegurar que la pantalla respire y permita scroll cómodo */
 #screen-path-detail .path-content {
   padding: 20px 16px 40px 16px;
   display: flex;
   flex-direction: column;
-  gap: 20px;
+  gap: 2px;
   max-width: 600px;
   margin: 0 auto;
 }
@@ -1275,7 +1284,7 @@ body.light-mode #study-card .column-subtitle,
   background: rgba(20, 20, 20, 0.75);
   border: 1px solid rgba(212, 175, 55, 0.4);
   border-radius: 12px;
-  padding: 22px;
+  padding: 14px;
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
   position: relative;
 }
@@ -1295,7 +1304,7 @@ body.light-mode #study-card .column-subtitle,
 #screen-path-detail .mood-buttons {
   display: flex;
   flex-wrap: wrap;
-  gap: 10px;
+  gap: 8px;
   margin-top: 10px;
 }
 
@@ -1322,7 +1331,7 @@ body.light-mode #study-card .column-subtitle,
 /* Botones de acción principales de la segunda tarjeta */
 #screen-path-detail .path-card .btn-emaus {
   display: inline-block;
-  margin-top: 8px;
+  margin-top: 6px;
   margin-right: 8px;
   padding: 10px 18px;
   background: rgba(212, 175, 55, 0.15);
@@ -1351,7 +1360,7 @@ body.light-mode #study-card .column-subtitle,
   );
   border: 1px solid rgba(212, 175, 55, 0.6);
   border-radius: 12px;
-  padding: 20px;
+  padding: 12px;
   margin-top: 10px;
   text-align: center;
   box-shadow: 0 0 20px rgba(212, 175, 55, 0.15); /* Efecto de iluminación sutil */
@@ -2875,7 +2884,7 @@ body.light-mode #study-card .column-subtitle,
   padding: 20px 16px 40px 16px;
   display: flex;
   flex-direction: column;
-  gap: 20px;
+  gap: 4px;
   max-width: 600px;
   margin: 0 auto;
 }
