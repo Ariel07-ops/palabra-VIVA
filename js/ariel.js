@@ -71,6 +71,7 @@ document.addEventListener("DOMContentLoaded", () => {
 inicializarBiblia();
 
 // --- FUNCIÓN AUXILIAR PARA CAMBIAR DE PANTALLA ---
+// --- FUNCIÓN AUXILIAR PARA CAMBIAR DE PANTALLA ---
 function changeScreen(screenToShow) {
   // --- FRENAR AUDIO SIEMPRE QUE CAMBIAMOS DE PANTALLA ---
   if ("speechSynthesis" in window) {
@@ -119,8 +120,16 @@ function changeScreen(screenToShow) {
       screen.classList.remove("active");
     }
   });
+
   if (screenToShow) {
     screenToShow.classList.add("active");
+
+    // --- GESTIÓN DE HISTORIAL PARA EL BOTÓN "ATRÁS" ---
+    if (screenToShow === screenMain) {
+      history.replaceState({ vista: "main" }, "", "");
+    } else if (screenToShow !== screenSplash) {
+      history.pushState({ vista: "detalle" }, "", "");
+    }
   }
 }
 
@@ -199,7 +208,7 @@ async function abrirPasoEmaus(numero) {
             <p style="margin-top: 15px;"><strong>Caminar:</strong> ${datos.caminar || ""}</p>
             <p style="margin-top: 15px; font-style: italic;"><strong>Reflexión:</strong> ${datos.reflexion || ""}</p>
             
-            ${datos.imagen ? `<img src="${datos.imagen}" alt="${datos.titulo}" style="width: 100%; max-height: auto; object-fit: cover; border-radius: 8px; margin-bottom: 10px; margin-top: 20px;">` : ""}
+            ${datos.imagen ? `<img src="${datos.imagen}" alt="${datos.titulo}" >` : ""}
         `;
 
     changeScreen(screenEmausDetalle);
@@ -221,7 +230,7 @@ async function abrirPeldaño(numero) {
 
     // 2. Contenido completo: Imagen arriba + Todos los textos abajo
     document.getElementById("texto-peldaño-detalle").innerHTML = `
-      ${datos.imagen ? `<img src="${datos.imagen}" alt="${datos.titulo}" style="width: 100%; max-height: auto; object-fit: cover; border-radius: 8px; margin-bottom: 10px;">` : ""}
+      ${datos.imagen ? `<img src="${datos.imagen}" alt="${datos.titulo}" >` : ""}
       
       <p><strong>Introducción:</strong> ${datos.introduccion || ""}</p>
       <p style="margin-top: 15px;"><em>${datos.cita_biblica || ""}</em></p>
@@ -2037,19 +2046,25 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 
   // --- HISTORIAL INICIAL Y MANEJADOR DEL BOTÓN "ATRÁS" ---
+  // --- HISTORIAL INICIAL Y MANEJADOR DEL BOTÓN "ATRÁS" ---
   history.replaceState({ vista: "main" }, "", "");
 
-  window.addEventListener("popstate", () => {
+  window.addEventListener("popstate", (event) => {
+    // Si la tarjeta expandida de estudio está abierta, la cerramos
     if (studyCard && studyCard.classList.contains("expanded")) {
       studyCard.classList.remove("expanded");
       studyCard.style.transform = "";
-      history.pushState({ vista: "main" }, "", "");
-      return;
+    } else {
+      // ¡ACÁ ESTÁ EL SECRETO! Si no hay tarjeta flotante abierta,
+      // forzamos a que la app vuelva visualmente a la pantalla principal (screenMain)
+      if (
+        typeof changeScreen === "function" &&
+        typeof screenMain !== "undefined"
+      ) {
+        changeScreen(screenMain);
+      }
     }
-    history.pushState({ vista: "main" }, "", "");
   });
-
-  history.pushState({ vista: "main" }, "", "");
 });
 const caminoRazonData = [
   {

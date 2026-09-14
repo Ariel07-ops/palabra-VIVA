@@ -1348,7 +1348,18 @@ body.light-mode #study-card .column-subtitle,
   background: #d4af37;
   color: #000;
 }
-
+/* Ajuste fino para que las imágenes no dominen toda la pantalla en modo apaisado o PC */
+#screen-path-detail .path-card img,
+#screen-path-detail .path-content img {
+  max-width: 100%;
+  max-height: 450px; /* Limita la altura máxima para que no sea un gigante infinito */
+  width: auto;
+  height: auto;
+  object-fit: contain;
+  display: block;
+  margin: 15px auto;
+  border-radius: 8px; /* Opcional, le da un toque de cuadro enmarcado muy fino */
+}
 /* ==========================================================================
    ESTILO PARA EL PIE DE PÁGINA REFLEXIVO (EL "SALVAVIDAS")
    ========================================================================== */
@@ -3863,4 +3874,27 @@ body.light-mode .mensaje-asistente {
 
   /* Gira durante 3.5 segundos, hace exactamente 4 vueltas y se PLANTA (forwards) */
   animation: moneda-giro-finito 10s ease-in-out forwards;
+}
+/* Regla global reforzada para ganarle a los estilos inline de JavaScript */
+.path-content img,
+.screen-content img,
+.card-image img,
+#contenedor-imagen-peldaño img {
+  max-width: 100% !important;
+  max-height: 450px !important;
+  width: auto !important;
+  height: auto !important;
+  object-fit: contain !important;
+  display: block !important;
+  margin: 15px auto !important;
+  border-radius: 8px !important;
+}
+/* Contención estricta para celulares y pantallas verticales */
+.screen img,
+#contenedor-imagen-peldaño img {
+  width: 100%;
+  max-height: 280px; /* Altura máxima ideal para que entre entera en el celu sin scrollear de más */
+  object-fit: contain; /* Mantiene toda la proporción de la acuarela sin recortarla */
+  display: block;
+  margin: 0 auto;
 }
