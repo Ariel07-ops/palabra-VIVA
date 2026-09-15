@@ -3898,3 +3898,23 @@ body.light-mode .mensaje-asistente {
   display: block;
   margin: 0 auto;
 }
+/* 1. El contenedor del menú ocupa toda la altura, pero NO se desplaza completo */
+#menu-lateral {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  max-height: 100vh;
+  overflow: hidden; /* Bloquea el scroll general del contenedor */
+}
+
+/* 2. La cabecera se mantiene firme arriba */
+.sidebar-header {
+  flex-shrink: 0; /* Impide que la cabecera se deforme o encoja */
+}
+
+/* 3. La lista de opciones ABSORBE el scroll vertical */
+#menu-lateral ul {
+  flex-grow: 1;
+  overflow-y: auto; /* El scroll ocurre solo dentro de la lista */
+  -webkit-overflow-scrolling: touch; /* Scroll fluido en celulares */
+}

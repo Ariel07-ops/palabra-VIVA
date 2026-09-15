@@ -1193,16 +1193,19 @@ async function cargarEstadoAnimo(nombreEstado) {
 
 // funcion idiomas
 function cambiarIdioma(lang) {
-  const elementosTraducibles = document.querySelectorAll("[data-es][data-en]");
+  const elementosTraducibles = document.querySelectorAll(
+    "[data-es][data-en][data-pt]",
+  );
 
   elementosTraducibles.forEach((el) => {
     if (lang === "en") {
       el.innerText = el.getAttribute("data-en");
+    } else if (lang === "pt") {
+      el.innerText = el.getAttribute("data-pt");
     } else {
       el.innerText = el.getAttribute("data-es");
     }
   });
-
   const botonesIdioma = document.querySelectorAll("#screen-idioma button");
   botonesIdioma.forEach((btn) => btn.classList.remove("active"));
 }

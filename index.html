@@ -90,7 +90,7 @@
       </div>
     </header>
 
-    <!-- MENÚ LATERAL -->
+   <!-- MENÚ LATERAL -->
     <nav id="menu-lateral" class="sidebar-menu">
       <!-- Cabecera del Menú Lateral -->
       <div class="sidebar-header">
@@ -99,31 +99,39 @@
           alt="Isologo Palabra Viva"
           class="sidebar-brand-icon"
         />
-        <span class="sidebar-title">Palabra Viva</span>
+        <span class="sidebar-title" data-es="Palabra Viva" data-en="Palabra Viva" data-pt="Palabra Viva">Palabra Viva</span>
       </div>
 
       <!-- Lista de Opciones -->
       <ul>
-        <li><a href="#" id="link-inicio">🏠 Inicio</a></li>
-        <li><a href="#" id="link-biblia">📖 La Santa Biblia</a></li>
-        <li><a href="#" id="link-buscar">🔍 Buscar Versículo</a></li>
-        <li><a href="#" id="link-idioma">🌐 Idioma</a></li>
-        <li><a href="#" id="link-sugerir">💡 Sugerir Enlaces</a></li>
+        <li><a href="#" id="link-inicio"><span data-es="🏠 Inicio" data-en="🏠 Home" data-pt="🏠 Início">🏠 Inicio</span></a></li>
+        <li><a href="#" id="link-biblia"><span data-es="📖 La Santa Biblia" data-en="📖 The Holy Bible" data-pt="📖 A Santa Bíblia">📖 La Santa Biblia</span></a></li>
+        <li><a href="#" id="link-buscar"><span data-es="🔍 Buscar Versículo" data-en="🔍 Search Verse" data-pt="🔍 Buscar Versículo">🔍 Buscar Versículo</span></a></li>
+        <li><a href="#" id="link-idioma"><span data-es="🌐 Idioma" data-en="🌐 Language" data-pt="🌐 Idioma">🌐 Idioma</span></a></li>
+        <li><a href="#" id="link-sugerir"><span data-es="💡 Sugerir Enlaces" data-en="💡 Suggest Links" data-pt="💡 Sugerir Links">💡 Sugerir Enlaces</span></a></li>
         <li>
           <a href="#" id="link-herramientas">
-            <!-- Usamos un ícono de engranaje, ej: FontAwesome "fas fa-cog" -->
-            <i class="fas fa-cog"></i> Herramientas de Lectura
+            <i class="fas fa-cog"></i> 
+            <span data-es="Herramientas de Lectura" data-en="Reading Tools" data-pt="Ferramentas de Leitura">Herramientas de Lectura</span>
           </a>
         </li>
         <li>
           <a href="#" id="link-acerca">
-            <i class="fas fa-info-circle"></i> Acerca de Palabra Viva</a
-          >
+            <i class="fas fa-info-circle"></i> 
+            <span data-es="Acerca de Palabra Viva" data-en="About Palabra Viva" data-pt="Sobre Palabra Viva">Acerca de Palabra Viva</span>
+          </a>
         </li>
-        <li><a href="#" id="link-asistente">💬 Asistente de Apoyo</a></li>
+        <li>
+          <a href="#" id="link-asistente">
+            <i class="fas fa-comment-dots"></i>
+            <span>
+              <span data-es="Asistente de" data-en="Support" data-pt="Assistente de">Asistente de</span><br>
+              <span data-es="Apoyo" data-en="Assistant" data-pt="Apoio">Apoyo</span>
+            </span>
+          </a>
+        </li>
       </ul>
     </nav>
-
     <!-- PANTALLA 1: BIENVENIDA (SPLASH) -->
     <div id="screen-splash" class="screen active">
       <div class="splash-content-imagen">
@@ -144,16 +152,16 @@
         <!-- Bloque Superior: La Sagrada Escritura -->
         <div id="btn-goto-bible" class="split-block block-top">
           <div class="block-overlay">
-            <h2>LA SANTA BIBLIA</h2>
-            <p>Lectura, Filología y Tradición Eclesial</p>
-          </div>
+    <h2 data-es="LA SANTA BIBLIA" data-en="THE HOLY BIBLE" data-pt="A SANTA BÍBLIA">LA SANTA BIBLIA</h2>
+    <p data-es="Lectura, Filología y Tradición Eclesial" data-en="Reading, Philology and Ecclesial Tradition" data-pt="Leitura, Filologia e Tradição Eclesial">Lectura, Filología y Tradición Eclesial</p>
+</div>
         </div>
         <!-- Bloque Inferior: El Camino Personal -->
         <div id="btn-goto-path" class="split-block block-bottom">
           <div class="block-overlay">
-            <h2>CAMINANDO CON JESÚS</h2>
-            <p>El Camino de Emaús y Tu Ruta Diaria</p>
-          </div>
+    <h2 data-es="CAMINANDO CON JESÚS" data-en="WALKING WITH JESUS" data-pt="CAMINHANDO COM JESUS">CAMINANDO CON JESÚS</h2>
+    <p data-es="El Camino de Emaús y Tu Ruta Diaria" data-en="The Road to Emmaus and Your Daily Route" data-pt="O Caminho de Emaús e Sua Rota Diária">El Camino de Emaús y Tu Ruta Diaria</p>
+</div>
         </div>
       </div>
     </div>
@@ -932,6 +940,13 @@
         >
           🇬🇧 English (Coming soon)
         </button>
+        <button 
+          class="btn-emaus" 
+          onclick="cambiarIdioma('pt')" 
+          style="width: 100%; max-width: 100%;"
+        >
+          🇧🇷 Português (Coming soon)
+        </button>
       </div>
     </div>
 
@@ -941,28 +956,12 @@
       <div style="max-width: 500px; margin: 0 auto; text-align: center">
         <button class="btn-back" id="btn-volver-sugerir">←</button>
 
-        <h2
-          class="text-gold"
-          style="font-family: var(--font-roman); margin-bottom: 15px"
-          data-es="Enlaces de Interés"
-          data-en="Useful Links"
-        >
-          Enlaces de Interés
-        </h2>
+<h2 class="text-gold" style="font-family: var(--font-roman); margin-bottom: 15px;" data-es="Enlaces de Interés" data-en="Links of Interest" data-pt="Links de Interesse">Enlaces de Interés</h2>
 
-        <p
-          style="
-            color: var(--text-light);
-            margin-bottom: 25px;
-            font-size: 0.95rem;
-          "
-          data-es="Recursos recomendados para profundizar en el estudio y la lectura:"
-          data-en="Recommended resources to deepen study and reading:"
-        >
-          Recursos recomendados para profundizar en el estudio y la lectura:
-        </p>
+<p style="color: var(--text-light); margin-bottom: 25px; font-size: 0.95rem;" data-es="Recursos recomendados para profundizar en el estudio y la lectura:" data-en="Recommended resources for further study and reading:" data-pt="Recursos recomendados para aprofundar no estudo e na leitura:">Recursos recomendados para profundizar en el estudio y la lectura:</p>
 
         <!-- Enlace 1: YouTube -->
+      <!-- Enlace 1: YouTube -->
         <a
           href="https://www.youtube.com/@vaticannewsES"
           target="_blank"
@@ -983,6 +982,7 @@
             style="color: var(--gold); display: block; margin-bottom: 5px"
             data-es="Canal de Reflexión en YouTube"
             data-en="Reflection Channel on YouTube"
+            data-pt="Canal de Reflexão no YouTube"
           >
             Canal de Reflexión en YouTube
           </strong>
@@ -990,6 +990,7 @@
             style="font-size: 0.85rem; color: #ccc"
             data-es="Explorá contenidos audiovisuales, transmisiones y charlas inspiradoras oficiales."
             data-en="Explore official audiovisual content, broadcasts, and inspiring talks."
+            data-pt="Explore conteúdos audiovisuais, transmissões e palestras inspiradoras oficiais."
           >
             Explorá contenidos audiovisuales, transmisiones y charlas
             inspiradoras oficiales.
@@ -1017,6 +1018,7 @@
             style="color: var(--gold); display: block; margin-bottom: 5px"
             data-es="Magisterium AI - Asistente de Estudio"
             data-en="Magisterium AI - Study Assistant"
+            data-pt="Magisterium AI - Assistente de Estudo"
           >
             Magisterium AI - Asistente de Estudio
           </strong>
@@ -1024,6 +1026,7 @@
             style="font-size: 0.85rem; color: #ccc"
             data-es="Herramienta de inteligencia artificial orientada a la consulta de documentos eclesiásticos."
             data-en="Artificial intelligence tool designed for consulting ecclesiastical documents."
+            data-pt="Ferramenta de inteligência artificial voltada para a consulta de documentos eclesiásticos."
           >
             Herramienta de inteligencia artificial orientada a la consulta de
             documentos eclesiásticos.
@@ -1051,6 +1054,7 @@
             style="color: var(--gold); display: block; margin-bottom: 5px"
             data-es="Biblioteca y Recursos Abiertos - Magisterio"
             data-en="Open Library and Resources - Magisterium"
+            data-pt="Biblioteca e Recursos Abertos - Magistério"
           >
             Biblioteca y Recursos Abiertos - Magisterio
           </strong>
@@ -1058,6 +1062,7 @@
             style="font-size: 0.85rem; color: #ccc"
             data-es="Documentos oficiales, encíclicas y escritos fundamentales de la Iglesia."
             data-en="Official documents, encyclicals, and fundamental writings of the Church."
+            data-pt="Documentos oficiais, encíclicas e escritos fundamentais da Igreja."
           >
             Documentos oficiales, encíclicas y escritos fundamentales de la
             Iglesia.
@@ -1084,6 +1089,7 @@
             style="color: var(--gold); display: block; margin-bottom: 5px"
             data-es="Archivo y Textos de Estudio"
             data-en="Archive and Study Texts"
+            data-pt="Arquivo e Textos de Estudo"
           >
             Archivo y Textos de Estudio
           </strong>
@@ -1091,6 +1097,7 @@
             style="font-size: 0.85rem; color: #ccc"
             data-es="Recursos complementarios de apoyo para la lectura doctrinal y litúrgica."
             data-en="Supplementary support resources for doctrinal and liturgical reading."
+            data-pt="Recursos complementares de apoio para a leitura doutrinal e litúrgica."
           >
             Recursos complementarios de apoyo para la lectura doctrinal y
             litúrgica.
@@ -1098,13 +1105,12 @@
         </a>
       </div>
     </div>
-
-    <!-- PANTALLA ACERCA DE -->
+   <!-- PANTALLA ACERCA DE -->
     <div id="screen-acerca" class="screen">
       <div class="app-container">
         <header class="main-header">
           <button class="btn-back" id="btn-volver-acerca">←</button>
-          <h1 class="brand-title text-gold">Nuestra Misión</h1>
+          <h1 class="brand-title text-gold" data-es="Nuestra Misión" data-en="Our Mission" data-pt="Nossa Missão">Nuestra Misión</h1>
         </header>
         <main class="content-area" style="padding: 20px; line-height: 1.6">
           <section
@@ -1112,10 +1118,11 @@
             style="padding: 20px; line-height: 1.6"
           >
             <p>
-              <em>Palabra Viva</em> nace para servir a Jesucristo, que es el
-              Camino, la Verdad y la Vida. Deseamos ayudar a que todas las
-              personas puedan acercarse a la Sagrada Escritura, comprenderla con
-              seriedad, orarla con fe y llevarla a la vida cotidiana.
+              <em data-es="Palabra Viva" data-en="Palabra Viva" data-pt="Palabra Viva">Palabra Viva</em> 
+              <span data-es="nace para servir a Jesucristo, que es el Camino, la Verdad y la Vida. Deseamos ayudar a que todas las personas puedan acercarse a la Sagrada Escritura, comprenderla con seriedad, orarla con fe y llevarla a la vida cotidiana."
+                    data-en="was created to serve Jesus Christ, who is the Way, the Truth, and the Life. We wish to help everyone draw closer to Sacred Scripture, understand it with seriousness, pray it with faith, and bring it into daily life."
+                    data-pt="nasce para servir a Jesus Cristo, que é o Caminho, a Verdade e a Vida. Desejamos ajudar todas as pessoas a se aproximarem da Sagrada Escritura, compreendê-la com seriedade, rezá-la com fé e levá-la para a vida diária."
+              >nace para servir a Jesucristo, que es el Camino, la Verdad y la Vida. Deseamos ayudar a que todas las personas puedan acercarse a la Sagrada Escritura, comprenderla con seriedad, orarla con fe y llevarla a la vida cotidiana.</span>
             </p>
             <p
               style="
@@ -1125,16 +1132,23 @@
                 margin-bottom: 5px;
                 font-size: 1.1em;
               "
+              data-es="Nuestro proposito"
+              data-en="Our purpose"
+              data-pt="Nosso propósito"
             >
               Nuestro proposito
             </p>
 
-            <p>
+            <p
+              data-es="Ofrecer un espacio sencillo y confiable para encontrarse con la Palabra de Dios, meditarla con fe y descubrir cómo puede iluminar la vida de cada día."
+              data-en="To offer a simple and reliable space to encounter the Word of God, meditate on it with faith, and discover how it can illuminate everyday life."
+              data-pt="Oferecer um espaço simples e confiável para encontrar a Palavra de Deus, meditá-la com fé e descobrir como ela pode iluminar a vida de cada dia."
+            >
               Ofrecer un espacio sencillo y confiable para encontrarse con la
               Palabra de Dios, meditarla con fe y descubrir cómo puede iluminar
               la vida de cada día.
             </p>
-            <p
+           <p
               style="
                 font-weight: bold;
                 color: #d4af37;
@@ -1142,18 +1156,27 @@
                 margin-bottom: 5px;
                 font-size: 1.1em;
               "
+              data-es="Tu intimidad merece respeto"
+              data-en="Your privacy deserves respect"
+              data-pt="A sua intimidade merece respeito"
             >
               Tu intimidad merece respeto
             </p>
 
             <p>
-              Tu camino espiritual es personal y libre. Por eso,
-              <em>Palabra Viva</em> no solicita datos personales, no realiza
+              <span data-es="Tu camino espiritual es personal y libre. Por eso, "
+                    data-en="Your spiritual journey is personal and free. Therefore, "
+                    data-pt="O seu caminho espiritual é pessoal e livre. Por isso, "
+              >Tu camino espiritual es personal y libre. Por eso, </span>
+              <em data-es="Palabra Viva" data-en="Palabra Viva" data-pt="Palabra Viva">Palabra Viva</em>
+              <span data-es=" no solicita datos personales, no realiza seguimiento de tu ubicación ni utiliza cookies de rastreo. Tus datos y preferencias se almacenan exclusivamente en tu dispositivo. Aquí no hay vigilancia: solo un espacio de encuentro."
+                    data-en=" does not request personal data, track your location, or use tracking cookies. Your data and preferences are stored exclusively on your device. There is no surveillance here: only a space for encounter."
+                    data-pt=" não solicita dados pessoais, não rastreia a sua localização nem utiliza cookies de rastreamento. Seus dados e preferências são armazenados exclusivamente no seu dispositivo. Aqui não há vigilância: apenas um espaço de encontro."
+              >no solicita datos personales, no realiza
               seguimiento de tu ubicación ni utiliza cookies de rastreo. Tus
               datos y preferencias se almacenan exclusivamente en tu
-              dispositivo. Aquí no hay vigilancia: solo un espacio de encuentro.
+              dispositivo. Aquí no hay vigilancia: solo un espacio de encuentro.</span>
             </p>
-
             <p
               style="
                 font-weight: bold;
@@ -1162,11 +1185,18 @@
                 margin-bottom: 5px;
                 font-size: 1.1em;
               "
+              data-es="Un puente hacia la comunidad"
+              data-en="A bridge to the community"
+              data-pt="Uma ponte para a comunidade"
             >
               Un puente hacia la comunidad
             </p>
 
-            <p>
+            <p
+              data-es="Somos una iniciativa laical en constante revisión y discernimiento. No pretendemos reemplazar la vida parroquial ni el acompañamiento de los pastores; al contrario, deseamos ser un puente humilde que te acerque a Cristo, a la Iglesia, a sus sacramentos y a la comunidad que te recibe."
+              data-en="We are a lay initiative in constant review and discernment. We do not pretend to replace parish life or the accompaniment of pastors; on the contrary, we wish to be a humble bridge that brings you closer to Christ, the Church, its sacraments, and the community that welcomes you."
+              data-pt="Somos uma iniciativa leiga em constante revisão e discernimento. Não pretendemos substituir a vida paroquial nem o acompanhamento dos pastores; pelo contrário, desejamos ser uma ponte humilde que o aproxime de Cristo, da Igreja, de seus sacramentos e da comunidade que o acolhe."
+            >
               Somos una iniciativa laical en constante revisión y
               discernimiento. No pretendemos reemplazar la vida parroquial ni el
               acompañamiento de los pastores; al contrario, deseamos ser un
@@ -1182,6 +1212,9 @@
                 font-size: 1.1em;
               "
               class="text-gold"
+              data-es="Todo lo que hacemos es para Él."
+              data-en="All that we do is for Him."
+              data-pt="Tudo o que fazemos é para Ele."
             >
               Todo lo que hacemos es para Él.
             </p>
@@ -1198,49 +1231,83 @@
     </a>
   </div>
 
-  <p style="font-size: 0.85rem; line-height: 1.5; max-width: 600px; margin: 0 auto 15px auto;">
+  <p style="font-size: 0.85rem; line-height: 1.5; max-width: 600px; margin: 0 auto 15px auto;"
+     data-es="Esta obra y su itinerario espiritual están bajo una licencia internacional <a href='https://creativecommons.org/licenses/by-nc-sa/4.0/' target='_blank' style='color: #d4af37; text-decoration: underline;'>Creative Commons Atribución-NoComercial-CompartirIgual (CC BY-NC-SA 4.0)</a>. Eres libre de copiar, distribuir y comunicar públicamente este contenido mencionando la autoría original, sin fines comerciales y bajo los mismos términos."
+     data-en="This work and its spiritual itinerary are under an international <a href='https://creativecommons.org/licenses/by-nc-sa/4.0/' target='_blank' style='color: #d4af37; text-decoration: underline;'>Creative Commons Attribution-NonCommercial-ShareAlike (CC BY-NC-SA 4.0)</a> license. You are free to copy, distribute, and publicly communicate this content mentioning the original authorship, without commercial purposes, and under the same terms."
+     data-pt="Esta obra e o seu itinerário espiritual estão sob uma licença internacional <a href='https://creativecommons.org/licenses/by-nc-sa/4.0/' target='_blank' style='color: #d4af37; text-decoration: underline;'>Creative Commons Atribuição-NãoComercial-CompartilhaIgual (CC BY-NC-SA 4.0)</a>. Você é livre para copiar, distribuir e comunicar publicamente este conteúdo mencionando a autoria original, sem fins comerciais e sob os mesmos termos."
+  >
     Esta obra y su itinerario espiritual están bajo una licencia internacional 
     <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" style="color: #d4af37; text-decoration: underline;">Creative Commons Atribución-NoComercial-CompartirIgual (CC BY-NC-SA 4.0)</a>. 
     Eres libre de copiar, distribuir y comunicar públicamente este contenido mencionando la autoría original, sin fines comerciales y bajo los mismos términos.
   </p>
 
-  <p style="font-size: 0.8rem; color: #888888; max-width: 600px; margin: 0 auto;">
+  <p style="font-size: 0.8rem; color: #888888; max-width: 600px; margin: 0 auto;"
+     data-es="Las citas bíblicas, textos de la Torá, el Tanaj y documentos del Magisterio se integran con fines pastorales y litúrgicos, respetando los derechos de sus fuentes editoriales."
+     data-en="Biblical citations, texts of the Torah, the Tanakh, and Magisterial documents are integrated for pastoral and liturgical purposes, respecting the rights of their publishing sources."
+     data-pt="As citações bíblicas, textos da Torá, do Tanakh e documentos do Magistério são integrados com fins pastorais e litúrgicos, respeitando os direitos de suas fontes editoriais."
+  >
     Las citas bíblicas, textos de la Torá, el Tanaj y documentos del Magisterio se integran con fines pastorales y litúrgicos, respetando los derechos de sus fuentes editoriales.
   </p>
 </div>
             <!-- Aclaración Técnica y Facsímil Histórico -->
             <div class="card-aclaracion">
               <details>
-                <summary class="titulo-desplegable text-gold">
+                <summary class="titulo-desplegable text-gold"
+                         data-es="Sobre la versión bíblica y facsímiles históricos (Torres Amat)"
+                         data-en="About the biblical version and historical facsimiles (Torres Amat)"
+                         data-pt="Sobre a versão bíblica e fac-símiles históricos (Torres Amat)"
+                >
                   Sobre la versión bíblica y facsímiles históricos (Torres Amat)
                 </summary>
 
                       <div class="contenido-desplegable">
                         <p>
                           <strong class="text-silver"
-                            >Versión de estudio:</strong
-                          >
-                          En <em>Palabra Viva</em> se ofrece la traducción de la
+                            data-es="Versión de estudio:"
+                            data-en="Study version:"
+                            data-pt="Versão de estudo:"
+                          >Versión de estudio:</strong>
+                          <span data-es="En Palabra Viva se ofrece la traducción de la"
+                                data-en="Palabra Viva offers the translation of the"
+                                data-pt="Em Palabra Viva é oferecida a tradução da"
+                          >En Palabra Viva se ofrece la traducción de la</span>
                           <strong class="text-gold"
-                            >Sagrada Biblia de Félix Torres Amat</strong
-                          >, publicada originalmente en el siglo XIX y basada en
-                          la Vulgata Latina.
+                            data-es="Sagrada Biblia de Félix Torres Amat"
+                            data-en="Sacred Bible by Félix Torres Amat"
+                            data-pt="Sagrada Bíblia de Félix Torres Amat"
+                          >Sagrada Biblia de Félix Torres Amat</strong>, 
+                          <span data-es="publicada originalmente en el siglo XIX y basada en la Vulgata Latina."
+                                data-en="originally published in the 19th century and based on the Latin Vulgate."
+                                data-pt="publicada originalmente no século XIX e baseada na Vulgata Latina."
+                          >publicada originalmente en el siglo XIX y basada en la Vulgata Latina.</span>
                         </p>
 
                         <ul>
                           <li>
-                            <strong class="text-silver">Finalidad:</strong>
-                            Material para estudio, consulta devocional y
+                            <strong class="text-silver"
+                              data-es="Finalidad:"
+                              data-en="Purpose:"
+                              data-pt="Finalidade:"
+                            >Finalidad:</strong>
+                            <span data-es="Material para estudio, consulta devocional y meditación personal. No destinada al uso litúrgico oficial."
+                                  data-en="Material for study, devotional consultation, and personal meditation. Not intended for official liturgical use."
+                                  data-pt="Material para estudo, consulta devocional e meditação pessoal. Não destinada ao uso litúrgico oficial."
+                            >Material para estudio, consulta devocional y
                             meditación personal. No destinada al uso litúrgico
-                            oficial.
+                            oficial.</span>
                           </li>
                           <li>
                             <strong class="text-silver"
-                              >Condición legal:</strong
-                            >
-                            La edición histórica y las imágenes reproducidas se
+                              data-es="Condición legal:"
+                              data-en="Legal condition:"
+                              data-pt="Condição legal:"
+                            >Condición legal:</strong>
+                            <span data-es="La edición histórica y las imágenes reproducidas se presentan como obras de dominio público, según la información declarada por el archivo de procedencia."
+                                  data-en="The historical edition and reproduced images are presented as works in the public domain, according to the information declared by the source archive."
+                                  data-pt="A edição histórica e as imagens reproduzidas são apresentadas como obras de domínio público, conforme as informações declaradas pelo arquivo de origem."
+                            >La edición histórica y las imágenes reproducidas se
                             presentan como obras de dominio público, según la
-                            información declarada por el archivo de procedencia.
+                            información declarada por el archivo de procedencia.</span>
                           </li>
                         </ul>
 
@@ -1248,20 +1315,18 @@
 
                         <p>
                           <strong class="text-gold"
-                            >Portadas y facsímiles históricos:</strong
-                          >
+                            data-es="Portadas y facsímiles históricos:"
+                            data-en="Historical covers and facsimiles:"
+                            data-pt="Capas e fac-símiles históricos:"
+                          >Portadas y facsímiles históricos:</strong>
                         </p>
 
                         <!-- Galería preparada para 1 a 4 imágenes -->
                         <div class="galeria-facsimiles">
-                          <div class="item-facsamil">
-                          <a href="assets/imagen/pagina1.jpg" target="_blank">
-                            <img src="assets/imagen/pagina1.jpg" 
-                            alt="Portadilla del Tomo IV (Nuevo Testamento)" 
-                            class="imagen-facsamil">
-                          </a>
-                          <p class="pie-imagen text-silver">Tomo IV (Nuevo Testamento)</p>
-                          </div>    
+                          <div class="item-facsimil">
+    <img src="assets/imagen/pagina1.jpg" alt="Portadilla del Tomo IV (Nuevo Testamento)" class="imagen-facsimil">
+    <p class="pie-imagen text-silver" data-es="Tomo IV (Nuevo Testamento)" ...>Volume IV (New Testament)</p>
+</div>  
                         </div>
                         </div>
 
@@ -1271,6 +1336,9 @@
                             target="_blank"
                             rel="noopener noreferrer"
                             class="enlace-dorado"
+                            data-es="Consultar el ejemplar digitalizado completo en Internet Archive"
+                            data-en="Consult the complete digitized copy at Internet Archive"
+                            data-pt="Consultar o exemplar digitalizado completo no Internet Archive"
                           >
                             Consultar el ejemplar digitalizado completo en
                             Internet Archive
@@ -1287,7 +1355,6 @@
         </main>
       </div>
     </div>
-
     <!-- VENTANA MODAL PARA RESULTADOS DE BÚSQUEDA -->
     <div
       id="modal-versiculo"
@@ -1373,10 +1440,10 @@
           text-align: center;
         "
       >
-        <h3>🔧 Herramientas</h3>
+        <h3 data-es="🔧 Herramientas" data-en="🔧 Tools" data-pt="🔧 Ferramentas">🔧 Herramientas</h3>
 
         <!-- Controles de Tamaño de Letra -->
-        <p style="margin: 10px 0 5px 0; font-size: 14px">Tamaño de letra</p>
+        <p style="margin: 10px 0 5px 0; font-size: 14px" data-es="Tamaño de letra" data-en="Font size" data-pt="Tamanho da letra">Tamaño de letra</p>
         <div style="margin-bottom: 15px">
           <button
             onclick="cambiarTamanio(2)"
@@ -1420,7 +1487,7 @@
         </div>
 
         <!-- Único botón de Modo Sepia -->
-        <p style="margin: 10px 0 5px 0; font-size: 14px">Modo de lectura</p>
+        <p style="margin: 10px 0 5px 0; font-size: 14px" data-es="Modo de lectura" data-en="Reading mode" data-pt="Modo de leitura">Modo de lectura</p>
         <div style="margin-bottom: 20px">
           <button
             onclick="alternarSepia()"
@@ -1433,6 +1500,9 @@
               border-radius: 4px;
               font-weight: bold;
             "
+            data-es="📖 Activar / Quitar Sepia"
+            data-en="📖 Toggle Sepia Mode"
+            data-pt="📖 Ativar / Remover Sépia"
           >
             📖 Activar / Quitar Sepia
           </button>
@@ -1449,6 +1519,9 @@
             font-weight: bold;
             border-radius: 4px;
           "
+          data-es="Cerrar"
+          data-en="Close"
+          data-pt="Fechar"
         >
           Cerrar
         </button>
