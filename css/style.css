@@ -452,25 +452,29 @@ body.light-mode #contenido-peldaño {
   background: rgba(212, 175, 55, 0.1);
   border: 2px solid rgba(212, 175, 55, 0.3);
   color: #d4af37;
-  font-size: 1.5rem;
-  width: 45px;
-  height: 45px;
+  font-size: 1.2rem; /* Reducido un poquito para que el caracter entre bien y no desborde */
+  font-weight: bold;
+  width: 42px; /* Un círculo un poco más armónico */
+  height: 42px;
+  min-width: 42px;
   border-radius: 50%;
-  display: flex;
+  display: inline-flex;
   align-items: center;
   justify-content: center;
   cursor: pointer;
-  margin-bottom: 15px;
   transition: all 0.3s;
-  margin-right: 15px !important;
+  /* Quitamos el margin-right absoluto que rompía flujos en flexbox */
+  margin: 0 0 15px 0;
+  flex-shrink: 0;
 }
 
 .btn-back:hover,
 .btn-back-path:hover,
 .btn-volver:hover {
-  background: rgba(212, 175, 55, 0.2);
+  background: rgba(212, 175, 55, 0.25);
   border-color: var(--gold);
-  color: var(--gold);
+  color: var(--gold-light);
+  transform: scale(1.05);
 }
 
 /* ==========================================
@@ -3917,4 +3921,72 @@ body.light-mode .mensaje-asistente {
   flex-grow: 1;
   overflow-y: auto; /* El scroll ocurre solo dentro de la lista */
   -webkit-overflow-scrolling: touch; /* Scroll fluido en celulares */
+}
+/* Cabecera del Asistente alineada y en orden */
+#screen-asistente .asistente-header {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  padding: 10px 15px;
+  position: relative;
+  width: 100%;
+}
+
+/* El botón y el título respetan su espacio natural */
+#screen-asistente .asistente-header .btn-back {
+  position: relative !important;
+  margin: 0 !important;
+  flex-shrink: 0;
+}
+
+#screen-asistente .asistente-header .brand-title {
+  position: relative !important;
+  margin: 0 !important;
+  text-align: left;
+  flex: 1;
+}
+@media (max-height: 500px) and (orientation: landscape) {
+  /* En modo horizontal, centramos el header del asistente */
+  #screen-asistente .asistente-header {
+    justify-content: center !important;
+  }
+
+  /* Si querés que el título se despegue un poquito más del botón hacia el centro */
+  #screen-asistente .asistente-header .brand-title {
+    margin-left: 20px !important;
+    text-align: center;
+  }
+}
+/* Cabecera unificada para la pantalla de Idioma */
+#screen-idioma .idioma-header {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  padding: 10px 15px;
+  position: relative;
+  width: 100%;
+}
+
+#screen-idioma .idioma-header .btn-back {
+  position: relative !important;
+  margin: 0 !important;
+  flex-shrink: 0;
+}
+
+#screen-idioma .idioma-header h2 {
+  position: relative !important;
+  margin: 0 !important;
+  text-align: left;
+  flex: 1;
+}
+
+/* Ajuste fino para landscape */
+@media (max-height: 500px) and (orientation: landscape) {
+  #screen-idioma .idioma-header {
+    justify-content: center !important;
+  }
+  #screen-idioma .idioma-header h2 {
+    margin-left: 20px !important;
+    text-align: center;
+  }
 }

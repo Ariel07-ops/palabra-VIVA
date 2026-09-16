@@ -265,21 +265,46 @@ setTimeout(() => {
 document.addEventListener("DOMContentLoaded", () => {
   // 1. Cambio de Tema (Luminoso / Oscuro)
   // 1. Cambio de Tema (Luminoso / Oscuro)
+  // --- 1. Cambio de Tema Unificado (Claro / Oscuro / Sepia) ---
   const btnTheme = document.getElementById("btn-theme");
   if (btnTheme) {
+    // Sincronizar el ícono inicial según el estado actual al cargar
+    if (document.body.classList.contains("modo-sepia")) {
+      btnTheme.innerHTML = "🟤";
+    } else if (document.body.classList.contains("light-mode")) {
+      btnTheme.innerHTML = "☀️";
+    } else {
+      btnTheme.innerHTML = "🌓";
+    }
+
     btnTheme.addEventListener("click", () => {
-      // --- LIMPIEZA DE SEPIA AL TOCAR EL BOTÓN DE ARRIBA ---
-      document.body.classList.remove("modo-sepia");
-      document.documentElement.classList.remove("modo-sepia");
-
+      const body = document.body;
+      const docEl = document.documentElement;
       const indicador = document.getElementById("indicador-sepia");
-      if (indicador) {
-        indicador.style.display = "none";
-      }
-      // ----------------------------------------------------
 
-      // Tu código original que cambia el modo normal/claro
-      document.body.classList.toggle("light-mode");
+      // Revisamos en qué estado estamos y pasamos al siguiente
+      if (
+        !body.classList.contains("light-mode") &&
+        !body.classList.contains("modo-sepia")
+      ) {
+        // De Oscuro pasa a Sepia
+        body.classList.add("modo-sepia");
+        docEl.classList.add("modo-sepia");
+        if (indicador) indicador.style.display = "inline-block";
+        btnTheme.innerHTML = "🟤"; // Planeta / Sepia
+      } else if (body.classList.contains("modo-sepia")) {
+        // De Sepia pasa a Claro
+        body.classList.remove("modo-sepia");
+        docEl.classList.remove("modo-sepia");
+        body.classList.add("light-mode");
+        if (indicador) indicador.style.display = "none";
+        btnTheme.innerHTML = "☀️"; // Sol para Claro
+      } else {
+        // De Claro pasa a Oscuro (por defecto)
+        body.classList.remove("light-mode");
+        if (indicador) indicador.style.display = "none";
+        btnTheme.innerHTML = "🌓"; // Sol y luna para Oscuro
+      }
     });
   }
 

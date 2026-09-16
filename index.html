@@ -67,26 +67,9 @@
 </div>
       <div class="nav-right">
         <!-- Botón para alternar el modo luminoso/solemne -->
-        <button id="btn-theme" class="nav-icon-btn" title="Cambiar Modo">
-          🌓
-        </button>
-        <!-- Cartelito indicador de Modo Sepia -->
-        <span
-          id="indicador-sepia"
-          style="
-            display: none;
-            font-size: 13px;
-            color: #4b3621;
-            background: #e6dcbe;
-            padding: 2px 8px;
-            border-radius: 4px;
-            margin-left: 8px;
-            font-weight: bold;
-            border: 1px solid #b59a64;
-          "
-        >
-          Sepia Activo
-        </span>
+        <button id="btn-theme" class="nav-icon-btn" title="Cambiar Modo"></button>
+        
+       
       </div>
     </header>
 
@@ -170,7 +153,7 @@
     <div id="screen-bible-detail" class="screen">
       <div class="app-container">
         <header class="main-header">
-          <button class="btn-back" onclick="changeScreen(screenMain)">←</button>
+          <button class="btn-back" onclick="changeScreen(screenMain)">⬅</button>
           <h1 class="brand-title">La Sagrada Escritura</h1>
           <p class="header-statement">
             Seleccioná un testamento para comenzar.
@@ -233,7 +216,7 @@
       <div class="app-container">
         <header class="main-header">
           <button class="btn-back" onclick="changeScreen(screenBibleDetail)">
-            ←
+            ⬅
           </button>
           <h1 class="brand-title">Antiguo Testamento</h1>
           <p class="header-statement">Seleccioná un libro para continuar.</p>
@@ -258,7 +241,7 @@
       <div class="app-container">
         <header class="main-header">
           <button class="btn-back" onclick="changeScreen(screenAntiguo)">
-            ←
+            ⬅
           </button>
 
           <h1 class="brand-title" id="titulo-libro-seleccionado">Libro</h1>
@@ -305,7 +288,7 @@
             "
           >
             <button class="btn-back" onclick="changeScreen(screenCapitulos)">
-              ←
+              ⬅
             </button>
 
             <button
@@ -380,7 +363,7 @@
       <div class="app-container">
         <header class="main-header">
           <button class="btn-back" onclick="changeScreen(screenBibleDetail)">
-            ←
+            ⬅
           </button>
           <h1 class="brand-title">Nuevo Testamento</h1>
           <p class="header-statement">Seleccioná un libro para continuar.</p>
@@ -910,51 +893,52 @@
 
     <!-- PANTALLA / MODAL DE IDIOMA -->
     <div id="screen-idioma" class="screen">
-      <button class="btn-back" id="btn-volver-idioma">⬅</button>
-      <h2
-        class="text-gold"
-        style="font-family: var(--font-roman); margin-bottom: 20px"
-      >
-        Selector de Idioma / Language
-      </h2>
-      <div
-        style="
-          max-width: 400px;
-          margin: 0 auto;
-          display: flex;
-          flex-direction: column;
-          gap: 15px;
-        "
-      >
-        <button
-          class="btn-emaus active"
-          onclick="cambiarIdioma('es')"
-          style="width: 100%; max-width: 100%"
-        >
-          🇪🇸 Español (Predeterminado)
-        </button>
-        <button
-          class="btn-emaus"
-          onclick="cambiarIdioma('en')"
-          style="width: 100%; max-width: 100%"
-        >
-          🇬🇧 English (Coming soon)
-        </button>
-        <button 
-          class="btn-emaus" 
-          onclick="cambiarIdioma('pt')" 
-          style="width: 100%; max-width: 100%;"
-        >
-          🇧🇷 Português (Coming soon)
-        </button>
-      </div>
-    </div>
-
+  <div class="idioma-header">
+    <button class="btn-back" id="btn-volver-idioma">⬅</button>
+    <h2
+      class="text-gold"
+      style="font-family: var(--font-roman); margin-bottom: 0;"
+    >
+      Selector de Idioma / Language
+    </h2>
+  </div>
+  <div
+    style="
+      max-width: 400px;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+    "
+  >
+    <button
+      class="btn-emaus active"
+      onclick="cambiarIdioma('es')"
+      style="width: 100%; max-width: 100%"
+    >
+      🇪🇸 Español (Predeterminado)
+    </button>
+    <button
+      class="btn-emaus"
+      onclick="cambiarIdioma('en')"
+      style="width: 100%; max-width: 100%"
+    >
+      🇬🇧 English (Coming soon)
+    </button>
+    <button 
+      class="btn-emaus" 
+      onclick="cambiarIdioma('pt')" 
+      style="width: 100%; max-width: 100%;"
+    >
+      🇧🇷 Português (Coming soon)
+    </button>
+  </div>
+</div>
 
     <!-- PANTALLA / MODAL DE SUGERIR ENLACES -->
     <div id="screen-sugerir" class="screen">
       <div style="max-width: 500px; margin: 0 auto; text-align: center">
-        <button class="btn-back" id="btn-volver-sugerir">←</button>
+        <button class="btn-back" id="btn-volver-sugerir">⬅</button>
 
 <h2 class="text-gold" style="font-family: var(--font-roman); margin-bottom: 15px;" data-es="Enlaces de Interés" data-en="Links of Interest" data-pt="Links de Interesse">Enlaces de Interés</h2>
 
@@ -1109,7 +1093,7 @@
     <div id="screen-acerca" class="screen">
       <div class="app-container">
         <header class="main-header">
-          <button class="btn-back" id="btn-volver-acerca">←</button>
+          <button class="btn-back" id="btn-volver-acerca">⬅</button>
           <h1 class="brand-title text-gold" data-es="Nuestra Misión" data-en="Our Mission" data-pt="Nossa Missão">Nuestra Misión</h1>
         </header>
         <main class="content-area" style="padding: 20px; line-height: 1.6">
@@ -1530,7 +1514,7 @@
     <!-- Vista del Asistente de Apoyo -->
     <div id="screen-asistente" class="screen">
       <div class="asistente-header">
-        <button class="btn-back" onclick="changeScreen(screenMain)">←</button>
+        <button class="btn-back" onclick="changeScreen(screenMain)">⬅</button>
         <h2 class="brand-title text-gold">💬 Asistente </h2>
         
       </div>
