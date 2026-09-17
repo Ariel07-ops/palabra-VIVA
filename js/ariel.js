@@ -814,7 +814,46 @@ let textoCompletoActual = "";
 let estaReproduciendo = false;
 let estaPausado = false;
 
-// aca esta el motor de audio
+// ==========================================
+// 1. CONFIGURACIÓN Y HELPER MULTILINGÜE
+// ==========================================
+const CONFIG_IDIOMAS_VOZ = {
+  es: { lang: "es-ES", filtro: ["Paulina", "Monica", "Helena", "Sabina"] },
+  en: {
+    lang: "en-US",
+    filtro: ["Samantha", "Victoria", "Karen", "Zira", "Google US English"],
+  },
+  pt: {
+    lang: "pt-BR",
+    filtro: ["Luciana", "Heloisa", "Camila", "Google Português"],
+  },
+};
+
+function obtenerVozPorIdioma(idiomaCodigo) {
+  const voces = window.speechSynthesis.getVoices();
+  const config = CONFIG_IDIOMAS_VOZ[idiomaCodigo] || CONFIG_IDIOMAS_VOZ["es"];
+
+  // 1. Buscar por nombres preferidos de voces femeninas/cálidas
+  for (let nombre of config.filtro) {
+    const vozEncontrada = voces.find((v) => v.name.includes(nombre));
+    if (vozEncontrada) return vozEncontrada;
+  }
+
+  // 2. Buscar cualquier voz femenina en ese idioma
+  const vozFemenina = voces.find(
+    (v) =>
+      v.lang.startsWith(idiomaCodigo) &&
+      v.name.toLowerCase().includes("female"),
+  );
+  if (vozFemenina) return vozFemenina;
+
+  // 3. Fallback: la primera voz del idioma o la primera del sistema
+  return voces.find((v) => v.lang.startsWith(idiomaCodigo)) || voces[0];
+}
+
+// ==========================================
+// 2. MOTOR DE AUDIO BÍBLICO (POR FRASES)
+// ==========================================
 function ejecutarLecturaVoz() {
   if (!("speechSynthesis" in window)) {
     alert("Tu dispositivo no soporta la síntesis de voz.");
@@ -826,93 +865,107 @@ function ejecutarLecturaVoz() {
 
   if (!areaLecturaFinal) return;
 
-  if (estaReproduciendo) {
-    window.speechSynthesis.cancel();
+  // --- BOTÓN DETENER / INTERRUPTOR INSTANTÁNEO ---
+  if (estaReproduciendo || window.speechSynthesis.speaking) {
     estaReproduciendo = false;
-    if (btnAudio)
+    window.speechSynthesis.cancel();
+    if (btnAudio) {
       btnAudio.innerHTML = '<i class="fas fa-volume-up"></i> Escuchar';
+    }
     return;
   }
 
-  // 1. Hacemos el clon y barremos con elementos que puedan ensuciar
+  // 1. Clonación y limpieza del HTML (quita versículos, títulos y notas)
   const clone = areaLecturaFinal.cloneNode(true);
-  clone.querySelectorAll("sup").forEach((sup) => sup.remove());
-  clone.querySelectorAll("h1, h2, h3").forEach((el) => el.remove());
   clone
-    .querySelectorAll(".filologia, .caja-filologica, ins, u")
-    .forEach((el) => {
-      el.remove();
-    });
+    .querySelectorAll("sup, h1, h2, h3, .filologia, .caja-filologica, ins, u")
+    .forEach((el) => el.remove());
 
-  // 2. Limpieza de fuerza bruta: solo dejamos letras, números y puntuación básica
+  // 2. Limpieza básica del texto
   let textoLimpio = clone.innerText
-    .replace(/[^\w\sáéíóúÁÉÍÓÚüÜñÑ.,!?;]/g, "") // Borra cualquier carácter extraño invisible
-    .replace(/\n/g, " ") // Reemplazar saltos de línea por espacios
-    .replace(/\s+/g, " ") // Normalizar espacios múltiples
+    .replace(/[^\w\sáéíóúÁÉÍÓÚüÜñÑ.,!?;]/g, "")
+    .replace(/\n/g, " ")
+    .replace(/\s+/g, " ")
     .trim();
 
-  // 3. Seguridad por si el capítulo es demasiado largo para el buffer del celu
-  if (textoLimpio.length > 4000) {
-    console.log("Capítulo muy largo, recortando por seguridad...");
-    textoLimpio = textoLimpio.substring(0, 4000);
-  }
-
   if (!textoLimpio) {
-    console.log("El texto quedó vacío después de la limpieza.");
+    console.log("El texto quedó vacío tras la limpieza.");
     return;
   }
 
-  // 4. Forzar reseteo total y despertar el motor de voz de Android
+  // 3. SEPARAR EL CAPÍTULO EN FRASES (Busca cierres de punto, exclamación o pregunta)
+  // Esto fragmenta el texto en oraciones livianas para que Android jamás se ahoque
+  const frases = textoLimpio.match(/[^.!?]+[.!?]+/g) || [textoLimpio];
+
+  // 4. Cancelación preventiva del buffer
   window.speechSynthesis.cancel();
 
-  const despertar = new SpeechSynthesisUtterance("");
-  window.speechSynthesis.speak(despertar);
-  window.speechSynthesis.cancel();
-
-  // 5. Discurso real con retraso de seguridad
+  // 5. Cadena de lectura fluida
   setTimeout(() => {
-    const voces = window.speechSynthesis.getVoices();
-    // Busca la voz más dulce que tengas instalada
-    let vozDulce =
-      voces.find((v) => v.name.includes("Paulina")) ||
-      voces.find((v) => v.name.includes("Monica")) ||
-      voces.find(
-        (v) => v.lang === "es-ES" && v.name.toLowerCase().includes("female"),
-      ) ||
-      voces.find((v) => v.lang === "es-ES") ||
-      voces.find((v) => v.lang === "es-419") ||
-      voces[0];
+    const idiomaApp =
+      window.idiomaActual || localStorage.getItem("idiomaApp") || "es";
+    const configIdioma =
+      CONFIG_IDIOMAS_VOZ[idiomaApp] || CONFIG_IDIOMAS_VOZ["es"];
+    const vozSeleccionada = obtenerVozPorIdioma(idiomaApp);
 
-    utteranceActual = new SpeechSynthesisUtterance(textoLimpio);
-    if (vozDulce) utteranceActual.voice = vozDulce;
-    utteranceActual.lang = "es-ES";
-    utteranceActual.rate = 1.0; // un poco más lento queda más dulce
-    utteranceActual.pitch = 1.35; // 1.35 es el punto dulce, 1.4 ya es chillón
-
-    utteranceActual.onstart = () => {
-      console.log("La síntesis empezó a hablar");
-    };
-
-    utteranceActual.onend = () => {
-      estaReproduciendo = false;
-      if (btnAudio)
-        btnAudio.innerHTML = '<i class="fas fa-volume-up"></i> Escuchar';
-    };
-
-    utteranceActual.onerror = (e) => {
-      console.error("Error nativo de voz en celu:", e);
-      estaReproduciendo = false;
-      if (btnAudio)
-        btnAudio.innerHTML = '<i class="fas fa-volume-up"></i> Escuchar';
-    };
-
+    let indiceFrase = 0;
     estaReproduciendo = true;
-    if (btnAudio) btnAudio.innerHTML = '<i class="fas fa-stop"></i> Detener';
 
-    window.speechSynthesis.speak(utteranceActual);
-  }, 300);
+    if (btnAudio) {
+      btnAudio.innerHTML = '<i class="fas fa-stop"></i> Detener';
+    }
+
+    // Función recursiva que encadena las oraciones una detrás de otra
+    function reproducirSiguienteFrase() {
+      // Si el usuario tocó "Detener" o llegamos al final del capítulo
+      if (!estaReproduciendo || indiceFrase >= frases.length) {
+        estaReproduciendo = false;
+        window.speechSynthesis.cancel();
+        if (btnAudio) {
+          btnAudio.innerHTML = '<i class="fas fa-volume-up"></i> Escuchar';
+        }
+        return;
+      }
+
+      const textoFrase = frases[indiceFrase].trim();
+
+      // Saltar frases vacías si las hubiera
+      if (!textoFrase) {
+        indiceFrase++;
+        reproducirSiguienteFrase();
+        return;
+      }
+
+      const utterance = new SpeechSynthesisUtterance(textoFrase);
+      if (vozSeleccionada) utterance.voice = vozSeleccionada;
+      utterance.lang = configIdioma.lang;
+
+      // --- CONFIGURACIÓN REFLEXIVA / PAUSADA ---
+      utterance.rate = 0.82; // Cadencia lenta para meditar
+      utterance.pitch = 0.95; // Tono cálido
+
+      // Evento: Al terminar la frase actual, arranca la siguiente en el acto
+      utterance.onend = () => {
+        indiceFrase++;
+        reproducirSiguienteFrase();
+      };
+
+      utterance.onerror = (e) => {
+        console.error("Error en frase de voz:", e);
+        estaReproduciendo = false;
+        window.speechSynthesis.cancel();
+        if (btnAudio) {
+          btnAudio.innerHTML = '<i class="fas fa-volume-up"></i> Escuchar';
+        }
+      };
+
+      window.speechSynthesis.speak(utterance);
+    }
+
+    // Disparar la primera oración
+    reproducirSiguienteFrase();
+  }, 150);
 }
-
 // --- INTERACTIVIDAD DEL PANEL INFERIOR ---
 
 const fanColumns = document.querySelectorAll(".fan-column");
@@ -1530,26 +1583,43 @@ function clasificarConsulta(texto) {
   };
 }
 
-// --- FUNCIÓN GLOBAL DE SÍNTESIS DE VOZ ---
+// --- FUNCIÓN GLOBAL DE SÍNTESIS DE VOZ (ASISTENTE) ---
 function hacerHablarAlRobot(texto) {
-  if ("speechSynthesis" in window) {
-    window.speechSynthesis.cancel();
-    const utterance = new SpeechSynthesisUtterance(texto);
-    utterance.lang = "es-AR";
-    utterance.rate = 1.0;
-    utterance.pitch = 1.0;
-    window.speechSynthesis.speak(utterance);
-  } else {
+  if (!("speechSynthesis" in window)) {
     console.log("Este navegador no soporta síntesis de voz.");
+    return;
   }
+
+  if (!texto) return;
+
+  // Cancelar audios previos para respuesta inmediata
+  window.speechSynthesis.cancel();
+
+  // Detección dinámica del idioma activo (es, en, pt)
+  const idiomaApp =
+    window.idiomaActual || localStorage.getItem("idiomaApp") || "es";
+  const configIdioma =
+    CONFIG_IDIOMAS_VOZ[idiomaApp] || CONFIG_IDIOMAS_VOZ["es"];
+  const vozSeleccionada = obtenerVozPorIdioma(idiomaApp);
+
+  const utterance = new SpeechSynthesisUtterance(texto);
+  if (vozSeleccionada) utterance.voice = vozSeleccionada;
+
+  utterance.lang = configIdioma.lang;
+
+  // Ritmo de conversación fluido para el asistente
+  utterance.rate = 1.0;
+  utterance.pitch = 1.0;
+
+  window.speechSynthesis.speak(utterance);
 }
 
+// Inicialización de evento para precargar voces en memoria
 if (typeof window.speechSynthesis !== "undefined") {
   window.speechSynthesis.onvoiceschanged = () => {
     window.speechSynthesis.getVoices();
   };
 }
-
 // --- MAPA GEOGRÁFICO / REFERENCIAS ---
 function actualizarMapaGeografico(id) {
   const contenedorMapa = document.getElementById("contenedor-mapa-referencia");
