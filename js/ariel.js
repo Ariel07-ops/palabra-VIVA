@@ -1278,39 +1278,30 @@ function cerrarModalHerramientas() {
     modal.style.display = "none";
   }
 }
-function alternarSepia() {
-  const body = document.body;
-  const htmlTag = document.documentElement;
-  const indicador = document.getElementById("indicador-sepia");
 
-  // Alternamos la clase sepia
-  body.classList.toggle("modo-sepia");
-  htmlTag.classList.toggle("modo-sepia");
-
-  // Si el elemento indicador existe, mostramos u ocultamos el cartelito
-  if (indicador) {
-    if (body.classList.contains("modo-sepia")) {
-      indicador.style.display = "inline-block";
-    } else {
-      indicador.style.display = "none";
-    }
-  }
-
-  // Cerramos el modal de forma segura
-  if (typeof cerrarModalHerramientas === "function") {
-    cerrarModalHerramientas();
-  }
-}
-document.querySelectorAll("#btn-goto-bible, #btn-goto-path").forEach((el) => {
-  el.style.setProperty("background-color", "#f4ebd0", "important");
-  el.style.setProperty("color", "#4b3621", "important");
-});
+// --- MANEJO DE TAMAÑO DE FUENTE ---
 let tamanoActual = 18;
 
 function actualizarIndicadorVisual() {
-  const indicador = document.getElementById("indicador-tamano");
-  if (indicador) {
-    indicador.innerText = tamanoActual + "px";
+  // 1. Actualizamos el indicador de la barra (si existe)
+  const indicadorFijo = document.getElementById("indicador-estatus-letra");
+  const textoEstado = document.getElementById("texto-estado");
+  const valorEstado = document.getElementById("valor-estado");
+
+  if (indicadorFijo) {
+    if (tamanoActual === 18) {
+      indicadorFijo.style.display = "none";
+    } else {
+      indicadorFijo.style.display = "inline-block";
+      if (textoEstado) textoEstado.innerText = tamanoActual > 18 ? "A+" : "A-";
+      if (valorEstado) valorEstado.innerText = tamanoActual + "px";
+    }
+  }
+
+  // 2. Actualizamos el número del modal
+  const indicadorModal = document.getElementById("indicador-tamano");
+  if (indicadorModal) {
+    indicadorModal.innerText = tamanoActual + "px";
   }
 }
 
@@ -1318,51 +1309,32 @@ function cambiarTamanio(delta) {
   const areaLectura = document.getElementById("texto-lectura-final");
   if (!areaLectura) return;
 
-  // Sumamos o restamos (2 o -2), manteniendo límites seguros entre 14px y 30px
+  // Mantiene límites seguros entre 14px y 30px
   tamanoActual = Math.max(14, Math.min(30, tamanoActual + delta));
 
   areaLectura.style.fontSize = tamanoActual + "px";
   localStorage.setItem("tamanoLetra", tamanoActual);
 
-  // Actualizamos el numerito en pantalla al instante
   actualizarIndicadorVisual();
 }
 
-// Al cargar la página, aplicamos el tamaño guardado y seteamos el número correcto
+// --- CARGA E INICIALIZACIÓN SEGURA DE ESTILOS Y TAMAÑO ---
 window.addEventListener("DOMContentLoaded", () => {
+  // Aplicar tamaño guardado
   const guardado = localStorage.getItem("tamanoLetra");
   if (guardado) {
-    tamanoActual = parseInt(guardado);
+    tamanoActual = parseInt(guardado, 10);
     const areaLectura = document.getElementById("texto-lectura-final");
     if (areaLectura) areaLectura.style.fontSize = tamanoActual + "px";
   }
   actualizarIndicadorVisual();
+
+  // Aplicar estilos a botones de navegación de forma segura tras cargar el DOM
+  document.querySelectorAll("#btn-goto-bible, #btn-goto-path").forEach((el) => {
+    el.style.setProperty("background-color", "#f4ebd0", "important");
+    el.style.setProperty("color", "#4b3621", "important");
+  });
 });
-function actualizarIndicadorVisual() {
-  // 1. Actualizamos el nuevo indicador de la barra (el que dice A+ / A-)
-  const indicadorFijo = document.getElementById("indicador-estatus-letra");
-  const textoEstado = document.getElementById("texto-estado");
-  const valorEstado = document.getElementById("valor-estado");
-
-  // 2. Actualizamos el del medio (el que dice "18px" o similar dentro del modal)
-  const indicadorModal = document.getElementById("indicador-tamano");
-
-  // Lógica para el cartelito de la barra (A+ / A-)
-  if (indicadorFijo) {
-    if (tamanoActual === 18) {
-      indicadorFijo.style.display = "none";
-    } else {
-      indicadorFijo.style.display = "inline-block";
-      textoEstado.innerText = tamanoActual > 18 ? "A+" : "A-";
-      valorEstado.innerText = tamanoActual + "px";
-    }
-  }
-
-  // Lógica para el numerito del medio en el modal
-  if (indicadorModal) {
-    indicadorModal.innerText = tamanoActual + "px";
-  }
-}
 function comenzarExperiencia() {
   const audio = document.getElementById("musica-inicio");
   const splash = document.getElementById("screen-splash");

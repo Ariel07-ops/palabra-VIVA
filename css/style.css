@@ -3245,8 +3245,6 @@ body.modo-sepia aside {
 
 /* Excepciones específicas para que las cajas de texto y barras queden prolijas en sepia */
 body.modo-sepia header,
-body.modo-sepia nav,
-body.modo-sepia .sidebar,
 body.modo-sepia .contenido-principal {
   background-color: #f4ecd8 !important;
   color: #4b3621 !important;
@@ -3290,7 +3288,7 @@ body.modo-sepia .card,
 body.modo-sepia .tarjeta,
 body.modo-sepia div[class*="box"],
 body.modo-sepia section:not(.header) {
-  background-color: #e9e8e6 !important; /* Un tono crema/sepia más tostado para los contenedores */
+  /* Un tono crema/sepia más tostado para los contenedores */
   color: #d3c5b9 !important;
 }
 
@@ -3995,4 +3993,448 @@ body.light-mode .mensaje-asistente {
 body.light-mode .sidebar-menu ul li a,
 body.light-mode .sidebar-menu ul li a span {
   color: #f4f4f4 !important;
+}
+/* --- ESTILOS ADAPTATIVOS PARA EL MODAL --- */
+
+/* 1. Modo Oscuro (Por defecto) */
+.modal-contenido {
+  background-color: #121212;
+  border: 2px solid #d4af37;
+  color: #d4af37;
+  padding: 20px;
+  border-radius: 10px;
+  width: 80%;
+  max-width: 300px;
+  text-align: center;
+}
+
+.modal-contenido h3,
+.modal-subtitulo,
+.texto-tamano {
+  color: #d4af37;
+}
+
+.btn-tamano,
+.btn-cerrar-modal {
+  background-color: #d4af37;
+  color: #000000;
+  border: none;
+  padding: 6px 15px;
+  font-weight: bold;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+/* 2. Modo Claro (Adapta los colores para legibilidad perfecta) */
+body.light-mode .modal-contenido {
+  background-color: #ffffff;
+  border: 2px solid #d4af37;
+  color: #1a1a1a;
+}
+
+body.light-mode .modal-contenido h3,
+body.light-mode .modal-subtitulo,
+body.light-mode .texto-tamano {
+  color: #1a1a1a;
+}
+
+/* 3. Modo Sepia (Adapta los tonos cálidos) */
+body.modo-sepia .modal-contenido {
+  background-color: #f4ebd0;
+  border: 2px solid #4b3621;
+  color: #4b3621;
+}
+
+body.modo-sepia .modal-contenido h3,
+body.modo-sepia .modal-subtitulo,
+body.modo-sepia .texto-tamano {
+  color: #4b3621;
+}
+
+body.modo-sepia .btn-tamano,
+body.modo-sepia .btn-cerrar-modal {
+  background-color: #4b3621;
+  color: #f4ebd0;
+}
+/* --- MODAL EN MODO SEPIA CON BOTONES CON FORMA --- */
+
+body.modo-sepia .modal-contenido {
+  background-color: #f4ebd0 !important;
+  border: 2px solid #4b3621 !important;
+  color: #4b3621 !important;
+}
+
+body.modo-sepia .modal-contenido h3,
+body.modo-sepia .modal-subtitulo,
+body.modo-sepia .texto-tamano {
+  color: #4b3621 !important;
+}
+
+/* Conserva la estructura y bordes de los botones en sepia */
+body.modo-sepia .btn-tamano,
+body.modo-sepia .btn-cerrar-modal {
+  background-color: #e8dcbf !important;
+  color: #4b3621 !important;
+  border: 1px solid #d2c4a3 !important;
+  padding: 6px 15px !important;
+  font-weight: bold !important;
+  border-radius: 4px !important;
+  cursor: pointer !important;
+  box-shadow: none !important;
+}
+
+body.modo-sepia .btn-tamano:hover,
+body.modo-sepia .btn-cerrar-modal:hover {
+  background-color: #d8ccae !important;
+}
+/* --- LIMPIAR RECORTES Y FONDOS DE BOTONES DEL HEADER EN SEPIA --- */
+
+body.modo-sepia header.top-navbar #btn-menu,
+body.modo-sepia header.top-navbar #btn-theme,
+body.modo-sepia header.top-navbar .nav-icon-btn {
+  background-color: transparent !important;
+  background: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+  outline: none !important;
+  color: #d4af37 !important;
+}
+html {
+  background-color: #000000;
+  /* Esto le avisa a los navegadores modernos de Android que fuercen un esquema oscuro en la IU del sistema */
+  color-scheme: dark;
+}
+/* --- MODO SEPIA TOTAL --- */
+html.modo-sepia,
+body.modo-sepia {
+  background-color: #f4ecd8 !important;
+  color: #4b3621 !important;
+}
+
+/* Forzamos que cualquier contenedor principal, tarjeta o fondo general adopte el tono sepia */
+body.modo-sepia div,
+body.modo-sepia section,
+body.modo-sepia main,
+body.modo-sepia header,
+body.modo-sepia nav,
+body.modo-sepia aside {
+  background-color: inherit; /* Heredan el fondo sepia a menos que tengan una razón de ser */
+}
+
+/* Excepciones específicas para que las cajas de texto y barras queden prolijas en sepia */
+body.modo-sepia header,
+body.modo-sepia .contenido-principal {
+  background-color: #f4ecd8 !important;
+  color: #4b3621 !important;
+}
+
+/* Textos, títulos y etiquetas bien legibles */
+body.modo-sepia p,
+body.modo-sepia span,
+body.modo-sepia a,
+body.modo-sepia h1,
+body.modo-sepia h2,
+body.modo-sepia h3,
+body.modo-sepia li {
+  color: #4b3621 !important;
+}
+body.light-mode p,
+body.light-mode span,
+body.light-mode h1,
+body.light-mode h2,
+body.light-mode h3,
+body.light-mode .split-block p,
+body.light-mode .header-statement,
+body.light-mode .reflection,
+body.light-mode .focus-text {
+  color: #2c2c2c !important;
+  --text-color: #2c2c2c !important;
+}
+/* --- Ajustes finos para el Modo Sepia --- */
+
+/* 1. Asegurar que los párrafos y textos de lectura tengan un tono marrón oscuro bien legible */
+body.modo-sepia p,
+body.modo-sepia span,
+body.modo-sepia li,
+body.modo-sepia .reflection,
+body.modo-sepia .focus-text {
+  color: #3b2a1a !important; /* Un tono marrón más profundo y fácil de leer */
+}
+
+/* 2. Evitar bloques negros o grises, dándoles un tono sepia cálido y contrastado */
+body.modo-sepia .card,
+body.modo-sepia .tarjeta,
+body.modo-sepia div[class*="box"],
+body.modo-sepia section:not(.header) {
+  background-color: #e9e8e6 !important; /* Un tono crema/sepia más tostado para los contenedores */
+  color: #d3c5b9 !important;
+}
+
+/* 3. Mejorar los botones interactivos dentro del modo sepia */
+body.modo-sepia button,
+body.modo-sepia .btn {
+  background-color: #bdb6a7 !important;
+  color: #3b2a1a !important;
+  border-color: #b59a64 !important;
+}
+/* --- CORRECCIÓN GENERAL PARA EL MODO SEPIA --- */
+
+/* 1. Todos los subtítulos, textos secundarios y encabezados menores en sepia */
+body.modo-sepia h2,
+body.modo-sepia h3,
+body.modo-sepia h4,
+body.modo-sepia p,
+body.modo-sepia span,
+body.modo-sepia .header-statement,
+body.modo-sepia .italic,
+body.modo-sepia .text-italic {
+  color: #4b3621 !important; /* Marrón cálido y legible */
+}
+
+/* 2. Botones de Emaús, opciones del menú y tarjetas de testamentos/libros */
+body.modo-sepia .btn-emaus,
+body.modo-sepia .testamento-card,
+body.modo-sepia .huella-paso,
+body.modo-sepia button:not(.nav-icon-btn) {
+  background-color: #f4ebd0 !important;
+  color: #4b3621 !important;
+  border-color: #b59a64 !important;
+}
+
+/* 3. Textos y etiquetas dentro de las huellas y botones de Emaús */
+body.modo-sepia .huella-paso .etiqueta-paso,
+body.modo-sepia .testamento-card h3,
+body.modo-sepia .testamento-card p {
+  color: #4b3621 !important;
+}
+
+/* 4. Listados dinámicos de los libros de la Biblia (Antiguo y Nuevo Testamento) */
+body.modo-sepia #lista-libros-antiguo button,
+body.modo-sepia #lista-libros-nuevo button,
+body.modo-sepia [id*="lista-libros"] div,
+body.modo-sepia .libro-btn {
+  background-color: #f4ebd0 !important;
+  color: #4b3621 !important;
+  border: 1px solid #b59a64 !important;
+}
+/* Estilos en Modo Sepia para el Camino Personal / Emaús */
+body.modo-sepia .path-theme .path-card h3,
+body.modo-sepia .path-theme .path-card .question {
+  color: #4b3621 !important;
+}
+
+body.modo-sepia .path-theme .path-card {
+  background-color: #f4ebd0 !important;
+  border-color: #bbae93 !important;
+}
+/* --- BLOQUES PRINCIPALES DE LA PANTALLA DE INICIO --- */
+
+/* Estilo por defecto (modo normal) */
+#btn-goto-bible,
+#btn-goto-path {
+  background-color: #1a1a1a; /* Fondo oscuro elegante */
+  border: 1px solid #d4af37; /* Detalle dorado sutil */
+}
+
+/* Estilo cuando el Modo Sepia está activo */
+body.modo-sepia #btn-goto-bible,
+body.modo-sepia #btn-goto-path {
+  background-color: #f4ebd0 !important; /* Crema cálido del sepia */
+  border: 1px solid #b59a64 !important;
+}
+
+/* Textos y subtítulos dentro de los bloques principales en modo sepia */
+body.modo-sepia #btn-goto-bible h2,
+body.modo-sepia #btn-goto-bible p,
+body.modo-sepia #btn-goto-path h2,
+body.modo-sepia #btn-goto-path p {
+  color: #4b3621 !important; /* Marrón legible y cálido */
+}
+body.modo-sepia .split-container {
+  background-color: #f4ebd0 !important; /* Fondo sepia para los bloques */
+  color: #4b3621 !important; /* Texto marrón legible */
+  border: 1px solid #b59a64 !important; /* Borde dorado cálido */
+  border-radius: 12px;
+  padding: 20px;
+  box-sizing: border-box;
+}
+body.modo-sepia .split-block {
+  background-color: #f4ebd0 !important; /* Fondo sepia para cada bloque */
+  color: #d48637 !important; /* Texto marrón legible */
+  border: 1px solid #f4ebd0 !important; /* Borde dorado cálido */
+  border-radius: 8px;
+  padding: 15px;
+  box-sizing: border-box;
+}
+body.modo-sepia .screen.active {
+  background-color: #f4ebd0 !important;
+}
+
+body.light-sepia #screen-main .split-block {
+  background: #e8e4dc !important;
+}
+/* acá modificamos el boton de audio hacia la izq */
+#btn-hablar-lectura {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-left: auto;
+  margin-right: 15px;
+}
+/* Forzamos el color marrón cálido en el subtítulo del encabezado cuando está en modo sepia */
+html.modo-sepia h2.header-statement,
+body.modo-sepia h2.header-statement,
+.modo-sepia h2.header-statement {
+  color: #5c4033 !important; /* Marrón cálido legible */
+  background: none !important; /* Por si tiene algún fondo o degradé aplicado */
+  -webkit-background-clip: initial !important;
+  background-clip: initial !important; /* Propiedad estándar */
+}
+/* Combinación perfecta para Modo Sepia: Fondo cálido y texto negro bien legible */
+body.modo-sepia h2,
+body.modo-sepia #texto-peldaño-detalle,
+body.modo-sepia h3,
+body.modo-sepia p,
+body.modo-sepia span,
+body.modo-sepia .header-statement,
+body.modo-sepia .reflection,
+body.modo-sepia #texto-emaus-detalle body.modo-sepia .focus-text {
+  background-color: #f4ecd8 !important; /* Mantiene el fondo cremita/marroncito del sepia */
+  color: #1a1107 !important; /* Negro profundo / marrón negrísimo para el texto */
+  font-weight: bold !important; /* Letra en negrita para que resalte al 100% */
+  -webkit-text-fill-color: #1a1107 !important; /* Evita que los degradés vuelvan la letra gris */
+}
+
+body.modo-sepia #texto-emaus-detalle {
+  color: #1a1107 !important;
+}
+body.modo-sepia #btn-goto-bible,
+body.modo-sepia #btn-goto-path,
+html.modo-sepia #btn-goto-bible,
+html.modo-sepia #btn-goto-path {
+  background-color: rgb(244, 235, 208) !important;
+}
+/* --- CIRUGÍA DE PRECISIÓN: AISLANDO AL REBELDE EN SEPIA --- */
+body.modo-sepia #btn-goto-bible,
+body.modo-sepia #btn-goto-path {
+  background: #f4ebd0 !important; /* El fondo marroncito/crema que te gusta */
+  color: #4b3621 !important; /* El texto bien legible */
+  border: 1px solid #b59a64 !important; /* El borde que le da forma */
+  box-shadow: none !important; /* Le saca cualquier sombra rara que lo ensucie */
+}
+/* --- FIX DEFINITIVO PARA PANTALLA ACERCA DE EN SEPIA --- */
+
+/* 1. Unificar fondo cálido en las secciones internas */
+body.modo-sepia .seccion-copyright,
+body.modo-sepia .card-aclaracion {
+  background-color: #f4ebd0 !important;
+  background: #f4ebd0 !important;
+  border: none !important;
+  box-shadow: none !important;
+}
+
+/* 2. Forzar texto legible sobre el color inline (#cccccc) */
+body.modo-sepia .seccion-copyright,
+body.modo-sepia .seccion-copyright *,
+body.modo-sepia .card-aclaracion,
+body.modo-sepia .card-aclaracion * {
+  color: #3b2a1a !important;
+}
+/* --- FORZAR FONDO UNIFORME EN TODA LA PANTALLA ACERCA DE --- */
+
+/* --- RESTAURAR TITULOS Y BOTONES EN ACERCA DE --- */
+
+/* 1. Fondo base parejo para la pantalla y sus bloques */
+body.modo-sepia #screen-about,
+body.modo-sepia #screen-acerca,
+body.modo-sepia .seccion-copyright {
+  background-color: #f4ebd0 !important;
+}
+
+/* 2. Rescatar los títulos (Nuestra Misión, etc.) con texto oscuro visible */
+body.modo-sepia #screen-about h1,
+body.modo-sepia #screen-about h2,
+body.modo-sepia #screen-about h3,
+body.modo-sepia #screen-acerca h1,
+body.modo-sepia #screen-acerca h2,
+body.modo-sepia #screen-acerca h3 {
+  color: #1a1107 !important;
+  display: block !important;
+  visibility: visible !important;
+}
+
+/* 3. Reconstruir la tarjeta/botón clicable de abajo */
+body.modo-sepia .card-aclaracion,
+body.modo-sepia #screen-about a,
+body.modo-sepia #screen-acerca a,
+body.modo-sepia #screen-about button {
+  background-color: #e8dfc8 !important; /* Un tono crema un pelín más oscuro para resaltar la tarjeta */
+  color: #3b2a1a !important;
+  border: 1px solid #b59a64 !important; /* Devuelve el contorno para saber que se puede tocar */
+  border-radius: 8px;
+  display: inline-block;
+}
+
+/* 4. Enlaces interactivos resaltados */
+body.modo-sepia #screen-about a *,
+body.modo-sepia #screen-acerca a * {
+  color: #3b2a1a !important;
+}
+/* --- FIX DEFINITIVO SIN GRIS: TARJETAS CÁLIDAS Y VISIBLES --- */
+
+/* 1. Fondo base parejo para toda la pantalla */
+body.modo-sepia #screen-about,
+body.modo-sepia #screen-acerca,
+body.modo-sepia .seccion-copyright {
+  background-color: #f4ebd0 !important;
+  background: #f4ebd0 !important;
+}
+
+/* 2. Títulos y textos bien oscuros y visibles */
+body.modo-sepia #screen-about h1,
+body.modo-sepia #screen-about h2,
+body.modo-sepia #screen-about h3,
+body.modo-sepia #screen-about p,
+body.modo-sepia #screen-acerca h1,
+body.modo-sepia #screen-acerca h2,
+body.modo-sepia #screen-acerca h3,
+body.modo-sepia #screen-acerca p {
+  color: #1a1107 !important;
+}
+
+/* 3. Las tarjetas/cuadrados de abajo: MISMO FONDO SEPIA, pero con borde elegante */
+body.modo-sepia .card-aclaracion,
+body.modo-sepia #screen-about .card,
+body.modo-sepia #screen-acerca .card {
+  background-color: #f4ebd0 !important; /* Chau gris, bienvenido crema cálido */
+  background: #f4ebd0 !important;
+  border: 1px solid #b59a64 !important; /* Borde dorado suave para delimitar */
+  box-shadow: none !important; /* Elimina la sombra gris */
+}
+
+/* 4. Texto y enlaces dentro de los cuadraditos */
+body.modo-sepia .card-aclaracion *,
+body.modo-sepia #screen-about a,
+body.modo-sepia #screen-acerca a {
+  color: #3b2a1a !important;
+}
+/* --- OPCIÓN 1: BLOQUE CÁLIDO UNIFORME --- */
+
+body.modo-sepia #screen-about .card,
+body.modo-sepia #screen-about section,
+body.modo-sepia .seccion-copyright,
+body.modo-sepia .card-aclaracion {
+  background-color: #f4ebd0 !important; /* Mismo crema para todo */
+  background: #f4ebd0 !important;
+  border: 1px solid #b59a64 !important; /* Borde suave para delimitar la tarjeta */
+  box-shadow: none !important; /* Quita sombras que generan parches */
+  padding: 20px !important;
+}
+
+/* Forzar que todos los elementos dentro de la tarjeta compartan ese mismo fondo */
+body.modo-sepia #screen-about .card *,
+body.modo-sepia .seccion-copyright *,
+body.modo-sepia .card-aclaracion * {
+  background-color: transparent !important; /* Evita recuadros internos alrededor de los textos */
+  color: #3b2a1a !important; /* Texto marrón bien legible */
 }

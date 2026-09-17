@@ -1397,99 +1397,25 @@
       </div>
     </div>
     <!-- Este es el panel que el JavaScript va a intentar abrir -->
-    <div
-      id="modal-herramientas"
-      style="
-        display: none;
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        background: rgba(0, 0, 0, 0.8);
-        z-index: 9999;
-        justify-content: center;
-        align-items: center;
-      "
-    >
-      <div
-        style="
-          background: #000;
-          border: 2px solid #d4af37;
-          padding: 20px;
-          border-radius: 10px;
-          color: #d4af37;
-          width: 80%;
-          max-width: 300px;
-          text-align: center;
-        "
-      >
-        <h3 data-es="🔧 Herramientas" data-en="🔧 Tools" data-pt="🔧 Ferramentas">🔧 Herramientas</h3>
-
-        <!-- Controles de Tamaño de Letra -->
-        <p style="margin: 10px 0 5px 0; font-size: 14px" data-es="Tamaño de letra" data-en="Font size" data-pt="Tamanho da letra">Tamaño de letra</p>
-        <div style="margin-bottom: 15px">
-          <button
-            onclick="cambiarTamanio(2)"
-            style="
-              background: #d4af37;
-              color: #000;
-              border: none;
-              padding: 5px 12px;
-              margin-right: 5px;
-              cursor: pointer;
-              font-weight: bold;
-              border-radius: 4px;
-            "
-          >
-            A+
-          </button>
-          <span
-            id="indicador-tamano"
-            style="
-              font-size: 14px;
-              font-weight: bold;
-              color: #d4af37;
-              margin: 0 10px;
-            "
-            >18px</span
-          >
-          <button
-            onclick="cambiarTamanio(-2)"
-            style="
-              background: #d4af37;
-              color: #000;
-              border: none;
-              padding: 5px 12px;
-              cursor: pointer;
-              font-weight: bold;
-              border-radius: 4px;
-            "
-          >
-            A-
-          </button>
-        </div>
-
-
-        <button
-          onclick="cerrarModalHerramientas()"
-          style="
-            background: #d4af37;
-            color: #000;
-            border: none;
-            padding: 6px 15px;
-            cursor: pointer;
-            font-weight: bold;
-            border-radius: 4px;
-          "
-          data-es="Cerrar"
-          data-en="Close"
-          data-pt="Fechar"
-        >
-          Cerrar
-        </button>
-      </div>
+    <!-- Panel modal de herramientas -->
+<div id="modal-herramientas" style="display: none; position: fixed; top: 0px; left: 0px; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.8); z-index: 9999; justify-content: center; align-items: center;">
+  
+  <div class="modal-contenido">
+    <h3 data-es="Herramientas" data-en="Tools" data-pt="Ferramentas">Herramientas</h3>
+    
+    <!-- Controles de Tamaño de Letra -->
+    <p class="modal-subtitulo" data-es="Tamaño de letra" data-en="Font size" data-pt="Tamanho da letra" style="margin: 10px 0 5px 0; font-size: 14px;">Tamaño de letra</p>
+    
+    <div style="margin-bottom: 15px; display: flex; justify-content: center; align-items: center; gap: 10px;">
+      <button onclick="cambiarTamanio(2)" class="btn-tamano">A+</button>
+      <span id="indicador-tamano" class="texto-tamano">18px</span>
+      <button onclick="cambiarTamanio(-2)" class="btn-tamano">A-</button>
     </div>
+
+    <button onclick="cerrarModalHerramientas()" class="btn-cerrar-modal" data-es="Cerrar" data-en="Close" data-pt="Fechar">Cerrar</button>
+  </div>
+
+</div>
     <!-- Vista del Asistente de Apoyo -->
     <div id="screen-asistente" class="screen">
       <div class="asistente-header">
