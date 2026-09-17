@@ -36,7 +36,7 @@ const menuLateral = document.getElementById("menu-lateral");
 const textParagraph = document.querySelector(".interact-paragraph");
 const studyCard = document.getElementById("study-card");
 const panelHandle = document.querySelector(".panel-handle");
-const btnVolverAcerca = document.getElementById("btn-volver-acerca");
+
 const linkAsistente = document.getElementById("link-asistente");
 const btnMic = document.getElementById("btnMic");
 const inputChat = document.getElementById("chat-input");
@@ -261,28 +261,34 @@ setTimeout(() => {
   }
 }, 4500);
 
+// --- FUNCIÓN DE SINCRONIZACIÓN (Colocar afuera o al inicio del archivo) ---
+function sincronizarBotonTema() {
+  const btnTheme = document.getElementById("btn-theme");
+  if (!btnTheme) return;
+
+  const body = document.body;
+
+  if (body.classList.contains("modo-sepia")) {
+    btnTheme.innerHTML = "🟤";
+  } else if (body.classList.contains("light-mode")) {
+    btnTheme.innerHTML = "☀️";
+  } else {
+    btnTheme.innerHTML = "🌓";
+  }
+}
+
 // --- INICIALIZACIÓN GENERAL DE LA APP ---
 document.addEventListener("DOMContentLoaded", () => {
-  // 1. Cambio de Tema (Luminoso / Oscuro)
-  // 1. Cambio de Tema (Luminoso / Oscuro)
-  // --- 1. Cambio de Tema Unificado (Claro / Oscuro / Sepia) ---
+  // 1. Cambio de Tema Unificado (Claro / Oscuro / Sepia)
   const btnTheme = document.getElementById("btn-theme");
   if (btnTheme) {
     // Sincronizar el ícono inicial según el estado actual al cargar
-    if (document.body.classList.contains("modo-sepia")) {
-      btnTheme.innerHTML = "🟤";
-    } else if (document.body.classList.contains("light-mode")) {
-      btnTheme.innerHTML = "☀️";
-    } else {
-      btnTheme.innerHTML = "🌓";
-    }
+    sincronizarBotonTema();
 
     btnTheme.addEventListener("click", () => {
       const body = document.body;
       const docEl = document.documentElement;
-      const indicador = document.getElementById("indicador-sepia");
 
-      // Revisamos en qué estado estamos y pasamos al siguiente
       if (
         !body.classList.contains("light-mode") &&
         !body.classList.contains("modo-sepia")
@@ -290,123 +296,115 @@ document.addEventListener("DOMContentLoaded", () => {
         // De Oscuro pasa a Sepia
         body.classList.add("modo-sepia");
         docEl.classList.add("modo-sepia");
-        if (indicador) indicador.style.display = "inline-block";
-        btnTheme.innerHTML = "🟤"; // Planeta / Sepia
       } else if (body.classList.contains("modo-sepia")) {
         // De Sepia pasa a Claro
         body.classList.remove("modo-sepia");
         docEl.classList.remove("modo-sepia");
         body.classList.add("light-mode");
-        if (indicador) indicador.style.display = "none";
-        btnTheme.innerHTML = "☀️"; // Sol para Claro
       } else {
-        // De Claro pasa a Oscuro (por defecto)
+        // De Claro pasa a Oscuro
         body.classList.remove("light-mode");
-        if (indicador) indicador.style.display = "none";
-        btnTheme.innerHTML = "🌓"; // Sol y luna para Oscuro
       }
+
+      sincronizarBotonTema();
     });
-  }
-
-  // Referencias comunes del menú lateral
-  const btnMenu = document.getElementById("btn-menu");
-  const menuLateral = document.getElementById("menu-lateral");
-
-  // 2. Comportamiento del Menú Lateral
-  if (btnMenu && menuLateral) {
-    btnMenu.addEventListener("click", () => {
-      menuLateral.classList.toggle("active");
-    });
-  }
-
-  // Cerrar menú al hacer clic fuera
-  document.addEventListener("click", (event) => {
-    if (
-      menuLateral &&
-      btnMenu &&
-      menuLateral.classList.contains("active") &&
-      !menuLateral.contains(event.target) &&
-      !btnMenu.contains(event.target)
-    ) {
-      menuLateral.classList.remove("active");
-    }
-  });
-
-  // 3. Enlaces del Menú Lateral
-  document.getElementById("link-inicio")?.addEventListener("click", (e) => {
-    e.preventDefault();
-    changeScreen(screenMain);
-    menuLateral?.classList.remove("active");
-  });
-
-  document.getElementById("link-biblia")?.addEventListener("click", (e) => {
-    e.preventDefault();
-    changeScreen(screenBibleDetail);
-    menuLateral?.classList.remove("active");
-  });
-
-  document.getElementById("link-buscar")?.addEventListener("click", (e) => {
-    e.preventDefault();
-    changeScreen(screenBuscar);
-    menuLateral?.classList.remove("active");
-  });
-
-  document.getElementById("link-idioma")?.addEventListener("click", (e) => {
-    e.preventDefault();
-    changeScreen(screenIdioma);
-    menuLateral?.classList.remove("active");
-  });
-
-  document.getElementById("link-sugerir")?.addEventListener("click", (e) => {
-    e.preventDefault();
-    changeScreen(screenSugerir);
-    menuLateral?.classList.remove("active");
-  });
-  document.getElementById("link-acerca").addEventListener("click", (e) => {
-    e.preventDefault();
-    changeScreen(screenAcerca);
-    menuLateral?.classList.remove("active");
-  });
-
-  // Versión segura que no se rompe si el elemento no existe todavía
-  const linkHerramientas = document.getElementById("link-herramientas");
-  if (linkHerramientas) {
-    linkHerramientas.addEventListener("click", (e) => {
-      e.preventDefault();
-      console.log("¡Hice clic en el botón de herramientas!");
-      const modal = document.getElementById("modal-herramientas");
-      if (modal) {
-        console.log("Modal encontrado:", modal);
-        modal.style.display = "flex";
-      }
-      menuLateral?.classList.remove("active");
-    });
-  }
-
-  document
-    .getElementById("link-herramientas")
-    .addEventListener("click", (e) => {
-      e.preventDefault();
-      console.log("¡Hice clic en el botón de herramientas!"); // Agregá esta línea
-      const modal = document.getElementById("modal-herramientas");
-      if (modal) {
-        console.log("Modal encontrado:", modal); // Y esta otra
-        modal.style.display = "flex";
-      }
-    });
-  // 5. Botones de Retorno (Volver)
-  document
-    .getElementById("btn-volver-idioma")
-    ?.addEventListener("click", () => changeScreen(screenMain));
-  document
-    .getElementById("btn-volver-sugerir")
-    ?.addEventListener("click", () => changeScreen(screenMain));
-
-  const btnVolverAcerca = document.getElementById("btn-volver-acerca");
-  if (btnVolverAcerca) {
-    btnVolverAcerca.addEventListener("click", () => changeScreen(screenMain));
   }
 });
+// Referencias comunes del menú lateral
+
+// 2. Comportamiento del Menú Lateral
+if (btnMenu && menuLateral) {
+  btnMenu.addEventListener("click", () => {
+    menuLateral.classList.toggle("active");
+  });
+}
+
+// Cerrar menú al hacer clic fuera
+document.addEventListener("click", (event) => {
+  if (
+    menuLateral &&
+    btnMenu &&
+    menuLateral.classList.contains("active") &&
+    !menuLateral.contains(event.target) &&
+    !btnMenu.contains(event.target)
+  ) {
+    menuLateral.classList.remove("active");
+  }
+});
+
+// 3. Enlaces del Menú Lateral
+document.getElementById("link-inicio")?.addEventListener("click", (e) => {
+  e.preventDefault();
+  changeScreen(screenMain);
+  menuLateral?.classList.remove("active");
+});
+
+document.getElementById("link-biblia")?.addEventListener("click", (e) => {
+  e.preventDefault();
+  changeScreen(screenBibleDetail);
+  menuLateral?.classList.remove("active");
+});
+
+document.getElementById("link-buscar")?.addEventListener("click", (e) => {
+  e.preventDefault();
+  changeScreen(screenBuscar);
+  menuLateral?.classList.remove("active");
+});
+
+document.getElementById("link-idioma")?.addEventListener("click", (e) => {
+  e.preventDefault();
+  changeScreen(screenIdioma);
+  menuLateral?.classList.remove("active");
+});
+
+document.getElementById("link-sugerir")?.addEventListener("click", (e) => {
+  e.preventDefault();
+  changeScreen(screenSugerir);
+  menuLateral?.classList.remove("active");
+});
+document.getElementById("link-acerca").addEventListener("click", (e) => {
+  e.preventDefault();
+  changeScreen(screenAcerca);
+  menuLateral?.classList.remove("active");
+});
+
+// Versión segura que no se rompe si el elemento no existe todavía
+const linkHerramientas = document.getElementById("link-herramientas");
+if (linkHerramientas) {
+  linkHerramientas.addEventListener("click", (e) => {
+    e.preventDefault();
+    console.log("¡Hice clic en el botón de herramientas!");
+    const modal = document.getElementById("modal-herramientas");
+    if (modal) {
+      console.log("Modal encontrado:", modal);
+      modal.style.display = "flex";
+    }
+    menuLateral?.classList.remove("active");
+  });
+}
+
+document.getElementById("link-herramientas").addEventListener("click", (e) => {
+  e.preventDefault();
+  console.log("¡Hice clic en el botón de herramientas!"); // Agregá esta línea
+  const modal = document.getElementById("modal-herramientas");
+  if (modal) {
+    console.log("Modal encontrado:", modal); // Y esta otra
+    modal.style.display = "flex";
+  }
+});
+// 5. Botones de Retorno (Volver)
+document
+  .getElementById("btn-volver-idioma")
+  ?.addEventListener("click", () => changeScreen(screenMain));
+document
+  .getElementById("btn-volver-sugerir")
+  ?.addEventListener("click", () => changeScreen(screenMain));
+
+const btnVolverAcerca = document.getElementById("btn-volver-acerca");
+if (btnVolverAcerca) {
+  btnVolverAcerca.addEventListener("click", () => changeScreen(screenMain));
+}
+
 // --- BÚSQUEDA INTELIGENTE CON ENTER Y PAGINACIÓN ---
 document
   .getElementById("btn-ejecutar-busqueda")

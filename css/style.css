@@ -3990,3 +3990,9 @@ body.light-mode .mensaje-asistente {
     text-align: center;
   }
 }
+/* Mantener texto blanco en la barra lateral cuando está activo el modo claro */
+/* Excepción de alta especificidad para que el menú siga siendo legible en light-mode */
+body.light-mode .sidebar-menu ul li a,
+body.light-mode .sidebar-menu ul li a span {
+  color: #f4f4f4 !important;
+}
