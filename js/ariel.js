@@ -1282,8 +1282,20 @@ function cambiarIdioma(lang) {
       el.innerText = el.getAttribute("data-es");
     }
   });
+
   const botonesIdioma = document.querySelectorAll("#screen-idioma button");
   botonesIdioma.forEach((btn) => btn.classList.remove("active"));
+
+  // --- PERSISTENCIA EN LOCALSTORAGE Y CONTROL DE VOZ ---
+  localStorage.setItem("idiomaApp", lang);
+  window.idiomaActual = lang;
+
+  if ("speechSynthesis" in window) {
+    window.speechSynthesis.cancel();
+    if (typeof estaReproduciendo !== "undefined") estaReproduciendo = false;
+  }
+
+  console.log("Idioma guardado en localStorage:", lang);
 }
 
 // --- FUNCIONES FINALES DE APERTURA DESDE EL BUSCADOR ---
@@ -1324,6 +1336,7 @@ function abrirResultadoPorIndice(indiceGlobal) {
     console.error("¡No encuentro el elemento #modal-versiculo!");
   }
 }
+
 // --- FUNCIÓN PARA CERRAR EL MODAL DE HERRAMIENTAS ---
 function cerrarModalHerramientas() {
   const modal = document.getElementById("modal-herramientas");
@@ -1370,7 +1383,6 @@ function cambiarTamanio(delta) {
 
   actualizarIndicadorVisual();
 }
-
 // --- CARGA E INICIALIZACIÓN SEGURA DE ESTILOS Y TAMAÑO ---
 window.addEventListener("DOMContentLoaded", () => {
   // Aplicar tamaño guardado
@@ -2273,3 +2285,7 @@ if (btnAsistenteHome && screenAsistente) {
     }
   });
 }
+document.addEventListener("DOMContentLoaded", () => {
+  const idiomaGuardado = localStorage.getItem("idiomaApp") || "es";
+  cambiarIdioma(idiomaGuardado);
+});
