@@ -3490,6 +3490,7 @@ body {
 }
 /* Clase para títulos dorados */
 .text-gold {
+  color: #d4af37; /* Color dorado base por si no carga el degradé */
   background-image: linear-gradient(
     180deg,
     #fceea7 0%,
@@ -3499,8 +3500,9 @@ body {
   -webkit-background-clip: text;
   background-clip: text;
   -webkit-text-fill-color: transparent;
+  /* Un trazo súper finito de 0.5px alrededor para marcar el borde sin ensuciar */
+  -webkit-text-stroke: 0.5px rgba(0, 0, 0, 0.4);
 }
-
 /* Clase para subtítulos plateados */
 .text-silver {
   background-image: linear-gradient(
@@ -3517,6 +3519,8 @@ body {
   max-width: 600px;
   margin: 0 auto;
   text-align: center;
+  /* Un trazo súper finito de 0.5px alrededor para marcar el borde sin ensuciar */
+  -webkit-text-stroke: 0.2px rgba(0, 0, 0, 0.979);
 }
 /* Bloque unificado para todas las pantallas de estado y sus párrafos de acogida */
 #screen-agradecido .acogida-estado,
