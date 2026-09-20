@@ -38,11 +38,8 @@
           "pt": "Senhor, obrigado pela alegria que hoje habita em mim. Ensina-me a recebê-la com humildade e a compartilhá-la com caridade. Amém."
         },
         "companero_de_camino": {
-          "santo": {
-            "es": "Santa Teresa de Jesús",
-            "en": "Saint Teresa of Jesus",
-            "pt": "Santa Teresa de Jesus"
-          },
+          "santo": "Santa Teresa de Jesús",
+
           "recomendacion": {
             "es": "Haz de tu alegría una presencia luminosa para alguien que hoy esté pasando un momento difícil.",
             "en": "Make your joy a luminous presence for someone going through a difficult time today.",
@@ -86,11 +83,8 @@
           "pt": "Senhor, obrigado por este momento de luz na minha vida. Reconheço que tudo o de bom que me acontece vem de tua mão. Ensina-me a desfrutá-lo com simplicidade. Amém."
         },
         "companero_de_camino": {
-          "santo": {
-            "es": "San Felipe Neri",
-            "en": "Saint Philip Neri",
-            "pt": "São Filipe Neri"
-          },
+          "santo": "San Felipe Neri",
+
           "recomendacion": {
             "es": "Conocido como el 'santo de la alegría'. Él decía que un corazón alegre es más fácil de convertir.",
             "en": "Known as the 'saint of joy.' He said that a joyful heart is easier to convert.",
@@ -134,11 +128,8 @@
           "pt": "Senhor, obrigado pelo meu bem-estar. Que a minha alegria de hoje não seja apenas para mim, mas que possa ser um refúgio ou um sorriso para quem hoje precisa. Amém."
         },
         "companero_de_camino": {
-          "santo": {
-            "es": "San Juan Bosco",
-            "en": "Saint John Bosco",
-            "pt": "São João Bosco"
-          },
+          "santo": "San Juan Bosco",
+
           "recomendacion": {
             "es": "Su lema era 'servir al Señor con alegría'. Él sabía que un joven feliz es un joven que está cerca de Dios.",
             "en": "His motto was 'serve the Lord with joy.' He knew that a happy young person is close to God.",
@@ -182,11 +173,8 @@
           "pt": "Senhor, obrigado pelos detalhes que passam despercebidos, mas que tornam minha vida bela. Abre meus olhos para ver teu amor no cotidiano. Amém."
         },
         "companero_de_camino": {
-          "santo": {
-            "es": "San Francisco de Asís",
-            "en": "Saint Francis of Assisi",
-            "pt": "São Francisco de Assis"
-          },
+          "santo": "San Francisco de Asís",
+
           "recomendacion": {
             "es": "El maestro de encontrar a Dios en la creación: el sol, las flores, el hermano. Él veía la huella de Dios en todo.",
             "en": "The master of finding God in creation: the sun, flowers, the brother. He saw God's footprint in everything.",
@@ -230,11 +218,8 @@
           "pt": "Senhor, obrigado por seres a minha alegria e a minha força. Que nos dias bons, esta alegria me prepare para continuar confiando em ti sempre. Amém."
         },
         "companero_de_camino": {
-          "santo": {
-            "es": "San Pablo",
-            "en": "Saint Paul",
-            "pt": "São Paulo"
-          },
+          "santo": "San Pablo",
+
           "recomendacion": {
             "es": "Él decía: 'Alégrense siempre en el Señor'. Aprendió a ser feliz incluso en la cárcel porque su alegría venía de Cristo, no del mundo.",
             "en": "He said: 'Rejoice in the Lord always.' He learned to be happy even in prison because his joy came from Christ, not the world.",
@@ -278,11 +263,8 @@
           "pt": "Senhor, fica comigo. Que a minha maior felicidade hoje seja simplesmente saber que estás presente no meu coração e na minha vida. Amém."
         },
         "companero_de_camino": {
-          "santo": {
-            "es": "San Agustín",
-            "en": "Saint Augustine",
-            "pt": "Santo Agostinho"
-          },
+          "santo": "San Agustín",
+
           "recomendacion": {
             "es": "Su famosa frase: 'Nos hiciste para ti, Señor, y nuestro corazón está inquieto hasta que descanse en ti'. La felicidad es ese descanso.",
             "en": "His famous quote: 'You have made us for yourself, O Lord, and our hearts are restless until they rest in you.' Happiness is that rest.",
@@ -326,11 +308,8 @@
           "pt": "Senhor, obrigado por estes dias. Envia o teu Espírito sobre mim para que a minha vida seja sempre um testemunho da tua alegria e do teu amor. Amém."
         },
         "companero_de_camino": {
-          "santo": {
-            "es": "San Carlos de Foucauld",
-            "en": "Saint Charles de Foucauld",
-            "pt": "São Carlos de Foucauld"
-          },
+          "santo": "San Carlos de Foucauld",
+
           "recomendacion": {
             "es": "Encontró una alegría inmensa en vivir una vida escondida y sencilla, sirviendo a los demás con amor absoluto.",
             "en": "He found immense joy in living a hidden and simple life, serving others with absolute love.",
@@ -1466,11 +1445,8 @@
           "pt": "O medo costuma nos fazer sentir sozinhos diante de uma ameaça enorme. Mas a promessa mais repetida na Bíblia é clara: 'Não temas, porque eu estou contigo'."
         },
         "evangelio": {
-          "referencia": {
-            "es": "Isaías 43, 2",
-            "en": "Isaiah 43:2",
-            "pt": "Isaías 43:2"
-          },
+          "referencia": "Isaías 43, 2",
+
           "texto": {
             "es": "Si atraviesas por el fuego, no te quemarás ni las llamas se prenderán en ti, porque yo soy tu Señor y tu Dios.",
             "en": "When you pass through the waters, I will be with you; and when you pass through the rivers, they will not sweep over you. When you walk through the fire, you will not be burned.",
@@ -1514,11 +1490,8 @@
           "pt": "Às vezes nos sentimos fracos diante do que nos toca viver, mas Deus não nos deu um espírito de covardia, e sim de força, de amor e de moderação."
         },
         "evangelio": {
-          "referencia": {
-            "es": "2 Timoteo 1, 7",
-            "en": "2 Timothy 1:7",
-            "pt": "2 Timóteo 1:7"
-          },
+          "referencia": "2 Timoteo 1, 7",
+
           "texto": {
             "es": "Dios no nos ha dado un espíritu de cobardía, sino de fortaleza, de amor y de buen juicio.",
             "en": "For the Spirit God gave us does not make us timid, but gives us power, love and self-discipline.",
@@ -1562,11 +1535,8 @@
           "pt": "Quando a vida se torna turbulenta, buscamos onde nos esconder. Deus é o nosso refúgio e fortaleza, socorro bem presente na angústia."
         },
         "evangelio": {
-          "referencia": {
-            "es": "Salmo 46, 1-2",
-            "en": "Psalm 46:1-2",
-            "pt": "Salmos 46:1-2"
-          },
+          "referencia": "Salmo 46, 1-2",
+
           "texto": {
             "es": "Dios es nuestro amparo y nuestra fortaleza, nuestra ayuda segura en momentos de angustia.",
             "en": "God is our refuge and strength, an ever-present help in trouble. Therefore we will not fear.",
@@ -1610,11 +1580,8 @@
           "pt": "O temor desorganiza nossa mente. Em contrapartida, fixar o olhar no Senhor nos devolve o centro e nos enche de uma calma profunda."
         },
         "evangelio": {
-          "referencia": {
-            "es": "Isaías 26, 3",
-            "en": "Isaiah 26:3",
-            "pt": "Isaías 26:3"
-          },
+          "referencia": "Isaías 26, 3",
+
           "texto": {
             "es": "Al de firme propósito tú lo guardarás en perfecta paz, porque en ti confía.",
             "en": "You will keep in perfect peace those whose minds are steadfast, because they trust in you.",
@@ -1658,11 +1625,8 @@
           "pt": "O medo nos isola e nos faz acreditar que lutamos sozinhos. A realidade da fé é que o Senhor luta as nossas batalhas."
         },
         "evangelio": {
-          "referencia": {
-            "es": "Deuteronomio 31, 8",
-            "en": "Deuteronomy 31:8",
-            "pt": "Deuteronômio 31:8"
-          },
+          "referencia": "Deuteronomio 31, 8",
+
           "texto": {
             "es": "El Señor mismo va delante de ti; él estará contigo, nunca te dejará ni te abandonará. No temas ni te desanimes.",
             "en": "The Lord himself goes before you and will be with you; he will never leave you nor forsake you. Do not be afraid; do not be discouraged.",
@@ -1706,11 +1670,8 @@
           "pt": "O temor nos encolhe e nos faz desconfiar. Mas quando experimentamos quão profundamente amados somos, o medo perde o seu poder."
         },
         "evangelio": {
-          "referencia": {
-            "es": "1 Juan 4, 18",
-            "en": "1 John 4:18",
-            "pt": "1 João 4:18"
-          },
+          "referencia": "1 Juan 4, 18",
+
           "texto": {
             "es": "En el amor no hay temor, sino que el perfecto amor echa fuera el temor.",
             "en": "There is no fear in love. But perfect love drives out fear, because fear has to do with punishment.",
@@ -1754,11 +1715,8 @@
           "pt": "Chegamos ao fim deste percurso. O medo já não tem a última palavra; quem a tem é a confiança em um Deus que é fiel."
         },
         "evangelio": {
-          "referencia": {
-            "es": "Salmo 27, 1",
-            "en": "Psalm 27:1",
-            "pt": "Salmos 27:1"
-          },
+          "referencia": "Salmo 27, 1",
+
           "texto": {
             "es": "El Señor es mi luz y mi salvación, ¿a quién temeré? El Señor es la fortaleza de mi vida, ¿de quién tendré temor?",
             "en": "The Lord is my light and my salvation—whom shall I fear? The Lord is the stronghold of my life—of whom shall I be afraid?",
@@ -1804,11 +1762,8 @@
           "pt": "O cansaço não é apenas físico; às vezes a alma pesa mais do que o corpo. Jesus nos faz um dos convites mais ternos do Evangelio."
         },
         "evangelio": {
-          "referencia": {
-            "es": "Mateo 11, 28",
-            "en": "Matthew 11:28",
-            "pt": "Mateus 11:28"
-          },
+          "referencia": "Mateo 11, 28",
+
           "texto": {
             "es": "Vengan a mí todos ustedes que están cansados y agobiados, y yo les daré descanso.",
             "en": "Come to me, all you who are weary and burdened, and I will give you rest.",
@@ -1852,11 +1807,8 @@
           "pt": "Às vezes carregamos expectativas próprias e alheias que nos esgotam. Jesus nos propõe trocar a carga por um caminho mais leve."
         },
         "evangelio": {
-          "referencia": {
-            "es": "Mateo 11, 29-30",
-            "en": "Matthew 11:29-30",
-            "pt": "Mateus 11:29-30"
-          },
+          "referencia": "Mateo 11, 29-30",
+
           "texto": {
             "es": "Carguen con mi yugo y aprendan de mí... porque mi yugo es suave y mi carga es ligera.",
             "en": "Take my yoke upon you and learn from me... For my yoke is easy and my burden is light.",
@@ -1900,11 +1852,8 @@
           "pt": "Quando sentimos que já não aguentamos mais, é quando Deus intervém com Sua promessa de nos dar novas energias."
         },
         "evangelio": {
-          "referencia": {
-            "es": "Isaías 40, 29",
-            "en": "Isaiah 40:29",
-            "pt": "Isaías 40:29"
-          },
+          "referencia": "Isaías 40, 29",
+
           "texto": {
             "es": "Él fortalece al cansado y acrecienta las fuerzas del débil.",
             "en": "He gives strength to the weary and increases the power of the weak.",
@@ -1948,11 +1897,8 @@
           "pt": "Esperar no Senhor não é ficar de braços cruzados, é depositar a confiança de que Ele nos sustentará quando faltar o ar."
         },
         "evangelio": {
-          "referencia": {
-            "es": "Isaías 40, 31",
-            "en": "Isaiah 40:31",
-            "pt": "Isaías 40:31"
-          },
+          "referencia": "Isaías 40, 31",
+
           "texto": {
             "es": "Pero los que confían en el Señor renovarán sus fuerzas; levantarán el vuelo como las águilas, correrán y no se cansarán.",
             "en": "But those who hope in the Lord will renew their strength. They will soar on wings like eagles; they will run and not grow weary.",
@@ -1996,11 +1942,8 @@
           "pt": "O próprio Jesus se retirava para lugares desertos para descansar. Se o Mestre precisou parar, nós também precisamos."
         },
         "evangelio": {
-          "referencia": {
-            "es": "Marcos 6, 31",
-            "en": "Mark 6:31",
-            "pt": "Marcos 6:31"
-          },
+          "referencia": "Marcos 6, 31",
+
           "texto": {
             "es": "Jesús les dijo: 'Vengan ustedes solos a un lugar tranquilo y descansen un poco'.",
             "en": "Then, because so many people were coming and going that they did not even have a chance to eat, he said to them, 'Come with me by yourselves to a quiet place and get some rest.'",
@@ -2044,11 +1987,8 @@
           "pt": "O que mais cansa não é o trabalho em si, mas fazê-lo sem sentido ou com raiva. O amor transforma o esforço em oferenda."
         },
         "evangelio": {
-          "referencia": {
-            "es": "Colosenses 3, 23",
-            "en": "Colossians 3:23",
-            "pt": "Colossenses 3:23"
-          },
+          "referencia": "Colosenses 3, 23",
+
           "texto": {
             "es": "Hagan lo que hagan, trabajen de buena gana, como para el Señor y no para los hombres.",
             "en": "Whatever you do, work at it with all your heart, as working for the Lord, not for human masters.",
@@ -2092,11 +2032,8 @@
           "pt": "Chegamos ao fim. O cansaço passa, mas a paz de sabermos sustentados por Deus permanece para sempre."
         },
         "evangelio": {
-          "referencia": {
-            "es": "Salmo 4, 8",
-            "en": "Psalm 4:8",
-            "pt": "Salmos 4:8"
-          },
+          "referencia": "Salmo 4, 8",
+
           "texto": {
             "es": "En paz me acuesto y me duermo, porque solo tú, Señor, me haces vivir confiado.",
             "en": "In peace I will lie down and sleep, for you alone, Lord, make me dwell in safety.",
@@ -2128,6 +2065,7 @@
         }
       }
     ],
+
     "bendecido": [
       {
         "dia": 1,
@@ -2142,11 +2080,8 @@
           "pt": "Abençoar é 'dizer bem'. Quando nos sentimos abençoados, reconhecemos que a nossa vida não é uma casualidade, mas um presente constante do amor de Deus que vem ao nosso encontro."
         },
         "evangelio": {
-          "referencia": {
-            "es": "Efesios 1, 3",
-            "en": "Ephesians 1:3",
-            "pt": "Efésios 1:3"
-          },
+          "referencia": "Efesios 1, 3",
+
           "texto": {
             "es": "Bendito sea Dios, el Padre de nuestro Señor Jesucristo, que nos ha bendecido con toda clase de bendiciones espirituales en los cielos.",
             "en": "Praise be to the God and Father of our Lord Jesus Christ, who has blessed us in the heavenly realms with every spiritual blessing in Christ.",
@@ -2164,11 +2099,8 @@
           "pt": "Senhor, obrigado pelo teu amor que me cerca e me sustenta. Abre meus olhos hoje para reconhecer a tua mão em cada detalhe do meu dia, e permite-me ser também uma bênção para os outros. Amém."
         },
         "companero_de_camino": {
-          "santo": {
-            "es": "San José",
-            "en": "Saint Joseph",
-            "pt": "São José"
-          },
+          "santo": "San José",
+
           "recomendacion": {
             "es": "San José fue el custodio de Jesús. Él nos enseña que cuidar lo que recibimos de Dios, con humildad y trabajo, es la forma más alta de gratitud.",
             "en": "Saint Joseph was the custodian of Jesus. He teaches us that taking care of what we receive from God, with humility and work, is the highest form of gratitude.",
@@ -2194,11 +2126,8 @@
           "pt": "Às vezes acreditamos que ser abençoado é ter sucesso ou dinheiro. Mas a bênção fundamental é ser amado pelo Pai, um presente que ninguém pode tirar de você."
         },
         "evangelio": {
-          "referencia": {
-            "es": "Gálatas 4, 7",
-            "en": "Galatians 4:7",
-            "pt": "Gálatas 4:7"
-          },
+          "referencia": "Gálatas 4, 7",
+
           "texto": {
             "es": "Ya no eres esclavo, sino hijo; y si eres hijo, también eres heredero por la gracia de Dios.",
             "en": "So you are no longer a slave, but God’s child; and since you are his child, God has made you also an heir.",
@@ -2216,11 +2145,8 @@
           "pt": "Pai, obrigado por me chamar de filho. Que hoje o meu coração descanse na certeza do teu amor, além dos meus resultados. Amém."
         },
         "companero_de_camino": {
-          "santo": {
-            "es": "San Juan Evangelista",
-            "en": "Saint John the Evangelist",
-            "pt": "São João Evangelista"
-          },
+          "santo": "San Juan Evangelista",
+
           "recomendacion": {
             "es": "El apóstol del amor. Él entendió profundamente que ser 'el discípulo amado' era su mayor bendición.",
             "en": "The apostle of love. He deeply understood that being 'the beloved disciple' was his greatest blessing.",
@@ -2246,11 +2172,8 @@
           "pt": "Sentir-se abençoado às vezes é difícil quando nos sentimos culpados. Mas a maior bênção é saber que Deus sempre nos oferece um novo começo."
         },
         "evangelio": {
-          "referencia": {
-            "es": "Salmo 32, 1",
-            "en": "Psalm 32:1",
-            "pt": "Salmos 32:1"
-          },
+          "referencia": "Salmo 32, 1",
+
           "texto": {
             "es": "¡Dichoso aquel a quien se le ha perdonado su falta, a quien se le ha borrado su pecado!",
             "en": "Blessed is the one whose transgressions are forgiven, whose sins are covered.",
@@ -2268,11 +2191,8 @@
           "pt": "Senhor, obrigado pelo teu perdão incondicional. Ajuda-me a perdoar a mim mesmo e a viver hoje na liberdade da tua graça. Amém."
         },
         "companero_de_camino": {
-          "santo": {
-            "es": "San Pedro",
-            "en": "Saint Peter",
-            "pt": "São Pedro"
-          },
+          "santo": "San Pedro",
+
           "recomendacion": {
             "es": "Después de negar a Jesús, experimentó la bendición del perdón. Entendió que la gracia es más grande que nuestras caídas.",
             "en": "After denying Jesus, he experienced the blessing of forgiveness. He understood that grace is greater than our falls.",
@@ -2298,11 +2218,8 @@
           "pt": "Às vezes Deus nos abençoa de maneiras que não reconhecemos: um contratempo que nos salvou de algo pior, ou uma pessoa que chegou bem a tempo."
         },
         "evangelio": {
-          "referencia": {
-            "es": "Efesios 3, 20",
-            "en": "Ephesians 3:20",
-            "pt": "Efésios 3:20"
-          },
+          "referencia": "Efesios 3, 20",
+
           "texto": {
             "es": "Aquel que puede realizar todas las cosas mucho mejor de lo que podemos pedir o comprender.",
             "en": "Now to him who is able to do immeasurably more than all we ask or imagine, according to his power that is at work within us.",
@@ -2320,11 +2237,8 @@
           "pt": "Senhor, abre meus olhos para ver tuas bênçãos disfarçadas de situações cotidianas. Obrigado por cuidar de mim mais do que consigo perceber. Amém."
         },
         "companero_de_camino": {
-          "santo": {
-            "es": "San José",
-            "en": "Saint Joseph",
-            "pt": "São José"
-          },
+          "santo": "San José",
+
           "recomendacion": {
             "es": "Él vivió bendiciones constantes en medio de la precariedad de Belén y el exilio. Confió siempre en la providencia.",
             "en": "He lived constant blessings amidst the precariousness of Bethlehem and exile. He always trusted in providence.",
@@ -2350,11 +2264,8 @@
           "pt": "A bênção de Deus não é uma reserva privada, é um rio que deve fluir. Quando você abençoa os outros, você confirma que a bênção vive em você."
         },
         "evangelio": {
-          "referencia": {
-            "es": "Génesis 12, 2",
-            "en": "Genesis 12:2",
-            "pt": "Gênesis 12:2"
-          },
+          "referencia": "Génesis 12, 2",
+
           "texto": {
             "es": "Te bendeciré... y serás una bendición.",
             "en": "I will make you into a great nation, and I will bless you; I will make your name great, and you will be a blessing.",
@@ -2364,19 +2275,16 @@
             "es": "Has recibido mucho para dar mucho. Una palabra amable, un tiempo de escucha o una sonrisa pueden ser tu forma de transmitir la bendición que has recibido.",
             "en": "You have received much to give much. A kind word, a time of listening, or a smile can be your way of passing on the blessing you have received.",
             "pt": "Você recebeu muito para dar muito. Uma palavra amigable, um tempo de escuta ou um sorriso podem ser a sua maneira de transmitir a bênção que recebeu."
+          },
+          "oracion": {
+            "es": "Señor, que mi vida sea una bendición para los que me rodean. Úsame hoy para llevar un poco de tu luz a los demás. Amén.",
+            "en": "Lord, may my life be a blessing to those around me. Use me today to bring a little of your light to others. Amen.",
+            "pt": "Senhor, que a minha vida seja uma bênção para os que me cercam. Usa-me hoje para levar um pouco da tua luz aos outros. Amém."
           }
         },
-        "oracion": {
-          "es": "Señor, que mi vida sea una bendición para los que me rodean. Úsame hoy para llevar un poco de tu luz a los demás. Amén.",
-          "en": "Lord, may my life be a blessing to those around me. Use me today to bring a little of your light to others. Amen.",
-          "pt": "Senhor, que a minha vida seja uma bênção para os que me cercam. Usa-me hoje para levar um pouco da tua luz aos outros. Amém."
-        },
         "companero_de_camino": {
-          "santo": {
-            "es": "San Vicente de Paúl",
-            "en": "Saint Vincent de Paul",
-            "pt": "São Vicente de Paulo"
-          },
+          "santo": "San Vicente de Paúl",
+
           "recomendacion": {
             "es": "Él convirtió su vida en una bendición constante para los pobres. Su lema era ver a Dios en el necesitado.",
             "en": "He turned his life into a constant blessing for the poor. His motto was to see God in the needy.",
@@ -2402,11 +2310,8 @@
           "pt": "Às vezes pensamos que a fé é algo privado, mas a bênção de Deus se multiplica quando caminhamos juntos."
         },
         "evangelio": {
-          "referencia": {
-            "es": "Mateo 18, 20",
-            "en": "Matthew 18:20",
-            "pt": "Mateus 18:20"
-          },
+          "referencia": "Mateo 18, 20",
+
           "texto": {
             "es": "Donde dos o tres están reunidos en mi nombre, allí estoy yo en medio de ellos.",
             "en": "For where two or three gather in my name, there am I with them.",
@@ -2424,11 +2329,8 @@
           "pt": "Senhor, obrigado pela minha comunidade, pela minha família, pelos meus amigos. Obrigado por me abençoar através deles. Amém."
         },
         "companero_de_camino": {
-          "santo": {
-            "es": "San Pablo",
-            "en": "Saint Paul",
-            "pt": "São Paulo"
-          },
+          "santo": "San Pablo",
+
           "recomendacion": {
             "es": "Siempre agradecía a Dios por las comunidades que formaba. Entendía que la bendición es, ante todo, comunitaria.",
             "en": "He always thanked God for the communities he formed. He understood that blessing is, above all, communal.",
@@ -2454,11 +2356,8 @@
           "pt": "Concluímos o nosso percurso. Viver 'abençoado' não é um sentimento, é uma postura: a daquele que caminha com a cabeça erguida sabendo que é amado pelo Rei."
         },
         "evangelio": {
-          "referencia": {
-            "es": "Efesios 1, 3",
-            "en": "Ephesians 1:3",
-            "pt": "Efésios 1:3"
-          },
+          "referencia": "Efesios 1, 3",
+
           "texto": {
             "es": "Bendito sea Dios... que nos ha bendecido en Cristo.",
             "en": "Praise be to the God... who has blessed us in Christ.",
@@ -2476,11 +2375,7 @@
           "pt": "Senhor, obrigado por estes sete dias. Declaro-me abençoado por ti e decido viver minha vida como uma oferenda de amor ao teu serviço. Amém."
         },
         "companero_de_camino": {
-          "santo": {
-            "es": "San Francisco de Asís",
-            "en": "Saint Francis of Assisi",
-            "pt": "São Francisco de Assis"
-          },
+          "santo": "San Francisco de Asís",
           "recomendacion": {
             "es": "Él veía cada criatura como una bendición. Su vida fue una alabanza continua al Creador.",
             "en": "He saw every creature as a blessing. His life was a continuous praise to the Creator.",
@@ -2508,11 +2403,8 @@
           "pt": "A preocupação costuma ser um excesso de futuro em nossa mente. Hoje, Jesus nos convida a aterrissar no presente e confiar naquele que conhece o amanhã melhor do que nós."
         },
         "evangelio": {
-          "referencia": {
-            "es": "Mateo 6, 26",
-            "en": "Matthew 6:26",
-            "pt": "Mateus 6:26"
-          },
+          "referencia": "Mateo 6, 26",
+
           "texto": {
             "es": "Miren las aves del cielo: no siembran ni cosechan, ni recogen en graneros; y, sin embargo, el Padre celestial las alimenta.",
             "en": "Look at the birds of the air; they do not sow or reap or store away in barns, and yet your heavenly Father feeds them.",
@@ -2530,11 +2422,7 @@
           "pt": "Pai, hoje trago-te esta preocupação que ronda a minha cabeça. Reconheço que não posso mudar o amanhã, mas posso confiar que Tu já estás lá à minha espera. Ajuda-me a descansar na tua providência. Amém."
         },
         "companero_de_camino": {
-          "santo": {
-            "es": "San Padre Pío",
-            "en": "Saint Pio of Pietrelcina",
-            "pt": "São Pio de Pietrelcina"
-          },
+          "santo": "San Padre Pío",
           "recomendacion": {
             "es": "Su famosa frase: 'Reza, espera y no te preocupes'. La preocupación es inútil, pero la oración activa la paz que Dios quiere darte.",
             "en": "His famous phrase: 'Pray, hope, and don't worry'. Worry is useless, but prayer activates the peace God wants to give you.",
@@ -2560,11 +2448,8 @@
           "pt": "A preocupação é como uma cadeira de balanço: mantém-te em movimento, mas não te leva a lugar nenhum. Jesus nos convida a soltar o que não podemos controlar."
         },
         "evangelio": {
-          "referencia": {
-            "es": "Mateo 6, 27",
-            "en": "Matthew 6:27",
-            "pt": "Mateus 6:27"
-          },
+          "referencia": "Mateo 6, 27",
+
           "texto": {
             "es": "¿Quién de ustedes, por mucho que se preocupe, puede añadir una sola hora al curso de su vida?",
             "en": "Can any one of you by worrying add a single hour to your life?",
@@ -2582,11 +2467,7 @@
           "pt": "Senhor, admito que quero controlar o que me preocupa. Entrego-te a minha ansiedade e peço-te que sejas tu a gerir os tempos da minha vida. Amém."
         },
         "companero_de_camino": {
-          "santo": {
-            "es": "San Francisco de Sales",
-            "en": "Saint Francis de Sales",
-            "pt": "São Francisco de Sales"
-          },
+          "santo": "San Francisco de Sales",
           "recomendacion": {
             "es": "Decía: 'Haz todo lo que puedas hoy, pero no te angusties por el mañana, pues Dios no es un extraño'.",
             "en": "He said: 'Do all you can today, but do not be anxious about tomorrow, for God is not a stranger'.",
@@ -2612,11 +2493,8 @@
           "pt": "Às vezes nos preocupamos com tantas coisas secundárias que perdemos de vista o principal. Quando o Reino de Deus é prioridade, todo o resto toma o seu lugar."
         },
         "evangelio": {
-          "referencia": {
-            "es": "Lucas 10, 41-42",
-            "en": "Luke 10:41-42",
-            "pt": "Lucas 10:41-42"
-          },
+          "referencia": "Lucas 10, 41-42",
+
           "texto": {
             "es": "Marta, Marta, te preocupas y te inquietas por muchas cosas, y una sola es necesaria.",
             "en": "'Martha, Martha,' the Lord answered, 'you are worried and upset about many things, but few things are needed—or indeed only one.'",
@@ -2634,11 +2512,8 @@
           "pt": "Senhor, ajuda-me a distinguir entre o que é importante e o que é apenas ruído. Que o meu coração esteja focado em ti. Amém."
         },
         "companero_de_camino": {
-          "santo": {
-            "es": "Santa Marta",
-            "en": "Saint Martha",
-            "pt": "Santa Marta"
-          },
+          "santo": "Santa Marta",
+
           "recomendacion": {
             "es": "Ella aprendió que, aunque el servicio es importante, nada sustituye el estar a los pies de Jesús.",
             "en": "She learned that, although service is important, nothing replaces being at the feet of Jesus.",
@@ -2664,11 +2539,8 @@
           "pt": "Se Deus cuida das aves e das flores do campo, não cuidará muito mais de ti? A preocupação nasce quando esquecemos quem é o nosso Pai."
         },
         "evangelio": {
-          "referencia": {
-            "es": "Mateo 6, 30",
-            "en": "Matthew 6:30",
-            "pt": "Mateus 6:30"
-          },
+          "referencia": "Mateo 6, 30",
+
           "texto": {
             "es": "Si Dios viste así a la hierba del campo... ¿no hará mucho más por ustedes, hombres de poca fe?",
             "en": "If that is how God clothes the grass of the field... will he not much more clothe you—you of little faith?",
@@ -2686,11 +2558,8 @@
           "pt": "Pai, obrigado por cuidares sempre de mim. Ajuda-me a descansar na tua providência, sabendo que tu conheces todas as minhas necessidades. Amém."
         },
         "companero_de_camino": {
-          "santo": {
-            "es": "San José",
-            "en": "Saint Joseph",
-            "pt": "São José"
-          },
+          "santo": "San José",
+
           "recomendacion": {
             "es": "Él vivió en constante dependencia de Dios para mantener a la Sagrada Familia. Su fe fue su provisión.",
             "en": "He lived in constant dependence on God to maintain the Holy Family. His faith was his provision.",
@@ -2716,11 +2585,8 @@
           "pt": "A nossa mente costuma ir para os cenários mais catastróficos. E se em vez de perguntarmos 'o que acontece se correr mal', perguntarmos 'o que acontece se Deus me acompanhar'?"
         },
         "evangelio": {
-          "referencia": {
-            "es": "Isaías 41, 10",
-            "en": "Isaiah 41:10",
-            "pt": "Isaías 41:10"
-          },
+          "referencia": "Isaías 41, 10",
+
           "texto": {
             "es": "No temas, porque yo estoy contigo; no te angusties, porque yo soy tu Dios.",
             "en": "So do not fear, for I am with you; do not be dismayed, for I am your God.",
@@ -2738,11 +2604,7 @@
           "pt": "Senhor, muda a minha perspectiva. Em vez de olhar para os meus medos, ajuda-me a olhar para a tua presença. Confio que estarás comigo em tudo. Amém."
         },
         "companero_de_camino": {
-          "santo": {
-            "es": "San Pablo",
-            "en": "Saint Paul",
-            "pt": "São Paulo"
-          },
+          "santo": "San Pablo",
           "recomendacion": {
             "es": "Él enfrentó todo tipo de peligros, pero su seguridad siempre fue Cristo.",
             "en": "He faced all kinds of dangers, but his security was always Christ.",
@@ -2768,11 +2630,8 @@
           "pt": "Não guardes as tuas preocupações à chave. A oração é o lugar onde deixamos as nossas cargas pesadas para que o Senhor nos dê a sua leveza."
         },
         "evangelio": {
-          "referencia": {
-            "es": "1 Pedro 5, 7",
-            "en": "1 Peter 5:7",
-            "pt": "1 Pedro 5:7"
-          },
+          "referencia": "1 Pedro 5, 7",
+
           "texto": {
             "es": "Descarguen en él todas sus preocupaciones, porque él se preocupa por ustedes.",
             "en": "Cast all your anxiety on him because he cares for you.",
@@ -2790,11 +2649,8 @@
           "pt": "Senhor, aqui te deixo as minhas preocupações. Não posso com tudo, mas contigo tudo é possível. Entrego-te o meu coração inquieto. Amém."
         },
         "companero_de_camino": {
-          "santo": {
-            "es": "Santa Teresita de Lisieux",
-            "en": "Saint Thérèse of Lisieux",
-            "pt": "Santa Teresinha do Menino Jesus"
-          },
+          "santo": "Santa Teresita de Lisieux",
+
           "recomendacion": {
             "es": "Ella siempre decía que el abandono en las manos de Dios es la forma más rápida de encontrar alivio.",
             "en": "She always said that abandonment into God's hands is the fastest way to find relief.",
@@ -2820,11 +2676,8 @@
           "pt": "Chegamos ao fim. A preocupação é um hábito, mas a confiança também o é. Escolhe hoje viver a partir da paz e não a partir do temor."
         },
         "evangelio": {
-          "referencia": {
-            "es": "Filipenses 4, 6",
-            "en": "Philippians 4:6",
-            "pt": "Filipenses 4:6"
-          },
+          "referencia": "Filipenses 4, 6",
+
           "texto": {
             "es": "No se inquieten por nada; más bien, en toda ocasión presenten sus peticiones a Dios.",
             "en": "Do not be anxious about anything, but in every situation, by prayer and petition, with thanksgiving, present your requests to God.",
@@ -2842,11 +2695,7 @@
           "pt": "Senhor, obrigado por me ensinares a viver mais leve..."
         },
         "companero_de_camino": {
-          "santo": {
-            "es": "San José",
-            "en": "Saint Joseph",
-            "pt": "São José"
-          },
+          "santo": "San José",
           "recomendacion": {
             "es": "Su vida nos enseña...",
             "en": "His life teaches us...",
