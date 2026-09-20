@@ -1432,6 +1432,17 @@ function cambiarIdioma(lang) {
   const botonesIdioma = document.querySelectorAll("#screen-idioma button");
   botonesIdioma.forEach((btn) => btn.classList.remove("active"));
 
+  // --- TRADUCCIÓN DEL PLACEHOLDER DE BÚSQUEDA ---
+  const inputBusqueda = document.getElementById("input-busqueda");
+  if (inputBusqueda) {
+    const placeholderTraducido = inputBusqueda.getAttribute(
+      `data-${lang}-placeholder`,
+    );
+    if (placeholderTraducido) {
+      inputBusqueda.placeholder = placeholderTraducido;
+    }
+  }
+
   // --- PERSISTENCIA EN LOCALSTORAGE Y CONTROL DE VOZ ---
   localStorage.setItem("idiomaApp", lang);
   window.idiomaActual = lang;
@@ -1443,7 +1454,6 @@ function cambiarIdioma(lang) {
 
   console.log("Idioma guardado en localStorage:", lang);
 }
-
 // --- FUNCIONES FINALES DE APERTURA DESDE EL BUSCADOR ---
 function cerrarCajita() {
   const modalVentana = document.getElementById("modal-versiculo");
