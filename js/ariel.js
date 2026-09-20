@@ -189,26 +189,63 @@ const btnBackEmaus = document.querySelector("#screen-emaus .btn-back-path");
 if (btnBackEmaus)
   btnBackEmaus.addEventListener("click", () => changeScreen(screenPathDetail));
 
-// --- FUNCIONES DE DETALLE PARA EMAÚS Y PROMESA ---
+// --- BOTONES VOLVER DE LAS PANTALLAS DE DETALLE NUEVAS ---
+const btnBackEmausDetalle = document.querySelector(
+  "#screen-emaus-detalle .btn-back-path",
+);
+if (btnBackEmausDetalle)
+  btnBackEmausDetalle.addEventListener("click", () =>
+    changeScreen(screenEmaus),
+  );
+
+const btnBackPeldañoDetalle = document.querySelector(
+  "#screen-peldaño-detalle .btn-back-path",
+);
+if (btnBackPeldañoDetalle)
+  btnBackPeldañoDetalle.addEventListener("click", () =>
+    changeScreen(screenPromesa),
+  );
+
+// --- FUNCIONES DE DETALLE PARA EMAÚS Y PROMESA (CON SOPORTE MULTILINGÜE) ---
 async function abrirPasoEmaus(numero) {
   try {
+    const idioma =
+      window.idiomaActual || localStorage.getItem("idiomaApp") || "es";
+
     const respuesta = await fetch("data/camino.json");
     const datosJson = await respuesta.json();
     const datos = datosJson.pasos.find((p) => p.id === parseInt(numero));
 
     if (!datos) return;
 
-    // Inyectamos cada texto en su lugar correspondiente
+    // Título con soporte de idioma
     document.getElementById("titulo-emaus-detalle").innerHTML =
-      datos.titulo || "";
+      datos.titulo && datos.titulo[idioma]
+        ? datos.titulo[idioma]
+        : datos.titulo || "";
 
-    // Armamos el contenido donde los textos van arriba y la imagen va al fondo
+    const textoPaso =
+      datos.texto && datos.texto[idioma]
+        ? datos.texto[idioma]
+        : datos.texto || "";
+    const caminarPaso =
+      datos.caminar && datos.caminar[idioma]
+        ? datos.caminar[idioma]
+        : datos.caminar || "";
+    const reflexionPaso =
+      datos.reflexion && datos.reflexion[idioma]
+        ? datos.reflexion[idioma]
+        : datos.reflexion || "";
+    const tituloAlt =
+      datos.titulo && datos.titulo[idioma] ? datos.titulo[idioma] : "";
+
+    // Armamos el contenido con los textos traducidos
     document.getElementById("texto-emaus-detalle").innerHTML = `
-            <p>${datos.texto || ""}</p>
-            <p style="margin-top: 15px;"><strong>Caminar:</strong> ${datos.caminar || ""}</p>
-            <p style="margin-top: 15px; font-style: italic;"><strong>Reflexión:</strong> ${datos.reflexion || ""}</p>
+            <p>${textoPaso}</p>
+            <p style="margin-top: 15px;"><strong>Caminar:</strong> ${caminarPaso}</p>
+            <p style="margin-top: 15px; font-style: italic;"><strong>Reflexión:</strong> ${reflexionPaso}</p>
             
-            ${datos.imagen ? `<img src="${datos.imagen}" alt="${datos.titulo}" >` : ""}
+            ${datos.imagen ? `<img src="${datos.imagen}" alt="${tituloAlt}" >` : ""}
         `;
 
     changeScreen(screenEmausDetalle);
@@ -216,40 +253,81 @@ async function abrirPasoEmaus(numero) {
     console.error("Error al cargar datos:", error);
   }
 }
+
 async function abrirPeldaño(numero) {
   try {
+    const idioma =
+      window.idiomaActual || localStorage.getItem("idiomaApp") || "es";
+
     const respuesta = await fetch("data/promesa.json");
     const datosJson = await respuesta.json();
     const datos = datosJson.find((p) => p.id === parseInt(numero));
 
     if (!datos) return;
 
-    // 1. Título
-    document.getElementById("titulo-peldaño-detalle").innerHTML =
-      datos.titulo || "";
+    const tituloPeldaño =
+      datos.titulo && datos.titulo[idioma]
+        ? datos.titulo[idioma]
+        : datos.titulo || "";
+    const introPeldaño =
+      datos.introduccion && datos.introduccion[idioma]
+        ? datos.introduccion[idioma]
+        : datos.introduccion || "";
+    const citaPeldaño =
+      datos.cita_biblica && datos.cita_biblica[idioma]
+        ? datos.cita_biblica[idioma]
+        : datos.cita_biblica || "";
 
-    // 2. Contenido completo: Imagen arriba + Todos los textos abajo
+    // Campo de desarrollo dinámico adaptado a idioma
+    const campoDesarrolloObj =
+      datos.verbo_eterno ||
+      datos.la_promesa_del_emmanuel ||
+      datos.el_fiat_de_maria ||
+      datos.el_misterio_de_la_kenosis ||
+      datos.las_obras_y_las_palabras ||
+      datos.el_sacrificio_y_la_eucaristia ||
+      datos.el_soplo_que_congrega ||
+      null;
+    const desarrolloPeldaño =
+      campoDesarrolloObj && campoDesarrolloObj[idioma]
+        ? campoDesarrolloObj[idioma]
+        : "";
+
+    const vozIglesia =
+      datos.voz_de_la_iglesia && datos.voz_de_la_iglesia[idioma]
+        ? datos.voz_de_la_iglesia[idioma]
+        : "";
+    const aplicacionEx =
+      datos.aplicacion_existencial && datos.aplicacion_existencial[idioma]
+        ? datos.aplicacion_existencial[idioma]
+        : "";
+    const oracionBreve =
+      datos.oracion_breve && datos.oracion_breve[idioma]
+        ? datos.oracion_breve[idioma]
+        : "";
+
+    // 1. Título
+    document.getElementById("titulo-peldaño-detalle").innerHTML = tituloPeldaño;
+
+    // 2. Contenido completo con textos traducidos
     document.getElementById("texto-peldaño-detalle").innerHTML = `
-      ${datos.imagen ? `<img src="${datos.imagen}" alt="${datos.titulo}" >` : ""}
+      ${datos.imagen ? `<img src="${datos.imagen}" alt="${tituloPeldaño}" >` : ""}
       
-      <p><strong>Introducción:</strong> ${datos.introduccion || ""}</p>
-      <p style="margin-top: 15px;"><em>${datos.cita_biblica || ""}</em></p>
+      <p><strong>Introducción:</strong> ${introPeldaño}</p>
+      <p style="margin-top: 15px;"><em>${citaPeldaño}</em></p>
       
-      <!-- Acá sumamos el desarrollo dinámico por si usas distintos nombres de campos -->
-      <p style="margin-top: 15px;">${datos.desarrollo || datos.las_obras_y_las_palabras || datos.el_sacrificio_y_la_eucaristia || datos.el_soplo_que_congrega || ""}</p>
+      <p style="margin-top: 15px;">${desarrolloPeldaño}</p>
       
-      <p style="margin-top: 15px;"><strong>Voz de la Iglesia:</strong> ${datos.voz_de_la_iglesia || ""}</p>
-      <p style="margin-top: 15px;"><strong>Aplicación:</strong> ${datos.aplicacion_existencial || ""}</p>
-      <p style="margin-top: 15px; font-style: italic;"><strong>Oración:</strong> ${datos.oracion_breve || ""}</p>
+      <p style="margin-top: 15px;"><strong>Voz de la Iglesia:</strong> ${vozIglesia}</p>
+      <p style="margin-top: 15px;"><strong>Aplicación:</strong> ${aplicacionEx}</p>
+      <p style="margin-top: 15px; font-style: italic;"><strong>Oración:</strong> ${oracionBreve}</p>
     `;
 
-    // 3. Cambiamos de pantalla (respetando tu ID exacto)
-    changeScreen(screenPeldañoDetalle); // O como se llame exactamente tu pantalla de detalle
+    changeScreen(screenPeldañoDetalle);
   } catch (error) {
     console.error("Error al abrir el peldaño:", error);
   }
-}
-// --- TRANSICIÓN AUTOMÁTICA DEL SPLASH ---
+} // --- TRANSICIÓN AUTOMÁTICA DEL SPLASH ---
 setTimeout(() => {
   if (screenSplash) {
     screenSplash.style.transition = "opacity 0.8s ease";
@@ -1192,24 +1270,28 @@ async function aplicarSubrayadosCapitulo(nombreLibro, numeroCapitulo) {
   }
 }
 
-// --- INYECTOR MAESTRO DE ESTADOS DESDE Estados.json ---
+// --- INYECTOR MAESTRO DE ESTADOS (Multiidioma) ---
+// --- INYECTOR MAESTRO DE ESTADOS (Con depuración) ---
 async function cargarEstadoAnimo(nombreEstado) {
   try {
+    const idioma =
+      window.idiomaActual || localStorage.getItem("idiomaApp") || "es";
+    console.log("=== INICIO CARGA ESTADO ===", nombreEstado, "Idioma:", idioma);
+
     const respuesta = await fetch("data/estados.json");
     const data = await respuesta.json();
     let estadosArray = data.estados[nombreEstado];
 
-    if (!estadosArray || estadosArray.length === 0) return;
+    if (!estadosArray || estadosArray.length === 0) {
+      console.warn("⚠️ No se encontró el array para el estado:", nombreEstado);
+      return;
+    }
 
-    // 1. Obtener fecha de hoy (formato: "2026-08-16")
     const hoy = new Date().toISOString().split("T")[0];
-
-    // 2. Recuperar progreso del localStorage
     let progreso = JSON.parse(
       localStorage.getItem(`progreso_${nombreEstado}`),
     ) || { dia: 0, fecha: "" };
 
-    // 3. Lógica: ¿Es un día nuevo?
     if (progreso.fecha !== hoy) {
       progreso.dia = (progreso.dia + 1) % estadosArray.length;
       progreso.fecha = hoy;
@@ -1220,53 +1302,117 @@ async function cargarEstadoAnimo(nombreEstado) {
     }
 
     const datosEstado = estadosArray[progreso.dia];
+    console.log("📄 Datos del día obtenidos del JSON:", datosEstado);
 
-    // ... (El resto de la inyección sigue igual, no lo toques)
-    const pantalla = document.getElementById(`screen-${nombreEstado}`);
-    if (!pantalla) return;
+    // Mapeo con tus pantallas globales
+    const estadosMap = {
+      agradecido: screenAgradecido,
+      bendecido: screenBendecido,
+      cansado: screenCansado,
+      feliz: screenFeliz,
+      triste: screenTriste,
+      ansioso: screenAnsioso,
+      temeroso: screenTemeroso,
+      preocupado: screenPreocupado,
+      "en-paz": screenEnpaz,
+    };
 
-    // Inyección de datos
+    const pantalla = estadosMap[nombreEstado];
+    console.log("🖥️ Pantalla mapeada:", pantalla);
+    if (!pantalla) {
+      console.warn(
+        "⚠️ No se encontró la variable de pantalla para:",
+        nombreEstado,
+      );
+      return;
+    }
+
+    // 1. Título y Acogida
     const elTitulo = pantalla.querySelector(".titulo-estado");
-    if (elTitulo)
-      elTitulo.textContent = `Pantalla: ${nombreEstado.charAt(0).toUpperCase() + nombreEstado.slice(1)}`;
+    if (elTitulo) {
+      elTitulo.textContent =
+        nombreEstado.charAt(0).toUpperCase() + nombreEstado.slice(1);
+    }
 
-    // ... [Aquí va todo tu código de elAcogida, elRef, etc., igual que antes]
     const elAcogida = pantalla.querySelector(".acogida-estado");
-    if (elAcogida && datosEstado.acogida)
-      elAcogida.textContent = datosEstado.acogida;
+    if (elAcogida && datosEstado.acogida) {
+      const textoAcogida =
+        typeof datosEstado.acogida === "object"
+          ? datosEstado.acogida[idioma] || datosEstado.acogida.es
+          : datosEstado.acogida;
+      elAcogida.textContent = textoAcogida || "";
+      console.log("✅ Acogida inyectada:", textoAcogida);
+    }
 
+    // 2. Evangelio (Referencia, Texto, Meditación)
     const elRef = pantalla.querySelector(".evangelio-referencia");
-    if (elRef && datosEstado.evangelio?.referencia)
-      elRef.textContent = datosEstado.evangelio.referencia;
+    if (elRef && datosEstado.evangelio) {
+      elRef.textContent = datosEstado.evangelio.referencia || "";
+    }
 
     const elTxt = pantalla.querySelector(".evangelio-texto");
-    if (elTxt && datosEstado.evangelio?.texto)
-      elTxt.textContent = datosEstado.evangelio.texto;
+    if (elTxt && datosEstado.evangelio) {
+      const txtEv =
+        typeof datosEstado.evangelio.texto === "object"
+          ? datosEstado.evangelio.texto[idioma] ||
+            datosEstado.evangelio.texto.es
+          : datosEstado.evangelio.texto;
+      elTxt.textContent = txtEv || "";
+      console.log("✅ Texto evangelio inyectado:", txtEv);
+    }
 
     const elMed = pantalla.querySelector(".evangelio-meditacion");
-    if (elMed && datosEstado.evangelio?.meditacion)
-      elMed.textContent = datosEstado.evangelio.meditacion;
+    if (elMed && datosEstado.evangelio) {
+      const medEv =
+        typeof datosEstado.evangelio.meditacion === "object"
+          ? datosEstado.evangelio.meditacion[idioma] ||
+            datosEstado.evangelio.meditacion.es
+          : datosEstado.evangelio.meditacion;
+      elMed.textContent = medEv || "";
+    }
 
+    // 3. Oración
     const elOracion = pantalla.querySelector(".oracion-texto");
-    if (elOracion && datosEstado.oracion)
-      elOracion.textContent = datosEstado.oracion;
+    if (elOracion && datosEstado.oracion) {
+      const txtOr =
+        typeof datosEstado.oracion === "object"
+          ? datosEstado.oracion[idioma] || datosEstado.oracion.es
+          : datosEstado.oracion;
+      elOracion.textContent = txtOr || "";
+      console.log("✅ Oración inyectada:", txtOr);
+    }
 
+    // 4. Santo / Compañero de camino
     const elSanto = pantalla.querySelector(".santo-nombre");
-    if (elSanto && datosEstado.companero_de_camino?.santo)
-      elSanto.textContent = datosEstado.companero_de_camino.santo;
+    if (elSanto && datosEstado.companero_de_camino) {
+      elSanto.textContent = datosEstado.companero_de_camino.santo || "";
+    }
 
     const elRec = pantalla.querySelector(".santo-recomendacion");
-    if (elRec && datosEstado.companero_de_camino?.recomendacion)
-      elRec.textContent = datosEstado.companero_de_camino.recomendacion;
+    if (elRec && datosEstado.companero_de_camino) {
+      const recSanto =
+        typeof datosEstado.companero_de_camino.recomendacion === "object"
+          ? datosEstado.companero_de_camino.recomendacion[idioma] ||
+            datosEstado.companero_de_camino.recomendacion.es
+          : datosEstado.companero_de_camino.recomendacion;
+      elRec.textContent = recSanto || "";
+    }
 
+    // 5. Paso de hoy
     const elPaso = pantalla.querySelector(".paso-hoy-texto");
-    if (elPaso && datosEstado.paso_de_hoy)
-      elPaso.textContent = datosEstado.paso_de_hoy;
+    if (elPaso && datosEstado.paso_de_hoy) {
+      const txtPaso =
+        typeof datosEstado.paso_de_hoy === "object"
+          ? datosEstado.paso_de_hoy[idioma] || datosEstado.paso_de_hoy.es
+          : datosEstado.paso_de_hoy;
+      elPaso.textContent = txtPaso || "";
+    }
+
+    console.log("=== FIN INYECCIÓN EXITOSA ===");
   } catch (error) {
-    console.error("Error al inyectar los datos del estado:", error);
+    console.error("❌ Error general en cargarEstadoAnimo:", error);
   }
 }
-
 // funcion idiomas
 function cambiarIdioma(lang) {
   const elementosTraducibles = document.querySelectorAll(

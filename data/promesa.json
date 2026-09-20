@@ -1,108 +1,405 @@
 [
   {
     "id": 1,
-    "titulo": "I. El Principio Eterno (Génesis)",
-    "subtitulo": "Itinerario de la Revelación",
+    "titulo": {
+      "es": "I. El Principio Eterno (Génesis)",
+      "en": "I. The Eternal Beginning (Genesis)",
+      "pt": "I. O Princípio Eterno (Gênesis)"
+    },
+    "subtitulo": {
+      "es": "Itinerario de la Revelación",
+      "en": "Itinerary of Revelation",
+      "pt": "Itinerário da Revelação"
+    },
     "imagen": "assets/imagen/escalon1.jpg",
-    "introduccion": "Antes de que comenzara el tiempo y de que existiera criatura alguna, Dios ya era plenitud de vida y de amor. El Génesis no pretende describir el universo como un tratado científico, sino proclamar que todo cuanto existe procede libremente del único Dios. La revelación alcanzará después su claridad plena: ese Dios creador es Padre, Hijo y Espíritu Santo.",
-    "cita_biblica": "«En el principio creó Dios los cielos y la tierra. La tierra estaba desordenada y vacía, las tinieblas estaban sobre la faz del abismo, y el Espíritu de Dios se movía sobre la faz de las aguas.» (Génesis 1,1-2)",
-    "verbo_eterno": "El Evangelio de Juan retoma deliberadamente las primeras palabras del Génesis: «En el principio era el Verbo». El Verbo estaba junto a Dios y era Dios. No pertenece al orden de las criaturas: es eterno, divino y está junto al Padre. Por medio de Él fueron hechas todas las cosas; por eso, cuando Jesucristo entra en nuestra historia, no aparece simplemente como un mensajero de Dios, sino como el mismo Verbo eterno hecho carne.",
-    "espiritu_creador": "Desde las primeras líneas de la Escritura, el Espíritu de Dios aparece sobre las aguas. La palabra hebrea ruah puede significar espíritu, aliento o viento. La revelación bíblica permite contemplar en esa presencia una primera alusión al Espíritu vivificante, que no sólo estuvo presente en el comienzo, sino que continúa sosteniendo y renovando la creación. «Envías tu espíritu, y son creados, y renuevas la faz de la tierra» (Salmo 104,30).",
-    "voz_de_la_iglesia": "La fe de la Iglesia confiesa que la creación es obra del único Dios, y que las tres Personas divinas actúan inseparablemente en toda obra exterior de Dios. San Ireneo relaciona la creación con la Palabra de Dios, en armonía con el prólogo de san Juan: «Todo se hizo por él y sin él no se hizo nada de cuanto ha sido hecho». Así, el mismo Dios que crea es también el Dios que redime: la creación no es un acto distante, sino el primer gesto de una historia de amor que culminará en Cristo y será llevada a plenitud por el Espíritu Santo.",
-    "aplicacion_existencial": "Tu vida no es un accidente perdido en un universo indiferente. Has recibido la existencia de las manos amorosas de Dios y eres sostenido por Él incluso cuando interiormente todo parece desordenado y vacío. Tal vez hoy no veas con claridad el camino; tal vez haya zonas de tu historia cubiertas de oscuridad. Pero el Espíritu que se movía sobre las aguas no abandona la obra de sus manos. Dios puede comenzar nuevamente en ti, pronunciando su Palabra sobre aquello que todavía necesita luz, verdad y vida.",
-    "oracion_breve": "Dios eterno, Padre, Hijo y Espíritu Santo, gracias porque mi vida procede de tu amor. Cuando todo en mí parezca desordenado y vacío, pronuncia nuevamente tu Palabra y deja que tu Espíritu renueve mi corazón. Amén."
+    "introduccion": {
+      "es": "Antes de que comenzara el tiempo y de que existiera criatura alguna, Dios ya era plenitud de vida y de amor. El Génesis no pretende describir el universo como un tratado científico, sino proclamar que todo cuanto existe procede libremente del único Dios. La revelación alcanzará después su claridad plena: ese Dios creador es Padre, Hijo y Espíritu Santo.",
+      "en": "Before time began and any creature existed, God was already the fullness of life and love. Genesis does not intend to describe the universe as a scientific treatise, but to proclaim that everything that exists proceeds freely from the one God. Revelation will later reach its full clarity: that creator God is Father, Son, and Holy Spirit.",
+      "pt": "Antes que o tempo começasse e que existisse qualquer criatura, Deus já era plenitude de vida e de amor. O Gênesis não pretende descrever o universo como um tratado científico, mas proclamar que tudo o que existe procede livremente do único Deus. A revelação alcançará depois a sua clareza plena: esse Deus criador é Pai, Filho e Espírito Santo."
+    },
+    "cita_biblica": {
+      "es": "«En el principio creó Dios los cielos y la tierra. La tierra estaba desordenada y vacía, las tinieblas estaban sobre la faz del abismo, y el Espíritu de Dios se movía sobre la faz de las aguas.» (Génesis 1,1-2)",
+      "en": "'In the beginning God created the heavens and the earth. The earth was formless and empty, darkness was over the surface of the deep, and the Spirit of God was hovering over the waters.' (Genesis 1:1-2)",
+      "pt": "'No princípio, criou Deus os céus e a terra. A terra estava sem forma e vazia; as trevas cobriam a face do abismo, e o Espírito de Deus pairava sobre as águas.' (Gênesis 1,1-2)"
+    },
+    "verbo_eterno": {
+      "es": "El Evangelio de Juan retoma deliberadamente las primeras palabras del Génesis: «En el principio era el Verbo». El Verbo estaba junto a Dios y era Dios. No pertenece al orden de las criaturas: es eterno, divino y está junto al Padre. Por medio de Él fueron hechas todas las cosas; por eso, cuando Jesucristo entra en nuestra historia, no aparece simplemente como un mensajero de Dios, sino como el mismo Verbo eterno hecho carne.",
+      "en": "The Gospel of John deliberately takes up the first words of Genesis: 'In the beginning was the Word.' The Word was with God and was God. It does not belong to the order of creatures: it is eternal, divine, and is with the Father. Through Him all things were made; therefore, when Jesus Christ enters our history, He does not appear simply as a messenger of God, but as the very eternal Word made flesh.",
+      "pt": "O Evangelho de João retoma deliberadamente as primeiras palavras do Gênesis: 'No princípio era o Verbo'. O Verbo estava com Deus e era Deus. Não pertence à ordem das criaturas: é eterno, divino e está junto ao Pai. Por meio dEle todas as coisas foram feitas; por isso, quando Jesus Cristo entra na nossa história, não aparece simplesmente como um mensajero de Deus, mas como o próprio Verbo eterno feito carne."
+    },
+    "espiritu_creador": {
+      "es": "Desde las primeras líneas de la Escritura, el Espíritu de Dios aparece sobre las aguas. La palabra hebrea ruah puede significar espíritu, aliento o viento. La revelación bíblica permite contemplar en esa presencia una primera alusión al Espíritu vivificante, que no sólo estuvo presente en el comienzo, sino que continúa sosteniendo y renovando la creación. «Envías tu espíritu, y son creados, y renuevas la faz de la tierra» (Salmo 104,30).",
+      "en": "From the very first lines of Scripture, the Spirit of God appears over the waters. The Hebrew word ruah can mean spirit, breath, or wind. Biblical revelation allows us to contemplate in that presence a first allusion to the life-giving Spirit, who was not only present at the beginning, but continues to sustain and renew creation. 'When you send your Spirit, they are created, and you renew the face of the ground.' (Psalm 104:30).",
+      "pt": "Desde as primeiras linhas da Escritura, o Espírito de Deus aparece sobre as águas. A palavra hebraica ruah pode significar espírito, sopro ou vento. A revelação bíblica permite contemplar nessa presença uma primeira alusão ao Espírito vivificante, que não só esteve presente no começo, mas continua sustentando e renovando a criação. 'Envias o teu espírito, e são criados, e renovas a face da terra' (Salmo 104,30)."
+    },
+    "voz_de_la_iglesia": {
+      "es": "La fe de la Iglesia confiesa que la creación es obra del único Dios, y que las tres Personas divinas actúan inseparablemente en toda obra exterior de Dios. San Ireneo relaciona la creación con la Palabra de Dios, en armonía con el prólogo de san Juan: «Todo se hizo por él y sin él no se hizo nada de cuanto ha sido hecho». Así, el mismo Dios que crea es también el Dios que redime: la creación no es un acto distante, sino el primer gesto de una historia de amor que culminará en Cristo y será llevada a plenitud por el Espíritu Santo.",
+      "en": "The faith of the Church confesses that creation is the work of the one God, and that the three divine Persons act inseparably in all external works of God. St. Irenaeus relates creation to the Word of God, in harmony with the prologue of St. John: 'Through him all things were made; without him nothing was made that has been made.' Thus, the same God who creates is also the God who redeems: creation is not a distant act, but the first gesture of a love story that will culminate in Christ and be brought to fulfillment by the Holy Spirit.",
+      "pt": "A fé da Igreja confessa que a criação é obra do único Deus, e que as três Pessoas divinas atuam inseparavelmente em toda obra exterior de Deus. Santo Irineu relaciona a criação com a Palavra de Deus, em harmonia com o prólogo de São João: 'Tudo foi feito por meio dele, e sem ele nada do que foi feito se fez'. Assim, o mesmo Deus que cria é também o Deus que redime: a criação não é um ato distante, mas o primeiro gesto de uma história de amor que culminará em Cristo e será levada à plenitude pelo Espírito Santo."
+    },
+    "aplicacion_existencial": {
+      "es": "Tu vida no es un accidente perdido en un universo indiferente. Has recibido la existencia de las manos amorosas de Dios y eres sostenido por Él incluso cuando interiormente todo parece desordenado y vacío. Tal vez hoy no veas con claridad el camino; tal vez haya zonas de tu historia cubiertas de oscuridad. Pero el Espíritu que se movía sobre las aguas no abandona la obra de sus manos. Dios puede comenzar nuevamente en ti, pronunciando su Palabra sobre aquello que todavía necesita luz, verdad y vida.",
+      "en": "Your life is not a lost accident in an indifferent universe. You have received existence from the loving hands of God and are sustained by Him even when inwardly everything seems formless and empty. Perhaps today you do not see the way clearly; perhaps there are areas of your history covered in darkness. But the Spirit that moved over the waters does not abandon the work of His hands. God can begin anew in you, pronouncing His Word over that which still needs light, truth, and life.",
+      "pt": "A sua vida não é um acidente perdido num universo indiferente. Você recebeu a existência das mãos amorosas de Deus e é sustentado por Ele mesmo quando interiormente tudo parece desordenado e vazio. Talvez hoje você não veja com clareza o caminho; talvez haja zonas da sua história cobertas de escuridão. Mas o Espírito que pairava sobre as águas não abandona a obra das suas mãos. Deus pode recomeçar em você, pronunciando a sua Palavra sobre aquilo que ainda precisa de luz, verdade e vida."
+    },
+    "oracion_breve": {
+      "es": "Dios eterno, Padre, Hijo y Espíritu Santo, gracias porque mi vida procede de tu amor. Cuando todo en mí parezca desordenado y vacío, pronuncia nuevamente tu Palabra y deja que tu Espíritu renueve mi corazón. Amén.",
+      "en": "Eternal God, Father, Son, and Holy Spirit, thank you that my life proceeds from your love. When everything in me seems formless and empty, pronounce your Word once more and let your Spirit renew my heart. Amen.",
+      "pt": "Deus eterno, Pai, Filho e Espírito Santo, obrigado porque a minha vida procede do teu amor. Quando tudo em mim parecer desordenado e vazio, pronuncia novamente a tua Palavra e deixa que o teu Espírito renove o meu coração. Amém."
+    }
   },
   {
     "id": 2,
-    "titulo": "II. La Sombra y el Pan Oculto (Melquisedec)",
-    "subtitulo": "Itinerario de la Revelación",
+    "titulo": {
+      "es": "II. La Sombra y el Pan Oculto (Melquisedec)",
+      "en": "II. The Shadow and the Hidden Bread (Melchizedek)",
+      "pt": "II. A Sombra e o Pão Oculto (Melquisedeque)"
+    },
+    "subtitulo": {
+      "es": "Itinerario de la Revelación",
+      "en": "Itinerary of Revelation",
+      "pt": "Itinerário da Revelação"
+    },
     "imagen": "assets/imagen/escalon2.jpg",
-    "introduccion": "En medio de las batallas y los caminos polvorientos de los patriarcas, la historia de la salvación conserva una escena breve, misteriosa y luminosa. Abraham vuelve cansado después del combate, y Melquisedec, rey de Salem y sacerdote del Dios Altísimo, sale a su encuentro con pan y vino. La escena permanece como una semilla escondida: más adelante, la Carta a los Hebreos y la fe de la Iglesia reconocerán en Melquisedec una figura que prepara la revelación del sacerdocio eterno de Cristo.",
-    "cita_biblica": "«Entonces Melquisedec, rey de Salem y sacerdote del Dios Altísimo, sacó pan y vino; y le bendijo, diciendo: “Bendito sea Abram del Dios Altísimo, creador de los cielos y de la tierra”.» (Génesis 14,18-19)",
-    "figura_sacerdotal": "Melquisedec aparece como rey y sacerdote, y bendice a Abraham en nombre del Dios creador. La Carta a los Hebreos contempla en él una figura de Cristo: no porque Melquisedec sea eterno por naturaleza, sino porque la Escritura no conserva su genealogía ni narra su nacimiento o su muerte. De este modo, su figura queda abierta a un cumplimiento mayor: Jesucristo es el verdadero Sacerdote eterno, cuya vida no puede ser destruida y cuyo sacerdocio no pasa de una persona a otra.",
-    "orden_de_melquisedec": "Cristo no pertenece al sacerdocio levítico ni recibe su sacerdocio por descendencia de Aarón. Su sacerdocio nace de su propia identidad divina y de la entrega libre de su vida al Padre por la salvación del mundo. Por eso la Carta a los Hebreos proclama que Jesús es sacerdote «según el orden de Melquisedec»: Melquisedec lo prefigura, pero Cristo lo supera infinitamente. Él es el Rey de la justicia y de la paz, el único Mediador y el Sacerdote que permanece para siempre.",
-    "pan_y_vino": "La Tradición cristiana ha visto en el pan y el vino ofrecidos por Melquisedec una figura de la Eucaristía. Esta figura alcanza su plenitud en la última Cena, cuando Cristo entrega su Cuerpo y su Sangre bajo las especies de pan y vino. La Eucaristía no repite ni añade otro sacrificio a la cruz: hace sacramentalmente presente el único sacrificio de Cristo, ofrecido una vez para siempre, y comunica sus frutos a la Iglesia.",
-    "voz_de_la_iglesia": "El Catecismo enseña que todo lo que el sacerdocio de la Antigua Alianza prefiguraba encuentra su cumplimiento en Jesucristo, único Sumo Sacerdote. La Iglesia contempla en Melquisedec una anticipación del sacerdocio de Cristo y, en el pan y el vino, una figura que alcanza su realidad plena en el Sacramento de la Eucaristía. Santo Tomás de Aquino explica que Melquisedec prefiguraba especialmente la participación de los fieles en el sacrificio de Cristo bajo las formas de pan y vino.",
-    "aplicacion_existencial": "También vos atravesás combates que no siempre se ven: preocupaciones, cansancio, heridas antiguas y decisiones que pesan. Abraham no encontró a Melquisedec cuando todo estaba resuelto, sino al regresar de la batalla. Del mismo modo, Cristo sale a tu encuentro en medio de tu camino concreto. En cada celebración eucarística, no recibís una idea ni un símbolo vacío, sino al Señor que se entrega por vos, te alimenta con su vida y te vuelve a poner de pie. No tenés que presentarte ante Él con una victoria perfecta; basta acercarte con un corazón dispuesto a recibir su gracia.",
-    "oracion_breve": "Señor Jesucristo, Sacerdote eterno según el orden de Melquisedec, salí a mi encuentro en medio de mis cansancios. Alimentame con tu vida, saná mis heridas y enseñame a ofrecerte todo lo que soy. Amén."
+    "introduccion": {
+      "es": "En medio de las batallas y los caminos polvorientos de los patriarcas, la historia de la salvación conserva una escena breve, misteriosa y luminosa. Abraham vuelve cansado después del combate, y Melquisedec, rey de Salem y sacerdote del Dios Altísimo, sale a su encuentro con pan y vino. La escena permanece como una semilla escondida: más adelante, la Carta a los Hebreos y la fe de la Iglesia reconocerán en Melquisedec una figura que prepara la revelación del sacerdocio eterno de Cristo.",
+      "en": "In the midst of the battles and dusty paths of the patriarchs, salvation history preserves a brief, mysterious, and luminous scene. Abraham returns tired after the combat, and Melchizedek, king of Salem and priest of God Most High, comes out to meet him with bread and wine. The scene remains like a hidden seed: later on, the Letter to the Hebrews and the faith of the Church will recognize in Melchizedek a figure that prepares the revelation of Christ's eternal priesthood.",
+      "pt": "No meio das batalhas e dos caminhos poeirentos dos patriarcas, a história da salvação conserva uma cena breve, misteriosa e luminosa. Abraão volta cansado após o combate, e Melquisedeque, rei de Salém e sacerdote do Deus Altíssimo, sai ao seu encontro com pão e vinho. A cena permanece como uma semente escondida: mais adiante, a Carta aos Hebreus e a fé da Igreja reconhecerão em Melquisedeque uma figura que prepara a revelação do sacerdócio eterno de Cristo."
+    },
+    "cita_biblica": {
+      "es": "«Entonces Melquisedec, rey de Salem y sacerdote del Dios Altísimo, sacó pan y vino; y le bendijo, diciendo: “Bendito sea Abram del Dios Altísimo, creador de los cielos y de la tierra”.» (Génesis 14,18-19)",
+      "en": "'Then Melchizedek king of Salem brought out bread and wine. He was priest of God Most High, and he blessed Abram, saying, “Blessed be Abram by God Most High, Creator of heaven and earth.”' (Genesis 14:18-19)",
+      "pt": "'Então Melquisedeque, rei de Salém, trouxe pão e vinho; era sacerdote do Deus Altíssimo. Abençoou a Abraão, dizendo: “Bendito seja Abraão pelo Deus Altíssimo, o Criador dos céus e da terra”' (Gênesis 14,18-19)"
+    },
+    "figura_sacerdotal": {
+      "es": "Melquisedec aparece como rey y sacerdote, y bendice a Abraham en nombre del Dios creador. La Carta a los Hebreos contempla en él una figura de Cristo: no porque Melquisedec sea eterno por naturaleza, sino porque la Escritura no conserva su genealogía ni narra su nacimiento o su muerte. De este modo, su figura queda abierta a un cumplimiento mayor: Jesucristo es el verdadero Sacerdote eterno, cuya vida no puede ser destruida y cuyo sacerdocio no pasa de una persona a otra.",
+      "en": "Melchizedek appears as king and priest, and blesses Abraham in the name of the creator God. The Letter to the Hebrews sees in him a figure of Christ: not because Melchizedek is eternal by nature, but because Scripture does not preserve his genealogy or narrate his birth or death. In this way, his figure remains open to a greater fulfillment: Jesus Christ is the true eternal Priest, whose life cannot be destroyed and whose priesthood does not pass from one person to another.",
+      "pt": "Melquisedeque aparece como rei e sacerdote, e abençoa a Abraão em nome do Deus criador. A Carta aos Hebreus contempla nele uma figura de Cristo: não porque Melquisedeque seja eterno por natureza, mas porque a Escritura não conserva a sua genealogia nem narra o seu nascimento ou a sua morte. Deste modo, a sua figura fica aberta a um cumprimento maior: Jesus Cristo é o verdadeiro Sacerdote eterno, cuja vida não pode ser destruída e cujo sacerdócio não passa de uma pessoa para outra."
+    },
+    "orden_de_melquisedec": {
+      "es": "Cristo no pertenece al sacerdocio levítico ni recibe su sacerdocio por descendencia de Aarón. Su sacerdocio nace de su propia identidad divina y de la entrega libre de su vida al Padre por la salvación del mundo. Por eso la Carta a los Hebreos proclama que Jesús es sacerdote «según el orden de Melquisedec»: Melquisedec lo prefigura, pero Cristo lo supera infinitamente. Él es el Rey de la justicia y de la paz, el único Mediador y el Sacerdote que permanece para siempre.",
+      "en": "Christ does not belong to the Levitical priesthood nor does he receive his priesthood by descent from Aaron. His priesthood is born of his own divine identity and the free surrender of his life to the Father for the salvation of the world. That is why the Letter to the Hebrews proclaims that Jesus is a priest 'in the order of Melchizedek': Melchizedek prefigures him, but Christ infinitely surpasses him. He is the King of righteousness and peace, the sole Mediator and the Priest who remains forever.",
+      "pt": "Cristo não pertence ao sacerdócio levítico nem recebe o seu sacerdócio por descendência de Aarão. O seu sacerdócio nasce da sua própria identidade divina e da entrega livre da sua vida ao Pai para a salvação do mundo. Por isso a Carta aos Hebreus proclama que Jesus é sacerdote 'segundo a ordem de Melquisedeque': Melquisedeque prefigura-o, mas Cristo supera-o infinitamente. Ele é o Rei da justiça e da paz, o único Mediador e o Sacerdote que permanece para sempre."
+    },
+    "pan_y_vino": {
+      "es": "La Tradición cristiana ha visto en el pan y el vino ofrecidos por Melquisedec una figura de la Eucaristía. Esta figura alcanza su plenitud en la última Cena, cuando Cristo entrega su Cuerpo y su Sangre bajo las especies de pan y vino. La Eucaristía no repite ni añade otro sacrificio a la cruz: hace sacramentalmente presente el único sacrificio de Cristo, ofrecido una vez para siempre, y comunica sus frutos a la Iglesia.",
+      "en": "Christian Tradition has seen in the bread and wine offered by Melchizedek a figure of the Eucharist. This figure reaches its fullness at the Last Supper, when Christ surrenders His Body and Blood under the species of bread and wine. The Eucharist does not repeat or add another sacrifice to the cross: it sacramentally makes present the unique sacrifice of Christ, offered once for all, and communicates its fruits to the Church.",
+      "pt": "A Tradição cristã viu no pão e no vinho oferecidos por Melquisedeque uma figura da Eucaristia. Esta figura alcança a sua plenitude na Última Ceia, quando Cristo entrega o seu Corpo e o seu Sangue sob as espécies de pão e vinho. A Eucaristía não repete nem acrescenta outro sacrifício à cruz: torna sacramentalmente presente o único sacrifício de Cristo, oferecido uma vez por todas, e comunica os seus frutos à Igreja."
+    },
+    "voz_de_la_iglesia": {
+      "es": "El Catecismo enseña que todo lo que el sacerdocio de la Antigua Alianza prefiguraba encuentra su cumplimiento en Jesucristo, único Sumo Sacerdote. La Iglesia contempla en Melquisedec una anticipación del sacerdocio de Cristo y, en el pan y el vino, una figura que alcanza su realidad plena en el Sacramento de la Eucaristía. Santo Tomás de Aquino explica que Melquisedec prefiguraba especialmente la participación de los fieles en el sacrificio de Cristo bajo las formas de pan y vino.",
+      "en": "The Catechism teaches that everything that the priesthood of the Old Covenant prefigured finds its fulfillment in Jesus Christ, the sole High Priest. The Church contemplates in Melchizedek an anticipation of Christ's priesthood and, in the bread and wine, a figure that reaches its full reality in the Sacrament of the Eucharist. St. Thomas Aquinas explains that Melchizedek especially prefigured the participation of the faithful in Christ's sacrifice under the forms of bread and wine.",
+      "pt": "O Catecismo ensina que tudo o que o sacerdócio da Antiga Aliança prefigurava encontra o seu cumprimento em Jesus Cristo, único Sumo Sacerdote. A Igreja contempla em Melquisedeque uma antecipação do sacerdócio de Cristo e, no pão e no vinho, uma figura que alcança a sua realidade plena no Sacramento da Eucaristía. Santo Tomás de Aquino explica que Melquisedeque prefigurava especialmente a participação dos fiéis no sacrifício de Cristo sob as formas de pão e vinho."
+    },
+    "aplicacion_existencial": {
+      "es": "También vos atravesás combates que no siempre se ven: preocupaciones, cansancio, heridas antiguas y decisiones que pesan. Abraham no encontró a Melquisedec cuando todo estaba resuelto, sino al regresar de la batalla. Del mismo modo, Cristo sale a tu encuentro en medio de tu camino concreto. En cada celebración eucarística, no recibís una idea ni un símbolo vacío, sino al Señor que se entrega por vos, te alimenta con su vida y te vuelve a poner de pie. No tenés que presentarte ante Él con una victoria perfecta; basta acercarte con un corazón dispuesto a recibir su gracia.",
+      "en": "You too go through battles that are not always seen: worries, fatigue, old wounds, and heavy decisions. Abraham did not find Melchizedek when everything was resolved, but upon returning from battle. In the same way, Christ comes out to meet you in the middle of your concrete path. In every Eucharistic celebration, you do not receive an idea or an empty symbol, but the Lord who gives Himself up for you, feeds you with His life, and raises you back up. You do not have to present yourself before Him with a perfect victory; it is enough to approach with a heart willing to receive His grace.",
+      "pt": "Também você atravessa combates que nem sempre se vêem: preocupações, cansaço, feridas antigas e decisões que pesam. Abraão não encontrou Melquisedeque quando tudo estava resolvido, mas ao regressar da batalha. Do mesmo modo, Cristo sai ao seu encontro no meio do seu caminho concreto. Em cada celebração eucarística, você não recebe uma ideia nem um símbolo vazio, mas o Senhor que se entrega por você, o alimenta com a sua vida e o volta a pôr de pé. Não tem de se apresentar diante dEle com uma vitória perfeita; basta aproximar-se com um coração disposto a receber a sua graça."
+    },
+    "oracion_breve": {
+      "es": "Señor Jesucristo, Sacerdote eterno según el orden de Melquisedec, salí a mi encuentro en medio de mis cansancios. Alimentame con tu vida, saná mis heridas y enseñame a ofrecerte todo lo que soy. Amén.",
+      "en": "Lord Jesus Christ, eternal Priest according to the order of Melchizedek, come to meet me amidst my weariness. Feed me with your life, heal my wounds, and teach me to offer you all that I am. Amen.",
+      "pt": "Senhor Jesus Cristo, Sacerdote eterno segundo a ordem de Melquisedeque, sai ao meu encontro no meio dos meus cansaços. Alimenta-me com a tua vida, sara as minhas feridas e ensina-me a oferecer-te tudo o que sou. Amém."
+    }
   },
   {
     "id": 3,
-    "titulo": "III. La Voz de los Profetas (Isaías)",
-    "subtitulo": "Itinerario de la Revelación",
+    "titulo": {
+      "es": "III. La Voz de los Profetas (Isaías)",
+      "en": "III. The Voice of the Prophets (Isaiah)",
+      "pt": "III. A Voz dos Profetas (Isaías)"
+    },
+    "subtitulo": {
+      "es": "Itinerario de la Revelación",
+      "en": "Itinerary of Revelation",
+      "pt": "Itinerário da Revelação"
+    },
     "imagen": "assets/imagen/escalon3.jpg",
-    "introduccion": "A lo largo de los siglos, cuando Israel atravesaba infidelidades, guerras, destierros y oscuridad, Dios no dejó de hablar. Sus profetas no fueron adivinos que intentaban descifrar el futuro, sino hombres llamados a recordar la alianza, denunciar el pecado y despertar la esperanza. En medio de la noche, Isaías anuncia que Dios no abandonará a su pueblo: visitará su historia y hará resplandecer su salvación.",
-    "cita_biblica": "«Por tanto, el Señor mismo os dará señal: He aquí que la virgen concebirá y dará a luz un hijo, y llamará su nombre Emanuel.» (Isaías 7,14)",
-    "la_promesa_del_emmanuel": "Estas palabras fueron pronunciadas en un contexto concreto: el rey Ajaz temía por Jerusalén y buscaba seguridad en alianzas humanas en vez de confiar en Dios. El Señor, sin embargo, reafirma su fidelidad a la casa de David y promete un signo: el Emmanuel, cuyo nombre significa «Dios con nosotros». La Iglesia, iluminada por el Evangelio de Mateo y por la traducción griega de Isaías, reconoce en esta promesa su cumplimiento pleno en Jesucristo, concebido virginalmente en el seno de María. No se trata de una presencia simbólica o distante: en la Encarnación, el Verbo de Dios entra verdaderamente en nuestra historia.",
-    "figura_profetica": "Isaías contempla al Mesías bajo diversos rasgos: como el Niño prometido, el Rey de la paz, el retoño que brota del tronco de Jesé y el Siervo elegido por Dios. Estas imágenes no son fragmentos aislados, sino distintas luces que preparan el reconocimiento de Cristo. En Él se unen la humildad de un niño, la autoridad del Rey, la plenitud del Espíritu y la obediencia del Siervo.",
-    "el_siervo_sufriente": "Los cánticos del Siervo, especialmente Isaías 52,13–53,12, presentan a un justo despreciado, herido y cargado con las culpas de muchos. El texto muestra que su sufrimiento no termina en fracaso: el Siervo se entrega, intercede por los pecadores y, finalmente, es exaltado por Dios. A la luz de la Pascua, la Iglesia reconoce en este misterio una figura profunda de la Pasión de Cristo, que «llevó nuestros pecados en su cuerpo» y abrió para nosotros el camino de la reconciliación.",
-    "voz_de_la_iglesia": "La Iglesia lee las profecías del Antiguo Testamento a la luz de Cristo, porque en Él las promesas alcanzan su cumplimiento definitivo. Isaías es llamado tradicionalmente «el quinto evangelista» por la claridad con la que anuncia al Redentor, al Emmanuel y al Siervo. Sin embargo, la profecía no elimina la historia original de Israel: Dios actúa dentro de acontecimientos concretos y, mediante ellos, conduce progresivamente a la plenitud de la revelación.",
-    "aplicacion_existencial": "Hay momentos en los que tu vida parece transcurrir bajo una tierra de sombras y las promesas de Dios parecen lejanas. Isaías te recuerda que la oscuridad no tiene la última palabra. El Emmanuel significa que Dios no observa tu historia desde lejos: está con vos. En Cristo, Dios ha entrado en nuestra fragilidad, ha cargado con nuestro sufrimiento y ha abierto una esperanza que ni siquiera el pecado ni la muerte pueden apagar. Esperar no significa negar la noche, sino creer que Dios ya está obrando en ella.",
-    "oracion_breve": "Señor Emmanuel, Dios con nosotros, visitá las zonas oscuras de mi vida. Cuando me cueste esperar, sostené mi fe; y cuando me sienta herido, recordame que en Cristo ninguna lágrima ofrecida queda fuera de tu amor. Amén."
+    "introduccion": {
+      "es": "A lo largo de los siglos, cuando Israel atravesaba infidelidades, guerras, destierros y oscuridad, Dios no dejó de hablar. Sus profetas no fueron adivinos que intentaban descifrar el futuro, sino hombres llamados a recordar la alianza, denunciar el pecado y despertar la esperanza. En medio de la noche, Isaías anuncia que Dios no abandonará a su pueblo: visitará su historia y hará resplandecer su salvación.",
+      "en": "Throughout the centuries, when Israel went through infidelities, wars, exiles, and darkness, God did not stop speaking. His prophets were not fortune-tellers trying to decipher the future, but men called to remember the covenant, denounce sin, and awaken hope. In the middle of the night, Isaiah announces that God will not abandon His people: He will visit their history and make His salvation shine.",
+      "pt": "Ao longo dos séculos, quando Israel atravessava infidelidades, guerras, desterros e escuridão, Deus não deixou de falar. Os seus profetas não foram adivinhos que tentavam decifrar o futuro, mas homens chamados a recordar a aliança, denunciar o pecado e despertar a esperança. No meio da noite, Isaías anuncia que Deus não abandonará o seu povo: visitará a sua história e fará resplandecer a sua salvação."
+    },
+    "cita_biblica": {
+      "es": "«Por tanto, el Señor mismo os dará señal: He aquí que la virgen concebirá y dará a luz un hijo, y llamará su nombre Emanuel.» (Isaías 7,14)",
+      "en": "'Therefore the Lord himself will give you a sign: The virgin will conceive and give birth to a son, and will call him Immanuel.' (Isaiah 7:14)",
+      "pt": "'Por isso o Senhor mesmo vos dará um sinal: Eis que a virgem conceberá e dará à luz um filho, e o seu nome será Emanuel' (Isaías 7,14)"
+    },
+    "la_promesa_del_emmanuel": {
+      "es": "Estas palabras fueron pronunciadas en un contexto concreto: el rey Ajaz temía por Jerusalén y buscaba seguridad en alianzas humanas en vez de confiar en Dios. El Señor, sin embargo, reafirma su fidelidad a la casa de David y promete un signo: el Emmanuel, cuyo nombre significa «Dios con nosotros». La Iglesia, iluminada por el Evangelio de Mateo y por la traducción griega de Isaías, reconoce en esta promesa su cumplimiento pleno en Jesucristo, concebido virginalmente en el seno de María. No se trata de una presencia simbólica o distante: en la Encarnación, el Verbo de Dios entra verdaderamente en nuestra historia.",
+      "en": "These words were spoken in a specific context: King Ahaz feared for Jerusalem and sought security in human alliances instead of trusting in God. The Lord, however, reaffirms His fidelity to the house of David and promises a sign: Immanuel, whose name means 'God with us.' The Church, enlightened by the Gospel of Matthew and by the Greek translation of Isaiah, recognizes in this promise its full fulfillment in Jesus Christ, conceived virginally in the womb of Mary. It is not about a symbolic or distant presence: in the Incarnation, the Word of God truly enters our history.",
+      "pt": "Estas palavras foram pronunciadas num contexto concreto: o rei Acaz temia por Jerusalém e buscava segurança em alianças humanas em vez de confiar em Deus. O Senhor, porém, reafirma a sua fidelidade à casa de David e promete um sinal: o Emanuel, cujo nome significa 'Deus conosco'. A Igreja, iluminada pelo Evangelho de Mateus e pela tradução grega de Isaías, reconhece nesta promessa o seu cumprimento pleno em Jesus Cristo, concebido virginalmente no seio de Maria. Não se trata de uma presença simbólica ou distante: na Encarnação, o Verbo de Deus entra verdadeiramente na nossa história."
+    },
+    "figura_profetica": {
+      "es": "Isaías contempla al Mesías bajo diversos rasgos: como el Niño prometido, el Rey de la paz, el retoño que brota del tronco de Jesé y el Siervo elegido por Dios. Estas imágenes no son fragmentos aislados, sino distintas luces que preparan el reconocimiento de Cristo. En Él se unen la humildad de un niño, la autoridad del Rey, la plenitud del Espíritu y la obediencia del Siervo.",
+      "en": "Isaiah contemplates the Messiah under various traits: as the promised Child, the King of peace, the shoot that sprouts from the stump of Jesse, and the Servant chosen by God. These images are not isolated fragments, but different lights that prepare the recognition of Christ. In Him are united the humility of a child, the authority of the King, the fullness of the Spirit, and the obedience of the Servant.",
+      "pt": "Isaías contempla o Messias sob diversos traços: como o Menino prometido, o Rei da paz, o rebento que brota do tronco de Jessé e o Servo escolhido por Deus. Estas imagens não são fragmentos isolados, mas distintas luzes que preparam o reconhecimento de Cristo. Nele unem-se a humildade de um menino, a autoridade do Rei, a plenitude do Espírito e a obediência do Servo."
+    },
+    "el_siervo_sufriente": {
+      "es": "Los cánticos del Siervo, especialmente Isaías 52,13–53,12, presentan a un justo despreciado, herido y cargado con las culpas de muchos. El texto muestra que su sufrimiento no termina en fracaso: el Siervo se entrega, intercede por los pecadores y, finalmente, es exaltado por Dios. A la luz de la Pascua, la Iglesia reconoce en este misterio una figura profunda de la Pasión de Cristo, que «llevó nuestros pecados en su cuerpo» y abrió para nosotros el camino de la reconciliación.",
+      "en": "The Servant songs, especially Isaiah 52:13–53:12, present a righteous man despised, wounded, and burdened with the guilt of many. The text shows that his suffering does not end in failure: the Servant gives himself up, intercedes for sinners, and finally is exalted by God. In the light of Easter, the Church recognizes in this mystery a profound figure of Christ's Passion, who 'bore our sins in his body' and opened the path of reconciliation for us.",
+      "pt": "Os cânticos do Servo, especialmente Isaías 52,13–53,12, apresentam um justo desprezado, ferido e carregado com as culpas de muitos. O texto mostra que o seu sofrimento não termina em fracasso: o Servo entrega-se, intercede pelos pecadores e, finalmente, é exaltado por Deus. À luz da Páscoa, a Igreja reconhece neste mistério uma figura profunda da Paixão de Cristo, que 'levou os nossos pecados no seu corpo' e abriu para nós o caminho da reconciliação."
+    },
+    "voz_de_la_iglesia": {
+      "es": "La Iglesia lee las profecías del Antiguo Testamento a la luz de Cristo, porque en Él las promesas alcanzan su cumplimiento definitivo. Isaías es llamado tradicionalmente «el quinto evangelista» por la claridad con la que anuncia al Redentor, al Emmanuel y al Siervo. Sin embargo, la profecía no elimina la historia original de Israel: Dios actúa dentro de acontecimientos concretos y, mediante ellos, conduce progresivamente a la plenitud de la revelación.",
+      "en": "The Church reads the prophecies of the Old Testament in the light of Christ, because in Him the promises reach their definitive fulfillment. Isaiah is traditionally called 'the fifth evangelist' for the clarity with which he announces the Redeemer, Immanuel, and the Servant. However, prophecy does not eliminate Israel's original history: God acts within concrete events and, through them, progressively leads to the fullness of revelation.",
+      "pt": "A Igreja lê as profecias do Antigo Testamento à luz de Cristo, porque Nele as promessas alcançam o seu cumprimento definitivo. Isaías é chamado tradicionalmente 'o quinto evangelista' pela clareza com que anuncia o Redentor, o Emanuel e o Servo. No entanto, a profecia não elimina a história original de Israel: Deus atua dentro de acontecimentos concretos e, por meio deles, conduz progressivamente à plenitud da revelação."
+    },
+    "aplicacion_existencial": {
+      "es": "Hay momentos en los que tu vida parece transcurrir bajo una tierra de sombras y las promesas de Dios parecen lejanas. Isaías te recuerda que la oscuridad no tiene la última palabra. El Emmanuel significa que Dios no observa tu historia desde lejos: está con vos. En Cristo, Dios ha entrado en nuestra fragilidad, ha cargado con nuestro sufrimiento y ha abierto una esperanza que ni siquiera el pecado ni la muerte pueden apagar. Esperar no significa negar la noche, sino creer que Dios ya está obrando en ella.",
+      "en": "There are times when your life seems to pass under a land of shadows and God's promises seem distant. Isaiah reminds you that darkness does not have the final word. Immanuel means that God does not watch your history from afar: He is with you. In Christ, God has entered our fragility, has borne our suffering, and has opened a hope that neither sin nor death can extinguish. To wait does not mean to deny the night, but to believe that God is already working in it.",
+      "pt": "Há momentos em que a sua vida parece decorrer sob uma terra de sombras e as promessas de Deus parecem distantes. Isaías lembra-lhe que a escuridão não tem a última palavra. O Emanuel significa que Deus não observa a sua história de longe: está consigo. Em Cristo, Deus entrou na nossa fragilidade, carregou com o nosso sofrimento e abriu uma esperança que nem sequer o pecado nem a morte podem apagar. Esperar não significa negar a noite, mas crer que Deus já está a atuar nela."
+    },
+    "oracion_breve": {
+      "es": "Señor Emmanuel, Dios con nosotros, visitá las zonas oscuras de mi vida. Cuando me cueste esperar, sostené mi fe; y cuando me sienta herido, recordame que en Cristo ninguna lágrima ofrecida queda fuera de tu amor. Amén.",
+      "en": "Lord Immanuel, God with us, visit the dark areas of my life. When it is hard for me to wait, sustain my faith; and when I feel wounded, remind me that in Christ no offered tear remains outside your love. Amen.",
+      "pt": "Senhor Emanuel, Deus conosco, visita as zonas escuras da minha vida. Quando me custar esperar, sustenta a minha fé; e quando me sentir ferido, lembra-me que em Cristo nenhuma lágrima oferecida fica fora do teu amor. Amém."
+    }
   },
   {
     "id": 4,
-    "titulo": "IV. El Fiat que abre el Cielo (La Anunciación)",
-    "subtitulo": "Itinerario de la Revelación",
+    "titulo": {
+      "es": "IV. El Fiat que abre el Cielo (La Anunciación)",
+      "en": "IV. The Fiat that Opens Heaven (The Annunciation)",
+      "pt": "IV. O Fiat que abre o Céu (A Anunciação)"
+    },
+    "subtitulo": {
+      "es": "Itinerario de la Revelación",
+      "en": "Itinerary of Revelation",
+      "pt": "Itinerário da Revelação"
+    },
     "imagen": "assets/imagen/escalon4.jpg",
-    "introduccion": "Tras siglos de promesas, esperanzas y silencios proféticos, la historia de la salvación llega a su momento decisivo. Dios no irrumpe imponiéndose por la fuerza, sino que, en la delicadeza de su sabiduría, anuncia su designio a una joven de Nazaret y recibe libremente su consentimiento. En la Anunciación, el tiempo de la espera se transforma en el tiempo del cumplimiento.",
-    "cita_biblica": "«Dijo María: “He aquí la sierva del Señor; hágase en mí conforme a tu palabra”. Y el ángel se fue de su presencia.» (Lucas 1,38)",
-    "el_fiat_de_maria": "La respuesta de María —su fiat, es decir, su «hágase»— es un acto libre de fe, obediencia y entrega. Dios quiso que la aceptación de aquella que havia sido llamada a ser Madre precediera al misterio de la Encarnación. Por eso la Iglesia contempla en María a la nueva Eva: así como la desobediencia de Eva estuvo vinculada a la entrada de la muerte, la obediencia creyente de María cooperó, por gracia de Dios y de manera subordinada a Cristo, en la acogida de la Vida para el mundo.",
-    "la_encarnacion": "En el seno virginal de María, por obra del Espíritu Santo, el Hijo eterno del Padre asumió verdaderamente nuestra naturaleza humana. Sin dejar de ser Dios, se hizo hombre: una sola Persona, Jesucristo, verdadero Dios y verdadero hombre. La divinidad y la humanidad no se mezclan ni se separan en Él. El Creador entra en su creación para salvarla y elevarla a la participación de la vida divina.",
-    "voz_de_la_iglesia": "La Anunciación es el umbral del Nuevo Testamento y el comienzo histórico de la Encarnación. San Bernardo contempló a toda la creación aguardando la respuesta de María; la Iglesia reconoce en esa imagen la importancia de su consentimiento libre. El fiat de María no sustituye la acción de Dios, sino que manifiesta cómo la gracia puede encontrar en una libertad dócil una colaboración plena.",
-    "aplicacion_existencial": "A veces esperás que Dios resuelva tus problemas mediante señales extraordinarias. Sin embargo, con frecuencia te invita a responderle en lo pequeño y concreto: perdonar, perseverar, servir, volver a orar o dar un paso de confianza. María enseña que la fe no consiste en comprenderlo todo antes de obedecer, sino en confiar en Aquel que habla. Dios no desprecia tu libertad: la llama a participar de su obra.",
-    "oracion_breve": "Madre del Señor y Virgen del Sí, enseñame a pronunciar mi propio «hágase» cuando el camino se vuelva oscuro. Que mi libertad, sostenida por la gracia, sepa acoger a tu Hijo en lo cotidiano. Amén."
+    "introduccion": {
+      "es": "Tras siglos de promesas, esperanzas y silencios proféticos, la historia de la salvación llega a su momento decisivo. Dios no irrumpe imponiéndose por la fuerza, sino que, en la delicadeza de su sabiduría, anuncia su designio a una joven de Nazaret y recibe libremente su consentimiento. En la Anunciación, el tiempo de la espera se transforma en el tiempo del cumplimiento.",
+      "en": "After centuries of promises, hopes, and prophetic silences, salvation history reaches its decisive moment. God does not break in by imposing Himself by force, but rather, in the delicacy of His wisdom, announces His design to a young woman of Nazareth and freely receives her consent. In the Annunciation, the time of waiting is transformed into the time of fulfillment.",
+      "pt": "Após séculos de promessas, esperanças e silêncios proféticos, a história da salvação chega ao seu momento decisivo. Deus não irrompe impondo-se pela força, mas, na delicadeza da sua sabedoria, anuncia o seu desígnio a uma jovem de Nazaré e recebe livremente o seu consentimento. Na Anunciação, o tempo da espera transforma-se no tempo do cumprimento."
+    },
+    "cita_biblica": {
+      "es": "«Dijo María: “He aquí la sierva del Señor; hágase en mí conforme a tu palabra”. Y el ángel se fue de su presencia.» (Lucas 1,38)",
+      "en": "'“I am the Lord’s servant,” Mary answered. “May your word to me be fulfilled.” Then the angel left her.' (Luke 1:38)",
+      "pt": "'Disse Maria: “Eis aqui a serva do Senhor; faça-se em mim segundo a tua palavra”. E o anjo afastou-se dela' (Lucas 1,38)"
+    },
+    "el_fiat_de_maria": {
+      "es": "La respuesta de María —su fiat, es decir, su «hágase»— es un acto libre de fe, obediencia y entrega. Dios quiso que la aceptación de aquella que havia sido llamada a ser Madre precediera al misterio de la Encarnación. Por eso la Iglesia contempla en María a la nueva Eva: así como la desobediencia de Eva estuvo vinculada a la entrada de la muerte, la obediencia creyente de María cooperó, por gracia de Dios y de manera subordinada a Cristo, en la acogida de la Vida para el mundo.",
+      "en": "Mary's response — her fiat, that is, her 'let it be done' — is a free act of faith, obedience, and surrender. God willed that the acceptance of the one who had been called to be Mother should precede the mystery of the Incarnation. Therefore the Church contemplates in Mary the new Eve: just as Eve's disobedience was linked to the entry of death, Mary's believing obedience cooperated, by God's grace and subordinately to Christ, in welcoming Life for the world.",
+      "pt": "A resposta de Maria — o seu fiat, ou seja, o seu 'faça-se' — é um ato livre de fé, obediência e entrega. Deus quis que a aceitação daquela que tinha sido chamada a ser Mãe precedesse o mistério da Encarnação. Por isso a Igreja contempla em Maria a nova Eva: assim como a desobediência de Eva esteve vinculada à entrada da morte, a obediência crente de Maria cooperou, por graça de Deus e de maneira subordinada a Cristo, na acolhida da Vida para o mundo."
+    },
+    "la_encarnacion": {
+      "es": "En el seno virginal de María, por obra del Espíritu Santo, el Hijo eterno del Padre asumió verdaderamente nuestra naturaleza humana. Sin dejar de ser Dios, se hizo hombre: una sola Persona, Jesucristo, verdadero Dios y verdadero hombre. La divinidad y la humanidad no se mezclan ni se separan en Él. El Creador entra en su creación para salvarla y elevarla a la participación de la vida divina.",
+      "en": "In the virginal womb of Mary, by the work of the Holy Spirit, the eternal Son of the Father truly assumed our human nature. Without ceasing to be God, He became man: one single Person, Jesus Christ, true God and true man. Divinity and humanity are neither mixed nor separated in Him. The Creator enters His creation to save it and elevate it to participation in the divine life.",
+      "pt": "No seio virginal de Maria, por obra do Espírito Santo, o Filho eterno do Pai assumiu verdadeiramente a nossa natureza humana. Sem deixar de ser Deus, fez-se homem: uma só Pessoa, Jesus Cristo, verdadeiro Deus e verdadeiro homem. A divindade e a humanidade não se misturam nem se separam Nele. O Criador entra na sua criação para salvá-la e elevá-la à participação da vida divina."
+    },
+    "voz_de_la_iglesia": {
+      "es": "La Anunciación es el umbral del Nuevo Testamento y el comienzo histórico de la Encarnación. San Bernardo contempló a toda la creación aguardando la respuesta de María; la Iglesia reconoce en esa imagen la importancia de su consentimiento libre. El fiat de María no sustituye la acción de Dios, sino que manifiesta cómo la gracia puede encontrar en una libertad dócil una colaboración plena.",
+      "en": "The Annunciation is the threshold of the New Testament and the historical beginning of the Incarnation. St. Bernard contemplated all of creation awaiting Mary's response; the Church recognizes in that image the importance of her free consent. Mary's fiat does not replace God's action, but manifests how grace can find in a docile freedom a full collaboration.",
+      "pt": "A Anunciação é o limiar do Novo Testamento e o começo histórico da Encarnação. São Bernardo contemplou toda a criação a aguardar a resposta de Maria; a Igreja reconhece nessa imagem a importância do seu consentimento livre. O fiat de Maria não substitui a ação de Deus, mas manifesta como a graça pode encontrar numa liberdade dócil uma colaboração plena."
+    },
+    "aplicacion_existencial": {
+      "es": "A veces esperás que Dios resuelva tus problemas mediante señales extraordinarias. Sin embargo, con frecuencia te invita a responderle en lo pequeño y concreto: perdonar, perseverar, servir, volver a orar o dar un paso de confianza. María enseña que la fe no consiste en comprenderlo todo antes de obedecer, sino en confiar en Aquel que habla. Dios no desprecia tu libertad: la llama a participar de su obra.",
+      "en": "Sometimes you expect God to solve your problems through extraordinary signs. However, He frequently invites you to respond to Him in the small and concrete: to forgive, persevere, serve, pray again, or take a step of trust. Mary teaches that faith does not consist in understanding everything before obeying, but in trusting the One who speaks. God does not despise your freedom: He calls it to participate in His work.",
+      "pt": "Às vezes você espera que Deus resolva os seus problemas através de sinais extraordinários. No entanto, com frequência convida-o a responder-lhe no pequeno e concreto: perdoar, perseverar, servir, voltar a rezar ou dar um passo de confiança. Maria ensina que a fé não consiste em compreender tudo antes de obedecer, mas em confiar naquele que fala. Deus não despreza a sua liberdade: chama-a a participar na sua obra."
+    },
+    "oracion_breve": {
+      "es": "Madre del Señor y Virgen del Sí, enseñame a pronunciar mi propio «hágase» cuando el camino se vuelva oscuro. Que mi libertad, sostenida por la gracia, sepa acoger a tu Hijo en lo cotidiano. Amén.",
+      "en": "Mother of the Lord and Virgin of the Yes, teach me to pronounce my own 'let it be done' when the path becomes dark. May my freedom, sustained by grace, know how to welcome your Son in the everyday. Amen.",
+      "pt": "Mãe do Senhor e Virgem do Sim, ensina-me a pronunciar o meu próprio 'faça-se' quando o caminho se tornar escuro. Que a minha liberdade, sustentada pela graça, saiba acolher o teu Filho no cotidiano. Amém."
+    }
   },
+
   {
     "id": 5,
-    "titulo": "V. La Luz en la Intemperie (El Pesebre)",
-    "subtitulo": "Itinerario de la Revelación",
+    "titulo": {
+      "es": "V. La Luz en la Intemperie (El Pesebre)",
+      "en": "V. The Light in the Open (The Manger)",
+      "pt": "V. A Luz na Intempérie (O Presépio)"
+    },
+    "subtitulo": {
+      "es": "Itinerario de la Revelación",
+      "en": "Itinerary of Revelation",
+      "pt": "Itinerário da Revelação"
+    },
     "imagen": "assets/imagen/escalon5.jpg",
-    "introduccion": "El Creador del universo, el Dios a quien los cielos no pueden contener, nace en la pobreza de Belén y es acostado en un pesebre. La gloria divina no se manifiesta según los criterios del poder humano, sino en la humildad de un niño. En aquella noche, el cielo toca la tierra y la salvación entra silenciosamente en nuestra historia.",
-    "cita_biblica": "«Y dio a luz a su hijo primogénito, y lo envolvió en pañales, y lo acostó en un pesebre, porque no había lugar para ellos en el alojamiento.» (Lucas 2,7)",
-    "el_misterio_de_la_kenosis": "El nacimiento de Jesús manifiesta la humildad del Hijo de Dios, que, sin dejar de ser divino, asume nuestra condición humana y acepta la pobreza de nuestra existencia. Esta humillación anticipa el camino de su entrega pascual, expresado por san Pablo con el término kenosis, que significa «despojamiento». La Iglesia contempla también una resonancia espiritual entre el pesebre y la Eucaristía: el Niño nacido en Belén es el mismo Cristo que, en el Sacramento, se entrega a su pueblo como alimento de vida eterna.",
-    "los_pequeños_del_evangelio": "Los primeros destinatarios del anuncio no son los poderosos, sino los pastores que velaban durante la noche. A ellos se les revela que el Salvador, el Mesías y el Señor se encuentra en un niño envuelto en pañales y recostado en un pesebre. Dios manifiesta su gloria en la humildad y permite que los sencillos sean los primeros en reconocer y anunciar la Buena Noticia.",
-    "voz_de_la_iglesia": "La Iglesia confiesa que el Niño de Belén es verdaderamente el Hijo eterno de Dios hecho hombre. La pobreza del pesebre no disminuye su dignidad; revela la medida desconcertante de su amor. Desde los primeros siglos, los cristianos han contemplado la unidad del misterio de Cristo: el que nace de María, muere en la cruz, resucita glorioso y se hace presente sacramentalmente en la Eucaristía es siempre el mismo Señor.",
-    "aplicacion_existencial": "Quizás sientas que tu vida transcurre en la intemperie, sin lugar en el mundo del éxito o de la comodidad. El pesebre te anuncia que Dios no espera encontrarte perfecto para acercarse. Él entra precisamente en la pobreza, la fragilidad y los rincones que preferirías ocultar. No tenés que maquillarte ante Él: abrile el lugar que hoy puedas ofrecerle.",
-    "oracion_breve": "Niño Jesús, acostado en el pesebre por falta de lugar, hacé espacio en mi corazón para vos. Que tu humildad desarme mis vanidades y que tu presencia sea mi paz en toda intemperie. Amén."
+    "introduccion": {
+      "es": "El Creador del universo, el Dios a quien los cielos no pueden contener, nace en la pobreza de Belén y es acostado en un pesebre. La gloria divina no se manifiesta según los criterios del poder humano, sino en la humildad de un niño. En aquella noche, el cielo toca la tierra y la salvación entra silenciosamente en nuestra historia.",
+      "en": "The Creator of the universe, the God whom the heavens cannot contain, is born in the poverty of Bethlehem and laid in a manger. Divine glory is not manifested according to the criteria of human power, but in the humility of a child. On that night, heaven touches earth and salvation silently enters our history.",
+      "pt": "O Criador do universo, o Deus a quem os céus não podem conter, nasce na pobreza de Belém e é deitado num presépio. A glória divina não se manifesta segundo os critérios do poder humano, mas na humildade de um menino. Naquela noite, o céu toca a terra e a salvação entra silenciosamente na nossa história."
+    },
+    "cita_biblica": {
+      "es": "«Y dio a luz a su hijo primogénito, y lo envolvió en pañales, y lo acostó en un pesebre, porque no había lugar para ellos en el alojamiento.» (Lucas 2,7)",
+      "en": "'and she gave birth to her firstborn, a son. She wrapped him in cloths and placed him in a manger, because there was no guest room available for them.' (Luke 2:7)",
+      "pt": "'E deu à luz o seu filho primogénito, envolveu-o em panos e deitou-o numa manjedoura, porque não havia lugar para eles na hospedaria' (Lucas 2,7)"
+    },
+    "el_misterio_de_la_kenosis": {
+      "es": "El nacimiento de Jesús manifiesta la humildad del Hijo de Dios, que, sin dejar de ser divino, asume nuestra condición humana y acepta la pobreza de nuestra existencia. Esta humillación anticipa el camino de su entrega pascual, expresado por san Pablo con el término kenosis, que significa «despojamiento». La Iglesia contempla también una resonancia espiritual entre el pesebre y la Eucaristía: el Niño nacido en Belén es el mismo Cristo que, en el Sacramento, se entrega a su pueblo como alimento de vida eterna.",
+      "en": "The birth of Jesus manifests the humility of the Son of God, who, without ceasing to be divine, assumes our human condition and accepts the poverty of our existence. This humiliation anticipates the path of His paschal surrender, expressed by St. Paul with the term kenosis, which means 'emptying.' The Church also contemplates a spiritual resonance between the manger and the Eucharist: the Child born in Bethlehem is the same Christ who, in the Sacrament, gives Himself to His people as food for eternal life.",
+      "pt": "O nascimento de Jesus manifesta a humildade do Filho de Deus, que, sem deixar de ser divino, assume a nossa condição humana e aceita a pobreza da nossa existência. Esta humilhação antecipa o caminho da sua entrega pascal, expresso por São Paulo com o termo kenosis, que significa 'esvaziamento'. A Iglesia contempla também uma ressonância espiritual entre o presépio e a Eucaristía: o Menino nascido em Belém é o mesmo Cristo que, no Sacramento, se entrega ao seu povo como alimento de vida eterna."
+    },
+    "los_pequeños_del_evangelio": {
+      "es": "Los primeros destinatarios del anuncio no son los poderosos, sino los pastores que velaban durante la noche. A ellos se les revela que el Salvador, el Mesías y el Señor se encuentra en un niño envuelto en pañales y recostado en un pesebre. Dios manifiesta su gloria en la humildad y permite que los sencillos sean los primeros en reconocer y anunciar la Buena Noticia.",
+      "en": "The first recipients of the announcement are not the powerful, but the shepherds who kept watch during the night. To them it is revealed that the Savior, the Messiah, and the Lord is found in a child wrapped in cloths and lying in a manger. God manifests His glory in humility and allows the simple to be the first to recognize and announce the Good News.",
+      "pt": "Os primeiros destinatários do anúncio não são os poderosos, mas os pastores que vigiavam durante a noite. A eles é revelado que o Salvador, o Messias e o Senhor se encontra num menino envolvido em panos e deitado num presépio. Deus manifesta a sua glória na humildade e permite que os simples sejam os primeiros a reconhecer e anunciar a Boa Nova."
+    },
+    "voz_de_la_iglesia": {
+      "es": "La Iglesia confiesa que el Niño de Belén es verdaderamente el Hijo eterno de Dios hecho hombre. La pobreza del pesebre no disminuye su dignidad; revela la medida desconcertante de su amor. Desde los primeros siglos, los cristianos han contemplado la unidad del misterio de Cristo: el que nace de María, muere en la cruz, resucita glorioso y se hace presente sacramentalmente en la Eucaristía es siempre el mismo Señor.",
+      "en": "The Church confesses that the Child of Bethlehem is truly the eternal Son of God made man. The poverty of the manger does not diminish His dignity; it reveals the disconcerting measure of His love. From the earliest centuries, Christians have contemplated the unity of the mystery of Christ: the one who is born of Mary, dies on the cross, rises gloriously, and becomes sacramentally present in the Eucharist is always the same Lord.",
+      "pt": "A Igreja confessa que o Menino de Belém é verdadeiramente o Filho eterno de Deus feito homem. A pobreza do presépio não diminui a sua dignidade; revela a medida desconcertante do seu amor. Desde os primeiros séculos, os cristãos contemplaram a unidade do mistério de Cristo: aquele que nasce de Maria, morre na cruz, ressuscita glorioso e se torna presente sacramentalmente na Eucaristía é sempre o mesmo Senhor."
+    },
+    "aplicacion_existencial": {
+      "es": "Quizás sientas que tu vida transcurre en la intemperie, sin lugar en el mundo del éxito o de la comodidad. El pesebre te anuncia que Dios no espera encontrarte perfecto para acercarse. Él entra precisamente en la pobreza, la fragilidad y los rincones que preferirías ocultar. No tenés que maquillarte ante Él: abrile el lugar que hoy puedas ofrecerle.",
+      "en": "Perhaps you feel that your life takes place in the open, with no place in the world of success or comfort. The manger announces to you that God does not expect to find you perfect to draw near. He enters precisely into the poverty, the fragility, and the corners you would rather hide. You do not have to disguise yourself before Him: open up the place you can offer Him today.",
+      "pt": "Talvez sinta que a sua vida decorre na intempérie, sem lugar no mundo do sucesso ou do conforto. O presépio anuncia-lhe que Deus não espera encontrá-lo perfeito para se aproximar. Ele entra justamente na pobreza, na fragilidade e nos cantos que preferiria ocultar. Não tem de se maquiar diante dEle: abra-lhe o lugar que hoje lhe puder oferecer."
+    },
+    "oracion_breve": {
+      "es": "Niño Jesús, acostado en el pesebre por falta de lugar, hacé espacio en mi corazón para vos. Que tu humildad desarme mis vanidades y que tu presencia sea mi paz en toda intemperie. Amén.",
+      "en": "Baby Jesus, laid in the manger for lack of room, make space in my heart for you. May your humility disarm my vanities and may your presence be my peace in every exposure. Amen.",
+      "pt": "Menino Jesus, deitado no presépio por falta de lugar, faz espaço no meu coração para ti. Que a tua humildade desarme as minhas vaidades e que a tua presença seja a minha paz em toda a intempérie. Amém."
+    }
   },
   {
     "id": 6,
-    "titulo": "VI. Las Huellas del Maestro (Vida Pública)",
-    "subtitulo": "Itinerario de la Revelación",
+    "titulo": {
+      "es": "VI. Las Huellas del Maestro (Vida Pública)",
+      "en": "VI. The Footsteps of the Master (Public Life)",
+      "pt": "VI. As Pegadas do Mestre (Vida Pública)"
+    },
+    "subtitulo": {
+      "es": "Itinerario de la Revelación",
+      "en": "Itinerary of Revelation",
+      "pt": "Itinerário da Revelação"
+    },
     "imagen": "assets/imagen/escalon6.jpg",
-    "introduccion": "El Hijo de Dios encarnado no pasa su vida escondido en Nazaret; sale a los caminos de Galilea y Judea para encontrarse con los hombres. Su vida pública es la manifestación visible del Reino: enseña con autoridad, cura a los enfermos, acoge a los pecadores y siembra la misericordia del Padre en el suelo árido de la historia humana.",
-    "cita_biblica": "«El Espíritu del Señor está sobre mí, por cuanto me ha ungido para dar buenas nuevas a los pobres; me ha enviado a sanar a los quebrantados de corazón, a predicar libertad a los cautivos, y vista a los ciegos...» (Lucas 4,18)",
-    "las_obras_y_las_palabras": "Los milagros y las parábolas de Jesús no son simples prodigios ni meros relatos morales. Son signos del Reino que revelan quién es Él y manifiestan que la salvación de Dios ya está actuando en medio de su pueblo. Al curar, perdonar y devolver la dignidad, Jesús no sólo alivia sufrimientos concretos: anuncia y comienza a realizar la liberación definitiva del pecado y de la muerte. Sus palabras y sus obras forman una única revelación del rostro misericordioso del Padre.",
-    "camino_hacia_el_pan_de_vida": "A lo largo de su ministerio, Jesús prepara progresivamente a sus discípulos para el don de sí mismo. Después de multiplicar los panes, se revela como el Pan vivo bajado del cielo. No ofrece solamente un alimento que sostiene por un tiempo, sino su propia carne entregada por la vida del mundo. Esta promesa alcanzará su cumplimiento sacramental en la Última Cena y su fundamento eterno en el sacrificio de la Cruz.",
-    "voz_de_la_iglesia": "El Catecismo enseña que toda la vida de Cristo es misterio de revelación: lo que no fue asumido no fue redimido. San Agustín señala que Cristo predicaba con sus palabras y con sus obras, uniendo la doctrina y la vida en una perfecta entrega. La Iglesia contempla en el ministerio público de Jesús la escuela permanente donde los discípulos aprenden a mirar a los hombres con los ojos y las entrañas de Dios.",
-    "aplicacion_existencial": "A veces caminás cansado, sintiendo que tus pasos en la fe son rutinarios o estériles. Mirar las huellas del Maestro en los Evangelios te recuerda que Él pasó por caminos humanos de cansancio, amistad, trabajo, rechazo y sufrimiento, aunque permaneció sin pecado. Dejó una estela de compasión y cercanía que hoy sigue abierta para vos. Dejáte alcanzar por su mirada en medio de tus ocupaciones diarias.",
-    "oracion_breve": "Señor Jesús, que recorriste nuestros caminos haciendo el bien, saná las heridas de mi historia. Hacedme dócil a tu enseñanza y enseñame a caminar siguiendo tus huellas. Amén."
+    "introduccion": {
+      "es": "El Hijo de Dios encarnado no pasa su vida escondido en Nazaret; sale a los caminos de Galilea y Judea para encontrarse con los hombres. Su vida pública es la manifestación visible del Reino: enseña con autoridad, cura a los enfermos, acoge a los pecadores y siembra la misericordia del Padre en el suelo árido de la historia humana.",
+      "en": "The incarnate Son of God does not spend His life hidden in Nazareth; He goes out onto the roads of Galilee and Judea to encounter men. His public life is the visible manifestation of the Kingdom: He teaches with authority, heals the sick, welcomes sinners, and sows the Father's mercy in the arid soil of human history.",
+      "pt": "O Filho de Deus encarnado não passa a sua vida escondido em Nazaré; sai pelos caminhos da Galileia e da Judeia para ir ao encontro dos homens. A sua vida pública é a manifestação visível do Reino: ensina com autoridade, cura os doentes, acolhe os pecadores e semeia a misericórdia do Pai no solo árido da história humana."
+    },
+    "cita_biblica": {
+      "es": "«El Espíritu del Señor está sobre mí, por cuanto me ha ungido para dar buenas nuevas a los pobres; me ha enviado a sanar a los quebrantados de corazón, a predicar libertad a los cautivos, y vista a los ciegos...» (Lucas 4,18)",
+      "en": "“The Spirit of the Lord is on me, because he has anointed me to proclaim good news to the poor. He has sent me to proclaim freedom for the prisoners and recovery of sight for the blind, to set the oppressed free,” (Luke 4:18)",
+      "pt": "'O Espírito do Senhor está sobre mim, porque me ungiu para evangelizar os pobres; enviou-me para proclamar a libertação aos cativos e a recuperação da vista aos cegos...' (Lucas 4,18)"
+    },
+    "las_obras_y_las_palabras": {
+      "es": "Los milagros y las parábolas de Jesús no son simples prodigios ni meros relatos morales. Son signos del Reino que revelan quién es Él y manifiestan que la salvación de Dios ya está actuando en medio de su pueblo. Al curar, perdonar y devolver la dignidad, Jesús no sólo alivia sufrimientos concretos: anuncia y comienza a realizar la liberación definitiva del pecado y de la muerte. Sus palabras y sus obras forman una única revelación del rostro misericordioso del Padre.",
+      "en": "Jesus' miracles and parables are not simple prodigies nor mere moral stories. They are signs of the Kingdom that reveal who He is and manifest that God's salvation is already acting in the midst of His people. By healing, forgiving, and restoring dignity, Jesus does not only alleviate concrete sufferings: He announces and begins to accomplish the definitive liberation from sin and death. His words and works form a single revelation of the merciful face of the Father.",
+      "pt": "Os milagres e as parábolas de Jesus não são simples prodígios nem meros relatos morais. São sinais do Reino que revelam quem Ele é e manifestam que a salvação de Deus já está a atuar no meio do seu povo. Ao curar, perdoar e devolver a dignidade, Jesus não só alivia sofrimentos concretos: anuncia e começa a realizar a libertação definitiva do pecado e da morte. As suas palavras e obras formam uma única revelação do rosto misericordioso do Pai."
+    },
+    "camino_hacia_el_pan_de_vida": {
+      "es": "A lo largo de su ministerio, Jesús prepara progresivamente a sus discípulos para el don de sí mismo. Después de multiplicar los panes, se revela como el Pan vivo bajado del cielo. No ofrece solamente un alimento que sostiene por un tiempo, sino su propia carne entregada por la vida del mundo. Esta promesa alcanzará su cumplimiento sacramental en la Última Cena y su fundamento eterno en el sacrificio de la Cruz.",
+      "en": "Throughout His ministry, Jesus progressively prepares His disciples for the gift of Himself. After multiplying the loaves, He reveals Himself as the living Bread come down from heaven. He does not offer only food that sustains for a time, but His own flesh given up for the life of the world. This promise will reach its sacramental fulfillment at the Last Supper and its eternal foundation in the sacrifice of the Cross.",
+      "pt": "Ao longo do seu ministério, Jesus prepara progressivamente os seus discípulos para o dom de si mesmo. Depois de multiplicar os pães, revela-se como o Pão vivo descido do céu. Não oferece apenas um alimento que sustenta por um tempo, mas a sua própria carne entregue pela vida do mundo. Esta promessa alcançará o seu cumprimento sacramental na Última Ceia e o seu fundamento eterno no sacrifício da Cruz."
+    },
+    "voz_de_la_iglesia": {
+      "es": "El Catecismo enseña que toda la vida de Cristo es misterio de revelación: lo que no fue asumido no fue redimido. San Agustín señala que Cristo predicaba con sus palabras y con sus obras, uniendo la doctrina y la vida en una perfecta entrega. La Iglesia contempla en el ministerio público de Jesús la escuela permanente donde los discípulos aprenden a mirar a los hombres con los ojos y las entrañas de Dios.",
+      "en": "The Catechism teaches that the entire life of Christ is a mystery of revelation: what was not assumed was not redeemed. St. Augustine points out that Christ preached with His words and His works, uniting doctrine and life in a perfect surrender. The Church contemplates in Jesus' public ministry the permanent school where disciples learn to look at men with the eyes and bowels of God.",
+      "pt": "O Catecismo ensina que toda a vida de Cristo é mistério de revelação: o que não foi assumido não foi redimido. Santo Agostinho assinala que Cristo pregava com as suas palavras e com as suas obras, unindo a doutrina e a vida numa perfeita entrega. A Igreja contempla no ministério público de Jesus a escola permanente onde os discípulos aprendem a olhar para os homens com os olhos e as entranhas de Deus."
+    },
+    "aplicacion_existencial": {
+      "es": "A veces caminás cansado, sintiendo que tus pasos en la fe son rutinarios o estériles. Mirar las huellas del Maestro en los Evangelios te recuerda que Él pasó por caminos humanos de cansancio, amistad, trabajo, rechazo y sufrimiento, aunque permaneció sin pecado. Dejó una estela de compasión y cercanía que hoy sigue abierta para vos. Dejáte alcanzar por su mirada en medio de tus ocupaciones diarias.",
+      "en": "Sometimes you walk tired, feeling that your steps in faith are routine or sterile. Looking at the Master's footsteps in the Gospels reminds you that He went through human paths of weariness, friendship, work, rejection, and suffering, though He remained without sin. He left a trail of compassion and closeness that remains open for you today. Let yourself be reached by His gaze in the midst of your daily occupations.",
+      "pt": "Às vezes você caminha cansado, sentindo que os seus passos na fé são rotineiros ou estéreis. Olhar para as pegadas do Mestre nos Evangelhos lembra-lhe que Ele passou por caminhos humanos de cansaço, amizade, trabalho, rejeição e sofrimento, embora tenha permanecido sem pecado. Deixou um rasto de compasão e proximidade que hoje continua aberto para si. Deixe-se alcançar pelo seu olhar no meio das suas ocupações diárias."
+    },
+    "oracion_breve": {
+      "es": "Señor Jesús, que recorriste nuestros caminos haciendo el bien, saná las heridas de mi historia. Hacedme dócil a tu enseñanza y enseñame a caminar siguiendo tus huellas. Amén.",
+      "en": "Lord Jesus, who traveled our paths doing good, heal the wounds of my history. Make me docile to your teaching and teach me to walk following your footsteps. Amen.",
+      "pt": "Senhor Jesus, que percorreste os nossos caminhos fazendo o bem, sara as feridas da minha história. Torna-me dócil ao teu ensinamento e ensina-me a caminhar seguindo as tuas pegadas. Amém."
+    }
   },
   {
     "id": 7,
-    "titulo": "VII. La Victoria sobre la Muerte (Pascua)",
-    "subtitulo": "Itinerario de la Revelación",
+    "titulo": {
+      "es": "VII. La Victoria sobre la Muerte (Pascua)",
+      "en": "VII. Victory over Death (Easter)",
+      "pt": "VII. A Vitória sobre a Morte (Páscoa)"
+    },
+    "subtitulo": {
+      "es": "Itinerario de la Revelación",
+      "en": "Itinerary of Revelation",
+      "pt": "Itinerário da Revelação"
+    },
     "imagen": "assets/imagen/escalon7.jpg",
-    "introduccion": "El itinerario de la revelación cruza por el dintel más estrecho y definitivo: la entrega total en la Cruz y el estallido glorioso de la Resurrección. Lo que parecía el fracaso absoluto del madero se convierte, por la fuerza infinita del amor del Padre, en el nacimiento de la vida nueva para toda la humanidad.",
-    "cita_biblica": "«Él no está aquí, pues ha resucitado, como dijo. Venid, ved el lugar donde fue puesto el Señor.» (Mateo 28,6)",
-    "el_sacrificio_y_la_eucaristia": "En la noche de la Última Cena, Jesús anticipa sacramentalmente su Pasión y entrega libremente su Cuerpo y su Sangre «para el perdón de los pecados». La Cruz y la Eucaristía son inseparables: la Eucaristía no repite el sacrificio del Calvario, sino que hace sacramentalmente presente el único sacrificio de Cristo, para que la Iglesia participe de su Pascua y reciba sus frutos de salvación.",
-    "la_madrugada_del_primer_dia": "La tumba vacía, unida a las apariciones y al testimonio de los apóstoles, manifiesta que la Resurrección es el acontecimiento real y fundante de la fe cristiana. Cristo no vuelve simplemente a la vida anterior: resucita glorioso, con un cuerpo verdaderamente transformado. Sus llagas permanecen como signos de un amor que atravesó la muerte y la venció desde dentro.",
-    "voz_de_la_iglesia": "La Constitución *Sacrosanctum Concilium* del Concilio Vaticano II recuerda que la Liturgia es el ejercicio de la función sacerdotal de Jesucristo, donde por los signos sensibles se significa y se realiza la santificación del hombre. La Iglesia canta exultante en la Vigilia Pascual que esta es la noche en que Cristo rompió las cadenas de la muerte. Sin la Resurrección, vana es nuestra fe; con ella, la última palabra de la historia no la tiene la tumba, sino la misericordia.",
-    "aplicacion_existencial": "Hay momentos en los que experimentás pequeñas o grandes 'muertes' cotidianas: fracasos, duelos, miedos paralizantes, culpas que pesan. La Pascua te grita con fuerza que ninguna oscuridad tuya es tan honda como para que el brazo de Cristo no pueda alcanzarla y resucitarla. Entregar tus cargas al Señor es permitirle hacer brotar vida nueva incluso de tus cruces.",
-    "oracion_breve": "Señor de la Vida, vencedor del pecado y de la muerte, gracias por tu entrega en la Cruz y por el triunfo de tu Resurrección. Encendé en mí la alegría pascual y renová mi esperanza cada día. Amén."
+    "introduccion": {
+      "es": "El itinerario de la revelación cruza por el dintel más estrecho y definitivo: la entrega total en la Cruz y el estallido glorioso de la Resurrección. Lo que parecía el fracaso absoluto del madero se convierte, por la fuerza infinita del amor del Padre, en el nacimiento de la vida nueva para toda la humanidad.",
+      "en": "The itinerary of revelation crosses through the narrowest and most definitive lintel: the total surrender on the Cross and the glorious outburst of the Resurrection. What seemed like the absolute failure of the wood becomes, by the infinite strength of the Father's love, the birth of new life for all humanity.",
+      "pt": "O itinerário da revelação cruza pelo umbral mais estreito e definitivo: a entrega total na Cruz e o estallido glorioso da Ressurreição. O que parecia o fracasso absoluto do madeiro torna-se, pela força infinita do amor do Pai, no nascimento da vida nova para toda a humanidade."
+    },
+    "cita_biblica": {
+      "es": "«Él no está aquí, pues ha resucitado, como dijo. Venid, ved el lugar donde fue puesto el Señor.» (Mateo 28,6)",
+      "en": "“He is not here; he has risen, just as he said. Come and see the place where he lay.” (Matthew 28:6)",
+      "pt": "'Ele não está aqui, porque ressuscitou como tinha dito. Vinde, vede o lugar onde o Senhor estava' (Mateo 28,6)"
+    },
+    "el_sacrificio_y_la_eucaristia": {
+      "es": "En la noche de la Última Cena, Jesús anticipa sacramentalmente su Pasión y entrega libremente su Cuerpo y su Sangre «para el perdón de los pecados». La Cruz y la Eucaristía son inseparables: la Eucaristía no repite el sacrificio del Calvario, sino que hace sacramentalmente presente el único sacrificio de Cristo, para que la Iglesia participe de su Pascua y reciba sus frutos de salvación.",
+      "en": "On the night of the Last Supper, Jesus sacramentally anticipates His Passion and freely gives His Body and Blood 'for the forgiveness of sins.' The Cross and the Eucharist are inseparable: the Eucharist does not repeat the sacrifice of Calvary, but sacramentally makes present the unique sacrifice of Christ, so that the Church may participate in His Easter and receive its fruits of salvation.",
+      "pt": "Na noite da Última Ceia, Jesus antecipa sacramentalmente a sua Paixão e entrega livremente o seu Corpo e o seu Sangue 'para o perdão dos pecados'. A Cruz e a Eucaristía são inseparáveis: a Eucaristía não repete o sacrifício do Calvário, mas torna sacramentalmente presente o único sacrifício de Cristo, para que a Igreja participe da sua Páscoa e receba os seus frutos de salvação."
+    },
+    "la_madrugada_del_primer_dia": {
+      "es": "La tumba vacía, unida a las apariciones y al testimonio de los apóstoles, manifiesta que la Resurrección es el acontecimiento real y fundante de la fe cristiana. Cristo no vuelve simplemente a la vida anterior: resucita glorioso, con un cuerpo verdaderamente transformado. Sus llagas permanecen como signos de un amor que atravesó la muerte y la venció desde dentro.",
+      "en": "The empty tomb, united to the apparitions and the testimony of the apostles, manifests that the Resurrection is the real and founding event of the Christian faith. Christ does not simply return to His previous life: He rises glorious, with a truly transformed body. His wounds remain as signs of a love that passed through death and conquered it from within.",
+      "pt": "O sepulcro vazio, unido às aparições e ao testemunho dos apóstolos, manifesta que a Ressurreição é o acontecimento real e fundador da fé cristã. Cristo não volta simplesmente à vida anterior: ressuscita glorioso, com um corpo verdadeiramente transformado. As suas chagas permanecem como sinais de um amor que atravessou a morte e a venceu por dentro."
+    },
+    "voz_de_la_iglesia": {
+      "es": "La Constitución *Sacrosanctum Concilium* del Concilio Vaticano II recuerda que la Liturgia es el ejercicio de la función sacerdotal de Jesucristo, donde por los signos sensibles se significa y se realiza la santificación del hombre. La Iglesia canta exultante en la Vigilia Pascual que esta es la noche en que Cristo rompió las cadenas de la muerte. Sin la Resurrección, vana es nuestra fe; con ella, la última palabra de la historia no la tiene la tumba, sino la misericordia.",
+      "en": "The Constitution *Sacrosanctum Concilium* of Vatican Council II recalls that the Liturgy is the exercise of the priestly function of Jesus Christ, where by sensible signs the sanctification of man is signified and brought about. The Church exultantly sings at the Easter Vigil that this is the night when Christ broke the chains of death. Without the Resurrection, our faith is in vain; with it, the final word of history does not belong to the tomb, but to mercy.",
+      "pt": "A Constituição *Sacrosanctum Concilium* do Concílio Vaticano II recorda que a Liturgia é o exercício da função sacerdotal de Jesus Cristo, onde pelos sinais sensíveis se significa e se realiza a santificação do homem. A Igreja canta exultante na Vigília Pascal que esta é a noite em que Cristo rompeu as cadeias da morte. Sem a Ressurreição, vã é a nossa fé; com ela, a última palavra de la história não a tem o sepulcro, mas a misericórdia."
+    },
+    "aplicacion_existencial": {
+      "es": "Hay momentos en los que experimentás pequeñas o grandes 'muertes' cotidianas: fracasos, duelos, miedos paralizantes, culpas que pesan. La Pascua te grita con fuerza que ninguna oscuridad tuya es tan honda como para que el brazo de Cristo no pueda alcanzarla y resucitarla. Entregar tus cargas al Señor es permitirle hacer brotar vida nueva incluso de tus cruces.",
+      "en": "There are times when you experience small or large daily 'deaths': failures, griefs, paralyzing fears, heavy guilts. Easter shouts to you with force that no darkness of yours is so deep that Christ's arm cannot reach it and raise it up. Surrendering your burdens to the Lord is allowing Him to make new life spring forth even from your crosses.",
+      "pt": "Há momentos em que você experimenta pequenas ou grandes 'mortes' cotidianas: fracassos, lutos, medos paralisantes, culpas que pesam. A Páscoa grita-lhe com força que nenhuma escuridão sua é tão funda que o braço de Cristo não possa alcançar e ressuscitar. Entregar as suas cargas ao Senhor é permitir-lhe fazer brotar vida nova inclusivamente das suas cruzes."
+    },
+    "oracion_breve": {
+      "es": "Señor de la Vida, vencedor del pecado y de la muerte, gracias por tu entrega en la Cruz y por el triunfo de tu Resurrección. Encendé en mí la alegría pascual y renová mi esperanza cada día. Amén.",
+      "en": "Lord of Life, victor over sin and death, thank you for your surrender on the Cross and for the triumph of your Resurrection. Kindle in me the Easter joy and renew my hope every day. Amen.",
+      "pt": "Senhor da Vida, vencedor do pecado e da morte, obrigado pela tua entrega na Cruz e pelo triunfo da tua Ressurreição. Acende em mim a alegria pascal e renova a minha esperança cada dia. Amém."
+    }
   },
   {
     "id": 8,
-    "titulo": "VIII. El Fuego que no se Apaga (Pentecostés y la Eucaristía)",
-    "subtitulo": "Itinerario de la Revelación",
+    "titulo": {
+      "es": "VIII. El Fuego que no se Apaga (Pentecostés y la Eucaristía)",
+      "en": "VIII. The Fire That Does Not Go Out (Pentecost and the Eucharist)",
+      "pt": "VIII. O Fogo que não se Apaga (Pentecostes e a Eucaristia)"
+    },
+    "subtitulo": {
+      "es": "Itinerario de la Revelación",
+      "en": "Itinerary of Revelation",
+      "pt": "Itinerário da Revelação"
+    },
     "imagen": "assets/imagen/escalon8.jpg",
-    "introduccion": "La historia de la salvación, que comenzó con la creación y alcanzó su centro en la Pascua de Cristo, entra en el tiempo de la Iglesia mediante el don del Espíritu Santo. En Pentecostés, el fuego prometido desciende sobre los apóstoles y los transforma en testigos. La Iglesia nace públicamente como pueblo reunido por el Espíritu, alimentado por la Eucaristía y enviado a anunciar a Cristo hasta los confines de la tierra.",
-    "cita_biblica": "«Y se les aparecieron lenguas repartidas, como de fuego, asentándose sobre cada uno de ellos. Y fueron todos llenos del Espíritu Santo...» (Hechos 2, 3-4)",
-    "el_soplo_que_congrega": "El mismo Espíritu que aparece en el comienzo de la creación y que resucitó a Jesús de entre los muertos es derramado sobre los apóstoles reunidos en oración. El Espíritu Santo no es una fuerza impersonal, sino la Persona divina que procede del Padre y del Hijo. Él transforma el miedo en testimonio, reúne la diversidad de los pueblos y edifica la comunión de la Iglesia. Lo que Babel había dispersado por el orgullo comienza a ser sanado mediante el lenguaje universal del Evangelio.",
-    "la_eucaristia_fuente_y_cumbre": "La Eucaristía, instituida por Cristo y celebrada por la Iglesia en el poder del Espíritu Santo, es fuente y cumbre de toda la vida cristiana. En ella se hace presente sacramentalmente el sacrificio pascual, recibimos verdaderamente a Cristo y somos incorporados más profundamente a su Cuerpo, que es la Iglesia. Quien comulga está llamado a dejar que el Espíritu transforme su vida en una ofrenda de amor y servicio. La Eucaristía es también prenda de la gloria futura y anticipación del banquete eterno.",
-    "voz_de_la_iglesia": "El Concilio Vaticano II, en la Constitución *Lumen Gentium*, enseña que la Eucaristía es fuente y cumbre de toda la vida cristiana. San Juan Crisóstomo exhortaba con pasión a los fieles a contemplar el altar con temblor sagrado, sabiendo que el don del Espíritu se comunica a la Iglesia para encender nuestros corazones.",
-    "aplicacion_existencial": "Podés sentirte solo, frágil o incapaz de sostener tu fe en medio de un mundo indiferente. Pentecostés te recuerda que la Iglesia no vive de sus propias fuerzas, sino del Espíritu del Resucitado. Y la Eucaristía te recuerda que Cristo no está distante: se entrega verdaderamente a su pueblo. Abrí las puertas del corazón a la acción de Dios, participá con fe en la vida de la Iglesia y dejá que el fuego recibido se convierta en caridad concreta.",
-    "oracion_breve": "Espíritu Santo, fuego de amor y Consolador eterno, llená a tu Iglesia y renová la faz de la tierra. Señor Jesús, gracias por permanecer con nosotros en la Eucaristía. Hacé de tu pueblo un solo cuerpo, ardiente en la fe y dispuesto al servicio. Amén."
+    "introduccion": {
+      "es": "La historia de la salvación, que comenzó con la creación y alcanzó su centro en la Pascua de Cristo, entra en el tiempo de la Iglesia mediante el don del Espíritu Santo. En Pentecostés, el fuego prometido desciende sobre los apóstoles y los transforma en testigos. La Iglesia nace públicamente como pueblo reunido por el Espíritu, alimentado por la Eucaristía y enviado a anunciar a Cristo hasta los confines de la tierra.",
+      "en": "The history of salvation, which began with creation and reached its center in Christ's Easter, enters the time of the Church through the gift of the Holy Spirit. At Pentecost, the promised fire descends upon the apostles and transforms them into witnesses. The Church is born publicly as a people gathered by the Spirit, nourished by the Eucharist, and sent to proclaim Christ to the ends of the earth.",
+      "pt": "A história da salvação, que começou com a criação e alcançou o seu centro na Páscoa de Cristo, entra no tempo da Igreja mediante o dom do Espírito Santo. Em Pentecostes, o fogo prometido desce sobre os apóstolos e transforma-os em testemunhas. A Igreja nasce publicamente como povo reunido pelo Espírito, alimentado pela Eucaristía e enviado a anunciar a Cristo até aos confins da terra."
+    },
+    "cita_biblica": {
+      "es": "«Y se les aparecieron lenguas repartidas, como de fuego, asentándose sobre cada uno de ellos. Y fueron todos llenos del Espíritu Santo...» (Hechos 2, 3-4)",
+      "en": "“They saw what seemed to be tongues of fire that separated and came to rest on each of them. All of them were filled with the Holy Spirit...” (Acts 2:3-4)",
+      "pt": "'E apareceram-lhes repartidas línguas, como de fogo, as quais pousaram sobre cada um deles. E todos ficaram cheios do Espírito Santo...' (Atos 2,3-4)"
+    },
+    "el_soplo_que_congrega": {
+      "es": "El mismo Espíritu que aparece en el comienzo de la creación y que resucitó a Jesús de entre los muertos es derramado sobre los apóstoles reunidos en oración. El Espíritu Santo no es una fuerza impersonal, sino la Persona divina que procede del Padre y del Hijo. Él transforma el miedo en testimonio, reúne la diversidad de los pueblos y edifica la comunión de la Iglesia. Lo que Babel había dispersado por el orgullo comienza a ser sanado mediante el lenguaje universal del Evangelio.",
+      "en": "The same Spirit who appears at the beginning of creation and who raised Jesus from the dead is poured out upon the apostles gathered in prayer. The Holy Spirit is not an impersonal force, but the divine Person who proceeds from the Father and the Son. He transforms fear into testimony, brings together the diversity of peoples, and builds up the communion of the Church. What Babel had scattered through pride begins to be healed through the universal language of the Gospel.",
+      "pt": "O mesmo Espírito que aparece no começo da criação e que ressuscitou a Jesus de entre os mortos é derramado sobre os apóstolos reunidos em oração. O Espírito Santo não é uma força impessoal, mas a Pessoa divina que procede do Pai e do Filho. Ele transforma o medo em testemunho, reúne a diversidade dos povos e edifica a comunhão da Igreja. O que Babel tinha dispersado pelo orgulho começa a ser sanado mediante a linguagem universal do Evangelho."
+    },
+    "la_eucaristia_fuente_y_cumbre": {
+      "es": "La Eucaristía, instituida por Cristo y celebrada por la Iglesia en el poder del Espíritu Santo, es fuente y cumbre de toda la vida cristiana. En ella se hace presente sacramentalmente el sacrificio pascual, recibimos verdaderamente a Cristo y somos incorporados más profundamente a su Cuerpo, que es la Iglesia. Quien comulga está llamado a dejar que el Espíritu transforme su vida en una ofrenda de amor y servicio. La Eucaristía es también prenda de la gloria futura y anticipación del banquete eterno.",
+      "en": "The Eucharist, instituted by Christ and celebrated by the Church in the power of the Holy Spirit, is the source and summit of all Christian life. In it, the paschal sacrifice is sacramentally made present, we truly receive Christ, and we are more deeply incorporated into His Body, which is the Church. Whoever receives communion is called to let the Spirit transform his life into an offering of love and service. The Eucharist is also a pledge of future glory and an anticipation of the eternal banquet.",
+      "pt": "A Eucaristía, instituída por Cristo e celebrada pela Igreja no poder do Espírito Santo, é fonte e cume de toda a vida cristã. Nela se faz presente sacramentalmente o sacrifício pascal, recebemos verdadeiramente a Cristo e somos incorporados mais profundamente no seu Corpo, que é a Igreja. Quem comunga é chamado a deixar que o Espírito transforme a sua vida numa oferenda de amor e serviço. A Eucaristía é também penhor da glória futura e antecipação do banquete eterno."
+    },
+    "voz_de_la_iglesia": {
+      "es": "El Concilio Vaticano II, en la Constitución *Lumen Gentium*, enseña que la Eucaristía es fuente y cumbre de toda la vida cristiana. San Juan Crisóstomo exhortaba con pasión a los fieles a contemplar el altar con temblor sagrado, sabiendo que el don del Espíritu se comunica a la Iglesia para encender nuestros corazones.",
+      "en": "Vatican Council II, in the Constitution *Lumen Gentium*, teaches that the Eucharist is the source and summit of all Christian life. St. John Chrysostom passionately exhorted the faithful to contemplate the altar with sacred trembling, knowing that the gift of the Spirit is communicated to the Church to set our hearts on fire.",
+      "pt": "O Concílio Vaticano II, na Constituição *Lumen Gentium*, ensina que a Eucaristía é fonte e cume de toda a vida cristã. São João Crisóstomo exortava com paixão os fiéis a contemplar o altar com tremor sagrado, sabendo que o dom do Espírito se comunica à Igreja para acender os nossos corações."
+    },
+    "aplicacion_existencial": {
+      "es": "Podés sentirte solo, frágil o incapaz de sostener tu fe en medio de un mundo indiferente. Pentecostés te recuerda que la Iglesia no vive de sus propias fuerzas, sino del Espíritu del Resucitado. Y la Eucaristía te recuerda que Cristo no está distante: se entrega verdaderamente a su pueblo. Abrí las puertas del corazón a la acción de Dios, participá con fe en la vida de la Iglesia y dejá que el fuego recibido se convierta en caridad concreta.",
+      "en": "You may feel lonely, fragile, or incapable of sustaining your faith in the midst of an indifferent universe. Pentecost reminds you that the Church does not live by its own strengths, but by the Spirit of the Risen One. And the Eucharist reminds you that Christ is not distant: He truly gives Himself to His people. Open the doors of your heart to God's action, participate with faith in the life of the Church, and let the fire received become concrete charity.",
+      "pt": "Você pode sentir-se sozinho, frágil ou incapaz de sustentar a sua fé no meio de um mundo indiferente. Pentecostes lembra-lhe que a Igreja não vive das suas próprias forças, mas do Espírito do Ressuscitado. E a Eucaristía lembra-lhe que Cristo não está distante: entrega-se verdadeiramente ao seu povo. Abra as portas do coração à ação de Deus, participe com fé na vida da Igreja e deixe que o fogo recebido se converta em caridade concreta."
+    },
+    "oracion_breve": {
+      "es": "Espíritu Santo, fuego de amor y Consolador eterno, llená a tu Iglesia y renová la faz de la tierra. Señor Jesús, gracias por permanecer con nosotros en la Eucaristía. Hacé de tu pueblo un solo cuerpo, ardiente en la fe y dispuesto al servicio. Amén.",
+      "en": "Holy Spirit, fire of love and eternal Comforter, fill your Church and renew the face of the earth. Lord Jesus, thank you for remaining with us in the Eucharist. Make your people one single body, burning in faith and disposed to service. Amen.",
+      "pt": "Espírito Santo, fogo de amor e Consolador eterno, enche a tua Igreja e renova a face da terra. Senhor Jesus, obrigado por permaneceres conosco na Eucaristía. Faz do teu povo um só corpo, ardiente na fé e disposto ao serviço. Amén."
+    }
   }
 ]

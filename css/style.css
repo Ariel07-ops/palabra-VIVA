@@ -3359,19 +3359,9 @@ body.modo-sepia .path-theme .path-card {
 }
 
 /* Estilo cuando el Modo Sepia está activo */
-body.modo-sepia #btn-goto-bible,
-body.modo-sepia #btn-goto-path {
-  background-color: #f4ebd0 !important; /* Crema cálido del sepia */
-  border: 1px solid #b59a64 !important;
-}
 
 /* Textos y subtítulos dentro de los bloques principales en modo sepia */
-body.modo-sepia #btn-goto-bible h2,
-body.modo-sepia #btn-goto-bible p,
-body.modo-sepia #btn-goto-path h2,
-body.modo-sepia #btn-goto-path p {
-  color: #4b3621 !important; /* Marrón legible y cálido */
-}
+
 body.modo-sepia .split-container {
   background-color: #f4ebd0 !important; /* Fondo sepia para los bloques */
   color: #4b3621 !important; /* Texto marrón legible */
