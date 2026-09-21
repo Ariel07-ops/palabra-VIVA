@@ -796,7 +796,7 @@ function cargarCapitulosLibro(nombreLibro, versesArray, pantallaOrigen) {
 
   tituloLibro.textContent = nombreLibro;
   gridCapitulos.innerHTML = "";
-  areaVersiculos.innerHTML = `<em style="color: var(--gold);">Elegí un capítulo arriba para comenzar la lectura.</em>`;
+  areaVersiculos.innerHTML = "";
 
   const versosLibro = versesArray.filter((v) => v.book_name === nombreLibro);
   const capitulosSet = new Set(versosLibro.map((v) => v.chapter));
@@ -1845,13 +1845,18 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   // --- PROCESAMIENTO PRINCIPAL DEL CHAT ---
+  // --- PROCESAMIENTO PRINCIPAL DEL CHAT ---
   btnEnviar?.addEventListener("click", async () => {
     const textoUsuarioCrudo = inputChat.value.trim();
-    const textoUsuario = escaparHTML(textoUsuarioCrudo);
-    const textoLimpio = normalizarTexto(textoUsuarioCrudo);
-    const palabrasUsuario = obtenerPalabras(textoUsuarioCrudo);
 
-    if (textoUsuario !== "") {
+    if (textoUsuarioCrudo !== "") {
+      // 🛡️ TRUCO PARA BAJAR EL TECLADO EN MÓVILES AL ENVIAR
+      inputChat.blur();
+
+      const textoUsuario = escaparHTML(textoUsuarioCrudo);
+      const textoLimpio = normalizarTexto(textoUsuarioCrudo);
+      const palabrasUsuario = obtenerPalabras(textoUsuarioCrudo);
+
       contenedorMensajes.innerHTML += `<div class="mensaje-usuario">${textoUsuario}</div>`;
       inputChat.value = "";
       contenedorMensajes.scrollTop = contenedorMensajes.scrollHeight;
@@ -1954,7 +1959,7 @@ document.addEventListener("DOMContentLoaded", () => {
             textoLimpio.includes("quien sos")
           ) {
             respuestaAsistente =
-              "Soy tu asistente de Palabra Viva, tu compañera para este espacio de fe y charla 🕊️.";
+              "Soy tu asistente de Palabra Viva, tu compañera para este espacio de fe, charla y un buen mate espiritual 🕊️.";
           } else if (
             textoLimpio.includes("version de biblia") ||
             textoLimpio.includes("que biblia") ||
@@ -1972,7 +1977,7 @@ document.addEventListener("DOMContentLoaded", () => {
             textoLimpio.includes("es seguro")
           ) {
             respuestaAsistente =
-              "¡Quedate tranquilo! Este espacio cuida tu privacidad; lo charlado queda acá entre nosotros para acompañarte en tu camino espiritual.";
+              "¡Quedate tranquilo! Este espacio cuida tu privacidad; lo charlado queda acá entre nosotros para acompañarte en tu camino.";
           } else if (
             textoLimpio.includes("borrar mi nombre") ||
             textoLimpio.includes("olvidar mi nombre")
@@ -2009,7 +2014,6 @@ document.addEventListener("DOMContentLoaded", () => {
           ) {
             respuestaAsistente =
               "¡Qué alegría leer eso! Me pone contento que marche todo bien. ¿En qué te puedo ayudar hoy? ¡Acá estoy!";
-            // --- NUEVO FILTRO DE DESPEDIDAS ---
           } else if (
             textoLimpio.includes("me voy a dormir") ||
             textoLimpio.includes("chau") ||
@@ -2017,7 +2021,7 @@ document.addEventListener("DOMContentLoaded", () => {
             textoLimpio.includes("hasta mañana")
           ) {
             respuestaAsistente =
-              "¡Descansá bien! Que tengas una buena noche. Nos vemos en el futuro..ja ja . ¡Un abrazo grande! 🧉🌙";
+              "¡Descansá bien! Que tengas una excelente noche. Nos vemos pronto. ¡Un abrazo grande! 🧉🌙";
           } else if (
             textoLimpio.includes("hola") ||
             textoLimpio.includes("buen dia") ||
@@ -2054,7 +2058,7 @@ document.addEventListener("DOMContentLoaded", () => {
               textoLimpio.includes("como rezo")
             ) {
               respuestaAsistente =
-                "Rezar el **Padre Nuestro** o un **Ave María** es abrir el corazón con sencillez, como hablaje con un amigo. Si querés, podés meditar cada frase despacito, sin apuro, poniéndole tu intención de hoy.";
+                "Rezar el **Padre Nuestro** o un **Ave María** es abrir el corazón con sencillez, como hablar con un amigo. Si querés, podés meditar cada frase despacito, sin apuro, poniéndole tu intención de hoy.";
             } else {
               const guia = datosAsistente.guia_uso;
               if (guia) {
@@ -2071,7 +2075,7 @@ document.addEventListener("DOMContentLoaded", () => {
           else if (
             textoLimpio.includes("razon") ||
             textoLimpio.includes("razón") ||
-            textoLimpio.includes("ciencia") ||
+            textoLimpio.includes("pensamiento") ||
             textoLimpio.includes("orden") ||
             pasoActualRazon > 1
           ) {
@@ -2087,7 +2091,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 respuestaAsistente =
                   `Tu consulta puede referirse a varios temas: ` +
                   `${clasificacion.opciones.join(", ")}. ` +
-                  `¿Sobre cuál de ellos querés que profundicemos en el tablero?`;
+                  `¿Sobre cuál de ellos querés que profundicemos?`;
               } else {
                 if (clasificacion.categoria !== "desconocida") {
                   categoriaActiva = clasificacion.categoria;
@@ -2122,12 +2126,10 @@ document.addEventListener("DOMContentLoaded", () => {
                     });
                   }
 
-                  // Bonificación flexible por palabras sueltas de la query en todo el texto del item
                   palabrasUsuario.forEach((palabra) => {
                     if (preguntaItem.includes(palabra)) puntos += 1;
                   });
 
-                  // 🌟 BONIFICACIÓN DE CONTEXTO POR CATEGORÍA ACTIVA
                   if (
                     categoriaActiva &&
                     item.categoria &&
@@ -2143,14 +2145,43 @@ document.addEventListener("DOMContentLoaded", () => {
                   }
                 });
 
-                // Si encontramos un buen match doctrinal en catequesis (umbral tolerante de puntos >= 2)
                 if (mejorMatchCat && maxPuntosCat >= 2) {
-                  respuestaAsistente = `<strong>${mejorMatchCat.pregunta_principal}</strong><br><br>${mejorMatchCat.respuesta_breve}`;
+                  let respuestaConstruida = `<strong>${mejorMatchCat.pregunta_principal}</strong><br><br>${mejorMatchCat.respuesta_breve}`;
+
                   if (mejorMatchCat.paso_concreto) {
-                    respuestaAsistente += `<br><br>💡 <em>Paso concreto:</em> ${mejorMatchCat.paso_concreto}`;
+                    respuestaConstruida += `<br><br>💡 <em>Paso concreto:</em> ${mejorMatchCat.paso_concreto}`;
                   }
+
+                  // 🔑 LLAVE MAESTRA: Buscamos 2 ítems hermanos de la misma categoría para abrir nuevas puertas interactivas
+                  const relacionados = baseDatosCatequesis
+                    .filter(
+                      (item) =>
+                        item.categoria === mejorMatchCat.categoria &&
+                        item.id !== mejorMatchCat.id,
+                    )
+                    .sort(() => 0.5 - Math.random())
+                    .slice(0, 2);
+
+                  if (relacionados.length > 0) {
+                    respuestaConstruida += `<br><br>🧭 <strong>¿Seguimos explorando por acá?</strong><br>`;
+                    respuestaConstruida += `<div class="camino-botones-activos" style="margin-top: 10px; display: flex; flex-direction: column; gap: 6px;">`;
+
+                    relacionados.forEach((rel) => {
+                      const preguntaLimpia = rel.pregunta_principal
+                        .replace(/'/g, "\\'")
+                        .replace(/"/g, "&quot;");
+                      respuestaConstruida += `
+                        <button onclick="enviarMensajeSugerido('${preguntaLimpia}')" style="background: #2c3e50; color: white; border: none; padding: 8px 14px; border-radius: 15px; cursor: pointer; text-align: left; font-family: inherit; font-size: 0.85rem; box-shadow: 0 1px 3px rgba(0,0,0,0.1);">
+                          📌 ${rel.pregunta_principal}
+                        </button>
+                      `;
+                    });
+
+                    respuestaConstruida += `</div>`;
+                  }
+
+                  respuestaAsistente = respuestaConstruida;
                 } else {
-                  // B. Buscamos en las Preguntas Frecuentes (FAQ)
                   let mejorMatchFAQ = null;
                   let maxPuntosFAQ = 0;
 
@@ -2178,7 +2209,7 @@ document.addEventListener("DOMContentLoaded", () => {
                   if (mejorMatchFAQ && maxPuntosFAQ >= 2) {
                     respuestaAsistente = mejorMatchFAQ.respuesta;
                   } else {
-                    // --- C. COMODÍN HUMANO DINÁMICO ---
+                    // --- C. COMODÍN HUMANO DINÁMICO (Con estilo reflexivo cotidiano) ---
                     const comodinesHumanos = [
                       "Qué tema ese. A veces nos pasa como con los átomos o con el viento: no los vemos con nuestros ojos, pero sabemos que están ahí. Contame un poco más de lo que estás pensando.",
                       "Lo que decís me deja pensando. Este es un espacio para explorar la fe, la Palabra y nuestras dudas de todos los días. ¿Querés que busquemos algo sobre nuestra fe o charlemos sobre otro tema?",
@@ -2216,7 +2247,6 @@ document.addEventListener("DOMContentLoaded", () => {
         .replace(/\s+/g, " ")
         .trim();
 
-      // 🛑 Limpieza de botones anteriores (usando tus variables reales)
       const botonesViejos =
         contenedorMensajes.querySelectorAll(".btn-voz-robot");
       botonesViejos.forEach((btn) => btn.remove());
@@ -2233,10 +2263,8 @@ document.addEventListener("DOMContentLoaded", () => {
         });
 
       contenedorMensajes.scrollTop = contenedorMensajes.scrollHeight;
-      inputChat.focus();
     }
   });
-
   // --- CONTROL DEL MICRÓFONO ---
   btnMic?.addEventListener("click", () => {
     const SpeechRecognition =
@@ -2302,6 +2330,8 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   });
 });
+// --- NUEVA LÓGICA: EL CAMINO DE LA RAZÓN ---
+
 const caminoRazonData = [
   {
     paso: 1,
@@ -2331,6 +2361,12 @@ const caminoRazonData = [
     paso: 5,
     pregunta:
       "La razón nos conduce hasta el umbral: reconoce una causa primera, inteligente y fundamento del ser, a la que llamamos Dios. Pero para conocer su intimidad —que es Trinidad y que se ha revelado en Jesucristo— necesitamos su misma revelación. ¿Te gustaría profundizar en cómo Jesús ilumina todo este camino?",
+    siguiente: 6,
+  },
+  {
+    paso: 6,
+    pregunta:
+      "Aquí se cruzan la cumbre de la filosofía y el centro de la fe: Dios no es solo una Causa Primera lejana, sino que en Jesucristo se hizo historia, carne y cercanía. Jesús es el Verbo que se pone a caminar con nosotros. La razón llega hasta la puerta; Jesús es quien nos abre y nos hace entrar a la casa del Padre. Quédate un momento en silencio y piénsalo para ti: la llave de nuestro corazón la tenemos nosotros del lado de adentro. ¿Cómo puedes hoy abrir esa puerta desde tu libertad para dejar que Dios —que lo único que quiere es tu bien— obre en tu vida? 🧉✨",
     siguiente: 1,
   },
 ];
@@ -2340,7 +2376,7 @@ let pasoActualRazon = 1;
 function manejarCaminoRazon(mensajeUsuario) {
   const texto = mensajeUsuario.toLowerCase().trim();
 
-  // 1. Si el usuario invoca el inicio (Paso 1: el chat le pone su audio automático, nosotros le sumamos el de avanzar)
+  // Si arranca el recorrido
   if (
     texto.includes("razón") ||
     texto.includes("razon") ||
@@ -2348,17 +2384,48 @@ function manejarCaminoRazon(mensajeUsuario) {
     texto.includes("dios a través")
   ) {
     pasoActualRazon = 1;
+    const estacion = caminoRazonData[0];
     return `
-      <div><strong>El Camino de la Razón</strong><br><br>${caminoRazonData[0].pregunta}</div>
-      <div style="margin-top: 15px; text-align: right;">
-        <button onclick="avanzarCaminoRazonAutomatico()" style="background: #2c3e50; color: white; border: none; padding: 8px 16px; border-radius: 20px; cursor: pointer; font-family: inherit; font-size: 0.9rem; box-shadow: 0 2px 5px rgba(0,0,0,0.1);">
+      <div><strong>El Camino de la Razón</strong><br><br>${estacion.pregunta}</div>
+      <div class="camino-botones-activos" style="margin-top: 15px; display: flex; gap: 8px; justify-content: flex-end; align-items: center; flex-wrap: wrap;">
+        <button onclick="avanzarCaminoRazonAutomatico()" style="background: #2c3e50; color: white; border: none; padding: 8px 18px; border-radius: 20px; cursor: pointer; font-family: inherit; font-size: 0.9rem; box-shadow: 0 2px 5px rgba(0,0,0,0.1);">
           Siguiente paso ➔
         </button>
       </div>
     `;
   }
 
-  // 2. Buscamos la estación actual (los satélites)
+  // Manejo del paso 5 (La gran decisión final)
+  if (pasoActualRazon === 5) {
+    pasoActualRazon = 1; // ¡Cerramos el tren de inmediato pase lo que pase!
+    const estacionJesús = caminoRazonData.find((e) => e.paso === 6);
+    const textoLimpio = estacionJesús.pregunta
+      .replace(/'/g, "\\'")
+      .replace(/"/g, "&quot;");
+
+    // Si dice que sí o quiere profundizar
+    if (
+      texto.includes("si") ||
+      texto.includes("dale") ||
+      texto.includes("quiero") ||
+      texto.includes("profundizar")
+    ) {
+      return `
+        <div>Es una hermosa forma de verlo. Entrando de lleno en el corazón de la fe:<br><br>${estacionJesús.pregunta}</div>
+        <div class="camino-botones-activos" style="margin-top: 15px; display: flex; gap: 8px; justify-content: flex-end; align-items: center; flex-wrap: wrap;">
+          <button onclick="leerTextoDirecto('${textoLimpio}')" style="background: #000; color: #fff; border: 1px solid #d4af37; padding: 6px 14px; border-radius: 20px; cursor: pointer; font-size: 12px; display: inline-flex; align-items: center; gap: 4px;">
+            🔊 Escuchar
+          </button>
+        </div>
+      `;
+    } else {
+      // <--- ¡Acá es donde le mandaba lo mismo! Cambiá este 'else' por esto de acá abajo:
+      return `
+        <div>Entendido. Hicimos un recorrido excelente por el camino de la razón. La puerta siempre queda abierta para cuando quieras seguir explorando. ¡Podemos charlar de lo que gustes! 🧉✨</div>
+      `;
+    }
+  }
+
   const estacionActual = caminoRazonData.find(
     (e) => e.paso === pasoActualRazon,
   );
@@ -2368,46 +2435,82 @@ function manejarCaminoRazon(mensajeUsuario) {
     return `Hemos recorrido las estaciones principales. ¿Querés que volvamos a empezar escribiendo "orden" o preferís charlar sobre otro tema?`;
   }
 
-  // 3. Avanzamos al siguiente paso
   pasoActualRazon = estacionActual.siguiente;
   const siguienteEstacion = caminoRazonData.find(
     (e) => e.paso === pasoActualRazon,
   );
 
-  // Si llegamos al final del recorrido
-  if (!siguienteEstacion || pasoActualRazon === 1) {
+  if (!siguienteEstacion) {
     pasoActualRazon = 1;
     return `Excelente reflexión. Aquí concluye nuestro recorrido inicial por el Camino de la Razón. ¡Podemos seguir charlando de lo que gustes!`;
   }
 
-  // Devolución de los satélites intermedios con su botón de voz y su botón de avanzar
+  const textoLimpio = siguienteEstacion.pregunta
+    .replace(/'/g, "\\'")
+    .replace(/"/g, "&quot;");
+
+  // Si el siguiente paso es el 5 (la pregunta de decisión), le ponemos los botones de Sí / Por ahora no
+  if (pasoActualRazon === 5) {
+    return `
+      <div>Es una hermosa forma de verlo. Pensando en eso:<br><br>${siguienteEstacion.pregunta}</div>
+      <div class="camino-botones-activos" style="margin-top: 15px; display: flex; gap: 8px; justify-content: flex-end; align-items: center; flex-wrap: wrap;">
+        <button onclick="leerTextoDirecto('${textoLimpio}')" style="background: #000; color: #fff; border: 1px solid #d4af37; padding: 6px 14px; border-radius: 20px; cursor: pointer; font-size: 12px; display: inline-flex; align-items: center; gap: 4px;">
+          🔊 Escuchar
+        </button>
+        <button onclick="responderCaminoRazonOpcion('por ahora no')" style="background: #7f8c8d; color: white; border: none; padding: 8px 16px; border-radius: 20px; cursor: pointer; font-family: inherit; font-size: 0.85rem;">
+          Por ahora no
+        </button>
+        <button onclick="responderCaminoRazonOpcion('sí, quiero profundizar')" style="background: #2c3e50; color: white; border: none; padding: 8px 16px; border-radius: 20px; cursor: pointer; font-family: inherit; font-size: 0.85rem; box-shadow: 0 2px 5px rgba(0,0,0,0.1);">
+          ¡Sí, vamos por eso! ➔
+        </button>
+      </div>
+    `;
+  }
+
+  // Estaciones normales (1 a 4)
   return `
     <div>Es una hermosa forma de verlo. Pensando en eso:<br><br>${siguienteEstacion.pregunta}</div>
-    <div style="margin-top: 15px; display: flex; gap: 8px; justify-content: flex-end; align-items: center;">
-      <button onclick="leerTextoDirecto('${siguienteEstacion.pregunta.replace(/'/g, "\\'")}')" style="background: #000; color: #fff; border: 1px solid #d4af37; padding: 6px 12px; border-radius: 4px; cursor: pointer; font-size: 12px; display: inline-flex; align-items: center; gap: 4px;">
+    <div class="camino-botones-activos" style="margin-top: 15px; display: flex; gap: 8px; justify-content: flex-end; align-items: center; flex-wrap: wrap;">
+      <button onclick="leerTextoDirecto('${textoLimpio}')" style="background: #000; color: #fff; border: 1px solid #d4af37; padding: 6px 14px; border-radius: 20px; cursor: pointer; font-size: 12px; display: inline-flex; align-items: center; gap: 4px;">
         🔊 Escuchar
       </button>
-      <button onclick="avanzarCaminoRazonAutomatico()" style="background: #2c3e50; color: white; border: none; padding: 8px 16px; border-radius: 20px; cursor: pointer; font-family: inherit; font-size: 0.9rem; box-shadow: 0 2px 5px rgba(0,0,0,0.1);">
+      <button onclick="avanzarCaminoRazonAutomatico()" style="background: #2c3e50; color: white; border: none; padding: 8px 18px; border-radius: 20px; cursor: pointer; font-family: inherit; font-size: 0.9rem; box-shadow: 0 2px 5px rgba(0,0,0,0.1);">
         Siguiente paso ➔
       </button>
     </div>
   `;
 }
 
-window.avanzarCaminoRazonAutomatico = function () {
-  // 1. Obtenemos el texto y el botón del siguiente paso
-  const siguienteTexto = manejarCaminoRazon("continuar_paso");
+function limpiarBotonesAnteriores() {
+  const botonesViejos = document.querySelectorAll(".camino-botones-activos");
+  botonesViejos.forEach((el) => el.remove());
+}
 
-  // 2. Buscamos el contenedor de mensajes del chat que vimos en el inspector
+window.avanzarCaminoRazonAutomatico = function () {
+  limpiarBotonesAnteriores();
+  const siguienteTexto = manejarCaminoRazon("continuar_paso");
   const contenedorMensajes = document.getElementById("chat-mensajes");
 
   if (contenedorMensajes) {
-    // 3. Creamos el div con la misma estructura visual que usa el asistente
     const nuevoMensaje = document.createElement("div");
     nuevoMensaje.className = "mensaje-asistente";
     nuevoMensaje.innerHTML = `<strong>Asistente:</strong><br><br>${siguienteTexto}`;
+    contenedorMensajes.appendChild(nuevoMensaje);
+    contenedorMensajes.scrollTop = contenedorMensajes.scrollHeight;
+  }
+};
 
-    // 4. Lo sumamos al chat y hacemos scroll hacia abajo
+window.responderCaminoRazonOpcion = function (opcionTexto) {
+  limpiarBotonesAnteriores();
+  const contenedorMensajes = document.getElementById("chat-mensajes");
+  if (contenedorMensajes) {
+    contenedorMensajes.innerHTML += `<div class="mensaje-usuario">${opcionTexto}</div>`;
+  }
+  const respuesta = manejarCaminoRazon(opcionTexto);
+  if (contenedorMensajes) {
+    const nuevoMensaje = document.createElement("div");
+    nuevoMensaje.className = "mensaje-asistente";
+    nuevoMensaje.innerHTML = `<strong>Asistente:</strong><br><br>${respuesta}`;
     contenedorMensajes.appendChild(nuevoMensaje);
     contenedorMensajes.scrollTop = contenedorMensajes.scrollHeight;
   }
@@ -2419,7 +2522,7 @@ function leerTextoDirecto(textoParaLeer) {
   }
   window.speechSynthesis.cancel();
   const utterance = new SpeechSynthesisUtterance(textoParaLeer);
-  utterance.lang = "es-ES"; // O el idioma que uses
+  utterance.lang = "es-ES";
   window.speechSynthesis.speak(utterance);
 }
 // Vinculamos el clic del isologo superior con la pantalla del asistente
@@ -2445,3 +2548,14 @@ document.addEventListener("DOMContentLoaded", () => {
   const idiomaGuardado = localStorage.getItem("idiomaApp") || "es";
   cambiarIdioma(idiomaGuardado);
 });
+window.enviarMensajeSugerido = function (textoPregunta) {
+  const inputChat = document.getElementById("chat-input"); // O como se llame tu variable del input
+  if (inputChat) {
+    inputChat.value = textoPregunta;
+  }
+  // Simulamos el clic en el botón enviar para que procese la pregunta automáticamente
+  const btnEnviar = document.getElementById("btn-enviar"); // O como se llame tu botón
+  if (btnEnviar) {
+    btnEnviar.click();
+  }
+};

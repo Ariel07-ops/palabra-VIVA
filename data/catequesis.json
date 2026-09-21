@@ -523,5 +523,315 @@
     "paso_concreto": "Rezá hoy por un ser querido que ya partió hacia la eternidad.",
     "enseñanza_de_la_iglesia": ["CIC 1023"],
     "fundamento_biblico": ["Jn 11,25 - Yo soy la Resurrección"]
+  },
+  {
+    "id": "sacramentos-001",
+    "categoria": "Sacramentos",
+    "pregunta_principal": "¿Qué son los sacramentos?",
+    "keywords": ["sacramentos", "que son los sacramentos", "sacramento"],
+    "respuesta_breve": "«Los sacramentos son signos eficaces de la gracia» (CIC 1131). Son como puentes que nos conectan con Dios, haciéndonos partícipes de su amor y su vida divina.",
+    "paso_concreto": "Reflexioná hoy sobre un sacramento que hayas recibido y agradecé a Dios por él.",
+    "enseñanza_de_la_iglesia": ["CIC 1131"],
+    "fundamento_biblico": ["Jn 3,5 - Nacer del agua y del Espíritu"]
+  },
+  {
+    "id": "sacramentos-002",
+    "categoria": "Sacramentos",
+    "pregunta_principal": "¿Cuáles son los sacramentos?",
+    "keywords": ["sacramentos", "cuantos sacramentos hay", "sacramento"],
+    "respuesta_breve": "«Los siete sacramentos son: Bautismo, Confirmación, Eucaristía, Penitencia, Unción de los enfermos, Orden sacerdotal y Matrimonio» (CIC 1210). Cada uno es un regalo especial que nos acerca a Dios y nos fortalece en nuestra vida de fe.",
+    "paso_concreto": "Hoy investigá sobre un sacramento que no conozcas bien y aprendé algo nuevo sobre él.",
+    "enseñanza_de_la_iglesia": ["CIC 1210"],
+    "fundamento_biblico": ["Jn 3,5 - Nacer del agua y del Espíritu"]
+  },
+  {
+    "id": "sacramentos-003",
+    "categoria": "Sacramentos",
+    "pregunta_principal": "¿Por qué son importantes los sacramentos?",
+    "keywords": [
+      "importancia sacramentos",
+      "para que sirven los sacramentos",
+      "sacramentos"
+    ],
+    "respuesta_breve": "«Los sacramentos confieren la gracia que significan» (CIC 1127). Son esenciales porque nos permiten recibir la gracia de Dios de manera tangible y nos ayudan a vivir nuestra fe de manera más profunda.",
+    "paso_concreto": "Hoy reflexioná sobre cómo un sacramento ha impactado tu vida y agradecé a Dios por ello.",
+    "enseñanza_de_la_iglesia": ["CIC 1127"],
+    "fundamento_biblico": ["Jn 3,5 - Nacer del agua y del Espíritu"]
+  },
+  {
+    "id": "sacramentos-004",
+    "categoria": "Sacramentos",
+    "pregunta_principal": "¿Cómo se reciben los sacramentos?",
+    "keywords": [
+      "como recibir sacramentos",
+      "recibir sacramentos",
+      "sacramentos"
+    ],
+    "respuesta_breve": "«Los sacramentos se reciben mediante la fe y la disposición del corazón» (CIC 1123). Para recibir un sacramento, es importante tener fe, arrepentimiento y un corazón abierto a la gracia de Dios.",
+    "paso_concreto": "Hoy preparate para recibir un sacramento con oración y reflexión sobre su significado.",
+    "enseñanza_de_la_iglesia": ["CIC 1123"],
+    "fundamento_biblico": ["Jn 3,5 - Nacer del agua y del Espíritu"]
+  },
+  {
+    "id": "sacramentos-005",
+    "categoria": "Sacramentos",
+    "pregunta_principal": "¿Qué efectos tienen los sacramentos?",
+    "keywords": [
+      "efectos sacramentos",
+      "beneficios sacramentos",
+      "sacramentos"
+    ],
+    "respuesta_breve": "«Los sacramentos confieren la gracia que significan y nos fortalecen en nuestra vida de fe» (CIC 1127). Cada sacramento tiene efectos específicos que nos ayudan a crecer espiritualmente y a vivir nuestra fe de manera más plena.",
+    "paso_concreto": "Hoy reflexioná sobre cómo un sacramento ha fortalecido tu vida espiritual y agradecé a Dios por ello.",
+    "enseñanza_de_la_iglesia": ["CIC 1127"],
+    "fundamento_biblico": ["Jn 3,5 - Nacer del agua y del Espíritu"]
+  },
+  {
+    "id": "sacramentos-006",
+    "categoria": "Sacramentos",
+    "pregunta_principal": "¿Qué es la gracia sacramental?",
+    "keywords": [
+      "gracia sacramental",
+      "gracia de los sacramentos",
+      "sacramentos"
+    ],
+    "respuesta_breve": "«La gracia sacramental es la gracia que se recibe a través de los sacramentos y nos ayuda a vivir nuestra fe» (CIC 1127). Es un don de Dios que nos fortalece y nos guía en nuestro camino espiritual.",
+    "paso_concreto": "Hoy reflexioná sobre cómo la gracia sacramental ha influido en tu vida y agradecé a Dios por ello.",
+    "enseñanza_de_la_iglesia": ["CIC 1127"],
+    "fundamento_biblico": ["Jn 3,5 - Nacer del agua y del Espíritu"]
+  },
+  {
+    "id": "sacramentos-007",
+    "categoria": "Sacramentos",
+    "pregunta_principal": "¿Qué es la gracia santificante?",
+    "keywords": ["gracia santificante", "gracia de Dios", "santificacion"],
+    "respuesta_breve": "«La gracia santificante es la gracia que nos hace partícipes de la vida divina y nos transforma en hijos de Dios» (CIC 1999). Es un don que nos permite vivir en comunión con Dios y crecer en santidad.",
+    "paso_concreto": "Hoy reflexioná sobre cómo la gracia santificante ha transformado tu vida y agradecé a Dios por ello.",
+    "enseñanza_de_la_iglesia": ["CIC 1999"],
+    "fundamento_biblico": ["Jn 1,12 - A todos los que le recibieron"]
+  },
+  {
+    "id": "sacramentos-008",
+    "categoria": "Sacramentos",
+    "pregunta_principal": "¿Qué es la gracia actual?",
+    "keywords": ["gracia actual", "gracia de Dios", "ayuda divina"],
+    "respuesta_breve": "«La gracia actual es la ayuda que Dios nos da en cada momento para hacer el bien y evitar el mal» (CIC 2000). Es un don que nos guía en nuestras decisiones y nos fortalece en nuestra vida espiritual.",
+    "paso_concreto": "Hoy reflexioná sobre cómo la gracia actual te ha ayudado a tomar decisiones correctas y agradecé a Dios por ello.",
+    "enseñanza_de_la_iglesia": ["CIC 2000"],
+    "fundamento_biblico": ["Fil 2,13 - Dios obra en ustedes querer y actuar"]
+  },
+  {
+    "id": "sacramentos-009",
+    "categoria": "Sacramentos",
+    "pregunta_principal": "¿Qué es la gracia habitual?",
+    "keywords": ["gracia habitual", "gracia de Dios", "vida espiritual"],
+    "respuesta_breve": "«La gracia habitual es la disposición permanente que nos permite vivir en amistad con Dios y crecer en santidad» (CIC 2001). Es un don que nos ayuda a mantenernos firmes en nuestra fe y a vivir según la voluntad de Dios.",
+    "paso_concreto": "Hoy reflexioná sobre cómo la gracia habitual te ha ayudado a vivir en amistad con Dios y agradecé a Él por ello.",
+    "enseñanza_de_la_iglesia": ["CIC 2001"],
+    "fundamento_biblico": [
+      "Rom 5,5 - El amor de Dios ha sido derramado en nuestros corazones"
+    ]
+  },
+  {
+    "id": 101,
+    "categoria": "Programa",
+    "pregunta_principal": "¿Qué es la barra lateral o infoLateral?",
+    "keywords": [
+      "infocamino",
+      "infralateral",
+      "lateral",
+      "barra",
+      "menu",
+      "secciones"
+    ],
+    "respuesta_breve": "La barra lateral es tu panel de navegación rápido dentro de Palabra Viva, diseñado para acceder a las lecturas, herramientas y opciones principales de forma directa.",
+    "paso_concreto": "Abrí el menú lateral y explorá alguna sección que todavía no hayas visitado hoy."
+  },
+  {
+    "id": "Programa-001",
+    "categoria": "Programa",
+    "pregunta_principal": "¿Cómo funciona el buscador del asistente?",
+    "keywords": [
+      "buscador",
+      "como funciona",
+      "buscar",
+      "ayuda",
+      "programa",
+      "app"
+    ],
+    "respuesta_breve": "El asistente analiza tus palabras clave para conectar tu consulta con temas de fe, catequesis o guías del programa, ofreciéndote respuestas claras y caminos para seguir explorando.",
+    "paso_concreto": "Probá escribiendo una palabra clave concreta como 'oración', 'iglesia' o 'biblia'."
+  },
+  {
+    "id": "Programa-002",
+    "categoria": "Programa",
+    "pregunta_principal": "¿Qué versión de la Biblia utilizamos en la app?",
+    "keywords": ["biblia", "version", "traduccion", "torres amat", "programa"],
+    "respuesta_breve": "En Palabra Viva utilizamos la clásica y tradicional traducción de la Biblia Torres Amat, ideal para la lectura meditada y el acompañamiento espiritual.",
+    "paso_concreto": "Buscá un pasaje del Evangelio y leelo despacito en esta versión para meditarlo."
+  },
+  {
+    "id": "trinidad-001",
+    "categoria": "Dios",
+    "pregunta_principal": "¿Qué es el misterio de la Santísima Trinidad?",
+    "keywords": [
+      "trinidad",
+      "trinitario",
+      "dios padre",
+      "dios hijo",
+      "espiritu santo",
+      "tres personas"
+    ],
+    "respuesta_breve": "La Santísima Trinidad es el misterio central de la fe cristiana: un único Dios en tres personas distintas (el Padre, el Hijo y el Espíritu Santo) que comparten una misma y única naturaleza divina, unidos en un perfecto amor.",
+    "paso_concreto": "Hacé la señal de la cruz despacio, pensando en cada persona de la Trinidad como una fuente de amor para tu día."
+  },
+  {
+    "id": "trinidad-002",
+    "categoria": "Dios",
+    "pregunta_principal": "¿Cómo se relacionan las tres personas de la Trinidad?",
+    "keywords": [
+      "relacion",
+      "trinidad",
+      "amor",
+      "padre",
+      "hijo",
+      "espiritu santo",
+      "comunion"
+    ],
+    "respuesta_breve": "Las tres personas viven en una comunión de amor eterno y perfecto. El Padre ama al Hijo, el Hijo se entrega por amor al Padre, y el Espíritu Santo es ese mismo Vínculo y Fuego de amor que une a ambos y se nos regala.",
+    "paso_concreto": "Intentá vivir un gesto de entrega o servicio hoy con alguien cercano, reflejando ese amor comunitario."
+  },
+  {
+    "id": "angeles_01",
+    "categoria": "Angeles",
+    "pregunta_principal": "¿Qué son los ángeles y los ángeles custodios?",
+    "keywords": [
+      "angeles",
+      "angel custodio",
+      "angel de la guarda",
+      "mensajeros",
+      "custodio"
+    ],
+    "respuesta_breve": "Los ángeles son seres espirituales creados por Dios, puramente espirituales, que lo alaban y actúan como sus mensajeros. Cada persona tiene asignado un ángel custodio para guiarla, protegerla y cuidarla en el camino hacia el bien.",
+    "paso_concreto": "Hacé una breve oración a tu ángel de la guarda hoy, pidiéndole luz y protección para tus decisiones."
+  },
+  {
+    "id": "angeles_02",
+    "categoria": "Angeles",
+    "pregunta_principal": "¿De dónde vienen los ángeles malos o caídos?",
+    "keywords": [
+      "angeles malos",
+      "demonio",
+      "lucifer",
+      "angeles caidos",
+      "mal",
+      "tentacion"
+    ],
+    "respuesta_breve": "Los ángeles malos, conocidos como demonios, fueron originalmente creados buenos por Dios. Sin embargo, por su propia y libre decisión, se rebelaron contra Dios por soberbia y rechazaron su amor, convirtiéndose en fuerzas del mal y la tentación.",
+    "paso_concreto": "Recordá que frente a las tentaciones o el mal, la gracia de Dios y la oración son siempre más fuertes."
+  },
+  {
+    "id": "dones_01",
+    "categoria": "Espiritualidad",
+    "pregunta_principal": "¿Cuáles son los siete dones del Espíritu Santo?",
+    "keywords": [
+      "dones",
+      "espiritu santo",
+      "sabiduria",
+      "inteligencia",
+      "consejo",
+      "fortaleza",
+      "ciencia",
+      "piedad",
+      "temor de dios"
+    ],
+    "respuesta_breve": "Los siete dones del Espíritu Santo son disposiciones permanentes que hacen que el alma sea dócil para seguir las inspiraciones divinas. Son: sabiduría, inteligencia, consejo, fortaleza, ciencia, piedad y temor de Dios.",
+    "paso_concreto": "Pedile hoy al Espíritu Santo que active sus dones en tu corazón para iluminar tus decisiones."
+  },
+  {
+    "id": "dones_02",
+    "categoria": "Espiritualidad",
+    "pregunta_principal": "¿Qué significan los dones de Sabiduría e Inteligencia?",
+    "keywords": [
+      "sabiduria",
+      "inteligencia",
+      "don de sabiduria",
+      "don de inteligencia",
+      "dones del espiritu santo"
+    ],
+    "respuesta_breve": "La Sabiduría nos permite juzgar las cosas desde la perspectiva de Dios y saborear su amor. La Inteligencia nos ayuda a penetrar y comprender con profundidad las verdades de la fe y el sentido de nuestra vida.",
+    "paso_concreto": "Dedicá un minuto a mirar una situación difícil de tu día con los ojos de la fe, buscando la paz que viene de arriba."
+  },
+  {
+    "id": "dones_03",
+    "categoria": "Espiritualidad",
+    "pregunta_principal": "¿En qué consisten los dones de Consejo y Fortaleza?",
+    "keywords": [
+      "consejo",
+      "fortaleza",
+      "don de consejo",
+      "don de fortaleza",
+      "dones del espiritu santo"
+    ],
+    "respuesta_breve": "El Consejo nos guía como una brújula interior para discernir qué debemos hacer en las decisiones concretas. La Fortaleza nos da el valor y la energía espiritual para superar los obstáculos y perseverar en el bien.",
+    "paso_concreto": "Pensá en un desafío actual y pedile al Espíritu Santo la fuerza para afrontarlo sin bajar los brazos."
+  },
+
+  {
+    "id": "dones_04",
+    "categoria": "Espiritualidad",
+    "pregunta_principal": "¿Qué significa el don de Temor de Dios?",
+    "keywords": [
+      "temor de dios",
+      "don de temor",
+      "reverencia",
+      "dones del espiritu santo"
+    ],
+    "respuesta_breve": "El Temor de Dios no es miedo a un castigo, sino un profundo respeto y reverencia filial ante la grandeza y el amor de Dios, llevándonos a evitar apartarnos de Él por el pecado.",
+    "paso_concreto": "Hacé un acto de amor y confianza, reconociendo la grandeza de Dios y pidiendo la gracia de serle fiel."
+  },
+  {
+    "id": "dones_05",
+    "categoria": "Espiritualidad",
+    "pregunta_principal": "¿Qué es el don de Ciencia?",
+    "keywords": [
+      "don de ciencia",
+      "creacion",
+      "dones del espiritu santo",
+      "mundo"
+    ],
+    "respuesta_breve": "El don de Ciencia nos ayuda a interpretar las criaturas y la realidad terrena a la luz de Dios. Nos enseña a ver el mundo no como un dueño absoluto, sino como un don maravilloso que debemos cuidar y valorar según el plan del Creador.",
+    "paso_concreto": "Contemplá algún elemento de la naturaleza hoy (una planta, el cielo, el agua) y agradecé su existencia como un reflejo del amor de Dios."
+  },
+  {
+    "id": "dones_06",
+    "categoria": "Espiritualidad",
+    "pregunta_principal": "¿Qué es el don de Piedad?",
+    "keywords": [
+      "piedad",
+      "don de piedad",
+      "hijo de dios",
+      "fraternidad",
+      "dones del espiritu santo"
+    ],
+    "respuesta_breve": "El don de Piedad sana nuestro corazón de toda dureza y enciende en nosotros una profunda ternura y confianza hacia Dios como Padre, impulsándonos también a tratar al prójimo como a un verdadero hermano.",
+    "paso_concreto": "Acercate a alguien hoy con una actitud de compasión o mandale un mensaje sincero a alguien que lo esté necesitando."
+  },
+  {
+    "id": "guia_uso_01",
+    "categoria": "Programa",
+    "pregunta_principal": "¿Cómo puedo utilizar Palabra Viva?",
+    "keywords": [
+      "guia",
+      "ayuda",
+      "como usar",
+      "infobiblica",
+      "infolateral",
+      "infocamino",
+      "menu",
+      "barra lateral"
+    ],
+    "respuesta_breve": "Podés utilizar este espacio de distintas maneras: explorando el diálogo espiritual según tu momento del día, o usando el buscador bíblico en la barra lateral para pasajes exactos (como 'Juan 1:1'). También podés escribir 'infobiblica', 'infolateral' o 'infocamino' para guías rápidas.",
+    "paso_concreto": "Probá escribir alguna de las palabras clave o explorá las opciones de aquí abajo para moverte por la app."
   }
 ]
