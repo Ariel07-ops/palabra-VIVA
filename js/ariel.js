@@ -1838,7 +1838,7 @@ document.addEventListener("DOMContentLoaded", () => {
     if (nombreGuardado) {
       contenedorMensajes.innerHTML += `<div class="mensaje-asistente"><strong>Asistente:</strong> ¡Qué alegría encontrarte de nuevo, ${nombreGuardado}! ¿De qué te gustaría que hablemos hoy sobre nuestra fe 🕊️?</div>`;
     } else {
-      contenedorMensajes.innerHTML += `<div class="mensaje-asistente"><strong>Asistente:</strong> ¡Hola ✨! ¡Qué alegría darte la bienvenida a Palabra Viva! Para empezar, ¿cuál es tu nombre de pila?</div>`;
+      contenedorMensajes.innerHTML += `<div class="mensaje-asistente"><strong>Asistente:</strong> ¡Hola ✨! ¡Qué alegría darte la bienvenida a Palabra Viva! Para empezar, ¿cuál es tu nombre de pila? y si no queres poner tu nombre, podes poner siglas.</div>`;
       esperandoNombre = true;
     }
     contenedorMensajes.scrollTop = contenedorMensajes.scrollHeight;
@@ -1898,7 +1898,7 @@ document.addEventListener("DOMContentLoaded", () => {
             respuestaAsistente = `¡Mucho gusto, ${nombreIngresado} 🌟! Ya guardé tu nombre. ¿De qué charlamos hoy?`;
           } else {
             respuestaAsistente =
-              "Contame, ¿cuál es tu nombre de pila así nos conocemos mejor? 💬";
+              "Contame, ¿cuál es tu primer nombre así nos conocemos mejor? También podes poner siglas si no queres que se guarde tu nombre.!💬";
           }
         } else {
           // Cargamos el JSON principal de respuestas pastorales y config
@@ -1929,9 +1929,28 @@ document.addEventListener("DOMContentLoaded", () => {
             "rabia",
             "enojo",
           ];
-          const palabrasCansancio = ["cansado", "agotado", "reventado"];
-          const palabrasSueno = ["ojos", "sueño", "dormir", "descansar"];
-          const palabrasRuido = ["ruido", "molestan", "volumen", "videos"];
+          const palabrasCansancio = [
+            "cansado",
+            "cansada",
+            "agotado",
+            "agotada",
+            "reventado",
+            "reventada",
+          ];
+          const palabrasSueno = [
+            "ojos",
+            "acostar",
+            "dormir",
+            "sueño",
+            "descansar",
+          ];
+          const palabrasRuido = [
+            "ruido",
+            "molestan",
+            "sonido",
+            "volumen",
+            "videos",
+          ];
           const palabrasPositivas = [
             "excelente",
             "genial",
@@ -1964,15 +1983,15 @@ document.addEventListener("DOMContentLoaded", () => {
               "Qué bajón arrastrar bronca o enojarse así. Desahogate tranquilo, te leo y te acompaño en este momento.";
           } else if (palabrasCansancio.some((p) => textoLimpio.includes(p))) {
             respuestaAsistente =
-              datosAsistente.respuestas_pastorales?.cansado ||
+              datosAsistente.respuestas_pastorales?.cansado.respuesta ||
               "Te entiendo perfectamente. A veces el día pesa un montón. Tomate un respiro y aflojá un poco 🧉.";
           } else if (palabrasSueno.some((p) => textoLimpio.includes(p))) {
             respuestaAsistente =
-              datosAsistente.respuestas_pastorales?.ojos ||
+              datosAsistente.respuestas_pastorales?.ojos?.respuesta ||
               "¡Uf, se te cierran solos los ojos! Pegate una buena dormida y dejá el mundo un rato.";
           } else if (palabrasRuido.some((p) => textoLimpio.includes(p))) {
             respuestaAsistente =
-              datosAsistente.respuestas_pastorales?.ruido ||
+              datosAsistente.respuestas_pastorales?.ruido.respuesta ||
               "¡Qué cosa insoportable cuando te meten ruido ajeno! Buscate un rincón con paz.";
           } else if (
             textoLimpio.includes("como te llamas") ||
@@ -2071,8 +2090,12 @@ document.addEventListener("DOMContentLoaded", () => {
           } else if (
             textoLimpio.includes("me voy a dormir") ||
             textoLimpio.includes("chau") ||
+            textoLimpio.includes("adios") ||
+            textoLimpio.includes("chao") ||
+            textoLimpio.includes("hasta luego") ||
             textoLimpio.includes("nos vemos") ||
-            textoLimpio.includes("hasta mañana")
+            textoLimpio.includes("hasta manana") ||
+            textoLimpio.includes("sueno")
           ) {
             respuestaAsistente =
               "¡Descansá bien! Que tengas una excelente noche. Nos vemos pronto. ¡Un abrazo grande! 🧉🌙";
@@ -2661,3 +2684,121 @@ function construirRespuestaCatequesis(item) {
 
   return html;
 }
+const caminoTrinidadData = [
+  {
+    paso: 1,
+    pregunta:
+      "¿Cómo se puede entender que Dios sea uno y al mismo tiempo una comunidad de amor? La fe católica nos enseña que hay un solo Dios, pero en tres Personas distintas: el Padre, el Hijo y el Espíritu Santo. No son tres dioses separados, sino un único Dios que es, en su misma esencia, comunión y amor.",
+    siguiente: 2,
+  },
+  {
+    paso: 2,
+    pregunta:
+      "Santo Tomás de Aquino explica que las personas divinas se distinguen por sus relaciones de origen: el Padre engendra al Hijo, y el Espíritu Santo procede de ambos. Sin embargo, su naturaleza (su ser) es absolutamente una e indivisible.",
+    siguiente: 3,
+  },
+  {
+    paso: 3,
+    pregunta:
+      "¿Pensaste alguna vez que el núcleo de lo divino no es la soledad, sino el vínculo y la entrega mutua? La Trinidad nos revela que Dios en sí mismo es relación y amor en acto.",
+    siguiente: 4,
+  },
+  {
+    paso: 4,
+    pregunta:
+      "Acción concreta para llevar hoy: Al hacer la señal de la cruz, hacela con pausa, recordando que cada persona de la Trinidad habita en tu corazón y te invita a vivir en comunión con los demás. ¿Querés que demos el paso final sobre este misterio central de nuestra fe?",
+    siguiente: 5,
+  },
+  {
+    paso: 5,
+    pregunta:
+      "El misterio de la Santísima Trinidad no es un problema matemático para resolver, sino un hogar donde entrar a habitar. Como dice el Catecismo (CIC 234), es el misterio central de la fe y de la vida cristiana. ¿Cómo puedes hoy abrir más tu corazón para dejarte envolver por ese amor de el Padre, el Hijo y el Espíritu Santo? 🧉✨",
+    siguiente: 1,
+  },
+];
+
+let pasoActualTrinidad = 1;
+
+function manejarCaminoTrinidad(mensajeUsuario) {
+  const texto = mensajeUsuario.toLowerCase().trim();
+
+  // Si arranca el recorrido con las palabras clave
+  if (
+    texto.includes("trinidad") ||
+    texto.includes("trino") ||
+    texto.includes("dios uno")
+  ) {
+    pasoActualTrinidad = 1;
+    const estacion = caminoTrinidadData[0];
+    const textoLimpio = estacion.pregunta
+      .replace(/'/g, "\\'")
+      .replace(/"/g, "&quot;");
+
+    return `
+      <div><strong>Dios Uno y Trino</strong><br><br>${estacion.pregunta}</div>
+      <div class="trinidad-botones-activos" style="margin-top: 15px; display: flex; gap: 8px; justify-content: flex-end; align-items: center; flex-wrap: wrap;">
+        <button onclick="leerTextoDirecto('${textoLimpio}')" style="background: #000; color: #fff; border: 1px solid #d4af37; padding: 6px 14px; border-radius: 20px; cursor: pointer; font-size: 12px; display: inline-flex; align-items: center; gap: 4px;">
+          🔊 Escuchar
+        </button>
+        <button onclick="avanzarCaminoTrinidadAutomatico()" style="background: #2c3e50; color: white; border: none; padding: 8px 18px; border-radius: 20px; cursor: pointer; font-family: inherit; font-size: 0.9rem; box-shadow: 0 2px 5px rgba(0,0,0,0.1);">
+          Siguiente paso ➔
+        </button>
+      </div>
+    `;
+  }
+
+  // Manejo del paso final o decisiones si las hubiera
+  const estacionActual = caminoTrinidadData.find(
+    (e) => e.paso === pasoActualTrinidad,
+  );
+
+  if (!estacionActual) {
+    pasoActualTrinidad = 1;
+    return `Hemos recorrido las estaciones de la Trinidad. ¿Querés que volvamos a empezar escribiendo "Trinidad" o preferís charlar sobre otro tema?`;
+  }
+
+  pasoActualTrinidad = estacionActual.siguiente;
+  const siguienteEstacion = caminoTrinidadData.find(
+    (e) => e.paso === pasoActualTrinidad,
+  );
+
+  if (!siguienteEstacion) {
+    pasoActualTrinidad = 1;
+    return `Excelente reflexión. Aquí concluye nuestro recorrido por el misterio de la Trinidad. ¡Podemos seguir charlando de lo que gustes! 🧉✨`;
+  }
+
+  const textoLimpio = siguienteEstacion.pregunta
+    .replace(/'/g, "\\'")
+    .replace(/"/g, "&quot;");
+
+  return `
+    <div>Continuando el recorrido:<br><br>${siguienteEstacion.pregunta}</div>
+    <div class="trinidad-botones-activos" style="margin-top: 15px; display: flex; gap: 8px; justify-content: flex-end; align-items: center; flex-wrap: wrap;">
+      <button onclick="leerTextoDirecto('${textoLimpio}')" style="background: #000; color: #fff; border: 1px solid #d4af37; padding: 6px 14px; border-radius: 20px; cursor: pointer; font-size: 12px; display: inline-flex; align-items: center; gap: 4px;">
+        🔊 Escuchar
+      </button>
+      <button onclick="avanzarCaminoTrinidadAutomatico()" style="background: #2c3e50; color: white; border: none; padding: 8px 18px; border-radius: 20px; cursor: pointer; font-family: inherit; font-size: 0.9rem; box-shadow: 0 2px 5px rgba(0,0,0,0.1);">
+        Siguiente paso ➔
+      </button>
+    </div>
+  `;
+}
+
+function limpiarBotonesTrinidad() {
+  const botonesViejos = document.querySelectorAll(".trinidad-botones-activos");
+  botonesViejos.forEach((el) => el.remove());
+}
+
+window.avanzarCaminoTrinidadAutomatico = function () {
+  limpiarBotonesTrinidad();
+  const siguienteTexto = manejarCaminoTrinidad("continuar_paso");
+  const contenedorMensajes = document.getElementById("chat-mensajes");
+
+  if (contenedorMensajes) {
+    const nuevoMensaje = document.createElement("div");
+    nuevoMensaje.className = "mensaje-asistente";
+    nuevoMensaje.innerHTML = `<strong>Asistente:</strong><br><br>${siguienteTexto}`;
+    contenedorMensajes.appendChild(nuevoMensaje);
+    contenedorMensajes.scrollTop = contenedorMensajes.scrollHeight;
+  }
+};

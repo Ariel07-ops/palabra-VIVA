@@ -124,7 +124,14 @@
       "respuesta": "¡Qué cosa insoportable cuando el griterío de afuera te taladra la cabeza y te roba la paz! Dan ganas de huir al desierto. Buscate un rincón con silencio; el alma necesita bajar los decibeles para escuchar lo importante."
     },
     "dormir": {
-      "palabras_clave": ["dormir", "a dormir", "buen descanso", "a la cama"],
+      "palabras_clave": [
+        "dormir",
+        "a dormir",
+        "sueño",
+        "descansar",
+        "a la cama"
+      ],
+
       "respuesta": "Que descanses en paz y recargues pilas bajo la sombra de sus alas. ¡Que tengas una hermosa noche y hasta mañana!"
     },
     "gratitud": {

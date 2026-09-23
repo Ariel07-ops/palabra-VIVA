@@ -616,7 +616,7 @@
   },
   {
     "id": "quienes_son_los_angeles",
-    "categoria": "doctrina_creacion",
+    "categoria": "Angeles",
     "pregunta_principal": "¿Quiénes son los ángeles y por qué los creó Dios?",
     "keywords": ["angeles creacion", "porque dios creo angeles"],
     "puerta_de_entrada": "Dios no está solo en su gloria; quiso rodearse de una corte celestial de seres puramente espirituales para compartir su amor y su luz.",
@@ -630,9 +630,9 @@
     ]
   },
   {
-    "id": "coros_celestiales_jerarquia",
-    "categoria": "doctrina_creacion",
-    "pregunta_principal": "¿Es verdad que hay distintas jerarquías o coros de ángeles?",
+    "id": "angeles_03",
+    "categoria": "Angeles",
+    "pregunta_principal": "¿Hay distintas jerarquías de ángeles?",
     "keywords": ["coros celestiales", "jerarquia de angeles", "serafines"],
     "puerta_de_entrada": "En el cielo hay un orden perfecto de amor y alabanza, reflejado en diferentes categorías de seres celestiales.",
     "respuesta_breve": "Sí. La Tradición de la Iglesia y la Escritura hablan de nueve coros angelares agrupados en tres jerarquías: los más cercanos a Dios (Serafines, Querubines y Tronos), los que administran el cosmos (Dominaciones, Virtudes y Potestades), y los que están más cerca de los hombres (Principados, Arcángeles y Ángeles custodios).",
@@ -646,7 +646,7 @@
   },
   {
     "id": "angeles_caidos_mal",
-    "categoria": "doctrina_creacion",
+    "categoria": "Angeles",
     "pregunta_principal": "¿De dónde salen los ángeles malos y cómo influyen en nosotros?",
     "keywords": ["angeles malos caidos", "origen del mal angeles"],
     "puerta_de_entrada": "La libertad es un don tan grande que incluso las criaturas de luz pudieron elegir entre amar a Dios o rechazarlo.",
@@ -778,8 +778,8 @@
   },
   {
     "id": "ofrecimiento_vida_cotidiana",
-    "categoria": "vida_cristiana",
-    "pregunta_principal": "¿Cómo puedo ofrecer mi vida a Dios como el pan y el vino?",
+    "categoria": "Vida Cristiana",
+    "pregunta_principal": "¿Cómo puedo ofrecer mi vida a Dios?",
     "puerta_de_entrada": "Dios no busca grandes hazañas lejanas, sino que nos pide el barro de nuestras manos, el cansancio del trabajo y las alegrías de todos los días para transformarlas por amor.",
     "respuesta_breve": "Así como el pan y el vino se hacen con elementos sencillos de la tierra —trigo molido y uva pisada— y Dios los convierte en su Cuerpo y su Sangre, Él quiere tomar nuestra vida ordinaria. Cuando le entregamos nuestras tareas, nuestras luchas y nuestros dolores sin guardarnos nada, Dios los llena de su gracia y los vuelve fecundos para los demás.",
     "paradoja": "Creemos que para servir a Dios necesitamos ser perfectos o extraordinarios, pero Él hace sus mayores milagros cuando le ofrecemos nuestra pequeñez con un corazón sincero.",
