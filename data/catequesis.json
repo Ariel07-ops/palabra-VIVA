@@ -1,13 +1,13 @@
 [
   {
-    "id": "dios-001",
+    "id": "dios",
     "categoria": "Dios",
     "pregunta_principal": "¿Quién es Dios?",
     "keywords": ["quien es dios", "dios existe", "que es dios", "dios"],
-    "respuesta_breve": "«Dios es amor» (1 Jn 4,8). No es una energía fría ni un capataz cósmico, sino nuestro Padre amoroso y creador. Como decía Chesterton, el mundo no se hizo solo de casualidad; tiene la marca inconfundible de alguien que quiso que existiéramos. Es uno y trino: Padre, Hijo y Espíritu Santo.",
-    "paso_concreto": "Hoy decile: 'Padre, acá estoy' 30 segundos en silencio.",
-    "enseñanza_de_la_iglesia": ["CIC 268"],
-    "fundamento_biblico": ["1 Jn 4,8 - Dios es amor"]
+    "respuesta_breve": "Dios no es una fuerza impersonal perdida en el universo. Es el Creador que sostiene cada vida y nos llama a entrar en amistad con Él. Como una fuente no deja de dar agua, Dios no deja de dar existencia y amor. Y ese único Dios es Padre, Hijo y Espíritu Santo: un misterio de amor eterno.",
+    "paso_concreto": "Detente hoy unos segundos, mira algo creado y di: «Gracias, Dios, por darme la vida».",
+    "enseñanza_de_la_iglesia": ["CIC 232", "CIC 234"],
+    "fundamento_biblico": ["1 Jn 4,8", "Mt 28,19"]
   },
   {
     "id": "dios-002",
@@ -57,7 +57,7 @@
     ]
   },
   {
-    "id": "jesus-001",
+    "id": "jesus",
     "categoria": "Jesucristo",
     "pregunta_principal": "¿Quién es Jesucristo?",
     "keywords": [
@@ -99,10 +99,10 @@
       "jesus crucificado",
       "jesus murio"
     ],
-    "respuesta_breve": "«Porque de tal manera amó Dios al mundo que dio a su Hijo único» (Jn 3,16). La cruz no fue una tragedia inevitable de la mala suerte, sino el extremo del amor de Dios: bajó al barro de nuestra muerte para ganarnos la vida eterna.",
-    "paso_concreto": "Hoy agradecé a Jesús por su amor y sacrificio en tu oración.",
-    "enseñanza_de_la_iglesia": ["CIC 613"],
-    "fundamento_biblico": ["Jn 3,16 - Porque de tal manera amó Dios al mundo"]
+    "respuesta_breve": "La cruz parece, a primera vista, una derrota. Pero en ella Dios mostró que el amor puede descender hasta el lugar más oscuro sin dejar de amar. Jesús entregó libremente su vida por nuestra salvación y transformó el instrumento de la muerte en el signo de una vida nueva.",
+    "paso_concreto": "Mira un crucifijo y repite: «Jesús, gracias por amarme hasta el final».",
+    "enseñanza_de_la_iglesia": ["CIC 613", "CIC 616", "CIC 618"],
+    "fundamento_biblico": ["Jn 15,13", "Flp 2,8"]
   },
   {
     "id": "jesus-004",
@@ -137,26 +137,30 @@
     ]
   },
   {
-    "id": "espiritu-001",
+    "id": "espiritu",
     "categoria": "Espíritu Santo",
     "pregunta_principal": "¿Quién es el Espíritu Santo?",
-    "keywords": ["espiritu santo", "quien es el espiritu", "espiritu"],
-    "respuesta_breve": "«Recibirán la fuerza del Espíritu Santo» (Hch 1,8). Es el Aliento de Dios ardiendo en vos, el que te empuja cuando estás estancado, te consuela en el barro y te enseña a llamar a Dios 'Papá'.",
-    "paso_concreto": "Decí hoy: 'Ven Espíritu Santo' cuando te sientas sin fuerzas.",
-    "enseñanza_de_la_iglesia": ["CIC 683"],
-    "fundamento_biblico": ["Hch 2,4"]
+    "keywords": [
+      "quien es el espiritu santo",
+      "espiritu santo consolador",
+      "espiritu"
+    ],
+    "respuesta_breve": "El Espíritu Santo no es una energía ni una emoción pasajera: es la tercera Persona de la Santísima Trinidad. Así como el viento no se ve, pero mueve las hojas, el Espíritu Santo actúa en nosotros: ilumina, fortalece, consuela y nos conduce hacia Jesús.",
+    "paso_concreto": "Antes de comenzar una tarea, di: «Ven, Espíritu Santo; ilumina mi mente y fortalece mi corazón».",
+    "enseñanza_de_la_iglesia": ["CIC 683", "CIC 685", "CIC 733"],
+    "fundamento_biblico": ["Jn 14,26", "Hch 2,2-4"]
   },
   {
-    "id": "virgen-001",
+    "id": "virgen",
     "categoria": "Virgen María",
     "pregunta_principal": "¿Quién es la Virgen María?",
     "keywords": [
-      "maria",
+      "quien es maria",
       "virgen maria",
-      "sobre maria",
       "madre de dios",
-      "virgen",
-      "maria madre"
+      "maria madre",
+      "maria",
+      "virgen"
     ],
     "respuesta_breve": "«Llena de gracia, el Señor está contigo» (Lc 1,28). María es la obra maestra de Dios, la Madre que dijo un 'sí' sin vueltas y que desde la cruz Jesús nos regaló para que nos cuide y nos lleve derechito a Él.\n\nSi querés seguir explorando, podés preguntarme sobre su **anunciación y su sí**, sobre las **profecías del Antiguo Testamento** que hablaban de ella, o sobre su **presencia al pie de la cruz**.",
     "paso_concreto": "Rezale hoy un Ave María pidiéndole que te acerque más a Jesús.",
@@ -170,7 +174,6 @@
     "keywords": [
       "anunciacion",
       "el si de maria",
-      "el si",
       "como dijo que si",
       "angel gabriel"
     ],
@@ -184,11 +187,9 @@
     "categoria": "Virgen María",
     "pregunta_principal": "María en el Antiguo Testamento",
     "keywords": [
-      "profecias",
-      "antiguo testamento",
-      "isaias",
-      "virgen concebira",
-      "prefiguracion"
+      "profecias de maria",
+      "antiguo testamento maria",
+      "virgen concebira"
     ],
     "respuesta_breve": "«La virgen concebirá y dará a luz un hijo» (Is 7,14). Dios es un artista prolijo: fue preparando la llegada de María y de Jesús a lo largo de los siglos como un hilo conductor perfecto en las Escrituras.",
     "paso_concreto": "Leé el pasaje de Isaías 7,14 y agradecé cómo Dios va preparando la historia de nuestra salvación.",
@@ -200,11 +201,9 @@
     "categoria": "Virgen María",
     "pregunta_principal": "María al pie de la cruz",
     "keywords": [
-      "cruz",
-      "el crucificado",
       "maría al pie de la cruz",
-      "madre de nuestro señor",
-      "nos la deja por madre"
+      "virgen al pie de la cruz",
+      "madre al pie de la cruz"
     ],
     "respuesta_breve": "Ahí estaba firme, sosteniendo con su dolor el peso del mundo. María al pie de la cruz nos enseña que la verdadera fe no huye del sufrimiento, sino que se planta con amor al lado del que padece. Y en ese mismo instante, Jesús nos la regala y nos la deja por Madre para que nos cuide en el camino.",
     "paso_concreto": "Hoy, cuando enfrentes un momento difícil, recordá que María está con vos y pedile que te acompañe.",
@@ -216,25 +215,23 @@
     "categoria": "Virgen María",
     "pregunta_principal": "La Mujer vestida de sol en el Apocalipsis",
     "keywords": [
-      "apocalipsis",
       "mujer vestida de sol",
       "apocalipsis 12",
-      "mujer del apocalipsis",
-      "fin de los tiempos"
+      "mujer del apocalipsis"
     ],
-    "respuesta_breve": "«Apareció en el cielo una gran señal: una mujer vestida de sol» (Ap 12,1). Nos muestra a María coronada de gloria, recordándonos que el bien ya triunfó y que la Iglesia camina protegida bajo su manto.",
-    "paso_concreto": "Pedile hoy a la Virgen que proteja a tu familia y a la Iglesia en las dificultades.",
-    "enseñanza_de_la_iglesia": ["CIC 972", "CIC 1137"],
-    "fundamento_biblico": ["Ap 12,1-5"]
+    "respuesta_breve": "La mujer de Apocalipsis 12 representa, en primer lugar, al pueblo de Dios y a la Iglesia. La tradición católica también reconoce en ella una figura de María, Madre de Jesús y Madre de la Iglesia. El pasaje anuncia la victoria de Cristo sobre el dragón y la perseverancia de los creyentes.",
+    "paso_concreto": "Pedile a María que te ayude a permanecer fiel a Jesús en las dificultades.",
+    "enseñanza_de_la_iglesia": ["CIC 972", "CIC 1138"],
+    "fundamento_biblico": ["Ap 12,1-17"]
   },
   {
-    "id": "catequesis-001",
+    "id": "catequesis",
     "categoria": "Catequesis",
     "pregunta_principal": "¿Qué es la catequesis?",
     "keywords": [
-      "catequesis",
       "que es catequesis",
-      "para que sirve catequesis"
+      "para que sirve catequesis",
+      "catequesis"
     ],
     "respuesta_breve": "«Vayan y hagan discípulos a todas las naciones» (Mt 28,19-20). La catequesis no es una aburrida clase de memoria eclesiástica; es el arte de dejar que Jesús te enamore el corazón para después salir a convidarlo a los gritos.",
     "paso_concreto": "Participá hoy en una sesión de catequesis o leé un pasaje bíblico y reflexioná sobre su mensaje.",
@@ -242,14 +239,26 @@
     "fundamento_biblico": ["Mt 28,19-20"]
   },
   {
+    "id": "catecismo",
+    "categoria": "Doctrina y Fe",
+    "pregunta_principal": "¿Qué es la fe y cuál es el rol del catecismo?",
+    "keywords": [
+      "fe",
+      "que is la fe",
+      "sobre la fe",
+      "catecismo",
+      "que es el catecismo"
+    ],
+    "respuesta_breve": "La fe es la adhesión personal de todo el hombre a Dios que se revela. El catecismo nos guía en la doctrina y en la vida de la Iglesia para profundizar en ella.",
+    "paso_concreto": "Hoy podés reflexionar sobre un aspecto de tu fe y llevarlo a un breve momento de oración.",
+    "enseñanza_de_la_iglesia": ["CIC 26", "CIC 142"],
+    "fundamento_biblico": ["Heb 11,1 - La fe es garantía de lo que se espera"]
+  },
+  {
     "id": "catequesis-002",
     "categoria": "Catequesis",
     "pregunta_principal": "¿Cuál es el objetivo de la catequesis?",
-    "keywords": [
-      "objetivo catequesis",
-      "para que sirve catequesis",
-      "meta catequesis"
-    ],
+    "keywords": ["objetivo catequesis", "meta catequesis"],
     "respuesta_breve": "El objetivo es simple y hermoso: formar discípulos que sepan mirar la vida con los ojos de Dios. No se trata de juntar datos en la cabeza, sino de que la fe se haga carne en el día a día.",
     "paso_concreto": "Reflexioná hoy sobre cómo podés aplicar un valor del Evangelio en tu vida diaria.",
     "enseñanza_de_la_iglesia": ["CIC 5", "CIC 6"],
@@ -259,11 +268,7 @@
     "id": "catequesis-003",
     "categoria": "Catequesis",
     "pregunta_principal": "¿Cómo se lleva a cabo la catequesis?",
-    "keywords": [
-      "como se hace catequesis",
-      "metodo catequesis",
-      "formas de catequesis"
-    ],
+    "keywords": ["como se hace catequesis", "metodo catequesis"],
     "respuesta_breve": "«Perseveraban en la enseñanza de los apóstoles, en la comunión y en la fracción del pan» (Hch 2,42). Se hace abriendo la Escritura, celebrando los sacramentos y viviendo como hermanos en comunidad.",
     "paso_concreto": "Hoy, leé un pasaje bíblico y compartí tu reflexión con alguien cercano.",
     "enseñanza_de_la_iglesia": ["CIC 5", "CIC 6"],
@@ -273,11 +278,7 @@
     "id": "catequesis-004",
     "categoria": "Catequesis",
     "pregunta_principal": "¿Quiénes participan en la catequesis?",
-    "keywords": [
-      "quienes participan catequesis",
-      "participantes catequesis",
-      "quien hace catequesis"
-    ],
+    "keywords": ["quienes participan catequesis", "participantes catequesis"],
     "respuesta_breve": "Participamos todos: los catequistas que ponen los pies en el barro para enseñar, y los que buscan aprender. Es una gran ronda donde el Maestro verdadero es el Espíritu Santo.",
     "paso_concreto": "Si sos catequista, prepará una actividad con amor; si sos catequizando, abriles espacio a estas verdades.",
     "enseñanza_de_la_iglesia": ["CIC 5", "CIC 6"],
@@ -287,11 +288,7 @@
     "id": "catequesis-005",
     "categoria": "Catequesis",
     "pregunta_principal": "¿Por qué es importante la catequesis?",
-    "keywords": [
-      "importancia catequesis",
-      "para que sirve catequesis",
-      "beneficios catequesis"
-    ],
+    "keywords": ["importancia catequesis", "beneficios catequesis"],
     "respuesta_breve": "Porque sin brújula nos perdemos en cualquier esquina. La catequesis le devuelve el sentido hondo a la existencia, recordándonos de dónde venimos y hacia dónde vamos.",
     "paso_concreto": "Reflexioná hoy sobre cómo la catequesis ha influido en tu vida y agradecilo.",
     "enseñanza_de_la_iglesia": ["CIC 5", "CIC 6"],
@@ -304,25 +301,22 @@
     "keywords": [
       "ajedrez",
       "parabola del ajedrez",
-      "piezas de ajedrez",
-      "cristocentrismo",
-      "orden de la fe"
+      "piezas de ajedrez fe",
+      "cristocentrismo ajedrez"
     ],
-    "respuesta_breve": "«Cristo es la cabeza del cuerpo, de la Iglesia» (Col 1,18). Toda la vida cristiana es una partida maravillosa y ordenada: Jesucristo es el Rey absoluto y el centro de todo el tablero; la Virgen María es la Reina y madre intercesora; los ángeles son las torres y alfiles que defienden los cielos; los santos son los caballos que saltan obstáculos; y nosotros somos los peones que, movidos por su gracia, avanzamos paso a paso hacia la victoria.",
-    "paso_concreto": "Reconocé hoy el lugar que ocupa Cristo en tu tablero y dejate mover por Él.",
-    "enseñanza_de_la_iglesia": ["CIC 450", "CIC 795", "CIC 964"],
-    "fundamento_biblico": ["Ef 1,20-23", "Ap 19,16"]
+    "respuesta_breve": "Una partida de ajedrez tiene muchas piezas, movimientos y decisiones, pero todo adquiere sentido dentro de un mismo juego. También la Iglesia está formada por personas distintas, con vocaciones y dones diferentes. La comparación termina aquí: Cristo no es una pieza más, sino el Señor y la Cabeza de la Iglesia. Nosotros aprendemos a jugar bien la vida cuando dejamos que Él ordene nuestros movimientos hacia el amor.",
+    "paso_concreto": "Pregúntate hoy qué decisión concreta puede acercarte más a Cristo y servir mejor a los demás.",
+    "enseñanza_de_la_iglesia": ["CIC 787", "CIC 792", "CIC 795"],
+    "fundamento_biblico": ["1 Cor 12,12-27", "Col 1,18"]
   },
   {
     "id": "catequesis-ajedrez-02",
     "categoria": "Vida Cristiana",
     "pregunta_principal": "¿Cómo se vincula el tablero de ajedrez con el Cuerpo Místico de Cristo?",
     "keywords": [
-      "cuerpo mistico",
-      "cabeza y cuerpo",
-      "ajedrez y fe",
-      "iglesia",
-      "orden de la iglesia"
+      "cuerpo mistico ajedrez",
+      "cabeza y cuerpo iglesia",
+      "orden de la iglesia ajedrez"
     ],
     "respuesta_breve": "«Asistimos a una gran orquestación divina» (1 Cor 12,12-27). Ninguna pieza sobra en el tablero de Dios. Cada uno cumple su rol en perfecta armonía bajo la dirección de la Cabeza, que es Cristo.",
     "paso_concreto": "Viví hoy consciente de que sos parte viva de ese Cuerpo y que tus actos edifican a la Iglesia.",
@@ -330,24 +324,24 @@
     "fundamento_biblico": ["Col 1,18", "1 Cor 12,12-27"]
   },
   {
-    "id": "fe-001",
+    "id": "fe",
     "categoria": "Fe",
     "pregunta_principal": "¿Qué es la fe católica?",
-    "keywords": ["que es la fe", "fe catolica", "fe", "creer"],
+    "keywords": ["que is la fe", "fe catolica", "creer en dios", "fe"],
     "respuesta_breve": "«La fe es garantía de lo que se espera, la prueba de lo que no se ve» (Hb 11,1). Tener fe no es apagar la inteligencia, sino fiarse de alguien que demostró amarnos hasta el extremo.",
     "paso_concreto": "Hoy hacé un acto de fe: 'Jesús, confío en vos' antes de dormir.",
     "enseñanza_de_la_iglesia": ["CIC 150"],
     "fundamento_biblico": ["Hb 11,1"]
   },
   {
-    "id": "biblia-001",
+    "id": "biblia",
     "categoria": "Biblia",
     "pregunta_principal": "¿Qué es la Biblia?",
     "keywords": [
       "que es la biblia",
-      "biblia",
       "sagrada escritura",
-      "escritura"
+      "palabra de dios libro",
+      "biblia"
     ],
     "respuesta_breve": "«Toda Escritura está inspirada por Dios» (2 Tim 3,16). Es la carta de amor que Dios te escribió para que no te sientas extranjero en este mundo.",
     "paso_concreto": "Leé hoy Marcos 1,1-5 y subrayá lo que te llegue al alma.",
@@ -355,10 +349,14 @@
     "fundamento_biblico": ["2 Tim 3,16"]
   },
   {
-    "id": "iglesia-001",
+    "id": "iglesia",
     "categoria": "Iglesia",
     "pregunta_principal": "¿Qué es la Iglesia?",
-    "keywords": ["que es la iglesia", "iglesia", "iglesia catolica"],
+    "keywords": [
+      "que es la iglesia catolica",
+      "comunidad de la iglesia",
+      "iglesia"
+    ],
     "respuesta_breve": "«Tú eres Pedro, y sobre esta piedra edificaré mi Iglesia» (Mt 16,18). La Iglesia no es una multinacional ni un museo polvoriento; es la gran familia de los hijos de Dios caminando juntos.",
     "paso_concreto": "Este domingo quedate 5 minutos después de misa saludando a alguien con una sonrisa.",
     "enseñanza_de_la_iglesia": ["CIC 752"],
@@ -368,7 +366,7 @@
     "id": "oracion-001",
     "categoria": "Oración",
     "pregunta_principal": "¿Cómo puedo rezar si no sé orar?",
-    "keywords": ["como rezar", "como orar", "no se rezar", "orar", "rezar"],
+    "keywords": ["como rezar", "como orar", "no se rezar", "oracion", "rezar"],
     "respuesta_breve": "«Entra en tu habitación, cierra la puerta y reza a tu Padre» (Mt 6,6). Rezar es sentarte a tomar mate con Dios. No busques discursos elegantes; contale tus cosas con franqueza.",
     "paso_concreto": "Poné 3 minutos de cronómetro y decí: 'Aquí estoy, Señor'.",
     "enseñanza_de_la_iglesia": ["CIC 2559"],
@@ -382,8 +380,7 @@
       "dios me escucha",
       "dios no me escucha",
       "me escucha dios",
-      "dios me oye",
-      "me escucha"
+      "dios me oye"
     ],
     "respuesta_breve": "«El Señor escucha el clamor de los humildes» (Sal 34,18). Ninguna oración sincera cae al vacío. Aunque el cielo parezca de bronce, cada palabra tuya llega directo al corazón del Padre.",
     "paso_concreto": "Escribí hoy tu oración en un papel y dejala en manos de Dios.",
@@ -391,16 +388,14 @@
     "fundamento_biblico": ["Sal 34,18", "1 Jn 5,14"]
   },
   {
-    "id": "sufrimiento-001",
+    "id": "sufrimiento",
     "categoria": "Vida Cristiana",
     "pregunta_principal": "¿Por qué Dios permite el sufrimiento?",
     "keywords": [
-      "sufrimiento",
-      "dolor",
       "por que sufro",
-      "por que permite dios",
-      "porque sufro",
-      "sufrir"
+      "dolor en el mundo",
+      "por que permite dios el sufrimiento",
+      "sufrimiento"
     ],
     "respuesta_breve": "Dios no inventó el dolor ni lo mira de costado; Él mismo se metió en el barro del sufrimiento y cargó con la cruz para transformarla en resurrección.",
     "paso_concreto": "Ofrecé hoy tu cansancio por alguien que necesite luz.",
@@ -408,35 +403,40 @@
     "fundamento_biblico": ["Rm 8,28"]
   },
   {
-    "id": "pecado-001",
+    "id": "pecado",
     "categoria": "Vida Cristiana",
     "pregunta_principal": "¿Qué es el pecado?",
-    "keywords": ["que es pecado", "pecado", "pecar"],
+    "keywords": ["que es el pecado", "pecar", "pecado"],
     "respuesta_breve": "El pecado es cerrarle la puerta por dentro al amor de Dios. Nos deja vacíos y nos aleja de la fuente, pero su misericordia es siempre infinitamente más grande que nuestras torpezas.",
     "paso_concreto": "Examiná 2 minutos tu día y pedí perdón por algo concreto.",
     "enseñanza_de_la_iglesia": ["CIC 1849"],
     "fundamento_biblico": ["Rm 3,23"]
   },
   {
-    "id": "confesion-001",
+    "id": "confesion",
     "categoria": "Sacramentos",
     "pregunta_principal": "¿Para qué confesarme?",
-    "keywords": ["confesion", "confesarse", "confesar", "perdon", "penitencia"],
+    "keywords": [
+      "confesion",
+      "confesarse",
+      "ir a confesarse",
+      "perdon de los pecados sacramento"
+    ],
     "respuesta_breve": "«A quienes les anulen los pecados, les quedan anulados» (Jn 20,23). Confesarte no es ir a una comisaría a rendir cuentas, es dejar que el Padre te corra la mochila pesada de la culpa y te devuelva la paz.",
     "paso_concreto": "Buscá esta semana horario de confesión en tu parroquia.",
     "enseñanza_de_la_iglesia": ["CIC 1440"],
     "fundamento_biblico": ["Jn 20,23"]
   },
   {
-    "id": "eucaristia-001",
+    "id": "eucaristia",
     "categoria": "Sacramentos",
     "pregunta_principal": "¿Qué es la Eucaristía?",
     "keywords": [
       "eucaristia",
-      "comunion",
-      "misa",
-      "cuerpo de cristo",
-      "hostia"
+      "santa comunion",
+      "ir a misa",
+      "cuerpo de cristo hostia",
+      "misa"
     ],
     "respuesta_breve": "«Hagan esto en memoria mía» (Lc 22,19). La Eucaristía es Dios bajando al pan cotidiano para hacerse nuestro alimento. Es el instante exacto donde el cielo toca nuestra tierra.",
     "paso_concreto": "Antes de comulgar decí: 'Señor, no soy digno, pero ven a mi casa'.",
@@ -444,10 +444,16 @@
     "fundamento_biblico": ["Lc 22,19"]
   },
   {
-    "id": "vida-001",
+    "id": "vida",
     "categoria": "Vida Cristiana",
     "pregunta_principal": "Me siento solo",
-    "keywords": ["solo", "soledad", "me siento solo", "sola", "abandonado"],
+    "keywords": [
+      "me siento solo",
+      "soledad",
+      "estoy solo",
+      "abandonado",
+      "solo"
+    ],
     "respuesta_breve": "«Yo estaré con ustedes todos los días, hasta el fin del mundo» (Mt 28,20). Aunque sientas que alrededor hay un silencio enorme, Él te habita y te conoce por tu nombre.",
     "paso_concreto": "Mándale un mensaje a alguien hoy y compartile un gesto de afecto.",
     "enseñanza_de_la_iglesia": ["CIC 301"],
@@ -460,7 +466,13 @@
     "id": "vida-002",
     "categoria": "Vida Cristiana",
     "pregunta_principal": "Tengo miedo y ansiedad",
-    "keywords": ["miedo", "ansiedad", "angustia", "tengo miedo", "ansioso"],
+    "keywords": [
+      "tengo miedo",
+      "ansiedad",
+      "angustia",
+      "estoy ansioso",
+      "miedo"
+    ],
     "respuesta_breve": "«No temas, que yo estoy contigo» (Is 41,10). Jesús conoció el sudor de sangre en Getsemaní; sabe lo que es el peso de la angustia. Dejalo entrar en tu miedo para aquietar el pulso.",
     "paso_concreto": "Respirá hondo y repetí 5 veces: 'Jesús, confío en vos'.",
     "enseñanza_de_la_iglesia": ["CIC 2733"],
@@ -474,10 +486,10 @@
     "categoria": "Vida Cristiana",
     "pregunta_principal": "¿Cuál es mi propósito?",
     "keywords": [
-      "proposito",
+      "cual es mi proposito",
       "sentido de la vida",
       "para que vivo",
-      "proposito de vida"
+      "proposito"
     ],
     "respuesta_breve": "«Fuiste elegido desde antes de la creación del mundo» (Ef 1,4). Tu propósito es amar y dejarte amar. Cuando vivís entregándote a los demás, la vida deja de ser un problema a resolver y pasa a ser un regalo.",
     "paso_concreto": "Hoy hacé un acto de amor concreto que nadie más vea.",
@@ -485,50 +497,74 @@
     "fundamento_biblico": ["Ef 1,4"]
   },
   {
-    "id": "rosario-001",
+    "id": "rosario",
     "categoria": "Oración",
     "pregunta_principal": "¿Qué es el Rosario?",
-    "keywords": ["rosario", "rezar el rosario", "como rezar rosario"],
+    "keywords": [
+      "rezar el rosario",
+      "como rezar el rosario",
+      "misterios del rosario",
+      "rosario"
+    ],
     "respuesta_breve": "El Rosario es tomar de la mano a la Madre del cielo para recorrer con el corazón la vida de Jesús. Es una caricia que pacifica hasta el día más revuelto.",
     "paso_concreto": "Rezate hoy un misterio solo, 1 Padre Nuestro y 10 Ave Marías.",
     "enseñanza_de_la_iglesia": ["CIC 971"],
     "fundamento_biblico": ["Lc 1,28"]
   },
   {
-    "id": "santos-001",
+    "id": "santos",
     "categoria": "Iglesia",
     "pregunta_principal": "¿Quiénes son los santos?",
-    "keywords": ["santos", "que son los santos", "santo"],
+    "keywords": ["quienes son los santos", "vida de los santos", "santos"],
     "respuesta_breve": "«Rodeados de semejante nube de testigos» (Hb 12,1). Los santos no eran seres de otra galaxia; eran personas de carne y hueso que decidieron tomarse el Evangelio en serio y ahora hacen hinchada por nosotros desde el cielo.",
     "paso_concreto": "Elegí un santo de tu devoción y pedile que interceda por tu semana.",
     "enseñanza_de_la_iglesia": ["CIC 956"],
     "fundamento_biblico": ["Hb 12,1"]
   },
   {
-    "id": "perdon-001",
+    "id": "perdon",
     "categoria": "Vida Cristiana",
     "pregunta_principal": "¿Cómo perdonar si me hirieron?",
-    "keywords": ["perdonar", "perdon", "no puedo perdonar", "me hirieron"],
+    "keywords": [
+      "como perdonar",
+      "no puedo perdonar",
+      "me hirieron perdon",
+      "perdonar"
+    ],
     "respuesta_breve": "Perdonar es soltar la piedra para no seguir lastimándote las manos. Como solos no podemos contra el resentimiento, le pedimos a Jesús que nos preste su corazón misericordioso.",
     "paso_concreto": "Hoy rezá un Padre Nuestro por esa persona que te hirió.",
     "enseñanza_de_la_iglesia": ["CIC 2844"],
     "fundamento_biblico": ["Mt 6,14", "Col 3,13"]
   },
   {
-    "id": "muerte-001",
+    "id": "muerte",
     "categoria": "Vida Cristiana",
     "pregunta_principal": "¿Qué pasa después de la muerte?",
-    "keywords": ["muerte", "que pasa despues de morir", "vida eterna", "cielo"],
-    "respuesta_breve": "«Yo soy la Resurrección y la Vida» (Jn 11,25). La muerte terrenal es apenas el umbral que se abre hacia los brazos del Padre. No es el punto final, sino el comienzo de la fiesta verdadera.",
-    "paso_concreto": "Rezá hoy por un ser querido que ya partió hacia la eternidad.",
-    "enseñanza_de_la_iglesia": ["CIC 1023"],
-    "fundamento_biblico": ["Jn 11,25 - Yo soy la Resurrección"]
+    "keywords": [
+      "que pasa despues de morir",
+      "vida eterna cielo purgatorio infierno",
+      "muerte"
+    ],
+    "respuesta_breve": "Después de la muerte, cada persona comparece ante Dios. Quienes mueren en amistad con Él entran en la bienaventuranza del cielo, aunque algunos necesitan una purificación. Quien rechaza definitivamente a Dios se separa de Él. Al final de los tiempos, Cristo resucitará a todos y tendrá lugar el juicio final.",
+    "paso_concreto": "Rezá hoy por un ser querido fallecido y renová tu esperanza en la resurrección.",
+    "enseñanza_de_la_iglesia": [
+      "CIC 1021",
+      "CIC 1022",
+      "CIC 1023",
+      "CIC 1030",
+      "CIC 1033"
+    ],
+    "fundamento_biblico": ["Jn 11,25-26", "Mt 25,46", "1 Cor 15,20-22"]
   },
   {
-    "id": "sacramentos-001",
+    "id": "sacramentos",
     "categoria": "Sacramentos",
     "pregunta_principal": "¿Qué son los sacramentos?",
-    "keywords": ["sacramentos", "que son los sacramentos", "sacramento"],
+    "keywords": [
+      "que son los sacramentos",
+      "definicion de sacramentos",
+      "sacramentos"
+    ],
     "respuesta_breve": "«Los sacramentos son signos eficaces de la gracia» (CIC 1131). Son como puentes que nos conectan con Dios, haciéndonos partícipes de su amor y su vida divina.",
     "paso_concreto": "Reflexioná hoy sobre un sacramento que hayas recibido y agradecé a Dios por él.",
     "enseñanza_de_la_iglesia": ["CIC 1131"],
@@ -538,182 +574,30 @@
     "id": "sacramentos-002",
     "categoria": "Sacramentos",
     "pregunta_principal": "¿Cuáles son los sacramentos?",
-    "keywords": ["sacramentos", "cuantos sacramentos hay", "sacramento"],
+    "keywords": [
+      "cuantos sacramentos hay",
+      "lista de sacramentos",
+      "sacramentos"
+    ],
     "respuesta_breve": "«Los siete sacramentos son: Bautismo, Confirmación, Eucaristía, Penitencia, Unción de los enfermos, Orden sacerdotal y Matrimonio» (CIC 1210). Cada uno es un regalo especial que nos acerca a Dios y nos fortalece en nuestra vida de fe.",
     "paso_concreto": "Hoy investigá sobre un sacramento que no conozcas bien y aprendé algo nuevo sobre él.",
     "enseñanza_de_la_iglesia": ["CIC 1210"],
     "fundamento_biblico": ["Jn 3,5 - Nacer del agua y del Espíritu"]
   },
   {
-    "id": "sacramentos-003",
-    "categoria": "Sacramentos",
-    "pregunta_principal": "¿Por qué son importantes los sacramentos?",
-    "keywords": [
-      "importancia sacramentos",
-      "para que sirven los sacramentos",
-      "sacramentos"
-    ],
-    "respuesta_breve": "«Los sacramentos confieren la gracia que significan» (CIC 1127). Son esenciales porque nos permiten recibir la gracia de Dios de manera tangible y nos ayudan a vivir nuestra fe de manera más profunda.",
-    "paso_concreto": "Hoy reflexioná sobre cómo un sacramento ha impactado tu vida y agradecé a Dios por ello.",
-    "enseñanza_de_la_iglesia": ["CIC 1127"],
-    "fundamento_biblico": ["Jn 3,5 - Nacer del agua y del Espíritu"]
-  },
-  {
-    "id": "sacramentos-004",
-    "categoria": "Sacramentos",
-    "pregunta_principal": "¿Cómo se reciben los sacramentos?",
-    "keywords": [
-      "como recibir sacramentos",
-      "recibir sacramentos",
-      "sacramentos"
-    ],
-    "respuesta_breve": "«Los sacramentos se reciben mediante la fe y la disposición del corazón» (CIC 1123). Para recibir un sacramento, es importante tener fe, arrepentimiento y un corazón abierto a la gracia de Dios.",
-    "paso_concreto": "Hoy preparate para recibir un sacramento con oración y reflexión sobre su significado.",
-    "enseñanza_de_la_iglesia": ["CIC 1123"],
-    "fundamento_biblico": ["Jn 3,5 - Nacer del agua y del Espíritu"]
-  },
-  {
-    "id": "sacramentos-005",
-    "categoria": "Sacramentos",
-    "pregunta_principal": "¿Qué efectos tienen los sacramentos?",
-    "keywords": [
-      "efectos sacramentos",
-      "beneficios sacramentos",
-      "sacramentos"
-    ],
-    "respuesta_breve": "«Los sacramentos confieren la gracia que significan y nos fortalecen en nuestra vida de fe» (CIC 1127). Cada sacramento tiene efectos específicos que nos ayudan a crecer espiritualmente y a vivir nuestra fe de manera más plena.",
-    "paso_concreto": "Hoy reflexioná sobre cómo un sacramento ha fortalecido tu vida espiritual y agradecé a Dios por ello.",
-    "enseñanza_de_la_iglesia": ["CIC 1127"],
-    "fundamento_biblico": ["Jn 3,5 - Nacer del agua y del Espíritu"]
-  },
-  {
-    "id": "sacramentos-006",
-    "categoria": "Sacramentos",
-    "pregunta_principal": "¿Qué es la gracia sacramental?",
-    "keywords": [
-      "gracia sacramental",
-      "gracia de los sacramentos",
-      "sacramentos"
-    ],
-    "respuesta_breve": "«La gracia sacramental es la gracia que se recibe a través de los sacramentos y nos ayuda a vivir nuestra fe» (CIC 1127). Es un don de Dios que nos fortalece y nos guía en nuestro camino espiritual.",
-    "paso_concreto": "Hoy reflexioná sobre cómo la gracia sacramental ha influido en tu vida y agradecé a Dios por ello.",
-    "enseñanza_de_la_iglesia": ["CIC 1127"],
-    "fundamento_biblico": ["Jn 3,5 - Nacer del agua y del Espíritu"]
-  },
-  {
-    "id": "sacramentos-007",
-    "categoria": "Sacramentos",
-    "pregunta_principal": "¿Qué es la gracia santificante?",
-    "keywords": ["gracia santificante", "gracia de Dios", "santificacion"],
-    "respuesta_breve": "«La gracia santificante es la gracia que nos hace partícipes de la vida divina y nos transforma en hijos de Dios» (CIC 1999). Es un don que nos permite vivir en comunión con Dios y crecer en santidad.",
-    "paso_concreto": "Hoy reflexioná sobre cómo la gracia santificante ha transformado tu vida y agradecé a Dios por ello.",
-    "enseñanza_de_la_iglesia": ["CIC 1999"],
-    "fundamento_biblico": ["Jn 1,12 - A todos los que le recibieron"]
-  },
-  {
-    "id": "sacramentos-008",
-    "categoria": "Sacramentos",
-    "pregunta_principal": "¿Qué es la gracia actual?",
-    "keywords": ["gracia actual", "gracia de Dios", "ayuda divina"],
-    "respuesta_breve": "«La gracia actual es la ayuda que Dios nos da en cada momento para hacer el bien y evitar el mal» (CIC 2000). Es un don que nos guía en nuestras decisiones y nos fortalece en nuestra vida espiritual.",
-    "paso_concreto": "Hoy reflexioná sobre cómo la gracia actual te ha ayudado a tomar decisiones correctas y agradecé a Dios por ello.",
-    "enseñanza_de_la_iglesia": ["CIC 2000"],
-    "fundamento_biblico": ["Fil 2,13 - Dios obra en ustedes querer y actuar"]
-  },
-  {
-    "id": "sacramentos-009",
-    "categoria": "Sacramentos",
-    "pregunta_principal": "¿Qué es la gracia habitual?",
-    "keywords": ["gracia habitual", "gracia de Dios", "vida espiritual"],
-    "respuesta_breve": "«La gracia habitual es la disposición permanente que nos permite vivir en amistad con Dios y crecer en santidad» (CIC 2001). Es un don que nos ayuda a mantenernos firmes en nuestra fe y a vivir según la voluntad de Dios.",
-    "paso_concreto": "Hoy reflexioná sobre cómo la gracia habitual te ha ayudado a vivir en amistad con Dios y agradecé a Él por ello.",
-    "enseñanza_de_la_iglesia": ["CIC 2001"],
-    "fundamento_biblico": [
-      "Rom 5,5 - El amor de Dios ha sido derramado en nuestros corazones"
-    ]
-  },
-  {
-    "id": 101,
-    "categoria": "Programa",
-    "pregunta_principal": "¿Qué es la barra lateral o infoLateral?",
-    "keywords": [
-      "infocamino",
-      "infralateral",
-      "lateral",
-      "barra",
-      "menu",
-      "secciones"
-    ],
-    "respuesta_breve": "La barra lateral es tu panel de navegación rápido dentro de Palabra Viva, diseñado para acceder a las lecturas, herramientas y opciones principales de forma directa.",
-    "paso_concreto": "Abrí el menú lateral y explorá alguna sección que todavía no hayas visitado hoy."
-  },
-  {
-    "id": "Programa-001",
-    "categoria": "Programa",
-    "pregunta_principal": "¿Cómo funciona el buscador del asistente?",
-    "keywords": [
-      "buscador",
-      "como funciona",
-      "buscar",
-      "ayuda",
-      "programa",
-      "app"
-    ],
-    "respuesta_breve": "El asistente analiza tus palabras clave para conectar tu consulta con temas de fe, catequesis o guías del programa, ofreciéndote respuestas claras y caminos para seguir explorando.",
-    "paso_concreto": "Probá escribiendo una palabra clave concreta como 'oración', 'iglesia' o 'biblia'."
-  },
-  {
-    "id": "Programa-002",
-    "categoria": "Programa",
-    "pregunta_principal": "¿Qué versión de la Biblia utilizamos en la app?",
-    "keywords": ["biblia", "version", "traduccion", "torres amat", "programa"],
-    "respuesta_breve": "En Palabra Viva utilizamos la clásica y tradicional traducción de la Biblia Torres Amat, ideal para la lectura meditada y el acompañamiento espiritual.",
-    "paso_concreto": "Buscá un pasaje del Evangelio y leelo despacito en esta versión para meditarlo."
-  },
-  {
-    "id": "trinidad-001",
-    "categoria": "Dios",
-    "pregunta_principal": "¿Qué es el misterio de la Santísima Trinidad?",
-    "keywords": [
-      "trinidad",
-      "trinitario",
-      "dios padre",
-      "dios hijo",
-      "espiritu santo",
-      "tres personas"
-    ],
-    "respuesta_breve": "La Santísima Trinidad es el misterio central de la fe cristiana: un único Dios en tres personas distintas (el Padre, el Hijo y el Espíritu Santo) que comparten una misma y única naturaleza divina, unidos en un perfecto amor.",
-    "paso_concreto": "Hacé la señal de la cruz despacio, pensando en cada persona de la Trinidad como una fuente de amor para tu día."
-  },
-  {
-    "id": "trinidad-002",
-    "categoria": "Dios",
-    "pregunta_principal": "¿Cómo se relacionan las tres personas de la Trinidad?",
-    "keywords": [
-      "relacion",
-      "trinidad",
-      "amor",
-      "padre",
-      "hijo",
-      "espiritu santo",
-      "comunion"
-    ],
-    "respuesta_breve": "Las tres personas viven en una comunión de amor eterno y perfecto. El Padre ama al Hijo, el Hijo se entrega por amor al Padre, y el Espíritu Santo es ese mismo Vínculo y Fuego de amor que une a ambos y se nos regala.",
-    "paso_concreto": "Intentá vivir un gesto de entrega o servicio hoy con alguien cercano, reflejando ese amor comunitario."
-  },
-  {
-    "id": "angeles_01",
+    "id": "angeles",
     "categoria": "Angeles",
     "pregunta_principal": "¿Qué son los ángeles y los ángeles custodios?",
     "keywords": [
-      "angeles",
-      "angel custodio",
+      "angeles custodios",
       "angel de la guarda",
-      "mensajeros",
-      "custodio"
+      "quienes son los angeles",
+      "angeles"
     ],
-    "respuesta_breve": "Los ángeles son seres espirituales creados por Dios, puramente espirituales, que lo alaban y actúan como sus mensajeros. Cada persona tiene asignado un ángel custodio para guiarla, protegerla y cuidarla en el camino hacia el bien.",
-    "paso_concreto": "Hacé una breve oración a tu ángel de la guarda hoy, pidiéndole luz y protección para tus decisiones."
+    "respuesta_breve": "Los ángeles son criaturas espirituales, personales e inmortales, creadas por Dios para glorificarlo y colaborar en su obra salvadora. La Iglesia enseña también que la vida humana está acompañada por la protección y la intercesión de los ángeles custodios.",
+    "paso_concreto": "Rezá una breve oración a tu ángel custodio, pidiendo ayuda para elegir el bien.",
+    "enseñanza_de_la_iglesia": ["CIC 328", "CIC 329", "CIC 336"],
+    "fundamento_biblico": ["Sal 91,11", "Mt 18,10"]
   },
   {
     "id": "angeles_02",
@@ -721,117 +605,189 @@
     "pregunta_principal": "¿De dónde vienen los ángeles malos o caídos?",
     "keywords": [
       "angeles malos",
-      "demonio",
-      "lucifer",
+      "demonio lucifer",
       "angeles caidos",
-      "mal",
-      "tentacion"
+      "demonio"
     ],
     "respuesta_breve": "Los ángeles malos, conocidos como demonios, fueron originalmente creados buenos por Dios. Sin embargo, por su propia y libre decisión, se rebelaron contra Dios por soberbia y rechazaron su amor, convirtiéndose en fuerzas del mal y la tentación.",
-    "paso_concreto": "Recordá que frente a las tentaciones o el mal, la gracia de Dios y la oración son siempre más fuertes."
+    "paso_concreto": "Recordá que frente a las tentaciones o el mal, la gracia de Dios y la oración son siempre más fuertes.",
+    "enseñanza_de_la_iglesia": ["CIC 391", "CIC 392"],
+    "fundamento_biblico": ["Jn 8,44", "Ap 12,9"]
   },
   {
-    "id": "dones_01",
-    "categoria": "Espiritualidad",
+    "id": "quienes_son_los_angeles",
+    "categoria": "doctrina_creacion",
+    "pregunta_principal": "¿Quiénes son los ángeles y por qué los creó Dios?",
+    "keywords": ["angeles creacion", "porque dios creo angeles"],
+    "puerta_de_entrada": "Dios no está solo en su gloria; quiso rodearse de una corte celestial de seres puramente espirituales para compartir su amor y su luz.",
+    "respuesta_breve": "Los ángeles son criaturas puramente espirituales, dotadas de inteligencia y voluntad. No tienen cuerpo físico. Dios los creó por amor para que sean sus mensajeros, para contemplar su rostro eternamente y para cuidar y custodiar a los seres humanos en el camino hacia el cielo.",
+    "paradoja": "Creemos que solo lo visible tiene valor, pero el mundo espiritual que nos rodea es más real y activo que lo que podemos tocar con las manos.",
+    "aclaracion": "La existencia de los seres espirituales, no corpóreos, que la Sagrada Escritura llama habitualmente ángeles, es una verdad de fe.",
+    "paso_concreto": "Hoy, antes de salir de casa o en un momento de quietud, encomendate a tu ángel de la guarda con una oración sencilla para que te guíe y te proteja.",
+    "oracion": "Ángel de la guarda, dulce compañía, no me desampares ni de noche ni de día, hasta que me pongas en paz y alegría con todos los santos, Jesús, María y José.",
+    "enseñanza_de_la_iglesia": [
+      "CIC 328: La existencia de los seres espirituales, no corpóreos... es una verdad de fe."
+    ]
+  },
+  {
+    "id": "coros_celestiales_jerarquia",
+    "categoria": "doctrina_creacion",
+    "pregunta_principal": "¿Es verdad que hay distintas jerarquías o coros de ángeles?",
+    "keywords": ["coros celestiales", "jerarquia de angeles", "serafines"],
+    "puerta_de_entrada": "En el cielo hay un orden perfecto de amor y alabanza, reflejado en diferentes categorías de seres celestiales.",
+    "respuesta_breve": "Sí. La Tradición de la Iglesia y la Escritura hablan de nueve coros angelares agrupados en tres jerarquías: los más cercanos a Dios (Serafines, Querubines y Tronos), los que administran el cosmos (Dominaciones, Virtudes y Potestades), y los que están más cerca de los hombres (Principados, Arcángeles y Ángeles custodios).",
+    "paradoja": "Pensamos en el cielo como un lugar caótico o difuso, pero refleja la armonía y la belleza de un orden creado por un Dios que cuida cada detalle.",
+    "aclaracion": "Esta clasificación se basa en la teología tradicional y en la mención bíblica de diversas potestades y jerarquías celestiales.",
+    "paso_concreto": "Cuando recemos el Santo ('Santo, Santo, Santo es el Señor...') sepamos que nos estamos uniendo al coro de los serafines y de toda la corte celestial.",
+    "oracion": "Señor Dios de los ejércitos, que los coros de tus ángeles nos ayuden a alabarte con el corazón limpio y dispuesto.",
+    "enseñanza_de_la_iglesia": [
+      "CIC 334: Desde la infancia hasta la muerte, la vida humana está rodeada de su custodia y de su intercesión."
+    ]
+  },
+  {
+    "id": "angeles_caidos_mal",
+    "categoria": "doctrina_creacion",
+    "pregunta_principal": "¿De dónde salen los ángeles malos y cómo influyen en nosotros?",
+    "keywords": ["angeles malos caidos", "origen del mal angeles"],
+    "puerta_de_entrada": "La libertad es un don tan grande que incluso las criaturas de luz pudieron elegir entre amar a Dios o rechazarlo.",
+    "respuesta_breve": "Dios creó a todos los ángeles buenos, pero algunos de ellos, movidos por el orgullo y la soberbia, rechazaron libremente a Dios y a su Reino. Se convirtieron en demonios. Su acción hoy no es crear nada, sino intentar apartarnos del bien mediante la mentira, la tentación y la división, aprovechándose de nuestras debilidades.",
+    "paradoja": "El Maligno es fuerte, pero su poder es limitado frente a un alma que se refugia en la gracia de Dios y en la cruz de Cristo.",
+    "aclaracion": "La Escritura y la Tradición ven en este ser un ángel caído, llamado Satanás o Diablo. Su caída se debió a la elección libre de estos espíritus.",
+    "paso_concreto": "Ante la tentación o la inquietud interna que busca dividirnos, recurrir de inmediato al nombre de Jesús y a la protección de San Miguel Arcángel.",
+    "oracion": "San Miguel Arcángel, deféndenos en la batalla. Sé nuestro amparo contra la perversidad y las acechanzas del demonio.",
+    "enseñanza_de_la_iglesia": [
+      "CIC 391: Tras el pecado de los primeros padres, la Escritura habla de una caída de estos ángeles."
+    ]
+  },
+  {
+    "id": "dones",
+    "categoria": "Espíritu Santo",
     "pregunta_principal": "¿Cuáles son los siete dones del Espíritu Santo?",
     "keywords": [
-      "dones",
-      "espiritu santo",
-      "sabiduria",
-      "inteligencia",
-      "consejo",
-      "fortaleza",
-      "ciencia",
-      "piedad",
-      "temor de dios"
+      "siete dones del espiritu santo",
+      "cuales son los dones",
+      "dones"
     ],
     "respuesta_breve": "Los siete dones del Espíritu Santo son disposiciones permanentes que hacen que el alma sea dócil para seguir las inspiraciones divinas. Son: sabiduría, inteligencia, consejo, fortaleza, ciencia, piedad y temor de Dios.",
-    "paso_concreto": "Pedile hoy al Espíritu Santo que active sus dones en tu corazón para iluminar tus decisiones."
+    "paso_concreto": "Pedile hoy al Espíritu Santo que active sus dones en tu corazón para iluminar tus decisiones.",
+    "enseñanza_de_la_iglesia": ["CIC 1830", "CIC 1831"],
+    "fundamento_biblico": ["Is 11,2"]
   },
   {
     "id": "dones_02",
-    "categoria": "Espiritualidad",
+    "categoria": "Espíritu Santo",
     "pregunta_principal": "¿Qué significan los dones de Sabiduría e Inteligencia?",
-    "keywords": [
-      "sabiduria",
-      "inteligencia",
-      "don de sabiduria",
-      "don de inteligencia",
-      "dones del espiritu santo"
-    ],
+    "keywords": ["don de sabiduria", "don de inteligencia", "sabiduria"],
     "respuesta_breve": "La Sabiduría nos permite juzgar las cosas desde la perspectiva de Dios y saborear su amor. La Inteligencia nos ayuda a penetrar y comprender con profundidad las verdades de la fe y el sentido de nuestra vida.",
-    "paso_concreto": "Dedicá un minuto a mirar una situación difícil de tu día con los ojos de la fe, buscando la paz que viene de arriba."
+    "paso_concreto": "Dedicá un minuto a mirar una situación difícil de tu día con los ojos de la fe, buscando la paz que viene de arriba.",
+    "enseñanza_de_la_iglesia": ["CIC 1831"],
+    "fundamento_biblico": ["1 Cor 2,10", "Col 1,9"]
   },
   {
     "id": "dones_03",
-    "categoria": "Espiritualidad",
+    "categoria": "Espíritu Santo",
     "pregunta_principal": "¿En qué consisten los dones de Consejo y Fortaleza?",
-    "keywords": [
-      "consejo",
-      "fortaleza",
-      "don de consejo",
-      "don de fortaleza",
-      "dones del espiritu santo"
-    ],
+    "keywords": ["don de consejo", "don de fortaleza", "fortaleza"],
     "respuesta_breve": "El Consejo nos guía como una brújula interior para discernir qué debemos hacer en las decisiones concretas. La Fortaleza nos da el valor y la energía espiritual para superar los obstáculos y perseverar en el bien.",
-    "paso_concreto": "Pensá en un desafío actual y pedile al Espíritu Santo la fuerza para afrontarlo sin bajar los brazos."
+    "paso_concreto": "Pensá en un desafío actual y pedile al Espíritu Santo la fuerza para afrontarlo sin bajar los brazos.",
+    "enseñanza_de_la_iglesia": ["CIC 1831"],
+    "fundamento_biblico": ["Sal 16,7", "Flp 4,13"]
   },
-
   {
     "id": "dones_04",
-    "categoria": "Espiritualidad",
+    "categoria": "Espíritu Santo",
     "pregunta_principal": "¿Qué significa el don de Temor de Dios?",
     "keywords": [
-      "temor de dios",
-      "don de temor",
-      "reverencia",
-      "dones del espiritu santo"
+      "don de temor de dios",
+      "temor de dios reverencia",
+      "temor de dios"
     ],
     "respuesta_breve": "El Temor de Dios no es miedo a un castigo, sino un profundo respeto y reverencia filial ante la grandeza y el amor de Dios, llevándonos a evitar apartarnos de Él por el pecado.",
-    "paso_concreto": "Hacé un acto de amor y confianza, reconociendo la grandeza de Dios y pidiendo la gracia de serle fiel."
+    "paso_concreto": "Hacé un acto de amor y confianza, reconociendo la grandeza de Dios y pidiendo la gracia de serle fiel.",
+    "enseñanza_de_la_iglesia": ["CIC 1831"],
+    "fundamento_biblico": ["Pr 9,10", "Sal 111,10"]
   },
   {
     "id": "dones_05",
-    "categoria": "Espiritualidad",
+    "categoria": "Espíritu Santo",
     "pregunta_principal": "¿Qué es el don de Ciencia?",
     "keywords": [
-      "don de ciencia",
-      "creacion",
-      "dones del espiritu santo",
-      "mundo"
+      "don de ciencia espiritu santo",
+      "ciencia y fe creacion",
+      "ciencia"
     ],
     "respuesta_breve": "El don de Ciencia nos ayuda a interpretar las criaturas y la realidad terrena a la luz de Dios. Nos enseña a ver el mundo no como un dueño absoluto, sino como un don maravilloso que debemos cuidar y valorar según el plan del Creador.",
-    "paso_concreto": "Contemplá algún elemento de la naturaleza hoy (una planta, el cielo, el agua) y agradecé su existencia como un reflejo del amor de Dios."
+    "paso_concreto": "Contemplá algún elemento de la naturaleza hoy (una planta, el cielo, el agua) y agradecé su existencia como un reflejo del amor de Dios.",
+    "enseñanza_de_la_iglesia": ["CIC 1831"],
+    "fundamento_biblico": ["Sab 13,5", "Rm 1,20"]
   },
   {
     "id": "dones_06",
-    "categoria": "Espiritualidad",
+    "categoria": "Espíritu Santo",
     "pregunta_principal": "¿Qué es el don de Piedad?",
-    "keywords": [
-      "piedad",
-      "don de piedad",
-      "hijo de dios",
-      "fraternidad",
-      "dones del espiritu santo"
-    ],
+    "keywords": ["don de piedad", "piedad filial", "piedad"],
     "respuesta_breve": "El don de Piedad sana nuestro corazón de toda dureza y enciende en nosotros una profunda ternura y confianza hacia Dios como Padre, impulsándonos también a tratar al prójimo como a un verdadero hermano.",
-    "paso_concreto": "Acercate a alguien hoy con una actitud de compasión o mandale un mensaje sincero a alguien que lo esté necesitando."
+    "paso_concreto": "Acercate a alguien hoy con una actitud de compasión o mandale un mensaje sincero a alguien que lo esté necesitando.",
+    "enseñanza_de_la_iglesia": ["CIC 1831"],
+    "fundamento_biblico": ["Rm 8,15", "Gl 4,6"]
   },
   {
-    "id": "guia_uso_01",
+    "id": "providencia",
+    "modulo": "Lo que creemos",
+    "tema": "La predestinación",
+    "nivel": "intermedio",
+    "pregunta": "¿Estoy predestinado y entonces mis decisiones no importan?",
+    "keywords": ["predestinacion", "destino", "providencia"],
+    "puerta_de_entrada": "Un padre puede preparar una fiesta para sus hijos, pero no puede amar en lugar de ellos ni obligarlos a entrar. El plan del padre ofrece un hogar; la respuesta de cada hijo sigue siendo real.",
+    "respuesta_breve": "La predestinación no es un destino ciego ni una condena escrita de antemano. Es el plan eterno y amoroso de Dios, que nos eligió en Cristo para ser sus hijos y nos ofrece la gracia necesaria para la salvación. En ese plan Dios incluye también nuestra respuesta libre; por eso nuestras decisiones, nuestra conversión y nuestra perseverancia importan.",
+    "paradoja": "Dios conduce la historia sin convertir a las personas en marionetas.",
+    "paso_concreto": "En lugar de preguntarte si todo está decidido, pregunta: «¿Cómo puedo responder hoy al amor y a la gracia que Dios me ofrece?»",
+    "aclaracion": "La Iglesia enseña que Dios quiere la salvación de todos. Nadie está destinado al pecado ni puede afirmar con certeza absoluta que está condenado. La predestinación debe despertar confianza, humildad y cooperación con la gracia, no fatalismo ni falsa seguridad.",
+    "enseñanza_de_la_iglesia": ["CIC 600", "CIC 302", "CIC 306"],
+    "fundamento_biblico": ["Ef 1,3-6", "Jn 3,16", "Rom 8,29-30", "1 Tim 2,4"],
+    "oracion": "Padre, ayúdame a confiar en tu plan y a responder libremente a tu amor."
+  },
+  {
+    "id": "gracia-dones",
+    "modulo": "Lo que creemos",
+    "tema": "Los dones sobrenaturales",
+    "nivel": "intermedio",
+    "pregunta": "¿Qué recibe una persona cuando Dios la eleva a su amistad?",
+    "keywords": ["dones sobrenaturales", "gracia"],
+    "puerta_de_entrada": "Una persona puede aprender muchas cosas por sus propias capacidades, pero no puede darse a sí misma una amistad verdadera. La amistad se recibe como un regalo. Algo semejante ocurre con la gracia: podemos cooperar con ella, pero no fabricar la vida de Dios dentro de nosotros.",
+    "respuesta_breve": "Los dones sobrenaturales son regalos gratuitos de Dios que elevan al ser humano por encima de sus fuerzas naturales y lo hacen capaz de vivir en amistad con Él. Entre ellos están la gracia santificante, la fe, la esperanza, la caridad y los dones del Espíritu Santo.",
+    "paradoja": "La gracia no destruye lo humano: lo sana, lo eleva y lo lleva a su plenitud.",
+    "paso_concreto": "Antes de comenzar el día, pide a Dios vivir como hijo suyo y no solamente apoyarte en tus propias fuerzas.",
+    "enseñanza_de_la_iglesia": ["CIC 1996", "CIC 1997", "CIC 2003"],
+    "fundamento_biblico": ["2 Pe 1,4", "Jn 15,5", "Ef 2,8-9"],
+    "oracion": "Señor, recibe mi vida y hazme participar de tu vida."
+  },
+  {
+    "id": "guia_uso1",
     "categoria": "Programa",
     "pregunta_principal": "¿Cómo puedo utilizar Palabra Viva?",
     "keywords": [
-      "guia",
-      "ayuda",
-      "como usar",
-      "infobiblica",
-      "infolateral",
-      "infocamino",
-      "menu",
-      "barra lateral"
+      "guia de uso",
+      "como usar la app palabra viva",
+      "info",
+      "informacion",
+      "infocamino"
     ],
     "respuesta_breve": "Podés utilizar este espacio de distintas maneras: explorando el diálogo espiritual según tu momento del día, o usando el buscador bíblico en la barra lateral para pasajes exactos (como 'Juan 1:1'). También podés escribir 'infobiblica', 'infolateral' o 'infocamino' para guías rápidas.",
     "paso_concreto": "Probá escribir alguna de las palabras clave o explorá las opciones de aquí abajo para moverte por la app."
+  },
+  {
+    "id": "ofrecimiento_vida_cotidiana",
+    "categoria": "vida_cristiana",
+    "pregunta_principal": "¿Cómo puedo ofrecer mi vida a Dios como el pan y el vino?",
+    "puerta_de_entrada": "Dios no busca grandes hazañas lejanas, sino que nos pide el barro de nuestras manos, el cansancio del trabajo y las alegrías de todos los días para transformarlas por amor.",
+    "respuesta_breve": "Así como el pan y el vino se hacen con elementos sencillos de la tierra —trigo molido y uva pisada— y Dios los convierte en su Cuerpo y su Sangre, Él quiere tomar nuestra vida ordinaria. Cuando le entregamos nuestras tareas, nuestras luchas y nuestros dolores sin guardarnos nada, Dios los llena de su gracia y los vuelve fecundos para los demás.",
+    "paradoja": "Creemos que para servir a Dios necesitamos ser perfectos o extraordinarios, pero Él hace sus mayores milagros cuando le ofrecemos nuestra pequeñez con un corazón sincero.",
+    "aclaracion": "La Eucaristía es el sacrificio real y único de Cristo y su Presencia verdadera. Nuestra ofrenda diaria no repite el altar, sino que es una respuesta de amor: unimos nuestra pequeña cruz de cada día al gran sacrificio de Jesús.",
+    "paso_concreto": "Hoy, antes de arrancar a trabajar o en medio del momento más pesado del día, hacé una pausa de un minuto. Decile en silencio a Dios: 'Señor, te ofrezco este cansancio y estas ganas de hacer las cosas bien. Tomalos y usalos para el bien de alguien'.",
+    "oracion": "Señor Jesús, vos te hiciste pan de vida para saciar nuestra hambre. Tomá lo poco que soy y haceme pan partido y repartido para mis hermanos. Amén.",
+    "enseñanza_de_la_iglesia": [
+      "CIC 1368: La vida de los fieles, su trabajo y su sufrimiento se unen a los de Cristo"
+    ]
   }
 ]

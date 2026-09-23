@@ -1854,8 +1854,29 @@ document.addEventListener("DOMContentLoaded", () => {
       inputChat.blur();
 
       const textoUsuario = escaparHTML(textoUsuarioCrudo);
-      const textoLimpio = normalizarTexto(textoUsuarioCrudo);
-      const palabrasUsuario = obtenerPalabras(textoUsuarioCrudo);
+      let textoLimpio = normalizarTexto(textoUsuarioCrudo);
+      let palabrasUsuario = obtenerPalabras(textoUsuarioCrudo);
+
+      // 🧠 CAPA DE SINÓNIMOS DEL ÁRBITRO (Para que capte conceptos sin exigir la palabra exacta)
+      const diccionarioSinonimos = {
+        nazareno: "jesus",
+        salvador: "jesus",
+        mesias: "jesus",
+        cristo: "jesus",
+        virgen: "maria",
+        inmaculada: "maria",
+        madre: "maria",
+        espiritu: "espiritu santo",
+        paraclito: "espiritu santo",
+        trinidad: "dios",
+        creador: "dios",
+      };
+
+      for (let [sinonimo, canonico] of Object.entries(diccionarioSinonimos)) {
+        if (textoLimpio.includes(sinonimo)) {
+          textoLimpio += " " + canonico;
+        }
+      }
 
       contenedorMensajes.innerHTML += `<div class="mensaje-usuario">${textoUsuario}</div>`;
       inputChat.value = "";
@@ -1986,6 +2007,39 @@ document.addEventListener("DOMContentLoaded", () => {
             esperandoNombre = true;
             respuestaAsistente =
               "Listo, borré el nombre que tenía guardado. ¿Cómo querés que te llame ahora?";
+            // 🧭 DISPARADOR DE BIENVENIDA CON EL NOMBRE REGISTRADO
+          } else if (
+            textoLimpio.includes("para que sirve") ||
+            textoLimpio.includes("de que podemos hablar") ||
+            textoLimpio.includes("que te puedo preguntar") ||
+            textoLimpio.includes("de que podemos charlar") ||
+            textoLimpio.includes("como funciona") ||
+            textoLimpio.includes("que hay aqui") ||
+            textoLimpio.includes("que hay acá")
+          ) {
+            // Recupera el nombre que ya se guardó obligatoriamente al ingresar
+            let nombrePersona = localStorage.getItem("nombrePalabraViva");
+
+            respuestaAsistente =
+              `¡Hola, ${nombrePersona}! Este espacio está pensado para que podamos conversar, reflexionar y profundizar sobre la fe, la doctrina y temas espirituales con total confianza.\n\n` +
+              "Acá podés preguntarme sobre conceptos del catecismo, plantear tus dudas cotidianas o recorrer caminos guiados paso a paso.\n\n" +
+              "**¿Por dónde querés que arranquemos hoy?**\n" +
+              "• Escribí **'razón'** para iniciar el Camino de la Razón.\n" +
+              "• Preguntame sobre **Jesús, María, la Iglesia** o cualquier tema puntual.\n" +
+              "• O simplemente tirame una inquietud y lo charlamos.";
+          } else if (
+            textoLimpio.includes("que es la fe") ||
+            textoLimpio.includes("sobre la fe") ||
+            textoLimpio.includes("hablemos de la fe") ||
+            textoLimpio.includes("hablemos sobre la fe") ||
+            textoLimpio.includes("contame sobre la fe") ||
+            textoLimpio.includes("que me puedes decir sobre la fe") ||
+            textoLimpio.includes("que me podes decir sobre la fe") ||
+            textoLimpio === "fe"
+          ) {
+            respuestaAsistente =
+              "La **fe** es la adhesión personal de todo el hombre a Dios que se revela. Es el don gratuito de Dios y una virtud sobrenatural infundida por Él, mediante la cual creemos que lo que nos ha revelado es verdad.\n\n" +
+              "¿Te gustaría que profundicemos en cómo se relaciona la fe con la razón o querés que veamos algún aspecto en particular del catecismo sobre este tema?";
           } else if (
             palabrasUsuario.includes("gracias") ||
             textoLimpio.includes("muchas gracias") ||
@@ -2106,9 +2160,9 @@ document.addEventListener("DOMContentLoaded", () => {
 
                 baseDatosCatequesis.forEach((item) => {
                   let puntos = 0;
-                  const preguntaItem = normalizarTexto(
-                    item.pregunta_principal || "",
-                  );
+                  const textoPreguntaItem =
+                    item.pregunta_principal || item.pregunta || "";
+                  const preguntaItem = normalizarTexto(textoPreguntaItem);
 
                   if (textoLimpio.includes(preguntaItem)) {
                     puntos += 10;
@@ -2136,7 +2190,7 @@ document.addEventListener("DOMContentLoaded", () => {
                     item.categoria.toLowerCase() ===
                       categoriaActiva.toLowerCase()
                   ) {
-                    puntos += 4;
+                    puntos += 1;
                   }
 
                   if (puntos > maxPuntosCat) {
@@ -2146,17 +2200,16 @@ document.addEventListener("DOMContentLoaded", () => {
                 });
 
                 if (mejorMatchCat && maxPuntosCat >= 2) {
-                  let respuestaConstruida = `<strong>${mejorMatchCat.pregunta_principal}</strong><br><br>${mejorMatchCat.respuesta_breve}`;
+                  let respuestaConstruida =
+                    construirRespuestaCatequesis(mejorMatchCat);
 
-                  if (mejorMatchCat.paso_concreto) {
-                    respuestaConstruida += `<br><br>💡 <em>Paso concreto:</em> ${mejorMatchCat.paso_concreto}`;
-                  }
-
-                  // 🔑 LLAVE MAESTRA: Buscamos 2 ítems hermanos de la misma categoría para abrir nuevas puertas interactivas
+                  const categoriaBusqueda =
+                    mejorMatchCat.categoria || mejorMatchCat.modulo || "";
                   const relacionados = baseDatosCatequesis
                     .filter(
                       (item) =>
-                        item.categoria === mejorMatchCat.categoria &&
+                        (item.categoria === categoriaBusqueda ||
+                          item.modulo === categoriaBusqueda) &&
                         item.id !== mejorMatchCat.id,
                     )
                     .sort(() => 0.5 - Math.random())
@@ -2167,12 +2220,14 @@ document.addEventListener("DOMContentLoaded", () => {
                     respuestaConstruida += `<div class="camino-botones-activos" style="margin-top: 10px; display: flex; flex-direction: column; gap: 6px;">`;
 
                     relacionados.forEach((rel) => {
-                      const preguntaLimpia = rel.pregunta_principal
+                      const textoPregRel =
+                        rel.pregunta_principal || rel.pregunta || "";
+                      const preguntaLimpia = textoPregRel
                         .replace(/'/g, "\\'")
                         .replace(/"/g, "&quot;");
                       respuestaConstruida += `
                         <button onclick="enviarMensajeSugerido('${preguntaLimpia}')" style="background: #2c3e50; color: white; border: none; padding: 8px 14px; border-radius: 15px; cursor: pointer; text-align: left; font-family: inherit; font-size: 0.85rem; box-shadow: 0 1px 3px rgba(0,0,0,0.1);">
-                          📌 ${rel.pregunta_principal}
+                          📌 ${textoPregRel}
                         </button>
                       `;
                     });
@@ -2209,12 +2264,11 @@ document.addEventListener("DOMContentLoaded", () => {
                   if (mejorMatchFAQ && maxPuntosFAQ >= 2) {
                     respuestaAsistente = mejorMatchFAQ.respuesta;
                   } else {
-                    // --- C. COMODÍN HUMANO DINÁMICO (Con estilo reflexivo cotidiano) ---
                     const comodinesHumanos = [
                       "Qué tema ese. A veces nos pasa como con los átomos o con el viento: no los vemos con nuestros ojos, pero sabemos que están ahí. Contame un poco más de lo que estás pensando.",
                       "Lo que decís me deja pensando. Este es un espacio para explorar la fe, la Palabra y nuestras dudas de todos los días. ¿Querés que busquemos algo sobre nuestra fe o charlemos sobre otro tema?",
                       "¡Es para pensarlo! Acá podés venir con cualquier duda, desde historias de la Biblia hasta un ratito de oración. Contame un poco más hacia dónde te gustaría llevar la charla 🧉.",
-                      "Interesante lo que planteás. A veces las respuestas no vienen en un manual exacto, pero las vamos descubriendo al andar. ¿Querés que veamos algo de catequesis o preferís que charlemos tranquilos?",
+                      "Interesante lo que planteás. A veces las respuestas no vienen en un manual exacto, pero las vamos descubriendo al andar. ¿Querés que veamos algo de catequesis o preferís que charlamos tranquilos?",
                     ];
                     respuestaAsistente =
                       comodinesHumanos[
@@ -2236,7 +2290,7 @@ document.addEventListener("DOMContentLoaded", () => {
           "Se me trabó un segundo la idea, pero acá sigo con vos. ¿Qué me decías?";
       }
 
-      // Renderizado seguro de la respuesta en pantalla
+      // Renderizado seguro de la respuesta en pantalla (¡ahora sí adentro del if y del listener!)
       const textoCrudo =
         typeof respuestaAsistente === "string"
           ? respuestaAsistente
@@ -2559,3 +2613,51 @@ window.enviarMensajeSugerido = function (textoPregunta) {
     btnEnviar.click();
   }
 };
+// --- FUNCIÓN HELPER: Renderizado de fichas de catequesis enriquecidas ---
+function construirRespuestaCatequesis(item) {
+  const tituloPregunta = item.pregunta_principal || item.pregunta;
+  let html = `<strong>${tituloPregunta}</strong><br><br>`;
+
+  if (item.puerta_de_entrada) {
+    html += `🌱 <em>${item.puerta_de_entrada}</em><br><br>`;
+  }
+
+  const textoRespuesta = item.respuesta_breve || item.respuesta;
+  html += `${textoRespuesta}`;
+
+  if (item.paradoja) {
+    html += `<br><br>✨ <strong>Para pensar:</strong> ${item.paradoja}`;
+  }
+
+  if (item.aclaracion) {
+    html += `<br><br>📖 <em>Nota doctrinal:</em> ${item.aclaracion}`;
+  }
+
+  if (item.paso_concreto) {
+    html += `<br><br>💡 <em>Paso concreto:</em> ${item.paso_concreto}`;
+  }
+
+  if (item.oracion) {
+    html += `<br><br>🙏 <em>Oración:</em> «${item.oracion}»`;
+  }
+
+  let referenciasExtras = [];
+  if (
+    item.enseñanza_de_la_iglesia &&
+    Array.isArray(item.enseñanza_de_la_iglesia)
+  ) {
+    referenciasExtras.push(...item.enseñanza_de_la_iglesia);
+  }
+  if (item.catecismo && Array.isArray(item.catecismo)) {
+    referenciasExtras.push(...item.catecismo);
+  }
+  if (item.fundamento_biblico && Array.isArray(item.fundamento_biblico)) {
+    referenciasExtras.push(...item.fundamento_biblico);
+  }
+
+  if (referenciasExtras.length > 0) {
+    html += `<br><br><span style="font-size: 0.8rem; color: #7f8c8d;">📚 <em>Ref:</em> ${referenciasExtras.join(" | ")}</span>`;
+  }
+
+  return html;
+}
