@@ -1983,7 +1983,7 @@ document.addEventListener("DOMContentLoaded", () => {
               "Qué bajón arrastrar bronca o enojarse así. Desahogate tranquilo, te leo y te acompaño en este momento.";
           } else if (palabrasCansancio.some((p) => textoLimpio.includes(p))) {
             respuestaAsistente =
-              datosAsistente.respuestas_pastorales?.cansado.respuesta ||
+              datosAsistente.respuestas_pastorales?.cansado?.respuesta ||
               "Te entiendo perfectamente. A veces el día pesa un montón. Tomate un respiro y aflojá un poco 🧉.";
           } else if (palabrasSueno.some((p) => textoLimpio.includes(p))) {
             respuestaAsistente =
@@ -2157,6 +2157,42 @@ document.addEventListener("DOMContentLoaded", () => {
             pasoActualRazon > 1
           ) {
             respuestaAsistente = manejarCaminoRazon(textoUsuarioCrudo);
+          }
+          // --- PUENTE: CAMINO DE LA TRINIDAD ---
+          else if (
+            textoLimpio.includes("trinidad") ||
+            textoLimpio.includes("trino") ||
+            textoLimpio.includes("tres personas") ||
+            pasoActualTrinidad > 1
+          ) {
+            respuestaAsistente = manejarCaminoTrinidad(textoUsuarioCrudo);
+          }
+          // Puente camino Pascua
+          else if (
+            textoLimpio.includes("pascua") ||
+            textoLimpio.includes("misterio pascual") ||
+            textoLimpio.includes("resurreccion") ||
+            pasoActualPascua > 1
+          ) {
+            respuestaAsistente = manejarCaminoPascua(textoUsuarioCrudo);
+          }
+          // Puente camino Jesus
+          else if (
+            textoLimpio.includes("hombre y dios") ||
+            textoLimpio.includes("doble naturaleza") ||
+            textoLimpio.includes("humano y divino") ||
+            pasoActualJesus > 1
+          ) {
+            respuestaAsistente = manejarCaminoJesus(textoUsuarioCrudo);
+          }
+          // PUENTE: CAMINO DEL ALMA
+          else if (
+            textoLimpio.includes("alma") ||
+            textoLimpio.includes("cuerpo y alma") ||
+            textoLimpio.includes("camino del alma") ||
+            pasoActualAlma > 1
+          ) {
+            respuestaAsistente = manejarCaminoAlma(textoUsuarioCrudo);
           }
           // --- 3. MOTOR DE BÚSQUEDA INTELIGENTE EN CATEQUESIS Y FAQ ---
           else {
@@ -2688,41 +2724,40 @@ const caminoTrinidadData = [
   {
     paso: 1,
     pregunta:
-      "¿Cómo se puede entender que Dios sea uno y al mismo tiempo una comunidad de amor? La fe católica nos enseña que hay un solo Dios, pero en tres Personas distintas: el Padre, el Hijo y el Espíritu Santo. No son tres dioses separados, sino un único Dios que es, en su misma esencia, comunión y amor.",
+      "Partamos de una verdad central de nuestra fe: Dios no es una soledad silenciosa, sino una comunión eterna de amor. La fe nos enseña que hay un solo Dios, pero en tres Personas distintas: el Padre, el Hijo y el Espíritu Santo. ¿Te parece que concebir a Dios como comunión de amor cambia la forma en que nos relacionamos con Él?",
     siguiente: 2,
   },
   {
     paso: 2,
     pregunta:
-      "Santo Tomás de Aquino explica que las personas divinas se distinguen por sus relaciones de origen: el Padre engendra al Hijo, y el Espíritu Santo procede de ambos. Sin embargo, su naturaleza (su ser) es absolutamente una e indivisible.",
+      "Las Personas divinas no se dividen la divinidad; cada una es plenamente Dios, pero relacionada con las otras desde la eternidad. El Padre engendra al Hijo, y el Espíritu Santo procede del Padre y del Hijo como de un solo principio. ¿Querés que sigamos explorando cómo se revela este misterio?",
     siguiente: 3,
   },
   {
     paso: 3,
     pregunta:
-      "¿Pensaste alguna vez que el núcleo de lo divino no es la soledad, sino el vínculo y la entrega mutua? La Trinidad nos revela que Dios en sí mismo es relación y amor en acto.",
+      "En el Nuevo Testamento vemos destellos hermosos de esto, como en el bautismo de Jesús en el Jordán: el Hijo se bautiza, el Padre habla desde el cielo y el Espíritu Santo baja en forma de paloma. Dios se nos muestra involucrado en nuestra historia. ¿Te hace sentido pensar que la vida trinitaria es el modelo supremo de todo amor y entrega?",
     siguiente: 4,
   },
   {
     paso: 4,
     pregunta:
-      "Acción concreta para llevar hoy: Al hacer la señal de la cruz, hacela con pausa, recordando que cada persona de la Trinidad habita en tu corazón y te invita a vivir en comunión con los demás. ¿Querés que demos el paso final sobre este misterio central de nuestra fe?",
+      "El Catecismo nos recuerda que la Trinidad es el misterio central de la fe y de la vida cristiana, la fuente de todos los demás misterios. Esto significa que no es un acertijo para resolver con la cabeza, sino el misterio de la vida íntima de Dios al cual somos llamados por gracia. ¿Queremos dar el paso final para ver cómo llevar esto a nuestra vida diaria?",
     siguiente: 5,
   },
   {
     paso: 5,
     pregunta:
-      "El misterio de la Santísima Trinidad no es un problema matemático para resolver, sino un hogar donde entrar a habitar. Como dice el Catecismo (CIC 234), es el misterio central de la fe y de la vida cristiana. ¿Cómo puedes hoy abrir más tu corazón para dejarte envolver por ese amor de el Padre, el Hijo y el Espíritu Santo? 🧉✨",
+      "Llegamos al final del camino. La Trinidad no es solo una verdad para comprender: es el Dios que se nos revela como comunión de amor y nos llama a vivir en comunión con Él y con los demás. Al hacer la señal de la cruz, recordamos que somos del Padre, por el Hijo, en el Espíritu Santo. ¿Qué gesto concreto de escucha, perdón, servicio o reconciliación podés ofrecer hoy para que ese amor se haga visible en tu vida? Cuando lo decidas, hacé la señal de la cruz y pedile a Dios que te ayude a llevarlo a cabo.<br><br><em>«Que cada señal de la cruz te recuerde que el amor de Dios te precede y te envía a amar».</em> 🧉✨",
     siguiente: 1,
   },
 ];
-
 let pasoActualTrinidad = 1;
 
 function manejarCaminoTrinidad(mensajeUsuario) {
   const texto = mensajeUsuario.toLowerCase().trim();
 
-  // Si arranca el recorrido con las palabras clave
+  // Si arranca el recorrido
   if (
     texto.includes("trinidad") ||
     texto.includes("trino") ||
@@ -2730,16 +2765,9 @@ function manejarCaminoTrinidad(mensajeUsuario) {
   ) {
     pasoActualTrinidad = 1;
     const estacion = caminoTrinidadData[0];
-    const textoLimpio = estacion.pregunta
-      .replace(/'/g, "\\'")
-      .replace(/"/g, "&quot;");
-
     return `
-      <div><strong>Dios Uno y Trino</strong><br><br>${estacion.pregunta}</div>
+      <div><strong>El Camino de la Trinidad</strong><br><br>${estacion.pregunta}</div>
       <div class="trinidad-botones-activos" style="margin-top: 15px; display: flex; gap: 8px; justify-content: flex-end; align-items: center; flex-wrap: wrap;">
-        <button onclick="leerTextoDirecto('${textoLimpio}')" style="background: #000; color: #fff; border: 1px solid #d4af37; padding: 6px 14px; border-radius: 20px; cursor: pointer; font-size: 12px; display: inline-flex; align-items: center; gap: 4px;">
-          🔊 Escuchar
-        </button>
         <button onclick="avanzarCaminoTrinidadAutomatico()" style="background: #2c3e50; color: white; border: none; padding: 8px 18px; border-radius: 20px; cursor: pointer; font-family: inherit; font-size: 0.9rem; box-shadow: 0 2px 5px rgba(0,0,0,0.1);">
           Siguiente paso ➔
         </button>
@@ -2747,14 +2775,31 @@ function manejarCaminoTrinidad(mensajeUsuario) {
     `;
   }
 
-  // Manejo del paso final o decisiones si las hubiera
+  // Manejo directo del paso 5 (El gran cierre sin botones de avance)
+  if (pasoActualTrinidad === 5) {
+    pasoActualTrinidad = 1; // ¡Cerramos y reseteamos el tren de inmediato!
+    const estacionFinal = caminoTrinidadData.find((e) => e.paso === 5);
+    const textoLimpio = estacionFinal.pregunta
+      .replace(/'/g, "\\'")
+      .replace(/"/g, "&quot;");
+
+    return `
+      <div>${estacionFinal.pregunta}</div>
+      <div class="trinidad-botones-activos" style="margin-top: 15px; display: flex; gap: 8px; justify-content: flex-end; align-items: center; flex-wrap: wrap;">
+        <button onclick="leerTextoDirecto('${textoLimpio}')" style="background: #000; color: #fff; border: 1px solid #d4af37; padding: 6px 14px; border-radius: 20px; cursor: pointer; font-size: 12px; display: inline-flex; align-items: center; gap: 4px;">
+          🔊 Escuchar
+        </button>
+      </div>
+    `;
+  }
+
   const estacionActual = caminoTrinidadData.find(
     (e) => e.paso === pasoActualTrinidad,
   );
 
   if (!estacionActual) {
     pasoActualTrinidad = 1;
-    return `Hemos recorrido las estaciones de la Trinidad. ¿Querés que volvamos a empezar escribiendo "Trinidad" o preferís charlar sobre otro tema?`;
+    return `Hemos recorrido las estaciones principales de la Trinidad. ¿Querés que volvamos a empezar escribiendo "Trinidad" o preferís charlar sobre otro tema?`;
   }
 
   pasoActualTrinidad = estacionActual.siguiente;
@@ -2764,15 +2809,16 @@ function manejarCaminoTrinidad(mensajeUsuario) {
 
   if (!siguienteEstacion) {
     pasoActualTrinidad = 1;
-    return `Excelente reflexión. Aquí concluye nuestro recorrido por el misterio de la Trinidad. ¡Podemos seguir charlando de lo que gustes! 🧉✨`;
+    return `Excelente reflexión. Aquí concluye nuestro recorrido inicial por el Misterio de la Trinidad. ¡Podemos seguir charlando de lo que gustes!`;
   }
 
   const textoLimpio = siguienteEstacion.pregunta
     .replace(/'/g, "\\'")
     .replace(/"/g, "&quot;");
 
+  // Estaciones normales (1 a 4)
   return `
-    <div>Continuando el recorrido:<br><br>${siguienteEstacion.pregunta}</div>
+    <div>Es una hermosa forma de verlo. Pensando en eso:<br><br>${siguienteEstacion.pregunta}</div>
     <div class="trinidad-botones-activos" style="margin-top: 15px; display: flex; gap: 8px; justify-content: flex-end; align-items: center; flex-wrap: wrap;">
       <button onclick="leerTextoDirecto('${textoLimpio}')" style="background: #000; color: #fff; border: 1px solid #d4af37; padding: 6px 14px; border-radius: 20px; cursor: pointer; font-size: 12px; display: inline-flex; align-items: center; gap: 4px;">
         🔊 Escuchar
@@ -2784,14 +2830,445 @@ function manejarCaminoTrinidad(mensajeUsuario) {
   `;
 }
 
-function limpiarBotonesTrinidad() {
+function limpiarBotonesTrinidadAnteriores() {
   const botonesViejos = document.querySelectorAll(".trinidad-botones-activos");
   botonesViejos.forEach((el) => el.remove());
 }
 
 window.avanzarCaminoTrinidadAutomatico = function () {
-  limpiarBotonesTrinidad();
+  limpiarBotonesTrinidadAnteriores();
   const siguienteTexto = manejarCaminoTrinidad("continuar_paso");
+  const contenedorMensajes = document.getElementById("chat-mensajes");
+
+  if (contenedorMensajes) {
+    const nuevoMensaje = document.createElement("div");
+    nuevoMensaje.className = "mensaje-asistente";
+    nuevoMensaje.innerHTML = `<strong>Asistente:</strong><br><br>${siguienteTexto}`;
+    contenedorMensajes.appendChild(nuevoMensaje);
+    contenedorMensajes.scrollTop = contenedorMensajes.scrollHeight;
+  }
+};
+// 1. Array con las estaciones del Camino del Alma
+const caminoAlmaData = [
+  {
+    paso: 1,
+    pregunta:
+      "Hay una idea extraña que a veces se nos mete sin que la notemos: que el cuerpo sería una especie de envase y que el verdadero «yo» estaría escondido adentro, como un pasajero en un tren. Pero la fe cristiana nos propone algo más sorprendente: <strong>no sos un alma que tiene un cuerpo; sos una persona, cuerpo y alma</strong>.<br><br>Tu risa, tus manos, tu voz, el cansancio que sentís y el abrazo que das no son accesorios de tu vida. También son parte de tu historia. Dios creó el cuerpo y lo llama bueno; por eso, no tenemos que despreciarlo, sino cuidarlo y emplearlo para el bien. ¿Qué cambiaría en tu manera de tratar tu cuerpo y el de los demás si recordaras que toda persona tiene una dignidad inmensa ante Dios?",
+    siguiente: 2,
+  },
+  {
+    paso: 2,
+    pregunta:
+      "El alma no es una pequeña persona escondida detrás de tus ojos, ni una chispa de Dios desprendida de Él. Es el principio espiritual por el que este cuerpo es un cuerpo humano vivo y por el que podemos conocer, elegir y amar. <strong>No sos dos seres pegados: sos una sola persona, con una vida corporal y espiritual profundamente unidas.</strong><br><br>Y aquí aparece uno de esos misterios que parecen sencillos hasta que uno se detiene a mirarlos: podemos tocar el mundo con las manos y, sin embargo, preguntarnos por la verdad, el bien, la belleza y Dios. No somos menos corporales por tener alma, ni menos espirituales por tener cuerpo. ¿Qué pregunta importante lleva hoy tu corazón más allá de lo inmediato?",
+    siguiente: 3,
+  },
+  {
+    paso: 3,
+    pregunta:
+      "Tu dignidad no depende de ser joven, fuerte, exitoso, independiente o admirado. No es un premio que se obtiene por portarse bien ni un trofeo que se pierde cuando uno fracasa. Cada ser humano es querido por Dios y tiene una profundidad que ninguna etiqueta puede abarcar. Al entrar en lo más íntimo de sí, la persona puede descubrir que Dios la conoce y la espera.<br><br>Eso cambia la manera de mirar al prójimo. El que está enfermo no es «solo una carga»; el anciano no es «alguien que ya no sirve»; el pobre no es «un problema»; el desconocido no es «uno más». Cada persona es alguien, nunca simplemente algo. ¿A quién podrías mirar hoy con más paciencia y reconocer con un gesto concreto su dignidad?",
+    siguiente: 4,
+  },
+  {
+    paso: 4,
+    pregunta:
+      "La muerte nos duele porque no es una ilusión ni una puerta giratoria por la que nada importante se pierde. Separa el cuerpo y el alma, y esa separación es una herida. La Iglesia enseña que el alma espiritual subsiste después de la muerte, pero ese estado no es la meta definitiva ni significa que el cuerpo fuera un envoltorio desechable. La esperanza cristiana es la resurrección: Dios quiere salvar a la persona entera.<br><br>Por eso nuestra esperanza no consiste en escapar de la creación, sino en que Dios la lleve a su plenitud. Cristo resucitado no dejó su cuerpo en la tumba: la fe espera también la resurrección de nuestros cuerpos. Cuando extrañamos a alguien que murió, no fingimos que la separación no duele; confiamos a esa persona a Dios y esperamos la vida nueva que Él promete. ¿Hay alguien por quien quieras dar gracias o por quien quieras rezar hoy?",
+    siguiente: 5,
+  },
+  {
+    paso: 5,
+    pregunta:
+      "Llegamos al final del camino, pero no al final del misterio. Sos una persona querida por Dios: una unidad de cuerpo y alma, con una historia concreta, llamada a una vida que la muerte no puede completar por sola. La esperanza cristiana no dice que el cuerpo no importa; dice que Dios no abandona lo que creó y que nos llama a la resurrección.<br><br>Entonces, ¿qué gesto concreto podés hacer hoy para honrar la dignidad de tu vida y la de alguien más? Tal vez descansar sin culpa, pedir ayuda, reconciliarte, acompañar a una persona sola o cuidar con ternura a alguien enfermo. Elegí uno, aunque sea pequeño, y hacelo por amor. Porque a veces el alma no necesita escapar del mundo: necesita aprender, con todo el cuerpo, a amar en él.",
+    siguiente: 1,
+  },
+];
+
+// 2. Variable de estado para el Camino del Alma
+let pasoActualAlma = 1;
+
+// 3. Función principal de manejo
+function manejarCaminoAlma(mensajeUsuario) {
+  const texto = mensajeUsuario.toLowerCase().trim();
+
+  // Si arranca el recorrido con palabra clave
+  if (
+    texto.includes("alma") ||
+    texto.includes("cuerpo y alma") ||
+    texto.includes("camino del alma")
+  ) {
+    pasoActualAlma = 1;
+    const estacion = caminoAlmaData[0];
+    return `
+      <div><strong>El Camino del Alma</strong><br><br>${estacion.pregunta}</div>
+      <div class="alma-botones-activos" style="margin-top: 15px; display: flex; gap: 8px; justify-content: flex-end; align-items: center; flex-wrap: wrap;">
+        <button onclick="avanzarCaminoAlmaAutomatico()" style="background: #2c3e50; color: white; border: none; padding: 8px 18px; border-radius: 20px; cursor: pointer; font-family: inherit; font-size: 0.9rem; box-shadow: 0 2px 5px rgba(0,0,0,0.1);">
+          Siguiente paso ➔
+        </button>
+      </div>
+    `;
+  }
+
+  // Manejo directo del paso 5 (El gran cierre sin botones de avance)
+  if (pasoActualAlma === 5) {
+    pasoActualAlma = 1; // Reseteamos de inmediato
+    const estacionFinal = caminoAlmaData.find((e) => e.paso === 5);
+    const textoLimpio = estacionFinal.pregunta
+      .replace(/<[^>]*>?/gm, "") // Limpia etiquetas HTML para el lector de voz
+      .replace(/'/g, "\\'")
+      .replace(/"/g, "&quot;");
+
+    return `
+      <div>${estacionFinal.pregunta}</div>
+      <div class="alma-botones-activos" style="margin-top: 15px; display: flex; gap: 8px; justify-content: flex-end; align-items: center; flex-wrap: wrap;">
+        <button onclick="leerTextoDirecto('${textoLimpio}')" style="background: #000; color: #fff; border: 1px solid #d4af37; padding: 6px 14px; border-radius: 20px; cursor: pointer; font-size: 12px; display: inline-flex; align-items: center; gap: 4px;">
+          🔊 Escuchar
+        </button>
+      </div>
+    `;
+  }
+
+  const estacionActual = caminoAlmaData.find((e) => e.paso === pasoActualAlma);
+
+  if (!estacionActual) {
+    pasoActualAlma = 1;
+    return `Hemos recorrido las estaciones principales del Camino del Alma. ¿Querés que volvamos a empezar escribiendo "alma" o preferís charlar sobre otro tema?`;
+  }
+
+  pasoActualAlma = estacionActual.siguiente;
+  const siguienteEstacion = caminoAlmaData.find(
+    (e) => e.paso === pasoActualAlma,
+  );
+
+  if (!siguienteEstacion) {
+    pasoActualAlma = 1;
+    return `Excelente reflexión. Aquí concluye nuestro recorrido por el Camino del Alma. ¡Podemos seguir charlando de lo que gustes!`;
+  }
+
+  const textoLimpio = siguienteEstacion.pregunta
+    .replace(/<[^>]*>?/gm, "")
+    .replace(/'/g, "\\'")
+    .replace(/"/g, "&quot;");
+
+  // Estaciones normales (1 a 4)
+  return `
+    <div>Es una hermosa forma de verlo. Pensando en eso:<br><br>${siguienteEstacion.pregunta}</div>
+    <div class="alma-botones-activos" style="margin-top: 15px; display: flex; gap: 8px; justify-content: flex-end; align-items: center; flex-wrap: wrap;">
+      <button onclick="leerTextoDirecto('${textoLimpio}')" style="background: #000; color: #fff; border: 1px solid #d4af37; padding: 6px 14px; border-radius: 20px; cursor: pointer; font-size: 12px; display: inline-flex; align-items: center; gap: 4px;">
+        🔊 Escuchar
+      </button>
+      <button onclick="avanzarCaminoAlmaAutomatico()" style="background: #2c3e50; color: white; border: none; padding: 8px 18px; border-radius: 20px; cursor: pointer; font-family: inherit; font-size: 0.9rem; box-shadow: 0 2px 5px rgba(0,0,0,0.1);">
+        Siguiente paso ➔
+      </button>
+    </div>
+  `;
+}
+
+// 4. Funciones auxiliares de limpieza y avance automático
+function limpiarBotonesAlmaAnteriores() {
+  const botonesViejos = document.querySelectorAll(".alma-botones-activos");
+  botonesViejos.forEach((el) => el.remove());
+}
+
+window.avanzarCaminoAlmaAutomatico = function () {
+  limpiarBotonesAlmaAnteriores();
+  const siguienteTexto = manejarCaminoAlma("continuar_paso");
+  const contenedorMensajes = document.getElementById("chat-mensajes");
+
+  if (contenedorMensajes) {
+    const nuevoMensaje = document.createElement("div");
+    nuevoMensaje.className = "mensaje-asistente";
+    nuevoMensaje.innerHTML = `<strong>Asistente:</strong><br><br>${siguienteTexto}`;
+    contenedorMensajes.appendChild(nuevoMensaje);
+    contenedorMensajes.scrollTop = contenedorMensajes.scrollHeight;
+  }
+};
+// ==========================================
+// EL CAMINO DE LA PASCUA
+// ==========================================
+
+// 1. Array con las estaciones del Camino de la Pascua
+const caminoPascuaData = [
+  {
+    paso: 1,
+    pregunta:
+      "A veces miramos una cruz y pensamos que es el monumento definitivo al fracaso. Pero la gran sorpresa de la Pascua es exactamente al revés: es el trono desde donde Dios le gana la pulseada al mal. En la cruz, Cristo no vino a hacer teatro ni a sufrir por deporte; se entregó libremente por amor y cargó con nuestros pecados para reconciliarnos con el Padre. ¿Qué le decís en tu interior a un Dios que prefiere jugarse el pellejo antes que dejarnos sueltos en nuestra miseria?",
+    siguiente: 2,
+  },
+  {
+    paso: 2,
+    pregunta:
+      "El Viernes Santo nos deja con un silencio espeso, de esos donde parece que los malos ganaron la partida y la historia se cerró con llave. Pero la Iglesia nos enseña algo insólito: en ese tramo, Jesús descendió a los infiernos. No como un derrotado que cae al calabozo, sino como el Libertador que patea la puerta de adentro para ir a buscar a los justos que lo esperaban. ¡Hasta en la muerte misma se metió el Autor de la vida! ¿Cómo te impacta saber que ni el fondo del abismo queda fuera de su radio de acción?",
+    siguiente: 3,
+  },
+  {
+    paso: 3,
+    pregunta:
+      "El Sábado es el día del gran silencio. El mundo sigue girando como si nada, los discípulos están escondidos con llave y da la sensación de que Dios se tomó franco indefinido. Es el clásico día donde no pasa nada y, sin embargo, se juega todo. A veces transitamos nuestros propios sábados santos, esos callejones oscuros donde las respuestas no aparecen y la baraja parece venir cambiada. El Sábado Santo nos enseña el arte de esperar en la penumbra sin salir corriendo a inventar salvaciones truchas. ¿Cómo llevás tus propias esperas cuando la luz tarda en prenderse?",
+    siguiente: 4,
+  },
+  {
+    paso: 4,
+    pregunta:
+      "Y cuando ya nos estábamos acostumbrando a la penumbra, salta la sorpresa: el domingo. La piedra rodada, la tumba vacía y las risas incrédulas de los que creían que el cajón era el punto final. La Resurrección no es un cuento para dormir niños ni un consuelo psicológico, sino el hecho más sacudiénte de la historia que inaugura una creación nueva. Y atención a la paradoja: la esperanza cristiana no es la de un alma flotando en el éter, sino la de Dios rescatando a la persona entera, carne y hueso incluidos. ¿Qué peso de tus tristezas te gustaría dejar hoy bien atado frente al sepulcro vacío?",
+    siguiente: 5,
+  },
+  {
+    paso: 5,
+    pregunta:
+      "Llegamos al final del recorrido pascual, pero resulta que es el arranque de nuestra verdadera aventura. Resucitar con Cristo no es una cuestión de portarse bien para ganarse un premio, sino de dejarse invadir por su gracia. Es darnos cuenta de que el rencor y el egoísmo son modas viejas y aburridas, y que perdonar o servir es estrenar la vida nueva del cielo acá abajo. Cada gesto gratuito de amor es una prueba de que el Resucitado anda suelto por el barrio. ¿Qué gesto de vida nueva vas a regalar hoy para que se note que la muerte perdió?",
+    siguiente: 1,
+  },
+];
+
+// 2. Variable de estado para el Camino de la Pascua
+let pasoActualPascua = 1;
+
+// 3. Función principal de manejo
+function manejarCaminoPascua(mensajeUsuario) {
+  const texto = mensajeUsuario.toLowerCase().trim();
+
+  // Si arranca el recorrido con palabra clave
+  if (
+    texto.includes("pascua") ||
+    texto.includes("pascuas") ||
+    texto.includes("resurreccion") ||
+    texto.includes("resurrección")
+  ) {
+    pasoActualPascua = 1;
+    const estacion = caminoPascuaData[0];
+    return `
+      <div><strong>El Camino de la Pascua</strong><br><br>${estacion.pregunta}</div>
+      <div class="pascua-botones-activos" style="margin-top: 15px; display: flex; gap: 8px; justify-content: flex-end; align-items: center; flex-wrap: wrap;">
+        <button onclick="avanzarCaminoPascuaAutomatico()" style="background: #2c3e50; color: white; border: none; padding: 8px 18px; border-radius: 20px; cursor: pointer; font-family: inherit; font-size: 0.9rem; box-shadow: 0 2px 5px rgba(0,0,0,0.1);">
+          Siguiente paso ➔
+        </button>
+      </div>
+    `;
+  }
+
+  // Manejo directo del paso 5 (El gran cierre sin botones de avance)
+  if (pasoActualPascua === 5) {
+    pasoActualPascua = 1; // Reseteamos de inmediato
+    const estacionFinal = caminoPascuaData.find((e) => e.paso === 5);
+    const textoLimpio = estacionFinal.pregunta
+      .replace(/<[^>]*>?/gm, "") // Limpia etiquetas HTML para el lector de voz
+      .replace(/'/g, "\\'")
+      .replace(/"/g, "&quot;");
+
+    return `
+      <div>${estacionFinal.pregunta}</div>
+      <div class="pascua-botones-activos" style="margin-top: 15px; display: flex; gap: 8px; justify-content: flex-end; align-items: center; flex-wrap: wrap;">
+        <button onclick="leerTextoDirecto('${textoLimpio}')" style="background: #000; color: #fff; border: 1px solid #d4af37; padding: 6px 14px; border-radius: 20px; cursor: pointer; font-size: 12px; display: inline-flex; align-items: center; gap: 4px;">
+          🔊 Escuchar
+        </button>
+      </div>
+    `;
+  }
+
+  // 1. Buscamos la estación actual según el paso en el que estamos
+  const estacionActual = caminoJesusData.find(
+    (e) => e.paso === pasoActualJesus,
+  );
+
+  if (!estacionActual) {
+    pasoActualJesus = 1;
+    return `Hemos recorrido las estaciones principales. ¿Querés que volvamos a empezar o preferís charlar sobre otro tema?`;
+  }
+
+  // 2. Preparamos el texto limpio para el audio
+  const textoLimpio = estacionActual.pregunta
+    .replace(/<[^>]*>?/gm, "")
+    .replace(/'/g, "\\'")
+    .replace(/"/g, "&quot;");
+
+  // 3. ¡CONTROL DE CIERRE! Si la estación actual que estamos mostrando es la número 5:
+  if (pasoActualJesus === 5) {
+    pasoActualJesus = 1; // Reseteamos de inmediato para el próximo arranque
+    return `
+      <div>Es una hermosa forma de verlo. Pensando en eso:<br><br>${estacionActual.pregunta}</div>
+      <div class="jesus-botones-activos" style="margin-top: 15px; display: flex; gap: 8px; justify-content: flex-end; align-items: center; flex-wrap: wrap;">
+        <button onclick="leerTextoDirecto('${textoLimpio}')" style="background: #000; color: #fff; border: 1px solid #d4af37; padding: 6px 14px; border-radius: 20px; cursor: pointer; font-size: 12px; display: inline-flex; align-items: center; gap: 4px;">
+          🔊 Escuchar
+        </button>
+      </div>
+    `;
+  }
+
+  // 4. SÓLO si estamos en los pasos 1, 2, 3 o 4, preparamos el *siguiente* paso al que va a saltar la próxima vez
+  pasoActualJesus = estacionActual.siguiente;
+
+  return `
+    <div>Es una hermosa forma de verlo. Pensando en eso:<br><br>${estacionActual.pregunta}</div>
+    <div class="jesus-botones-activos" style="margin-top: 15px; display: flex; gap: 8px; justify-content: flex-end; align-items: center; flex-wrap: wrap;">
+      <button onclick="leerTextoDirecto('${textoLimpio}')" style="background: #000; color: #fff; border: 1px solid #d4af37; padding: 6px 14px; border-radius: 20px; cursor: pointer; font-size: 12px; display: inline-flex; align-items: center; gap: 4px;">
+        🔊 Escuchar
+      </button>
+      <button onclick="avanzarCaminoJesusAutomatico()" style="background: #2c3e50; color: white; border: none; padding: 8px 18px; border-radius: 20px; cursor: pointer; font-family: inherit; font-size: 0.9rem; box-shadow: 0 2px 5px rgba(0,0,0,0.1);">
+        Siguiente paso ➔
+      </button>
+    </div>
+  `;
+}
+
+// 4. Funciones auxiliares de limpieza y avance automático para la Pascua
+function limpiarBotonesPascuaAnteriores() {
+  const botonesViejos = document.querySelectorAll(".pascua-botones-activos");
+  botonesViejos.forEach((el) => el.remove());
+}
+
+window.avanzarCaminoPascuaAutomatico = function () {
+  limpiarBotonesPascuaAnteriores();
+  const siguienteTexto = manejarCaminoPascua("continuar_paso");
+  const contenedorMensajes = document.getElementById("chat-mensajes");
+
+  if (contenedorMensajes) {
+    const nuevoMensaje = document.createElement("div");
+    nuevoMensaje.className = "mensaje-asistente";
+    nuevoMensaje.innerHTML = `<strong>Asistente:</strong><br><br>${siguienteTexto}`;
+    contenedorMensajes.appendChild(nuevoMensaje);
+    contenedorMensajes.scrollTop = contenedorMensajes.scrollHeight;
+  }
+};
+// ==========================================
+// EL CAMINO DE JESÚS (DIOS Y HOMBRE)
+// ==========================================
+
+// 1. Array con las estaciones del Camino de Jesús
+// 1. Array con las estaciones del Camino de Jesús
+const caminoJesusData = [
+  {
+    paso: 1,
+    pregunta:
+      "A veces imaginamos que Jesús era Dios disfrazado de hombre, como quien se pone un piloto para salir bajo la lluvia. Pero el misterio es mucho más asombroso: <strong>el Hijo de Dios no hizo de cuenta que era humano; se hizo verdaderamente hombre sin dejar de ser Dios</strong>. Tuvo una madre, aprendió a caminar, trabajó con manos humanas y conoció el cansancio. El Creador entró de verdad en nuestra historia, en un rincón concreto de Galilea. ¿Qué te despierta pensar que Dios quiso acercarse así a nosotros?",
+    siguiente: 2,
+  },
+  {
+    paso: 2,
+    pregunta:
+      "Jesús tuvo cuerpo y alma humanos, inteligencia y voluntad humanas, y un corazón capaz de amar con afecto humano. Comió, durmió, se cansó, lloró y sufrió de verdad. Cuando lloró ante la tumba de Lázaro, no estaba representando el dolor: el Hijo de Dios lloraba con lágrimas humanas. Y en Getsemaní atravesó una angustia verdadera, confiándose al Padre. <strong>Lo humano y lo divino no se mezclan en Jesús, pero tampoco se separan: es una sola Persona, el Hijo eterno, quien vive nuestra humanidad.</strong> ¿Qué cambia en tu manera de acercarte a Jesús al saber que conoce la vida humana desde dentro?",
+    siguiente: 3,
+  },
+  {
+    paso: 3,
+    pregunta:
+      "Tal vez esperamos que el poder siempre se anuncie con ruido, distancia y órdenes. Jesús nos muestra algo desconcertante: el Hijo de Dios se arrodilla para lavar los pies, se acerca al enfermo y anuncia la misericordia. No deja de ser Señor cuando sirve; nos revela qué clase de Señor es. Su humildad no es debilidad ni una renuncia al bien: es el amor de Dios acercándose para levantar al ser humano. ¿A quién podrías servir hoy con un gesto sencillo, sin buscar que te lo devuelvan?",
+    siguiente: 4,
+  },
+  {
+    paso: 4,
+    pregunta:
+      "Jesús no nos salva desde lejos. El Hijo asumió una humanidad verdadera y, en ella, vivió su obediencia al Padre hasta la muerte; por su entrega y su Resurrección nos reconcilia con Dios. No hay que imaginar dos personajes —un hombre llamado Jesús y, detrás, el Hijo de Dios—: <strong>quien nace de María, sirve, sufre y resucita es la Persona divina del Hijo, actuando y viviendo también según su humanidad</strong>. Por eso ninguna dimensión honesta de nuestra vida humana es despreciable ante Dios. ¿Hay alguna pena o parte de tu historia que te cueste poner en manos de Jesús?",
+    siguiente: 5,
+  },
+  {
+    paso: 5,
+    pregunta:
+      "Llegamos al final del camino, ante un misterio que no se agota: <strong>el Hijo de Dios se hizo hombre para hacernos participar, por gracia, de la vida de Dios</strong>. Conocer a Jesús no es aprender una idea distante: es encontrarse con el Hijo que nos conoce y nos llama a seguirlo. ¿Cómo podés tratar hoy a alguien con la cercanía, la verdad y el servicio con que Jesús se acercó a las personas? Elegí un gesto concreto y hacelo por amor. Que al mirar a Jesús descubramos cuánto vale nuestra humanidad y aprendamos a vivirla con Él.",
+    siguiente: 1,
+  },
+];
+
+// 2. Variable de estado para el Camino de Jesús
+let pasoActualJesus = 1;
+
+// 3. Función principal de manejo
+function manejarCaminoJesus(mensajeUsuario) {
+  const texto = mensajeUsuario.toLowerCase().trim();
+
+  // Si arranca el recorrido con palabra clave
+  if (
+    texto.includes("jesus") ||
+    texto.includes("jesús") ||
+    texto.includes("verdadero dios") ||
+    texto.includes("hombre y dios")
+  ) {
+    pasoActualJesus = 1;
+    const estacion = caminoJesusData[0];
+
+    // Preparamos el texto limpio para el audio del paso 1 en el arranque
+    const textoLimpioInicio = estacion.pregunta
+      .replace(/<[^>]*>?/gm, "")
+      .replace(/'/g, "\\'")
+      .replace(/"/g, "&quot;");
+
+    return `
+      <div><strong>El Camino de Jesús (Dios y Hombre)</strong><br><br>${estacion.pregunta}</div>
+      <div class="jesus-botones-activos" style="margin-top: 15px; display: flex; gap: 8px; justify-content: flex-end; align-items: center; flex-wrap: wrap;">
+        <button onclick="leerTextoDirecto('${textoLimpioInicio}')" style="background: #000; color: #fff; border: 1px solid #d4af37; padding: 6px 14px; border-radius: 20px; cursor: pointer; font-size: 12px; display: inline-flex; align-items: center; gap: 4px;">
+          🔊 Escuchar
+        </button>
+        <button onclick="avanzarCaminoJesusAutomatico()" style="background: #2c3e50; color: white; border: none; padding: 8px 18px; border-radius: 20px; cursor: pointer; font-family: inherit; font-size: 0.9rem; box-shadow: 0 2px 5px rgba(0,0,0,0.1);">
+          Siguiente paso ➔
+        </button>
+      </div>
+    `;
+  }
+
+  // Manejo directo del paso 5 (El gran cierre sin botones de avance)
+  if (pasoActualJesus === 5) {
+    pasoActualJesus = 1; // Reseteamos de inmediato
+    const estacionFinal = caminoJesusData.find((e) => e.paso === 5);
+    const textoLimpio = estacionFinal.pregunta
+      .replace(/<[^>]*>?/gm, "") // Limpia etiquetas HTML para el lector de voz
+      .replace(/'/g, "\\'")
+      .replace(/"/g, "&quot;");
+
+    return `
+      <div>${estacionFinal.pregunta}</div>
+      <div class="jesus-botones-activos" style="margin-top: 15px; display: flex; gap: 8px; justify-content: flex-end; align-items: center; flex-wrap: wrap;">
+        <button onclick="leerTextoDirecto('${textoLimpio}')" style="background: #000; color: #fff; border: 1px solid #d4af37; padding: 6px 14px; border-radius: 20px; cursor: pointer; font-size: 12px; display: inline-flex; align-items: center; gap: 4px;">
+          🔊 Escuchar
+        </button>
+      </div>
+    `;
+  }
+
+  const estacionActual = caminoJesusData.find(
+    (e) => e.paso === pasoActualJesus,
+  );
+
+  if (!estacionActual) {
+    pasoActualJesus = 1;
+    return `Hemos recorrido las estaciones principales del Camino de Jesús. ¿Querés que volvamos a empezar escribiendo "Jesús" o preferís charlar sobre otro tema?`;
+  }
+
+  pasoActualJesus = estacionActual.siguiente;
+  const siguienteEstacion = caminoJesusData.find(
+    (e) => e.paso === pasoActualJesus,
+  );
+
+  if (!siguienteEstacion) {
+    pasoActualJesus = 1;
+    return `Excelente reflexión. Aquí concluye nuestro recorrido por el Camino de Jesús. ¡Podemos seguir charlando de lo que gustes!`;
+  }
+
+  const textoLimpio = siguienteEstacion.pregunta
+    .replace(/<[^>]*>?/gm, "")
+    .replace(/'/g, "\\'")
+    .replace(/"/g, "&quot;");
+
+  // Estaciones normales (1 a 4)
+  return `
+    <div>Es una hermosa forma de verlo. Pensando en eso:<br><br>${siguienteEstacion.pregunta}</div>
+    <div class="jesus-botones-activos" style="margin-top: 15px; display: flex; gap: 8px; justify-content: flex-end; align-items: center; flex-wrap: wrap;">
+      <button onclick="leerTextoDirecto('${textoLimpio}')" style="background: #000; color: #fff; border: 1px solid #d4af37; padding: 6px 14px; border-radius: 20px; cursor: pointer; font-size: 12px; display: inline-flex; align-items: center; gap: 4px;">
+        🔊 Escuchar
+      </button>
+      <button onclick="avanzarCaminoJesusAutomatico()" style="background: #2c3e50; color: white; border: none; padding: 8px 18px; border-radius: 20px; cursor: pointer; font-family: inherit; font-size: 0.9rem; box-shadow: 0 2px 5px rgba(0,0,0,0.1);">
+        Siguiente paso ➔
+      </button>
+    </div>
+  `;
+}
+
+// 4. Funciones auxiliares de limpieza y avance automático para el Camino de Jesús
+function limpiarBotonesJesusAnteriores() {
+  const botonesViejos = document.querySelectorAll(".jesus-botones-activos");
+  botonesViejos.forEach((el) => el.remove());
+}
+
+window.avanzarCaminoJesusAutomatico = function () {
+  limpiarBotonesJesusAnteriores();
+  const siguienteTexto = manejarCaminoJesus("continuar_paso");
   const contenedorMensajes = document.getElementById("chat-mensajes");
 
   if (contenedorMensajes) {
