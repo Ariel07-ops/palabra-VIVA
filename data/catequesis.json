@@ -762,6 +762,223 @@
     "fundamento_biblico": ["2 Pe 1,4", "Jn 15,5", "Ef 2,8-9"],
     "oracion": "Señor, recibe mi vida y hazme participar de tu vida."
   },
+
+  {
+    "id": "dogmas-fe",
+    "categoria": "Doctrina y Fe",
+    "pregunta_principal": "¿Qué es un dogma de fe?",
+    "keywords": ["que es un dogma", "dogmas de la iglesia", "dogma", "dogmas"],
+    "respuesta_breve": "Un dogma no es una cadena para la mente, sino un faro luminoso que la Iglesia enciende para cuidar el sentido auténtico del Evangelio. Son verdades reveladas por Dios que nos guían sin error en el camino hacia Él.",
+    "paso_concreto": "Agradecé hoy a Dios porque la Iglesia nos regala certezas firmes para no naufragar en medio de tantas opiniones pasajeras.",
+    "enseñanza_de_la_iglesia": ["CIC 88", "CIC 89"],
+    "fundamento_biblico": ["1 Tim 3,15"]
+  },
+  {
+    "id": "biblia-origen",
+    "categoria": "Biblia",
+    "pregunta_principal": "¿Quién recopiló y dio forma a la Biblia que hoy conocemos?",
+    "keywords": [
+      "quien hizo la biblia",
+      "origen de la biblia",
+      "papa san damaso",
+      "canon biblico",
+      "san jeronimo"
+    ],
+    "respuesta_breve": "La Biblia no cayó del cielo en un libro encuadernado; fue la Iglesia Católica la que, guided por el Espíritu Santo, reconoció y fijó oficialmente el canon de los 73 libros sagrados bajo el liderazgo del **Papa San Dámaso I** en el Concilio de Roma (año 382), encomendándole también a San Jerónimo la histórica traducción latina de la Vulgata.",
+    "paso_concreto": "Abrí hoy la Biblia con gratitud, sabiendo que es un tesoro custodiado y entregado por la comunidad de la Iglesia a lo largo de los siglos.",
+    "enseñanza_de_la_iglesia": ["CIC 120", "CIC 134"],
+    "fundamento_biblico": ["2 Pe 1,20-21"]
+  },
+  {
+    "id": "purgatorio",
+    "categoria": "Vida Cristiana",
+    "pregunta_principal": "¿Qué es el Purgatorio?",
+    "keywords": [
+      "que es el purgatorio",
+      "purgatorio",
+      "purificacion despues de la muerte"
+    ],
+    "respuesta_breve": "El Purgatorio no es una sala de castigo, sino la misericordiosa 'sala de belleza' de Dios. Quienes mueren en su gracia pero aún cargan con las manchas del egoísmo y las secuelas del pecado pasan por una purificación final para poder soportar el brillo pleno de su amor infinito.",
+    "paso_concreto": "Rezá hoy un Padre Nuestro por las almas de los difuntos, pidiendo que el Señor complete en ellos su obra de amor.",
+    "enseñanza_de_la_iglesia": ["CIC 1030", "CIC 1031", "CIC 1032"],
+    "fundamento_biblico": ["1 Cor 3,15", "2 Mac 12,46"]
+  },
+  {
+    "id": "parabolas-jesus",
+    "categoria": "Jesucristo",
+    "pregunta_principal": "¿Por qué enseñaba Jesús por medio de parábolas?",
+    "keywords": [
+      "parabolas de jesus",
+      "que es una parabola",
+      "enseñanzas de jesus parabolas"
+    ],
+    "respuesta_breve": "«El misterio del Reino de Dios a ustedes les ha sido dado» (Mc 4,11). Jesús usaba historias sencillas de la vida cotidiana —la sembradura, la oveja perdida, el hijo pródigo— para sacudir el corazón y explicar con imágenes terrenales la hondura infinita del amor del Padre.",
+    "paso_concreto": "Leé hoy la parábola del Hijo Pródigo (Lucas 15, 11-32) y ponete en el lugar del hijo que vuelve a los brazos del Padre.",
+    "enseñanza_de_la_iglesia": ["CIC 546"],
+    "fundamento_biblico": ["Mt 13,34-35", "Mc 4,33-34"]
+  },
+  {
+    "id": "parabola-vid-sarmientos",
+    "categoria": "Jesucristo",
+    "pregunta_principal": "¿Qué nos enseña la parábola de la vid y los sarmientos?",
+    "keywords": [
+      "vid y los sarmientos",
+      "permanezcan en mi",
+      "sin mi no pueden hacer nada",
+      "la vid verdadera"
+    ],
+    "respuesta_breve": "«Yo soy la vid, ustedes los sarmientos. El que permanece en mí y yo en él, ése da mucho fruto» (Jn 15,5). Jesús nos enseña que la vida cristiana no es un esfuerzo puramente moral de portarse bien por cuenta propia, sino una comunión de vida vital con Él. Separados de la vid, los sarmientos se secan y no sirven para nada.",
+    "paso_concreto": "Dedica unos minutos hoy a conectar tu día con la oración, recordando que toda gracia y fruto espiritual fluyen de estar unido a Él.",
+    "enseñanza_de_la_iglesia": ["CIC 787", "CIC 2074"],
+    "fundamento_biblico": ["Jn 15,1-8"]
+  },
+  {
+    "id": "parabola-tesoro-escondido",
+    "categoria": "Jesucristo",
+    "pregunta_principal": "¿Qué nos enseña la parábola del tesoro escondido y la perla fina?",
+    "keywords": [
+      "tesoro escondido",
+      "perla fina",
+      "vende todo lo que tiene",
+      "el reino de los cielos es semejante a un tesoro"
+    ],
+    "respuesta_breve": "«El Reino de los Cielos es semejante a un tesoro escondido en un campo... que, al encontrarlo, un hombre lo vuelve a esconder y, por la alegría que le da, va, vende todo lo que tiene y compra el campo» (Mt 13,44). Descubrir a Cristo y su Reino no es una carga pesada, sino un hallazgo de tal hermosura y valor que relativiza todo lo demás con alegría.",
+    "paso_concreto": "Identificá hoy qué ocupa el primer lugar en tu corazón y agradecele a Dios por ser el tesoro que da sentido a tu vida.",
+    "enseñanza_de_la_iglesia": ["CIC 1723", "CIC 2544"],
+    "fundamento_biblico": ["Mt 13,44-46"]
+  },
+  {
+    "id": "parabola-talentos",
+    "categoria": "Jesucristo",
+    "pregunta_principal": "¿Qué nos enseña la parábola de los talentos?",
+    "keywords": [
+      "talentos",
+      "parabola de los talentos",
+      "administrador fiel",
+      "siervo bueno y fiel"
+    ],
+    "respuesta_breve": "«A uno le dio cinco talentos, a otro dos y a otro uno, a cada cual según su capacidad» (Mt 25,15). Dios nos confía dones, tiempo y capacidades no para enterrarlos por miedo o comodidad, sino para hacerlos fructificar con audacia y generosidad en la construcción de su Reino.",
+    "paso_concreto": "Pensá en un talento o don que Dios te dio (escucha, carpintería, alegría, servicio) y usalo hoy para bendecir a alguien.",
+    "enseñanza_de_la_iglesia": ["CIC 1936", "CIC 2072"],
+    "fundamento_biblico": ["Mt 25,14-30"]
+  },
+  {
+    "id": "parabola-bodas",
+    "categoria": "Jesucristo",
+    "pregunta_principal": "¿Qué nos enseña la parábola de las bodas del hijo?",
+    "keywords": [
+      "bodas del hijo del rey",
+      "invitados a las bodas",
+      "el traje de bodas",
+      "muchos llamados y pocos escogidos"
+    ],
+    "respuesta_breve": "«El Reino de los Cielos es semejante a un rey que celebró el banquete de bodas de su hijo» (Mt 22,2). Dios nos invita a todos a la alegría eterna de su banquete, pero exige la respuesta de la conversión: vestir el «traje de bodas», que es la gracia de vivir una fe auténtica traducida en obras de amor y justicia.",
+    "paso_concreto": "Revisá hoy si estás respondiendo a la invitación de Dios con un corazón transformado por sus obras o por pura costumbre.",
+    "enseñanza_de_la_iglesia": ["CIC 546", "CIC 1625"],
+    "fundamento_biblico": ["Mt 22,1-14"]
+  },
+  {
+    "id": "parabola-virgenes",
+    "categoria": "Jesucristo",
+    "pregunta_principal": "¿Qué nos enseña la parábola de las virgenes prudentes y necias?",
+    "keywords": [
+      "virgenes prudentes y necias",
+      "las lamparas y el aceite",
+      "velad porque no sabeis el dia",
+      "el esposo llega"
+    ],
+    "respuesta_breve": "«Las necias, al tomar sus lámparas, no llevaron consigo aceite; en cambio, las prudentes tomaron aceite en las alcuzas junto con sus lámparas» (Mt 25,3-4). Jesús nos llama a la vigilancia constante y a la preparación espiritual: el aceite de la fe, la gracia y las buenas obras no se puede prestar ni improvisar a última hora.",
+    "paso_concreto": "Aprovechá hoy para avivar tu oración y alimentar tu vida espiritual, recordando que el encuentro con el Señor requiere constancia diaria.",
+    "enseñanza_de_la_iglesia": ["CIC 671", "CIC 2612"],
+    "fundamento_biblico": ["Mt 25,1-13"]
+  },
+  {
+    "id": "sermon de la montaña",
+    "categoria": "Vida Cristiana",
+    "pregunta_principal": "¿Qué nos enseña el sermon de la montaña",
+    "keywords": ["aventuranzas", "sermon de la montana", "que son las biena"],
+    "respuesta_breve": "Las Bienaventuranzas (Mateo 5, 3-12) son el carnet de identidad del cristiano y la contrarrascada del mundo. No son una lista de prohibiciones, sino el mapa de ruta que Jesús nos regala para alcanzar la verdadera felicidad, apostando por la humildad, la paz, la misericordia y la justicia.",
+    "paso_concreto": "Elegí una de las Bienaventuranzas hoy (por ejemplo, «Felices los misericordiosos») y tratá de ponerla en práctica con alguien cercano.",
+    "enseñanza_de_la_iglesia": ["CIC 1716", "CIC 1717"],
+    "fundamento_biblico": ["Mt 5,3-12"]
+  },
+
+  {
+    "id": "concilios-fe",
+    "categoria": "Doctrina y Fe",
+    "pregunta_principal": "¿Qué son los concilios ecuménicos y por qué se hicieron?",
+    "keywords": [
+      "que es un concilio",
+      "concilios ecumenicos",
+      "arrianismo",
+      "concilio de nicea",
+      "concilio de calcedonia"
+    ],
+    "respuesta_breve": "A lo largo de la historia, cuando surgían discusiones o herejías que ponían en riesgo la fe de los fieles (como el arrianismo, que decía que Jesús era solo una criatura superior pero no Dios), la Iglesia se reunía en **Concilio Ecuménico** —una asamblea de obispos de todo el mundo convocada con el Papa—. No inventaban verdades nuevas, sino que usaban la brújula de la Tradición y la Escritura para aclarar con precisión qué es lo que realmente creemos.",
+    "paso_concreto": "Agradecé hoy el esfuerzo de tantos pastores y santos a lo largo de los siglos que defendieron la fe para que hoy nos llegue limpia y sin recortes.",
+    "enseñanza_de_la_iglesia": ["CIC 884", "CIC 885"],
+    "fundamento_biblico": [
+      "Hch 15,28 - 'El Espíritu Santo y nosotros hemos decidido...'"
+    ]
+  },
+  {
+    "id": "sucesion-apostolica",
+    "categoria": "Iglesia",
+    "pregunta_principal": "¿Qué es la sucesión apostólica?",
+    "keywords": [
+      "sucesion apostolica",
+      "obispos apostoles",
+      "autoridad de la iglesia"
+    ],
+    "respuesta_breve": "La sucesión apostolica es el hilo invisible e ininterrumpido que une a los obispos de hoy directamente con los Apóstoles elegidos por Jesús. A través de la imposición de manos en el sacramento del Orden Sacerdotal, la misión de guiar, santificar y enseñar la fe se transmite de generación en generación desde hace dos mil años.",
+    "paso_concreto": "Rezá hoy por el Papa y por los obispos, pidiendo que el Espíritu Santo los sostenga con sabiduría en su servicio a la Iglesia.",
+    "enseñanza_de_la_iglesia": ["CIC 77", "CIC 861", "CIC 862"],
+    "fundamento_biblico": ["Hch 1,20", "2 Tim 1,6"]
+  },
+  {
+    "id": "infalibilidad-papa",
+    "categoria": "Iglesia",
+    "pregunta_principal": "¿Qué significa que el Papa sea infalible?",
+    "keywords": [
+      "infalibilidad papal",
+      "el papa no se equivoca",
+      "magisterio de la iglesia"
+    ],
+    "respuesta_breve": "La infalibilidad no significa que el Papa sea un superhombre que no se equivoca al opinar de fútbol o de política. Es una asistencia especial del Espíritu Santo que Jesús prometió a su Iglesia para que, cuando el Papa define solemnemente (*ex cathedra*) una verdad definitiva sobre la fe y la moral, los fieles no sean arrastrados al error.",
+    "paso_concreto": "Agradecé hoy el don de la unidad en la Iglesia y pedile a Dios que custodie al Papa en su ministerio.",
+    "enseñanza_de_la_iglesia": ["CIC 891", "CIC 892"],
+    "fundamento_biblico": ["Mt 16,18-19", "Jn 21,15-17"]
+  },
+  {
+    "id": "comunion-santos",
+    "categoria": "Iglesia",
+    "pregunta_principal": "¿Qué es la Comunión de los Santos?",
+    "keywords": [
+      "comunion de los santos",
+      "la gran familia de la iglesia",
+      "ayuda de los santos"
+    ],
+    "respuesta_breve": "La Comunión de los Santos es la red de amor invisible que une a toda la familia de Dios: los que peleamos la vida acá en la tierra (Iglesia peregrina), los que se purifican camino al cielo (Iglesia purgante) y los que ya gozan de la presencia de Dios (Iglesia triunfante). Lo que uno hace de bueno beneficia a todos, porque el amor no conoce distancias.",
+    "paso_concreto": "Hacé hoy una oración encomendándote a tu santo protector y ofreciendo un gesto de bien por alguien que lo necesite.",
+    "enseñanza_de_la_iglesia": ["CIC 946", "CIC 948", "CIC 957"],
+    "fundamento_biblico": ["1 Cor 12,26", "Ef 4,15-16"]
+  },
+  {
+    "id": "infierno",
+    "categoria": "Vida Cristiana",
+    "pregunta_principal": "¿Qué es el infierno y por qué existe?",
+    "keywords": [
+      "infierno",
+      "que es el infierno",
+      "condenacion eterna",
+      "rechazo a dios"
+    ],
+    "respuesta_breve": "El infierno no es una creación vengativa de Dios, sino el punto final de una libertad que se encerró tanto en su propio egoísmo que decidió rechazar el amor y la misericordia hasta el final. Nadie es predestinado al infierno; es la autoexclusión definitiva de la comunión con Dios y con los hermanos por propia elección.",
+    "paso_concreto": "Pidámosle hoy al Señor un corazón dócil, capaz de abrirse siempre a su gracia y de elegir el camino del bien.",
+    "enseñanza_de_la_iglesia": ["CIC 1033", "CIC 1035", "CIC 1037"],
+    "fundamento_biblico": ["Mt 25,41", "Mt 25,46", "2 Tes 1,9"]
+  },
+
   {
     "id": "guia_uso1",
     "categoria": "Programa",

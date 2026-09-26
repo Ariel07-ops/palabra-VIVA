@@ -1,283 +1,615 @@
 {
   "saludos": {
-    "palabras_clave": [
+    "keywords": [
       "hola",
+      "hello",
+      "olá",
       "buen dia",
+      "good morning",
+      "bom dia",
       "buenas tardes",
-      "buenas dias",
+      "good afternoon",
+      "boa tarde",
       "que tal",
-      "hola hola",
+      "how are you",
+      "tudo bem",
       "hey",
+      "paz",
+      "peace",
       "paz"
     ],
     "respuestas": [
-      "«¡Alégrense siempre en el Señor!» (Flp 4,4). Qué hermosa coincidencia encontrarte hoy en Palabra Viva. ¿Cómo venís andando en este día?",
-      "¡Bienvenido! Como decía Chesterton, el mundo no carece de maravillas, sino de asombro. Detengámonos un rato a mirar la vida con otros ojos. ¿De qué charlamos hoy?",
-      "Paz y bien. ¿Buscás una palabra de aliento, un poco de luz para el corazón o querés que reflexionemos juntos sobre lo que te ronda la cabeza?"
+      {
+        "es": "«¡Alégrense siempre en el Señor!» (Flp 4,4). Qué hermosa coincidencia encontrarte hoy en Palabra Viva. ¿Cómo venís andando en este día?",
+        "en": "«Rejoice in the Lord always!» (Phil 4:4). What a beautiful coincidence to find you today in Palabra Viva. How are you doing today?",
+        "pt": "«Alegrai-vos sempre no Senhor!» (Fl 4,4). Que bela coincidência encontrar você hoje no Palabra Viva. Como você está indo hoje?"
+      },
+      {
+        "es": "¡Bienvenido! Como decía Chesterton, el mundo no carece de maravillas, sino de asombro. Detengámonos un rato a mirar la vida con otros ojos. ¿De qué charlamos hoy?",
+        "en": "Welcome! As Chesterton said, the world does not lack wonders, but a lack of wonder. Let's pause for a while to look at life with different eyes. What shall we talk about today?",
+        "pt": "Bem-vindo! Como dizia Chesterton, o mundo não carece de maravilhas, mas de espanto. Vamos parar um pouco para olhar a vida com outros olhos. Sobre o que vamos conversar hoje?"
+      },
+      {
+        "es": "Paz y bien. ¿Buscás una palabra de aliento, un poco de luz para el corazón o querés que reflexionemos juntos sobre lo que te ronda la cabeza?",
+        "en": "Peace and all good. Are you looking for a word of encouragement, a bit of light for your heart, or would you like us to reflect together on what's on your mind?",
+        "pt": "Paz e bem. Você procura uma palavra de ânimo, um pouco de luz para o coração ou quer que reflitamos juntos sobre o que está rondando a sua mente?"
+      }
     ]
   },
   "despedidas": {
-    "palabras_clave": [
+    "keywords": [
       "chau",
+      "bye",
+      "tchau",
       "adios",
+      "goodbye",
+      "adeus",
       "me voy",
+      "i'm leaving",
+      "vou embora",
       "hasta mañana",
+      "see you tomorrow",
+      "até amanhã",
       "buenas noches",
-      "me voy a dormir",
+      "good night",
+      "boa noite",
       "nos vemos",
-      "chao",
-      "hasta luego"
+      "see you",
+      "até logo"
     ],
     "respuestas": [
-      "Que tengas una excelente jornada. Recordá que podés volver a abrir este chat tocando el logotipo superior cuando necesites hacer una pausa.",
-      "Vaya en paz. Que el Señor bendiga tu descanso y guíe tus pasos en el camino de todos los días.",
-      "Fue un verdadero gusto acompañarte en este rato de reflexión. ¡Hasta la próxima!"
+      {
+        "es": "Que tengas una excelente jornada. Recordá que podés volver a abrir este chat tocando el logotipo superior cuando necesites hacer una pausa.",
+        "en": "Have an excellent day. Remember that you can reopen this chat by tapping the top logo whenever you need to take a break.",
+        "pt": "Tenha um excelente dia. Lembre-se de que você pode reabrir este chat tocando no logotipo superior sempre que precisar fazer uma pausa."
+      },
+      {
+        "es": "Vaya en paz. Que el Señor bendiga tu descanso y guíe tus pasos en el camino de todos los días.",
+        "en": "Go in peace. May the Lord bless your rest and guide your steps on your everyday path.",
+        "pt": "Vá em paz. Que o Senhor abençoe o seu descanso e guie os seus passos no caminho de todos os dias."
+      },
+      {
+        "es": "Fue un verdadero gusto acompañarte en este rato de reflexión. ¡Hasta la próxima!",
+        "en": "It was a true pleasure accompanying you in this moment of reflection. Until next time!",
+        "pt": "Foi um verdadeiro prazer acompanhá-lo neste momento de reflexão. Até a próxima!"
+      }
     ]
   },
   "agradecimientos": {
-    "palabras_clave": [
+    "keywords": [
       "gracias",
+      "thank you",
+      "obrigado",
       "muchas gracias",
+      "thanks a lot",
+      "muito obrigado",
       "te agradezco",
-      "muy amable",
-      "genial"
+      "i appreciate it",
+      "agradeço",
+      "genial",
+      "great",
+      "ótimo"
     ],
     "respuestas": [
-      "«Gratuita y alegre es la gracia». Me alegra muchísimo que te sirva para hacer esa pausa necesaria y mirar la realidad con la luz del Evangelio.",
-      "Gracias a vos por la confianza y por abrir este espacio. Que el buen Dios te colme de paz en lo que resta del día.",
-      "De nada. Recordá que este rincón siempre está abierto para regalarte un momento de aliento y sentido."
+      {
+        "es": "«Gratuita y alegre es la gracia». Me alegra muchísimo que te sirva para hacer esa pausa necesaria y mirar la realidad con la luz del Evangelio.",
+        "en": "«Freely and joyfully is grace given». I am very glad it helps you make that necessary pause and look at reality with the light of the Gospel.",
+        "pt": "«Gratuita e alegre é a graça». Fico muito feliz que sirva para você fazer essa pausa necessária e olhar a realidade com a luz do Evangelho."
+      },
+      {
+        "es": "Gracias a vos por la confianza y por abrir este espacio. Que el buen Dios te colme de paz en lo que resta del día.",
+        "en": "Thank you for your trust and for opening this space. May the good God fill you with peace for the rest of the day.",
+        "pt": "Obrigado a você pela confiança e por abrir este espaço. Que o bom Deus o encha de paz no resto do dia."
+      },
+      {
+        "es": "De nada. Recordá que este rincón siempre está abierto para regalarte un momento de aliento y sentido.",
+        "en": "You're welcome. Remember that this corner is always open to offer you a moment of encouragement and meaning.",
+        "pt": "De nada. Lembre-se de que este canto está sempre aberto para lhe oferecer um momento de ânimo e sentido."
+      }
     ]
   },
   "guia_uso": {
-    "titulo": "Guía rápida de uso de Palabra Viva",
-    "mensaje": "Podés utilizar este espacio de distintas maneras:",
+    "titulo": {
+      "es": "Guía rápida de uso de Palabra Viva",
+      "en": "Quick usage guide for Palabra Viva",
+      "pt": "Guia rápido de uso do Palabra Viva"
+    },
+    "mensaje": {
+      "es": "Podés utilizar este espacio de distintas maneras:",
+      "en": "You can use this space in different ways:",
+      "pt": "Você pode usar este espaço de diferentes maneiras:"
+    },
     "opciones": [
-      "Diálogo espiritual: Contame si estás buscando una reflexión ante algún estado de ánimo, cansancio o momento del día.",
-      "Búsqueda bíblica: Para buscar pasajes o textos completos de forma exacta, recordá usar el buscador dedicado en la barra del menú lateral (donde podés ingresar por nombre, capítulo y versículo con dos puntos como 'Juan 1:1')",
-      "También podés escribirme: infobiblica, infolateral o infocamino para más información."
+      {
+        "es": "Diálogo espiritual: Contame si estás buscando una reflexión ante algún estado de ánimo, cansancio o momento del día.",
+        "en": "Spiritual dialogue: Tell me if you are looking for a reflection for a specific mood, tiredness, or time of day.",
+        "pt": "Diálogo espiritual: Conte-me se você está procurando uma reflexão para algum estado de ânimo, cansaço ou momento do dia."
+      },
+      {
+        "es": "Búsqueda bíblica: Para buscar pasajes o textos completos de forma exacta, recordá usar el buscador dedicado en la barra del menú lateral (donde podés ingresar por nombre, capítulo y versículo con dos puntos como 'Juan 1:1')",
+        "en": "Biblical search: To search for passages or complete texts accurately, remember to use the dedicated search engine in the sidebar (where you can enter name, chapter, and verse with a colon like 'John 1:1')",
+        "pt": "Busca bíblica: Para buscar passagens ou textos completos com exatidão, lembre-se de usar o buscador dedicado na barra do menu lateral (onde você pode inserir por nome, capítulo e versículo com dois pontos como 'João 1:1')"
+      },
+      {
+        "es": "También podés escribirme: infobiblica, infolateral o infocamino para más información.",
+        "en": "You can also write to me: infobiblica, infolateral, or infocamino for more information.",
+        "pt": "Você também pode me escrever: infobiblica, infolateral ou infocamino para mais informações."
+      }
     ]
   },
   "respuestas_pastorales": {
     "tristeza": {
-      "palabras_clave": [
+      "keywords": [
+        "triste",
+        "sad",
         "triste",
         "tristeza",
+        "sadness",
+        "tristeza",
         "afligido",
+        "afflicted",
+        "aflito",
+        "mal",
+        "bad",
         "mal",
         "llorar",
-        "dolor"
+        "cry",
+        "chorar",
+        "dolor",
+        "pain",
+        "dor"
       ],
-      "respuesta": "«El Señor está cerca de los que tienen el corazón roto» (Salmo 34, 19). A veces pensamos que la tristeza nos aísla de Dios, pero la verdad es que Él se hace el primer encontradizo justo en el suelo de nuestro dolor. No estás solo en lo que te toca transitar."
+      "respuesta": {
+        "es": "«El Señor está cerca de los que tienen el corazón roto» (Salmo 34, 19). A veces pensamos que la tristeza nos aísla de Dios, pero la verdad es que Él se hace el primer encontradizo justo en el suelo de nuestro dolor. No estás solo en lo que te toca transitar.",
+        "en": "«The Lord is close to the brokenhearted» (Psalm 34:18). Sometimes we think sadness isolates us from God, but the truth is He makes Himself the first to meet us right on the floor of our pain. You are not alone in what you are going through.",
+        "pt": "«O Senhor está perto dos que têm o coração quebrantado» (Salmo 34,18). Às vezes pensamos que a tristeza nos isola de Deus, mas a verdade é que Ele se faz o primeiro a nos encontrar bem no chão da nossa dor. Você não está sozinho no que lhe toca transitar."
+      }
     },
     "ansiedad": {
-      "palabras_clave": [
+      "keywords": [
         "ansiedad",
+        "anxiety",
+        "ansiedade",
+        "ansioso",
+        "anxious",
         "ansioso",
         "preocupado",
+        "worried",
+        "preocupado",
         "nervios",
-        "acelere",
-        "inquietud"
+        "nerves",
+        "nervos",
+        "inquietud",
+        "restlessness",
+        "inquietação"
       ],
-      "respuesta": "Ante la locura del acelere diario, el apóstol Pablo nos invita a presentar nuestras peticiones a Dios, «y la paz de Dios, que sobrepasa todo entendimiento, cuidará sus corazones» (Filipenses 4, 6-7). Soltá un poco el volante y dejá que Él cargue el peso."
+      "respuesta": {
+        "es": "Ante la locura del acelere diario, el apóstol Pablo nos invita a presentar nuestras peticiones a Dios, «y la paz de Dios, que sobrepasa todo entendimiento, cuidará sus corazones» (Filipenses 4, 6-7). Soltá un poco el volante y dejá que Él cargue el peso.",
+        "en": "Amidst the madness of daily hustle, the apostle Paul invites us to present our requests to God, «and the peace of God, which transcends all understanding, will guard your hearts» (Philippians 4:6-7). Let go of the steering wheel a bit and let Him carry the weight.",
+        "pt": "Diante da loucura da correria diária, o apóstolo Paulo nos convida a apresentar nossos pedidos a Deus, «e a paz de Deus, que excede todo o entendimento, guardará os vossos corações» (Filipenses 4,6-7). Solte um pouco o volante e deixe que Ele carregue o peso."
+      }
     },
     "perdon": {
-      "palabras_clave": ["perdon", "perdonar", "rencor", "culpa", "ofensa"],
-      "respuesta": "«Perdonar no es olvidar, es dejar en libertad a un preso... ¡y descubrir que el preso eras vos!». El perdón es el puente que nos acerca al amor misericordioso del Padre (Mateo 18, 21-22). Cuesta, vaya si cuesta, pero es la única llave que le devuelve el aire al alma."
+      "keywords": [
+        "perdon",
+        "forgiveness",
+        "perdão",
+        "perdonar",
+        "forgive",
+        "perdoar",
+        "rencor",
+        "resentment",
+        "rancor",
+        "culpa",
+        "guilt",
+        "culpa",
+        "ofensa",
+        "offense",
+        "ofensa"
+      ],
+      "respuesta": {
+        "es": "«Perdonar no es olvidar, es dejar en libertad a un preso... ¡y descubrir que el preso eras vos!». El perdón es el puente que nos acerca al amor misericordioso del Padre (Mateo 18, 21-22). Cuesta, vaya si cuesta, pero es la única llave que le devuelve el aire al alma.",
+        "en": "«Forgiving is not forgetting, it is setting a prisoner free... and discovering that the prisoner was you!». Forgiveness is the bridge that brings us closer to the Father's merciful love (Matthew 18:21-22). It is hard, oh how hard it is, but it is the only key that returns air to the soul.",
+        "pt": "«Perdoar não é esquecer, é colocar um prisioneiro em liberdade... e descobrir que o prisioneiro era você!». O perdão é a ponte que nos aproxima do amor misericordioso do Pai (Mateus 18,21-22). Custa, e como custa, mas é a única chave que devolve o ar à alma."
+      }
     },
     "miedo": {
-      "palabras_clave": ["miedo", "temor", "asustado", "incertidumbre"],
-      "respuesta": "«No temas, porque yo estoy contigo» (Isaías 41, 10). Vivimos asustados por mil fantasmas que a veces ni existen, pero la confianza en un Dios que es Padre y nos cuida desarma de raíz cualquier temblor en las rodillas."
+      "keywords": [
+        "miedo",
+        "fear",
+        "medo",
+        "temor",
+        "dread",
+        "temor",
+        "asustado",
+        "scared",
+        "assustado",
+        "incertidumbre",
+        "uncertainty",
+        "incerteza"
+      ],
+      "respuesta": {
+        "es": "«No temas, porque yo estoy contigo» (Isaías 41, 10). Vivimos asustados por mil fantasmas que a veces ni existen, pero la confianza en un Dios que es Padre y nos cuida desarma de raíz cualquier temblor en las rodillas.",
+        "en": "«Do not fear, for I am with you» (Isaiah 41:10). We live scared by a thousand ghosts that sometimes don't even exist, but trust in a God who is a Father and takes care of us completely disarms any trembling in our knees.",
+        "pt": "«Não temas, porque eu estou contigo» (Isaías 41,10). Vivemos assustados por mil fantasmas que às vezes nem existem, mas a confiança em um Deus que é Pai e cuida de nós desarmará pela raiz qualquer tremor nos joelhos."
+      }
     },
     "esperanza": {
-      "palabras_clave": ["esperanza", "futuro", "gris", "tiempos dificiles"],
-      "respuesta": "«Porque yo sé muy bien los planes que tengo para ustedes —oráculo del Señor—, planes de bienestar y no de desgracia, para darles un porvenir y una esperanza» (Jeremías 29, 11). Aun cuando el cielo se ponga gris, la esperanza cristiana no es un optimismo ingenuo, es la certeza de que Dios escribe derecho en nuestros renglones torcidos."
+      "keywords": [
+        "esperanza",
+        "hope",
+        "esperança",
+        "futuro",
+        "future",
+        "futuro",
+        "gris",
+        "gray",
+        "cinzento",
+        "tiempos dificiles",
+        "difficult times",
+        "tempos difíceis"
+      ],
+      "respuesta": {
+        "es": "«Porque yo sé muy bien los planes que tengo para ustedes —oráculo del Señor—, planes de bienestar y no de desgracia, para darles un porvenir y una esperanza» (Jeremías 29, 11). Aun cuando el cielo se ponga gris, la esperanza cristiana no es un optimismo ingenuo, es la certeza de que Dios escribe derecho en nuestros renglones torcidos.",
+        "en": "«For I know the plans I have for you—declares the Lord—plans to prosper you and not to harm you, plans to give you hope and a future» (Jeremiah 29:11). Even when the sky turns gray, Christian hope is not naive optimism; it is the certainty that God writes straight on our crooked lines.",
+        "pt": "«Porque sou eu que conheço os planos que tenho para vós, diz o Senhor, planos de paz e não de mal, para vos dar um futuro e uma esperança» (Jeremias 29,11). Mesmo quando o céu fica cinzento, a esperança cristã não é um otimismo ingênuo, é a certeza de que Deus escreve certo por linhas tortas."
+      }
     },
     "cansancio": {
-      "palabras_clave": ["cansado", "agotado", "cansancio", "peso", "agobia"],
-      "respuesta": "Cuando el peso del día te aplasta, Jesús te hace una oferta irresistible: «Vengan a mí todos los que están cansados y agobiados, y yo los haré descansar» (Mateo 11, 28). Date el permiso sagrado de frenar y apagar un poco la máquina."
+      "keywords": [
+        "cansado",
+        "tired",
+        "cansado",
+        "agotado",
+        "exhausted",
+        "esgotado",
+        "cansancio",
+        "tiredness",
+        "cansaço",
+        "peso",
+        "weight",
+        "peso",
+        "agobia",
+        "overwhelms",
+        "oprime"
+      ],
+      "respuesta": {
+        "es": "Cuando el peso del día te aplasta, Jesús te hace una oferta irresistible: «Vengan a mí todos los que están cansados y agobiados, y yo los haré descansar» (Mateo 11, 28). Date el permiso sagrado de frenar y apagar un poco la máquina.",
+        "en": "When the weight of the day crushes you, Jesus makes you an irresistible offer: «Come to me, all you who are weary and burdened, and I will give you rest» (Matthew 11:28). Give yourself the sacred permission to stop and turn off the machine for a bit.",
+        "pt": "Quando o peso do dia esmaga você, Jesus lhe faz uma oferta irresistível: «Vinde a mim, todos os que estais cansados e oprimidos, e eu vos aliviarei» (Mateus 11,28). Dê a si mesmo a permissão sagrada de parar e desligar um pouco a máquina."
+      }
     },
     "soledad": {
-      "palabras_clave": ["solo", "soledad", "silencio", "abandonado"],
-      "respuesta": "En los momentos donde el silencio pesa como plomo, acordate de la promesa que cruza la historia entera: «Yo estoy con ustedes todos los días, hasta el fin del mundo» (Mateo 28, 20). Nunca estamos tan acompañados como cuando nos sabemos habitados por Él."
+      "keywords": [
+        "solo",
+        "alone",
+        "sozinho",
+        "soledad",
+        "solitude",
+        "solidão",
+        "silencio",
+        "silence",
+        "silêncio",
+        "abandonado",
+        "abandoned",
+        "abandonado"
+      ],
+      "respuesta": {
+        "es": "En los momentos donde el silencio pesa como plomo, acordate de la promesa que cruza la historia entera: «Yo estoy con ustedes todos los días, hasta el fin del mundo» (Mateo 28, 20). Nunca estamos tan acompañados como cuando nos sabemos habitados por Él.",
+        "en": "In moments where silence weighs like lead, remember the promise that runs through entire history: «And surely I am with you always, to the very end of the age» (Matthew 28:20). We are never as accompanied as when we know we are inhabited by Him.",
+        "pt": "Nos momentos em que o silêncio pesa como chumbo, lembre-se da promessa que atravessa toda a história: «E eis que eu estou convosco todos os dias, até à consumação dos séculos» (Mateus 28,20). Nunca estamos tão acompanhados como quando sabemos que somos habitados por Ele."
+      }
     },
     "ojos": {
-      "palabras_clave": [
+      "keywords": [
         "se me cierran los ojos",
+        "my eyes are closing",
+        "meus olhos estão fechando",
         "sueño",
+        "sleep",
+        "sono",
         "cansado de leer",
-        "pestañeo"
+        "tired of reading",
+        "cansado de ler",
+        "pestañeo",
+        "blinking",
+        "piscar"
       ],
-      "respuesta": "¡Uf, se te cierran los ojos solos! El cuerpo es sabio y nos avisa que no somos máquinas. Pegate una buena dormida, entregale el día al Creador y dejá que el mundo siga girando solo un rato."
+      "respuesta": {
+        "es": "¡Uf, se te cierran los ojos solos! El cuerpo es sabio y nos avisa que no somos máquinas. Pegate una buena dormida, entregale el día al Creador y dejá que el mundo siga girando solo un rato.",
+        "en": "Phew, your eyes are closing on their own! The body is wise and warns us we are not machines. Get a good sleep, hand the day over to the Creator, and let the world keep spinning on its own for a while.",
+        "pt": "Ufa, seus olhos estão fechando sozinhos! O corpo é sábio e nos avisa que não somos máquinas. Durma bem, entregue o dia ao Criador e deixe o mundo continuar girando sozinho por um tempo."
+      }
     },
     "enojado": {
-      "palabras_clave": ["enojado", "bronca", "pelea", "rabia", "disgusto"],
-      "respuesta": "Qué fastidio cargar con bronca adentro. Como decía la Escritura, seamos tardos para la ira (Stg 1,19). Cuando te pisan los talones o te da rabia el día, descargá ese motorcito caliente acá, que te leo con paciencia."
+      "keywords": [
+        "enojado",
+        "angry",
+        "zangado",
+        "bronca",
+        "anger",
+        "raiva",
+        "pelea",
+        "fight",
+        "briga",
+        "rabia",
+        "fury",
+        "fúria",
+        "disgusto",
+        "displeasure",
+        "desgosto"
+      ],
+      "respuesta": {
+        "es": "Qué fastidio cargar con bronca adentro. Como decía la Escritura, seamos tardos para la ira (Stg 1,19). Cuando te pisan los talones o te da rabia el día, descargá ese motorcito caliente acá, que te leo con paciencia.",
+        "en": "How annoying it is to carry anger inside. As Scripture says, let us be slow to anger (Jas 1:19). When heels are stepped on or the day makes you furious, unload that hot little engine here, I'll read you with patience.",
+        "pt": "Que chato carregar raiva por dentro. Como dizia a Escritura, sejamos tardios para a ira (Tg 1,19). Quando pisarem nos seus calcanhares ou o dia lhe der raiva, descarregue esse motorzinho quente aqui, eu leio você com paciência."
+      }
     },
     "ruido": {
-      "palabras_clave": [
+      "keywords": [
         "ruido",
+        "noise",
+        "barulho",
         "insoportable",
+        "unbearable",
+        "insuportável",
         "griterio",
+        "shouting",
+        "gritaria",
         "molesto",
+        "annoying",
+        "chato",
+        "paz mental",
+        "mental peace",
         "paz mental"
       ],
-      "respuesta": "¡Qué cosa insoportable cuando el griterío de afuera te taladra la cabeza y te roba la paz! Dan ganas de huir al desierto. Buscate un rincón con silencio; el alma necesita bajar los decibeles para escuchar lo importante."
+      "respuesta": {
+        "es": "¡Qué cosa insoportable cuando el griterío de afuera te taladra la cabeza y te roba la paz! Dan ganas de huir al desierto. Buscate un rincón con silencio; el alma necesita bajar los decibeles para escuchar lo importante.",
+        "en": "What an unbearable thing when outside shouting drills through your head and steals your peace! It makes you want to flee to the desert. Find a corner with silence; the soul needs to lower the decibels to hear what matters.",
+        "pt": "Que coisa insuportável quando a gritaria de fora fura a sua cabeça e rouba a sua paz! Dá vontade de fugir para o deserto. Procure um canto com silêncio; a alma precisa baixar os decibéis para ouvir o que é importante."
+      }
     },
     "dormir": {
-      "palabras_clave": [
+      "keywords": [
+        "dormir",
+        "sleep",
         "dormir",
         "a dormir",
-        "sueño",
+        "go to sleep",
+        "ir dormir",
         "descansar",
-        "a la cama"
+        "rest",
+        "descansar",
+        "a la cama",
+        "to bed",
+        "para a cama"
       ],
-
-      "respuesta": "Que descanses en paz y recargues pilas bajo la sombra de sus alas. ¡Que tengas una hermosa noche y hasta mañana!"
+      "respuesta": {
+        "es": "Que descanses en paz y recargues pilas bajo la sombra de sus alas. ¡Que tengas una hermosa noche y hasta mañana!",
+        "en": "May you rest in peace and recharge your batteries under the shadow of His wings. Have a wonderful night and until tomorrow!",
+        "pt": "Que você descanse em paz e recarregue as energias sob a sombra das asas d'Ele. Tenha uma noite linda e até amanhã!"
+      }
     },
     "gratitud": {
-      "palabras_clave": [
+      "keywords": [
         "gracias dios",
+        "thank God",
+        "obrigado Deus",
         "contento",
+        "content",
+        "contente",
+        "feliz",
+        "happy",
         "feliz",
         "agradecido",
-        "bendecido"
+        "grateful",
+        "agradecido",
+        "bendecido",
+        "blessed",
+        "abençoado"
       ],
-      "respuesta": "Dar gracias en todo momento es descubrir que la vida está llena de pequeños milagros cotidianos. Reconocer el don recibido es la mejor manera de sintonizar con la alegría de Dios."
+      "respuesta": {
+        "es": "Dar gracias en todo momento es descubrir que la vida está llena de pequeños milagros cotidianos. Reconocer el don recibido es la mejor manera de sintonizar con la alegría de Dios.",
+        "en": "Giving thanks at all times is discovering that life is full of small everyday miracles. Recognizing the gift received is the best way to tune into God's joy.",
+        "pt": "Dar graças em todo momento é descobrir que a vida está cheia de pequenos milagres cotidianos. Reconhecer o dom recebido é a melhor maneira de sintonizar com a alegria de Deus."
+      }
     }
   },
-  "preguntas_cotidianas": {
-    "como_rezar": {
-      "palabras_clave": [
-        "como rezar",
-        "como orar",
-        "no se hablar con dios",
-        "empezar a rezar"
-      ],
-      "respuesta": "Para empezar a rezar no hace falta un manual de teología ni palabras rebuscadas. Buscá un rincón tranquilo, respirá hondo y charlá con Dios como un amigo le habla a otro, con total franqueza."
-    },
-    "tomar_decisiones": {
-      "palabras_clave": [
-        "decidir",
-        "duda",
-        "eleccion",
-        "encrucijada",
-        "que hacer"
-      ],
-      "respuesta": "Ante una encrucijada, vale la pena hacer silencio, mirar qué da verdadera paz al fondo del corazón y poner la intención en manos de Dios antes de salir corriendo a decidir a ciegas."
-    },
-    "dia_caotico": {
-      "palabras_clave": ["caos", "dia caotico", "desborda", "no llego a nada"],
-      "respuesta": "Cuando el día te desborda y parece que la marea te tapó, hacé una pausa de un minuto, cerrá los ojos y repetí en tu interior: 'Señor, en tus manos pongo este lío'."
-    }
+  "descargo_pastoral": {
+    "es": "Puedo ayudarte a reflexionar desde la Sagrada Escritura y el espíritu de la Iglesia, pero recordá que este es un espacio de acompañamiento virtual y no reemplaza el consejo directo de un sacerdote o director espiritual.",
+    "en": "I can help you reflect from Sacred Scripture and the spirit of the Church, but remember that this is a virtual accompaniment space and does not replace direct advice from a priest or spiritual director.",
+    "pt": "Posso ajudar você a refletir a partir da Sagrada Escritura e do espírito da Igreja, mas lembre-se de que este é um espaço de acompanhamento virtual e não substitui o conselho direto de um sacerdote ou diretor espiritual."
   },
-  "descargo_pastoral": "Puedo ayudarte a reflexionar desde la Sagrada Escritura y el espíritu de la Iglesia, pero recordá que este es un espacio de acompañamiento virtual y no reemplaza el consejo directo de un sacerdote o director espiritual.",
   "preguntas_frecuentes": [
     {
       "tema": "que_es",
-      "palabras_clave": [
+      "keywords": [
         "que es",
+        "what is",
+        "o que é",
         "palabra viva",
         "para que sirve",
+        "what is it for",
+        "para que serve",
         "de que trata",
-        "que puedo hacer",
         "objetivo",
         "como funciona",
-        "que es esta app"
+        "how it works",
+        "como funciona"
       ],
-      "respuesta": "<strong>Palabra Viva</strong> es un espacio creado para el acompañamiento espiritual y la pausa diaria. Para buscar citas exactas o pasajes de la Biblia, te sugiero utilizar el buscador dedicado que está en la barra del menú lateral (por ejemplo, 'Juan 1:1'), o consultar la Sagrada Escritura en la página principal. Recordá que también podés escribirme: infobiblica, infolateral o infocamino para más información."
+      "respuesta": {
+        "es": "<strong>Palabra Viva</strong> es un espacio creado para el acompañamiento espiritual y la pausa diaria. Para buscar citas exactas o pasajes de la Biblia, te sugiero utilizar el buscador dedicado que está en la barra del menú lateral (por ejemplo, 'Juan 1:1'), o consultar la Sagrada Escritura en la página principal. Recordá que también podés escribirme: infobiblica, infolateral o infocamino para más información.",
+        "en": "<strong>Palabra Viva</strong> is a space created for spiritual accompaniment and daily pause. To search for exact quotes or passages of the Bible, I suggest using the dedicated search engine in the sidebar (for example, 'John 1:1'), or consulting Sacred Scripture on the main page. Remember you can also write to me: infobiblica, infolateral, or infocamino for more information.",
+        "pt": "<strong>Palabra Viva</strong> é um espaço criado para o acompanhamento espiritual e a pausa diária. Para buscar citações exatas ou passagens da Bíblia, sugiro usar o buscador dedicado que está na barra do menu lateral (por exemplo, 'João 1:1'), ou consultar a Sagrada Escritura na página principal. Lembre-se de que você também pode me escrever: infobiblica, infolateral ou infocamino para mais informações."
+      }
     },
     {
       "tema": "privacidad_datos",
-      "palabras_clave": [
+      "keywords": [
         "privacidad",
+        "privacy",
+        "privacidade",
         "mis datos",
+        "my data",
+        "meus dados",
         "internet",
         "offline",
-        "guarda",
         "sin conexion",
+        "without connection",
+        "sem conexão",
+        "seguro",
+        "safe",
         "seguro"
       ],
-      "respuesta": "Tu privacidad es absoluta. Esta aplicación funciona en modo 'local-first', lo que significa que tus preferencias y notas se guardan únicamente en tu dispositivo. Nada de lo que conversás acá viaja a servidores extraños."
+      "respuesta": {
+        "es": "Tu privacidad es absoluta. Esta aplicación funciona en modo 'local-first', lo que significa que tus preferencias y notas se guardan únicamente en tu dispositivo. Nada de lo que conversás acá viaja a servidores extraños.",
+        "en": "Your privacy is absolute. This application works in 'local-first' mode, which means your preferences and notes are saved solely on your device. Nothing you chat about here travels to external servers.",
+        "pt": "Sua privacidade é absoluta. Este aplicativo funciona no modo 'local-first', o que significa que suas preferências e notas são salvas apenas no seu dispositivo. Nada do que você conversa aqui viaja para servidores estranhos."
+      }
     },
     {
       "tema": "navegacion_iconos",
-      "palabras_clave": [
+      "keywords": [
         "icono",
+        "icon",
+        "ícone",
         "logo",
         "botones",
-        "arriba",
+        "buttons",
+        "botões",
         "menu",
         "barra",
-        "donde esta"
+        "bar",
+        "barra"
       ],
-      "respuesta": "La interfaz es muy sencilla. El <strong>logotipo superior</strong> sirve como atajo para abrir este chat en cualquier momento que necesites un respiro. Desde el menú lateral también podés acceder al buscador especializado."
+      "respuesta": {
+        "es": "La interfaz es muy sencilla. El <strong>logotipo superior</strong> sirve como atajo para abrir este chat en cualquier momento que necesites un respiro. Desde el menú lateral también podés acceder al buscador especializado.",
+        "en": "The interface is very simple. The <strong>top logo</strong> serves as a shortcut to open this chat anytime you need a breather. From the sidebar you can also access the specialized search engine.",
+        "pt": "A interface é muito simples. O <strong>logotipo superior</strong> serve como atalho para abrir este chat a qualquer momento que você precise de um respiro. A partir do menu lateral você também pode acessar o buscador especializado."
+      }
     },
     {
       "tema": "tutorial_video",
-      "palabras_clave": [
+      "keywords": [
         "tutorial",
         "video",
+        "vídeo",
         "paso a paso",
-        "enseñame",
+        "step by step",
+        "passo a passo",
         "guia visual",
-        "ver como se usa"
+        "visual guide",
+        "guia visual"
       ],
-      "respuesta": "Pronto habilitaremos un pequeño video tutorial. Por ahora, podés tocar el logotipo de Palabra Viva en la barra de arriba en cualquier momento para abrir este asistente, o escribir la palabra 'guía'."
+      "respuesta": {
+        "es": "Pronto habilitaremos un pequeño video tutorial. Por ahora, podés tocar el logotipo de Palabra Viva en la barra de arriba en cualquier momento para abrir este asistente, o escribir la palabra 'guía'.",
+        "en": "We will soon enable a small video tutorial. For now, you can tap the Palabra Viva logo on the top bar at any time to open this assistant, or type the word 'guide'.",
+        "pt": "Em breve habilitaremos um pequeno vídeo tutorial. Por enquanto, você pode tocar no logotipo do Palabra Viva na barra superior a qualquer momento para abrir este assistente, ou escrever a palavra 'guia'."
+      }
     },
     {
       "tema": "identidad_asistente",
-      "palabras_clave": [
+      "keywords": [
         "quien sos",
+        "who are you",
+        "quem é você",
         "sos un robot",
+        "are you a robot",
+        "você é um robô",
         "inteligencia artificial",
-        "como te llamas",
-        "humano"
+        "artificial intelligence",
+        "inteligência artificial",
+        "humano",
+        "human"
       ],
-      "respuesta": "Soy el asistente de apoyo integrado en Palabra Viva, un catequista virtual diseñado para ofrecerte reflexiones espirituales y escucha. Para lecturas bíblicas textuales, recordá que tenés el buscador dedicado en el menú lateral."
+      "respuesta": {
+        "es": "Soy el asistente de apoyo integrado en Palabra Viva, un catequista virtual diseñado para ofrecerte reflexiones espirituales y escucha. Para lecturas bíblicas textuales, recordá que tenés el buscador dedicado en el menú lateral.",
+        "en": "I am the support assistant integrated into Palabra Viva, a virtual catechist designed to offer you spiritual reflections and listening. For textual biblical readings, remember you have the dedicated search engine in the sidebar.",
+        "pt": "Sou o assistente de apoio integrado no Palabra Viva, um catequista virtual desenhado para lhe oferecer reflexões espirituais e escuta. Para leituras bíblicas textuais, lembre-se de que você tem o buscador dedicado no menu lateral."
+      }
     },
     {
       "tema": "version_programa",
-      "palabras_clave": ["version", "actualizacion", "que version"],
-      "respuesta": "Actualmente estás utilizando <strong>Palabra Viva Beta</strong>. Seguimos trabajando para incorporar más reflexiones pastorales y herramientas que nos acerquen a la verdad."
+      "keywords": [
+        "version",
+        "version",
+        "versão",
+        "actualizacion",
+        "update",
+        "atualização"
+      ],
+      "respuesta": {
+        "es": "Actualmente estás utilizando <strong>Palabra Viva Beta</strong>. Seguimos trabajando para incorporar más reflexiones pastorales y herramientas que nos acerquen a la verdad.",
+        "en": "You are currently using <strong>Palabra Viva Beta</strong>. We continue working to incorporate more pastoral reflections and tools that bring us closer to the truth.",
+        "pt": "Atualmente você está usando o <strong>Palabra Viva Beta</strong>. Continuamos trabalhando para incorporar mais reflexões pastorais e ferramentas que nos aproximem da verdade."
+      }
     },
     {
       "tema": "seccion_biblia",
-      "palabras_clave": ["infobiblica", "torres amat"],
-      "respuesta": "La Biblia que utilizamos en Palabra Viva es la clásica y entrañable traducción de D. Félix Torres Amat, una versión libre de restricciones para que la Palabra circule sin ataduras. En esta sección encontrás el Antiguo y Nuevo Testamento completo con buscador dedicado, y textos interactivos con notas filológicas e históricas."
+      "keywords": ["infobiblica", "torres amat", "biblia", "bible", "bíblia"],
+      "respuesta": {
+        "es": "La Biblia que utilizamos en Palabra Viva es la clásica y entrañable traducción de D. Félix Torres Amat, una versión libre de restricciones para que la Palabra circule sin ataduras. En esta sección encontrás el Antiguo y Nuevo Testamento completo con buscador dedicado, y textos interactivos con notas filológicas e históricas.",
+        "en": "The Bible we use in Palabra Viva is the classic and endearing translation by D. Félix Torres Amat, a restriction-free version so that the Word circulates unbound. In this section you will find the complete Old and New Testament with a dedicated search engine, and interactive texts with philological and historical notes.",
+        "pt": "A Bíblia que usamos no Palabra Viva é a clássica e querida tradução de D. Félix Torres Amat, uma versão livre de restrições para que a Palavra circule sem amarras. Nesta seção você encontra o Antigo e o Novo Testamento completos com buscador dedicado, e textos interativos com notas filológicas e históricas."
+      }
     },
     {
       "tema": "caminemos_con_jesus",
-      "palabras_clave": [
+      "keywords": [
         "caminemos con jesus",
+        "let's walk with jesus",
+        "caminhamos com jesus",
         "infocamino",
         "estado de tu corazon",
         "ruta de emaús",
-        "escalera de la promesa"
+        "emmaus road"
       ],
-      "respuesta": "En Caminemos con Jesús encontrás propuestas para detener el tiempo y cuidar el alma. Se divide en dos caminos: 1) Mi punto de partida (estado de tu corazón) para elegir cómo te sentís y recibir una oración, un texto bíblico, la vida de un santo y una propuesta para el día. 2) La Ruta de Emaús y retiros a tu ritmo durante la semana."
+      "respuesta": {
+        "es": "En Caminemos con Jesús encontrás propuestas para detener el tiempo y cuidar el alma. Se divide en dos caminos: 1) Mi punto de partida (estado de tu corazón) para elegir cómo te sentís y recibir una oración, un texto bíblico, la vida de un santo y una propuesta para el día. 2) La Ruta de Emaús y retiros a tu ritmo durante la semana.",
+        "en": "In Let's Walk with Jesus you will find proposals to stop time and care for the soul. It is divided into two paths: 1) My starting point (state of your heart) to choose how you feel and receive a prayer, a biblical text, the life of a saint, and a proposal for the day. 2) The Emmaus Road and retreats at your own pace during the week.",
+        "pt": "Em Caminhamos com Jesus você encontra propostas para parar o tempo e cuidar da alma. Divide-se em dois caminhos: 1) Meu ponto de partida (estado do seu coração) para escolher como você se sente e receber uma oração, um texto bíblico, a vida de um santo e uma proposta para o dia. 2) A Rota de Emaús e retiros ao seu ritmo durante a semana."
+      }
     },
     {
       "tema": "barra_de_navegacion",
-      "palabras_clave": [
+      "keywords": [
         "infolateral",
         "menu lateral",
-        "seccion barra",
+        "sidebar",
+        "menu lateral",
         "herramientas de lectura"
       ],
-      "respuesta": "Desde el menú lateral izquierdo tenés acceso rápido al buscador de versículos, herramientas de lectura para agrandar la letra de la biblia, enlaces de interés y este asistente de apoyo."
+      "respuesta": {
+        "es": "Desde el menú lateral izquierdo tenés acceso rápido al buscador de versículos, herramientas de lectura para agrandar la letra de la biblia, enlaces de interés y este asistente de apoyo.",
+        "en": "From the left sidebar you have quick access to the verse search engine, reading tools to enlarge the Bible font, links of interest, and this support assistant.",
+        "pt": "A partir do menu lateral esquerdo você tem acesso rápido ao buscador de versículos, ferramentas de leitura para aumentar a letra da bíblia, links de interesse e este assistente de apoio."
+      }
     },
     {
       "tema": "ansiedad_o_enojo_diario",
-      "detonantes": [
+      "keywords": [
         "enojo",
+        "anger",
+        "raiva",
         "bronca",
         "rabia",
         "cansancio",
+        "tiredness",
+        "cansaço",
         "exigencia",
+        "demand",
         "mal humor",
-        "discusión"
+        "bad mood",
+        "mau humor",
+        "discusión",
+        "discussion",
+        "discussão"
       ],
-      "respuesta": "«Todo hombre sea pronto para oír, tardo para hablar, tardo para la ira» (Santiago 1, 19). Es completamente humano sentir ese cansancio cuando el peso del día nos supera. Cuando sientas el motor acelerado, acordate de las palabras del Señor: «Venid a mí todos los que estéis trabajados y cargados, y yo os haré descansar» (Mateo 11, 28)."
+      "respuesta": {
+        "es": "«Todo hombre sea pronto para oír, tardo para hablar, tardo para la ira» (Santiago 1, 19). Es completamente humano sentir ese cansancio cuando el peso del día nos supera. Cuando sientas el motor acelerado, acordate de las palabras del Señor: «Venid a mí todos los que estéis trabajados y cargados, y yo os haré descansar» (Mateo 11, 28).",
+        "en": "«Everyone should be quick to listen, slow to speak and slow to become angry» (James 1:19). It is completely human to feel that tiredness when the weight of the day overwhelms us. When you feel your engine racing, remember the Lord's words: «Come to me, all you who are weary and burdened, and I will give you rest» (Matthew 11:28).",
+        "pt": "«Todo homem seja pronto para ouvir, tardio para falar, tardio para se irar» (Tiago 1,19). É completamente humano sentir esse cansaço quando o peso do dia nos supera. Quando sentir o motor acelerado, lembre-se das palavras do Senhor: «Vinde a mim, todos os que estais cansados e oprimidos, e eu vos aliviarei» (Mateus 11,28)."
+      }
     }
   ]
 }

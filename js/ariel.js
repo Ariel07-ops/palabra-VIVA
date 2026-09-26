@@ -1593,6 +1593,18 @@ function escaparHTML(texto) {
   return div.innerHTML;
 }
 
+// 🌐 Helper universal de idioma para el chatbot (Soporte es, en, pt)
+function obtenerTextoIdioma(itemTexto) {
+  if (!itemTexto) return "";
+  const idioma =
+    window.idiomaActual || localStorage.getItem("idiomaApp") || "es";
+
+  if (typeof itemTexto === "object") {
+    return itemTexto[idioma] || itemTexto.es || "";
+  }
+  return itemTexto; // Si es un string plano por compatibilidad
+}
+
 // ⚙️ Configuración de palabras que no aportan significado doctrinal
 const palabrasIgnoradas = new Set([
   "el",
@@ -1673,14 +1685,14 @@ function normalizarTexto(texto) {
     .trim();
 }
 
-// ✂️ Extrae palabras válidas descartando las ignoradas (maneja espacios múltiples sin romperse)
+// ✂️ Extrae palabras válidas descartando las ignoradas
 function obtenerPalabras(texto) {
   return normalizarTexto(texto)
     .split(" ")
     .filter((palabra) => palabra.length > 2 && !palabrasIgnoradas.has(palabra));
 }
 
-// --- CLASIFICADOR PREVIO DE INTENCIÓN (El árbitro del tablero) ---
+// --- CLASIFICADOR PREVIO DE INTENCIÓN ---
 function clasificarConsulta(texto) {
   const t = normalizarTexto(texto);
 
@@ -1751,19 +1763,16 @@ function clasificarConsulta(texto) {
   };
 }
 
-// --- FUNCIÓN GLOBAL DE SÍNTESIS DE VOZ (ASISTENTE) ---
+// --- SÍNTESIS DE VOZ ---
 function hacerHablarAlRobot(texto) {
   if (!("speechSynthesis" in window)) {
     console.log("Este navegador no soporta síntesis de voz.");
     return;
   }
-
   if (!texto) return;
 
-  // Cancelar audios previos para respuesta inmediata
   window.speechSynthesis.cancel();
 
-  // Detección dinámica del idioma activo (es, en, pt)
   const idiomaApp =
     window.idiomaActual || localStorage.getItem("idiomaApp") || "es";
   const configIdioma =
@@ -1772,22 +1781,19 @@ function hacerHablarAlRobot(texto) {
 
   const utterance = new SpeechSynthesisUtterance(texto);
   if (vozSeleccionada) utterance.voice = vozSeleccionada;
-
   utterance.lang = configIdioma.lang;
-
-  // Ritmo de conversación fluido para el asistente
   utterance.rate = 1.0;
   utterance.pitch = 1.0;
 
   window.speechSynthesis.speak(utterance);
 }
 
-// Inicialización de evento para precargar voces en memoria
 if (typeof window.speechSynthesis !== "undefined") {
   window.speechSynthesis.onvoiceschanged = () => {
     window.speechSynthesis.getVoices();
   };
 }
+
 // --- MAPA GEOGRÁFICO / REFERENCIAS ---
 function actualizarMapaGeografico(id) {
   const contenedorMapa = document.getElementById("contenedor-mapa-referencia");
@@ -1809,9 +1815,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const linkAsistente = document.getElementById("link-asistente");
   const menuLateral = document.getElementById("menu-lateral");
   const studyCard = document.getElementById("study-card");
-  const panelHandle = document.getElementById("panel-handle");
 
-  // Conexión del botón del asistente en el menú
   if (linkAsistente) {
     linkAsistente.addEventListener("click", (e) => {
       e.preventDefault();
@@ -1845,19 +1849,16 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   // --- PROCESAMIENTO PRINCIPAL DEL CHAT ---
-  // --- PROCESAMIENTO PRINCIPAL DEL CHAT ---
   btnEnviar?.addEventListener("click", async () => {
     const textoUsuarioCrudo = inputChat.value.trim();
 
     if (textoUsuarioCrudo !== "") {
-      // 🛡️ TRUCO PARA BAJAR EL TECLADO EN MÓVILES AL ENVIAR
       inputChat.blur();
 
       const textoUsuario = escaparHTML(textoUsuarioCrudo);
       let textoLimpio = normalizarTexto(textoUsuarioCrudo);
       let palabrasUsuario = obtenerPalabras(textoUsuarioCrudo);
 
-      // 🧠 CAPA DE SINÓNIMOS DEL ÁRBITRO (Para que capte conceptos sin exigir la palabra exacta)
       const diccionarioSinonimos = {
         nazareno: "jesus",
         salvador: "jesus",
@@ -1901,13 +1902,9 @@ document.addEventListener("DOMContentLoaded", () => {
               "Contame, ¿cuál es tu primer nombre así nos conocemos mejor? También podes poner siglas si no queres que se guarde tu nombre.!💬";
           }
         } else {
-          // Cargamos el JSON principal de respuestas pastorales y config
           const resRespuestas = await fetch("data/respuestas_asistente.json");
           const datosAsistente = await resRespuestas.json();
 
-          // =========================================================================
-          // 🛡️ 1. ESCUDO ANTIRRADAR / EMPATÍA Y EXPRESIÓN EMOCIONAL (Prioridad Máxima)
-          // =========================================================================
           const palabrasDolor = [
             "triste",
             "llor",
@@ -1921,7 +1918,6 @@ document.addEventListener("DOMContentLoaded", () => {
             "abandonado",
             "llorar",
           ];
-
           const palabrasEnojo = [
             "enojado",
             "bronca",
@@ -1973,25 +1969,35 @@ document.addEventListener("DOMContentLoaded", () => {
               "Duele mucho cuando la vida se pone pesada. Acordate de María al pie de la cruz sosteniendo el dolor. Dios no te suelta la mano, de la cruz más dura saca vida.",
               "Sentirse solo o pensar que a nadie le importamos duele en el alma. Jesús experimentó el abandono en la cruz para decirte que estás grabado en sus manos. No estás solo.",
             ];
-            respuestaAsistente =
+            // Si las de dolor son strings planos o también objetos, por seguridad lo pasamos por el helper:
+            const dolorElegido =
               respuestasDolor[
                 Math.floor(Math.random() * respuestasDolor.length)
               ];
+            respuestaAsistente = obtenerTextoIdioma(dolorElegido);
           } else if (palabrasEnojo.some((p) => textoLimpio.includes(p))) {
+            const respEnojo =
+              datosAsistente.respuestas_pastorales?.enojado?.respuesta;
             respuestaAsistente =
-              datosAsistente.respuestas_pastorales?.enojado?.respuesta ||
+              obtenerTextoIdioma(respEnojo) ||
               "Qué bajón arrastrar bronca o enojarse así. Desahogate tranquilo, te leo y te acompaño en este momento.";
           } else if (palabrasCansancio.some((p) => textoLimpio.includes(p))) {
+            const respCansado =
+              datosAsistente.respuestas_pastorales?.cansado?.respuesta;
             respuestaAsistente =
-              datosAsistente.respuestas_pastorales?.cansado?.respuesta ||
+              obtenerTextoIdioma(respCansado) ||
               "Te entiendo perfectamente. A veces el día pesa un montón. Tomate un respiro y aflojá un poco 🧉.";
           } else if (palabrasSueno.some((p) => textoLimpio.includes(p))) {
+            const respSueno =
+              datosAsistente.respuestas_pastorales?.ojos?.respuesta;
             respuestaAsistente =
-              datosAsistente.respuestas_pastorales?.ojos?.respuesta ||
+              obtenerTextoIdioma(respSueno) ||
               "¡Uf, se te cierran solos los ojos! Pegate una buena dormida y dejá el mundo un rato.";
           } else if (palabrasRuido.some((p) => textoLimpio.includes(p))) {
+            const respRuido =
+              datosAsistente.respuestas_pastorales?.ruido?.respuesta;
             respuestaAsistente =
-              datosAsistente.respuestas_pastorales?.ruido.respuesta ||
+              obtenerTextoIdioma(respRuido) ||
               "¡Qué cosa insoportable cuando te meten ruido ajeno! Buscate un rincón con paz.";
           } else if (
             textoLimpio.includes("como te llamas") ||
@@ -2026,7 +2032,6 @@ document.addEventListener("DOMContentLoaded", () => {
             esperandoNombre = true;
             respuestaAsistente =
               "Listo, borré el nombre que tenía guardado. ¿Cómo querés que te llame ahora?";
-            // 🧭 DISPARADOR DE BIENVENIDA CON EL NOMBRE REGISTRADO
           } else if (
             textoLimpio.includes("para que sirve") ||
             textoLimpio.includes("de que podemos hablar") ||
@@ -2036,9 +2041,8 @@ document.addEventListener("DOMContentLoaded", () => {
             textoLimpio.includes("que hay aqui") ||
             textoLimpio.includes("que hay acá")
           ) {
-            // Recupera el nombre que ya se guardó obligatoriamente al ingresar
-            let nombrePersona = localStorage.getItem("nombrePalabraViva");
-
+            let nombrePersona =
+              localStorage.getItem("nombrePalabraViva") || "amigo";
             respuestaAsistente =
               `¡Hola, ${nombrePersona}! Este espacio está pensado para que podamos conversar, reflexionar y profundizar sobre la fe, la doctrina y temas espirituales con total confianza.\n\n` +
               "Acá podés preguntarme sobre conceptos del catecismo, plantear tus dudas cotidianas o recorrer caminos guiados paso a paso.\n\n" +
@@ -2052,8 +2056,6 @@ document.addEventListener("DOMContentLoaded", () => {
             textoLimpio.includes("hablemos de la fe") ||
             textoLimpio.includes("hablemos sobre la fe") ||
             textoLimpio.includes("contame sobre la fe") ||
-            textoLimpio.includes("que me puedes decir sobre la fe") ||
-            textoLimpio.includes("que me podes decir sobre la fe") ||
             textoLimpio === "fe"
           ) {
             respuestaAsistente =
@@ -2067,8 +2069,9 @@ document.addEventListener("DOMContentLoaded", () => {
             const agrades = datosAsistente.agradecimientos?.respuestas || [
               "¡De nada! Es un placer enorme acompañarte en este camino 🌟.",
             ];
-            respuestaAsistente =
+            const agradecimientoElegido =
               agrades[Math.floor(Math.random() * agrades.length)];
+            respuestaAsistente = obtenerTextoIdioma(agradecimientoElegido);
           } else if (palabrasPositivas.some((p) => textoLimpio.includes(p))) {
             respuestaAsistente =
               "¡Qué bueno leer eso! Me alegra que te sirva. Vos decime por dónde querés seguir o qué te gustaría explorar hoy en Palabra Viva. Te escucho 🧉.";
@@ -2108,12 +2111,13 @@ document.addEventListener("DOMContentLoaded", () => {
             const saludosPosibles = datosAsistente.saludos?.respuestas || [
               "¡Hola! Qué bueno tenerte por acá. ¿En qué te puedo ayudar hoy?",
             ];
-            respuestaAsistente =
+            const saludoElegido =
               saludosPosibles[
                 Math.floor(Math.random() * saludosPosibles.length)
               ];
+            respuestaAsistente = obtenerTextoIdioma(saludoElegido);
           }
-          // --- 2. GUÍA Y AYUDA ---
+          // --- GUÍA Y AYUDA ---
           else if (
             textoLimpio.includes("guia") ||
             textoLimpio.includes("que puedo hacer") ||
@@ -2148,69 +2152,58 @@ document.addEventListener("DOMContentLoaded", () => {
               }
             }
           }
-          // --- PUENTE: CAMINO DE LA RAZÓN ---
+          // --- PUENTES DE CAMINOS ---
           else if (
             textoLimpio.includes("razon") ||
             textoLimpio.includes("razón") ||
             textoLimpio.includes("pensamiento") ||
             textoLimpio.includes("orden") ||
-            pasoActualRazon > 1
+            (typeof pasoActualRazon !== "undefined" && pasoActualRazon > 1)
           ) {
             respuestaAsistente = manejarCaminoRazon(textoUsuarioCrudo);
-          }
-          // --- PUENTE: CAMINO DE LA TRINIDAD ---
-          else if (
+          } else if (
             textoLimpio.includes("trinidad") ||
             textoLimpio.includes("trino") ||
             textoLimpio.includes("tres personas") ||
-            pasoActualTrinidad > 1
+            (typeof pasoActualTrinidad !== "undefined" &&
+              pasoActualTrinidad > 1)
           ) {
             respuestaAsistente = manejarCaminoTrinidad(textoUsuarioCrudo);
-          }
-          // Puente camino Pascua
-          else if (
+          } else if (
             textoLimpio.includes("pascua") ||
             textoLimpio.includes("misterio pascual") ||
             textoLimpio.includes("resurreccion") ||
-            pasoActualPascua > 1
+            (typeof pasoActualPascua !== "undefined" && pasoActualPascua > 1)
           ) {
             respuestaAsistente = manejarCaminoPascua(textoUsuarioCrudo);
-          }
-          // Puente camino Jesus
-          else if (
+          } else if (
             textoLimpio.includes("hombre y dios") ||
             textoLimpio.includes("doble naturaleza") ||
             textoLimpio.includes("humano y divino") ||
-            pasoActualJesus > 1
+            (typeof pasoActualJesus !== "undefined" && pasoActualJesus > 1)
           ) {
             respuestaAsistente = manejarCaminoJesus(textoUsuarioCrudo);
-          }
-          // PUENTE: CAMINO DEL ALMA
-          else if (
+          } else if (
             textoLimpio.includes("alma") ||
             textoLimpio.includes("cuerpo y alma") ||
             textoLimpio.includes("camino del alma") ||
-            pasoActualAlma > 1
+            (typeof pasoActualAlma !== "undefined" && pasoActualAlma > 1)
           ) {
             respuestaAsistente = manejarCaminoAlma(textoUsuarioCrudo);
           }
-          // --- 3. MOTOR DE BÚSQUEDA INTELIGENTE EN CATEQUESIS Y FAQ ---
+          // --- MOTOR DE BÚSQUEDA INTELIGENTE EN CATEQUESIS Y FAQ ---
           else {
             try {
               const clasificacion = clasificarConsulta(textoUsuarioCrudo);
 
               if (clasificacion.requiereAclaracion) {
                 categoriaActiva = null;
-                respuestaAsistente =
-                  `Tu consulta puede referirse a varios temas: ` +
-                  `${clasificacion.opciones.join(", ")}. ` +
-                  `¿Sobre cuál de ellos querés que profundicemos?`;
+                respuestaAsistente = `Tu consulta puede referirse a varios temas: ${clasificacion.opciones.join(", ")}. ¿Sobre cuál de ellos querés que profundicemos?`;
               } else {
                 if (clasificacion.categoria !== "desconocida") {
                   categoriaActiva = clasificacion.categoria;
                 }
 
-                // A. Cargamos el JSON de Catequesis
                 const resCatequesis = await fetch("data/catequesis.json");
                 const baseDatosCatequesis = await resCatequesis.json();
 
@@ -2223,9 +2216,7 @@ document.addEventListener("DOMContentLoaded", () => {
                     item.pregunta_principal || item.pregunta || "";
                   const preguntaItem = normalizarTexto(textoPreguntaItem);
 
-                  if (textoLimpio.includes(preguntaItem)) {
-                    puntos += 10;
-                  }
+                  if (textoLimpio.includes(preguntaItem)) puntos += 10;
 
                   if (item.keywords && Array.isArray(item.keywords)) {
                     item.keywords.forEach((kw) => {
@@ -2290,7 +2281,6 @@ document.addEventListener("DOMContentLoaded", () => {
                         </button>
                       `;
                     });
-
                     respuestaConstruida += `</div>`;
                   }
 
@@ -2308,9 +2298,7 @@ document.addEventListener("DOMContentLoaded", () => {
                       if (faq.palabras_clave) {
                         faq.palabras_clave.forEach((kw) => {
                           const kwLimpia = normalizarTexto(kw);
-                          if (textoLimpio.includes(kwLimpia)) {
-                            puntos += 2;
-                          }
+                          if (textoLimpio.includes(kwLimpia)) puntos += 2;
                         });
                       }
                       if (puntos > maxPuntosFAQ) {
@@ -2321,7 +2309,10 @@ document.addEventListener("DOMContentLoaded", () => {
                   }
 
                   if (mejorMatchFAQ && maxPuntosFAQ >= 2) {
-                    respuestaAsistente = mejorMatchFAQ.respuesta;
+                    // ¡Acá también aplicamos el helper de idioma para las FAQ!
+                    respuestaAsistente = obtenerTextoIdioma(
+                      mejorMatchFAQ.respuesta,
+                    );
                   } else {
                     const comodinesHumanos = [
                       "Qué tema ese. A veces nos pasa como con los átomos o con el viento: no los vemos con nuestros ojos, pero sabemos que están ahí. Contame un poco más de lo que estás pensando.",
@@ -2349,12 +2340,11 @@ document.addEventListener("DOMContentLoaded", () => {
           "Se me trabó un segundo la idea, pero acá sigo con vos. ¿Qué me decías?";
       }
 
-      // Renderizado seguro de la respuesta en pantalla (¡ahora sí adentro del if y del listener!)
+      // Renderizado seguro en pantalla
       const textoCrudo =
         typeof respuestaAsistente === "string"
           ? respuestaAsistente
           : respuestaAsistente?.toString() || "";
-
       const textoParaVoz = textoCrudo
         .replace(/<[^>]*>/g, "")
         .replace(/\s+/g, " ")
@@ -2378,13 +2368,13 @@ document.addEventListener("DOMContentLoaded", () => {
       contenedorMensajes.scrollTop = contenedorMensajes.scrollHeight;
     }
   });
+
   // --- CONTROL DEL MICRÓFONO ---
   btnMic?.addEventListener("click", () => {
     const SpeechRecognition =
       window.SpeechRecognition || window.webkitSpeechRecognition;
 
     if (SpeechRecognition) {
-      // 🛑 Cortamos la voz del robot para que no se escuche a sí mismo
       if ("speechSynthesis" in window) {
         window.speechSynthesis.cancel();
       }
@@ -2394,9 +2384,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
       reconocimiento.onstart = () => {
         btnMic.classList.add("mic-escuchando");
-        if (inputChat) {
-          inputChat.value = ""; // Limpiamos para evitar arrastre
-        }
+        if (inputChat) inputChat.value = "";
       };
 
       reconocimiento.onresult = (evento) => {
@@ -2422,18 +2410,14 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   });
 
-  // --- HISTORIAL INICIAL Y MANEJADOR DEL BOTÓN "ATRÁS" ---
-  // --- HISTORIAL INICIAL Y MANEJADOR DEL BOTÓN "ATRÁS" ---
+  // --- HISTORIAL Y BOTÓN ATRÁS ---
   history.replaceState({ vista: "main" }, "", "");
 
   window.addEventListener("popstate", (event) => {
-    // Si la tarjeta expandida de estudio está abierta, la cerramos
     if (studyCard && studyCard.classList.contains("expanded")) {
       studyCard.classList.remove("expanded");
       studyCard.style.transform = "";
     } else {
-      // ¡ACÁ ESTÁ EL SECRETO! Si no hay tarjeta flotante abierta,
-      // forzamos a que la app vuelva visualmente a la pantalla principal (screenMain)
       if (
         typeof changeScreen === "function" &&
         typeof screenMain !== "undefined"
@@ -2978,6 +2962,10 @@ window.avanzarCaminoAlmaAutomatico = function () {
   }
 };
 // ==========================================
+// EL CAMINO DE LA PASCUA
+// ==========================================
+
+// 1. Array con las estaciones del Camino de la Pascua
 // ==========================================
 // EL CAMINO DE LA PASCUA
 // ==========================================
@@ -3111,7 +3099,13 @@ window.avanzarCaminoPascuaAutomatico = function () {
     contenedorMensajes.appendChild(nuevoMensaje);
     contenedorMensajes.scrollTop = contenedorMensajes.scrollHeight;
   }
-}; // ==========================================
+};
+// ==========================================
+// EL CAMINO DE JESÚS (DIOS Y HOMBRE)
+// ==========================================
+
+// 1. Array con las estaciones del Camino de Jesús
+// 1. Array con las estaciones del Camino de Jesús
 const caminoJesusData = [
   {
     paso: 1,
