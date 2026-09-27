@@ -2251,7 +2251,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
                 if (mejorMatchCat && maxPuntosCat >= 2) {
                   let respuestaConstruida =
-                    construirRespuestaCatequesis(mejorMatchCat);
+                    construirRespuestaCatequesis(mejorMatchCat); // <--- ACÁ LLAMA A UNA FUNCIÓN EXTERNA
 
                   const categoriaBusqueda =
                     mejorMatchCat.categoria || mejorMatchCat.modulo || "";
@@ -2266,15 +2266,27 @@ document.addEventListener("DOMContentLoaded", () => {
                     .slice(0, 2);
 
                   if (relacionados.length > 0) {
+                    // Detectamos el idioma actual dentro del bloque de búsqueda
+                    const idiomaActual =
+                      window.idiomaActual ||
+                      localStorage.getItem("idiomaApp") ||
+                      "es";
+
                     respuestaConstruida += `<br><br>🧭 <strong>¿Seguimos explorando por acá?</strong><br>`;
                     respuestaConstruida += `<div class="camino-botones-activos" style="margin-top: 10px; display: flex; flex-direction: column; gap: 6px;">`;
 
                     relacionados.forEach((rel) => {
+                      // Obtenemos el texto de la pregunta relacionada según el idioma activo
+                      const datosRelIdioma = rel[idiomaActual] || rel.es || rel;
                       const textoPregRel =
-                        rel.pregunta_principal || rel.pregunta || "";
+                        datosRelIdioma.pregunta_principal ||
+                        datosRelIdioma.pregunta ||
+                        "";
+
                       const preguntaLimpia = textoPregRel
                         .replace(/'/g, "\\'")
                         .replace(/"/g, "&quot;");
+
                       respuestaConstruida += `
                         <button onclick="enviarMensajeSugerido('${preguntaLimpia}')" style="background: #2c3e50; color: white; border: none; padding: 8px 14px; border-radius: 15px; cursor: pointer; text-align: left; font-family: inherit; font-size: 0.85rem; box-shadow: 0 1px 3px rgba(0,0,0,0.1);">
                           📌 ${textoPregRel}
@@ -2380,7 +2392,17 @@ document.addEventListener("DOMContentLoaded", () => {
       }
 
       const reconocimiento = new SpeechRecognition();
-      reconocimiento.lang = "es-AR";
+
+      // Detectamos el idioma actual de la app para ponérselo al micrófono
+      const idiomaApp =
+        window.idiomaActual || localStorage.getItem("idiomaApp") || "es";
+      const mapeoIdiomasMic = {
+        es: "es-AR",
+        en: "en-US",
+        pt: "pt-BR",
+      };
+
+      reconocimiento.lang = mapeoIdiomasMic[idiomaApp] || "es-AR";
 
       reconocimiento.onstart = () => {
         btnMic.classList.add("mic-escuchando");
@@ -2658,44 +2680,56 @@ window.enviarMensajeSugerido = function (textoPregunta) {
 };
 // --- FUNCIÓN HELPER: Renderizado de fichas de catequesis enriquecidas ---
 function construirRespuestaCatequesis(item) {
-  const tituloPregunta = item.pregunta_principal || item.pregunta;
+  // Detectamos el idioma actual de la app (es, en, pt)
+  const idioma =
+    window.idiomaActual || localStorage.getItem("idiomaApp") || "es";
+
+  // Extraemos el sub-objeto correspondiente al idioma (si no existe, usa el español por defecto)
+  const datosIdioma = item[idioma] || item.es || item;
+
+  const tituloPregunta =
+    datosIdioma.pregunta_principal || datosIdioma.pregunta || "";
   let html = `<strong>${tituloPregunta}</strong><br><br>`;
 
-  if (item.puerta_de_entrada) {
-    html += `🌱 <em>${item.puerta_de_entrada}</em><br><br>`;
+  if (datosIdioma.puerta_de_entrada) {
+    html += `🌱 <em>${datosIdioma.puerta_de_entrada}</em><br><br>`;
   }
 
-  const textoRespuesta = item.respuesta_breve || item.respuesta;
+  const textoRespuesta =
+    datosIdioma.respuesta_breve || datosIdioma.respuesta || "";
   html += `${textoRespuesta}`;
 
-  if (item.paradoja) {
-    html += `<br><br>✨ <strong>Para pensar:</strong> ${item.paradoja}`;
+  if (datosIdioma.paradoja) {
+    html += `<br><br>✨ <strong>Para pensar:</strong> ${datosIdioma.paradoja}`;
   }
 
-  if (item.aclaracion) {
-    html += `<br><br>📖 <em>Nota doctrinal:</em> ${item.aclaracion}`;
+  if (datosIdioma.aclaracion) {
+    html += `<br><br>📖 <em>Nota doctrinal:</em> ${datosIdioma.aclaracion}`;
   }
 
-  if (item.paso_concreto) {
-    html += `<br><br>💡 <em>Paso concreto:</em> ${item.paso_concreto}`;
+  if (datosIdioma.paso_concreto) {
+    html += `<br><br>💡 <em>Paso concreto:</em> ${datosIdioma.paso_concreto}`;
   }
 
-  if (item.oracion) {
-    html += `<br><br>🙏 <em>Oración:</em> «${item.oracion}»`;
+  if (datosIdioma.oracion) {
+    html += `<br><br>🙏 <em>Oración:</em> «${datosIdioma.oracion}»`;
   }
 
   let referenciasExtras = [];
   if (
-    item.enseñanza_de_la_iglesia &&
-    Array.isArray(item.enseñanza_de_la_iglesia)
+    datosIdioma.enseñanza_de_la_iglesia &&
+    Array.isArray(datosIdioma.enseñanza_de_la_iglesia)
   ) {
-    referenciasExtras.push(...item.enseñanza_de_la_iglesia);
+    referenciasExtras.push(...datosIdioma.enseñanza_de_la_iglesia);
   }
-  if (item.catecismo && Array.isArray(item.catecismo)) {
-    referenciasExtras.push(...item.catecismo);
+  if (datosIdioma.catecismo && Array.isArray(datosIdioma.catecismo)) {
+    referenciasExtras.push(...datosIdioma.catecismo);
   }
-  if (item.fundamento_biblico && Array.isArray(item.fundamento_biblico)) {
-    referenciasExtras.push(...item.fundamento_biblico);
+  if (
+    datosIdioma.fundamento_biblico &&
+    Array.isArray(datosIdioma.fundamento_biblico)
+  ) {
+    referenciasExtras.push(...datosIdioma.fundamento_biblico);
   }
 
   if (referenciasExtras.length > 0) {
