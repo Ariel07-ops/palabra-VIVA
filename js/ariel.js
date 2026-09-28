@@ -1839,15 +1839,41 @@ document.addEventListener("DOMContentLoaded", () => {
   let esperandoNombre = false;
   const nombreGuardado = localStorage.getItem("nombrePalabraViva");
 
-  if (contenedorMensajes) {
-    if (nombreGuardado) {
-      contenedorMensajes.innerHTML += `<div class="mensaje-asistente"><strong>Asistente:</strong> ¡Qué alegría encontrarte de nuevo, ${nombreGuardado}! ¿De qué te gustaría que hablemos hoy sobre nuestra fe 🕊️?</div>`;
-    } else {
-      contenedorMensajes.innerHTML += `<div class="mensaje-asistente"><strong>Asistente:</strong> ¡Hola ✨! ¡Qué alegría darte la bienvenida a Palabra Viva! Para empezar, ¿cuál es tu nombre de pila? y si no queres poner tu nombre, podes poner siglas.</div>`;
-      esperandoNombre = true;
+  // --- CARGA INICIAL DEL SALUDO ---
+  (async () => {
+    if (contenedorMensajes) {
+      let saludoInicialHTML = "";
+      try {
+        const resRespuestas = await fetch("data/respuestas_asistente.json");
+        window.datosAsistenteGlobal = await resRespuestas.json();
+      } catch (e) {
+        console.warn(
+          "No se pudo precargar el JSON en el inicio, usando respaldo.",
+        );
+      }
+
+      const datosLocales = window.datosAsistenteGlobal || {};
+
+      if (nombreGuardado) {
+        const respSaludado =
+          datosLocales.respuestas_pastorales?.saludado?.respuesta;
+        const textoSaludado =
+          obtenerTextoIdioma(respSaludado) ||
+          `¡Qué alegría encontrarte de nuevo, ${nombreGuardado}! ¿De qué te gustaría que hablemos hoy sobre nuestra fe 🕊️?`;
+        saludoInicialHTML = `<div class="mensaje-asistente"><strong>Asistente:</strong> ${textoSaludado.replace("${nombreGuardado}", nombreGuardado)}</div>`;
+      } else {
+        const respPedir =
+          datosLocales.respuestas_pastorales?.pedir_nombre?.respuesta;
+        const textoPedir =
+          obtenerTextoIdioma(respPedir) ||
+          `¡Hola ✨! ¡Qué alegría darte la bienvenida a Palabra Viva! Para empezar, ¿cuál es tu nombre de pila? y si no queres poner tu nombre, podes poner siglas.`;
+        saludoInicialHTML = `<div class="mensaje-asistente"><strong>Asistente:</strong> ${textoPedir}</div>`;
+        esperandoNombre = true;
+      }
+      contenedorMensajes.innerHTML += saludoInicialHTML;
+      contenedorMensajes.scrollTop = contenedorMensajes.scrollHeight;
     }
-    contenedorMensajes.scrollTop = contenedorMensajes.scrollHeight;
-  }
+  })();
 
   // --- PROCESAMIENTO PRINCIPAL DEL CHAT ---
   btnEnviar?.addEventListener("click", async () => {
@@ -1887,6 +1913,11 @@ document.addEventListener("DOMContentLoaded", () => {
       let respuestaAsistente = "";
 
       try {
+        // Obtenemos el JSON fresco en cada envío para asegurar la cascada
+        const resRespuestas = await fetch("data/respuestas_asistente.json");
+        const datosAsistente = await resRespuestas.json();
+        window.datosAsistenteGlobal = datosAsistente;
+
         if (esperandoNombre) {
           const nombreIngresado = textoUsuarioCrudo.split(" ")[0];
           if (
@@ -1897,15 +1928,25 @@ document.addEventListener("DOMContentLoaded", () => {
           ) {
             localStorage.setItem("nombrePalabraViva", nombreIngresado);
             esperandoNombre = false;
-            respuestaAsistente = `¡Mucho gusto, ${nombreIngresado} 🌟! Ya guardé tu nombre. ¿De qué charlamos hoy?`;
+            const respConNombre =
+              datosAsistente.respuestas_pastorales?.saludo_con_nombre
+                ?.respuesta;
+            const textoConNombre =
+              obtenerTextoIdioma(respConNombre) ||
+              `¡Mucho gusto, ${nombreIngresado} 🌟! Ya guardé tu nombre. ¿De qué charlamos hoy?`;
+            respuestaAsistente = textoConNombre.replace(
+              "${nombreIngresado}",
+              nombreIngresado,
+            );
           } else {
+            const respPedir =
+              datosAsistente.respuestas_pastorales?.pedir_nombre?.respuesta;
             respuestaAsistente =
+              obtenerTextoIdioma(respPedir) ||
               "Contame, ¿cuál es tu primer nombre así nos conocemos mejor? También podes poner siglas si no queres que se guarde tu nombre.!💬";
           }
         } else {
-          const resRespuestas = await fetch("data/respuestas_asistente.json");
-          const datosAsistente = await resRespuestas.json();
-
+          // --- DETECCIÓN DE ESTADOS Y EMOCIONES DESDE EL JSON ---
           const palabrasDolor = [
             "triste",
             "llor",
@@ -1913,11 +1954,10 @@ document.addEventListener("DOMContentLoaded", () => {
             "desolad",
             "solo",
             "miedo",
-            "no quiero vivir",
-            "no merezco",
-            "no tiene sentido",
-            "abandonado",
-            "llorar",
+            "sad",
+            "pain",
+            "chorar",
+            "tristeza",
           ];
           const palabrasEnojo = [
             "enojado",
@@ -1925,6 +1965,9 @@ document.addEventListener("DOMContentLoaded", () => {
             "pelee",
             "rabia",
             "enojo",
+            "angry",
+            "bravo",
+            "raiva",
           ];
           const palabrasCansancio = [
             "cansado",
@@ -1933,6 +1976,10 @@ document.addEventListener("DOMContentLoaded", () => {
             "agotada",
             "reventado",
             "reventada",
+            "tired",
+            "exhausted",
+            "cansado",
+            "esgotado",
           ];
           const palabrasSueno = [
             "ojos",
@@ -1940,6 +1987,9 @@ document.addEventListener("DOMContentLoaded", () => {
             "dormir",
             "sueño",
             "descansar",
+            "sleep",
+            "dormir",
+            "sono",
           ];
           const palabrasRuido = [
             "ruido",
@@ -1947,6 +1997,8 @@ document.addEventListener("DOMContentLoaded", () => {
             "sonido",
             "volumen",
             "videos",
+            "noise",
+            "barulho",
           ];
           const palabrasPositivas = [
             "excelente",
@@ -1954,51 +2006,58 @@ document.addEventListener("DOMContentLoaded", () => {
             "gusta",
             "encantó",
             "es verdad",
-            "es cierto",
             "sirve",
-            "tal cual",
             "bueno",
             "ok",
             "okay",
             "dale",
-            "ya fue",
+            "contento",
+            "feliz",
+            "bien",
+            "happy",
+            "contento",
+            "contente",
+            "legal",
+            "ótimo",
           ];
 
           if (palabrasDolor.some((p) => textoLimpio.includes(p))) {
-            const respuestasDolor = [
-              "Escuchame: el amor de Dios no se gana con méritos, se recibe por gracia. Pensá en el buen ladrón: al lado de Jesús escuchó 'Hoy estarás conmigo en el paraíso'. Tu vida tiene un valor infinito.",
-              "Duele mucho cuando la vida se pone pesada. Acordate de María al pie de la cruz sosteniendo el dolor. Dios no te suelta la mano, de la cruz más dura saca vida.",
-              "Sentirse solo o pensar que a nadie le importamos duele en el alma. Jesús experimentó el abandono en la cruz para decirte que estás grabado en sus manos. No estás solo.",
-            ];
-            const dolorElegido =
-              respuestasDolor[
-                Math.floor(Math.random() * respuestasDolor.length)
-              ];
-            respuestaAsistente = obtenerTextoIdioma(dolorElegido);
+            const respDolorJson =
+              datosAsistente.respuestas_pastorales?.dolor?.respuesta;
+            respuestaAsistente =
+              obtenerTextoIdioma(respDolorJson) ||
+              "Duele mucho cuando la vida se pesa. Dios no te suelta la mano.";
           } else if (palabrasEnojo.some((p) => textoLimpio.includes(p))) {
             const respEnojo =
               datosAsistente.respuestas_pastorales?.enojado?.respuesta;
             respuestaAsistente =
               obtenerTextoIdioma(respEnojo) ||
-              "Qué bajón arrastrar bronca o enojarse así. Desahogate tranquilo, te leo y te acompaño en este momento.";
+              "Qué bajón arrastrar bronca. Desahogate tranquilo, te acompaño.";
           } else if (palabrasCansancio.some((p) => textoLimpio.includes(p))) {
             const respCansado =
               datosAsistente.respuestas_pastorales?.cansado?.respuesta;
             respuestaAsistente =
               obtenerTextoIdioma(respCansado) ||
-              "Te entiendo perfectamente. A veces el día pesa un montón. Tomate un respiro y aflojá un poco 🧉.";
+              "Te entiendo perfectamente. Tomate un respiro y aflojá un poco 🧉.";
           } else if (palabrasSueno.some((p) => textoLimpio.includes(p))) {
             const respSueno =
               datosAsistente.respuestas_pastorales?.ojos?.respuesta;
             respuestaAsistente =
               obtenerTextoIdioma(respSueno) ||
-              "¡Uf, se te cierran solos los ojos! Pegate una buena dormida y dejá el mundo un rato.";
+              "¡Uf, se te cierran solos los ojos! Pegate una buena dormida.";
           } else if (palabrasRuido.some((p) => textoLimpio.includes(p))) {
             const respRuido =
               datosAsistente.respuestas_pastorales?.ruido?.respuesta;
             respuestaAsistente =
               obtenerTextoIdioma(respRuido) ||
-              "¡Qué cosa insoportable cuando te meten ruido ajeno! Buscate un rincón con paz.";
+              "¡Qué cosa insoportable el ruido ajeno! Buscate un rincón con paz.";
+          } else if (palabrasPositivas.some((p) => textoLimpio.includes(p))) {
+            const respPositiva =
+              datosAsistente.respuestas_pastorales?.bien?.respuesta ||
+              datosAsistente.saludos?.respuestas;
+            respuestaAsistente =
+              obtenerTextoIdioma(respPositiva) ||
+              "¡Qué alegría leer eso! Me alegra que marche todo bien. ¿En qué te puedo ayudar hoy?";
           } else if (
             textoLimpio.includes("como te llamas") ||
             textoLimpio.includes("cual es tu nombre") ||
@@ -2145,9 +2204,15 @@ document.addEventListener("DOMContentLoaded", () => {
             } else {
               const guia = datosAsistente.guia_uso;
               if (guia) {
+                const tituloGuia =
+                  obtenerTextoIdioma(guia.titulo) || guia.titulo;
+                const mensajeGuia =
+                  obtenerTextoIdioma(guia.mensaje) || guia.mensaje;
                 respuestaAsistente =
-                  `<strong>🧭 ${guia.titulo}</strong><br>${guia.mensaje}<br>` +
-                  guia.opciones.map((opt) => `• ${opt}`).join("<br>");
+                  `<strong>🧭 ${tituloGuia}</strong><br>${mensajeGuia}<br>` +
+                  (guia.opciones || [])
+                    .map((opt) => `• ${obtenerTextoIdioma(opt)}`)
+                    .join("<br>");
               } else {
                 respuestaAsistente =
                   "Acá podés consultar temas de catequesis o charlar sobre nuestra fe. ¡Preguntame lo que quieras!";
@@ -2193,7 +2258,7 @@ document.addEventListener("DOMContentLoaded", () => {
           ) {
             respuestaAsistente = manejarCaminoAlma(textoUsuarioCrudo);
           }
-          // --- MOTOR DE BÚSQUEDA INTELIGENTE (Basado en el diseño original y optimizado) ---
+          // --- MOTOR DE BÚSQUEDA INTELIGENTE ---
           else {
             try {
               const resCatequesis = await fetch("data/catequesis.json");
@@ -2201,21 +2266,16 @@ document.addEventListener("DOMContentLoaded", () => {
 
               let mejorMatchCat = null;
               let maxPuntosCat = 0;
-
-              // Limpiamos la categoría activa anterior para evitar que se encapriche con el tema pasado
               let categoriaActivaLocal = null;
 
               baseDatosCatequesis.forEach((item) => {
                 let puntos = 0;
-
-                // 🌍 Detectamos el idioma actual de forma segura
                 const idiomaActual =
                   window.idiomaActual ||
                   localStorage.getItem("idiomaApp") ||
                   "es";
                 const datosItemIdioma = item[idiomaActual] || item.es || item;
 
-                // Extraemos la pregunta adaptada al idioma en curso
                 const textoPreguntaItem =
                   datosItemIdioma.pregunta_principal ||
                   datosItemIdioma.pregunta ||
@@ -2224,7 +2284,6 @@ document.addEventListener("DOMContentLoaded", () => {
                   "";
                 const preguntaItem = normalizarTexto(textoPreguntaItem);
 
-                // 1. REGLA DE COINCIDENCIA: Pregunta exacta o frase clave fuerte (+10 puntos o más)
                 if (
                   textoLimpio === preguntaItem ||
                   textoLimpio.includes(preguntaItem)
@@ -2232,17 +2291,15 @@ document.addEventListener("DOMContentLoaded", () => {
                   puntos += 10;
                 }
 
-                // 2. PALABRAS CLAVE (Keywords) en el JSON
                 if (item.keywords && Array.isArray(item.keywords)) {
                   item.keywords.forEach((kw) => {
                     const keywordLimpia = normalizarTexto(kw);
                     if (textoLimpio.includes(keywordLimpia)) {
-                      puntos += 3; // Puntuación de keyword directa
+                      puntos += 3;
                     }
                   });
                 }
 
-                // 3. PALABRAS SUELTAS / AFIRMACIÓN (Suma parcial por coincidencia de términos > 3 letras)
                 palabrasUsuario.forEach((palabra) => {
                   if (preguntaItem.includes(palabra) && palabra.length > 3) {
                     puntos += 1;
@@ -2256,12 +2313,10 @@ document.addEventListener("DOMContentLoaded", () => {
                 }
               });
 
-              // Umbral mínimo para considerar un buen match en catequesis (ej: 2 puntos o más)
               if (mejorMatchCat && maxPuntosCat >= 2) {
                 let respuestaConstruida =
                   construirRespuestaCatequesis(mejorMatchCat);
 
-                // Buscamos elementos relacionados de la misma categoría para armar los botones / globitos
                 const relacionados = baseDatosCatequesis
                   .filter(
                     (item) =>
@@ -2302,7 +2357,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
                 respuestaAsistente = respuestaConstruida;
               } else {
-                // --- PLAN B: BÚSQUEDA EN PREGUNTAS FRECUENTES (FAQ) ---
                 let mejorMatchFAQ = null;
                 let maxPuntosFAQ = 0;
 
@@ -2330,7 +2384,6 @@ document.addEventListener("DOMContentLoaded", () => {
                     mejorMatchFAQ.respuesta,
                   );
                 } else {
-                  // --- COMODÍN HUMANO (Si no pica en ningún lado) ---
                   const comodinesHumanos = [
                     "Qué tema ese. A veces nos pasa como con los átomos o con el viento: no los vemos con nuestros ojos, pero sabemos que están ahí. Contame un poco más de lo que estás pensando.",
                     "Lo que decís me deja pensando. Este es un espacio para explorar la fe, la Palabra y nuestras dudas de todos los días. ¿Querés que busquemos algo sobre nuestra fe o charlemos sobre otro tema?",
@@ -2344,7 +2397,6 @@ document.addEventListener("DOMContentLoaded", () => {
                 }
               }
             } catch (errCat) {
-              // --- CONTROL DE ERRORES (TRY / CATCH) PARA QUE LA APP NUNCA SE ROMPA ---
               console.error("Error en el motor de búsqueda:", errCat);
               respuestaAsistente =
                 "¡Te leo con atención! Contame un poco más sobre eso que me decís o avisame si preferís que busquemos alguna sección o versículo de la app 💬.";
@@ -2385,6 +2437,7 @@ document.addEventListener("DOMContentLoaded", () => {
       contenedorMensajes.scrollTop = contenedorMensajes.scrollHeight;
     }
   });
+
   // --- HISTORIAL Y BOTÓN ATRÁS ---
   history.replaceState({ vista: "main" }, "", "");
 
@@ -2401,8 +2454,7 @@ document.addEventListener("DOMContentLoaded", () => {
       }
     }
   });
-});
-// --- NUEVA LÓGICA: EL CAMINO DE LA RAZÓN ---
+}); // --- NUEVA LÓGICA: EL CAMINO DE LA RAZÓN ---
 
 const caminoRazonData = [
   {

@@ -1,4 +1,29 @@
 {
+  "sistema_nombres": {
+    "pedir_nombre": {
+      "keywords": [
+        "nombre",
+        "name",
+        "nome",
+        "como te llamas",
+        "what is your name",
+        "qual é o seu nome"
+      ],
+      "es": "¡Hola ✨! ¡Qué alegría darte la bienvenida a Palabra Viva! Para empezar, ¿cuál es tu nombre de pila? Y si no querés poner tu nombre, podés poner siglas.",
+      "en": "Hello ✨! Welcome to Palabra Viva! To start, what is your first name? Or you can use initials if you prefer.",
+      "pt": "Olá ✨! Bem-vindo ao Palabra Viva! Para começar, qual é o seu primeiro nome? Ou você pode usar iniciais se preferir."
+    },
+    "saludo_con_nombre": {
+      "es": "¡Mucho gusto, ${nombreIngresado} 🌟! Ya guardé tu nombre. ¿De qué charlamos hoy?",
+      "en": "Nice to meet you, ${nombreIngresado} 🌟! I've saved your name. What shall we talk about today?",
+      "pt": "Muito prazer, ${nombreIngresado} 🌟! Já salvei seu nome. Sobre o que vamos conversar hoje?"
+    },
+    "saludado": {
+      "es": "¡Qué alegría encontrarte de nuevo, ${nombreGuardado}! ¿De qué te gustaría que hablemos hoy sobre nuestra fe 🕊️?",
+      "en": "So glad to see you again, ${nombreGuardado}! What would you like to talk about today regarding our faith 🕊️?",
+      "pt": "Que alegria te ver de novo, ${nombreGuardado}! Sobre o que você gostaria de conversar hoje sobre nossa fé 🕊️?"
+    }
+  },
   "saludos": {
     "keywords": [
       "hola",
@@ -15,8 +40,7 @@
       "tudo bem",
       "hey",
       "paz",
-      "peace",
-      "paz"
+      "peace"
     ],
     "respuestas": [
       {
@@ -142,16 +166,13 @@
       "keywords": [
         "triste",
         "sad",
-        "triste",
         "tristeza",
         "sadness",
-        "tristeza",
         "afligido",
         "afflicted",
         "aflito",
         "mal",
         "bad",
-        "mal",
         "llorar",
         "cry",
         "chorar",
@@ -172,10 +193,8 @@
         "ansiedade",
         "ansioso",
         "anxious",
-        "ansioso",
         "preocupado",
         "worried",
-        "preocupado",
         "nervios",
         "nerves",
         "nervos",
@@ -202,10 +221,8 @@
         "rancor",
         "culpa",
         "guilt",
-        "culpa",
         "ofensa",
-        "offense",
-        "ofensa"
+        "offense"
       ],
       "respuesta": {
         "es": "«Perdonar no es olvidar, es dejar en libertad a un preso... ¡y descubrir que el preso eras vos!». El perdón es el puente que nos acerca al amor misericordioso del Padre (Mateo 18, 21-22). Cuesta, vaya si cuesta, pero es la única llave que le devuelve el aire al alma.",
@@ -220,7 +237,6 @@
         "medo",
         "temor",
         "dread",
-        "temor",
         "asustado",
         "scared",
         "assustado",
@@ -241,7 +257,6 @@
         "esperança",
         "futuro",
         "future",
-        "futuro",
         "gris",
         "gray",
         "cinzento",
@@ -268,7 +283,6 @@
         "cansaço",
         "peso",
         "weight",
-        "peso",
         "agobia",
         "overwhelms",
         "oprime"
@@ -291,8 +305,7 @@
         "silence",
         "silêncio",
         "abandonado",
-        "abandoned",
-        "abandonado"
+        "abandoned"
       ],
       "respuesta": {
         "es": "En los momentos donde el silencio pesa como plomo, acordate de la promesa que cruza la historia entera: «Yo estoy con ustedes todos los días, hasta el fin del mundo» (Mateo 28, 20). Nunca estamos tan acompañados como cuando nos sabemos habitados por Él.",
@@ -334,10 +347,7 @@
         "briga",
         "rabia",
         "fury",
-        "fúria",
-        "disgusto",
-        "displeasure",
-        "desgosto"
+        "fúria"
       ],
       "respuesta": {
         "es": "Qué fastidio cargar con bronca adentro. Como decía la Escritura, seamos tardos para la ira (Stg 1,19). Cuando te pisan los talones o te da rabia el día, descargá ese motorcito caliente acá, que te leo con paciencia.",
@@ -358,10 +368,7 @@
         "gritaria",
         "molesto",
         "annoying",
-        "chato",
-        "paz mental",
-        "mental peace",
-        "paz mental"
+        "chato"
       ],
       "respuesta": {
         "es": "¡Qué cosa insoportable cuando el griterío de afuera te taladra la cabeza y te roba la paz! Dan ganas de huir al desierto. Buscate un rincón con silencio; el alma necesita bajar los decibeles para escuchar lo importante.",
@@ -373,13 +380,11 @@
       "keywords": [
         "dormir",
         "sleep",
-        "dormir",
         "a dormir",
         "go to sleep",
         "ir dormir",
         "descansar",
         "rest",
-        "descansar",
         "a la cama",
         "to bed",
         "para a cama"
@@ -390,7 +395,7 @@
         "pt": "Que você descanse em paz e recarregue as energias sob a sombra das asas d'Ele. Tenha uma noite linda e até amanhã!"
       }
     },
-    "gratitud": {
+    "bien": {
       "keywords": [
         "gracias dios",
         "thank God",
@@ -400,10 +405,8 @@
         "contente",
         "feliz",
         "happy",
-        "feliz",
         "agradecido",
         "grateful",
-        "agradecido",
         "bendecido",
         "blessed",
         "abençoado"
@@ -430,17 +433,12 @@
         "palabra viva",
         "para que sirve",
         "what is it for",
-        "para que serve",
-        "de que trata",
-        "objetivo",
-        "como funciona",
-        "how it works",
-        "como funciona"
+        "para que serve"
       ],
       "respuesta": {
         "es": "<strong>Palabra Viva</strong> es un espacio creado para el acompañamiento espiritual y la pausa diaria. Para buscar citas exactas o pasajes de la Biblia, te sugiero utilizar el buscador dedicado que está en la barra del menú lateral (por ejemplo, 'Juan 1:1'), o consultar la Sagrada Escritura en la página principal. Recordá que también podés escribirme: infobiblica, infolateral o infocamino para más información.",
         "en": "<strong>Palabra Viva</strong> is a space created for spiritual accompaniment and daily pause. To search for exact quotes or passages of the Bible, I suggest using the dedicated search engine in the sidebar (for example, 'John 1:1'), or consulting Sacred Scripture on the main page. Remember you can also write to me: infobiblica, infolateral, or infocamino for more information.",
-        "pt": "<strong>Palabra Viva</strong> é um espaço criado para o acompanhamento espiritual e a pausa diária. Para buscar citações exatas ou passagens da Bíblia, sugiro usar o buscador dedicado que está na barra do menu lateral (por exemplo, 'João 1:1'), ou consultar a Sagrada Escritura na página principal. Lembre-se de que você também pode me escrever: infobiblica, infolateral ou infocamino para mais informações."
+        "pt": "<strong>Palabra Viva</strong> é um espaço criado para o acompanhamento espiritual e a pausa diária. Para buscar citações exatas ou passagens da Bíblia, sugiro usar o buscador dedicado que está na barra do menu lateral (por exemplo, 'João 1:1'), ou consultar a Bíblia na página principal. Lembre-se de que você também pode me escrever: infobiblica, infolateral ou infocamino para mais informações."
       }
     },
     {
@@ -452,14 +450,9 @@
         "mis datos",
         "my data",
         "meus dados",
-        "internet",
         "offline",
         "sin conexion",
-        "without connection",
-        "sem conexão",
-        "seguro",
-        "safe",
-        "seguro"
+        "sem conexão"
       ],
       "respuesta": {
         "es": "Tu privacidad es absoluta. Esta aplicación funciona en modo 'local-first', lo que significa que tus preferencias y notas se guardan únicamente en tu dispositivo. Nada de lo que conversás acá viaja a servidores extraños.",
@@ -477,10 +470,7 @@
         "botones",
         "buttons",
         "botões",
-        "menu",
-        "barra",
-        "bar",
-        "barra"
+        "menu"
       ],
       "respuesta": {
         "es": "La interfaz es muy sencilla. El <strong>logotipo superior</strong> sirve como atajo para abrir este chat en cualquier momento que necesites un respiro. Desde el menú lateral también podés acceder al buscador especializado.",
@@ -496,10 +486,7 @@
         "vídeo",
         "paso a paso",
         "step by step",
-        "passo a passo",
-        "guia visual",
-        "visual guide",
-        "guia visual"
+        "passo a passo"
       ],
       "respuesta": {
         "es": "Pronto habilitaremos un pequeño video tutorial. Por ahora, podés tocar el logotipo de Palabra Viva en la barra de arriba en cualquier momento para abrir este asistente, o escribir la palabra 'guía'.",
@@ -517,10 +504,7 @@
         "are you a robot",
         "você é um robô",
         "inteligencia artificial",
-        "artificial intelligence",
-        "inteligência artificial",
-        "humano",
-        "human"
+        "artificial intelligence"
       ],
       "respuesta": {
         "es": "Soy el asistente de apoyo integrado en Palabra Viva, un catequista virtual diseñado para ofrecerte reflexiones espirituales y escucha. Para lecturas bíblicas textuales, recordá que tenés el buscador dedicado en el menú lateral.",
@@ -532,7 +516,6 @@
       "tema": "version_programa",
       "keywords": [
         "version",
-        "version",
         "versão",
         "actualizacion",
         "update",
@@ -541,7 +524,7 @@
       "respuesta": {
         "es": "Actualmente estás utilizando <strong>Palabra Viva Beta</strong>. Seguimos trabajando para incorporar más reflexiones pastorales y herramientas que nos acerquen a la verdad.",
         "en": "You are currently using <strong>Palabra Viva Beta</strong>. We continue working to incorporate more pastoral reflections and tools that bring us closer to the truth.",
-        "pt": "Atualmente você está usando o <strong>Palabra Viva Beta</strong>. Continuamos trabalhando para incorporar mais reflexões pastorais e ferramentas que nos aproximem da verdade."
+        "pt": "Atualmente você está usando o <strong>Palabra Viva Beta</strong>. Continuamos trabalhando para incorporar mais reflexões pastorales e ferramentas que nos aproximem da verdade."
       }
     },
     {
@@ -560,7 +543,6 @@
         "let's walk with jesus",
         "caminhamos com jesus",
         "infocamino",
-        "estado de tu corazon",
         "ruta de emaús",
         "emmaus road"
       ],
@@ -572,43 +554,11 @@
     },
     {
       "tema": "barra_de_navegacion",
-      "keywords": [
-        "infolateral",
-        "menu lateral",
-        "sidebar",
-        "menu lateral",
-        "herramientas de lectura"
-      ],
+      "keywords": ["infolateral", "menu lateral", "sidebar"],
       "respuesta": {
         "es": "Desde el menú lateral izquierdo tenés acceso rápido al buscador de versículos, herramientas de lectura para agrandar la letra de la biblia, enlaces de interés y este asistente de apoyo.",
         "en": "From the left sidebar you have quick access to the verse search engine, reading tools to enlarge the Bible font, links of interest, and this support assistant.",
         "pt": "A partir do menu lateral esquerdo você tem acesso rápido ao buscador de versículos, ferramentas de leitura para aumentar a letra da bíblia, links de interesse e este assistente de apoio."
-      }
-    },
-    {
-      "tema": "ansiedad_o_enojo_diario",
-      "keywords": [
-        "enojo",
-        "anger",
-        "raiva",
-        "bronca",
-        "rabia",
-        "cansancio",
-        "tiredness",
-        "cansaço",
-        "exigencia",
-        "demand",
-        "mal humor",
-        "bad mood",
-        "mau humor",
-        "discusión",
-        "discussion",
-        "discussão"
-      ],
-      "respuesta": {
-        "es": "«Todo hombre sea pronto para oír, tardo para hablar, tardo para la ira» (Santiago 1, 19). Es completamente humano sentir ese cansancio cuando el peso del día nos supera. Cuando sientas el motor acelerado, acordate de las palabras del Señor: «Venid a mí todos los que estéis trabajados y cargados, y yo os haré descansar» (Mateo 11, 28).",
-        "en": "«Everyone should be quick to listen, slow to speak and slow to become angry» (James 1:19). It is completely human to feel that tiredness when the weight of the day overwhelms us. When you feel your engine racing, remember the Lord's words: «Come to me, all you who are weary and burdened, and I will give you rest» (Matthew 11:28).",
-        "pt": "«Todo homem seja pronto para ouvir, tardio para falar, tardio para se irar» (Tiago 1,19). É completamente humano sentir esse cansaço quando o peso do dia nos supera. Quando sentir o motor acelerado, lembre-se das palavras do Senhor: «Vinde a mim, todos os que estais cansados e oprimidos, e eu vos aliviarei» (Mateus 11,28)."
       }
     }
   ]
