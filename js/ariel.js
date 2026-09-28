@@ -3222,3 +3222,83 @@ window.avanzarCaminoJesusAutomatico = function () {
     contenedorMensajes.scrollTop = contenedorMensajes.scrollHeight;
   }
 };
+// ==========================================
+// CONTROL DEL MICRÓFONO (Reconocimiento de Voz)
+// ==========================================
+
+// Verificamos si el navegador soporta la API de voz
+const SpeechRecognition =
+  window.SpeechRecognition || window.webkitSpeechRecognition;
+
+if (btnMic) {
+  if (!SpeechRecognition) {
+    // Si el navegador no soporta la API, dejamos el botón opaco / inactivo
+    btnMic.style.opacity = "0.4";
+    btnMic.title =
+      "El reconocimiento de voz no está soportado en este navegador.";
+  } else {
+    const recognition = new SpeechRecognition();
+    recognition.continuous = false;
+    recognition.interimResults = false;
+
+    // 1. Cuando el usuario hace clic en el micrófono
+    btnMic.addEventListener("click", () => {
+      // Verificamos conexión a internet (clave para celulares)
+      if (!navigator.onLine) {
+        console.warn("Sin conexión a internet para usar la voz.");
+        return;
+      }
+
+      try {
+        // Configuramos el idioma actual de la app (es, en, pt)
+        // Usamos tu variable 'idiomaActual' o 'currentLanguage' según cómo la tengas nombrada
+        let langCode = "es-AR";
+        if (typeof idiomaActual !== "undefined") {
+          if (idiomaActual === "en") langCode = "en-US";
+          else if (idiomaActual === "pt") langCode = "pt-BR";
+        }
+        recognition.lang = langCode;
+
+        recognition.start();
+      } catch (e) {
+        console.log(
+          "El micrófono ya estaba activo o hubo un error al iniciar:",
+          e,
+        );
+      }
+    });
+
+    // 2. Cuando empieza a escuchar (activamos el efecto "lucecita encendida / titilando")
+    recognition.onstart = () => {
+      btnMic.classList.add("mic-escuchando"); // Clase CSS para el brillo o titilado
+    };
+
+    // 3. Cuando el usuario habla y el sistema captura el texto
+    recognition.onresult = (event) => {
+      const textoCapturado = event.results[0][0].transcript;
+      console.log("Texto por voz:", textoCapturado);
+
+      // Buscamos el input del chat para volcarle lo que dijo el usuario
+      const inputChat = document.getElementById("chat-input");
+      if (inputChat) {
+        inputChat.value = textoCapturado;
+        // Opcional: si querés que envíe automáticamente, podés disparar la función de enviar
+      }
+    };
+
+    // 4. Blindaje contra errores (para que NUNCA se quede colgado en rojo)
+    recognition.onerror = (event) => {
+      console.warn("Error en reconocimiento de voz:", event.error);
+      apagarMicrifono();
+    };
+
+    // 5. Cuando termina la escucha por cualquier motivo
+    recognition.onend = () => {
+      apagarMicrifono();
+    };
+
+    function apagarMicrifono() {
+      btnMic.classList.remove("mic-escuchando"); // Apaga la luz / titilado y vuelve al estado normal
+    }
+  }
+}

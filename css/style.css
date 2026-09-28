@@ -3816,6 +3816,18 @@ body.light-mode .mensaje-asistente {
   border-radius: 20px;
   margin-bottom: 10px;
 }
+/* Estado base del botón: Normal y blanco (disponible para usar) */
+#btnMic {
+  opacity: 1; /* Visible por completo */
+  transition: all 0.3s ease;
+}
+
+/* Estado cuando está escuchando activamente (titilando o con brillo) */
+#btnMic.mic-escuchando {
+  /* Acá le ponés el color o la animación de titilado que prefieras */
+  background-color: rgba(255, 0, 0, 0.2);
+  box-shadow: 0 0 8px rgba(255, 0, 0, 0.8);
+}
 #contenedor-imagen-peldaño {
   margin-top: 0px;
 }
