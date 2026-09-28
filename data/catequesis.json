@@ -168,7 +168,7 @@
     "id": "jesus-003",
     "categoria": "Jesucristo",
     "keywords": [
-      "porque murio jesus",
+      "porque jesus murio en la cruz",
       "cruz de jesus",
       "jesus crucificado",
       "jesus murio",
@@ -202,7 +202,7 @@
     "categoria": "Jesucristo",
     "keywords": [
       "seguir a jesus",
-      "como seguir a jesus",
+      "como puedo seguir a jesus",
       "camino de jesus",
       "how to follow jesus",
       "como seguir a jesus"
@@ -233,7 +233,7 @@
     "id": "jesus-005",
     "categoria": "Jesucristo",
     "keywords": [
-      "resurreccion de jesus",
+      "Qué significa la resurrección de Jesús",
       "jesus resucito",
       "significado resurreccion",
       "resurreccion",
@@ -333,7 +333,7 @@
     "id": "virgen-002",
     "categoria": "Virgen María",
     "keywords": [
-      "anunciacion",
+      "La Anunciación y el «Sí» de María",
       "el si de maria",
       "como dijo que si",
       "angel gabriel",
@@ -367,7 +367,7 @@
     "categoria": "Virgen María",
     "keywords": [
       "profecias de maria",
-      "antiguo testamento maria",
+      "María en el Antiguo Testamento",
       "virgen concebira",
       "old testament mary",
       "antigo testamento maria"
@@ -377,7 +377,7 @@
       "respuesta_breve": "«La virgen concebirá y dará a luz un hijo» (Is 7,14). Dios es un artista prolijo: fue preparando la llegada de María y de Jesús a lo largo de los siglos como un hilo conductor perfecto en las Escrituras.",
       "paso_concreto": "Leé el pasaje de Isaías 7,14 y agradecé cómo Dios va preparando la historia de nuestra salvación.",
       "enseñanza_de_la_iglesia": ["CIC 489", "CIC 722"],
-      "fundamento_biblico": ["Is 7,14", "Gn 3,15"]
+      "fundamento_biblico": ["Is 7,14", "Gn 3,15."]
     },
     "en": {
       "pregunta_principal": "Mary in the Old Testament",
@@ -430,7 +430,7 @@
     "id": "virgen-005",
     "categoria": "Virgen María",
     "keywords": [
-      "mujer vestida de sol",
+      "La Mujer vestida de sol en el Apocalipsis",
       "apocalipsis 12",
       "mujer del apocalipsis",
       "woman clothed with the sun",
@@ -463,14 +463,14 @@
     "categoria": "Virgen María",
     "keywords": [
       "hermanos de jesus",
-      "maria virgen",
+      "María tuvo más hijos",
       "hijos de maria",
       "virgen perpetua",
       "brothers of jesus",
       "irmãos de jesus"
     ],
     "es": {
-      "pregunta_principal": "¿María tuvo más hijos después de Jesús?",
+      "pregunta_principal": "¿María tuvo más hijos?",
       "puerta_de_entrada": "Es una pregunta muy comprensible cuando leemos los Evangelios por primera vez.",
       "respuesta_breve": "La enseñanza católica sostiene que María permaneció siempre virgen. Los «hermanos» y «hermanas» de Jesús mencionados en las Escrituras eran parientes cercanos (primos o familiares), no otros hijos de la Virgen María.",
       "aclaracion": "En los idiomas bíblicos y la cultura oriental de la época, la palabra «hermano» se utilizaba frecuentemente para referirse a parientes cercanos. El propio Catecismo señala que Santiago y José, mencionados como hermanos, eran hijos de «otra María».",
@@ -2264,10 +2264,10 @@
     }
   },
   {
-    "id": "parabola-virgenes",
+    "id": "parabola de las virgenes prudentes",
     "categoria": "Jesucristo",
     "keywords": [
-      "virgenes prudentes y necias",
+      "parabola de lass virgenes prudentes",
       "las lamparas y el aceite",
       "velad porque no sabeis el dia",
       "el esposo llega",
@@ -2492,7 +2492,7 @@
     }
   },
   {
-    "id": "guia_uso1",
+    "id": "guia",
     "categoria": "Programa",
     "keywords": [
       "guia de uso",
