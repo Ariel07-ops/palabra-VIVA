@@ -3242,16 +3242,20 @@ if (btnMic) {
     recognition.interimResults = false;
 
     // 1. Cuando el usuario hace clic en el micrófono
+    // Al hacer clic en el botón del micrófono:
     btnMic.addEventListener("click", () => {
-      // Verificamos conexión a internet (clave para celulares)
+      // 1. ¡Frenamos cualquier voz del asistente que esté sonando!
+      if ("speechSynthesis" in window) {
+        window.speechSynthesis.cancel();
+      }
+
+      // 2. Verificamos conexión a internet
       if (!navigator.onLine) {
         console.warn("Sin conexión a internet para usar la voz.");
         return;
       }
 
       try {
-        // Configuramos el idioma actual de la app (es, en, pt)
-        // Usamos tu variable 'idiomaActual' o 'currentLanguage' según cómo la tengas nombrada
         let langCode = "es-AR";
         if (typeof idiomaActual !== "undefined") {
           if (idiomaActual === "en") langCode = "en-US";
