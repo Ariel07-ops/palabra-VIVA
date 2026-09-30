@@ -7,6 +7,8 @@
       "dios existe",
       "que es dios",
       "who is god",
+      "god",
+      "deus",
       "quem é deus"
     ],
     "es": {
@@ -304,6 +306,7 @@
       "maria madre",
       "maria",
       "virgen",
+      "mary",
       "who is mary",
       "quem é maria"
     ],
@@ -466,7 +469,9 @@
       "tuvo mas hijos",
       "Maria tuvo mas hijos",
       "virgen perpetua",
+      "Did Mary have more children after Jesus?",
       "brothers of jesus",
+      "Maria teve mais filhos depois de Jesus?",
       "irmaos de jesus"
     ],
     "es": {
@@ -695,6 +700,7 @@
       "abusos curas",
       "victimas abusos",
       "justicia iglesia",
+      "sorrowful",
       "abuse in the church",
       "abusos na igreja"
     ],
@@ -708,7 +714,7 @@
       "fundamento_biblico": ["Mt 18,6", "Is 1,17"]
     },
     "en": {
-      "pregunta_principal": "How should we respond to the painful reality of abuse?",
+      "pregunta_principal": "How should we respond to the sorrowful reality of abuse?",
       "puerta_de_entrada": "The harm caused by abuse is a very grave wound that demands the utmost truth, justice, and protection.",
       "respuesta_breve": "Abuse is a grave sin and a crime. The Christian stance demands listening to and accompanying victims, seeking truth and justice, and never remaining silent to protect institutional reputation.",
       "aclaracion": "In the face of an abusive situation, the safe care of the victim must always be prioritized, and immediate recourse must be made to competent ecclesial channels and civil authorities.",
@@ -733,6 +739,8 @@
       "que es catequesis",
       "para que sirve catequesis",
       "catequesis",
+      "catechesis",
+      "catequese",
       "what is catechesis",
       "o que é catequese"
     ],
@@ -768,7 +776,8 @@
       "catecismo",
       "que es el catecismo",
       "faith",
-      "fé"
+      "the catechism",
+      "O que é a fé e qual é o papel do catecismo"
     ],
     "es": {
       "pregunta_principal": "¿Cuál es el rol del catecismo?",
@@ -778,7 +787,7 @@
       "fundamento_biblico": ["Heb 11,1"]
     },
     "en": {
-      "pregunta_principal": "What is faith and what is the role of the catechism?",
+      "pregunta_principal": "What is the role of the catechism?",
       "respuesta_breve": "Faith is the personal adherence of all humanity to God who reveals Himself. The catechism guides us in doctrine and in the life of the Church to deepen that faith.",
       "paso_concreto": "Today you can reflect on an aspect of your faith and bring it to a brief moment of prayer.",
       "enseñanza_de_la_iglesia": ["CCC 26", "CCC 142"],
@@ -990,7 +999,7 @@
       "creer en dios",
       "fe",
       "what is faith",
-      "o que é a fé"
+      "O que é a fé católica"
     ],
     "es": {
       "pregunta_principal": "¿Qué es la fe católica?",
@@ -1577,7 +1586,7 @@
       "fundamento_biblico": ["Jn 3,5"]
     },
     "en": {
-      "pregunta_principal": "What are the sacraments?",
+      "pregunta_principal": "How many sacraments exist?",
       "respuesta_breve": "\"The seven sacraments are: Baptism, Confirmation, Eucharist, Penance, Anointing of the Sick, Holy Orders, and Matrimony\" (CCC 1210). Each one is a special gift that draws us closer to God and strengthens us in our life of faith.",
       "paso_concreto": "Today, research a sacrament you don't know well and learn something new about it.",
       "enseñanza_de_la_iglesia": ["CCC 1210"],
@@ -1599,7 +1608,9 @@
       "angel de la guarda",
       "quienes son los angeles",
       "angeles",
+      "angels",
       "guardian angels",
+      "anjos",
       "anjos da guarda"
     ],
     "es": {
@@ -1707,8 +1718,8 @@
       "coros celestiales",
       "jerarquia de angeles",
       "serafines",
-      "choirs of angels",
-      "coros celestiais"
+      "different hierarchies of angels",
+      "diferentes hierarquias de anjos"
     ],
     "es": {
       "pregunta_principal": "¿Hay distintas jerarquías de ángeles?",
@@ -2029,8 +2040,8 @@
     "keywords": [
       "dones sobrenaturales",
       "gracia",
-      "supernatural gifts grace",
-      "dons sobrenaturais graça"
+      "elevates them to His friendship",
+      "a eleva à Sua amizade"
     ],
     "es": {
       "pregunta_principal": "¿Qué recibe una persona cuando Dios la eleva a su amistad?",
@@ -2236,7 +2247,7 @@
       "perla fina",
       "vende todo lo que tiene",
       "el reino de los cielos es semejante a un tesoro",
-      "hidden treasure",
+      "The treasure and the pearl",
       "tesouro escondido"
     ],
     "es": {
@@ -2247,7 +2258,7 @@
       "fundamento_biblico": ["Mt 13,44-46"]
     },
     "en": {
-      "pregunta_principal": "What does the parable of the hidden treasure and the fine pearl teach us?",
+      "pregunta_principal": "The treasure and the pearl",
       "respuesta_breve": "\"The kingdom of heaven is like treasure hidden in a field, which a man found and covered up. Then in his joy he goes and sells all that he has and buys that field\" (Mt 13:44). Discovering Christ and His Kingdom is not a heavy burden, but a finding of such beauty and value that it relativizes everything else with joy. 💎",
       "paso_concreto": "Identify today what holds the first place in your heart and thank God for being the treasure that gives meaning to your life.",
       "enseñanza_de_la_iglesia": ["CCC 1723", "CCC 2544"],
@@ -2509,7 +2520,7 @@
       "concilio de nicea",
       "concilio de calcedonia",
       "ecumenical councils",
-      "concílios ecumênicos"
+      "O que são os concílios"
     ],
     "es": {
       "pregunta_principal": "¿Qué es un concilio?",
@@ -2526,7 +2537,7 @@
       "fundamento_biblico": ["Acts 15:28"]
     },
     "pt": {
-      "pregunta_principal": "O que são os concílios ecumênicos e porque foram realizados?",
+      "pregunta_principal": "O que são os concílios?",
       "respuesta_breve": "Ao longo da história, quando surgiam discussões ou heresias que punham em risco a fé dos fiéis (como o arianismo, que dizia que Jesus era apenas uma criatura superior, mas não Deus), a Igreja reunia-se em Concílio Ecumênico — uma assembleia de bispos de todo o mundo convocada com o Papa. Eles não inventavam verdades novas, mas usavam a bússola da Tradição e da Escritura para esclarecer com precisão o que realmente cremos.",
       "paso_concreto": "Agradeça hoje o esforço de tantos pastores e santos ao longo dos séculos que defenderam a fé para que hoje nos chegue limpa e sem recortes.",
       "enseñanza_de_la_iglesia": ["CIC 884", "CIC 885"],
