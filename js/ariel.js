@@ -2064,7 +2064,7 @@ document.addEventListener("DOMContentLoaded", () => {
             textoLimpio.includes("quien sos")
           ) {
             respuestaAsistente =
-              "Soy tu asistente de Palabra Viva, tu compañera para este espacio de fe, charla y un buen mate espiritual 🕊️.";
+              "No tengo un nombre, soy tu asistente de Palabra Viva, tu compañera para este espacio de fe, charla y un buen mate espiritual 🕊️.";
           } else if (
             textoLimpio.includes("version de biblia") ||
             textoLimpio.includes("que biblia") ||
@@ -2106,7 +2106,7 @@ document.addEventListener("DOMContentLoaded", () => {
               `¡Hola, ${nombrePersona}! Este espacio está pensado para que podamos conversar, reflexionar y profundizar sobre la fe, la doctrina y temas espirituales con total confianza.\n\n` +
               "Acá podés preguntarme sobre conceptos del catecismo, plantear tus dudas cotidianas o recorrer caminos guiados paso a paso.\n\n" +
               "**¿Por dónde querés que arranquemos hoy?**\n" +
-              "• Escribí **'razón'** para iniciar el Camino de la Razón.\n" +
+              "• Escribí *'Tinidad'*,*'razón'*,*´'Pesaj'*, o *'Alma'*, para iniciar estos Caminos.\n" +
               "• Preguntame sobre **Jesús, María, la Iglesia** o cualquier tema puntual.\n" +
               "• O simplemente tirame una inquietud y lo charlamos.";
           } else if (
@@ -2186,9 +2186,7 @@ document.addEventListener("DOMContentLoaded", () => {
             textoLimpio.includes("como funciona") ||
             textoLimpio.includes("como usar") ||
             textoLimpio.includes("como se usa") ||
-            textoLimpio.includes("infobiblica") ||
             textoLimpio.includes("informacion") ||
-            textoLimpio.includes("infocamino") ||
             textoLimpio.includes("infoLateral") ||
             textoLimpio.includes("tutorial") ||
             textoLimpio.includes("como orar") ||
@@ -2237,9 +2235,9 @@ document.addEventListener("DOMContentLoaded", () => {
           ) {
             respuestaAsistente = manejarCaminoTrinidad(textoUsuarioCrudo);
           } else if (
-            textoLimpio.includes("pascua") ||
+            textoLimpio.includes("paso") ||
             textoLimpio.includes("misterio pascual") ||
-            textoLimpio.includes("resurreccion") ||
+            textoLimpio.includes("pesaj") ||
             (typeof pasoActualPascua !== "undefined" && pasoActualPascua > 1)
           ) {
             respuestaAsistente = manejarCaminoPascua(textoUsuarioCrudo);

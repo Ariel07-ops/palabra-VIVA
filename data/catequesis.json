@@ -459,42 +459,106 @@
     }
   },
   {
-    "id": "maria_hermanos_jesus",
+    "id": "virgen-006",
     "categoria": "Virgen María",
     "keywords": [
-      "hermanos de jesus",
-      "María tuvo más hijos",
-      "hijos de maria",
+      "Quiénes son los hermanos del Emanuel",
+      "tuvo mas hijos",
+      "Maria tuvo mas hijos",
       "virgen perpetua",
       "brothers of jesus",
-      "irmãos de jesus"
+      "irmaos de jesus"
     ],
     "es": {
-      "pregunta_principal": "¿María tuvo más hijos?",
-      "puerta_de_entrada": "Es una pregunta muy comprensible cuando leemos los Evangelios por primera vez.",
-      "respuesta_breve": "La enseñanza católica sostiene que María permaneció siempre virgen. Los «hermanos» y «hermanas» de Jesús mencionados en las Escrituras eran parientes cercanos (primos o familiares), no otros hijos de la Virgen María.",
-      "aclaracion": "En los idiomas bíblicos y la cultura oriental de la época, la palabra «hermano» se utilizaba frecuentemente para referirse a parientes cercanos. El propio Catecismo señala que Santiago y José, mencionados como hermanos, eran hijos de «otra María».",
+      "pregunta_principal": "¿Quiénes son los hermanos del Emanuel?",
+      "respuesta_breve": "Es una pregunta muy comprensible cuando leemos los Evangelios por primera vez. La enseñanza católica sostiene que María permaneció siempre virgen. Los «hermanos» y «hermanas» de Jesús mencionados en las Escrituras eran parientes cercanos (primos o familiares), no otros hijos de la Virgen María. En los idiomas bíblicos y la cultura oriental de la época, la palabra «hermano» se utilizaba frecuentemente para referirse a parientes cercanos. El propio Catecismo señala que Santiago y José, mencionados como hermanos, eran hijos de «otra María».",
       "paso_concreto": "Leé el pasaje del Catecismo 500 y contemplá la entrega total de María al plan de Dios.",
       "enseñanza_de_la_iglesia": ["CIC 500"],
       "fundamento_biblico": ["Mt 13,55", "Jn 19,26-27"]
     },
     "en": {
       "pregunta_principal": "Did Mary have more children after Jesus?",
-      "puerta_de_entrada": "It's a very understandable question when reading the Gospels for the first time.",
-      "respuesta_breve": "Catholic teaching holds that Mary remained ever-virgin. The \"brothers\" and \"sisters\" of Jesus mentioned in Scripture were close relatives (cousins or extended family), not other children of the Virgin Mary.",
-      "aclaracion": "In biblical languages and the Eastern culture of the time, the word \"brother\" was frequently used to refer to close relatives. The Catechism itself notes that James and Joseph, mentioned as brothers, were sons of \"another Mary\".",
+      "respuesta_breve": "It's a very understandable question when reading the Gospels for the first time. Catholic teaching holds that Mary remained ever-virgin. The \"brothers\" and \"sisters\" of Jesus mentioned in Scripture were close relatives (cousins or extended family), not other children of the Virgin Mary. In biblical languages and the Eastern culture of the time, the word \"brother\" was frequently used to refer to close relatives. The Catechism itself notes that James and Joseph, mentioned as brothers, were sons of \"another Mary\".",
       "paso_concreto": "Read the passage in Catechism 500 and contemplate Mary's total surrender to God's plan.",
       "enseñanza_de_la_iglesia": ["CCC 500"],
       "fundamento_biblico": ["Mt 13:55", "Jn 19:26-27"]
     },
     "pt": {
       "pregunta_principal": "Maria teve mais filhos depois de Jesus?",
-      "puerta_de_entrada": "É uma pergunta muito compreensível quando lemos os Evangelhos pela primeira vez.",
-      "respuesta_breve": "O ensinamento católico sustenta que Maria permaneceu sempre virgem. Os «irmãos» e «irmãs» de Jesus mencionados nas Escrituras eram parentes próximos (primos ou familiares), e não outros filhos da Virgem Maria.",
-      "aclaracion": "Nas línguas bíblicas e na cultura oriental da época, a palavra «irmão» era frequentemente usada para se referir a parentes próximos. O próprio Catecismo aponta que Tiago e José, mencionados como irmãos, eram filhos de «outra Maria».",
+      "respuesta_breve": "É uma pergunta muito compreensível quando lemos os Evangelhos pela primeira vez. O ensinamento católico sustenta que Maria permaneceu sempre virgem. Os «irmãos» e «irmãs» de Jesus mencionados nas Escrituras eram parentes próximos (primos ou familiares), e não outros filhos da Virgem Maria. Nas línguas bíblicas e na cultura oriental da época, a palavra «irmão» era frequentemente usada para se referir a parentes próximos. O próprio Catecismo aponta que Tiago e José, mencionados como irmãos, eram filhos de «outra Maria».",
       "paso_concreto": "Leia a passagem do Catecismo 500 e contemple a entrega total de Maria ao plano de Deus.",
       "enseñanza_de_la_iglesia": ["CIC 500"],
       "fundamento_biblico": ["Mt 13,55", "Jo 19,26-27"]
+    }
+  },
+  {
+    "id": "virgen-007",
+    "categoria": "Virgen María",
+    "keywords": [
+      "virginidad perpetua",
+      "maria siempre virgen",
+      "virgen antes y despues",
+      "profecia de isaias virgen",
+      "perpetual virginity",
+      "ever virgin mary",
+      "virgindade perpétua",
+      "maria sempre virgem"
+    ],
+    "es": {
+      "pregunta_principal": "¿Qué enseña la Iglesia sobre la virginidad perpetua de María?",
+      "respuesta_breve": "La fe católica profesa que María fue virgen antes, durante y después del parto. Esto no es solo una cuestión biológica, sino un signo de su consagración total a Dios. Ya el profeta Isaías anunciaba que «la virgen concebirá y dará a luz un hijo», y la Tradición reconoce en María el sagrario vivo del Verbo. Además, cuando las Escrituras hablan de los «hermanos» de Jesús (como cuando se apareció ante más de 500 hermanos a la vez), utilizan el término en el sentido bíblico de la gran familia de la fe y parientes cercanos, sin alterar la perpetua virginidad de la Madre del Señor.",
+      "paso_concreto": "Contempla a María como modelo de entrega total y pureza de corazón para tu propia vida espiritual.",
+      "enseñanza_de_la_iglesia": ["CIC 499", "CIC 500"],
+      "fundamento_biblico": ["Is 7,14", "Lc 1,34", "1 Cor 15,6"]
+    },
+    "en": {
+      "pregunta_principal": "What does the Church teach about the perpetual virginity of Mary?",
+      "respuesta_breve": "The Catholic faith professes that Mary was a virgin before, during, and after giving birth. This is not merely biological, but a sign of her total consecration to God. The prophet Isaiah already foretold that \"the virgin shall conceive and bear a son,\" and Tradition recognizes Mary as the living tabernacle of the Word. Furthermore, when Scripture speaks of the \"brothers\" of Jesus (such as when He appeared to more than 500 brethren at once), it uses the term in the biblical sense of the broader family of faith and close relatives, without altering the perpetual virginity of the Mother of the Lord.",
+      "paso_concreto": "Contemplate Mary as a model of total dedication and purity of heart for your own spiritual life.",
+      "enseñanza_de_la_iglesia": ["CCC 499", "CCC 500"],
+      "fundamento_biblico": ["Isa 7:14", "Lk 1:34", "1 Cor 15:6"]
+    },
+    "pt": {
+      "pregunta_principal": "O que a Igreja ensina sobre a virgindade perpétua de Maria?",
+      "respuesta_breve": "A fé católica professa que Maria foi virgem antes, durante e depois do parto. Isto não é apenas uma questão biológica, mas um sinal de sua total consagração a Deus. O profeta Isaías já anunciava que «a virgem conceberá e dará à luz um filho», e a Tradição reconhece em Maria o sacrário vivo do Verbo. Além disso, quando as Escrituras falam dos «irmãos» de Jesus (como quando Ele apareceu a mais de 500 irmãos de uma só vez), usam o termo no sentido bíblico da grande família da fé e parentes próximos, sem alterar a perpétua virgindade da Mãe do Senhor.",
+      "paso_concreto": "Contemple a Maria como modelo de entrega total e pureza de coração para a sua própria vida espiritual.",
+      "enseñanza_de_la_iglesia": ["CIC 499", "CIC 500"],
+      "fundamento_biblico": ["Is 7,14", "Lc 1,34", "1 Cor 15,6"]
+    }
+  },
+  {
+    "id": "virgen-008",
+    "categoria": "Virgen María",
+    "keywords": [
+      "analogias de la virginidad",
+      "puertas cerradas cenaculo",
+      "luz y vidrio maria",
+      "padres de la iglesia maria virgen",
+      "analogies of mary virginity",
+      "closed doors upper room",
+      "analogias da virgindade",
+      "portas fechadas cenaculo"
+    ],
+    "es": {
+      "pregunta_principal": "¿Cómo explican los Santos Padres y la Escritura el misterio de la virginidad de María?",
+      "respuesta_breve": "La Tradición y los Padres de la Iglesia han recurrido a hermosas analogías para contemplar este misterio que supera las leyes físicas, comparándolo con la luz que atraviesa un cristal sin mancharlo o romperlo. Asimismo, el Nuevo Testamento nos muestra que Jesús, con su cuerpo glorificado después de la resurrección, entraba al Cenáculo con las puertas cerradas sin alterarlas. Así como el poder de Dios trasciende la materia para manifestarse, la concepción y el nacimiento virginal ocurren en el plano de la gracia y el misterio divino.",
+      "paso_concreto": "Lee el pasaje del Evangelio donde Jesús se aparece a los discípulos a puertas cerradas y contempla cómo Dios obra más allá de nuestras limitaciones físicas.",
+      "enseñanza_de_la_iglesia": ["CIC 499", "San Agustín (Sermón 191)"],
+      "fundamento_biblico": ["Jn 20,19", "Lc 2,23"]
+    },
+    "en": {
+      "pregunta_principal": "How do the Church Fathers and Scripture explain the mystery of Mary's virginity?",
+      "respuesta_breve": "Tradition and the Church Fathers have used beautiful analogies to contemplate this mystery that surpasses physical laws, comparing it to light passing through glass without breaking or staining it. Likewise, the New Testament shows us that Jesus, with His glorified body after the resurrection, entered the Upper Room with the doors locked without altering them. Just as God's power transcends matter to manifest itself, the virginal conception and birth take place on the plane of divine grace and mystery.",
+      "paso_concreto": "Read the Gospel passage where Jesus appears to the disciples behind closed doors and contemplate how God works beyond our physical limitations.",
+      "enseñanza_de_la_iglesia": ["CCC 499", "St. Augustine"],
+      "fundamento_biblico": ["Jn 20:19", "Lk 2:23"]
+    },
+    "pt": {
+      "pregunta_principal": "Como os Padres da Igreja e a Escritura explicam o mistério da virgindade de Maria?",
+      "respuesta_breve": "A Tradição e os Padres da Igreja recorreram a belas analogias para contemplar este mistério que supera as leis físicas, comparando-o com a luz que atravessa um vidro sem quebrá-lo ou manchá-lo. Da mesma forma, o Novo Testamento nos mostra que Jesus, com Seu corpo glorificado após a ressurreição, entrou no Cenáculo com as portas trancadas sem alterá-las. Assim como o poder de Deus transcende a matéria para se manifestar, a concepção e o nascimento virginal ocorrem no plano da graça e do mistério divino.",
+      "paso_concreto": "Leia a passagem do Evangelho onde Jesus aparece aos discípulos com portas fechadas e contemple como Deus age além de nossas limitações físicas.",
+      "enseñanza_de_la_iglesia": ["CIC 499", "Santo Agostinho"],
+      "fundamento_biblico": ["Jo 20,19", "Lc 2,23"]
     }
   },
   {
@@ -2231,18 +2295,54 @@
     }
   },
   {
-    "id": "parabola-bodas",
+    "id": "significado-pascua",
+    "categoria": "Vida Cristiana",
+    "keywords": [
+      "pascua",
+      "Pascua",
+      "significado de la pascua",
+      "pascua judia y cristiana",
+      "paso del señor",
+      "passover",
+      "pascoa"
+    ],
+    "es": {
+      "pregunta_principal": "¿Qué significa la Pascua y cuál es su relación entre el Antiguo y el Nuevo Testamento?",
+      "respuesta_breve": "La palabra viene del hebreo *Pésaj* (פֶּסַח), que significa «pasar por alto» o «salto». En el Antiguo Testamento conmemoraba la liberación del pueblo de Israel de la esclavitud en Egipto. En el Nuevo Testamento, Jesucristo se convierte en el Cordero Pascual definitivo: su paso de la muerte a la vida nos libera de la esclavitud del pecado y nos abre las puertas de la vida eterna. 🍷🥖",
+      "paso_concreto": "Contemplá en tu oración cómo el Señor te va sacando de tus propias «esclavitudes» cotidianas hacia la libertad de los hijos de Dios.",
+      "enseñanza_de_la_iglesia": ["CIC 1168", "CIC 1340"],
+      "fundamento_biblico": ["Ex 12,13", "1Cor 5,7"]
+    },
+    "en": {
+      "pregunta_principal": "What does Easter/Passover mean and what is its connection between the Old and New Testaments?",
+      "respuesta_breve": "The word comes from the Hebrew *Pesach* (פֶּסַח), which means \"to pass over\" or \"leap\". In the Old Testament, it commemorated the liberation of the people of Israel from slavery in Egypt. In the New Testament, Jesus Christ becomes the definitive Paschal Lamb: His passage from death to life frees us from the slavery of sin and opens the doors to eternal life. 🍷🥖",
+      "paso_concreto": "Contemplate in your prayer how the Lord leads you out of your own daily «slaveries» into the freedom of the children of God.",
+      "enseñanza_de_la_iglesia": ["CCC 1168", "CCC 1340"],
+      "fundamento_biblico": ["Ex 12:13", "1 Cor 5:7"]
+    },
+    "pt": {
+      "pregunta_principal": "O que significa a Páscoa e qual é a sua relação entre o Antigo e o Novo Testamento?",
+      "respuesta_breve": "A palavra vem do hebraico *Pesach* (פֶּסַח), que significa «passar por cima» ou «saltar». No Antigo Testamento, lembrava a libertação do povo de Israel da escravidão no Egito. No Novo Testamento, Jesus Cristo torna-se o Cordeiro Pascal definitivo: a Sua passagem da morte para a vida liberta-nos da escravidão do pecado e abre-nos as portas da vida eterna. 🍷🥖",
+      "paso_concreto": "Contemple na sua oração como o Senhor o vai tirando das suas próprias «escravidões» quotidianas para a liberdade dos filhos de Deus.",
+      "enseñanza_de_la_iglesia": ["CIC 1168", "CIC 1340"],
+      "fundamento_biblico": ["Ex 12,13", "1Cor 5,7"]
+    }
+  },
+  {
+    "id": "parabola-invitados-bodas",
     "categoria": "Jesucristo",
     "keywords": [
-      "bodas del hijo del rey",
+      "parabola de las bodas",
+      "el banquete de bodas",
       "invitados a las bodas",
       "el traje de bodas",
       "muchos llamados y pocos escogidos",
+      "parabola del rey y los invitados",
       "wedding banquet",
-      "bodas do filho do rei"
+      "bodas do filho"
     ],
     "es": {
-      "pregunta_principal": "¿Qué nos enseña la parábola de las bodas del hijo?",
+      "pregunta_principal": "parábola de las bodas",
       "respuesta_breve": "«El Reino de los Cielos es semejante a un rey que celebró el banquete de bodas de su hijo» (Mt 22,2). Dios nos invita a todos a la alegría eterna de su banquete, pero exige la respuesta de la conversión: vestir el «traje de bodas», que es la gracia de vivir una fe auténtica traducida en obras de amor y justicia. 👑",
       "paso_concreto": "Revisá hoy si estás respondiendo a la invitación de Dios con un corazón transformado por sus obras o por pura costumbre.",
       "enseñanza_de_la_iglesia": ["CIC 546", "CIC 1625"],
@@ -2267,7 +2367,10 @@
     "id": "parabola de las virgenes prudentes",
     "categoria": "Jesucristo",
     "keywords": [
-      "parabola de lass virgenes prudentes",
+      "parabola",
+      "parabolas",
+      "que son las parabolas",
+      "parabola de las virgenes prudentes",
       "las lamparas y el aceite",
       "velad porque no sabeis el dia",
       "el esposo llega",
@@ -2329,6 +2432,74 @@
     }
   },
   {
+    "id": "que-es-idolatria-virgen-imagenes",
+    "categoria": "Doctrina y Fe",
+    "keywords": [
+      "que es la idolatria",
+      "idolatria y imagenes",
+      "por que los catolicos tienen imagenes de la virgen",
+      "adoracion y veneracion",
+      "el becerro de oro",
+      "what is idolatry",
+      "o que e idolatria"
+    ],
+    "es": {
+      "pregunta_principal": "¿Qué es la idolatría y por qué tener imágenes de la Virgen o los santos no es ser idólatra?",
+      "respuesta_breve": "La idolatría consiste en adorar a falsos dioses o crear imágenes para rendirles culto divino, como pasó con el becerro de oro en el desierto: tomar algo creado y ponerlo en el lugar de Dios. Los católicos **no adoramos** a las imágenes ni a la Virgen (sabemos que ella está en el cielo y que Dios es uno y trino). Las usamos solo como un recordatorio afectivo, un puente visual que nos lleva a Dios, venerando a quien representan sin confundir jamás la criatura con el Creador. 🖼️🙏",
+      "paso_concreto": "Cuando mires una imagen en tu casa, recordá que es solo un signo que te eleva hacia Dios, el único digno de toda adoración.",
+      "enseñanza_de_la_iglesia": ["CIC 2112", "CIC 2113", "CIC 2132"],
+      "fundamento_biblico": ["Ex 20,3-5", "Dt 4,15-16"]
+    },
+    "en": {
+      "pregunta_principal": "What is idolatry, and why having statues or images of Mary is not idolatry?",
+      "respuesta_breve": "Idolatry means worshiping false gods or giving divine honor to created things, much like the golden calf in the desert: replacing God with something made by human hands. Catholics **do not worship** statues or Mary (we know she is in heaven and God alone is the Creator). We use images merely as affectionate visual reminders that point us to God, venerating the person represented without ever confusing the creature with the Creator. 🖼️🙏",
+      "paso_concreto": "When you look at an image in your home, remember it is simply a sign that lifts your heart toward God, the only one worthy of all adoration.",
+      "enseñanza_de_la_iglesia": ["CCC 2112", "CCC 2113", "CCC 2132"],
+      "fundamento_biblico": ["Ex 20:3-5", "Deut 4:15-16"]
+    },
+    "pt": {
+      "pregunta_principal": "O que é a idolatria e porque ter imagens da Virgem ou dos santos não é idolatria?",
+      "respuesta_breve": "A idolatria consiste em adorar falsos deuses ou prestar culto divino a coisas criadas, tal como o bezerro de ouro no deserto: pôr algo criado no lugar de Deus. Os católicos **não adoram** as imagens nem a Virgem (sabemos que ela está no céu e que Deus é o único Criador). Usamos as imagens apenas como recordações afetuosas que nos elevam até Deus, venerando quem elas representam sem nunca confundir a criatura com o Criador. 🖼️🙏",
+      "paso_concreto": "Quando olhar para uma imagem em sua casa, lembre-se de que ela é apenas um sinal que eleva o seu coração a Deus, o único digno de toda adoração.",
+      "enseñanza_de_la_iglesia": ["CIC 2112", "CIC 2113", "CIC 2132"],
+      "fundamento_biblico": ["Ex 20,3-5", "Dt 4,15-16"]
+    }
+  },
+  {
+    "id": "ley-antigua-nueva-sábado-domingo",
+    "categoria": "Doctrina y Fe",
+    "keywords": [
+      "por que los cristianos guardan el domingo y no el sabado",
+      "el fin de los sacrificios antiguos",
+      "sacerdote para siempre segun el orden de melquisedec",
+      "jesus cumple la ley",
+      "sabado y domingo",
+      "why do christians worship on sunday",
+      "fim dos sacrificios antigos"
+    ],
+    "es": {
+      "pregunta_principal": "¿Por qué los cristianos celebramos el domingo y qué pasó con los sacrificios y la Ley antigua?",
+      "respuesta_breve": "Jesús no abolió la ley moral, sino que le dio cumplimiento definitivo. Él es el Sacerdote único y para siempre (según el orden de Melquisedec) que se ofreció a sí mismo como el sacrificio perfecto, por lo que los antiguos sacrificios de animales ya no tienen sentido. Además, la Iglesia primitiva trasladó el día de descanso y culto del sábado al **domingo** —el «Día del Señor»— porque fue el día en que Cristo resucitó y se apareció a los suyos, inaugurando la Nueva Creación. ⛪🌅",
+      "paso_concreto": "Viví la misa del domingo no como una obligación rutinaria, sino como el encuentro con el Resucitado que te regala la vida nueva.",
+      "enseñanza_de_la_iglesia": ["CIC 2174", "CIC 2175", "CIC 2176"],
+      "fundamento_biblico": ["Heb 7,26-27", "Hch 20,7", "Ap 1,10"]
+    },
+    "en": {
+      "pregunta_principal": "Why do Christians celebrate Sunday instead of Saturday, and what happened to the old sacrifices?",
+      "respuesta_breve": "Jesus did not abolish the moral law, but brought it to its ultimate fulfillment. He is the one and eternal Priest who offered Himself as the perfect sacrifice, making the old animal sacrifices obsolete. Furthermore, the early Church moved the day of worship from Saturday to **Sunday** — the 'Lord's Day' — because it was the day Christ rose from the dead and appeared to His disciples, inaugurating the New Creation. ⛪🌅",
+      "paso_concreto": "Live Sunday Mass not as a routine obligation, but as an encounter with the Risen Lord who grants you new life.",
+      "enseñanza_de_la_iglesia": ["CCC 2174", "CCC 2175", "CCC 2176"],
+      "fundamento_biblico": ["Heb 7:26-27", "Acts 20:7", "Rev 1:10"]
+    },
+    "pt": {
+      "pregunta_principal": "Porque é que os cristãos celebram o domingo em vez do sábado e o que aconteceu aos antigos sacrifícios?",
+      "respuesta_breve": "Jesus não aboliu a lei moral, mas deu-lhe o cumprimento definitivo. Ele é o Sacerdote único e eterno que Se ofereceu a Si mesmo como o sacrifício perfeito, tornando obsoletos os antigos sacrifícios. Além disso, a Igreja primitiva mudou o dia de culto do sábado para o **domingo** — o «Dia do Senhor» — porque foi o dia em que Cristo ressuscitou e apareceu aos Seus discípulos, inaugurando a Nova Criação. ⛪🌅",
+      "paso_concreto": "Viva a missa dominical não como uma obrigação rotineira, mas como o encontro com o Ressuscitado que lhe oferece vida nova.",
+      "enseñanza_de_la_iglesia": ["CIC 2174", "CIC 2175", "CIC 2176"],
+      "fundamento_biblico": ["Heb 7,26-27", "At 20,7", "Ap 1,10"]
+    }
+  },
+  {
     "id": "concilios-fe",
     "categoria": "Doctrina y Fe",
     "keywords": [
@@ -2355,8 +2526,75 @@
       "fundamento_biblico": ["Acts 15:28"]
     },
     "pt": {
-      "pregunta_principal": "O que são os concílios ecuménicos e porque foram realizados?",
-      "respuesta_breve": "Ao longo da história, quando surgiam discussões ou heresias que punham em risco a fé dos fiéis (como o arianismo, que dizia que Jesus era apenas uma criatura superior, mas não Deus), a Igreja reunia-se em Concílio Ecuménico — uma assembleia de bispos de todo o mundo convocada com o Papa. Eles não inventavam verdades novas, mas usavam a bússola da Tradição e da Escritura para esclarecer com precisão o que realmente cremos.",
+      "pregunta_principal": "O que são os concílios ecumênicos e porque foram realizados?",
+      "respuesta_breve": "Ao longo da história, quando surgiam discussões ou heresias que punham em risco a fé dos fiéis (como o arianismo, que dizia que Jesus era apenas uma criatura superior, mas não Deus), a Igreja reunia-se em Concílio Ecumênico — uma assembleia de bispos de todo o mundo convocada com o Papa. Eles não inventavam verdades novas, mas usavam a bússola da Tradição e da Escritura para esclarecer com precisão o que realmente cremos.",
+      "paso_concreto": "Agradeça hoje o esforço de tantos pastores e santos ao longo dos séculos que defenderam a fé para que hoje nos chegue limpa e sem recortes.",
+      "enseñanza_de_la_iglesia": ["CIC 884", "CIC 885"],
+      "fundamento_biblico": ["At 15,28"]
+    }
+  },
+  {
+    "id": "sermon de la montaña",
+    "categoria": "Vida Cristiana",
+    "keywords": [
+      "aventuranzas",
+      "sermon de la montana",
+      "que son las bienaventuranzas",
+      "sermon on the mount",
+      "sermão da montanha"
+    ],
+    "es": {
+      "pregunta_principal": "¿Qué nos enseña el sermón de la montaña?",
+      "respuesta_breve": "Las Bienaventuranzas (Mateo 5, 3-12) son el carnet de identidad del cristiano y la contracorriente del mundo. No son una lista de prohibiciones, sino el mapa de ruta que Jesús nos regala para alcanzar la verdadera felicidad, apostando por la humildad, la paz, la misericordia y la justicia. ⛰️",
+      "paso_concreto": "Elegí una de las Bienaventuranzas hoy (por ejemplo, «Felices los misericordiosos») y tratá de ponerla en práctica con alguien cercano.",
+      "enseñanza_de_la_iglesia": ["CIC 1716", "CIC 1717"],
+      "fundamento_biblico": ["Mt 5,3-12."]
+    },
+    "en": {
+      "pregunta_principal": "What does the Sermon on the Mount teach us?",
+      "respuesta_breve": "The Beatitudes (Matthew 5:3-12) are the Christian's identity card and run counter to the world's ways. They are not a list of prohibitions, but the roadmap Jesus gives us to attain true happiness, betting on humility, peace, mercy, and justice. ⛰️",
+      "paso_concreto": "Choose one of the Beatitudes today (for example, 'Blessed are the merciful') and try to put it into practice with someone close to you.",
+      "enseñanza_de_la_iglesia": ["CCC 1716", "CCC 1717"],
+      "fundamento_biblico": ["Mt 5:3-12"]
+    },
+    "pt": {
+      "pregunta_principal": "O que nos ensina o Sermão da Montanha?",
+      "respuesta_breve": "As Bem-Aventuranças (Mateo 5, 3-12) são o bilhete de identidade do cristão e a contracorrente do mundo. Não são uma lista de proibições, mas o roteiro que Jesus nos presenteia para alcançar a verdadeira felicidade, apostando na humildade, na paz, na misericórdia e na justiça. ⛰️",
+      "paso_concreto": "Escolha hoje uma das Bem-Aventuranças (por exemplo, «Bem-aventurados os misericordiosos») e tente colocá-la em prática com alguém próximo.",
+      "enseñanza_de_la_iglesia": ["CIC 1716", "CIC 1717"],
+      "fundamento_biblico": ["Mt 5,3-12"]
+    }
+  },
+
+  {
+    "id": "concilios-fe",
+    "categoria": "Doctrina y Fe",
+    "keywords": [
+      "Qué son los concilios ecuménicos y por qué se hicieron",
+      "concilios ecumenicos",
+      "arrianismo",
+      "concilio",
+      "concilio de calcedonia",
+      "ecumenical councils",
+      "concílios ecumênicos"
+    ],
+    "es": {
+      "pregunta_principal": "¿Qué son los concilios ecuménicos y por qué se hicieron?",
+      "respuesta_breve": "A lo largo de la historia, cuando surgían discusiones o herejías que ponían en riesgo la fe de los fieles (como el arrianismo, que decía que Jesús era solo una criatura superior pero no Dios), la Iglesia se reunía en Concilio Ecuménico —una asamblea de obispos de todo el mundo convocada con el Papa—. No inventaban verdades nuevas, sino que usaban la brújula de la Tradición y la Escritura para aclarar con precisión qué es lo que realmente creemos.",
+      "paso_concreto": "Agradecé hoy el esfuerzo de tantos pastores y santos a lo largo de los siglos que defendieron la fe para que hoy nos llegue limpia y sin recortes.",
+      "enseñanza_de_la_iglesia": ["CIC 884", "CIC 885"],
+      "fundamento_biblico": ["Hch 15,28"]
+    },
+    "en": {
+      "pregunta_principal": "What are ecumenical councils and why were they held?",
+      "respuesta_breve": "Throughout history, when discussions or heresies arose that put the faithful's faith at risk (such as Arianism, which claimed Jesus was only a superior creature but not God), the Church would gather in an Ecumenical Council—an assembly of bishops from all over the world convoked with the Pope. They did not invent new truths, but used the compass of Tradition and Scripture to clarify with precision what we truly believe.",
+      "paso_concreto": "Thank God today for the effort of so many pastors and saints over the centuries who defended the faith so that it reaches us today clean and without cuts.",
+      "enseñanza_de_la_iglesia": ["CCC 884", "CCC 885"],
+      "fundamento_biblico": ["Acts 15:28"]
+    },
+    "pt": {
+      "pregunta_principal": "O que são os concílios ecumênicos e porque foram realizados?",
+      "respuesta_breve": "Ao longo da história, quando surgiam discussões ou heresias que punham em risco a fé dos fiéis (como o arianismo, que dizia que Jesus era apenas uma criatura superior, mas não Deus), a Igreja reunia-se em Concílio Ecumênico — uma assembleia de bispos de todo o mundo convocada com o Papa. Eles não inventavam verdades novas, mas usavam a bússola da Tradição e da Escritura para esclarecer com precisão o que realmente cremos.",
       "paso_concreto": "Agradeça hoje o esforço de tantos pastores e santos ao longo dos séculos que defenderam a fé para que hoje nos chegue limpa e sem recortes.",
       "enseñanza_de_la_iglesia": ["CIC 884", "CIC 885"],
       "fundamento_biblico": ["At 15,28"]
@@ -2498,24 +2736,25 @@
       "guia de uso",
       "como usar la app palabra viva",
       "info",
+      "parq que sirve este progama",
       "informacion",
-      "infocamino",
+      "infomame",
       "user guide",
       "guia de uso"
     ],
     "es": {
       "pregunta_principal": "¿Cómo puedo utilizar Palabra Viva?",
-      "respuesta_breve": "Podés utilizar este espacio de distintas maneras: explorando el diálogo espiritual según tu momento del día, o usando el buscador bíblico en la barra lateral para pasajes exactos (como 'Juan 1:1'). También podés escribir 'infobiblica', 'infolateral' o 'infocamino' para guías rápidas. 📱",
+      "respuesta_breve": "Podés utilizar este espacio de distintas maneras: explorando el diálogo espiritual según tu momento del día, o usando el buscador bíblico en la barra lateral para pasajes exactos (como 'Juan 1:1'). También podés escribir 'Pesaj', 'Trinidad' o 'Alma' para profundizar en estos temas. 📱",
       "paso_concreto": "Probá escribir alguna de las palabras clave o explorá las opciones de aquí abajo para moverte por la app."
     },
     "en": {
       "pregunta_principal": "How can I use Palabra Viva?",
-      "respuesta_breve": "You can use this space in different ways: exploring spiritual dialogue according to your moment of the day, or using the biblical search engine in the sidebar for exact passages (like 'John 1:1'). You can also type 'infobiblica', 'infolateral', or 'infocamino' for quick guides. 📱",
+      "respuesta_breve": "You can use this space in different ways: exploring spiritual dialogue according to your moment of the day, or using the biblical search engine in the sidebar for exact passages (like 'John 1:1'). You can also type 'Pesaj', 'Trinidad' or 'Alma' for deep guides. 📱",
       "paso_concreto": "Try typing some of the keywords or explore the options below to navigate the app."
     },
     "pt": {
       "pregunta_principal": "Como posso utilizar o Palabra Viva?",
-      "respuesta_breve": "Pode utilizar este espaço de diferentes maneiras: explorando o diálogo espiritual de acordo com o seu momento do dia, ou usando o motor de busca bíblica na barra lateral para passagens exatas (como 'João 1:1'). Também pode escrever 'infobiblica', 'infolateral' ou 'infocamino' para guias rápidos. 📱",
+      "respuesta_breve": "Pode utilizar este espaço de diferentes maneiras: explorando o diálogo espiritual de acordo com o seu momento do dia, ou usando o motor de busca bíblica na barra lateral para passagens exatas (como 'João 1:1'). Também pode escrever 'Pesaj', 'Trinidad' ou 'Alma' para guias rápidos. 📱",
       "paso_concreto": "Tente escrever alguma das palavras-chave ou explore as opções abaixo para navegar pela aplicação."
     }
   },

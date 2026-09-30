@@ -155,9 +155,9 @@
         "pt": "Busca bíblica: Para buscar passagens ou textos completos com exatidão, lembre-se de usar o buscador dedicado na barra do menu lateral (onde você pode inserir por nome, capítulo e versículo com dois pontos como 'João 1:1')"
       },
       {
-        "es": "También podés escribirme: infobiblica, infolateral o infocamino para más información.",
-        "en": "You can also write to me: infobiblica, infolateral, or infocamino for more information.",
-        "pt": "Você também pode me escrever: infobiblica, infolateral ou infocamino para mais informações."
+        "es": "También podés escribirme: Pesaj, Alma o Trinidad para más información.",
+        "en": "You can also write to me: Pesaj, Alma, or Trinidad for more information.",
+        "pt": "Você também pode me escrever: Pesaj, Alma ou Trinida para mais informações."
       }
     ]
   },
@@ -436,9 +436,9 @@
         "para que serve"
       ],
       "respuesta": {
-        "es": "<strong>Palabra Viva</strong> es un espacio creado para el acompañamiento espiritual y la pausa diaria. Para buscar citas exactas o pasajes de la Biblia, te sugiero utilizar el buscador dedicado que está en la barra del menú lateral (por ejemplo, 'Juan 1:1'), o consultar la Sagrada Escritura en la página principal. Recordá que también podés escribirme: infobiblica, infolateral o infocamino para más información.",
-        "en": "<strong>Palabra Viva</strong> is a space created for spiritual accompaniment and daily pause. To search for exact quotes or passages of the Bible, I suggest using the dedicated search engine in the sidebar (for example, 'John 1:1'), or consulting Sacred Scripture on the main page. Remember you can also write to me: infobiblica, infolateral, or infocamino for more information.",
-        "pt": "<strong>Palabra Viva</strong> é um espaço criado para o acompanhamento espiritual e a pausa diária. Para buscar citações exatas ou passagens da Bíblia, sugiro usar o buscador dedicado que está na barra do menu lateral (por exemplo, 'João 1:1'), ou consultar a Bíblia na página principal. Lembre-se de que você também pode me escrever: infobiblica, infolateral ou infocamino para mais informações."
+        "es": "<strong>Palabra Viva</strong> es un espacio creado para el acompañamiento espiritual y la pausa diaria. Para buscar citas exactas o pasajes de la Biblia, te sugiero utilizar el buscador dedicado que está en la barra del menú lateral (por ejemplo, 'Juan 1:1'), o consultar la Sagrada Escritura en la página principal. Recordá que también podés escribirme: Alma, Pesaj o Trinidad para más información.",
+        "en": "<strong>Palabra Viva</strong> is a space created for spiritual accompaniment and daily pause. To search for exact quotes or passages of the Bible, I suggest using the dedicated search engine in the sidebar (for example, 'John 1:1'), or consulting Sacred Scripture on the main page. Remember you can also write to me: Alma, Pesaj, or Trinidad for more information.",
+        "pt": "<strong>Palabra Viva</strong> é um espaço criado para o acompanhamento espiritual e a pausa diária. Para buscar citações exatas ou passagens da Bíblia, sugiro usar o buscador dedicado que está na barra do menu lateral (por exemplo, 'João 1:1'), ou consultar a Bíblia na página principal. Lembre-se de que você também pode me escrever: Alma, Pesaj ou Trinida para mais informações."
       }
     },
     {
@@ -529,7 +529,13 @@
     },
     {
       "tema": "seccion_biblia",
-      "keywords": ["infobiblica", "torres amat", "biblia", "bible", "bíblia"],
+      "keywords": [
+        "version de biblia",
+        "torres amat",
+        "biblia",
+        "bible",
+        "bíblia"
+      ],
       "respuesta": {
         "es": "La Biblia que utilizamos en Palabra Viva es la clásica y entrañable traducción de D. Félix Torres Amat, una versión libre de restricciones para que la Palabra circule sin ataduras. En esta sección encontrás el Antiguo y Nuevo Testamento completo con buscador dedicado, y textos interactivos con notas filológicas e históricas.",
         "en": "The Bible we use in Palabra Viva is the classic and endearing translation by D. Félix Torres Amat, a restriction-free version so that the Word circulates unbound. In this section you will find the complete Old and New Testament with a dedicated search engine, and interactive texts with philological and historical notes.",
