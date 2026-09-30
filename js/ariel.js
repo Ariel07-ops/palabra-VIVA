@@ -2235,7 +2235,7 @@ document.addEventListener("DOMContentLoaded", () => {
           ) {
             respuestaAsistente = manejarCaminoTrinidad(textoUsuarioCrudo);
           } else if (
-            textoLimpio.includes("paso") ||
+            textoLimpio.includes("Pesaj") ||
             textoLimpio.includes("misterio pascual") ||
             textoLimpio.includes("pesaj") ||
             (typeof pasoActualPascua !== "undefined" && pasoActualPascua > 1)
