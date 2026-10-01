@@ -1600,12 +1600,22 @@ function obtenerTextoIdioma(itemTexto) {
   const idioma =
     window.idiomaActual || localStorage.getItem("idiomaApp") || "es";
 
+  let textoObtenido = "";
   if (typeof itemTexto === "object") {
-    return itemTexto[idioma] || itemTexto.es || "";
+    textoObtenido = itemTexto[idioma] || itemTexto.es || "";
+  } else {
+    textoObtenido = itemTexto;
   }
-  return itemTexto;
-}
 
+  // --- Inyección automática de nombre ---
+  const nombreActual = localStorage.getItem("nombrePalabraViva") || "amigo";
+  textoObtenido = textoObtenido
+    .replace(/\$\{nombreIngresado\}/g, nombreActual)
+    .replace(/\$\{nombreGuardado\}/g, nombreActual);
+  // -------------------------------------
+
+  return textoObtenido;
+}
 // ⚙️ Configuración de palabras que no aportan significado doctrinal
 const palabrasIgnoradas = new Set([
   "el",

@@ -3495,35 +3495,39 @@ body {
 .text-gold {
   background: linear-gradient(
     88deg,
-    #8b6508 0%,
-    /* Sombra profunda */ #ffd700 25%,
-    /* Oro brillante */ #ffea88 40%,
-    /* Reflejo de luz alta */ #3b2600 48%,
-    /* Bisel oscuro central */ #fff8cc 52%,
-    /* Brillo especular del filo */ #ffc700 70%,
-    /* Oro intenso */ #a67c00 100% /* Cierre profundo */
+    #b8860b 0%,
+    /* Oro oscuro cálido */ #ffd700 25%,
+    /* Oro brillante */ #fff1b0 40%,
+    /* Destello de luz */ #996515 50%,
+    /* Transición suave (sin negro absoluto) */ #ffe875 60%,
+    /* Rebote de luz */ #d4af37 80%,
+    /* Oro base */ #8b6508 100% /* Cierre */
   );
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
-  filter: drop-shadow(0 1px 2px rgba(0, 0, 0, 0.9));
+
+  /* Sombra sutil que se adapta mejor a fondos claros y oscuros */
+  filter: drop-shadow(0 1px 1px rgba(0, 0, 0, 0.4));
 }
 /* Clase para subtítulos plateados */
 .text-silver {
-  background: linear-gradient(
-    88deg,
-    #555555 0%,
-    /* Sombra de acero profunda */ #d1d5db 25%,
-    /* Plata clara pulida */ #f3f4f6 40%,
-    /* Destello de luz blanca */ #1f2937 48%,
-    /* Ranura o bisel oscuro central */ #e5e7eb 52%,
-    /* Rebote de luz inferior */ #9ca3af 70%,
-    /* Gris plateado intermedio */ #6b7280 100% /* Base de cierre metálica */
+  background-image: linear-gradient(
+    180deg,
+    #ffffff 0%,
+    #a0a0a0 50%,
+    #666666 100%
   );
   -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
   background-clip: text;
-  filter: drop-shadow(0 1px 2px rgba(0, 0, 0, 0.9));
+  -webkit-text-fill-color: transparent;
+  font-size: 0.9rem; /* O el tamaño que mejor se ajuste a tu diseño */
+  font-weight: 500; /* Por si querés que sea un poco menos grueso que el título principal */
+  max-width: 600px;
+  margin: 0 auto;
+  text-align: center;
+  /* Un trazo súper finito de 0.5px alrededor para marcar el borde sin ensuciar */
+  -webkit-text-stroke: 0.2px rgba(0, 0, 0, 0.979);
 }
 /* Bloque unificado para todas las pantallas de estado y sus párrafos de acogida */
 #screen-agradecido .acogida-estado,
