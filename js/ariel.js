@@ -1594,7 +1594,7 @@ function escaparHTML(texto) {
   return div.innerHTML;
 }
 
-// 🌐 Helper universal de idioma para el chatbot (Soporte es, en, pt)
+// 🌐 Helper universal de idioma para el chatbot
 function obtenerTextoIdioma(itemTexto) {
   if (!itemTexto) return "";
   const idioma =
@@ -1603,7 +1603,7 @@ function obtenerTextoIdioma(itemTexto) {
   if (typeof itemTexto === "object") {
     return itemTexto[idioma] || itemTexto.es || "";
   }
-  return itemTexto; // Si es un string plano por compatibilidad
+  return itemTexto;
 }
 
 // ⚙️ Configuración de palabras que no aportan significado doctrinal
@@ -1673,7 +1673,7 @@ const palabrasIgnoradas = new Set([
   "sino",
 ]);
 
-// 🧹 Función para normalizar texto (limpia acentos, mayúsculas y símbolos)
+// 🧹 Función para normalizar texto
 function normalizarTexto(texto) {
   if (!texto) return "";
   return texto
@@ -1686,132 +1686,62 @@ function normalizarTexto(texto) {
     .trim();
 }
 
-// ✂️ Extrae palabras válidas descartando las ignoradas
+// ✂️ Extrae palabras válidas
 function obtenerPalabras(texto) {
   return normalizarTexto(texto)
     .split(" ")
     .filter((palabra) => palabra.length > 2 && !palabrasIgnoradas.has(palabra));
 }
 
-// --- CLASIFICADOR PREVIO DE INTENCIÓN ---
-function clasificarConsulta(texto) {
-  const t = normalizarTexto(texto);
+// --- BUSCADOR GENÉRICO DINÁMICO 100% JSON ---
+function buscarEnSeccionJson(texto, seccion) {
+  if (!seccion) return null;
 
-  const categorias = [
-    {
-      nombre: "Iglesia",
-      frases: ["cuerpo de cristo", "pueblo de dios", "iglesia catolica"],
-      palabras: ["iglesia", "comunidad", "fieles", "apostoles", "magisterio"],
-    },
-    {
-      nombre: "Jesucristo",
-      frases: [
-        "hijo de dios",
-        "verdadero dios y verdadero hombre",
-        "rey de reyes",
-      ],
-      palabras: ["jesus", "cristo", "mesias", "encarnacion", "resurreccion"],
-    },
-    {
-      nombre: "Virgen María",
-      frases: ["madre de dios", "madre de la iglesia", "inmaculada concepcion"],
-      palabras: ["maria", "virgen", "anunciacion", "rosario", "theotokos"],
-    },
-    {
-      nombre: "Trinidad",
-      frases: ["padre hijo y espiritu santo", "tres personas distintas"],
-      palabras: ["trinidad", "padre", "espiritu santo"],
-    },
-    {
-      nombre: "Gracia y creación",
-      frases: ["pecado original", "vida eterna", "salvacion de las almas"],
-      palabras: ["gracia", "creacion", "naturaleza", "pecado", "salvacion"],
-    },
-  ];
-
-  const resultados = categorias
-    .map((categoria) => {
-      let puntaje = 0;
-      categoria.frases.forEach((frase) => {
-        if (t.includes(frase)) puntaje += 5;
-      });
-      categoria.palabras.forEach((palabra) => {
-        if (t.split(/\s+/).includes(palabra)) puntaje += 1;
-      });
-      return { categoria: categoria.nombre, puntaje };
-    })
-    .filter((resultado) => resultado.puntaje > 0)
-    .sort((a, b) => b.puntaje - a.puntaje);
-
-  if (resultados.length === 0) {
-    return { categoria: "desconocida", requiereAclaracion: false };
+  if (!Array.isArray(seccion)) {
+    for (const [clave, nodo] of Object.entries(seccion)) {
+      const keywords = nodo.keywords || nodo.palabras_clave;
+      if (keywords && Array.isArray(keywords)) {
+        const coincide = keywords.some((kw) =>
+          texto.includes(normalizarTexto(kw)),
+        );
+        if (coincide) {
+          // Si tiene un array de respuestas (como saludos o despedidas), elegimos una al azar
+          if (Array.isArray(nodo.respuestas)) {
+            const respAleatoria =
+              nodo.respuestas[
+                Math.floor(Math.random() * nodo.respuestas.length)
+              ];
+            return obtenerTextoIdioma(respAleatoria);
+          }
+          return obtenerTextoIdioma(nodo.respuesta || nodo.mensaje);
+        }
+      }
+    }
   }
-
-  const mejor = resultados[0];
-  const segundo = resultados[1];
-
-  if (segundo && mejor.puntaje === segundo.puntaje && mejor.puntaje < 5) {
-    return {
-      categoria: "ambigua",
-      opciones: resultados.slice(0, 3).map((r) => r.categoria),
-      requiereAclaracion: true,
-    };
-  }
-
-  return {
-    categoria: mejor.categoria,
-    requiereAclaracion: false,
-  };
+  return null;
 }
 
 // --- SÍNTESIS DE VOZ ---
 function hacerHablarAlRobot(texto) {
-  if (!("speechSynthesis" in window)) {
-    console.log("Este navegador no soporta síntesis de voz.");
-    return;
-  }
+  if (!("speechSynthesis" in window)) return;
   if (!texto) return;
 
   window.speechSynthesis.cancel();
 
   const idiomaApp =
     window.idiomaActual || localStorage.getItem("idiomaApp") || "es";
-  const configIdioma =
-    CONFIG_IDIOMAS_VOZ[idiomaApp] || CONFIG_IDIOMAS_VOZ["es"];
-  const vozSeleccionada = obtenerVozPorIdioma(idiomaApp);
-
   const utterance = new SpeechSynthesisUtterance(texto);
-  if (vozSeleccionada) utterance.voice = vozSeleccionada;
-  utterance.lang = configIdioma.lang;
+  utterance.lang =
+    idiomaApp === "en" ? "en-US" : idiomaApp === "pt" ? "pt-BR" : "es-AR";
   utterance.rate = 1.0;
   utterance.pitch = 1.0;
 
   window.speechSynthesis.speak(utterance);
 }
 
-if (typeof window.speechSynthesis !== "undefined") {
-  window.speechSynthesis.onvoiceschanged = () => {
-    window.speechSynthesis.getVoices();
-  };
-}
-
-// --- MAPA GEOGRÁFICO / REFERENCIAS ---
-function actualizarMapaGeografico(id) {
-  const contenedorMapa = document.getElementById("contenedor-mapa-referencia");
-  if (!contenedorMapa) return;
-
-  if (id === 1) {
-    contenedorMapa.innerHTML =
-      "<p class='text-italic'>Horizonte de los orígenes (sin coordenadas geográficas terrenales).</p>";
-  } else if (typeof datosPromesa !== "undefined" && datosPromesa[id]) {
-    contenedorMapa.innerHTML = `<div class='mapa-card'><span>Ubicación clave: <strong>${datosPromesa[id].lugar}</strong></span></div>`;
-  }
-}
-
 document.addEventListener("DOMContentLoaded", () => {
   const inputChat = document.getElementById("chat-input");
   const btnEnviar = document.getElementById("chat-btn-enviar");
-  const btnMic = document.getElementById("btnMic");
   const contenedorMensajes = document.getElementById("chat-mensajes");
   const linkAsistente = document.getElementById("link-asistente");
   const menuLateral = document.getElementById("menu-lateral");
@@ -1847,26 +1777,21 @@ document.addEventListener("DOMContentLoaded", () => {
         const resRespuestas = await fetch("data/respuestas_asistente.json");
         window.datosAsistenteGlobal = await resRespuestas.json();
       } catch (e) {
-        console.warn(
-          "No se pudo precargar el JSON en el inicio, usando respaldo.",
-        );
+        console.warn("No se pudo precargar el JSON inicial.");
       }
 
       const datosLocales = window.datosAsistenteGlobal || {};
+      const sistemasNombres = datosLocales.sistema_nombres || {};
 
       if (nombreGuardado) {
-        const respSaludado =
-          datosLocales.respuestas_pastorales?.saludado?.respuesta;
         const textoSaludado =
-          obtenerTextoIdioma(respSaludado) ||
+          obtenerTextoIdioma(sistemasNombres.saludado) ||
           `¡Qué alegría encontrarte de nuevo, ${nombreGuardado}! ¿De qué te gustaría que hablemos hoy sobre nuestra fe 🕊️?`;
-        saludoInicialHTML = `<div class="mensaje-asistente"><strong>Asistente:</strong> ${textoSaludado.replace("${nombreGuardado}", nombreGuardado)}</div>`;
+        saludoInicialHTML = `<div class="mensaje-asistente"><strong>Asistente:</strong> ${textoSaludado.replace(/\$\{nombreGuardado\}/g, nombreGuardado)}</div>`;
       } else {
-        const respPedir =
-          datosLocales.respuestas_pastorales?.pedir_nombre?.respuesta;
         const textoPedir =
-          obtenerTextoIdioma(respPedir) ||
-          `¡Hola ✨! ¡Qué alegría darte la bienvenida a Palabra Viva! Para empezar, ¿cuál es tu nombre de pila? y si no queres poner tu nombre, podes poner siglas.`;
+          obtenerTextoIdioma(sistemasNombres.pedir_nombre) ||
+          `¡Hola ✨! ¡Qué alegría darte la bienvenida a Palabra Viva! Para empezar, ¿cuál es tu nombre de pila?`;
         saludoInicialHTML = `<div class="mensaje-asistente"><strong>Asistente:</strong> ${textoPedir}</div>`;
         esperandoNombre = true;
       }
@@ -1886,26 +1811,6 @@ document.addEventListener("DOMContentLoaded", () => {
       let textoLimpio = normalizarTexto(textoUsuarioCrudo);
       let palabrasUsuario = obtenerPalabras(textoUsuarioCrudo);
 
-      const diccionarioSinonimos = {
-        nazareno: "jesus",
-        salvador: "jesus",
-        mesias: "jesus",
-        cristo: "jesus",
-        virgen: "maria",
-        inmaculada: "maria",
-        madre: "maria",
-        espiritu: "espiritu santo",
-        paraclito: "espiritu santo",
-        trinidad: "dios",
-        creador: "dios",
-      };
-
-      for (let [sinonimo, canonico] of Object.entries(diccionarioSinonimos)) {
-        if (textoLimpio.includes(sinonimo)) {
-          textoLimpio += " " + canonico;
-        }
-      }
-
       contenedorMensajes.innerHTML += `<div class="mensaje-usuario">${textoUsuario}</div>`;
       inputChat.value = "";
       contenedorMensajes.scrollTop = contenedorMensajes.scrollHeight;
@@ -1913,7 +1818,6 @@ document.addEventListener("DOMContentLoaded", () => {
       let respuestaAsistente = "";
 
       try {
-        // Obtenemos el JSON fresco en cada envío para asegurar la cascada
         const resRespuestas = await fetch("data/respuestas_asistente.json");
         const datosAsistente = await resRespuestas.json();
         window.datosAsistenteGlobal = datosAsistente;
@@ -1929,161 +1833,61 @@ document.addEventListener("DOMContentLoaded", () => {
             localStorage.setItem("nombrePalabraViva", nombreIngresado);
             esperandoNombre = false;
             const respConNombre =
-              datosAsistente.respuestas_pastorales?.saludo_con_nombre
-                ?.respuesta;
+              datosAsistente.sistema_nombres?.saludo_con_nombre;
             const textoConNombre =
               obtenerTextoIdioma(respConNombre) ||
               `¡Mucho gusto, ${nombreIngresado} 🌟! Ya guardé tu nombre. ¿De qué charlamos hoy?`;
             respuestaAsistente = textoConNombre.replace(
-              "${nombreIngresado}",
+              /\$\{nombreIngresado\}/g,
               nombreIngresado,
             );
           } else {
-            const respPedir =
-              datosAsistente.respuestas_pastorales?.pedir_nombre?.respuesta;
+            const respPedir = datosAsistente.sistema_nombres?.pedir_nombre;
             respuestaAsistente =
               obtenerTextoIdioma(respPedir) ||
-              "Contame, ¿cuál es tu primer nombre así nos conocemos mejor? También podes poner siglas si no queres que se guarde tu nombre.!💬";
+              "Contame, ¿cuál es tu primer nombre así nos conocemos mejor?💬";
           }
         } else {
-          // --- DETECCIÓN DE ESTADOS Y EMOCIONES DESDE EL JSON ---
-          const palabrasDolor = [
-            "triste",
-            "llor",
-            "angust",
-            "desolad",
-            "solo",
-            "miedo",
-            "sad",
-            "pain",
-            "chorar",
-            "tristeza",
-          ];
-          const palabrasEnojo = [
-            "enojado",
-            "bronca",
-            "pelee",
-            "rabia",
-            "enojo",
-            "angry",
-            "bravo",
-            "raiva",
-          ];
-          const palabrasCansancio = [
-            "cansado",
-            "cansada",
-            "agotado",
-            "agotada",
-            "reventado",
-            "reventada",
-            "tired",
-            "exhausted",
-            "cansado",
-            "esgotado",
-          ];
-          const palabrasSueno = [
-            "ojos",
-            "acostar",
-            "dormir",
-            "sueño",
-            "descansar",
-            "sleep",
-            "dormir",
-            "sono",
-          ];
-          const palabrasRuido = [
-            "ruido",
-            "molestan",
-            "sonido",
-            "volumen",
-            "videos",
-            "noise",
-            "barulho",
-          ];
-          const palabrasPositivas = [
-            "excelente",
-            "genial",
-            "gusta",
-            "encantó",
-            "es verdad",
-            "sirve",
-            "bueno",
-            "ok",
-            "okay",
-            "dale",
-            "contento",
-            "feliz",
-            "bien",
-            "happy",
-            "contento",
-            "contente",
-            "legal",
-            "ótimo",
-          ];
+          // --- 1. BÚSQUEDA EN SALUDOS (Específica por array de respuestas) ---
+          let respuestaEncontrada = buscarEnSeccionJson(textoLimpio, {
+            saludos: datosAsistente.saludos,
+          });
 
-          if (palabrasDolor.some((p) => textoLimpio.includes(p))) {
-            const respDolorJson =
-              datosAsistente.respuestas_pastorales?.dolor?.respuesta;
-            respuestaAsistente =
-              obtenerTextoIdioma(respDolorJson) ||
-              "Duele mucho cuando la vida se pesa. Dios no te suelta la mano.";
-          } else if (palabrasEnojo.some((p) => textoLimpio.includes(p))) {
-            const respEnojo =
-              datosAsistente.respuestas_pastorales?.enojado?.respuesta;
-            respuestaAsistente =
-              obtenerTextoIdioma(respEnojo) ||
-              "Qué bajón arrastrar bronca. Desahogate tranquilo, te acompaño.";
-          } else if (palabrasCansancio.some((p) => textoLimpio.includes(p))) {
-            const respCansado =
-              datosAsistente.respuestas_pastorales?.cansado?.respuesta;
-            respuestaAsistente =
-              obtenerTextoIdioma(respCansado) ||
-              "Te entiendo perfectamente. Tomate un respiro y aflojá un poco 🧉.";
-          } else if (palabrasSueno.some((p) => textoLimpio.includes(p))) {
-            const respSueno =
-              datosAsistente.respuestas_pastorales?.ojos?.respuesta;
-            respuestaAsistente =
-              obtenerTextoIdioma(respSueno) ||
-              "¡Uf, se te cierran solos los ojos! Pegate una buena dormida.";
-          } else if (palabrasRuido.some((p) => textoLimpio.includes(p))) {
-            const respRuido =
-              datosAsistente.respuestas_pastorales?.ruido?.respuesta;
-            respuestaAsistente =
-              obtenerTextoIdioma(respRuido) ||
-              "¡Qué cosa insoportable el ruido ajeno! Buscate un rincón con paz.";
-          } else if (palabrasPositivas.some((p) => textoLimpio.includes(p))) {
-            const respPositiva =
-              datosAsistente.respuestas_pastorales?.bien?.respuesta ||
-              datosAsistente.saludos?.respuestas;
-            respuestaAsistente =
-              obtenerTextoIdioma(respPositiva) ||
-              "¡Qué alegría leer eso! Me alegra que marche todo bien. ¿En qué te puedo ayudar hoy?";
-          } else if (
-            textoLimpio.includes("como te llamas") ||
-            textoLimpio.includes("cual es tu nombre") ||
-            textoLimpio.includes("quien sos")
-          ) {
-            respuestaAsistente =
-              "No tengo un nombre, soy tu asistente de Palabra Viva, tu compañera para este espacio de fe, charla y un buen mate espiritual 🕊️.";
-          } else if (
-            textoLimpio.includes("version de biblia") ||
-            textoLimpio.includes("que biblia") ||
-            textoLimpio.includes("que traduccion") ||
-            textoLimpio.includes("biblia usamos")
-          ) {
-            respuestaAsistente =
-              "En Palabra Viva utilizamos la clásica **Biblia Torres Amat**, una hermosa traducción al español de libre circulación integrada especialmente para nuestra comunidad.";
-          } else if (
-            textoLimpio.includes("privacidad") ||
-            textoLimpio.includes("confidencialidad") ||
-            textoLimpio.includes("privado") ||
-            textoLimpio.includes("mis datos") ||
-            textoLimpio.includes("datos personales") ||
-            textoLimpio.includes("es seguro")
-          ) {
-            respuestaAsistente =
-              "¡Quedate tranquilo! Este espacio cuida tu privacidad; lo charlado queda acá entre nosotros para acompañarte en tu camino.";
-          } else if (
+          // --- 2. BÚSQUEDA EN OTRAS SECCIONES DEL JSON (Identidad, Privacidad, Guía, etc.) ---
+          if (!respuestaEncontrada) {
+            respuestaEncontrada = buscarEnSeccionJson(
+              textoLimpio,
+              datosAsistente.identidad_asistente,
+            );
+          }
+          if (!respuestaEncontrada) {
+            respuestaEncontrada = buscarEnSeccionJson(textoLimpio, {
+              despedidas: datosAsistente.despedidas,
+            });
+          }
+          if (!respuestaEncontrada) {
+            respuestaEncontrada = buscarEnSeccionJson(textoLimpio, {
+              agradecimientos: datosAsistente.agradecimientos,
+            });
+          }
+          if (!respuestaEncontrada) {
+            respuestaEncontrada = buscarEnSeccionJson(
+              textoLimpio,
+              datosAsistente.respuestas_pastorales,
+            );
+          }
+          if (!respuestaEncontrada) {
+            respuestaEncontrada = buscarEnSeccionJson(textoLimpio, {
+              guia_uso: datosAsistente.guia_uso,
+            });
+          }
+
+          // Verificamos si matcheó alguna sección general del JSON
+          if (respuestaEncontrada) {
+            respuestaAsistente = respuestaEncontrada;
+          }
+          // --- 3. ACCIONES ESPECIALES (Borrar nombre) ---
+          else if (
             textoLimpio.includes("borrar mi nombre") ||
             textoLimpio.includes("olvidar mi nombre")
           ) {
@@ -2091,172 +1895,37 @@ document.addEventListener("DOMContentLoaded", () => {
             esperandoNombre = true;
             respuestaAsistente =
               "Listo, borré el nombre que tenía guardado. ¿Cómo querés que te llame ahora?";
-          } else if (
-            textoLimpio.includes("para que sirve") ||
-            textoLimpio.includes("de que podemos hablar") ||
-            textoLimpio.includes("que te puedo preguntar") ||
-            textoLimpio.includes("de que podemos charlar") ||
-            textoLimpio.includes("como funciona") ||
-            textoLimpio.includes("que hay aqui") ||
-            textoLimpio.includes("que hay acá")
-          ) {
-            let nombrePersona =
-              localStorage.getItem("nombrePalabraViva") || "amigo";
-            respuestaAsistente =
-              `¡Hola, ${nombrePersona}! Este espacio está pensado para que podamos conversar, reflexionar y profundizar sobre la fe, la doctrina y temas espirituales con total confianza.\n\n` +
-              "Acá podés preguntarme sobre conceptos del catecismo, plantear tus dudas cotidianas o recorrer caminos guiados paso a paso.\n\n" +
-              "**¿Por dónde querés que arranquemos hoy?**\n" +
-              "• Escribí *'Tinidad'*,*'razón'*,*´'Pesaj'*, o *'Alma'*, para iniciar estos Caminos.\n" +
-              "• Preguntame sobre **Jesús, María, la Iglesia** o cualquier tema puntual.\n" +
-              "• O simplemente tirame una inquietud y lo charlamos.";
-          } else if (
-            textoLimpio.includes("que es la fe") ||
-            textoLimpio.includes("sobre la fe") ||
-            textoLimpio.includes("hablemos de la fe") ||
-            textoLimpio.includes("hablemos sobre la fe") ||
-            textoLimpio.includes("contame sobre la fe") ||
-            textoLimpio === "fe"
-          ) {
-            respuestaAsistente =
-              "La **fe** es la adhesión personal de todo el hombre a Dios que se revela. Es el don gratuito de Dios y una virtud sobrenatural infundida por Él, mediante la cual creemos que lo que nos ha revelado es verdad.\n\n" +
-              "¿Te gustaría que profundicemos en cómo se relaciona la fe con la razón o querés que veamos algún aspecto en particular del catecismo sobre este tema?";
-          } else if (
-            palabrasUsuario.includes("gracias") ||
-            textoLimpio.includes("muchas gracias") ||
-            textoLimpio.includes("agradezco")
-          ) {
-            const agrades = datosAsistente.agradecimientos?.respuestas || [
-              "¡De nada! Es un placer enorme acompañarte en este camino 🌟.",
-            ];
-            const agradecimientoElegido =
-              agrades[Math.floor(Math.random() * agrades.length)];
-            respuestaAsistente = obtenerTextoIdioma(agradecimientoElegido);
-          } else if (palabrasPositivas.some((p) => textoLimpio.includes(p))) {
-            respuestaAsistente =
-              "¡Qué bueno leer eso! Me alegra que te sirva. Vos decime por dónde querés seguir o qué te gustaría explorar hoy en Palabra Viva. Te escucho 🧉.";
-          } else if (
-            textoLimpio.includes("como estas") ||
-            textoLimpio.includes("que tal") ||
-            textoLimpio.includes("como andas")
-          ) {
-            respuestaAsistente =
-              "¡Acá estoy, firme y lista para hacerte compañía o buscar lo que necesites en Palabra Viva 🧉!";
-          } else if (
-            textoLimpio.includes("bien") ||
-            textoLimpio.includes("todo bien") ||
-            textoLimpio.includes("feliz") ||
-            textoLimpio.includes("contento")
-          ) {
-            respuestaAsistente =
-              "¡Qué alegría leer eso! Me pone contenta que marche todo bien. ¿En qué te puedo ayudar hoy? ¡Acá estoy!";
-          } else if (
-            textoLimpio.includes("me voy a dormir") ||
-            textoLimpio.includes("chau") ||
-            textoLimpio.includes("adios") ||
-            textoLimpio.includes("chao") ||
-            textoLimpio.includes("hasta luego") ||
-            textoLimpio.includes("nos vemos") ||
-            textoLimpio.includes("hasta manana") ||
-            textoLimpio.includes("sueno")
-          ) {
-            respuestaAsistente =
-              "¡Descansá bien! Que tengas una excelente noche. Nos vemos pronto. ¡Un abrazo grande! 🧉🌙";
-          } else if (
-            textoLimpio.includes("hola") ||
-            textoLimpio.includes("buen dia") ||
-            textoLimpio.includes("buenas") ||
-            textoLimpio.includes("hello") ||
-            textoLimpio.includes("hi") ||
-            textoLimpio.includes("que onda")
-          ) {
-            const saludosPosibles = datosAsistente.saludos?.respuestas || [
-              "¡Hola! Qué bueno tenerte por acá. ¿En qué te puedo ayudar hoy?",
-            ];
-            const saludoElegido =
-              saludosPosibles[
-                Math.floor(Math.random() * saludosPosibles.length)
-              ];
-            respuestaAsistente = obtenerTextoIdioma(saludoElegido);
           }
-          // --- GUÍA Y AYUDA ---
-          else if (
-            textoLimpio.includes("guia") ||
-            textoLimpio.includes("que puedo hacer") ||
-            textoLimpio.includes("ayuda") ||
-            textoLimpio.includes("como funciona") ||
-            textoLimpio.includes("como usar") ||
-            textoLimpio.includes("como se usa") ||
-            textoLimpio.includes("informacion") ||
-            textoLimpio.includes("infoLateral") ||
-            textoLimpio.includes("tutorial") ||
-            textoLimpio.includes("como orar") ||
-            textoLimpio.includes("como rezo") ||
-            textoLimpio.includes("padre nuestro")
-          ) {
-            if (
-              textoLimpio.includes("padre nuestro") ||
-              textoLimpio.includes("como rezo")
-            ) {
-              respuestaAsistente =
-                "Rezar el **Padre Nuestro** o un **Ave María** es abrir el corazón con sencillez, como hablar con un amigo. Si querés, podés meditar cada frase despacito, sin apuro, poniéndole tu intención de hoy.";
-            } else {
-              const guia = datosAsistente.guia_uso;
-              if (guia) {
-                const tituloGuia =
-                  obtenerTextoIdioma(guia.titulo) || guia.titulo;
-                const mensajeGuia =
-                  obtenerTextoIdioma(guia.mensaje) || guia.mensaje;
-                respuestaAsistente =
-                  `<strong>🧭 ${tituloGuia}</strong><br>${mensajeGuia}<br>` +
-                  (guia.opciones || [])
-                    .map((opt) => `• ${obtenerTextoIdioma(opt)}`)
-                    .join("<br>");
-              } else {
-                respuestaAsistente =
-                  "Acá podés consultar temas de catequesis o charlar sobre nuestra fe. ¡Preguntame lo que quieras!";
-              }
-            }
-          }
-          // --- PUENTES DE CAMINOS ---
+          // --- 4. PUENTES DE CAMINOS ---
           else if (
             textoLimpio.includes("razon") ||
             textoLimpio.includes("razón") ||
-            textoLimpio.includes("pensamiento") ||
-            textoLimpio.includes("orden") ||
             (typeof pasoActualRazon !== "undefined" && pasoActualRazon > 1)
           ) {
             respuestaAsistente = manejarCaminoRazon(textoUsuarioCrudo);
           } else if (
             textoLimpio.includes("trinidad") ||
-            textoLimpio.includes("trino") ||
-            textoLimpio.includes("tres personas") ||
             (typeof pasoActualTrinidad !== "undefined" &&
               pasoActualTrinidad > 1)
           ) {
             respuestaAsistente = manejarCaminoTrinidad(textoUsuarioCrudo);
           } else if (
-            textoLimpio.includes("Pesaj") ||
-            textoLimpio.includes("misterio pascual") ||
             textoLimpio.includes("pesaj") ||
             (typeof pasoActualPascua !== "undefined" && pasoActualPascua > 1)
           ) {
             respuestaAsistente = manejarCaminoPascua(textoUsuarioCrudo);
           } else if (
             textoLimpio.includes("hombre y dios") ||
-            textoLimpio.includes("doble naturaleza") ||
-            textoLimpio.includes("humano y divino") ||
             (typeof pasoActualJesus !== "undefined" && pasoActualJesus > 1)
           ) {
             respuestaAsistente = manejarCaminoJesus(textoUsuarioCrudo);
           } else if (
             textoLimpio.includes("alma") ||
-            textoLimpio.includes("cuerpo y alma") ||
-            textoLimpio.includes("camino del alma") ||
             (typeof pasoActualAlma !== "undefined" && pasoActualAlma > 1)
           ) {
             respuestaAsistente = manejarCaminoAlma(textoUsuarioCrudo);
           }
-          // --- MOTOR DE BÚSQUEDA INTELIGENTE ---
+          // --- 5. MOTOR DE CATEQUESIS Y CHINCHETAS (¡EL CORAZÓN DE LA APP!) ---
           else {
             try {
               const resCatequesis = await fetch("data/catequesis.json");
@@ -2364,8 +2033,8 @@ document.addEventListener("DOMContentLoaded", () => {
                 ) {
                   datosAsistente.preguntas_frecuentes.forEach((faq) => {
                     let puntosFAQ = 0;
-                    if (faq.palabras_clave) {
-                      faq.palabras_clave.forEach((kw) => {
+                    if (faq.keywords) {
+                      faq.keywords.forEach((kw) => {
                         const kwLimpia = normalizarTexto(kw);
                         if (textoLimpio.includes(kwLimpia)) puntosFAQ += 2;
                       });
@@ -2452,7 +2121,7 @@ document.addEventListener("DOMContentLoaded", () => {
       }
     }
   });
-}); // --- NUEVA LÓGICA: EL CAMINO DE LA RAZÓN ---
+});
 
 const caminoRazonData = [
   {
