@@ -338,6 +338,20 @@ setTimeout(() => {
     }, 800);
   }
 }, 4500);
+// 🔀 Función exclusiva para generar chinchetas aleatorias para el comodín
+function obtenerChinchetasRandom(baseDatos, cantidad = 2) {
+  const itemsFiltrados = baseDatos.filter(
+    (item) => item.id !== "comodin-asistente-001",
+  );
+  const mezclados = [...itemsFiltrados];
+
+  for (let i = mezclados.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [mezclados[i], mezclados[j]] = [mezclados[j], mezclados[i]];
+  }
+
+  return mezclados.slice(0, cantidad);
+}
 
 // --- FUNCIÓN DE SINCRONIZACIÓN (Colocar afuera o al inicio del archivo) ---
 function sincronizarBotonTema() {
@@ -2014,7 +2028,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 if (preguntaItem && textoLimpio === preguntaItem) {
                   puntos += 200;
                 } else if (preguntaItem && textoLimpio.includes(preguntaItem)) {
-                  puntos += 70;
+                  puntos += 50;
                 }
 
                 if (item.keywords && Array.isArray(item.keywords)) {
@@ -2035,7 +2049,7 @@ document.addEventListener("DOMContentLoaded", () => {
                     palabraLimpia.length > 3 &&
                     preguntaItem.includes(` ${palabraLimpia} `)
                   ) {
-                    puntos += 2;
+                    puntos += 1;
                   }
                 });
 
@@ -2045,9 +2059,74 @@ document.addEventListener("DOMContentLoaded", () => {
                   categoriaActivaLocal = item.categoria || item.modulo || null;
                 }
               });
+              // 🔀 Comprobamos si el puntaje superó el umbral o si necesitamos el comodín
+              if (!mejorMatchCat || maxPuntosCat < 50) {
+                const comodinItem = baseDatosCatequesis.find(
+                  (item) => item.id === "comodin-asistente-001",
+                );
 
-              // Subimos un poco el umbral a 70 para evitar falsos positivos con palabras sueltas comunes
-              if (mejorMatchCat && maxPuntosCat >= 70) {
+                if (comodinItem) {
+                  const idiomaActual =
+                    window.idiomaActual ||
+                    localStorage.getItem("idiomaApp") ||
+                    "es";
+                  const datosComodinIdioma =
+                    comodinItem[idiomaActual] || comodinItem.es || comodinItem;
+
+                  const textoPrincipal =
+                    datosComodinIdioma.pregunta_principal || "";
+                  const respuestaBreve =
+                    datosComodinIdioma.respuesta_breve || "";
+                  const pasoConcreto = datosComodinIdioma.paso_concreto || "";
+
+                  let respuestaConstruida = `<strong>${textoPrincipal}</strong><br><br>${respuestaBreve}<br><br>📌 ${pasoConcreto}`;
+
+                  // 🎲 Seleccionamos 3 opciones aleatorias de toda la base de datos (excluyendo el comodín)
+                  const itemsDisponibles = baseDatosCatequesis.filter(
+                    (item) => item.id !== "comodin-asistente-001",
+                  );
+                  const relacionadosRandom = [...itemsDisponibles]
+                    .sort(() => 0.5 - Math.random())
+                    .slice(0, 3);
+
+                  if (relacionadosRandom.length > 0) {
+                    const textoExplorar =
+                      idiomaActual === "en"
+                        ? "🧭 <strong>Keep exploring here?</strong><br>"
+                        : idiomaActual === "pt"
+                          ? "🧭 <strong>Continuar explorando por aqui?</strong><br>"
+                          : "🧭 <strong>¿Seguimos explorando por acá?</strong><br>";
+
+                    respuestaConstruida += `<br><br>${textoExplorar}`;
+                    respuestaConstruida += `<div class="camino-botones-activos" style="margin-top: 10px; display: flex; flex-direction: column; gap: 6px;">`;
+
+                    relacionadosRandom.forEach((rel) => {
+                      const datosRelIdioma = rel[idiomaActual] || rel.es || rel;
+                      const textoPregRel =
+                        datosRelIdioma.pregunta_principal ||
+                        datosRelIdioma.pregunta ||
+                        "";
+                      const preguntaLimpia = textoPregRel
+                        .replace(/'/g, "\\'")
+                        .replace(/"/g, "&quot;");
+
+                      respuestaConstruida += `
+          <button onclick="enviarMensajeSugerido('${preguntaLimpia}')" style="background: #2c3e50; color: white; border: none; padding: 8px 14px; border-radius: 15px; cursor: pointer; text-align: left; font-family: inherit; font-size: 0.85rem; box-shadow: 0 1px 3px rgba(0,0,0,0.1);">
+            📌 ${textoPregRel}
+          </button>
+        `;
+                    });
+                    respuestaConstruida += `</div>`;
+                  }
+
+                  respuestaAsistente = respuestaConstruida;
+                  procesadoConExito = true;
+                }
+              }
+              // 📌 Si SÍ superó el umbral, se ejecuta tu lógica original de catequesis
+
+              // Subimos un poco el umbral a 50 para evitar falsos positivos con palabras sueltas comunes
+              else if (mejorMatchCat && maxPuntosCat >= 50) {
                 if (mejorMatchCat.id) {
                   preguntasExploradasEnSesion.add(mejorMatchCat.id);
                 }

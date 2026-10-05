@@ -109,7 +109,7 @@
       "muchas gracias",
       "thanks a lot",
       "muito obrigado",
-      "te agradezco",
+      "agradezco",
       "i appreciate it",
       "agradeço",
       "genial",
@@ -136,7 +136,7 @@
   },
   "guia": {
     "keywords": [
-      "guia",
+      "guía",
       "como usar",
       "ayuda",
       "instrucciones",
@@ -202,9 +202,9 @@
         "ansiedad",
         "anxiety",
         "ansiedade",
-        "ansioso",
+        "ansios",
         "anxious",
-        "preocupado",
+        "preocupad",
         "worried",
         "nervios",
         "nerves",
@@ -247,7 +247,7 @@
         "fear",
         "medo",
         "dread",
-        "asustado",
+        "asustad",
         "scared",
         "assustado",
         "incertidumbre",
@@ -306,6 +306,7 @@
     "soledad": {
       "keywords": [
         "solo",
+        "sola",
         "alone",
         "sozinho",
         "soledad",
@@ -314,7 +315,8 @@
         "silencio",
         "silence",
         "silêncio",
-        "abandonado",
+        "abandonad",
+
         "abandoned"
       ],
       "respuesta": {
@@ -346,7 +348,7 @@
     },
     "enojado": {
       "keywords": [
-        "enojado",
+        "enojad",
         "angry",
         "zangado",
         "bronca",
@@ -478,12 +480,16 @@
       "id": "navegacion_iconos",
       "keywords": [
         "icono",
+        "barra superior",
+        "opciones",
         "icon",
         "ícone",
         "logo",
-        "botones",
+        "los botones",
         "buttons",
         "botões",
+        "options",
+        "Top navigation bar",
         "menu"
       ],
       "respuesta": {
@@ -585,9 +591,9 @@
         "bíblia"
       ],
       "respuesta": {
-        "es": "La Biblia que utilizamos en Palabra Viva es la clásica y entrañable traducción de D. Félix Torres Amat, una versión libre de restricciones para que la Palabra circule sin ataduras. En esta sección encontrás el Antiguo y Nuevo Testamento completo con buscador dedicado, y textos interactivos con notas filológicas e históricas.",
-        "en": "The Bible we use in Palabra Viva is the classic and endearing translation by D. Félix Torres Amat, a restriction-free version so that the Word circulates unbound. In this section you will find the complete Old and New Testament with a dedicated search engine, and interactive texts with philological and historical notes.",
-        "pt": "A Bíblia que usamos no Palabra Viva é a clássica e querida tradução de D. Félix Torres Amat, uma versão livre de restrições para que a Palavra circule sem amarras. Nesta seção você encontra o Antigo e o Novo Testamento completos com buscador dedicado, e textos interativos com notas filológicas e históricas."
+        "es": "La Biblia que utilizamos en Palabra Viva es la clásica y entrañable traducción de D. Félix Torres Amat, una versión libre de restricciones para que la Palabra circule sin ataduras. En esta sección encontrás el Antiguo y Nuevo Testamento completo con buscador dedicado, y en la Bíblia subrayados textos interactivos con notas filológicas e históricas.",
+        "en": "The Bible we use in Palabra Viva is the classic and endearing translation by D. Félix Torres Amat, a restriction-free version so that the Word circulates unbound. In this section you will find the complete Old and New Testament with a dedicated search engine, and in the Holly Bible, interactive texts with philological and historical notes.",
+        "pt": "A Bíblia que usamos no Palabra Viva é a clássica e querida tradução de D. Félix Torres Amat, uma versão livre de restrições para que a Palavra circule sem amarras. Nesta seção você encontra o Antigo e o Novo Testamento completos com buscador dedicado, no a Bíblia  textos interativos com notas filológicas e históricas."
       }
     },
     {
@@ -608,7 +614,14 @@
     },
     {
       "id": "barra_de_navegacion",
-      "keywords": ["menu lateral", "sidebar"],
+      "keywords": [
+        "menu lateral",
+        "sidebar",
+        "barra de navegación",
+        "navigation bar",
+        "barra de navegação ",
+        "barra lateral"
+      ],
       "respuesta": {
         "es": "Desde el menú lateral izquierdo tenés acceso rápido al buscador de versículos, herramientas de lectura para agrandar la letra de la biblia, enlaces de interés y este asistente de apoyo.",
         "en": "From the left sidebar you have quick access to the verse search engine, reading tools to enlarge the Bible font, links of interest, and this support assistant.",
@@ -617,6 +630,33 @@
     }
   ],
   "catequesis": [
+    {
+      "id": "comodin-asistente-001",
+      "categoria": "general",
+      "keywords": [],
+      "es": {
+        "pregunta_principal": "¿Querés que profundicemos sobre nuestra fe?",
+        "respuesta_breve": "¡Cómo me gustaría ser una inteligencia artificial y tener todas las respuestas 🤖! Pero como soy simplemente un chatbot que habla sobre la fe, catequesis y doctrina, ¿querés que profundicemos sobre estos temas?",
+        "paso_concreto": "Elegí alguna de las opciones para explorar juntos.",
+        "enseñanza_de_la_iglesia": [],
+        "fundamento_biblico": []
+      },
+      "en": {
+        "pregunta_principal": "Would you like to explore our faith further?",
+        "respuesta_breve": "How I wish I were an artificial intelligence with all the answers 🤖! But since I'm simply a chatbot talking about faith, catechesis, and doctrine, would you like to dive deeper into these topics?",
+        "paso_concreto": "Choose one of the options to explore together.",
+        "enseñanza_de_la_iglesia": [],
+        "fundamento_biblico": []
+      },
+      "pt": {
+        "pregunta_principal": "Gostaria de aprofundar sobre a nossa fé?",
+        "respuesta_breve": "Como eu gostaria de ser uma inteligência artificial e ter todas as respostas 🤖! Mas como sou simplesmente um chatbot que fala sobre fé, catequese e doutrina, quer que aprofundemos sobre esses temas?",
+        "paso_concreto": "Escolha uma das opções para explorarmos juntos.",
+        "enseñanza_de_la_iglesia": [],
+        "fundamento_biblico": []
+      }
+    },
+
     {
       "id": "dios-001",
       "categoria": "Dios",
