@@ -1581,12 +1581,13 @@ function comenzarExperiencia() {
     }, 50);
   }, 2500);
 }
-// 📂// ==========================================
-// ==========================================
-// PALABRA VIVA - NÚCLEO JAVASCRIPT PRINCIPAL
+// 📂 ==========================================
+// PALABRA VIVA - NÚCLEO JAVASCRIPT PRINCIPAL (BLINDADO)
 // ==========================================
 
 let esperandoConfirmacionMic = false;
+let preguntasExploradasEnSesion = new Set();
+let esperandoNombre = false;
 
 function escaparHTML(texto) {
   const div = document.createElement("div");
@@ -1612,10 +1613,10 @@ function obtenerTextoIdioma(itemTexto) {
   textoObtenido = textoObtenido
     .replace(/\$\{nombreIngresado\}/g, nombreActual)
     .replace(/\$\{nombreGuardado\}/g, nombreActual);
-  // -------------------------------------
 
   return textoObtenido;
 }
+
 // ⚙️ Configuración de palabras que no aportan significado doctrinal
 const palabrasIgnoradas = new Set([
   "el",
@@ -1676,6 +1677,9 @@ const palabrasIgnoradas = new Set([
   "cuales",
   "donde",
   "cuando",
+  "como",
+  "porque",
+  "que",
   "si",
   "ya",
   "pero",
@@ -1715,7 +1719,6 @@ function buscarEnSeccionJson(texto, seccion) {
           texto.includes(normalizarTexto(kw)),
         );
         if (coincide) {
-          // Si tiene un array de respuestas (como saludos o despedidas), elegimos una al azar
           if (Array.isArray(nodo.respuestas)) {
             const respAleatoria =
               nodo.respuestas[
@@ -1755,7 +1758,6 @@ document.addEventListener("DOMContentLoaded", () => {
   const contenedorMensajes = document.getElementById("chat-mensajes");
   const linkAsistente = document.getElementById("link-asistente");
   const menuLateral = document.getElementById("menu-lateral");
-  const studyCard = document.getElementById("study-card");
 
   if (linkAsistente) {
     linkAsistente.addEventListener("click", (e) => {
@@ -1776,28 +1778,28 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   });
 
-  let esperandoNombre = false;
   const nombreGuardado = localStorage.getItem("nombrePalabraViva");
 
-  // --- CARGA INICIAL DEL SALUDO ---
+  // --- CARGA INICIAL Y CACHÉ DEL JSON MAESTRO ---
   (async () => {
+    try {
+      const resRespuestas = await fetch("data/respuestas_asistente.json");
+      window.datosAsistenteGlobal = await resRespuestas.json();
+    } catch (e) {
+      console.warn("No se pudo precargar el JSON inicial:", e);
+      window.datosAsistenteGlobal = {};
+    }
+
     if (contenedorMensajes) {
       let saludoInicialHTML = "";
-      try {
-        const resRespuestas = await fetch("data/respuestas_asistente.json");
-        window.datosAsistenteGlobal = await resRespuestas.json();
-      } catch (e) {
-        console.warn("No se pudo precargar el JSON inicial.");
-      }
-
       const datosLocales = window.datosAsistenteGlobal || {};
       const sistemasNombres = datosLocales.sistema_nombres || {};
 
       if (nombreGuardado) {
         const textoSaludado =
           obtenerTextoIdioma(sistemasNombres.saludado) ||
-          `¡Qué alegría encontrarte de nuevo, ${nombreGuardado}! ¿De qué te gustaría que hablemos hoy sobre nuestra fe 🕊️?`;
-        saludoInicialHTML = `<div class="mensaje-asistente"><strong>Asistente:</strong> ${textoSaludado.replace(/\$\{nombreGuardado\}/g, nombreGuardado)}</div>`;
+          `¡Qué alegría encontrarte de nuevo, ${nombreGuardado}! ¿De qué te gustaría que hablemos hoy sobre nossa fe 🕊️?`;
+        saludoInicialHTML = `<div class="mensaje-asistente"><strong>Asistente:</strong> ${textoSaludado}</div>`;
       } else {
         const textoPedir =
           obtenerTextoIdioma(sistemasNombres.pedir_nombre) ||
@@ -1810,7 +1812,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   })();
 
-  // --- PROCESAMIENTO PRINCIPAL DEL CHAT ---
+  // --- PROCESAMIENTO PRINCIPAL DEL CHAT (MOTOR HÍBRIDO CON PRIORIDAD SOCIAL) ---
   btnEnviar?.addEventListener("click", async () => {
     const textoUsuarioCrudo = inputChat.value.trim();
 
@@ -1828,22 +1830,35 @@ document.addEventListener("DOMContentLoaded", () => {
       let respuestaAsistente = "";
 
       try {
-        const resRespuestas = await fetch("data/respuestas_asistente.json");
-        const datosAsistente = await resRespuestas.json();
-        window.datosAsistenteGlobal = datosAsistente;
+        const datosMaestros = window.datosAsistenteGlobal || {};
 
         if (esperandoNombre) {
-          const nombreIngresado = textoUsuarioCrudo.split(" ")[0];
-          if (
-            nombreIngresado.length > 2 &&
-            !["hola", "buen", "dia", "soy", "decime", "mi", "nombre"].includes(
-              nombreIngresado.toLowerCase(),
-            )
-          ) {
+          const palabrasScias = [
+            "hola",
+            "soy",
+            "me",
+            "llamo",
+            "mi",
+            "nombre",
+            "es",
+            "el",
+            "un",
+          ];
+          const tokens = textoUsuarioCrudo
+            .split(" ")
+            .filter(
+              (t) => !palabrasScias.includes(t.toLowerCase()) && t.length > 1,
+            );
+          const nombreIngresado = tokens[0]
+            ? tokens[0].charAt(0).toUpperCase() +
+              tokens[0].slice(1).toLowerCase()
+            : textoUsuarioCrudo.split(" ")[0];
+
+          if (nombreIngresado.length > 2) {
             localStorage.setItem("nombrePalabraViva", nombreIngresado);
             esperandoNombre = false;
             const respConNombre =
-              datosAsistente.sistema_nombres?.saludo_con_nombre;
+              datosMaestros.sistema_nombres?.saludo_con_nombre;
             const textoConNombre =
               obtenerTextoIdioma(respConNombre) ||
               `¡Mucho gusto, ${nombreIngresado} 🌟! Ya guardé tu nombre. ¿De qué charlamos hoy?`;
@@ -1852,52 +1867,16 @@ document.addEventListener("DOMContentLoaded", () => {
               nombreIngresado,
             );
           } else {
-            const respPedir = datosAsistente.sistema_nombres?.pedir_nombre;
+            const respPedir = datosMaestros.sistema_nombres?.pedir_nombre;
             respuestaAsistente =
               obtenerTextoIdioma(respPedir) ||
               "Contame, ¿cuál es tu primer nombre así nos conocemos mejor?💬";
           }
         } else {
-          // --- 1. BÚSQUEDA EN SALUDOS (Específica por array de respuestas) ---
-          let respuestaEncontrada = buscarEnSeccionJson(textoLimpio, {
-            saludos: datosAsistente.saludos,
-          });
+          let procesadoConExito = false;
 
-          // --- 2. BÚSQUEDA EN OTRAS SECCIONES DEL JSON (Identidad, Privacidad, Guía, etc.) ---
-          if (!respuestaEncontrada) {
-            respuestaEncontrada = buscarEnSeccionJson(
-              textoLimpio,
-              datosAsistente.identidad_asistente,
-            );
-          }
-          if (!respuestaEncontrada) {
-            respuestaEncontrada = buscarEnSeccionJson(textoLimpio, {
-              despedidas: datosAsistente.despedidas,
-            });
-          }
-          if (!respuestaEncontrada) {
-            respuestaEncontrada = buscarEnSeccionJson(textoLimpio, {
-              agradecimientos: datosAsistente.agradecimientos,
-            });
-          }
-          if (!respuestaEncontrada) {
-            respuestaEncontrada = buscarEnSeccionJson(
-              textoLimpio,
-              datosAsistente.respuestas_pastorales,
-            );
-          }
-          if (!respuestaEncontrada) {
-            respuestaEncontrada = buscarEnSeccionJson(textoLimpio, {
-              guia_uso: datosAsistente.guia_uso,
-            });
-          }
-
-          // Verificamos si matcheó alguna sección general del JSON
-          if (respuestaEncontrada) {
-            respuestaAsistente = respuestaEncontrada;
-          }
-          // --- 3. ACCIONES ESPECIALES (Borrar nombre) ---
-          else if (
+          // --- 1. ACCIONES ESPECIALES (Borrar nombre) ---
+          if (
             textoLimpio.includes("borrar mi nombre") ||
             textoLimpio.includes("olvidar mi nombre")
           ) {
@@ -1905,48 +1884,119 @@ document.addEventListener("DOMContentLoaded", () => {
             esperandoNombre = true;
             respuestaAsistente =
               "Listo, borré el nombre que tenía guardado. ¿Cómo querés que te llame ahora?";
+            procesadoConExito = true;
           }
-          // --- 4. PUENTES DE CAMINOS ---
-          else if (
-            textoLimpio.includes("razon") ||
-            textoLimpio.includes("razón") ||
-            (typeof pasoActualRazon !== "undefined" && pasoActualRazon > 1)
-          ) {
-            respuestaAsistente = manejarCaminoRazon(textoUsuarioCrudo);
-          } else if (
-            textoLimpio.includes("trinidad") ||
-            (typeof pasoActualTrinidad !== "undefined" &&
-              pasoActualTrinidad > 1)
-          ) {
-            respuestaAsistente = manejarCaminoTrinidad(textoUsuarioCrudo);
-          } else if (
-            textoLimpio.includes("pesaj") ||
-            (typeof pasoActualPascua !== "undefined" && pasoActualPascua > 1)
-          ) {
-            respuestaAsistente = manejarCaminoPascua(textoUsuarioCrudo);
-          } else if (
-            textoLimpio.includes("hombre y dios") ||
-            (typeof pasoActualJesus !== "undefined" && pasoActualJesus > 1)
-          ) {
-            respuestaAsistente = manejarCaminoJesus(textoUsuarioCrudo);
-          } else if (
-            textoLimpio.includes("alma") ||
-            (typeof pasoActualAlma !== "undefined" && pasoActualAlma > 1)
-          ) {
-            respuestaAsistente = manejarCaminoAlma(textoUsuarioCrudo);
-          }
-          // --- 5. MOTOR DE CATEQUESIS Y CHINCHETAS (¡EL CORAZÓN DE LA APP!) ---
-          else {
-            try {
-              const resCatequesis = await fetch("data/catequesis.json");
-              const baseDatosCatequesis = await resCatequesis.json();
 
+          // --- 2. SALUDOS, IDENTIDAD, PREGUNTAS FRECUENTES Y RESPUESTAS GENERALES (MÁXIMA PRIORIDAD SOCIAL) ---
+          if (!procesadoConExito) {
+            let respuestaEncontrada = buscarEnSeccionJson(textoLimpio, {
+              saludos: datosMaestros.saludos,
+            });
+
+            if (!respuestaEncontrada) {
+              respuestaEncontrada = buscarEnSeccionJson(
+                textoLimpio,
+                datosMaestros.identidad_asistente,
+              );
+            }
+            if (!respuestaEncontrada) {
+              respuestaEncontrada = buscarEnSeccionJson(textoLimpio, {
+                despedidas: datosMaestros.despedidas,
+              });
+            }
+            if (!respuestaEncontrada) {
+              respuestaEncontrada = buscarEnSeccionJson(textoLimpio, {
+                agradecimientos: datosMaestros.agradecimientos,
+              });
+            }
+            if (!respuestaEncontrada) {
+              respuestaEncontrada = buscarEnSeccionJson(
+                textoLimpio,
+                datosMaestros.respuestas_pastorales,
+              );
+            }
+            if (!respuestaEncontrada) {
+              respuestaEncontrada = buscarEnSeccionJson(
+                textoLimpio,
+                datosMaestros.guia_uso,
+              );
+            }
+            if (!respuestaEncontrada && datosMaestros.preguntas_frecuentes) {
+              const mapPreguntasFrecuentes = {};
+              datosMaestros.preguntas_frecuentes.forEach((item, index) => {
+                mapPreguntasFrecuentes[`faq_${index}`] = item;
+              });
+              respuestaEncontrada = buscarEnSeccionJson(
+                textoLimpio,
+                mapPreguntasFrecuentes,
+              );
+            }
+
+            if (respuestaEncontrada) {
+              respuestaAsistente = respuestaEncontrada;
+              procesadoConExito = true;
+            }
+          }
+
+          // --- 3. PUENTES DE CAMINOS INTERACTIVOS (Antes de la catequesis general) ---
+          if (!procesadoConExito) {
+            if (
+              textoLimpio.includes("razon") ||
+              textoLimpio.includes("razón") ||
+              (typeof pasoActualRazon !== "undefined" && pasoActualRazon > 1)
+            ) {
+              respuestaAsistente = manejarCaminoRazon(textoUsuarioCrudo);
+              procesadoConExito = true;
+            } else if (
+              textoLimpio.includes("trinidad") ||
+              (typeof pasoActualTrinidad !== "undefined" &&
+                pasoActualTrinidad > 1)
+            ) {
+              respuestaAsistente = manejarCaminoTrinidad(textoUsuarioCrudo);
+              procesadoConExito = true;
+            } else if (
+              textoLimpio.includes("pesaj") ||
+              (typeof pasoActualPascua !== "undefined" && pasoActualPascua > 1)
+            ) {
+              respuestaAsistente = manejarCaminoPascua(textoUsuarioCrudo);
+              procesadoConExito = true;
+            } else if (
+              textoLimpio.includes("hombre y dios") ||
+              textoLimpio.includes("doble naturaleza") ||
+              (typeof pasoActualJesus !== "undefined" && pasoActualJesus > 1)
+            ) {
+              respuestaAsistente = manejarCaminoJesus(textoUsuarioCrudo);
+              procesadoConExito = true;
+            } else if (
+              textoLimpio.includes("alma") ||
+              textoLimpio.includes("cuerpo y alma") ||
+              (typeof pasoActualAlma !== "undefined" && pasoActualAlma > 1)
+            ) {
+              respuestaAsistente = manejarCaminoAlma(textoUsuarioCrudo);
+              procesadoConExito = true;
+            }
+          }
+
+          // --- 4. MOTOR DE CATEQUESIS FLEXIBLE (Se ejecuta solo si no es charla social ni camino interactivo) ---
+          if (!procesadoConExito) {
+            try {
+              const baseDatosCatequesis = datosMaestros.catequesis || [];
               let mejorMatchCat = null;
               let maxPuntosCat = 0;
               let categoriaActivaLocal = null;
 
               baseDatosCatequesis.forEach((item) => {
                 let puntos = 0;
+                const itemIdLimpio = item.id ? normalizarTexto(item.id) : "";
+
+                if (
+                  itemIdLimpio &&
+                  (textoLimpio === itemIdLimpio ||
+                    textoLimpio === normalizarTexto(textoUsuarioCrudo))
+                ) {
+                  puntos += 300;
+                }
+
                 const idiomaActual =
                   window.idiomaActual ||
                   localStorage.getItem("idiomaApp") ||
@@ -1961,25 +2011,31 @@ document.addEventListener("DOMContentLoaded", () => {
                   "";
                 const preguntaItem = normalizarTexto(textoPreguntaItem);
 
-                if (
-                  textoLimpio === preguntaItem ||
-                  textoLimpio.includes(preguntaItem)
-                ) {
-                  puntos += 10;
+                if (preguntaItem && textoLimpio === preguntaItem) {
+                  puntos += 200;
+                } else if (preguntaItem && textoLimpio.includes(preguntaItem)) {
+                  puntos += 70;
                 }
 
                 if (item.keywords && Array.isArray(item.keywords)) {
                   item.keywords.forEach((kw) => {
                     const keywordLimpia = normalizarTexto(kw);
-                    if (textoLimpio.includes(keywordLimpia)) {
-                      puntos += 3;
+                    if (
+                      keywordLimpia.length > 2 &&
+                      textoLimpio.includes(keywordLimpia)
+                    ) {
+                      puntos += 20;
                     }
                   });
                 }
 
                 palabrasUsuario.forEach((palabra) => {
-                  if (preguntaItem.includes(palabra) && palabra.length > 3) {
-                    puntos += 1;
+                  const palabraLimpia = normalizarTexto(palabra);
+                  if (
+                    palabraLimpia.length > 3 &&
+                    preguntaItem.includes(` ${palabraLimpia} `)
+                  ) {
+                    puntos += 2;
                   }
                 });
 
@@ -1990,7 +2046,12 @@ document.addEventListener("DOMContentLoaded", () => {
                 }
               });
 
-              if (mejorMatchCat && maxPuntosCat >= 2) {
+              // Subimos un poco el umbral a 70 para evitar falsos positivos con palabras sueltas comunes
+              if (mejorMatchCat && maxPuntosCat >= 70) {
+                if (mejorMatchCat.id) {
+                  preguntasExploradasEnSesion.add(mejorMatchCat.id);
+                }
+
                 let respuestaConstruida =
                   construirRespuestaCatequesis(mejorMatchCat);
 
@@ -1999,7 +2060,8 @@ document.addEventListener("DOMContentLoaded", () => {
                     (item) =>
                       (item.categoria === categoriaActivaLocal ||
                         item.modulo === categoriaActivaLocal) &&
-                      item.id !== mejorMatchCat.id,
+                      item.id !== mejorMatchCat.id &&
+                      !preguntasExploradasEnSesion.has(item.id),
                   )
                   .sort(() => 0.5 - Math.random())
                   .slice(0, 2);
@@ -2009,8 +2071,14 @@ document.addEventListener("DOMContentLoaded", () => {
                     window.idiomaActual ||
                     localStorage.getItem("idiomaApp") ||
                     "es";
+                  const textoExplorar =
+                    idiomaActual === "en"
+                      ? "🧭 <strong>Keep exploring here?</strong><br>"
+                      : idiomaActual === "pt"
+                        ? "🧭 <strong>Continuar explorando por aqui?</strong><br>"
+                        : "🧭 <strong>¿Seguimos explorando por acá?</strong><br>";
 
-                  respuestaConstruida += `<br><br>🧭 <strong>¿Seguimos explorando por acá?</strong><br>`;
+                  respuestaConstruida += `<br><br>${textoExplorar}`;
                   respuestaConstruida += `<div class="camino-botones-activos" style="margin-top: 10px; display: flex; flex-direction: column; gap: 6px;">`;
 
                   relacionados.forEach((rel) => {
@@ -2033,55 +2101,29 @@ document.addEventListener("DOMContentLoaded", () => {
                 }
 
                 respuestaAsistente = respuestaConstruida;
-              } else {
-                let mejorMatchFAQ = null;
-                let maxPuntosFAQ = 0;
-
-                if (
-                  datosAsistente.preguntas_frecuentes &&
-                  Array.isArray(datosAsistente.preguntas_frecuentes)
-                ) {
-                  datosAsistente.preguntas_frecuentes.forEach((faq) => {
-                    let puntosFAQ = 0;
-                    if (faq.keywords) {
-                      faq.keywords.forEach((kw) => {
-                        const kwLimpia = normalizarTexto(kw);
-                        if (textoLimpio.includes(kwLimpia)) puntosFAQ += 2;
-                      });
-                    }
-                    if (puntosFAQ > maxPuntosFAQ) {
-                      maxPuntosFAQ = puntosFAQ;
-                      mejorMatchFAQ = faq;
-                    }
-                  });
-                }
-
-                if (mejorMatchFAQ && maxPuntosFAQ >= 2) {
-                  respuestaAsistente = obtenerTextoIdioma(
-                    mejorMatchFAQ.respuesta,
-                  );
-                } else {
-                  const comodinesHumanos = [
-                    "Qué tema ese. A veces nos pasa como con los átomos o con el viento: no los vemos con nuestros ojos, pero sabemos que están ahí. Contame un poco más de lo que estás pensando.",
-                    "Lo que decís me deja pensando. Este es un espacio para explorar la fe, la Palabra y nuestras dudas de todos los días. ¿Querés que busquemos algo sobre nuestra fe o charlemos sobre otro tema?",
-                    "¡Es para pensarlo! Acá podés venir con cualquier duda, desde historias de la Biblia hasta un ratito de oración. Contame un poco más hacia dónde te gustaría llevar la charla 🧉.",
-                    "Interesante lo que planteás. A veces las respuestas no vienen en un manual exacto, pero las vamos descubriendo al andar. ¿Querés que veamos algo de catequesis o preferís que charlemos tranquilos?",
-                  ];
-                  respuestaAsistente =
-                    comodinesHumanos[
-                      Math.floor(Math.random() * comodinesHumanos.length)
-                    ];
-                }
+                procesadoConExito = true;
               }
             } catch (errCat) {
-              console.error("Error en el motor de búsqueda:", errCat);
-              respuestaAsistente =
-                "¡Te leo con atención! Contame un poco más sobre eso que me decís o avisame si preferís que busquemos alguna sección o versículo de la app 💬.";
+              console.error("Error en motor de catequesis unificado:", errCat);
             }
+          }
+
+          // --- 5. COMODÍN HUMANO FINAL ---
+          if (!procesadoConExito) {
+            const comodinesHumanos = [
+              "Qué tema ese. A veces nos pasa como con los átomos o con el viento: no los vemos con nuestros ojos, pero sabemos que están ahí. Contame un poco más de lo que estás pensando.",
+              "Lo que decís me deja pensando. Este es un espacio para explorar la fe, la Palabra y nuestras dudas de todos los días. ¿Querés que busquemos algo sobre nuestra fe o charlemos sobre otro tema?",
+              "¡Es para pensarlo! Acá podés venir con cualquier duda, desde historias de la Biblia hasta un ratito de oración. Contame un poco más hacia dónde te gustaría llevar la charla 🧉.",
+              "Interesante lo que planteás. A veces las respuestas no vienen en un manual exacto, pero las vamos descubriendo al andar. ¿Querés que veamos algo de catequesis o preferís que charlemos tranquilos?",
+            ];
+            respuestaAsistente =
+              comodinesHumanos[
+                Math.floor(Math.random() * comodinesHumanos.length)
+              ];
           }
         }
       } catch (error) {
-        console.error("Error general al procesar:", error);
+        console.error("Error general procesando el JSON unificado:", error);
         respuestaAsistente =
           "Se me trabó un segundo la idea, pero acá sigo con vos. ¿Qué me decías?";
       }
@@ -2102,7 +2144,17 @@ document.addEventListener("DOMContentLoaded", () => {
 
       const divAsistente = document.createElement("div");
       divAsistente.className = "mensaje-asistente";
-      divAsistente.innerHTML = `<strong>Asistente:</strong><br>${textoCrudo}<br><button class="btn-voz-robot" style="margin-top:8px; background:#000; color:#D4AF37; border:1px solid #D4AF37; border-radius:20px; padding:6px 12px; cursor:pointer; font-size:12px;">🔊 Escuchar</button>`;
+
+      const idiomaApp =
+        window.idiomaActual || localStorage.getItem("idiomaApp") || "es";
+      const textoBotonEscuchar =
+        idiomaApp === "en"
+          ? "🔊 Listen"
+          : idiomaApp === "pt"
+            ? "🔊 Ouvir"
+            : "🔊 Escuchar";
+
+      divAsistente.innerHTML = `<strong>Asistente:</strong><br>${textoCrudo}<br><button class="btn-voz-robot" style="margin-top:8px; background:#000; color:#D4AF37; border:1px solid #D4AF37; border-radius:20px; padding:6px 12px; cursor:pointer; font-size:12px;">${textoBotonEscuchar}</button>`;
       contenedorMensajes.appendChild(divAsistente);
 
       divAsistente
@@ -2114,7 +2166,6 @@ document.addEventListener("DOMContentLoaded", () => {
       contenedorMensajes.scrollTop = contenedorMensajes.scrollHeight;
     }
   });
-
   // --- HISTORIAL Y BOTÓN ATRÁS ---
   history.replaceState({ vista: "main" }, "", "");
 
@@ -2132,7 +2183,6 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   });
 });
-
 const caminoRazonData = [
   {
     paso: 1,
