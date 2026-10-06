@@ -1631,7 +1631,7 @@ function obtenerTextoIdioma(itemTexto) {
   return textoObtenido;
 }
 
-// ⚙️ Configuración de palabras que no aportan significado doctrinal
+// Lista ampliada de palabras a ignorar
 const palabrasIgnoradas = new Set([
   "el",
   "la",
@@ -1641,42 +1641,52 @@ const palabrasIgnoradas = new Set([
   "una",
   "unos",
   "unas",
-  "y",
-  "o",
-  "u",
-  "ni",
   "de",
   "del",
   "al",
   "a",
   "en",
+  "con",
   "por",
   "para",
-  "con",
-  "sin",
-  "sobre",
-  "entre",
-  "hacia",
-  "hasta",
-  "desde",
-  "según",
-  "contra",
-  "tras",
-  "bajo",
+  "y",
+  "o",
+  "u",
+  "e",
+  "ni",
+  "que",
+  "qué",
+  "cual",
+  "cuál",
+  "cuales",
+  "cuáles",
+  "quien",
+  "quién",
+  "quienes",
+  "quiénes",
+  "donde",
+  "dónde",
+  "cuando",
+  "cuándo",
+  "como",
+  "cómo",
+  "porque",
+  "porqué",
+  "si",
+  "ya",
+  "pero",
+  "aunque",
+  "sino",
   "me",
   "te",
   "se",
   "nos",
-  "os",
-  "le",
   "les",
   "lo",
+  "le",
   "mi",
   "tu",
   "su",
-  "nuestro",
-  "vuestro",
-  "sus",
   "este",
   "esta",
   "estos",
@@ -1685,69 +1695,122 @@ const palabrasIgnoradas = new Set([
   "esa",
   "esos",
   "esas",
-  "quien",
-  "quienes",
-  "cual",
-  "cuales",
-  "donde",
-  "cuando",
-  "como",
-  "porque",
-  "que",
-  "si",
-  "ya",
-  "pero",
-  "aunque",
-  "sino",
+  "aquel",
+  "aquella",
+  "hay",
+  "ser",
+  "estar",
+  "tiene",
+  "tienen",
+  "soy",
+  "eres",
+  "es",
+  "somos",
+  "son",
+  "hola",
+  "buenas",
+  "dias",
+  "tardes",
+  "noches",
 ]);
 
-// 🧹 Función para normalizar texto
+// 🧹 Normalización más robusta
 function normalizarTexto(texto) {
   if (!texto) return "";
   return texto
     .toString()
     .toLowerCase()
     .normalize("NFD")
-    .replace(/[\u0300-\u036f]/g, "")
-    .replace(/[¿?¡!,.;:()[\]{}"'¿?¡!]/g, " ")
+    .replace(/[\u0300-\u036f]/g, "") // quita acentos
+    .replace(/[¿?¡!,.;:()[\]{}"'`´]/g, " ") // puntuación → espacio
     .replace(/\s+/g, " ")
     .trim();
 }
 
-// ✂️ Extrae palabras válidas
+// ✂️ Extrae palabras válidas (más estricto)
 function obtenerPalabras(texto) {
   return normalizarTexto(texto)
     .split(" ")
     .filter((palabra) => palabra.length > 2 && !palabrasIgnoradas.has(palabra));
 }
-
 // --- BUSCADOR GENÉRICO DINÁMICO 100% JSON ---
+// --- BUSCADOR GENÉRICO CON PUNTUACIÓN (mucho más preciso) ---
 function buscarEnSeccionJson(texto, seccion) {
   if (!seccion) return null;
 
-  if (!Array.isArray(seccion)) {
-    for (const [clave, nodo] of Object.entries(seccion)) {
-      const keywords = nodo.keywords || nodo.palabras_clave;
-      if (keywords && Array.isArray(keywords)) {
-        const coincide = keywords.some((kw) =>
-          texto.includes(normalizarTexto(kw)),
-        );
-        if (coincide) {
-          if (Array.isArray(nodo.respuestas)) {
-            const respAleatoria =
-              nodo.respuestas[
-                Math.floor(Math.random() * nodo.respuestas.length)
-              ];
-            return obtenerTextoIdioma(respAleatoria);
-          }
-          return obtenerTextoIdioma(nodo.respuesta || nodo.mensaje);
-        }
-      }
-    }
-  }
-  return null;
-}
+  let mejorNodo = null;
+  let maxPuntos = 0;
 
+  const calcularPuntos = (nodo) => {
+    const keywords = nodo.keywords || nodo.palabras_clave;
+    if (!keywords || !Array.isArray(keywords)) return 0;
+
+    let puntos = 0;
+
+    keywords.forEach((kw) => {
+      // Soporta tanto string simple como objeto {palabra, peso}
+      const palabra = typeof kw === "object" ? kw.palabra || kw.texto : kw;
+      const pesoExtra = typeof kw === "object" ? kw.peso || 0 : 0;
+
+      const kwLimpia = normalizarTexto(palabra);
+      if (!kwLimpia || kwLimpia.length < 3) return;
+
+      // Coincidencia exacta de toda la frase
+      if (texto === kwLimpia) {
+        puntos += 120 + pesoExtra;
+      }
+      // Palabra completa (con bordes)
+      else if (
+        texto.includes(` ${kwLimpia} `) ||
+        texto.startsWith(kwLimpia + " ") ||
+        texto.endsWith(" " + kwLimpia)
+      ) {
+        puntos += 45 + pesoExtra;
+      }
+      // Contiene la keyword
+      else if (texto.includes(kwLimpia)) {
+        puntos += 18 + pesoExtra;
+      }
+    });
+
+    return puntos;
+  };
+
+  // Recorrer la sección (objeto o array)
+  if (Array.isArray(seccion)) {
+    seccion.forEach((nodo) => {
+      const puntos = calcularPuntos(nodo);
+      if (puntos > maxPuntos) {
+        maxPuntos = puntos;
+        mejorNodo = nodo;
+      }
+    });
+  } else {
+    Object.values(seccion).forEach((nodo) => {
+      const puntos = calcularPuntos(nodo);
+      if (puntos > maxPuntos) {
+        maxPuntos = puntos;
+        mejorNodo = nodo;
+      }
+    });
+  }
+
+  // Umbral mínimo: evita respuestas muy débiles
+  if (!mejorNodo || maxPuntos < 30) return null;
+
+  // Devolver la respuesta en el idioma correcto
+  if (Array.isArray(mejorNodo.respuestas)) {
+    const respAleatoria =
+      mejorNodo.respuestas[
+        Math.floor(Math.random() * mejorNodo.respuestas.length)
+      ];
+    return obtenerTextoIdioma(respAleatoria);
+  }
+
+  return obtenerTextoIdioma(
+    mejorNodo.respuesta || mejorNodo.mensaje || mejorNodo,
+  );
+}
 // --- SÍNTESIS DE VOZ ---
 function hacerHablarAlRobot(texto) {
   if (!("speechSynthesis" in window)) return;
@@ -1906,7 +1969,11 @@ document.addEventListener("DOMContentLoaded", () => {
             let respuestaEncontrada = buscarEnSeccionJson(textoLimpio, {
               saludos: datosMaestros.saludos,
             });
-
+            if (!respuestaEncontrada) {
+              respuestaEncontrada = buscarEnSeccionJson(textoLimpio, {
+                como_estas: datosMaestros.como_estas,
+              });
+            }
             if (!respuestaEncontrada) {
               respuestaEncontrada = buscarEnSeccionJson(
                 textoLimpio,
@@ -2003,11 +2070,8 @@ document.addEventListener("DOMContentLoaded", () => {
                 let puntos = 0;
                 const itemIdLimpio = item.id ? normalizarTexto(item.id) : "";
 
-                if (
-                  itemIdLimpio &&
-                  (textoLimpio === itemIdLimpio ||
-                    textoLimpio === normalizarTexto(textoUsuarioCrudo))
-                ) {
+                // Exacto en id
+                if (itemIdLimpio && textoLimpio === itemIdLimpio) {
                   puntos += 300;
                 }
 
@@ -2025,31 +2089,41 @@ document.addEventListener("DOMContentLoaded", () => {
                   "";
                 const preguntaItem = normalizarTexto(textoPreguntaItem);
 
+                // Exacto en pregunta
                 if (preguntaItem && textoLimpio === preguntaItem) {
-                  puntos += 200;
+                  puntos += 220;
                 } else if (preguntaItem && textoLimpio.includes(preguntaItem)) {
-                  puntos += 50;
+                  puntos += 60;
                 }
 
+                // Keywords con más peso y detección de palabra completa
                 if (item.keywords && Array.isArray(item.keywords)) {
                   item.keywords.forEach((kw) => {
-                    const keywordLimpia = normalizarTexto(kw);
-                    if (
-                      keywordLimpia.length > 2 &&
-                      textoLimpio.includes(keywordLimpia)
+                    const keywordLimpia = normalizarTexto(
+                      typeof kw === "object" ? kw.palabra || kw.texto : kw,
+                    );
+                    const pesoExtra = typeof kw === "object" ? kw.peso || 0 : 0;
+
+                    if (keywordLimpia.length < 3) return;
+
+                    if (textoLimpio === keywordLimpia) {
+                      puntos += 80 + pesoExtra;
+                    } else if (
+                      textoLimpio.includes(` ${keywordLimpia} `) ||
+                      textoLimpio.startsWith(keywordLimpia + " ") ||
+                      textoLimpio.endsWith(" " + keywordLimpia)
                     ) {
-                      puntos += 20;
+                      puntos += 35 + pesoExtra;
+                    } else if (textoLimpio.includes(keywordLimpia)) {
+                      puntos += 15 + pesoExtra;
                     }
                   });
                 }
 
+                // Palabras sueltas del usuario que aparecen en la pregunta (controlado a 4 puntos)
                 palabrasUsuario.forEach((palabra) => {
-                  const palabraLimpia = normalizarTexto(palabra);
-                  if (
-                    palabraLimpia.length > 3 &&
-                    preguntaItem.includes(` ${palabraLimpia} `)
-                  ) {
-                    puntos += 1;
+                  if (palabra.length > 3 && preguntaItem.includes(palabra)) {
+                    puntos += 4;
                   }
                 });
 
@@ -2059,8 +2133,9 @@ document.addEventListener("DOMContentLoaded", () => {
                   categoriaActivaLocal = item.categoria || item.modulo || null;
                 }
               });
-              // 🔀 Comprobamos si el puntaje superó el umbral o si necesitamos el comodín
-              if (!mejorMatchCat || maxPuntosCat < 50) {
+
+              // 🔀 Comprobamos si el puntaje superó el umbral mínimo (30) o si necesitamos el comodín
+              if (!mejorMatchCat || maxPuntosCat < 30) {
                 const comodinItem = baseDatosCatequesis.find(
                   (item) => item.id === "comodin-asistente-001",
                 );
@@ -2123,10 +2198,8 @@ document.addEventListener("DOMContentLoaded", () => {
                   procesadoConExito = true;
                 }
               }
-              // 📌 Si SÍ superó el umbral, se ejecuta tu lógica original de catequesis
-
-              // Subimos un poco el umbral a 50 para evitar falsos positivos con palabras sueltas comunes
-              else if (mejorMatchCat && maxPuntosCat >= 50) {
+              // 📌 Si SÍ superó el umbral, ejecutamos la respuesta con sus relacionados
+              else if (mejorMatchCat && maxPuntosCat >= 30) {
                 if (mejorMatchCat.id) {
                   preguntasExploradasEnSesion.add(mejorMatchCat.id);
                 }

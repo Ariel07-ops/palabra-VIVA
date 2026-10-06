@@ -60,6 +60,30 @@
       }
     ]
   },
+  "como_estas": {
+    "keywords": [
+      "como estas",
+      "y vos como estas",
+      "como te sentis",
+      "vos como estas",
+      "how are you",
+      "how do you feel",
+      "tudo bem",
+      "como voce esta"
+    ],
+    "respuestas": [
+      {
+        "es": "¡Yo estoy muy bien, gracias por preguntar! 🧉 Acá acompañándote y listo para repasar lo que necesites de la Palabra o charlar un rato. ¿Cómo viene tu día?",
+        "en": "I'm doing great, thanks for asking! 🧉 Here keeping you company and ready to review whatever you need from the Word or chat for a bit. How is your day going?",
+        "pt": "Eu estou muito bem, obrigado por perguntar! 🧉 Aqui fazendo companhia e pronto para rever o que você precisar da Palavra ou bater um papo. Como está sendo o seu dia?"
+      },
+      {
+        "es": "¡Todo en orden por acá, con buena energía para charlar! Me alegra que me preguntes. ¿En qué te puedo acompañar hoy?",
+        "en": "All good over here, with great energy to chat! I'm glad you asked. What can I help you with today?",
+        "pt": "Tudo em ordem por aqui, com boa energia para conversar! Fico feliz que tenha perguntado. Em que posso te acompanhar hoje?"
+      }
+    ]
+  },
   "despedidas": {
     "keywords": [
       "chau",
@@ -180,8 +204,10 @@
         "tristeza",
         "sadness",
         "afligido",
+        "afligida",
         "afflicted",
         "aflito",
+        "aflita",
         "mal",
         "bad",
         "llorar",
@@ -202,9 +228,11 @@
         "ansiedad",
         "anxiety",
         "ansiedade",
-        "ansios",
+        "ansioso",
+        "ansiosa",
         "anxious",
-        "preocupad",
+        "preocupada",
+        "preocupado",
         "worried",
         "nervios",
         "nerves",
@@ -222,6 +250,7 @@
     "perdon": {
       "keywords": [
         "perdon",
+        "perdono",
         "forgiveness",
         "perdão",
         "perdonar",
@@ -247,9 +276,11 @@
         "fear",
         "medo",
         "dread",
-        "asustad",
+        "asustado",
+        "asustada",
         "scared",
         "assustado",
+        "assustada",
         "incertidumbre",
         "uncertainty",
         "incerteza"
@@ -283,11 +314,14 @@
     "cansancio": {
       "keywords": [
         "cansado",
+        "cansada",
         "tired",
-        "cansado",
+        "cansadisimo",
         "agotado",
+        "agotada",
         "exhausted",
         "esgotado",
+        "esgotada",
         "cansancio",
         "tiredness",
         "cansaço",
@@ -309,14 +343,15 @@
         "sola",
         "alone",
         "sozinho",
+        "sozinha",
         "soledad",
         "solitude",
         "solidão",
         "silencio",
         "silence",
         "silêncio",
-        "abandonad",
-
+        "abandonado",
+        "abandonada",
         "abandoned"
       ],
       "respuesta": {
@@ -334,8 +369,10 @@
         "sleep",
         "sono",
         "cansado de leer",
+        "cansada de leer",
         "tired of reading",
         "cansado de ler",
+        "cansada de ler",
         "pestañeo",
         "blinking",
         "piscar"
@@ -348,9 +385,12 @@
     },
     "enojado": {
       "keywords": [
-        "enojad",
+        "enojado",
+        "enojo",
+        "enojada",
         "angry",
         "zangado",
+        "zangada",
         "bronca",
         "anger",
         "raiva",
@@ -413,15 +453,18 @@
         "thank God",
         "obrigado Deus",
         "contento",
-        "content",
+        "contenta",
         "contente",
         "feliz",
         "happy",
         "agradecido",
+        "agradecida",
         "grateful",
         "bendecido",
+        "bendecida",
         "blessed",
-        "abençoado"
+        "abençoado",
+        "abençoada"
       ],
       "respuesta": {
         "es": "Dar gracias en todo momento es descubrir que la vida está llena de pequeños milagros cotidianos. ${nombreIngresado}, reconoce el don recibido es la mejor manera de sintonizar con la alegría de Dios.",
@@ -439,17 +482,17 @@
     {
       "id": "que_es",
       "keywords": [
-        "que es",
         "que podemos hablar",
         "que podemos conversar",
         "que podemos charlar",
         "que puedo preguntar",
+        "que te puedo",
         "what is",
         "o que é",
         "palabra viva",
-        "para que sirve",
+        "este espacio",
         "what is it for",
-        "para que serve"
+        "como usar"
       ],
       "respuesta": {
         "es": "${nombreIngresado},<strong>Palabra Viva</strong> es un espacio creado para el acompañamiento espiritual y la pausa diaria. Para buscar citas exactas o pasajes de la Biblia, te sugiero utilizar el buscador dedicado que está en la barra del menú lateral (por ejemplo, 'Juan 1:1'), o consultar la Sagrada Escritura en la página principal. Recordá que también podés escribirme: Alma, Pesaj o Trinidad para más información.",
@@ -524,7 +567,8 @@
         "are you a robot",
         "você é um robô",
         "inteligencia artificial",
-        "artificial intelligence"
+        "artificial intelligence",
+        "ia"
       ],
       "respuesta": {
         "es": "${nombreIngresado}, Soy el asistente de apoyo integrado en Palabra Viva, un catequista virtual diseñado para ofrecerte reflexiones espirituales y escucha. Para lecturas bíblicas textuales, recordá que tenés el buscador dedicado en el menú lateral.",
