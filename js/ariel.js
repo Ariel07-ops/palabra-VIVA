@@ -126,9 +126,10 @@ function changeScreen(screenToShow) {
 
     // --- GESTIÓN DE HISTORIAL PARA EL BOTÓN "ATRÁS" ---
     if (screenToShow === screenMain) {
-      history.replaceState({ vista: "main" }, "", "");
-    } else if (screenToShow !== screenSplash) {
-      history.pushState({ vista: "detalle" }, "", "");
+      history.replaceState({ screenId: "main" }, "", "");
+    } else if (screenToShow && screenToShow !== screenSplash) {
+      const screenId = screenToShow.id || "detalle";
+      history.pushState({ screenId: screenId }, "", "");
     }
   }
 }
@@ -2353,7 +2354,6 @@ document.addEventListener("DOMContentLoaded", () => {
   history.replaceState({ vista: "main" }, "", "");
 
   window.addEventListener("popstate", (event) => {
-    // Si hay una tarjeta de estudio expandida, primero la cerramos
     if (studyCard && studyCard.classList.contains("expanded")) {
       studyCard.classList.remove("expanded");
       studyCard.style.transform = "";
@@ -2362,23 +2362,19 @@ document.addEventListener("DOMContentLoaded", () => {
 
     const estado = event.state;
 
-    // Si no hay estado o es el inicio → vamos al main
     if (!estado || !estado.screenId || estado.screenId === "main") {
       changeScreen(screenMain);
       return;
     }
 
-    // Buscamos la pantalla por su id
     const pantalla = document.getElementById(estado.screenId);
 
     if (pantalla) {
-      // Activamos esa pantalla sin volver a empujar historial
-      document
-        .querySelectorAll(".screen")
-        .forEach((s) => s.classList.remove("active"));
+      document.querySelectorAll(".screen").forEach(function (s) {
+        s.classList.remove("active");
+      });
       pantalla.classList.add("active");
     } else {
-      // Si no encuentra el id, fallback al main
       changeScreen(screenMain);
     }
   });
