@@ -2353,37 +2353,32 @@ document.addEventListener("DOMContentLoaded", () => {
   history.replaceState({ vista: "main" }, "", "");
 
   window.addEventListener("popstate", (event) => {
-    // 1. Si hay una tarjeta de estudio expandida, la cerramos primero
-    if (
-      typeof studyCard !== "undefined" &&
-      studyCard &&
-      studyCard.classList.contains("expanded")
-    ) {
+    // Si hay una tarjeta de estudio expandida, primero la cerramos
+    if (studyCard && studyCard.classList.contains("expanded")) {
       studyCard.classList.remove("expanded");
       studyCard.style.transform = "";
-      // Opcional: pusheamos de nuevo el estado para compensar el popstate y que no mueva de pantalla
-      history.pushState({ vista: "detalle" }, "", "");
       return;
     }
 
-    // 2. Si hay un estado guardado con una pantalla específica, la restauramos
     const estado = event.state;
-    if (estado && estado.screenId && estado.screenId !== "main") {
-      const pantalla = document.getElementById(estado.screenId);
-      if (pantalla) {
-        document
-          .querySelectorAll(".screen")
-          .forEach((s) => s.classList.remove("active"));
-        pantalla.classList.add("active");
-        return;
-      }
+
+    // Si no hay estado o es el inicio → vamos al main
+    if (!estado || !estado.screenId || estado.screenId === "main") {
+      changeScreen(screenMain);
+      return;
     }
 
-    // 3. Fallback general: si no hay estado o es el main, volvemos a la pantalla principal
-    if (
-      typeof changeScreen === "function" &&
-      typeof screenMain !== "undefined"
-    ) {
+    // Buscamos la pantalla por su id
+    const pantalla = document.getElementById(estado.screenId);
+
+    if (pantalla) {
+      // Activamos esa pantalla sin volver a empujar historial
+      document
+        .querySelectorAll(".screen")
+        .forEach((s) => s.classList.remove("active"));
+      pantalla.classList.add("active");
+    } else {
+      // Si no encuentra el id, fallback al main
       changeScreen(screenMain);
     }
   });
