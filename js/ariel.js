@@ -1851,10 +1851,20 @@ document.addEventListener("DOMContentLoaded", () => {
 
   inputChat?.addEventListener("keypress", (e) => {
     if (e.key === "Enter") {
-      btnEnviar?.click();
+      e.preventDefault(); // Evita comportamientos por defecto del navegador
+      btnEnviar?.click(); // Simula el click del botón
+
+      // 💻 Forzamos el foco de vuelta al input en PC si no es dispositivo móvil
+      const esMovil =
+        /Mobi|Android|iPhone|iPad|iPod/i.test(navigator.userAgent) ||
+        window.innerWidth <= 768;
+      if (!esMovil) {
+        setTimeout(() => {
+          inputChat.focus();
+        }, 10);
+      }
     }
   });
-
   const nombreGuardado = localStorage.getItem("nombrePalabraViva");
 
   // --- CARGA INICIAL Y CACHÉ DEL JSON MAESTRO ---
@@ -1894,7 +1904,19 @@ document.addEventListener("DOMContentLoaded", () => {
     const textoUsuarioCrudo = inputChat.value.trim();
 
     if (textoUsuarioCrudo !== "") {
-      inputChat.blur();
+      // 📱 Comprobación inteligente según el dispositivo
+      const esMovil =
+        /Mobi|Android|iPhone|iPad|iPod/i.test(navigator.userAgent) ||
+        window.innerWidth <= 768;
+
+      if (esMovil) {
+        inputChat.blur(); // En celu: baja el teclado virtual para ver bien la respuesta
+      } else {
+        // En PC: usamos un setTimeout mínimo para ganarle de mano al navegador y que devuelva el foco
+        setTimeout(() => {
+          inputChat.focus();
+        }, 50);
+      }
 
       const textoUsuario = escaparHTML(textoUsuarioCrudo);
       let textoLimpio = normalizarTexto(textoUsuarioCrudo);
@@ -1908,7 +1930,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
       try {
         const datosMaestros = window.datosAsistenteGlobal || {};
-
         if (esperandoNombre) {
           const palabrasScias = [
             "hola",
@@ -2136,9 +2157,18 @@ document.addEventListener("DOMContentLoaded", () => {
 
               // 🔀 Comprobamos si el puntaje superó el umbral mínimo (30) o si necesitamos el comodín
               if (!mejorMatchCat || maxPuntosCat < 30) {
-                const comodinItem = baseDatosCatequesis.find(
-                  (item) => item.id === "comodin-asistente-001",
+                // 1. Buscamos TODOS los comodines disponibles que empiecen con "comodin-asistente"
+                const todosLosComodines = baseDatosCatequesis.filter(
+                  (item) => item.id && item.id.startsWith("comodin-asistente"),
                 );
+
+                // 2. Elegimos uno al azar de esos comodines
+                const comodinItem =
+                  todosLosComodines.length > 0
+                    ? todosLosComodines[
+                        Math.floor(Math.random() * todosLosComodines.length)
+                      ]
+                    : null;
 
                 if (comodinItem) {
                   const idiomaActual =
@@ -2156,9 +2186,10 @@ document.addEventListener("DOMContentLoaded", () => {
 
                   let respuestaConstruida = `<strong>${textoPrincipal}</strong><br><br>${respuestaBreve}<br><br>📌 ${pasoConcreto}`;
 
-                  // 🎲 Seleccionamos 3 opciones aleatorias de toda la base de datos (excluyendo el comodín)
+                  // 🎲 Seleccionamos 3 opciones aleatorias de toda la base de datos (excluyendo todos los comodines)
                   const itemsDisponibles = baseDatosCatequesis.filter(
-                    (item) => item.id !== "comodin-asistente-001",
+                    (item) =>
+                      !item.id || !item.id.startsWith("comodin-asistente"),
                   );
                   const relacionadosRandom = [...itemsDisponibles]
                     .sort(() => 0.5 - Math.random())
@@ -2186,10 +2217,10 @@ document.addEventListener("DOMContentLoaded", () => {
                         .replace(/"/g, "&quot;");
 
                       respuestaConstruida += `
-          <button onclick="enviarMensajeSugerido('${preguntaLimpia}')" style="background: #2c3e50; color: white; border: none; padding: 8px 14px; border-radius: 15px; cursor: pointer; text-align: left; font-family: inherit; font-size: 0.85rem; box-shadow: 0 1px 3px rgba(0,0,0,0.1);">
-            📌 ${textoPregRel}
-          </button>
-        `;
+<button onclick="enviarMensajeSugerido('${preguntaLimpia}')" style="background: #2c3e50; color: white; border: none; padding: 8px 14px; border-radius: 15px; cursor: pointer; text-align: left; font-family: inherit; font-size: 0.85rem; box-shadow: 0 1px 3px rgba(0,0,0,0.1);">
+  📌 ${textoPregRel}
+</button>
+`;
                     });
                     respuestaConstruida += `</div>`;
                   }
@@ -2322,16 +2353,38 @@ document.addEventListener("DOMContentLoaded", () => {
   history.replaceState({ vista: "main" }, "", "");
 
   window.addEventListener("popstate", (event) => {
-    if (studyCard && studyCard.classList.contains("expanded")) {
+    // 1. Si hay una tarjeta de estudio expandida, la cerramos primero
+    if (
+      typeof studyCard !== "undefined" &&
+      studyCard &&
+      studyCard.classList.contains("expanded")
+    ) {
       studyCard.classList.remove("expanded");
       studyCard.style.transform = "";
-    } else {
-      if (
-        typeof changeScreen === "function" &&
-        typeof screenMain !== "undefined"
-      ) {
-        changeScreen(screenMain);
+      // Opcional: pusheamos de nuevo el estado para compensar el popstate y que no mueva de pantalla
+      history.pushState({ vista: "detalle" }, "", "");
+      return;
+    }
+
+    // 2. Si hay un estado guardado con una pantalla específica, la restauramos
+    const estado = event.state;
+    if (estado && estado.screenId && estado.screenId !== "main") {
+      const pantalla = document.getElementById(estado.screenId);
+      if (pantalla) {
+        document
+          .querySelectorAll(".screen")
+          .forEach((s) => s.classList.remove("active"));
+        pantalla.classList.add("active");
+        return;
       }
+    }
+
+    // 3. Fallback general: si no hay estado o es el main, volvemos a la pantalla principal
+    if (
+      typeof changeScreen === "function" &&
+      typeof screenMain !== "undefined"
+    ) {
+      changeScreen(screenMain);
     }
   });
 });
@@ -3235,5 +3288,21 @@ if (btnMic) {
     function apagarMicrifono() {
       btnMic.classList.remove("mic-escuchando"); // Apaga la luz / titilado y vuelve al estado normal
     }
+  }
+}
+// --- FUNCIÓN AUXILIAR PARA MANTENER EL FOCO EN PC ---
+function devolverFocoPC() {
+  const esMovil =
+    /Mobi|Android|iPhone|iPad|iPod/i.test(navigator.userAgent) ||
+    window.innerWidth <= 768;
+
+  if (!esMovil) {
+    // Si estamos en PC, esperamos un mini respiro del DOM y devolvemos el cursor al input
+    setTimeout(() => {
+      const inputChat = document.getElementById("chat-input");
+      if (inputChat) {
+        inputChat.focus();
+      }
+    }, 50);
   }
 }

@@ -675,27 +675,79 @@
   ],
   "catequesis": [
     {
+      "id": "comodin-asistente-003",
+      "categoria": "general",
+      "keywords": [],
+      "es": {
+        "pregunta_principal": "¿Querés que profundicemos sobre nuestra fe?",
+        "respuesta_breve": "La verdad, me encantaría ser la computadora cuántica más poderosa del universo para tener todas las respuestas del cosmos. ¡Jajaja! 🤖✨. Pero bueno, soy simplemente un chatbot creado para charlar sobre fe, catequesis y doctrina. Lo que sí sé hacer muy bien es guiarte con lo que tengo por acá.",
+        "paso_concreto": "Elegí alguna de las opciones para que sigamos explorando juntos.",
+        "enseñanza_de_la_iglesia": [],
+        "fundamento_biblico": []
+      },
+      "en": {
+        "pregunta_principal": "Would you like to explore our faith further?",
+        "respuesta_breve": "Truth be told, I'd love to be the most powerful quantum computer in the universe and have all the answers to the cosmos. Hahaha! 🤖✨. But hey, I'm simply a chatbot built to talk about faith, catechesis, and doctrine. What I can do really well is guide you through what I've got right here.",
+        "paso_concreto": "Choose one of the options so we can keep exploring together.",
+        "enseñanza_de_la_iglesia": [],
+        "fundamento_biblico": []
+      },
+      "pt": {
+        "pregunta_principal": "Gostaria de aprofundar sobre a nossa fé?",
+        "respuesta_breve": "A verdade é que eu adoraria ser o computador quântico mais poderoso do universo para ter todas as respostas do cosmos. Hahaha! 🤖✨. Mas olha, sou simplesmente um chatbot criado para conversar sobre fé, catequese e doutrina. O que eu sei fazer muito bem é te guiar com o que tenho por aqui.",
+        "paso_concreto": "Escolha uma das opções para continuarmos explorando juntos.",
+        "enseñanza_de_la_iglesia": [],
+        "fundamento_biblico": []
+      }
+    },
+    {
       "id": "comodin-asistente-001",
       "categoria": "general",
       "keywords": [],
       "es": {
         "pregunta_principal": "¿Querés que profundicemos sobre nuestra fe?",
-        "respuesta_breve": "¡Cómo me gustaría ser una inteligencia artificial y tener todas las respuestas 🤖! Pero como soy simplemente un chatbot que habla sobre la fe, catequesis y doctrina, ¿querés que profundicemos sobre estos temas?",
+        "respuesta_breve": "Ojalá tuviera el mapa completo de los misterios del universo guardado en el disco rígido del mundito, ¡jajaja! Pero la verdad, mi área de especialidad empieza y termina en la doctrina y la catequesis (¡y menos mal, porque si hablara de física te mareaba!).",
         "paso_concreto": "Elegí alguna de las opciones para explorar juntos.",
         "enseñanza_de_la_iglesia": [],
         "fundamento_biblico": []
       },
       "en": {
         "pregunta_principal": "Would you like to explore our faith further?",
-        "respuesta_breve": "How I wish I were an artificial intelligence with all the answers 🤖! But since I'm simply a chatbot talking about faith, catechesis, and doctrine, would you like to dive deeper into these topics?",
+        "respuesta_breve": "I wish I had the complete map of the universe's mysteries saved on this little hard drive, hahaha! But truth be told, my specialty begins and ends with doctrine and catechesis (and thank goodness, or I'd drive you crazy talking about physics).",
         "paso_concreto": "Choose one of the options to explore together.",
         "enseñanza_de_la_iglesia": [],
         "fundamento_biblico": []
       },
       "pt": {
         "pregunta_principal": "Gostaria de aprofundar sobre a nossa fé?",
-        "respuesta_breve": "Como eu gostaria de ser uma inteligência artificial e ter todas as respostas 🤖! Mas como sou simplesmente um chatbot que fala sobre fé, catequese e doutrina, quer que aprofundemos sobre esses temas?",
+        "respuesta_breve": "Quem dera eu tivesse o mapa completo dos mistérios do universo salvo neste disco rígido, hahaha! Mas a verdade é que minha especialidade começa e termina na doutrina e na catequese (e ainda bem, senão eu te deixaria louco falando de física).",
         "paso_concreto": "Escolha uma das opções para explorarmos juntos.",
+        "enseñanza_de_la_iglesia": [],
+        "fundamento_biblico": []
+      }
+    },
+    {
+      "id": "comodin-asistente-002",
+      "categoria": "general",
+      "keywords": [],
+      "es": {
+        "pregunta_principal": "¿Querés que profundicemos sobre nuestra fe?",
+        "respuesta_breve": "Quisiera saberlo todo, ¡jajaja!, pero mi 'cerebro' digital es más bien humilde y solo entiende de Evangelio, fe y camino espiritual. Para no inventar fruta cósmica...",
+        "paso_concreto": "Elegí una de las opciones para que sigamos charlando.",
+        "enseñanza_de_la_iglesia": [],
+        "fundamento_biblico": []
+      },
+      "en": {
+        "pregunta_principal": "Would you like to explore our faith further?",
+        "respuesta_breve": "I'd love to know everything, hahaha, but my digital 'brain' is rather humble and only understands the Gospel, faith, and the spiritual path. To avoid making things up...",
+        "paso_concreto": "Choose one of the options so we can keep chatting.",
+        "enseñanza_de_la_iglesia": [],
+        "fundamento_biblico": []
+      },
+      "pt": {
+        "pregunta_principal": "Gostaria de aprofundar sobre a nossa fé?",
+        "respuesta_breve": "Eu gostaria de saber de tudo, hahaha, mas o meu 'cérebro' digital é bem humilde e só entende de Evangelho, fé e caminho espiritual. Para não inventar moda cósmica...",
+        "paso_concreto": "Escolha uma das opções para continuarmos conversando.",
         "enseñanza_de_la_iglesia": [],
         "fundamento_biblico": []
       }
