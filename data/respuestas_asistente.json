@@ -218,9 +218,9 @@
         "dor"
       ],
       "respuesta": {
-        "es": "«El Señor está cerca de los que tienen el corazón roto» (Salmo 34, 19).${nombreIngresado}, A veces pensamos que la tristeza nos aísla de Dios, pero la verdad es que Él se hace el primer encontradizo justo en el suelo de nuestro dolor. No estás solo en lo que te toca transitar.",
-        "en": "«The Lord is close to the brokenhearted» (Psalm 34:18). ${nombreIngresado}, Sometimes we think sadness isolates us from God, but the truth is He makes Himself the first to meet us right on the floor of our pain. You are not alone in what you are going through.",
-        "pt": "«O Senhor está perto dos que têm o coração quebrantado» (Salmo 34,18). ${nombreIngresado}, Às vezes pensamos que a tristeza nos isola de Deus, mas a verdade é que Ele se faz o primeiro a nos encontrar bem no chão da nossa dor. Você não está sozinho no que lhe toca transitar."
+        "es": "«El Señor está cerca de los que tienen el corazón roto» (Salmo 34, 19).${nombreIngresado}, A veces pensamos que la tristeza nos aísla de Dios, pero la verdad es que Él se deja encontrar justo en el suelo de nuestro dolor. No estás solo en lo que te toca transitar.",
+        "en": "«The Lord is close to the brokenhearted» (Psalm 34:18). ${nombreIngresado}, Sometimes we think sadness isolates us from God, but the truth is that He allows Himself to be found right on the floor of our pain. You are not alone in what you are going through.",
+        "pt": "«O Senhor está perto dos que têm o coração quebrantado» (Salmo 34,18). ${nombreIngresado}, Às vezes pensamos que a tristeza nos isola de Deus, mas a verdade é que Ele se deixa encontrar bem no chão da nossa dor. Você não está sozinho no que lhe toca transitar."
       }
     },
     "ansiedad": {
@@ -253,7 +253,7 @@
         "perdono",
         "forgiveness",
         "perdão",
-        "perdonar",
+        "perdon",
         "forgive",
         "perdoar",
         "rencor",
@@ -625,21 +625,7 @@
         "pt": "Atualmente você está usando o <strong>Palabra Viva Beta</strong>. Continuamos trabalhando para incorporar mais reflexões pastorales e ferramentas que nos aproximem da verdade."
       }
     },
-    {
-      "id": "Version_biblia",
-      "keywords": [
-        "version de biblia",
-        "torres amat",
-        "biblia",
-        "bible",
-        "bíblia"
-      ],
-      "respuesta": {
-        "es": "La Biblia que utilizamos en Palabra Viva es la clásica y entrañable traducción de D. Félix Torres Amat, una versión libre de restricciones para que la Palabra circule sin ataduras. En esta sección encontrás el Antiguo y Nuevo Testamento completo con buscador dedicado, y en la Bíblia subrayados textos interactivos con notas filológicas e históricas.",
-        "en": "The Bible we use in Palabra Viva is the classic and endearing translation by D. Félix Torres Amat, a restriction-free version so that the Word circulates unbound. In this section you will find the complete Old and New Testament with a dedicated search engine, and in the Holly Bible, interactive texts with philological and historical notes.",
-        "pt": "A Bíblia que usamos no Palabra Viva é a clássica e querida tradução de D. Félix Torres Amat, uma versão livre de restrições para que a Palavra circule sem amarras. Nesta seção você encontra o Antigo e o Novo Testamento completos com buscador dedicado, no a Bíblia  textos interativos com notas filológicas e históricas."
-      }
-    },
+
     {
       "id": "caminemos_con_jesus",
       "keywords": [
@@ -680,21 +666,21 @@
       "keywords": [],
       "es": {
         "pregunta_principal": "¿Querés que profundicemos sobre nuestra fe?",
-        "respuesta_breve": "La verdad, me encantaría ser la computadora cuántica más poderosa del universo para tener todas las respuestas del cosmos. ¡Jajaja! 🤖✨. Pero bueno, soy simplemente un chatbot creado para charlar sobre fe, catequesis y doctrina. Lo que sí sé hacer muy bien es guiarte con lo que tengo por acá.",
+        "respuesta_breve": "La verdad, me encantaría ser la computadora cuántica más poderosa del universo para tener todas las respuestas del cosmos, ¡Jajaja! 🤖✨. Pero bueno, soy simplemente un chatbot creado para charlar sobre fe, catequesis y doctrina. Lo que sí sé hacer muy bien es guiarte con lo que tengo por acá.",
         "paso_concreto": "Elegí alguna de las opciones para que sigamos explorando juntos.",
         "enseñanza_de_la_iglesia": [],
         "fundamento_biblico": []
       },
       "en": {
         "pregunta_principal": "Would you like to explore our faith further?",
-        "respuesta_breve": "Truth be told, I'd love to be the most powerful quantum computer in the universe and have all the answers to the cosmos. Hahaha! 🤖✨. But hey, I'm simply a chatbot built to talk about faith, catechesis, and doctrine. What I can do really well is guide you through what I've got right here.",
+        "respuesta_breve": "Truth be told, I'd love to be the most powerful quantum computer in the universe and have all the answers to the cosmos, Hahaha! 🤖✨. But hey, I'm simply a chatbot built to talk about faith, catechesis, and doctrine. What I can do really well is guide you through what I've got right here.",
         "paso_concreto": "Choose one of the options so we can keep exploring together.",
         "enseñanza_de_la_iglesia": [],
         "fundamento_biblico": []
       },
       "pt": {
         "pregunta_principal": "Gostaria de aprofundar sobre a nossa fé?",
-        "respuesta_breve": "A verdade é que eu adoraria ser o computador quântico mais poderoso do universo para ter todas as respostas do cosmos. Hahaha! 🤖✨. Mas olha, sou simplesmente um chatbot criado para conversar sobre fé, catequese e doutrina. O que eu sei fazer muito bem é te guiar com o que tenho por aqui.",
+        "respuesta_breve": "A verdade é que eu adoraria ser o computador quântico mais poderoso do universo para ter todas as respostas do cosmos, Hahaha! 🤖✨. Mas olha, sou simplesmente um chatbot criado para conversar sobre fé, catequese e doutrina. O que eu sei fazer muito bem é te guiar com o que tenho por aqui.",
         "paso_concreto": "Escolha uma das opções para continuarmos explorando juntos.",
         "enseñanza_de_la_iglesia": [],
         "fundamento_biblico": []
@@ -706,7 +692,7 @@
       "keywords": [],
       "es": {
         "pregunta_principal": "¿Querés que profundicemos sobre nuestra fe?",
-        "respuesta_breve": "Ojalá tuviera el mapa completo de los misterios del universo guardado en el disco rígido del mundito, ¡jajaja! Pero la verdad, mi área de especialidad empieza y termina en la doctrina y la catequesis (¡y menos mal, porque si hablara de física te mareaba!).",
+        "respuesta_breve": "Ojalá tuviera el mapa completo de los misterios del universo guardado en el disco rígido, ¡jajaja! Pero la verdad, mi área de especialidad empieza y termina en la doctrina y la catequesis (¡y menos mal, porque si hablara de física te mareaba!).",
         "paso_concreto": "Elegí alguna de las opciones para explorar juntos.",
         "enseñanza_de_la_iglesia": [],
         "fundamento_biblico": []
@@ -732,21 +718,21 @@
       "keywords": [],
       "es": {
         "pregunta_principal": "¿Querés que profundicemos sobre nuestra fe?",
-        "respuesta_breve": "Quisiera saberlo todo, ¡jajaja!, pero mi 'cerebro' digital es más bien humilde y solo entiende de Evangelio, fe y camino espiritual. Para no inventar fruta cósmica...",
+        "respuesta_breve": "Quisiera saberlo todo, pero mi 'cerebro' digital es más bien humilde y solo entiende de Evangelio, fe y camino espiritual. Mejor asi para no tirarte cualquier fruta cósmica, jajaja!...",
         "paso_concreto": "Elegí una de las opciones para que sigamos charlando.",
         "enseñanza_de_la_iglesia": [],
         "fundamento_biblico": []
       },
       "en": {
         "pregunta_principal": "Would you like to explore our faith further?",
-        "respuesta_breve": "I'd love to know everything, hahaha, but my digital 'brain' is rather humble and only understands the Gospel, faith, and the spiritual path. To avoid making things up...",
+        "respuesta_breve": "I'd love to know everything, but my digital 'brain' is rather humble and only understands the Gospel, faith, and the spiritual path. To avoid making things up, hahaha...",
         "paso_concreto": "Choose one of the options so we can keep chatting.",
         "enseñanza_de_la_iglesia": [],
         "fundamento_biblico": []
       },
       "pt": {
         "pregunta_principal": "Gostaria de aprofundar sobre a nossa fé?",
-        "respuesta_breve": "Eu gostaria de saber de tudo, hahaha, mas o meu 'cérebro' digital é bem humilde e só entende de Evangelho, fé e caminho espiritual. Para não inventar moda cósmica...",
+        "respuesta_breve": "Eu gostaria de saber de tudo, mas o meu 'cérebro' digital é bem humilde e só entende de Evangelho, fé e caminho espiritual. Para não inventar moda cósmica, hahaha...",
         "paso_concreto": "Escolha uma das opções para continuarmos conversando.",
         "enseñanza_de_la_iglesia": [],
         "fundamento_biblico": []
@@ -851,6 +837,60 @@
         "paso_concreto": "Hoje, tire 5 minutos para ficar em silêncio e abrir seu coração a Deus.",
         "enseñanza_de_la_iglesia": ["CIC 2566"],
         "fundamento_biblico": ["Sl 46,10"]
+      }
+    },
+    {
+      "id": "dios-006",
+      "categoria": "Dios",
+      "keywords": [
+        "quien es dios para mi",
+        "el amor de dios",
+        "la misericordia de dios",
+        "Puedo volver a Él aunque me haya alejado",
+        "dios me perdona",
+        "runs to meet him, and embraces him",
+        "gods mercy",
+        "voltar para Ele mesmo depois de ter me afastado",
+        "misericordia de deus"
+      ],
+      "es": {
+        "pregunta_principal": "¿Quién es Dios para mí? ¿Puedo volver a Él aunque me haya alejado?",
+        "puerta_de_entrada": "A veces imaginamos a Dios como alguien que espera de brazos cruzados para reprocharnos nuestros errores. Jesús contó otra historia: la de un padre que ve regresar a su hijo, corre a su encuentro y lo abraza.",
+        "respuesta_breve": "Jesús nos revela a Dios como Padre: no como alguien indiferente al mal, sino como quien ama, espera y sale al encuentro de sus hijos. En la parábola de Lucas 15, el padre no niega que su hijo se haya perdido; pero, cuando vuelve, lo recibe con misericordia y le devuelve su lugar en la familia. Dios no deja de llamarnos a vivir en la verdad: nos ofrece volver a Él y comenzar de nuevo.",
+        "paradoja": "El hijo vuelve pensando que quizá solo podrá ser tratado como un servidor; el padre lo recibe como hijo. La misericordia no declara que el daño estuvo bien: abre un camino para volver a casa.",
+        "aclaracion": "El amor de Dios es incondicional, pero eso no significa que nuestras decisiones no tengan importancia ni que el mal dé lo mismo. La misericordia nos recibe y, al mismo tiempo, nos invita a la conversión, a reparar el daño posible y a aprender a vivir como hijos.",
+        "paso_concreto": "Leé Lucas 15, 11-32 despacio. Fijate qué hace cada personaje y preguntate: ¿con cuál me identifico hoy? En una oración sencilla, contale a Dios qué te cuesta y qué necesitás para dar un paso de regreso hacia Él.",
+        "oracion": "Padre, a veces me cuesta creer que pueda volver a vos. Ayudame a recibir tu misericordia, reconocer la verdad de mis decisiones y comenzar de nuevo. Amén.",
+        "enseñanza_de_la_iglesia": [
+          "Evangelio de Lucas (15, 20): «Estando todavía lejos, su padre lo vio y, conmovido, corrió, se echó a su cuello y lo besó».",
+          "Catecismo de la Iglesia Católica (n. 1439): «El proceso de conversión y penitencia fue descrito admirablemente por Jesús en la parábola del hijo pródigo, cuyo centro es el padre misericordioso»."
+        ]
+      },
+      "en": {
+        "pregunta_principal": "Who is God to me? Can I return to him even if I have wandered away?",
+        "puerta_de_entrada": "Sometimes we imagine God standing with folded arms, waiting to reproach us for our mistakes. Jesus told another story: a father sees his son returning, runs to meet him, and embraces him.",
+        "respuesta_breve": "Jesus reveals God to us as Father: not indifferent to evil, but one who loves, waits, and goes out to meet his children. In the parable in Luke 15, the father does not pretend his son was never lost; when he returns, however, he welcomes him with mercy and restores his place in the family. God continues to call us to live in truth: he offers us a way back and the chance to begin again.",
+        "paradoja": "The son returns thinking he may be treated only as a servant; the father welcomes him as a son. Mercy does not say that the harm was good: it opens a way home.",
+        "aclaracion": "God's love is unconditional, but that does not mean our choices do not matter or that evil is unimportant. Mercy welcomes us and also invites us to conversion, to make amends where possible, and to learn to live as children of God.",
+        "paso_concreto": "Read Luke 15:11-32 slowly. Notice what each character does and ask yourself: Which one do I identify with today? In a simple prayer, tell God what you find difficult and what you need in order to take a step back toward him.",
+        "oracion": "Father, sometimes it is hard for me to believe I can return to you. Help me receive your mercy, acknowledge the truth of my choices, and begin again. Amen.",
+        "enseñanza_de_la_iglesia": [
+          "Gospel of Luke (15:20): 'While he was still a long way off, his father saw him and was filled with compassion for him; he ran to his son, threw his arms around him and kissed him.'",
+          "Catechism of the Catholic Church (n. 1439): 'The process of conversion and repentance is described by Jesus in the parable of the prodigal son, the center of which is the merciful father.'"
+        ]
+      },
+      "pt": {
+        "pregunta_principal": "Quem é Deus para mim? Posso voltar para Ele mesmo depois de ter me afastado?",
+        "puerta_de_entrada": "Às vezes imaginamos Deus de braços cruzados, esperando para nos censurar pelos nossos erros. Jesus contou outra história: a de um pai que vê o filho voltar, corre ao seu encontro e o abraça.",
+        "respuesta_breve": "Jesus nos revela Deus como Pai: não alguém indiferente ao mal, mas aquele que ama, espera e vai ao encontro dos seus filhos. Na parábola de Lucas 15, o pai não finge que o filho nunca se perdeu; quando ele volta, porém, recebe-o com misericórdia e devolve-lhe o seu lugar na família. Deus continua a nos chamar a viver na verdade: oferece-nos um caminho de volta e a possibilidade de recomeçar.",
+        "paradoja": "O filho volta pensando que talvez só possa ser tratado como empregado; o pai o recebe como filho. A misericórdia não diz que o mal foi bom: abre um caminho de volta para casa.",
+        "aclaracion": "O amor de Deus é incondicional, mas isso não significa que nossas escolhas não importem ou que o mal seja indiferente. A misericórdia nos acolhe e também nos convida à conversão, a reparar o dano quando possível e a aprender a viver como filhos de Deus.",
+        "paso_concreto": "Leia Lucas 15, 11-32 devagar. Observe o que cada personagem faz e pergunte-se: com qual deles me identifico hoje? Em uma oração simples, conte a Deus o que é difícil para você e do que precisa para dar um passo de volta em sua direção.",
+        "oracion": "Pai, às vezes tenho dificuldade para acreditar que posso voltar para ti. Ajuda-me a acolher tua misericórdia, reconhecer a verdade das minhas escolhas e recomeçar. Amém.",
+        "enseñanza_de_la_iglesia": [
+          "Evangelho de Lucas (15, 20): «Estando ainda longe, seu pai o viu e, com muita compaixão, correu, lançou-se-lhe ao pescoço e o beijou».",
+          "Catecismo da Igreja Católica (n. 1439): «O processo de conversão e penitência foi descrito admiravelmente por Jesus na parábola do filho pródigo, cujo centro é o Pai misericordioso»."
+        ]
       }
     },
     {
@@ -1022,10 +1062,12 @@
       "categoria": "Espíritu Santo",
       "keywords": [
         "quien es el espiritu santo",
-        "espiritu santo consolador",
+        "espiritu santo",
         "espiritu",
         "who is the holy spirit",
-        "quem é o espírito santo"
+        "holy spirit",
+        "quem é o espírito santo",
+        "espirito santo"
       ],
       "es": {
         "pregunta_principal": "¿Quién es el Espíritu Santo?",
@@ -1810,6 +1852,54 @@
       }
     },
     {
+      "id": "version_biblia",
+      "categoria": "Biblia",
+      "keywords": [
+        "version de la palabra utilizamos en esta app",
+        "torres amat",
+        "biblia",
+        "What version of the Bible do we use in this app",
+        "bíblia",
+        "Qual versão da Bíblia usamos no app"
+      ],
+      "es": {
+        "pregunta_principal": "¿Qué versión de la palabra utilizamos en esta app?",
+        "puerta_de_entrada": "La Palabra de Dios necesita circular sin ataduras, con una traducción fiel, clásica y cercana al corazón de los fieles.",
+        "respuesta_breve": "La Biblia que utilizamos en Palabra Viva es la clásica y entrañable traducción de D. Félix Torres Amat, una versión libre de restricciones para que la Palabra circule sin ataduras.",
+        "paradoja": "Para profundizar en la riqueza de las Escrituras a veces hace falta volver a las fuentes tradicionales que han nutrido la fe de generaciones enteras.",
+        "aclaracion": "En esta sección encontrás el Antiguo y Nuevo Testamento completo con buscador dedicado, y en la Biblia notas filológicas e históricas que enriquecen la lectura.",
+        "paso_concreto": "Explorá el módulo de las Escrituras para adentrarte en los textos sagrados con la ayuda de las notas preparadas para la meditación.",
+        "oracion": "Señor, que tu Palabra sea lámpara para nuestros pasos y luz en nuestro sendero. Amén.",
+        "enseñanza_de_la_iglesia": [
+          "Constitución Dogmática *Dei Verbum* (n. 22): «La facilidad de acceso a la Sagrada Escritura debe estar abierta a todos los cristianos»."
+        ]
+      },
+      "en": {
+        "pregunta_principal": "What version of the Bible do we use in this app?",
+        "puerta_de_entrada": "The Word of God needs to circulate freely, anchored in a faithful, classic translation close to the heart of the faithful.",
+        "respuesta_breve": "The Bible we use in Palabra Viva is the classic and endearing translation by D. Félix Torres Amat, a restriction-free version so that the Word circulates unbound.",
+        "paradoja": "To truly grasp the richness of Scripture, we sometimes need to return to the traditional sources that nourished generations of believers.",
+        "aclaracion": "In this section you will find the complete Old and New Testament with a dedicated search engine, alongside interactive texts with philological and historical notes.",
+        "paso_concreto": "Explore the Scripture module to dive into the sacred texts with the aid of study and meditation notes.",
+        "oracion": "Lord, may Your Word be a lamp to our feet and a light to our path. Amen.",
+        "enseñanza_de_la_iglesia": [
+          "Dogmatic Constitution *Dei Verbum* (n. 22): 'Easy access to Sacred Scripture should be provided for all Christian faithful.'"
+        ]
+      },
+      "pt": {
+        "pregunta_principal": "Qual versão da Bíblia usamos no app?",
+        "puerta_de_entrada": "A Palavra de Deus precisa circular sem amarras, fundamentada em uma tradução fiel, clássica e próxima do coração dos fiéis.",
+        "respuesta_breve": "A Bíblia que usamos no Palabra Viva é a clássica e querida tradução de D. Félix Torres Amat, uma versão livre de restrições para que a Palavra circule sem amarras.",
+        "paradoja": "Para aprofundar na riqueza das Escrituras, às vezes é preciso retornar às fontes tradicionais que nutriram gerações de fiéis.",
+        "aclaracion": "Nesta seção você encontra o Antigo e o Novo Testamento completos com buscador dedicado, além de textos interativos com notas filológicas e históricas.",
+        "paso_concreto": "Explore o módulo das Escrituras para mergulhar nos textos sagrados com o auxílio de notas preparadas para a meditação.",
+        "oracion": "Senhor, que a Tua palavra seja lâmpada para os nossos passos e luz em nosso caminho. Amém.",
+        "enseñanza_de_la_iglesia": [
+          "Constituição Dogmática *Dei Verbum* (n. 22): «O acesso à Sagrada Escritura deve ser amplamente aberto aos fiéis cristãos»."
+        ]
+      }
+    },
+    {
       "id": "iglesia",
       "categoria": "Iglesia",
       "keywords": [
@@ -2143,7 +2233,7 @@
     },
     {
       "id": "rosario",
-      "categoria": "Oración",
+      "categoria": "Vida Cristiana",
       "keywords": [
         "rezar el rosario",
         "como rezar el rosario",
@@ -2746,7 +2836,7 @@
     },
     {
       "id": "providencia",
-      "categoria": "Lo que creemos",
+      "categoria": "Doctrina y Fe",
       "keywords": [
         "predestinacion",
         "destino",
@@ -2800,7 +2890,7 @@
     },
     {
       "id": "gracia-dones",
-      "categoria": "Lo que creemos",
+      "categoria": "Doctrina y Fe",
       "keywords": [
         "dones sobrenaturales",
         "gracia",
@@ -2908,7 +2998,7 @@
     },
     {
       "id": "purgatorio",
-      "categoria": "Vida Cristiana",
+      "categoria": "Doctrina y Fe",
       "keywords": [
         "que es el purgatorio",
         "purgatorio",
@@ -2936,6 +3026,56 @@
         "paso_concreto": "Reze hoje um Pai-Nosso pelas almas dos falecidos, pedindo que o Senhor complete neles a Sua obra de amor.",
         "enseñanza_de_la_iglesia": ["CIC 1030", "CIC 1031", "CIC 1032"],
         "fundamento_biblico": ["1 Cor 3,15", "2 Mac 12,46"]
+      }
+    },
+    {
+      "id": "el_purgatorio",
+      "categoria": "Doctrina y fe",
+      "keywords": [
+        "el purgatorio y tiene fundamento en la biblia",
+        "el purgatorio en la biblia",
+        "existe el purgatorio",
+        "purgatory",
+        "purgatório"
+      ],
+      "es": {
+        "pregunta_principal": "¿Qué es el Purgatorio y tiene fundamento en la Biblia?",
+        "puerta_de_entrada": "Aunque la palabra exacta 'purgatorio' no figure literalmente en las Escrituras, la realidad espiritual que describe late con fuerza en el corazón de la Revelación.",
+        "respuesta_breve": "El Purgatorio es un estado transitorio de misericordia y purificación para aquellos que mueren en la gracia de Dios, pero que aún arrastran las huellas y scias de sus pecados. No es el infierno (de donde no hay retorno ni redención), ni es el cielo puro; es la antesala donde el alma termina de sanar y de 'pagar el último céntimo' para estar totalmente apta para la luz de Dios.",
+        "paradoja": "Para entrar radiantes en el banquete celestial, a veces el alma necesita pasar por el fuego abrasador del amor divino, que duele porque quema el egoísmo, pero salva porque purifica.",
+        "aclaracion": "Jesús mismo alude a este proceso cuando habla de reconciliarse con el adversario en el camino antes de ser entregado al juez, advirtiendo que no se saldrá de allí 'hasta haber pagado el último céntimo' (Mt 5, 25-26). La Iglesia, guiada por el Espíritu Santo, le puso el nombre de 'Purgatorio' a este estado de purificación basándose en la tradición apostólica y la constante oración por los difuntos.",
+        "paso_concreto": "Hoy, dedicá un momento de oración para encomendar a los fieles difuntos que esperaron en el Señor, pidiendo que su tránsito hacia la luz sea pleno y consolador.",
+        "oracion": "Dios de infinita misericordia, acoge a nuestros hermanos que se purifican y concédeles pronto la paz de tu presencia eterna. Amén.",
+        "enseñanza_de_la_iglesia": [
+          "Evangelio de Mateo (5, 25-26): «Ponte de acuerdo con tu adversario enseguida... no sea que el juez te entregue al guardia y te metan en la cárcel. Yo te aseguro que no saldrás de allí hasta que hayas pagado el último céntimo».",
+          "Catecismo de la Iglesia Católica (n. 1030): «Los que mueren en la gracia y en la amistad de Dios, pero imperfectamente purificados, aunque están seguros de su salvación eterna, sufren después de su muerte una purificación, a fin de obtener la santidad necesaria para entrar en la alegría del cielo»."
+        ]
+      },
+      "en": {
+        "pregunta_principal": "What is Purgatory and does it have a basis in the Bible?",
+        "puerta_de_entrada": "Although the exact word 'purgatory' does not appear literally in Scripture, the spiritual reality it describes beats strongly at the heart of Revelation.",
+        "respuesta_breve": "Purgatory is a transitional state of mercy and purification for those who die in God's grace but still carry the scars of their sins. It is not Hell (from which there is no return), nor is it immediate heaven; it is the threshold where the soul heals and 'pays the last penny' to become fully fitted for God's light.",
+        "paradoja": "To enter radiant into the heavenly feast, the soul sometimes needs to pass through the cleansing fire of divine love—which hurts because it burns away selfishness, but saves because it purifies.",
+        "aclaracion": "Jesus Himself alludes to this process when speaking of settling accounts before facing the judge, warning that one will not get out 'until having paid the very last penny' (Mt 5:25-26). The Church gave the name 'Purgatory' to this state of cleansing, rooted in apostolic tradition and the ancient practice of praying for the dead.",
+        "paso_concreto": "Today, offer a prayer for the faithful departed, asking the Lord to bring them swiftly into the fullness of His light.",
+        "oracion": "God of infinite mercy, embrace our brothers and sisters undergoing purification and grant them the peace of Your eternal presence. Amen.",
+        "enseñanza_de_la_iglesia": [
+          "Gospel of Matthew (5:25-26): 'Come to terms with your opponent quickly... lest the judge hand you over to the guard, and you be put in prison. Truly I say to you, you will never get out until you have paid the last penny.'",
+          "Catechism of the Catholic Church (n. 1030): 'All who die in God's grace and friendship, but still imperfectly purified, are indeed assured of their eternal salvation; but after death they undergo purification, so as to achieve the holiness necessary to enter the joy of heaven.'"
+        ]
+      },
+      "pt": {
+        "pregunta_principal": "O que é o Purgatório e ele tem fundamento na Bíblia?",
+        "puerta_de_entrada": "Embora a palavra exata 'purgatório' não apareça literalmente nas Escrituras, a realidade espiritual que ela descreve pulsa fortemente no coração da Revelação.",
+        "respuesta_breve": "O Purgatório é um estado transitório de misericórdia e purificação para aqueles que morrem na graça de Deus, mas ainda carregam as marcas dos seus pecados. Não é o Inferno (de onde não há retorno), nem é o céu imediato; é o limiar onde a alma termina de sarar e de 'pagar o último centavo' para estar plenamente apta para a luz de Deus.",
+        "paradoja": "Para entrar radiantes no banquete celestial, a alma às vezes precisa passar pelo fogo abrasador do amor divino — que dói porque queima o egoísmo, mas salva porque purifica.",
+        "aclaracion": "O propio Jesus alude a esse processo ao falar sobre acertar as contas antes de enfrentar o juiz, advertindo que não se sairá de lá 'até pagar o último centavo' (Mt 5, 25-26). A Igreja deu o nome de 'Purgatorio' a este estado de purificação, apoiada na Tradição apostólica e na constante prática de rezar pelos falecidos.",
+        "paso_concreto": "Hoje, dedique um momento de oração para encomendar os fiéis defuntos, pedindo que o seu trânsito rumo à luz seja pleno e consolador.",
+        "oracion": "Deus de infinita misericórdia, acolhe os nossos irmãos que se purificam e concede-lhes em breve a paz da Tua presença eterna. Amém.",
+        "enseñanza_de_la_iglesia": [
+          "Evangelho de Mateus (5, 25-26): «Entra em acordo sem demora com o teu adversário... para que o juiz não te entregue ao guarda e sejas lançado na prisão. Em verdade te digo: não sairás de lá até teres pago o último centavo».",
+          "Catecismo da Igreja Católica (n. 1030): «Os que morrem na graça e na amizade de Deus, mas não estão perfeitos na purificação, embora tenham garantida a sua salvação eterna, sofrem após a morte uma purificação, a fim de obter a santidade necessária para entrar na alegria do céu»."
+        ]
       }
     },
     {
@@ -3070,8 +3210,61 @@
       }
     },
     {
+      "id": "bautismo_de_ninos",
+      "categoria": "Doctrina y Fe",
+      "keywords": [
+        "bautismo de ninos",
+        "bautizar chicos",
+        "por que se bautiza a los bebes",
+        "infant baptism",
+        "baptize infants",
+        "batiza as crianças",
+        "batismo de criancas"
+      ],
+      "es": {
+        "pregunta_principal": "¿Por qué la Iglesia bautiza a los niños y tiene sustento bíblico?",
+        "puerta_de_entrada": "El bautismo no es un diploma que se gana por mérito propio, sino un regalo inmerecido de la gracia de Dios que injerta al ser humano en la familia de la fe desde sus primeros pasos.",
+        "respuesta_breve": "Sí, tiene un sólido fundamento bíblico e histórico. En la Antigua Alianza, Dios ordenó incorporar a los varones a los ocho días de nacer mediante la circuncisión, cuando aún no tenían uso de razón. En el Nuevo Testamento, Jesús abre los brazos a los chicos diciendo 'dejad que los niños vengan a mí', y los Hechos de los Apóstoles relatan bautismos de familias enteras. La frase restrictiva 'menos los niños' jamás aparece en la Biblia.",
+        "paradoja": "Creemos que somos nosotros los que elegimos buscar a Dios, pero la verdad más honda es que Él nos primerea: nos ama, nos elige y nos salva mucho antes de que podamos siquiera pronunciar su nombre.",
+        "aclaracion": "Cuando los apóstoles bautizaban a 'casas enteras' (*oikos*), la cultura de la época incluía naturalmente a los hijos pequeños. Así como en una familia se alimenta, se educa y se cuida a los niños sin esperar a que pidan permiso, la fe se les transmite y se celebra como el mayor don de la vida comunitaria.",
+        "paso_concreto": "Hoy, si tenés presente tu propio bautismo o el de algún ser querido, agradecé ese día en que la gracia de Dios te marcó con su sello para siempre.",
+        "oracion": "Señor Jesús, que abrazaste a los niños y los bendeciste, cuida y guarda a los más pequeños en tu gracia, haciendo que crezcan en el amor del Padre. Amén.",
+        "enseñanza_de_la_iglesia": [
+          "Evangelio de Mateo (19, 14): «Jesús dijo: Dejad que los niños vengan a mí, y no se lo impidan, porque de los que son como ellos es el reino de los cielos».",
+          "Hechos de los Apóstoles (16, 33): «Y en el mismo instante de la noche, él [el carcelero] y los suyos se bautizaron sin tardanza».",
+          "Catecismo de la Iglesia Católica (n. 1252): «La práctica de bautizar a los niños pequeños es una tradición venerable de la Iglesia. Está explícitamente attestada desde los primeros siglos»."
+        ]
+      },
+      "en": {
+        "pregunta_principal": "Why does the Church baptize infants, and is there biblical support for it?",
+        "puerta_de_entrada": "Baptism is not a diploma earned by personal merit, but an unearned gift of God's grace that grafts a human being into the family of faith from their earliest steps.",
+        "respuesta_breve": "Yes, it has solid biblical and historical backing. In the Old Covenant, God commanded that infants be circumcised at eight days old, long before they reached the age of reason. In the New Testament, Jesus opens His arms to children saying 'let the little children come to me,' and Acts records the baptism of entire households. The restricting phrase 'except for children' never appears in Scripture.",
+        "paradoja": "We often think we are the ones who choose to seek God, but the deeper truth is that He takes the first step: He loves, chooses, and saves us long before we can even speak His name.",
+        "aclaracion": "When the apostles baptized entire households (*oikos*), the culture of the time naturally included young children. Just as a family feeds, raises, and protects children without waiting for them to ask, the faith is given to them as the greatest gift.",
+        "paso_concreto": "Today, give thanks for the day you were marked with God's grace through baptism.",
+        "oracion": "Lord Jesus, who embraced the children, protect and keep the little ones in Your grace. Amen.",
+        "enseñanza_de_la_iglesia": [
+          "Gospel of Matthew (19:14): 'Jesus said, Let the little children come to me and do not hinder them, for to such belongs the kingdom of heaven.'",
+          "Catechism of the Catholic Church (n. 1252): 'The practice of infant baptism is an immemorial tradition of the Church. There is explicit testimony to this practice from the second century on.'"
+        ]
+      },
+      "pt": {
+        "pregunta_principal": "Por que a Igreja batiza as crianças e isso tem fundamento na Bíblia?",
+        "puerta_de_entrada": "O batismo não é um diploma conquistado por mérito próprio, mas um dom gratuito da graça de Deus que enxerta o ser humano na família da fé desde os seus primeiros passos.",
+        "respuesta_breve": "Sim, tem sólido fundamento bíblico e histórico. Na Antiga Aliança, Deus ordenou que os meninos fossem circuncidados aos oito dias de vida, muito antes de terem uso da razão. No Novo Testamento, Jesus abraça as crianças dizendo 'deixai que venham a mim', e os Atos dos Apóstolos relatam batismos de famílias inteiras. A frase restritiva 'menos as crianças' jamais aparece na Bíblia.",
+        "paradoja": "Acreditamos que somos nós que escolhemos buscar a Deus, mas a verdade mais profunda é que Ele nos antecede: nos ama, nos escolhe e nos salva muito antes de podermos pronunciar o Seu nome.",
+        "aclaracion": "Quando os apóstolos batizavam 'famílias inteiras' (*oikos*), a cultura da época incluía naturalmente os filhos pequenos. Assim como numa família se cuida e se alimenta as crianças sem esperar que peçam permissão, a fé é transmitida como o maior dom.",
+        "paso_concreto": "Hoje, recorde com gratidão o dia em que você recebeu o dom do batismo.",
+        "oracion": "Senhor Jesus, que abraçastes as crianças, guarda os pequeninos em Tua graça. Amém.",
+        "enseñanza_de_la_iglesia": [
+          "Evangelho de Mateus (19, 14): «Jesus disse: Deixai vir a mim os pequeninos e não os impeçais, porque dos tais é o reino dos céus».",
+          "Catecismo da Igreja Católica (n. 1252): «A prática de batizar as crianças é uma tradição venerable da Igreja, atestada explicitamente desde os primeiros séculos»."
+        ]
+      }
+    },
+    {
       "id": "significado-pascua",
-      "categoria": "Vida Cristiana",
+      "categoria": "Doctrina y Fe",
       "keywords": [
         "pascua",
         "Pascua",
@@ -3152,7 +3345,7 @@
         "o pai misericordioso"
       ],
       "es": {
-        "pregunta_principal": "¿Qué nos revela la parábola del Hijo Pródigo sobre el corazón de Dios?",
+        "pregunta_principal": "¿Qué nos revela la parábola del Hijo Pródigo?",
         "puerta_de_entrada": "Más que la historia de un hijo que se pierde, esta parábola narrada por Jesús en el Evangelio de Lucas es el retrato luminoso de un Padre que sale corriendo al encuentro de su libertad herida.",
         "respuesta_breve": "Un hijo menor reclama su herencia anticipadamente, se va lejos y derrocha todo hasta quedar en la miseria. Al recapacitar, decide volver a casa arrepentido para pedir trabajar como un jornalero. Pero lo sorprendente es la reacción del padre: lejos de recibirlo con reproches o castigos, lo ve venir de lejos, se conmueve, corre a abrazarlo, lo besa y manda a preparar una fiesta. La parábola también incluye al hermano mayor, cuya rigurosidad legalista y falta de compasión evidencian que se puede estar en la misma casa del padre pero con el corazón muy lejos de él.",
         "paradoja": "Solemos pensar que para ganarnos el amor de Dios tenemos que portarnos impecables y negociar nuestro perdón; sin embargo, Dios nos sale al encuentro y nos hace una fiesta precisamente en el momento en que volvemos con las manos vacías y cargados de errores.",
@@ -3177,7 +3370,7 @@
         ]
       },
       "pt": {
-        "pregunta_principal": "O que nos revela a parábola do Filho Pródigo sobre o coração de Deus?",
+        "pregunta_principal": "O que nos revela a parábola do Filho Pródigo?",
         "puerta_de_entrada": "Mais do que a história de um filho perdido, esta parábola narrada por Jesus no Evangelho de Lucas é o retrato luminoso de um Pai que corre ao encontro da nossa liberdade ferida.",
         "respuesta_breve": "Um filho mais novo pede a herança antecipadamente, vai para longe e esbanja tudo até ficar na miséria. Ao recapacitar, decide voltar arrependido. Mas o que surpreende é a reação do pai: longe de o castigar, corre a abraçá-lo, beija-o e manda fazer uma festa. A parábola também inclui o irmão mais velho, cuja rigidez e falta de compaixão mostram que se pode estar na casa do pai com o coração muito longe.",
         "paradoja": "Costumamos pensar que para merecer o amor de Deus precisamos negociar o nosso perdão; no entanto, Deus sai ao nosso encontro precisamente quando voltamos de mãos vazias.",
@@ -3314,15 +3507,16 @@
       "categoria": "Doctrina y Fe",
       "keywords": [
         "que es la idolatria",
-        "idolatria y imagenes",
-        "por que los catolicos tienen imagenes de la virgen",
-        "adoracion y veneracion",
+        "idolatria",
+        "idólatra",
+        "tienen imagenes de la virgen",
+        "idolatras",
         "el becerro de oro",
-        "what is idolatry",
-        "o que e idolatria"
+        "idolatry",
+        "idolatria"
       ],
       "es": {
-        "pregunta_principal": "¿Qué es la idolatría y por qué tener imágenes de la Virgen o los santos no es ser idólatra?",
+        "pregunta_principal": "¿Qué es la idolatría y por qué tener imágenes no es ser idólatra?",
         "respuesta_breve": "La idolatría consiste en adorar a falsos dioses o crear imágenes para rendirles culto divino, como pasó con el becerro de oro en el desierto: tomar algo creado y ponerlo en el lugar de Dios. Los católicos **no adoramos** a las imágenes ni a la Virgen (sabemos que ella está en el cielo y que Dios es uno y trino). Las usamos solo como un recordatorio afectivo, un puente visual que nos lleva a Dios, venerando a quien representan sin confundir jamás la criatura con el Creador. 🖼️🙏",
         "paso_concreto": "Cuando mires una imagen en tu casa, recordá que es solo un signo que te eleva hacia Dios, el único digno de toda adoración.",
         "enseñanza_de_la_iglesia": ["CIC 2112", "CIC 2113", "CIC 2132"],
@@ -3341,6 +3535,322 @@
         "paso_concreto": "Quando olhar para uma imagem em sua casa, lembre-se de que ela é apenas um sinal que eleva o seu coração a Deus, o único digno de toda adoração.",
         "enseñanza_de_la_iglesia": ["CIC 2112", "CIC 2113", "CIC 2132"],
         "fundamento_biblico": ["Ex 20,3-5", "Dt 4,15-16"]
+      }
+    },
+    {
+      "id": "leyenda_negra_e_iglesia",
+      "categoria": "Doctrina y Fe",
+      "keywords": [
+        "leyenda negra",
+        "Qué hay de verdad en la llamada 'Leyenda Negra'",
+        "la iglesia en america",
+        "conquista y evangelizacion",
+        "black legend",
+        "espanha e america",
+        "leyenda negra espanhola"
+      ],
+      "es": {
+        "pregunta_principal": "¿Qué hay de verdad en la llamada 'Leyenda Negra' sobre la Iglesia y la conquista de América?",
+        "puerta_de_entrada": "La historia real de América no es un cuento de hadas ni una masacre unidireccional, sino un complejo encuentro de mundos atravesado por el pecado humano y la gracia redentora del Evangelio.",
+        "respuesta_breve": "La 'Leyenda Negra' es una campaña de propaganda anticatólica e hispanoamericana nacida en Europa siglos atrás para desacreditar la obra de España y de la Iglesia. Si bien hubo abusos y crueldades cometidas por conquistadores particulares —que la propia Iglesia y frailes heroicos como Bartolomé de las Casas o Antonio de Montesinos denunciaron con fiereza—, la Corona y la Iglesia defendieron jurídicamente la dignidad y el alma de los indígenas, prohibiendo su esclavitud y fundando universidades, hospitales y misiones.",
+        "paradoja": "Mientras los imperios modernos exterminaban o desplazaban por completo a las poblaciones nativas, España e Iberoamérica integraron razas y culturas, dando a luz un nuevo mestizaje profundamente católico.",
+        "aclaracion": "La Iglesia católica nunca justificó los atropellos de la Conquista; al contrario, las Leyes de Indias fueron de la legislación protectora de los derechos humanos más avanzada de su época, impulsadas por la Escuela de Salamanca y teólogos que defendieron que los indígenas tenían alma y derechos soberanos.",
+        "paso_concreto": "Hoy, valorá tus raíces y la rica fe mestiza de nuestra tierra americana, agradeciendo a tantos santos misioneros que entregaron su vida por nuestra gente.",
+        "oracion": "Señor de la historia, te damos gracias por el don de la fe que fecundó nuestra tierra. Purifica nuestra memoria y ayúdanos a construir una cultura de encuentro y fraternidad. Amén.",
+        "enseñanza_de_la_iglesia": [
+          "Documento de Puebla (CELAM, n. 400): «La evangelización no fue una imposición ajena, sino el injerto del Evangelio en el corazón de nuestras culturas americanas, generando un rostro mestizo y original»."
+        ]
+      },
+      "en": {
+        "pregunta_principal": "What is the truth behind the 'Black Legend' regarding the Church and the colonization of America?",
+        "puerta_de_entrada": "The true history of America is a complex encounter of worlds marked both by human sin and the redemptive grace of the Gospel.",
+        "respuesta_breve": "The 'Black Legend' is a historical propaganda campaign designed to discredit Spain and the Catholic Church. While individual conquistadors committed abuses—which courageous friars like Bartolomé de las Casas fiercely denounced—the Church and the Crown legally defended the dignity of the indigenous peoples, prohibiting slavery and founding universities and hospitals.",
+        "paradoja": "While other colonial powers systematically displaced or wiped out indigenous populations, the Spanish encounter generated a deep cultural and biological mestizaje.",
+        "aclaracion": "The Catholic Church consistently defended human rights through theologians of the School of Salamanca, producing some of the most advanced protective legislation of the era.",
+        "paso_concreto": "Today, give thanks for the Catholic roots and the rich cultural heritage of our continent.",
+        "oracion": "Lord of history, thank You for the gift of faith that shaped our lands. Amen.",
+        "enseñanza_de_la_iglesia": [
+          "St. John Paul II: 'The encounter of cultures brought forth a new mestizo identity, where the Christian faith became the soul of Latin America.'"
+        ]
+      },
+      "pt": {
+        "pregunta_principal": "O que há de verdade na chamada 'Lenda Negra' sobre a Igreja e a evangelização da América?",
+        "puerta_de_entrada": "A verdadeira história da América é um complexo encontro de mundos marcado pelo pecado humano e pela graça redentora do Evangelho.",
+        "respuesta_breve": "A 'Lenda Negra' é uma campanha de propaganda anticatólica criada para desacreditar a obra de Espanha e da Igreja. Embora tenha havido abusos de conquistadores particulares — denunciados corajosamente por frades como Bartolomé de las Casas —, a Igreja e a Coroa defenderam juridicamente a dignidade dos indígenas, proibindo a escravidão e criando universidades e missões.",
+        "paradoja": "Enquanto outros impérios dizimavam os nativos, a colonização ibérica gerou um profundo processo de mestiçagem cultural e biológica.",
+        "aclaracion": "A Igreja nunca justificou as violências da Conquista; teólogos católicos formularam as leis de proteção aos nativos mais avançadas da época.",
+        "paso_concreto": "Hoje, valorize a herança cristã e o rico rosto mestiço da nossa fé na América Latina.",
+        "oracion": "Senhor da história, obrigado pelo dom da fé que fecundou as nossas terras. Amén.",
+        "enseñanza_de_la_iglesia": [
+          "São João Paulo II: 'A fé cristã integrou-se nas culturas autóctones, dando origem a uma nova identidade latino-americana.'"
+        ]
+      }
+    },
+    {
+      "id": "nuevo_adan_y_nueva_eva",
+      "categoria": "Doctrina y Fe",
+      "keywords": [
+        "la virgen maria es la nueva eva",
+        "quien es el nuevo adan",
+        "adan y eva",
+        "tentacion de jesus en el desierto",
+        "new adam and new eve",
+        "adam and eve",
+        "virgin mary new eve",
+        "novo adan e nova eva",
+        "adam e eva",
+        "maria nova eva"
+      ],
+      "es": {
+        "pregunta_principal": "¿Qué significa que Jesús es el «Nuevo Adán» y María es la «Nueva Eva»?",
+        "puerta_de_entrada": "La historia de la salvación es un espejo maravilloso: allí donde el primer Adán y la primera Eva abrieron la puerta al pecado por la desobediencia, Cristo y María responden con una obediencia de amor que lo rehace todo.",
+        "respuesta_breve": "Así como de un costado del primer Adán dormido nació Eva, del sí generoso de María (la Nueva Eva) nos viene Jesús, el Nuevo Adán, que vino a deshacer los nudos de nuestra desobediencia. Mientras la serpiente engañó a la primera mujer en un jardín, María acoge la Palabra que redime. Y cuando el demonio tentó a Jesús en el desierto ofreciéndole los reinos del mundo, fue como querer comprarle al Creador el universo entero a cambio de una migajita.",
+        "paradoja": "El demonio intentó tentar al Dueño de todo ofreciéndole lo que ya le pertenecía; quiso vencer al Creador con las baratijas de este mundo, olvidando que el Hijo de Dios solo sabe reinar desde la cruz y la entrega.",
+        "aclaracion": "No se trata de mitos lejanos, sino de nuestra propia historia de rescate: por un árbol y una mujer desobediente entró el veneno del pecado; por el madero de la cruz y la obediencia fiel de Cristo y de su Madre nos llegó la vida eterna.",
+        "paso_concreto": "Hoy, cuando te cueste ser fiel o notes la tentación cerca, mirá a Jesús y a María: un sí a Dios es capaz de dar vuelta cualquier historia.",
+        "oracion": "Señor Jesús, Nuevo Adán que venciste al tentador, y María, Madre y Nueva Eva, ayúdanos a elegir siempre el camino de la obediencia y del amor. Amén.",
+        "enseñanza_de_la_iglesia": [
+          "Carta a los Romanos (5, 19): «Así como por la desobediencia de un solo hombre todos fueron constituidos pecadores, así por la obediencia de uno solo todos serán constituidos justos»."
+        ]
+      },
+      "en": {
+        "pregunta_principal": "What does it mean that Jesus is the 'New Adam' and Mary is the 'New Eve'?",
+        "puerta_de_entrada": "The history of salvation is a wonderful mirror: where the first Adam and Eve opened the door to sin, Christ and Mary respond with an obedience of love that undoes it all.",
+        "respuesta_breve": "Just as Eve was formed from the side of the first Adam, from Mary's generous 'yes' comes Jesus, the New Adam, who unties the knots of our disobedience. When the devil tempted Jesus in the desert offering Him worldly kingdoms, it was like trying to sell the Creator His own universe for a crumb.",
+        "paradoja": "The tempter tried to buy off the Master of the universe with cheap trinkets, forgetting that God only reigns through self-giving love.",
+        "aclaracion": "Through a disobedient woman and a tree death entered; through Christ and His Mother's obedience eternal life was restored.",
+        "paso_concreto": "Today, look to Jesus and Mary when facing temptation; a simple 'yes' to God can turn any story around.",
+        "oracion": "Lord Jesus, New Adam who defeated the tempter, guide us always in Your obedience. Amen.",
+        "enseñanza_de_la_iglesia": [
+          "Romans 5:19: 'For as by the one man's disobedience the many were made sinners, so by the one man's obedience the many will be made righteous.'"
+        ]
+      },
+      "pt": {
+        "pregunta_principal": "O que significa dizer que Jesus é o 'Novo Adão' e Maria é a 'Nova Eva'?",
+        "puerta_de_entrada": "A história da salvação é um espelho belíssimo: onde o primeiro Adão e a primeira Eva abriram a porta ao pecado, Cristo e Maria respondem com uma obediência de amor.",
+        "respuesta_breve": "Assim como de Adão saiu Eva, do 'sim' de Maria nasce Jesus, o Novo Adão, que veio desfazer os nós da nossa desobediência. E quando o demônio tentou Jesus no deserto oferecendo-Lhe os reinos do mundo, foi como tentar vender ao Criador o universo inteiro em troca de uma migalha.",
+        "paradoja": "O tentador quis comprar o Dono de tudo com bugigangas deste mundo, esquecendo que Deus reina pelo amor entregue.",
+        "aclaracion": "Por uma árvore e uma mulher entrou o pecado; pelo lenço da cruz e pela obediência fiel de Cristo e de sua Mãe nos veio a vida.",
+        "paso_concreto": "Hoje, diante da tentação, olhe para Jesus e Maria: um 'sim' a Deus é capaz de transformar qualquer história.",
+        "oracion": "Senhor Jesus, Novo Adão que vencestes o tentador, ajuda-nos a caminhar na Tua obediência. Amén.",
+        "enseñanza_de_la_iglesia": [
+          "Romanos 5, 19: «De fato, assim como pela desobediência de um só homem muitos se tornaram pecadores, assim também pela obediência de um só muitos se tornarão justos»."
+        ]
+      }
+    },
+    {
+      "id": "jesus_verdadero_mesias",
+      "categoria": "Jesucristo",
+      "keywords": [
+        "verdadero mesias",
+        "mesias prometido",
+        "vemos cumplidas todas las promesas",
+        "promesas de dios",
+        "o verdadeiro Messias",
+        "vemos todas as promessas cumpridas",
+        "is the true Messiah",
+        "see all the promises fulfilled"
+      ],
+      "es": {
+        "pregunta_principal": "¿Por qué creemos que Jesús es el verdadero Mesías si todavía no vemos cumplidas todas las promesas?",
+        "puerta_de_entrada": "Desde lejos, una cordillera puede parecer una sola montaña: vemos sus cumbres, pero no distinguimos los valles que las separan. Algo semejante puede ocurrir con las promesas de Dios: en Cristo comienza su cumplimiento, aunque la plenitud todavía esté por llegar.",
+        "respuesta_breve": "Los cristianos creemos que Jesús es el Mesías prometido a Israel. En su vida, su Pasión y su Resurrección, las promesas y esperanzas de Israel alcanzan un cumplimiento decisivo, pero inesperado: Jesús no instaura un poder político ni elimina de inmediato todo sufrimiento. El Reino ya comenzó en Él, mientras esperamos su consumación cuando vuelva en gloria. Es una sola obra de salvación, realizada progresivamente en la historia. [:1](?page=documents&document=00a1de35-98f1-481a-956f-e98e2b52331d&ref=21)",
+        "paradoja": "El Mesías vence, pero su victoria pasa por la cruz; el Reino ya está presente, pero todavía esperamos verlo en plenitud. La cumbre ya apareció en el horizonte, aunque aún caminamos por el valle.",
+        "aclaracion": "La imagen de las montañas es una analogía para explicar el cumplimiento inaugurado y la plenitud futura; no significa que toda profecía anuncie explícitamente dos fechas o que todos los judíos esperaran exactamente lo mismo. Las Escrituras tuvieron sentido para sus primeros oyentes y, para los cristianos, algunas adquieren una plenitud nueva al releerlas a la luz de Cristo. No conviene presentarlas como fotografías anticipadas de acontecimientos futuros ni juzgar la fe judía como obstinación. [:1](?page=documents&document=00a1de35-98f1-481a-956f-e98e2b52331d&ref=21)",
+        "paso_concreto": "Leé Lucas 24, 25-27.44-46 y preguntate cómo la cruz y la Resurrección cambian la manera de comprender la esperanza del Mesías. Después, pensá qué parte de la obra de Cristo ya transforma hoy tu vida y qué plenitud todavía esperás.",
+        "oracion": "Jesús, Mesías y Señor, ayudanos a reconocerte en la humildad de la cruz y en la gloria de la Resurrección. Sostené nuestra esperanza mientras esperamos la plenitud de tu Reino. Amén.",
+        "enseñanza_de_la_iglesia": [
+          "La Pontificia Comisión Bíblica enseña que el plan salvador de Dios es uno y se realiza progresivamente; para los cristianos, su cumplimiento ya se ha realizado sustancialmente en el misterio de Cristo, pero la plenitud definitiva llegará al final, con la resurrección de los muertos y la nueva creación. [:1](?page=documents&document=00a1de35-98f1-481a-956f-e98e2b52331d&ref=21)",
+          "El Nuevo Testamento confiesa a Jesús de Nazaret como el Mesías esperado y comprende su mesianismo a la luz de su sufrimiento, muerte y Resurrección, no como un proyecto político terreno. [:2](?page=documents&document=00a1de35-98f1-481a-956f-e98e2b52331d&ref=63)",
+          "La esperanza mesiánica judía no debe ser ridiculizada: los cristianos también vivimos esperando la consumación, aunque creemos que quien ha de venir es Jesús, que ya vino y actúa entre nosotros. [:1](?page=documents&document=00a1de35-98f1-481a-956f-e98e2b52331d&ref=21)"
+        ]
+      },
+      "en": {
+        "pregunta_principal": "Why do we believe Jesus is the true Messiah if we do not yet see all the promises fulfilled?",
+        "puerta_de_entrada": "From a distance, a mountain range can look like a single mountain: we see its peaks but not the valleys between them. Something similar can happen with God's promises: their fulfillment begins in Christ, even though its fullness is still to come.",
+        "respuesta_breve": "Christians believe that Jesus is the Messiah promised to Israel. In his life, Passion, and Resurrection, Israel's hopes and promises reach a decisive but unexpected fulfillment: Jesus does not establish a political power or immediately remove all suffering. The Kingdom has already begun in him, while we await its fullness when he returns in glory. It is one work of salvation, unfolding progressively in history. [:1](?page=documents&document=00a1de35-98f1-481a-956f-e98e2b52331d&ref=21)",
+        "paradoja": "The Messiah conquers, but his victory comes through the Cross; the Kingdom is already present, yet we still await its fullness. The peak has appeared on the horizon, but we are still walking through the valley.",
+        "aclaracion": "The mountain image is an analogy for fulfillment begun now and brought to completion in the future; it does not mean that every prophecy explicitly announces two dates or that all Jewish people expected exactly the same things. Scripture had meaning for its first hearers, and Christians believe that some passages take on a fuller meaning when reread in the light of Christ. They should not be treated as photographic predictions of future events, nor should Jewish faith be dismissed as stubbornness. [:1](?page=documents&document=00a1de35-98f1-481a-956f-e98e2b52331d&ref=21)",
+        "paso_concreto": "Read Luke 24:25-27, 44-46, and consider how the Cross and Resurrection reshape the hope for the Messiah. Then ask what part of Christ's work is already transforming your life and what fullness you still hope for.",
+        "oracion": "Jesus, Messiah and Lord, help us recognize you in the humility of the Cross and the glory of the Resurrection. Sustain our hope as we await the fullness of your Kingdom. Amen.",
+        "enseñanza_de_la_iglesia": [
+          "The Pontifical Biblical Commission teaches that God's saving plan is one and unfolds progressively. For Christians, its fulfillment has already been substantially accomplished in Christ, while its definitive fullness will come at the end, with the resurrection of the dead and the new creation. [:1](?page=documents&document=00a1de35-98f1-481a-956f-e98e2b52331d&ref=21)",
+          "The New Testament confesses Jesus of Nazareth as the expected Messiah and understands his messiahship in the light of his suffering, death, and Resurrection—not as an earthly political project. [:2](?page=documents&document=00a1de35-98f1-481a-956f-e98e2b52331d&ref=63)",
+          "Jewish messianic hope should not be ridiculed: Christians also live in expectation of the fulfillment, though we believe that the one who is to come is Jesus, who has already come and is active among us. [:1](?page=documents&document=00a1de35-98f1-481a-956f-e98e2b52331d&ref=21)"
+        ]
+      },
+      "pt": {
+        "pregunta_principal": "Por que acreditamos que Jesus é o verdadeiro Messias se ainda não vemos todas as promessas cumpridas?",
+        "puerta_de_entrada": "De longe, uma cordilheira pode parecer uma única montanha: vemos os picos, mas não os vales entre eles. Algo semelhante pode acontecer com as promessas de Deus: em Cristo começa o seu cumprimento, embora a plenitude ainda esteja por vir.",
+        "respuesta_breve": "Os cristãos acreditam que Jesus é o Messias prometido a Israel. Na sua vida, Paixão e Ressurreição, as esperanças e promessas de Israel alcançam um cumprimento decisivo, mas inesperado: Jesus não estabelece um poder político nem elimina imediatamente todo o sofrimento. O Reino já começou nele, enquanto esperamos a sua plenitude quando voltar na glória. É uma única obra de salvação, realizada progressivamente na história. [:1](?page=documents&document=00a1de35-98f1-481a-956f-e98e2b52331d&ref=21)",
+        "paradoja": "O Messias vence, mas a sua vitória passa pela cruz; o Reino já está presente, mas ainda esperamos vê-lo em plenitude. O pico já apareceu no horizonte, embora ainda caminhemos pelo vale.",
+        "aclaracion": "A imagem das montanhas é uma analogia para explicar o cumprimento iniciado e a plenitude futura; não significa que toda profecia anuncie explicitamente duas datas nem que todos os judeus esperassem exatamente as mesmas coisas. As Escrituras tinham sentido para os seus primeiros ouvintes e, para os cristãos, algumas adquirem uma plenitude nova quando relidas à luz de Cristo. Não convém apresentá-las como fotografias antecipadas de acontecimentos futuros nem julgar a fé judaica como obstinação. [:1](?page=documents&document=00a1de35-98f1-481a-956f-e98e2b52331d&ref=21)",
+        "paso_concreto": "Leia Lucas 24, 25-27.44-46 e pergunte-se como a cruz e a Ressurreição mudam a maneira de compreender a esperança do Messias. Depois, pense em que aspecto da obra de Cristo já transforma a sua vida e que plenitude ainda espera.",
+        "oracion": "Jesus, Messias e Senhor, ajuda-nos a reconhecer-te na humildade da cruz e na glória da Ressurreição. Sustenta a nossa esperança enquanto esperamos a plenitude do teu Reino. Amém.",
+        "enseñanza_de_la_iglesia": [
+          "A Pontifícia Comissão Bíblica ensina que o plano salvador de Deus é uno e se realiza progressivamente. Para os cristãos, o seu cumprimento já se realizou substancialmente no mistério de Cristo, mas a plenitude definitiva virá no fim, com a ressurreição dos mortos e a nova criação. [:1](?page=documents&document=00a1de35-98f1-481a-956f-e98e2b52331d&ref=21)",
+          "O Novo Testamento confessa Jesus de Nazaré como o Messias esperado e compreende o seu messianismo à luz do sofrimento, da morte e da Ressurreição, não como um projeto político terreno. [:2](?page=documents&document=00a1de35-98f1-481a-956f-e98e2b52331d&ref=63)",
+          "A esperança messiânica judaica não deve ser ridicularizada: os cristãos também vivem na expectativa da consumação, embora acreditemos que aquele que há de vir é Jesus, que já veio e atua entre nós. [:1](?page=documents&document=00a1de35-98f1-481a-956f-e98e2b52331d&ref=21)"
+        ]
+      }
+    },
+
+    {
+      "id": "dios_antiguo_y_nuevo_testamento",
+      "categoria": "Doctrina y Fe",
+      "keywords": [
+        "el dios del antiguo testamento",
+        "la ira de dios en la biblia",
+        "dios es cruel en el antiguo testamento",
+        "Es diferente el Dios del Antiguo Testamento y el del Nuevo",
+        "god of the old testament",
+        "wrath of god",
+        "Is the God of the Old Testament different",
+        "do Antigo Testamento é diferente do Novo"
+      ],
+      "es": {
+        "pregunta_principal": "¿Es diferente el Dios del Antiguo Testamento y el del Nuevo? ¿Qué significa la «ira de Dios»?",
+        "puerta_de_entrada": "A primera vista algunos pasajes pueden dar la impresión de que hay dos dioses distintos: uno severo en el Antiguo Testamento y otro amable en el Nuevo, pero la fe cristiana enseña que es el mismo y único Dios[span_0](start_span)[span_0](end_span).",
+        "respuesta_breve": "No hay un «Dios malo» en el Antiguo Testamento reemplazado después por un «Dios bueno». Jesús revela plenamente quién es Dios, pero no contradice al Dios de Israel, quien ya se revelaba como «compasivo y misericordioso, lento para anojarse y rico en fidelidad» (Éxodo 34, 6)[span_1](start_span)[span_1](end_span).",
+        "paradoja": "La cruz nos permite contemplar juntas la justicia y la misericordia de Dios: Él no toma el mal a la ligera ni es indiferente ante la injusticia, pero en Cristo se entrega por completo para rescatarnos y sanar el daño causado.",
+        "aclaracion": "Cuando la Biblia habla de la «ira de Dios», no describe a un ser caprichoso o vengativo, sino su firme oposición al mal que destruye a las personas. Aunque algunos textos reflejan etapas históricas superadas en la comprensión de los derechos humanos —tal como reconoce la Pontificia Comisión Bíblica—, la Escritura siempre subraya la necesidad de proteger a las víctimas y la paciencia de un Dios que busca perdonar.",
+        "paso_concreto": "Hoy, al leer las Escrituras, contemplá cómo la paciencia de Dios nos ha educado paso a paso hasta revelarnos su rostro definitivo en Jesucristo.",
+        "oracion": "Señor y Dios nuestro, que te has revelado como compasivo y misericordioso, enséñanos a leer tu Palabra con el corazón abierto para comprender la profundidad de tu amor. Amén.",
+        "enseñanza_de_la_iglesia": [
+          "Comisión Bíblica Pontificia (La inspiración y verdad de la Sagrada Escritura, n. 126): Los textos difíciles y las leyes antiguas reflejan una etapa histórica superada, pero expresan la absoluta oposición de Dios al mal y su defensa de las víctimas.",
+          "Catecismo de la Iglesia Católica: La Sagrada Escritura forma una unidad porque el Verbo de Dios es uno solo, manifestado a través de toda la historia de la salvación[span_2](start_span)[span_2](end_span)."
+        ]
+      },
+      "en": {
+        "pregunta_principal": "Is the God of the Old Testament different from the God of the New? What does the «wrath of God» mean?",
+        "puerta_de_entrada": "At first glance, some biblical passages might give the impression of two different gods: a severe one in the Old Testament and a kind one in the New. Yet, Christian faith teaches it is the exact same God[span_3](start_span)[span_3](end_span).",
+        "respuesta_breve": "There is no 'evil God' in the Old Testament replaced later by a 'good God'. Jesus fully reveals who God is, but He does not contradict the God of Israel, who was already revealed as 'compassionate and gracious, slow to anger, abounding in steadfast love' (Exodus 34:6)[span_4](start_span)[span_4](end_span).",
+        "paradoja": "The Cross allows us to contemplate God's justice and mercy together: He is never indifferent to evil, yet in Christ He gives Himself entirely to redeem and heal us.",
+        "aclaracion": "When the Bible speaks of the 'wrath of God,' it does not describe a vengeful outburst, but rather God's firm opposition to the evil that destroys human lives. While some ancient texts reflect historical stages in the gradual understanding of human rights, Scripture consistently highlights God's desire to protect the vulnerable and His readiness to forgive.",
+        "paso_concreto": "Today, as you read Scripture, recognize how God's patience has guided humanity step by step until revealing His definitive face in Jesus Christ.",
+        "oracion": "Lord our God, who are compassionate and merciful, teach us to read Your Word with an open heart. Amen.",
+        "enseñanza_de_la_iglesia": [
+          "Pontifical Biblical Commission (The Inspiration and Truth of Sacred Scripture, 126): Difficult texts reflect a surpassed historical stage, yet they underline God's fierce opposition to evil and His defense of victims."
+        ]
+      },
+      "pt": {
+        "pregunta_principal": "O Deus do Antigo Testamento é diferente do Novo? O que significa a «ira de Deus»?",
+        "puerta_de_entrada": "À primeira vista, alguns textos bíblicos podem dar a impressão de dois deuses distintos: um severo no Antigo Testamento e outro amável no Novo. A fé cristã ensina que é o mesmo e único Deus[span_5](start_span)[span_5](end_span).",
+        "respuesta_breve": "Não existe um 'Deus mau' no Antigo Testamento substituído depois por um 'Deus bom'. Jesus revela plenamente quem é Deus, sem contradizer o Deus de Israel, que já se revelava como 'compassivo e misericordioso, longânimo e grande em clemência' (Êxodo 34, 6)[span_6](start_span)[span_6](end_span).",
+        "paradoja": "A cruz nos permite contemplar juntas a justiça e a misericórdia de Deus: Ele não trata o mal como algo indiferente, mas em Cristo entrega-Se por inteiro para nos resgatar e curar.",
+        "paso_concreto": "Hoje, ao ler as Escrituras, contemple como a paciência de Deus nos educou passo a passo até revelar o Seu rosto definitivo em Jesus Cristo.",
+        "oracion": "Senhor e Deus nosso, que te revelaste compassivo e misericordioso, ensina-nos a ler a Tua Palavra com o coração aberto. Amén.",
+        "enseñanza_de_la_iglesia": [
+          "Pontifícia Comissão Bíblica (A Inspiração e a Verdade da Sagrada Escritura, 126): Os textos difíceis refletem uma etapa histórica superada na compreensão dos direitos humanos, mas expressam a oposição absoluta de Deus ao mal e a proteção dos indefesos."
+        ]
+      }
+    },
+    {
+      "id": "reforma_protestante_y_unidad",
+      "categoria": "Doctrina y Fe",
+      "keywords": [
+        "martin lutero",
+        "reforma protestante",
+        "por que hay tantas iglesias",
+        "division de las iglesias",
+        "una sola iglesia",
+        "Por qué hay tantas denominaciones",
+        "protestant reformation",
+        "Why are there so many denominations",
+        "martin luther",
+        "reforma protestante",
+        "porque existem tantas igrejas",
+        "Por que há tantas denominações"
+      ],
+      "es": {
+        "pregunta_principal": "¿Por qué hay tantas denominaciones y dónde está la única Iglesia fundada por Cristo?",
+        "puerta_de_entrada": "Cristo no fundó un archipiélago de opiniones divididas, sino un Cuerpo vivo, visible y unido, porque Cristo no tiene muchos cuerpos ni es un monstruo de muchas cabezas.",
+        "respuesta_breve": "En el siglo XVI, la ruptura protestante abrió la puerta a una fragmentación que hoy cuenta con decenas de miles de denominaciones. Frente a esto, la promesa de Jesús es categórica: fundó su Iglesia sobre Pedro y prometió que las puertas del infierno no prevalecerán contra ella. Una Iglesia verdadera tiene más de 2000 años de historia ininterrumpida, custodia fiel del depósito de la fe y la sucesión apostólica.",
+        "paradoja": "Quienes intentaron reformar la barca saltando al agua terminaron construyendo miles de balsas distintas a la deriva, mientras la Iglesia Católica, golpeada por los pecados de sus propios hijos pero sostenida por la gracia, sigue navegando firme contra viento y marea.",
+        "aclaracion": "Como decía Chesterton, la Iglesia se ha equivocado mil veces y ha estado al borde del abismo, pero el cristianismo siempre la ha resucitado porque solo algo divino puede sobrevivir a sus propios errores humanos.",
+        "paso_concreto": "Hoy, agradecé el don de pertenecer a esta gran familia milenaria y pedí al Señor que nos mantenga unidos en la fe.",
+        "oracion": "Señor Jesucristo, que quisiste una sola Iglesia, sana nuestras divisiones y haz que seamos un solo rebaño bajo un solo Pastor. Amén.",
+        "enseñanza_de_la_iglesia": [
+          "Evangelio de Mateo (16, 18): «Y yo te digo que tú eres Pedro, y sobre esta piedra edificaré mi Iglesia, y las puertas del infierno no prevalecerán contra ella».",
+          "Carta a los Efesios (4, 4-5): «Un solo Cuerpo y un solo Espíritu, como una es la esperanza de vuestra vocación. Un Señor, una fe, un bautismo»."
+        ]
+      },
+      "en": {
+        "pregunta_principal": "Why are there so many denominations, and where is the one Church founded by Christ?",
+        "puerta_de_entrada": "Christ did not found an archipelago of divided opinions, but a single living, visible Body, for Christ does not have many bodies.",
+        "respuesta_breve": "In the 16th century, the Protestant break opened the door to widespread fragmentation. Against this, Jesus's promise stands: He built His Church upon Peter and vowed that the gates of hell would not prevail against it. A true Church must span over 2000 years of unbroken history as the guardian of the deposit of faith.",
+        "paradoja": "Those who tried to reform the boat by jumping out ended up building thousands of drifting rafts, while the Catholic Church continues to navigate through every storm.",
+        "aclaracion": "As Chesterton noted, the Church has died many times and yet been resurrected by God, because only a divine institution could survive its own members.",
+        "paso_concreto": "Today, give thanks for the gift of belonging to this ancient family of faith.",
+        "oracion": "Lord Jesus Christ, who willed one Church, heal our divisions and make us one flock. Amen.",
+        "enseñanza_de_la_iglesia": [
+          "Gospel of Matthew (16:18): 'And I tell you, you are Peter, and on this rock I will build my church, and the gates of hell shall not prevail against it.'"
+        ]
+      },
+      "pt": {
+        "pregunta_principal": "Por que há tantas denominações e onde está a única Igreja fundada por Cristo?",
+        "puerta_de_entrada": "Cristo não fundou um arquipélago de opiniões divididas, mas um Corpo vivo, visível e unido, pois Cristo não tem muitos corpos.",
+        "respuesta_breve": "No século XVI, a ruptura protestante abriu caminho para uma fragmentação de milhares de denominações. Diante disso, a promessa de Jesus é firme: edificou Sua Igreja sobre Pedro e as portas do inferno não prevalecerão contra ela. Uma verdadeira Igreja tem mais de 2000 anos de história ininterrupta e guarda o depósito da fé.",
+        "paradoja": "Quem tentou reformar a barca saltando para fora acabou construindo milhares de balsas à deriva, enquanto a Igreja continua navegando firme.",
+        "aclaracion": "Como dizia Chesterton, a Igreja já foi dada como morta mil vezes, mas sempre ressuscitou porque só algo divino sobrevive aos erros humanos.",
+        "paso_concreto": "Hoje, agradeça pelo dom de pertencer a esta grande família milenar.",
+        "oracion": "Senhor Jesus Cristo, que quiseste uma só Igreja, cura as nossas divisões. Amén.",
+        "enseñanza_de_la_iglesia": [
+          "Evangelho de Mateus (16, 18): «E eu te digo que tu és Pedro, e sobre esta pedra edificarei a minha igreja, e as portas do inferno não prevalecerán contra ela»."
+        ]
+      }
+    },
+    {
+      "id": "que_es_adorar",
+      "categoria": "Doctrina y fe",
+      "keywords": [
+        "que es adorar",
+        "adoracion",
+        "adorar en espiritu y verdad",
+        "latria",
+        "what is worship",
+        "adoration",
+        "o que e adorar",
+        "adoracao a"
+      ],
+      "es": {
+        "pregunta_principal": "¿Qué es la adoración y a quién le corresponde?",
+        "puerta_de_entrada": "Adorar es reconocer con humildad y asombro que Dios es el Creador y Señor absoluto, postrando el corazón ante su presencia santísima.",
+        "respuesta_breve": "Adorar (latría) consiste en rendir culto exclusivo a Dios, el único digno de toda gloria. La Biblia nos muestra innumerables ejemplos: desde Moisés quitándose las sandalias ante la zarza ardiente hasta los sabios de Oriente postrándose ante el Niño Jesús en Belén, o la mujer samaritana aprendiendo que los verdaderos adoradores adorarán al Padre en espíritu y en verdad.",
+        "paradoja": "Para aprender a adorar de verdad hay que vaciarse de uno mismo; solo cuando dejamos de ponernos en el centro, Dios ocupa su lugar y nuestra vida entera se vuelve un culto agradable a Él.",
+        "aclaracion": "A diferencia de la veneración que se rinde a la Virgen o a los santos (que es un afecto filial de respeto), la adoración está reservada única y exclusivamente a Dios, ya sea en el sagrario, en la Eucaristía o en lo íntimo del corazón en cualquier lugar donde nos encontremos.",
+        "paso_concreto": "Hoy, hacé una pausa donde estés, cerrá los ojos un instante y decile al Señor con sencillez: «Tú sos mi Dios, te adoro y confío en vos».",
+        "oracion": "Señor Dios nuestro, digno sos de recibir la gloria, el honor y el poder, porque vos creaste todas las cosas. Te adoramos en espíritu y en verdad. Amén.",
+        "enseñanza_de_la_iglesia": [
+          "Evangelio de Juan (4, 23): «Llega la hora —y es esta— en que los verdaderos adoradores adorarán al Padre en espíritu y en verdad, porque así quiere el Padre que sean los que le adoren».",
+          "Catecismo de la Iglesia Católica (n. 2096): «Adorar a Dios es reconocerle como Dios, como el Creador y el Salvador, el Señor y el Dueño de todo lo que existe»."
+        ]
+      },
+      "en": {
+        "pregunta_principal": "What is worship and to whom does it belong?",
+        "puerta_de_entrada": "To worship is to recognize with humility and awe that God is the Creator and absolute Lord, bowing the heart before His most holy presence.",
+        "respuesta_breve": "Worship (latria) consists of rendering exclusive honor and reverence to God alone, who is worthy of all glory. Scripture shows us clear examples: from Moses removing his sandals before the burning bush, to the Magi bowing before the Child Jesus in Bethlehem, or the Samaritan woman learning that true worshipers worship the Father in spirit and truth.",
+        "paradoja": "To learn how to truly worship, we must empty ourselves; only when we step down from the center does God take His rightful place.",
+        "aclaracion": "Unlike the veneration given to Mary or the saints, true worship is reserved exclusively for God—whether before the Eucharist or intimately in our hearts wherever we may be.",
+        "paso_concreto": "Today, take a brief pause wherever you are, close your eyes, and simply tell the Lord: 'You are my God, I worship You and trust in You.'",
+        "oracion": "Lord our God, You are worthy to receive glory, honor, and power. We worship You in spirit and in truth. Amen.",
+        "enseñanza_de_la_iglesia": [
+          "Gospel of John (4:23): 'The hour is coming, and is now here, when the true worshipers will worship the Father in spirit and truth.'",
+          "Catechism of the Catholic Church (n. 2096): 'Adoration is the first act of the virtue of religion. To worship God is to acknowledge Him as God, as the Creator and Savior.'"
+        ]
+      },
+      "pt": {
+        "pregunta_principal": "O que é a adoração e a quem ela pertence?",
+        "puerta_de_entrada": "Adorar é reconhecer com humildade e espanto que Deus é o Criador e Senhor absoluto, prostrando o coração diante de Sua presença santíssima.",
+        "respuesta_breve": "Adorar (latria) consiste em prestar culto exclusivo a Deus, o único digno de toda a glória. A Bíblia nos mostra exemplos claros: desde Moisés tirando as sandálias diante da sarça ardente até os magos prostrando-se diante do Menino Jesus em Belém, ou a mulher samaritana aprendendo que os verdadeiro adoradores adoram o Pai em espírito e em verdade.",
+        "paradoja": "Para aprender a adorar de verdade, é preciso esvaziar-se de si mesmo; só quando deixamos de nos colocar no centro é que Deus ocupa o Seu lugar.",
+        "aclaracion": "Ao contrário da veneração prestada à Virgem ou aos santos, a adoração é reservada única e exclusivamente a Deus, seja na Eucaristía ou no íntimo do coração onde quer que estejamos.",
+        "paso_concreto": "Hoje, faça uma pausa onde você estiver, feche os olhos por um instante e diga ao Senhor: 'Tu és o meu Deus, eu Te adoro e confio em Ti.'",
+        "oracion": "Senhor Deus nosso, Tu és digno de receber a glória, a honra e o poder. Nós Te adoramos em espírito e em verdade. Amén.",
+        "enseñanza_de_la_iglesia": [
+          "Evangelho de João (4, 23): «Mas a hora vem, e agora é, em que os verdadeiros adoradores adorarão o Pai em espírito e em verdade».",
+          "Catecismo da Igreja Católica (n. 2096): «Adorar a Deus é reconhecer-lO como Deus, como Criador e Salvador, Senhor e Doador de tudo o que existe»."
+        ]
       }
     },
     {
@@ -3684,7 +4194,7 @@
     },
     {
       "id": "navidad_01_misterio_y_lugar",
-      "categoria": "Ciclo Litúrgico y Teología",
+      "categoria": "Jesucristo",
       "keywords": [
         "navidad",
         "nacimiento de jesus",
@@ -3738,7 +4248,7 @@
     },
     {
       "id": "navidad_02_humildad_y_pastores",
-      "categoria": "Ciclo Litúrgico y Teología",
+      "categoria": "Doctrina y Fe",
       "keywords": [
         "pesebre",
         "pastores",
@@ -3791,7 +4301,7 @@
     },
     {
       "id": "navidad_03_magos_estrella_misterio",
-      "categoria": "Ciclo Litúrgico y Teología",
+      "categoria": "Doctrina y fe",
       "keywords": [
         "navidad 3",
         "magos",
@@ -3847,7 +4357,7 @@
     },
     {
       "id": "pentecostes_espiritu_santo_mision",
-      "categoria": "Ciclo Litúrgico y Teología",
+      "categoria": "Doctrina y Fe",
       "keywords": [
         "pentecostes",
         "espiritu santo",
@@ -3903,7 +4413,7 @@
     },
     {
       "id": "pentecostes_unidad_valentin_mision",
-      "categoria": "Ciclo Litúrgico y Teología",
+      "categoria": "Doctrina y Fe",
       "keywords": [
         "pentecostes unidad valentia y mision",
         "babel y pentecostes",
@@ -3957,7 +4467,7 @@
     },
     {
       "id": "maria_bodas_de_cana",
-      "categoria": "Ciclo Litúrgico y Teología",
+      "categoria": "Jesucristo",
       "keywords": [
         "bodas de cana",
         "maria en cana",
@@ -4010,78 +4520,25 @@
         ]
       }
     },
+
     {
       "id": "unico_mediador_e_intercesion",
-      "categoria": "Jesucristo",
+      "categoria": "Doctrina y Fe",
       "keywords": [
         "unico mediador",
-        "mediador e intercesor",
+        "mediador ",
         "intercesion de los santos",
         "virgen maria intercesora",
         "1 timoteo 2 5",
         "rezar a los santos",
         "single mediator",
-        "mediator and intercessor",
-        "intercession of the saints",
-        "unico mediador e intercessao",
+        "mediator",
+        "If there is only one Mediator",
+        "Se há um só Mediador",
         "intercessao dos santos"
       ],
       "es": {
-        "pregunta_principal": "¿Si hay un solo Mediador, por qué los católicos piden la intercesión de María y de los santos?",
-        "puerta_de_entrada": "La Escritura afirma categóricamente que hay un solo Mediador entre Dios y los hombres: Cristo Jesús. La Iglesia no solo lo enseña, sino que se funda enteramente en ello. Sin embargo, mediar para salvar no es lo mismo que interceder para orar unos por otros.",
-        "respuesta_breve": "Jesús es el único Mediador en sentido pleno y redentor, porque solo Él pagó el precio de nuestra salvación con su muerte y resurrección. Pero la intercesión —pedir a Dios por otros— no compite con Cristo ni le quita su puesto. La misma Biblia nos manda a orar unos por otros (1 Tim 2,1-2) justo antes de recordar que Cristo es el único Mediador (1 Tim 2,5). Pedirle a María o a los santos que recen por nosotros es exactamente igual que pedirle a un hermano en la tierra: nadie se pone en el lugar de Jesús, sino que todos nos unimos a Él.",
-        "paradoja": "Creemos que por ser Jesús el único puente con el Padre ya no deberíamos pedirle nada a nadie, pero Dios quiso que su Cuerpo (la Iglesia) funcione en red, donde el amor y la oración de unos sostienen la vida de los otros.",
-        "aclaracion": "Los textos bíblicos del Apocalipsis muestran a los ángeles y a los santos en el cielo presentando ante el trono de Dios las copas llenas de incienso, que son las oraciones de los santos. Su intercesión es ministerial y totalmente subordinada a la única mediación de Cristo.",
-        "paso_concreto": "Hoy, cuando reces por alguien que lo necesita o cuando le pidas a un amigo que rece por vos, recordá que estás ejercitando esa misma comunión de los santos que nos une más allá de la muerte.",
-        "oracion": "Señor Jesús, único Salvador y Mediador nuestro, gracias por reconciliarnos con el Padre. Unite a nuestras oraciones y enseñanos a vivir siempre en comunión unos con otros. Amén.",
-        "enseñanza_de_la_iglesia": [
-          "1 Timoteo 2,5-6: Porque hay un solo Dios, y también un solo mediador entre Dios y los hombres, Cristo Jesús, hombre también, que se entregó a sí mismo como rescate por todos.",
-          "Lumen Gentium (Concilio Vaticano II, 60): La misión maternal de María hacia los hombres no oscurece ni disminuye esta única mediación de Cristo, sino que manifiesta su eficacia."
-        ]
-      },
-      "en": {
-        "pregunta_principal": "If there is only one Mediator, why do Catholics ask for the intercession of Mary and the saints?",
-        "puerta_de_entrada": "Scripture clearly states that there is only one Mediator between God and men: Christ Jesus. The Church firmly teaches this, yet intercession—praying for one another—does not compete with Christ's unique role.",
-        "respuesta_breve": "Jesus is the only full and redemptive Mediator because He alone paid the price of our salvation. However, asking others to pray for us (intercession) does not rival Christ. The Bible itself urges us to pray for one another right alongside affirming Christ's unique mediation (1 Tim 2:1-5). Asking Mary or the saints to pray for us is like asking a fellow Christian on Earth: no one takes Jesus' place; we all unite in Him.",
-        "paradoja": "We might think that because Jesus is our sole bridge to the Father we shouldn't ask anyone else for prayers, but God willed that His Body, the Church, function as a communion where mutual prayer sustains us.",
-        "aclaracion": "Scripture in Revelation depicts angels and saints in heaven holding golden bowls full of incense, which are the prayers of the holy ones. Their intercession is entirely subordinate to Christ's unique mediation.",
-        "paso_concreto": "Today, when you pray for someone in need or ask a friend to pray for you, remember you are living out the communion of saints that transcends death.",
-        "oracion": "Lord Jesus, our only Savior and Mediator, thank You for reconciling us with the Father. Unite our prayers and teach us to live in communion. Amen.",
-        "enseñanza_de_la_iglesia": [
-          "1 Timothy 2:5-6: For there is one God and one mediator between God and mankind, the man Christ Jesus, who gave himself as a ransom for all."
-        ]
-      },
-      "pt": {
-        "pregunta_principal": "Se há um só Mediador, porque é que os católicos pedem a intercessão de Maria e dos santos?",
-        "puerta_de_entrada": "A Escritura afirma que há um só Mediador entre Deus e os homens: Cristo Jesus. Contudo, pedir a intercessão uns dos outros não compete com o papel único de Cristo.",
-        "respuesta_breve": "Jesus é o único Mediador em sentido pleno, pois só Ele pagou o resgate da nossa salvação. Mas a intercessão — rezar uns pelos outros — não substitui a Cristo. A própria Bíblia exorta-nos a interceder por todos (1 Tim 2,1-5). Pedir a Maria ou aos santos que rezem por nós é como pedir a um amigo na terra: ninguém toma o lugar de Jesus, todos nos unimos Nele.",
-        "paradoja": "Poderíamos pensar que, sendo Jesus o único caminho, não devemos pedir a intercessão de mais ninguém; no entanto, Deus quis que a Sua Igreja funcionasse como uma rede de amor e oração mútua.",
-        "aclaracion": "O livro do Apocalipse mostra os santos e anjos no céu apresentando as orações dos santos perante Deus. Essa intercessão é ministerial e totalmente subordinada à única mediação de Cristo.",
-        "paso_concreto": "Hoje, quando rezares por alguém ou pedires a oração de um irmão, lembra-te de que estás a viver a comunhão dos santos.",
-        "oracion": "Senhor Jesus, único Salvador e Mediador, obrigado por nos reconciliares com o Pai. Une as nossas orações. Amém.",
-        "enseñanza_de_la_iglesia": [
-          "1 Timóteo 2,5-6: Pois há um só Deus e um só mediador entre Deus e os homens, Cristo Jesus, homem."
-        ]
-      }
-    },
-    {
-      "id": "unico_mediador_e_intercesion",
-      "categoria": "Doctrina y Teología",
-      "keywords": [
-        "unico mediador",
-        "mediador e intercesor",
-        "intercesion de los santos",
-        "virgen maria intercesora",
-        "1 timoteo 2 5",
-        "rezar a los santos",
-        "single mediator",
-        "mediator and intercessor",
-        "intercession of the saints",
-        "unico mediador e intercessao",
-        "intercessao dos santos"
-      ],
-      "es": {
-        "pregunta_principal": "¿Si hay un solo Mediador, por qué los católicos piden la intercesión de María y de los santos?",
+        "pregunta_principal": "¿Hay un único Mediador?",
         "puerta_de_entrada": "La Escritura afirma categóricamente que hay un solo Mediador entre Dios y los hombres: Cristo Jesús. La Iglesia no solo lo enseña, sino que se funda enteramente en ello. Sin embargo, mediar para salvar no es lo mismo que interceder para orar unos por otros.",
         "respuesta_breve": "Jesús es el único Mediador en sentido pleno y redentor, porque solo Él pagó el precio de nuestra salvación con su muerte y resurrección. Pero la intercesión —pedir a Dios por otros— no compite con Cristo ni le quita su puesto. La misma Biblia nos manda a orar unos por otros (1 Tim 2,1-2) justo antes de recordar que Cristo es el único Mediador (1 Tim 2,5). Pedirle a María o a los santos que recen por nosotros es exactamente igual que pedirle a un hermano en la tierra: nadie se pone en el lugar de Jesús, sino que todos nos unimos a Él.",
         "paradoja": "Creemos que por ser Jesús el único puente con el Padre ya no deberíamos pedirle nada a nadie, pero Dios quiso que su Cuerpo (la Iglesia) funcione en red, donde el amor y la oración de unos sostienen la vida de los otros.",
@@ -4120,7 +4577,7 @@
     },
     {
       "id": "canon_biblico_73_libros_deuterocanonicos",
-      "categoria": "Doctrina y Teología",
+      "categoria": "Biblia",
       "keywords": [
         "73 libros de la biblia catolica",
         "libros deuterocanonicos y apocrifos",
@@ -4137,7 +4594,7 @@
         "pregunta_principal": "¿Por qué la Biblia católica tiene 73 libros y qué son los deuterocanónicos?",
         "puerta_de_entrada": "La Biblia no cayó del cielo como un índice impreso; la Iglesia católica reconoce 73 libros (46 en el Antiguo Testamento y 27 en el Nuevo) recibidos a través de la Tradición apostólica.",
         "respuesta_breve": "La diferencia con otras biblias cristianas radica en el canon (la lista oficial de libros inspirados). Entre los siete libros que no aparecen en las ediciones protestantes (Tobías, Judit, Sabiduría, Eclesiástico, Baruc, 1 y 2 Macabeos, más porciones de Ester y Daniel), la Iglesia los llama deuterocanónicos. Esto no significa que sean de segunda categoría, sino que su reconocimiento tuvo una historia de recepción más compleja a partir de las antiguas escrituras griegas de la Septuaginta que usaban los primeros cristianos.",
-        "paradoja": "Soಜos inclinanados a pensar que la Biblia determinó a la Iglesia de manera automática desde el primer día, pero la realidad histórica es que la comunidad cristiana primitiva, guiada por el Espíritu Santo, fue la encargada de discernir y reconocer formalmente qué escritos eran la Palabra de Dios inspirada.",
+        "paradoja": "Estamos inclinanados a pensar que la Biblia determinó a la Iglesia de manera automática desde el primer día, pero la realidad histórica es que la comunidad cristiana primitiva, guiada por el Espíritu Santo, fue la encargada de discernir y reconocer formalmente qué escritos eran la Palabra de Dios inspirada.",
         "aclaracion": "No es exacto decir que la Iglesia católica «añadió» libros por capricho; lo correcto es afirmar que reconoció y custodió una tradición textual más amplia que ya circulaba y era leída litúrgicamente en el cristianismo antiguo, confirmada solemnemente en concilios como los de Florencia y Trento.",
         "paso_concreto": "Hoy, al abrir tu Biblia, agradecé el trabajo de transmisión y custodia de tantas generaciones que cuidaron cada texto para que hoy podamos leer la Palabra de Dios completa.",
         "oracion": "Señor, te damos gracias por el tesoro de tu Palabra escrita. Danos la gracia de leerla con un corazón abierto, sabiendo que nos guía hacia el encuentro vivo con Cristo. Amén.",
