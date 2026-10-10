@@ -502,6 +502,9 @@ if (btnVolverAcerca) {
 document
   .getElementById("btn-ejecutar-busqueda")
   .addEventListener("click", async () => {
+    // ========== LIMPIAR MEMORIA CADA VEZ ==========
+    window.resultadosBusquedaActuales = [];
+
     const inputOriginal = document
       .getElementById("input-busqueda")
       .value.trim();
@@ -517,10 +520,9 @@ document
       str
         .toLowerCase()
         .normalize("NFD")
-        .replace(/[\u0300-\u036f]/g, "") // quita tildes
+        .replace(/[\u0300-\u036f]/g, "")
         .replace(/ñ/g, "n");
 
-    // Convierte números en palabras españolas a dígitos
     const palabrasANumeros = (texto) => {
       const mapa = {
         cero: 0,
@@ -566,28 +568,108 @@ document
       };
 
       let t = " " + limpiarTexto(texto) + " ";
-
-      // Primero compuestos comunes
       t = t.replace(
         /\b(treinta|cuarenta|cincuenta|sesenta|setenta|ochenta|noventa)\s+y\s+(uno|dos|tres|cuatro|cinco|seis|siete|ocho|nueve)\b/g,
         (m, dec, uni) => " " + (mapa[dec] + mapa[uni]) + " ",
       );
-
-      // Luego simples
-      Object.keys(mapa).forEach((palabra) => {
-        const re = new RegExp(`\\b${palabra}\\b`, "g");
-        t = t.replace(re, " " + mapa[palabra] + " ");
+      Object.keys(mapa).forEach((p) => {
+        t = t.replace(new RegExp(`\\b${p}\\b`, "g"), " " + mapa[p] + " ");
       });
-
       return t.replace(/\s+/g, " ").trim();
     };
 
-    // Normaliza el input para detectar citas
+    // Lista oficial de libros (sin tildes)
+    const LIBROS = [
+      "genesis",
+      "exodo",
+      "levitico",
+      "numeros",
+      "deuteronomio",
+      "josue",
+      "jueces",
+      "rut",
+      "1 samuel",
+      "2 samuel",
+      "1 reyes",
+      "2 reyes",
+      "1 cronicas",
+      "2 cronicas",
+      "esdras",
+      "nehemias",
+      "ester",
+      "job",
+      "salmos",
+      "proverbios",
+      "eclesiastes",
+      "cantares",
+      "isaias",
+      "jeremias",
+      "lamentaciones",
+      "ezequiel",
+      "daniel",
+      "oseas",
+      "joel",
+      "amos",
+      "abdias",
+      "jonas",
+      "miqueas",
+      "nahum",
+      "habacuc",
+      "sofonias",
+      "hageo",
+      "zacarias",
+      "malaquias",
+      "mateo",
+      "marcos",
+      "lucas",
+      "juan",
+      "hechos",
+      "romanos",
+      "1 corintios",
+      "2 corintios",
+      "galatas",
+      "efesios",
+      "filipenses",
+      "colosenses",
+      "1 tesalonicenses",
+      "2 tesalonicenses",
+      "1 timoteo",
+      "2 timoteo",
+      "tito",
+      "filemon",
+      "hebreos",
+      "santiago",
+      "1 pedro",
+      "2 pedro",
+      "1 juan",
+      "2 juan",
+      "3 juan",
+      "judas",
+      "apocalipsis",
+    ];
+
+    // Correcciones de voz / tipeo frecuentes
+    const correcciones = {
+      misaias: "isaias",
+      isaias: "isaias",
+      isaías: "isaias",
+      lamentaciones: "lamentaciones",
+      lamentacion: "lamentaciones",
+      mateo: "mateo",
+      matheo: "mateo",
+      juan: "juan",
+      "san juan": "juan",
+      salmo: "salmos",
+      salmos: "salmos",
+      apocalipsis: "apocalipsis",
+      revelacion: "apocalipsis",
+    };
+
     let inputParaCita = palabrasANumeros(inputOriginal);
     inputParaCita = inputParaCita
       .replace(/capitulo|cap\.?/g, " ")
       .replace(/versiculos?|vers\.?|v\.?/g, " ")
-      .replace(/al|a|hasta|-/g, "-")
+      .replace(/\bal\b|\ba\b|\bhasta\b/g, "-")
       .replace(/[,;]/g, " ")
       .replace(/\s+/g, " ")
       .trim();
@@ -603,186 +685,191 @@ document
     try {
       const respuesta = await fetch("data/biblia.json");
       const datos = await respuesta.json();
-      let encontrados = [];
+      let encontrados = []; // ← SIEMPRE empieza vacío
 
       if (datos.verses && Array.isArray(datos.verses)) {
-        // ========== 1. INTENTAR DETECTAR CITA ESTRUCTURADA ==========
-        // Ejemplos que soporta:
-        // "Mateo 5:13-16"
-        // "Mateo 5 13-16"
-        // "Mateo capítulo 5 versículo 13 al 16"
-        // "Mateo cinco trece al dieciseis" (después de convertir palabras)
-
-        const regexCita =
-          /([1-3]?\s*[a-zA-Záéíóúñü]+)\s+(\d{1,3})(?:\s*[:\s]\s*(\d{1,3})(?:\s*-\s*(\d{1,3}))?)?/;
-        const match = inputParaCita.match(regexCita);
-
-        let esCita = false;
-        let libroBuscado = null;
+        // ========== 1. DETECTAR SI ES LIBRO / CITA ==========
+        let libroDetectado = null;
         let capituloBuscado = null;
         let versoDesde = null;
         let versoHasta = null;
+        let esSoloLibro = false;
+
+        // Intentar detectar: Libro + capítulo + versículo(s)
+        const regexCita =
+          /^([1-3]?\s*[a-zÁÉÍÓÚáéíóúñü]+(?:\s+[a-zÁÉÍÓÚáéíóúñü]+)?)\s+(\d{1,3})(?:\s*[:\s-]\s*(\d{1,3})(?:\s*-\s*(\d{1,3}))?)?$/i;
+        const match = inputParaCita.match(regexCita);
 
         if (match) {
-          libroBuscado = limpiarTexto(match[1].replace(/\s+/g, " ").trim());
-          capituloBuscado = parseInt(match[2], 10);
-          if (match[3]) {
-            versoDesde = parseInt(match[3], 10);
-            versoHasta = match[4] ? parseInt(match[4], 10) : versoDesde;
+          let posible = limpiarTexto(match[1].replace(/\s+/g, " ").trim());
+          if (correcciones[posible]) posible = correcciones[posible];
+
+          libroDetectado = LIBROS.find(
+            (l) =>
+              l === posible || l.startsWith(posible) || posible.startsWith(l),
+          );
+
+          if (libroDetectado) {
+            capituloBuscado = parseInt(match[2], 10);
+            if (match[3]) {
+              versoDesde = parseInt(match[3], 10);
+              versoHasta = match[4] ? parseInt(match[4], 10) : versoDesde;
+            }
           }
-          esCita = true;
         }
 
-        // ========== 2. RECORRER VERSÍCULOS ==========
+        // Si no es cita completa, ver si es solo el nombre del libro
+        if (!libroDetectado) {
+          let posible = inputLimpio;
+          if (correcciones[posible]) posible = correcciones[posible];
+
+          // Solo aceptamos si es prácticamente el nombre del libro
+          libroDetectado = LIBROS.find(
+            (l) =>
+              l === posible ||
+              (posible.length >= 4 &&
+                (l.startsWith(posible) || posible.startsWith(l))),
+          );
+
+          if (libroDetectado) {
+            esSoloLibro = true;
+          }
+        }
+
+        // ========== 2. BUSCAR ==========
         datos.verses.forEach((item) => {
+          const libroItem = limpiarTexto(item.book_name || "");
           const textoLimpio = limpiarTexto(item.text || "");
-          const libroLimpioItem = limpiarTexto(item.book_name || "");
 
-          if (esCita && libroBuscado) {
-            // ¿Coincide el libro? (soporta "1 juan", "1juan", "juan", etc.)
+          if (libroDetectado) {
+            // Solo buscamos DENTRO del libro detectado
             const coincideLibro =
-              libroLimpioItem === libroBuscado ||
-              libroLimpioItem.includes(libroBuscado) ||
-              libroBuscado.includes(libroLimpioItem) ||
-              // Casos especiales numerados
-              (libroBuscado.startsWith("1") &&
-                libroLimpioItem.startsWith("1") &&
-                libroLimpioItem.includes(libroBuscado.replace(/^1\s*/, ""))) ||
-              (libroBuscado.startsWith("2") &&
-                libroLimpioItem.startsWith("2") &&
-                libroLimpioItem.includes(libroBuscado.replace(/^2\s*/, ""))) ||
-              (libroBuscado.startsWith("3") &&
-                libroLimpioItem.startsWith("3") &&
-                libroLimpioItem.includes(libroBuscado.replace(/^3\s*/, "")));
+              libroItem === libroDetectado ||
+              libroItem.startsWith(libroDetectado) ||
+              libroDetectado.startsWith(libroItem);
 
-            if (coincideLibro && item.chapter === capituloBuscado) {
-              if (versoDesde === null) {
-                // Solo capítulo → todo el capítulo
+            if (coincideLibro) {
+              if (esSoloLibro) {
+                // Todo el libro
                 encontrados.push({
                   referencia: `${item.book_name} ${item.chapter}:${item.verse} (${datos.metadata?.translation || "Biblia"})`,
                   texto: item.text,
                 });
-              } else if (item.verse >= versoDesde && item.verse <= versoHasta) {
-                // Rango de versículos
+              } else if (item.chapter === capituloBuscado) {
+                if (versoDesde == null) {
+                  // Todo el capítulo
+                  encontrados.push({
+                    referencia: `${item.book_name} ${item.chapter}:${item.verse} (${datos.metadata?.translation || "Biblia"})`,
+                    texto: item.text,
+                  });
+                } else if (
+                  item.verse >= versoDesde &&
+                  item.verse <= (versoHasta || versoDesde)
+                ) {
+                  // Rango de versículos
+                  encontrados.push({
+                    referencia: `${item.book_name} ${item.chapter}:${item.verse} (${datos.metadata?.translation || "Biblia"})`,
+                    texto: item.text,
+                  });
+                }
+              }
+            }
+          } else {
+            // ========== BÚSQUEDA POR TEXTO (más estricta) ==========
+            // Preferimos frase completa
+            if (textoLimpio.includes(terminoBusqueda)) {
+              encontrados.push({
+                referencia: `${item.book_name} ${item.chapter}:${item.verse} (${datos.metadata?.translation || "Biblia"})`,
+                texto: item.text,
+              });
+            }
+            // Si no hay frase completa, exigimos que coincidan casi todas las palabras
+            else if (palabrasBusqueda.length >= 2) {
+              const coincidencias = palabrasBusqueda.filter((p) =>
+                textoLimpio.includes(p),
+              ).length;
+              const umbral = Math.ceil(palabrasBusqueda.length * 0.8); // 80% de las palabras
+              if (coincidencias >= umbral) {
                 encontrados.push({
                   referencia: `${item.book_name} ${item.chapter}:${item.verse} (${datos.metadata?.translation || "Biblia"})`,
                   texto: item.text,
                 });
               }
             }
-          } else {
-            // ========== 3. BÚSQUEDA POR TEXTO / PALABRAS ==========
-            const coincideFraseCompleta = textoLimpio.includes(terminoBusqueda);
-
-            const palabrasCoincidentes = palabrasBusqueda.filter((palabra) =>
-              textoLimpio.includes(palabra),
-            );
-
-            // Exigimos que coincidan al menos el 70% de las palabras significativas
-            // o la frase completa
-            const umbral = Math.max(
-              1,
-              Math.ceil(palabrasBusqueda.length * 0.7),
-            );
-            const coincidePalabrasClave =
-              palabrasBusqueda.length > 0 &&
-              palabrasCoincidentes.length >= umbral;
-
-            if (coincideFraseCompleta || coincidePalabrasClave) {
-              encontrados.push({
-                referencia: `${item.book_name} ${item.chapter}:${item.verse} (${datos.metadata?.translation || "Biblia"})`,
-                texto: item.text,
-              });
-            }
           }
         });
       }
 
-      // ========== 4. RENDERIZAR RESULTADOS CON PAGINACIÓN ==========
+      // ========== 3. MOSTRAR RESULTADOS ==========
       if (encontrados.length > 0) {
-        let paginaBusquedaActual = 1;
+        let paginaActual = 1;
         const porPagina = 20;
-        const totalPaginasBusqueda = Math.ceil(encontrados.length / porPagina);
+        const totalPaginas = Math.ceil(encontrados.length / porPagina);
 
-        function renderizarBloqueBusqueda() {
-          const inicio = (paginaBusquedaActual - 1) * porPagina;
-          const fin = paginaBusquedaActual * porPagina;
-          const loteActual = encontrados.slice(inicio, fin);
-
-          // Guardamos los resultados globales
+        function renderizar() {
+          const inicio = (paginaActual - 1) * porPagina;
+          const lote = encontrados.slice(inicio, inicio + porPagina);
           window.resultadosBusquedaActuales = encontrados;
 
-          let htmlContenido = loteActual
+          let html = lote
             .map(
-              (item, index) => `
-            <div class="search-result-item" 
-                 onclick="abrirResultadoPorIndice(${inicio + index})" 
-                 style="margin-bottom: 15px; border-bottom: 1px solid rgba(212,175,55,0.2); padding-bottom: 10px; cursor: pointer;">
-              <strong style="color: var(--gold); display: block; margin-bottom: 5px;">${item.referencia}</strong>
-              <p style="color: #e0e0e0; font-size: 0.95rem; line-height: 1.4;">"${item.texto}"</p>
+              (item, i) => `
+            <div class="search-result-item" onclick="abrirResultadoPorIndice(${inicio + i})"
+                 style="margin-bottom:15px; border-bottom:1px solid rgba(212,175,55,0.2); padding-bottom:10px; cursor:pointer;">
+              <strong style="color:var(--gold); display:block; margin-bottom:5px;">${item.referencia}</strong>
+              <p style="color:#e0e0e0; font-size:0.95rem; line-height:1.4;">"${item.texto}"</p>
             </div>
           `,
             )
             .join("");
 
-          if (totalPaginasBusqueda > 1) {
-            htmlContenido += `
-              <div class="paginador-busqueda-interno" style="display: flex; justify-content: space-between; align-items: center; margin-top: 25px; padding: 15px 0; border-top: 1px solid var(--gold);">
-                <button id="btn-ant-busqueda" 
-                        style="background: rgba(212,175,55,0.1); border: 1px solid var(--gold); color: #fff; padding: 8px 14px; border-radius: 6px; cursor: pointer;"
-                        ${paginaBusquedaActual === 1 ? "disabled style='opacity: 0.4; cursor: default;'" : ""}>
-                  ⬅ Anterior
-                </button>
-                <span style="color: var(--gold); font-size: 0.85rem; text-align: center;">
-                  Pág. ${paginaBusquedaActual} / ${totalPaginasBusqueda}<br>
+          if (totalPaginas > 1) {
+            html += `
+              <div style="display:flex; justify-content:space-between; align-items:center; margin-top:25px; padding:15px 0; border-top:1px solid var(--gold);">
+                <button id="btn-ant-busqueda" style="background:rgba(212,175,55,0.1); border:1px solid var(--gold); color:#fff; padding:8px 14px; border-radius:6px; cursor:pointer;"
+                  ${paginaActual === 1 ? "disabled style='opacity:0.4;cursor:default;'" : ""}>⬅ Anterior</button>
+                <span style="color:var(--gold); font-size:0.85rem; text-align:center;">
+                  Pág. ${paginaActual} / ${totalPaginas}<br>
                   <small style="color:#aaa;">(${encontrados.length} encontrados)</small>
                 </span>
-                <button id="btn-sig-busqueda" 
-                        style="background: rgba(212,175,55,0.1); border: 1px solid var(--gold); color: #fff; padding: 8px 14px; border-radius: 6px; cursor: pointer;"
-                        ${paginaBusquedaActual === totalPaginasBusqueda ? "disabled style='opacity: 0.4; cursor: default;'" : ""}>
-                  Siguiente ➡
-                </button>
-              </div>
-            `;
+                <button id="btn-sig-busqueda" style="background:rgba(212,175,55,0.1); border:1px solid var(--gold); color:#fff; padding:8px 14px; border-radius:6px; cursor:pointer;"
+                  ${paginaActual === totalPaginas ? "disabled style='opacity:0.4;cursor:default;'" : ""}>Siguiente ➡</button>
+              </div>`;
           }
 
-          contenedorResultados.innerHTML = htmlContenido;
+          contenedorResultados.innerHTML = html;
 
-          // Listeners de paginación
-          if (totalPaginasBusqueda > 1) {
-            document
-              .getElementById("btn-ant-busqueda")
-              ?.addEventListener("click", () => {
-                if (paginaBusquedaActual > 1) {
-                  paginaBusquedaActual--;
-                  renderizarBloqueBusqueda();
-                  contenedorResultados.scrollIntoView({ behavior: "smooth" });
-                }
-              });
-
-            document
-              .getElementById("btn-sig-busqueda")
-              ?.addEventListener("click", () => {
-                if (paginaBusquedaActual < totalPaginasBusqueda) {
-                  paginaBusquedaActual++;
-                  renderizarBloqueBusqueda();
-                  contenedorResultados.scrollIntoView({ behavior: "smooth" });
-                }
-              });
-          }
+          document
+            .getElementById("btn-ant-busqueda")
+            ?.addEventListener("click", () => {
+              if (paginaActual > 1) {
+                paginaActual--;
+                renderizar();
+                contenedorResultados.scrollIntoView({ behavior: "smooth" });
+              }
+            });
+          document
+            .getElementById("btn-sig-busqueda")
+            ?.addEventListener("click", () => {
+              if (paginaActual < totalPaginas) {
+                paginaActual++;
+                renderizar();
+                contenedorResultados.scrollIntoView({ behavior: "smooth" });
+              }
+            });
         }
 
-        renderizarBloqueBusqueda();
+        renderizar();
       } else {
         contenedorResultados.innerHTML = `
-          <div style="text-align: center; padding: 10px;">
-            <p style="color: #d4af37; font-weight: bold; margin-bottom: 5px;">Sin resultados</p>
+          <div style="text-align:center; padding:10px;">
+            <p style="color:#d4af37; font-weight:bold; margin-bottom:5px;">Sin resultados</p>
             <p class="placeholder-text">No se encontraron pasajes con el término "${inputOriginal}".</p>
           </div>`;
       }
     } catch (error) {
       console.error("Error en la búsqueda:", error);
-      contenedorResultados.innerHTML = `<p class="placeholder-text" style="color: #e34234;">Ocurrió un error al realizar la búsqueda.</p>`;
+      contenedorResultados.innerHTML = `<p class="placeholder-text" style="color:#e34234;">Ocurrió un error al realizar la búsqueda.</p>`;
     }
   });
 // --- ANTIGUO Y NUEVO TESTAMENTO (LISTAS Y CAPÍTULOS) ---
