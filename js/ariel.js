@@ -502,9 +502,9 @@ if (btnVolverAcerca) {
 document
   .getElementById("btn-ejecutar-busqueda")
   .addEventListener("click", async () => {
-    const inputOriginal = escaparHTML(
-      document.getElementById("input-busqueda").value.trim(),
-    );
+    const inputOriginal = document
+      .getElementById("input-busqueda")
+      .value.trim();
     const contenedorResultados = document.getElementById("resultados-busqueda");
 
     if (!inputOriginal) {
@@ -512,22 +512,91 @@ document
       return;
     }
 
-    // El resto de tu lógica de limpieza y búsqueda...
-
+    // ========== UTILIDADES ==========
     const limpiarTexto = (str) =>
       str
         .toLowerCase()
-        .replace(/[áäàâã]/g, "a")
-        .replace(/[éëèê]/g, "e")
-        .replace(/[íïìî]/g, "i")
-        .replace(/[óöòôõ]/g, "o")
-        .replace(/[úüùû]/g, "u")
+        .normalize("NFD")
+        .replace(/[\u0300-\u036f]/g, "") // quita tildes
         .replace(/ñ/g, "n");
 
-    const palabrasBusqueda = limpiarTexto(inputOriginal)
+    // Convierte números en palabras españolas a dígitos
+    const palabrasANumeros = (texto) => {
+      const mapa = {
+        cero: 0,
+        uno: 1,
+        una: 1,
+        dos: 2,
+        tres: 3,
+        cuatro: 4,
+        cinco: 5,
+        seis: 6,
+        siete: 7,
+        ocho: 8,
+        nueve: 9,
+        diez: 10,
+        once: 11,
+        doce: 12,
+        trece: 13,
+        catorce: 14,
+        quince: 15,
+        dieciseis: 16,
+        diecisiete: 17,
+        dieciocho: 18,
+        diecinueve: 19,
+        veinte: 20,
+        veintiuno: 21,
+        veintidos: 22,
+        veintitres: 23,
+        veinticuatro: 24,
+        veinticinco: 25,
+        veintiseis: 26,
+        veintisiete: 27,
+        veintiocho: 28,
+        veintinueve: 29,
+        treinta: 30,
+        cuarenta: 40,
+        cincuenta: 50,
+        sesenta: 60,
+        setenta: 70,
+        ochenta: 80,
+        noventa: 90,
+        cien: 100,
+        ciento: 100,
+      };
+
+      let t = " " + limpiarTexto(texto) + " ";
+
+      // Primero compuestos comunes
+      t = t.replace(
+        /\b(treinta|cuarenta|cincuenta|sesenta|setenta|ochenta|noventa)\s+y\s+(uno|dos|tres|cuatro|cinco|seis|siete|ocho|nueve)\b/g,
+        (m, dec, uni) => " " + (mapa[dec] + mapa[uni]) + " ",
+      );
+
+      // Luego simples
+      Object.keys(mapa).forEach((palabra) => {
+        const re = new RegExp(`\\b${palabra}\\b`, "g");
+        t = t.replace(re, " " + mapa[palabra] + " ");
+      });
+
+      return t.replace(/\s+/g, " ").trim();
+    };
+
+    // Normaliza el input para detectar citas
+    let inputParaCita = palabrasANumeros(inputOriginal);
+    inputParaCita = inputParaCita
+      .replace(/capitulo|cap\.?/g, " ")
+      .replace(/versiculos?|vers\.?|v\.?/g, " ")
+      .replace(/al|a|hasta|-/g, "-")
+      .replace(/[,;]/g, " ")
+      .replace(/\s+/g, " ")
+      .trim();
+
+    const inputLimpio = limpiarTexto(inputOriginal);
+    const terminoBusqueda = inputLimpio;
+    const palabrasBusqueda = terminoBusqueda
       .split(/\s+/)
       .filter((p) => p.length > 2);
-    const terminoBusqueda = limpiarTexto(inputOriginal);
 
     contenedorResultados.innerHTML = `<p class="placeholder-text">Buscando en las Escrituras...</p>`;
 
@@ -537,56 +606,87 @@ document
       let encontrados = [];
 
       if (datos.verses && Array.isArray(datos.verses)) {
-        const inputLimpio = limpiarTexto(inputOriginal);
+        // ========== 1. INTENTAR DETECTAR CITA ESTRUCTURADA ==========
+        // Ejemplos que soporta:
+        // "Mateo 5:13-16"
+        // "Mateo 5 13-16"
+        // "Mateo capítulo 5 versículo 13 al 16"
+        // "Mateo cinco trece al dieciseis" (después de convertir palabras)
 
-        // Detectamos si es una cita con versículo (ej: 1:1) o un capítulo entero (ej: Mateo 1)
-        const esCitaConVersiculo = /\d+[:\s]\d+/.test(inputOriginal);
+        const regexCita =
+          /([1-3]?\s*[a-zA-Záéíóúñü]+)\s+(\d{1,3})(?:\s*[:\s]\s*(\d{1,3})(?:\s*-\s*(\d{1,3}))?)?/;
+        const match = inputParaCita.match(regexCita);
 
+        let esCita = false;
+        let libroBuscado = null;
+        let capituloBuscado = null;
+        let versoDesde = null;
+        let versoHasta = null;
+
+        if (match) {
+          libroBuscado = limpiarTexto(match[1].replace(/\s+/g, " ").trim());
+          capituloBuscado = parseInt(match[2], 10);
+          if (match[3]) {
+            versoDesde = parseInt(match[3], 10);
+            versoHasta = match[4] ? parseInt(match[4], 10) : versoDesde;
+          }
+          esCita = true;
+        }
+
+        // ========== 2. RECORRER VERSÍCULOS ==========
         datos.verses.forEach((item) => {
           const textoLimpio = limpiarTexto(item.text || "");
           const libroLimpioItem = limpiarTexto(item.book_name || "");
 
-          // Verificamos si el input menciona este libro
-          const coincideLibro = inputLimpio.includes(libroLimpioItem);
-          const esCapituloEntero = coincideLibro && /\d+$/.test(inputLimpio);
+          if (esCita && libroBuscado) {
+            // ¿Coincide el libro? (soporta "1 juan", "1juan", "juan", etc.)
+            const coincideLibro =
+              libroLimpioItem === libroBuscado ||
+              libroLimpioItem.includes(libroBuscado) ||
+              libroBuscado.includes(libroLimpioItem) ||
+              // Casos especiales numerados
+              (libroBuscado.startsWith("1") &&
+                libroLimpioItem.startsWith("1") &&
+                libroLimpioItem.includes(libroBuscado.replace(/^1\s*/, ""))) ||
+              (libroBuscado.startsWith("2") &&
+                libroLimpioItem.startsWith("2") &&
+                libroLimpioItem.includes(libroBuscado.replace(/^2\s*/, ""))) ||
+              (libroBuscado.startsWith("3") &&
+                libroLimpioItem.startsWith("3") &&
+                libroLimpioItem.includes(libroBuscado.replace(/^3\s*/, "")));
 
-          if (esCitaConVersiculo) {
-            // Lógica para Versículo Específico (ej: Juan 3:16)
-            const coincideCapitulo = inputLimpio.includes(
-              item.chapter.toString(),
-            );
-            const coincideVersiculo = inputLimpio.includes(
-              item.verse.toString(),
-            );
-
-            if (coincideLibro && coincideCapitulo && coincideVersiculo) {
-              encontrados.push({
-                referencia: `${item.book_name} ${item.chapter}:${item.verse} (${datos.metadata?.translation || "Biblia"})`,
-                texto: item.text,
-              });
-            }
-          } else if (esCapituloEntero) {
-            // Lógica para Capítulo Entero (ej: Mateo 1)
-            const numeroCapituloBuscado = inputLimpio.replace(/\D/g, "");
-
-            if (item.chapter.toString() === numeroCapituloBuscado) {
-              encontrados.push({
-                referencia: `${item.book_name} ${item.chapter}:${item.verse} (${datos.metadata?.translation || "Biblia"})`,
-                texto: item.text,
-              });
+            if (coincideLibro && item.chapter === capituloBuscado) {
+              if (versoDesde === null) {
+                // Solo capítulo → todo el capítulo
+                encontrados.push({
+                  referencia: `${item.book_name} ${item.chapter}:${item.verse} (${datos.metadata?.translation || "Biblia"})`,
+                  texto: item.text,
+                });
+              } else if (item.verse >= versoDesde && item.verse <= versoHasta) {
+                // Rango de versículos
+                encontrados.push({
+                  referencia: `${item.book_name} ${item.chapter}:${item.verse} (${datos.metadata?.translation || "Biblia"})`,
+                  texto: item.text,
+                });
+              }
             }
           } else {
-            // Lógica original para Búsqueda por Palabras
-            const coincideFraseCompleta =
-              textoLimpio.includes(terminoBusqueda) ||
-              libroLimpioItem.includes(terminoBusqueda);
+            // ========== 3. BÚSQUEDA POR TEXTO / PALABRAS ==========
+            const coincideFraseCompleta = textoLimpio.includes(terminoBusqueda);
+
             const palabrasCoincidentes = palabrasBusqueda.filter((palabra) =>
               textoLimpio.includes(palabra),
             );
+
+            // Exigimos que coincidan al menos el 70% de las palabras significativas
+            // o la frase completa
+            const umbral = Math.max(
+              1,
+              Math.ceil(palabrasBusqueda.length * 0.7),
+            );
             const coincidePalabrasClave =
               palabrasBusqueda.length > 0 &&
-              palabrasCoincidentes.length >=
-                Math.min(palabrasBusqueda.length, 3);
+              palabrasCoincidentes.length >= umbral;
 
             if (coincideFraseCompleta || coincidePalabrasClave) {
               encontrados.push({
@@ -598,6 +698,7 @@ document
         });
       }
 
+      // ========== 4. RENDERIZAR RESULTADOS CON PAGINACIÓN ==========
       if (encontrados.length > 0) {
         let paginaBusquedaActual = 1;
         const porPagina = 20;
@@ -608,32 +709,46 @@ document
           const fin = paginaBusquedaActual * porPagina;
           const loteActual = encontrados.slice(inicio, fin);
 
-          // Guardamos los resultados globales para usarlos al hacer clic
-          resultadosBusquedaActuales = encontrados;
+          // Guardamos los resultados globales
+          window.resultadosBusquedaActuales = encontrados;
 
           let htmlContenido = loteActual
             .map(
               (item, index) => `
-        <div class="search-result-item" onclick='abrirResultadoPorIndice(${(paginaBusquedaActual - 1) * porPagina + index})' style="margin-bottom: 15px; border-bottom: 1px solid rgba(212,175,55,0.2); padding-bottom: 10px; cursor: pointer;">
-          <strong style="color: var(--gold); display: block; margin-bottom: 5px;">${item.referencia}</strong>
-          <p style="color: #e0e0e0; font-size: 0.95rem; line-height: 1.4;">"${item.texto}"</p>
-        </div>
-      `,
+            <div class="search-result-item" 
+                 onclick="abrirResultadoPorIndice(${inicio + index})" 
+                 style="margin-bottom: 15px; border-bottom: 1px solid rgba(212,175,55,0.2); padding-bottom: 10px; cursor: pointer;">
+              <strong style="color: var(--gold); display: block; margin-bottom: 5px;">${item.referencia}</strong>
+              <p style="color: #e0e0e0; font-size: 0.95rem; line-height: 1.4;">"${item.texto}"</p>
+            </div>
+          `,
             )
             .join("");
 
           if (totalPaginasBusqueda > 1) {
             htmlContenido += `
-          <div class="paginador-busqueda-interno" style="display: flex; justify-content: space-between; align-items: center; margin-top: 25px; padding: 15px 0; border-top: 1px solid var(--gold);">
-            <button id="btn-ant-busqueda" style="background: rgba(212,175,55,0.1); border: 1px solid var(--gold); color: #fff; padding: 8px 14px; border-radius: 6px; cursor: pointer;" ${paginaBusquedaActual === 1 ? 'disabled style="opacity: 0.4; cursor: default;"' : ""}>⬅ Anterior</button>
-            <span style="color: var(--gold); font-size: 0.85rem; text-align: center;">Pág. ${paginaBusquedaActual} / ${totalPaginasBusqueda}<br><small style="color:#aaa;">(${encontrados.length} encontrados)</small></span>
-            <button id="btn-sig-busqueda" style="background: rgba(212,175,55,0.1); border: 1px solid var(--gold); color: #fff; padding: 8px 14px; border-radius: 6px; cursor: pointer;" ${paginaBusquedaActual === totalPaginasBusqueda ? 'disabled style="opacity: 0.4; cursor: default;"' : ""}>Siguiente ➡</button>
-          </div>
-        `;
+              <div class="paginador-busqueda-interno" style="display: flex; justify-content: space-between; align-items: center; margin-top: 25px; padding: 15px 0; border-top: 1px solid var(--gold);">
+                <button id="btn-ant-busqueda" 
+                        style="background: rgba(212,175,55,0.1); border: 1px solid var(--gold); color: #fff; padding: 8px 14px; border-radius: 6px; cursor: pointer;"
+                        ${paginaBusquedaActual === 1 ? "disabled style='opacity: 0.4; cursor: default;'" : ""}>
+                  ⬅ Anterior
+                </button>
+                <span style="color: var(--gold); font-size: 0.85rem; text-align: center;">
+                  Pág. ${paginaBusquedaActual} / ${totalPaginasBusqueda}<br>
+                  <small style="color:#aaa;">(${encontrados.length} encontrados)</small>
+                </span>
+                <button id="btn-sig-busqueda" 
+                        style="background: rgba(212,175,55,0.1); border: 1px solid var(--gold); color: #fff; padding: 8px 14px; border-radius: 6px; cursor: pointer;"
+                        ${paginaBusquedaActual === totalPaginasBusqueda ? "disabled style='opacity: 0.4; cursor: default;'" : ""}>
+                  Siguiente ➡
+                </button>
+              </div>
+            `;
           }
 
           contenedorResultados.innerHTML = htmlContenido;
 
+          // Listeners de paginación
           if (totalPaginasBusqueda > 1) {
             document
               .getElementById("btn-ant-busqueda")
@@ -660,10 +775,10 @@ document
         renderizarBloqueBusqueda();
       } else {
         contenedorResultados.innerHTML = `
-    <div style="text-align: center; padding: 10px;">
-      <p style="color: #d4af37; font-weight: bold; margin-bottom: 5px;">Sin resultados</p>
-      <p class="placeholder-text">No se encontraron pasajes con el término "${inputOriginal}".</p>
-    </div>`;
+          <div style="text-align: center; padding: 10px;">
+            <p style="color: #d4af37; font-weight: bold; margin-bottom: 5px;">Sin resultados</p>
+            <p class="placeholder-text">No se encontraron pasajes con el término "${inputOriginal}".</p>
+          </div>`;
       }
     } catch (error) {
       console.error("Error en la búsqueda:", error);
