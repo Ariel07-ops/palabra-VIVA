@@ -242,9 +242,9 @@
         "inquietação"
       ],
       "respuesta": {
-        "es": "Ante la locura del acelere diario, el apóstol Pablo nos invita a presentar nuestras peticiones a Dios, «y la paz de Dios, que sobrepasa todo entendimiento, cuidará sus corazones» (Filipenses 4, 6-7). ${nombreIngresado},Soltá un poco el volante y dejá que Él cargue el peso.",
-        "en": "Amidst the madness of daily hustle, the apostle Paul invites us to present our requests to God, «and the peace of God, which transcends all understanding, will guard your hearts» (Philippians 4:6-7). ${nombreIngresado},Let go of the steering wheel a bit and let Him carry the weight.",
-        "pt": "Diante da loucura da correria diária, o apóstolo Paulo nos convida a apresentar nossos pedidos a Deus, «e a paz de Deus, que excede todo o entendimento, guardará os vossos corações» (Filipenses 4,6-7). ${nombreIngresado},Solte um pouco o volante e deixe que Ele carregue o peso."
+        "es": "Ante la locura del acelere diario, el apóstol Pablo nos invita a presentar nuestras peticiones a Dios, «y la paz de Dios, que sobrepasa todo entendimiento, cuidará sus corazones» (Filipenses 4, 6-7). ${nombreIngresado}, Soltá un poco el volante y dejá que Él cargue el peso.",
+        "en": "Amidst the madness of daily hustle, the apostle Paul invites us to present our requests to God, «and the peace of God, which transcends all understanding, will guard your hearts» (Philippians 4:6-7). ${nombreIngresado}, let go of the steering wheel a bit and let Him carry the weight.",
+        "pt": "Diante da loucura da correria diária, o apóstolo Paulo nos convida a apresentar nossos pedidos a Deus, «e a paz de Deus, que excede todo o entendimento, guardará os vossos corações» (Filipenses 4,6-7). ${nombreIngresado}, Solte um pouco o volante e deixe que Ele carregue o peso."
       }
     },
     "perdon": {
@@ -265,8 +265,8 @@
         "offense"
       ],
       "respuesta": {
-        "es": "«Perdonar no es olvidar, es dejar en libertad a un preso... ¡y descubrir que el preso eras vos!». El perdón es el puente que nos acerca al amor misericordioso del Padre (Mateo 18, 21-22). Cuesta, ${nombreIngresado},vaya si cuesta, pero es la única llave que le devuelve el aire al alma.",
-        "en": "«Forgiving is not forgetting, it is setting a prisoner free... and discovering that the prisoner was you!». Forgiveness is the bridge that brings us closer to the Father's merciful love (Matthew 18:21-22). It is hard, ${nombreIngresado},oh how hard it is, but it is the only key that returns air to the soul.",
+        "es": "«Perdonar no es olvidar, es dejar en libertad a un preso... ¡y descubrir que el preso eras vos!». El perdón es el puente que nos acerca al amor misericordioso del Padre (Mateo 18, 21-22). Cuesta, ${nombreIngresado}, vaya si cuesta, pero es la única llave que le devuelve el aire al alma.",
+        "en": "«Forgiving is not forgetting, it is setting a prisoner free... and discovering that the prisoner was you!». Forgiveness is the bridge that brings us closer to the Father's merciful love (Matthew 18:21-22). It is hard, ${nombreIngresado}, oh how hard it is, but it is the only key that returns air to the soul.",
         "pt": "«Perdoar não é esquecer, é colocar um prisioneiro em liberdade... e descobrir que o prisioneiro era você!». O perdão é a ponte que nos aproxima do amor misericordioso do Pai (Mateus 18,21-22). Custa, ${nombreIngresado}, e como custa, mas é a única chave que devolve o ar à alma."
       }
     },
@@ -286,9 +286,9 @@
         "incerteza"
       ],
       "respuesta": {
-        "es": "«No temas, porque yo estoy contigo» (Isaías 41, 10). ${nombreIngresado},Vivimos asustados por mil fantasmas que a veces ni existen, pero la confianza en un Dios que es Padre y nos cuida desarma de raíz cualquier temblor en las rodillas.",
-        "en": "«Do not fear, for I am with you» (Isaiah 41:10). ${nombreIngresado},We live scared by a thousand ghosts that sometimes don't even exist, but trust in a God who is a Father and takes care of us completely disarms any trembling in our knees.",
-        "pt": "«Não temas, porque eu estou contigo» (Isaías 41,10). ${nombreIngresado},Vivemos assustados por mil fantasmas que às vezes nem existem, mas a confiança em um Deus que é Pai e cuida de nós desarmará pela raiz qualquer tremor nos joelhos."
+        "es": "«No temas, porque yo estoy contigo» (Isaías 41, 10). ${nombreIngresado}, Vivimos asustados por mil fantasmas que a veces ni existen, pero la confianza en un Dios que es Padre y nos cuida desarma de raíz cualquier temblor en las rodillas.",
+        "en": "«Do not fear, for I am with you» (Isaiah 41:10). ${nombreIngresado}, We live scared by a thousand ghosts that sometimes don't even exist, but trust in a God who is a Father and takes care of us completely disarms any trembling in our knees.",
+        "pt": "«Não temas, porque eu estou contigo» (Isaías 41,10). ${nombreIngresado}, Vivemos assustados por mil fantasmas que às vezes nem existem, mas a confiança em um Deus que é Pai e cuida de nós desarmará pela raiz qualquer tremor nos joelhos."
       }
     },
     "esperanza": {
@@ -402,9 +402,9 @@
         "fúria"
       ],
       "respuesta": {
-        "es": "Qué fastidio cargar con bronca adentro. Como decía la Escritura, seamos tardos para la ira (Stg 1,19). ${nombreIngresado},Cuando te pisan los talones o te da rabia el día, descargá ese motorcito caliente acá, que te leo con paciencia.",
-        "en": "How annoying it is to carry anger inside. As Scripture says, let us be slow to anger (Jas 1:19). ${nombreIngresado},When heels are stepped on or the day makes you furious, unload that hot little engine here, I'll read you with patience.",
-        "pt": "Que chato carregar raiva por dentro. Como dizia a Escritura, sejamos tardios para a ira (Tg 1,19). ${nombreIngresado},Quando pisarem nos seus calcanhares ou o dia lhe der raiva, descarregue esse motorzinho quente aqui, eu leio você com paciência."
+        "es": "Qué fastidio cargar con bronca adentro. Como decía la Escritura, seamos tardos para la ira (Stg 1,19). ${nombreIngresado}, Cuando te pisan los talones o te da rabia el día, descargá ese motorcito caliente acá, que te leo con paciencia.",
+        "en": "How annoying it is to carry anger inside. As Scripture says, let us be slow to anger (Jas 1:19). ${nombreIngresado}, When heels are stepped on or the day makes you furious, unload that hot little engine here, I'll read you with patience.",
+        "pt": "Que chato carregar raiva por dentro. Como dizia a Escritura, sejamos tardios para a ira (Tg 1,19). ${nombreIngresado}, Quando pisarem nos seus calcanhares ou o dia lhe der raiva, descarregue esse motorzinho quente aqui, eu leio você com paciência."
       }
     },
     "ruido": {
@@ -424,8 +424,8 @@
       ],
       "respuesta": {
         "es": "¡Qué cosa insoportable cuando el griterío de afuera te taladra la cabeza y te roba la paz! Dan ganas de huir al desierto.${nombreIngresado}, Buscate un rincón con silencio; el alma necesita bajar los decibeles para escuchar lo importante.",
-        "en": "What an unbearable thing when outside shouting drills through your head and steals your peace! It makes you want to flee to the desert.${nombreIngresado},Find a corner with silence; the soul needs to lower the decibels to hear what matters.",
-        "pt": "Que coisa insuportável quando a gritaria de fora fura a sua cabeça e rouba a sua paz! Dá vontade de fugir para o deserto. ${nombreIngresado},Procure um canto com silêncio; a alma precisa baixar os decibéis para ouvir o que é importante."
+        "en": "What an unbearable thing when outside shouting drills through your head and steals your peace! It makes you want to flee to the desert.${nombreIngresado}, Find a corner with silence; the soul needs to lower the decibels to hear what matters.",
+        "pt": "Que coisa insuportável quando a gritaria de fora fura a sua cabeça e rouba a sua paz! Dá vontade de fugir para o deserto. ${nombreIngresado}, Procure um canto com silêncio; a alma precisa baixar os decibéis para ouvir o que é importante."
       }
     },
     "dormir": {
@@ -474,9 +474,9 @@
     }
   },
   "descargo_pastoral": {
-    "es": "Puedo ayudarte a reflexionar desde la Sagrada Escritura y el espíritu de la Iglesia, pero recordá ${nombreIngresado},que este es un espacio de acompañamiento virtual y no reemplaza el consejo directo de un sacerdote o director espiritual.",
-    "en": "I can help you reflect from Sacred Scripture and the spirit of the Church, but remember ${nombreIngresado},that this is a virtual accompaniment space and does not replace direct advice from a priest or spiritual director.",
-    "pt": "Posso ajudar você a refletir a partir da Sagrada Escritura e do espírito da Igreja, mas lembre-se ${nombreIngresado},de que este é um espaço de acompanhamento virtual e não substitui o conselho direto de um sacerdote ou diretor espiritual."
+    "es": "Puedo ayudarte a reflexionar desde la Sagrada Escritura y el espíritu de la Iglesia, pero recordá ${nombreIngresado}, que este es un espacio de acompañamiento virtual y no reemplaza el consejo directo de un sacerdote o director espiritual.",
+    "en": "I can help you reflect from Sacred Scripture and the spirit of the Church, but remember ${nombreIngresado}, that this is a virtual accompaniment space and does not replace direct advice from a priest or spiritual director.",
+    "pt": "Posso ajudar você a refletir a partir da Sagrada Escritura e do espírito da Igreja, mas lembre-se ${nombreIngresado}, de que este é um espaço de acompanhamento virtual e não substitui o conselho direto de um sacerdote ou diretor espiritual."
   },
   "preguntas_frecuentes": [
     {
@@ -487,7 +487,6 @@
         "que podemos charlar",
         "que puedo preguntar",
         "que te puedo",
-        "what is",
         "o que é",
         "palabra viva",
         "este espacio",
@@ -495,9 +494,9 @@
         "como usar"
       ],
       "respuesta": {
-        "es": "${nombreIngresado},<strong>Palabra Viva</strong> es un espacio creado para el acompañamiento espiritual y la pausa diaria. Para buscar citas exactas o pasajes de la Biblia, te sugiero utilizar el buscador dedicado que está en la barra del menú lateral (por ejemplo, 'Juan 1:1'), o consultar la Sagrada Escritura en la página principal. Recordá que también podés escribirme: Alma, Pesaj o Trinidad para más información.",
-        "en": "${nombreIngresado},<strong>Palabra Viva</strong> is a space created for spiritual accompaniment and daily pause. To search for exact quotes or passages of the Bible, I suggest using the dedicated search engine in the sidebar (for example, 'John 1:1'), or consulting Sacred Scripture on the main page. Remember you can also write to me: Alma, Pesaj, or Trinidad for more information.",
-        "pt": "${nombreIngresado},<strong>Palabra Viva</strong> é um espaço criado para o acompanhamento espiritual e a pausa diária. Para buscar citações exatas ou passagens da Bíblia, sugiro usar o buscador dedicado que está na barra do menu lateral (por exemplo, 'João 1:1'), ou consultar a Bíblia na página principal. Lembre-se de que você também pode me escrever: Alma, Pesaj ou Trinida para mais informações."
+        "es": "${nombreIngresado}, <strong>Palabra Viva</strong> es un espacio creado para el acompañamiento espiritual y la pausa diaria. Para buscar citas exactas o pasajes de la Biblia, te sugiero utilizar el buscador dedicado que está en la barra del menú lateral (por ejemplo, 'Juan 1:1'), o consultar la Sagrada Escritura en la página principal. Recordá que también podés escribirme: Alma, Pesaj o Trinidad para más información.",
+        "en": "${nombreIngresado}, <strong>Palabra Viva</strong> is a space created for spiritual accompaniment and daily pause. To search for exact quotes or passages of the Bible, I suggest using the dedicated search engine in the sidebar (for example, 'John 1:1'), or consulting Sacred Scripture on the main page. Remember you can also write to me: Alma, Pesaj, or Trinidad for more information.",
+        "pt": "${nombreIngresado}, <strong>Palabra Viva</strong> é um espaço criado para o acompanhamento espiritual e a pausa diária. Para buscar citações exatas ou passagens da Bíblia, sugiro usar o buscador dedicado que está na barra do menu lateral (por exemplo, 'João 1:1'), ou consultar a Bíblia na página principal. Lembre-se de que você também pode me escrever: Alma, Pesaj ou Trinida para mais informações."
       }
     },
     {
@@ -848,9 +847,9 @@
         "la misericordia de dios",
         "Puedo volver a Él aunque me haya alejado",
         "dios me perdona",
-        "runs to meet him, and embraces him",
+        "Can I return to him even if I have wandered away?",
         "gods mercy",
-        "voltar para Ele mesmo depois de ter me afastado",
+        "Posso voltar para Ele mesmo depois de ter me afastado",
         "misericordia de deus"
       ],
       "es": {
@@ -1410,7 +1409,9 @@
         "corrupcion",
         "confiar en la iglesia",
         "pecadores",
+        "How can I trust the Church in the face of the",
         "church scandals",
+        "Como posso confiar na Igreja diante dos",
         "escândalos na igreja"
       ],
       "es": {
@@ -2038,7 +2039,7 @@
         "que es el pecado",
         "pecar",
         "pecado",
-        "what is sin",
+        "What is sin?",
         "o que é o pecado"
       ],
       "es": {
@@ -2239,7 +2240,9 @@
         "como rezar el rosario",
         "misterios del rosario",
         "rosario",
+        "What is the Rosary?",
         "pray the rosary",
+        "O que é o Rosário?",
         "rezar o rosário"
       ],
       "es": {
@@ -2304,6 +2307,7 @@
         "no puedo perdonar",
         "me hirieron perdon",
         "perdonar",
+        "How do I forgive if I've been hurt?",
         "how to forgive",
         "como perdoar"
       ],
@@ -3271,8 +3275,9 @@
         "significado de la pascua",
         "pascua judia y cristiana",
         "paso del señor",
-        "passover",
-        "pascoa"
+        "What does Easter/Passover mean and what is its connection between the Old and New Testaments?",
+        "pascoa",
+        "passover"
       ],
       "es": {
         "pregunta_principal": "¿Qué significa la Pascua y cuál es su relación entre el Antiguo y el Nuevo Testamento?",
@@ -3646,51 +3651,54 @@
         "mesias prometido",
         "vemos cumplidas todas las promesas",
         "promesas de dios",
+        "por que creemos que jesus es el verdadero mesias",
         "o verdadeiro Messias",
         "vemos todas as promessas cumpridas",
+        "por que acreditamos que jesus e o verdadeiro messias",
         "is the true Messiah",
-        "see all the promises fulfilled"
+        "see all the promises fulfilled",
+        "why do we believe jesus is the true messiah"
       ],
       "es": {
         "pregunta_principal": "¿Por qué creemos que Jesús es el verdadero Mesías si todavía no vemos cumplidas todas las promesas?",
         "puerta_de_entrada": "Desde lejos, una cordillera puede parecer una sola montaña: vemos sus cumbres, pero no distinguimos los valles que las separan. Algo semejante puede ocurrir con las promesas de Dios: en Cristo comienza su cumplimiento, aunque la plenitud todavía esté por llegar.",
-        "respuesta_breve": "Los cristianos creemos que Jesús es el Mesías prometido a Israel. En su vida, su Pasión y su Resurrección, las promesas y esperanzas de Israel alcanzan un cumplimiento decisivo, pero inesperado: Jesús no instaura un poder político ni elimina de inmediato todo sufrimiento. El Reino ya comenzó en Él, mientras esperamos su consumación cuando vuelva en gloria. Es una sola obra de salvación, realizada progresivamente en la historia. [:1](?page=documents&document=00a1de35-98f1-481a-956f-e98e2b52331d&ref=21)",
+        "respuesta_breve": "Los cristianos creemos que Jesús es el Mesías prometido a Israel. En su vida, su Pasión y su Resurrección, las promesas y esperanzas de Israel alcanzan un cumplimiento decisivo, pero inesperado: Jesús no instaura un poder político ni elimina de inmediato todo sufrimiento. El Reino ya comenzó en Él, mientras esperamos su consumación cuando vuelva en gloria. Es una sola obra de salvación, realizada progresivamente en la historia.",
         "paradoja": "El Mesías vence, pero su victoria pasa por la cruz; el Reino ya está presente, pero todavía esperamos verlo en plenitud. La cumbre ya apareció en el horizonte, aunque aún caminamos por el valle.",
-        "aclaracion": "La imagen de las montañas es una analogía para explicar el cumplimiento inaugurado y la plenitud futura; no significa que toda profecía anuncie explícitamente dos fechas o que todos los judíos esperaran exactamente lo mismo. Las Escrituras tuvieron sentido para sus primeros oyentes y, para los cristianos, algunas adquieren una plenitud nueva al releerlas a la luz de Cristo. No conviene presentarlas como fotografías anticipadas de acontecimientos futuros ni juzgar la fe judía como obstinación. [:1](?page=documents&document=00a1de35-98f1-481a-956f-e98e2b52331d&ref=21)",
+        "aclaracion": "La imagen de las montañas es una analogía para explicar el cumplimiento inaugurado y la plenitud futura; no significa que toda profecía anuncie explícitamente dos fechas o que todos los judíos esperaran exactamente lo mismo. Las Escrituras tuvieron sentido para sus primeros oyentes y, para los cristianos, algunas adquieren una plenitud nueva al releerlas a la luz de Cristo. No conviene presentarlas como fotografías anticipadas de acontecimientos futuros ni juzgar la fe judía como obstinación.",
         "paso_concreto": "Leé Lucas 24, 25-27.44-46 y preguntate cómo la cruz y la Resurrección cambian la manera de comprender la esperanza del Mesías. Después, pensá qué parte de la obra de Cristo ya transforma hoy tu vida y qué plenitud todavía esperás.",
         "oracion": "Jesús, Mesías y Señor, ayudanos a reconocerte en la humildad de la cruz y en la gloria de la Resurrección. Sostené nuestra esperanza mientras esperamos la plenitud de tu Reino. Amén.",
         "enseñanza_de_la_iglesia": [
-          "La Pontificia Comisión Bíblica enseña que el plan salvador de Dios es uno y se realiza progresivamente; para los cristianos, su cumplimiento ya se ha realizado sustancialmente en el misterio de Cristo, pero la plenitud definitiva llegará al final, con la resurrección de los muertos y la nueva creación. [:1](?page=documents&document=00a1de35-98f1-481a-956f-e98e2b52331d&ref=21)",
-          "El Nuevo Testamento confiesa a Jesús de Nazaret como el Mesías esperado y comprende su mesianismo a la luz de su sufrimiento, muerte y Resurrección, no como un proyecto político terreno. [:2](?page=documents&document=00a1de35-98f1-481a-956f-e98e2b52331d&ref=63)",
-          "La esperanza mesiánica judía no debe ser ridiculizada: los cristianos también vivimos esperando la consumación, aunque creemos que quien ha de venir es Jesús, que ya vino y actúa entre nosotros. [:1](?page=documents&document=00a1de35-98f1-481a-956f-e98e2b52331d&ref=21)"
+          "La Pontificia Comisión Bíblica ensena que el plan salvador de Dios es uno y se realiza progresivamente; para los cristianos, su cumplimiento ya se ha realizado sustancialmente en el misterio de Cristo, pero la plenitud definitiva llegará al final, con la resurrección de los muertos y la nueva creación.",
+          "El Nuevo Testamento confiesa a Jesús de Nazaret como el Mesías esperado y comprende su mesianismo a la luz de su sufrimiento, muerte y Resurrección, no como un proyecto político terreno.",
+          "La esperanza mesiánica judía no debe ser ridiculizada: los cristianos también vivimos esperando la consumación, aunque creemos que quien ha de venir es Jesús, que ya vino y actúa entre nosotros."
         ]
       },
       "en": {
         "pregunta_principal": "Why do we believe Jesus is the true Messiah if we do not yet see all the promises fulfilled?",
         "puerta_de_entrada": "From a distance, a mountain range can look like a single mountain: we see its peaks but not the valleys between them. Something similar can happen with God's promises: their fulfillment begins in Christ, even though its fullness is still to come.",
-        "respuesta_breve": "Christians believe that Jesus is the Messiah promised to Israel. In his life, Passion, and Resurrection, Israel's hopes and promises reach a decisive but unexpected fulfillment: Jesus does not establish a political power or immediately remove all suffering. The Kingdom has already begun in him, while we await its fullness when he returns in glory. It is one work of salvation, unfolding progressively in history. [:1](?page=documents&document=00a1de35-98f1-481a-956f-e98e2b52331d&ref=21)",
+        "respuesta_breve": "Christians believe that Jesus is the Messiah promised to Israel. In his life, Passion, and Resurrection, Israel's hopes and promises reach a decisive but unexpected fulfillment: Jesus does not establish a political power or immediately remove all suffering. The Kingdom has already begun in him, while we await its fullness when he returns in glory. It is one work of salvation, unfolding progressively in history.",
         "paradoja": "The Messiah conquers, but his victory comes through the Cross; the Kingdom is already present, yet we still await its fullness. The peak has appeared on the horizon, but we are still walking through the valley.",
-        "aclaracion": "The mountain image is an analogy for fulfillment begun now and brought to completion in the future; it does not mean that every prophecy explicitly announces two dates or that all Jewish people expected exactly the same things. Scripture had meaning for its first hearers, and Christians believe that some passages take on a fuller meaning when reread in the light of Christ. They should not be treated as photographic predictions of future events, nor should Jewish faith be dismissed as stubbornness. [:1](?page=documents&document=00a1de35-98f1-481a-956f-e98e2b52331d&ref=21)",
+        "aclaracion": "The mountain image is an analogy for fulfillment begun now and brought to completion in the future; it does not mean that every prophecy explicitly announces two dates or that all Jewish people expected exactly the same things. Scripture had meaning for its first hearers, and Christians believe that some passages take on a fuller meaning when reread in the light of Christ. They should not be treated as photographic predictions of future events, nor should Jewish faith be dismissed as stubbornness.",
         "paso_concreto": "Read Luke 24:25-27, 44-46, and consider how the Cross and Resurrection reshape the hope for the Messiah. Then ask what part of Christ's work is already transforming your life and what fullness you still hope for.",
         "oracion": "Jesus, Messiah and Lord, help us recognize you in the humility of the Cross and the glory of the Resurrection. Sustain our hope as we await the fullness of your Kingdom. Amen.",
         "enseñanza_de_la_iglesia": [
-          "The Pontifical Biblical Commission teaches that God's saving plan is one and unfolds progressively. For Christians, its fulfillment has already been substantially accomplished in Christ, while its definitive fullness will come at the end, with the resurrection of the dead and the new creation. [:1](?page=documents&document=00a1de35-98f1-481a-956f-e98e2b52331d&ref=21)",
-          "The New Testament confesses Jesus of Nazareth as the expected Messiah and understands his messiahship in the light of his suffering, death, and Resurrection—not as an earthly political project. [:2](?page=documents&document=00a1de35-98f1-481a-956f-e98e2b52331d&ref=63)",
-          "Jewish messianic hope should not be ridiculed: Christians also live in expectation of the fulfillment, though we believe that the one who is to come is Jesus, who has already come and is active among us. [:1](?page=documents&document=00a1de35-98f1-481a-956f-e98e2b52331d&ref=21)"
+          "The Pontifical Biblical Commission teaches that God's saving plan is one and unfolds progressively. For Christians, its fulfillment has already been substantially accomplished in Christ, while its definitive fullness will come at the end, with the resurrection of the dead and the new creation.",
+          "The New Testament confesses Jesus of Nazareth as the expected Messiah and understands his messiahship in the light of his suffering, death, and Resurrection—not as an earthly political project.",
+          "Jewish messianic hope should not be ridiculed: Christians also live in expectation of the fulfillment, though we believe that the one who is to come is Jesus, who has already come and is active among us."
         ]
       },
       "pt": {
         "pregunta_principal": "Por que acreditamos que Jesus é o verdadeiro Messias se ainda não vemos todas as promessas cumpridas?",
         "puerta_de_entrada": "De longe, uma cordilheira pode parecer uma única montanha: vemos os picos, mas não os vales entre eles. Algo semelhante pode acontecer com as promessas de Deus: em Cristo começa o seu cumprimento, embora a plenitude ainda esteja por vir.",
-        "respuesta_breve": "Os cristãos acreditam que Jesus é o Messias prometido a Israel. Na sua vida, Paixão e Ressurreição, as esperanças e promessas de Israel alcançam um cumprimento decisivo, mas inesperado: Jesus não estabelece um poder político nem elimina imediatamente todo o sofrimento. O Reino já começou nele, enquanto esperamos a sua plenitude quando voltar na glória. É uma única obra de salvação, realizada progressivamente na história. [:1](?page=documents&document=00a1de35-98f1-481a-956f-e98e2b52331d&ref=21)",
+        "respuesta_breve": "Os cristãos acreditam que Jesus é o Messias prometido a Israel. Na sua vida, Paixão e Ressurreição, as esperanças e promessas de Israel alcançam um cumprimento decisivo, mas inesperado: Jesus não estabelece um poder político nem elimina imediatamente todo o sofrimento. O Reino já começou nele, enquanto esperamos a sua plenitude quando voltar na glória. É uma única obra de salvação, realizada progressivamente na história.",
         "paradoja": "O Messias vence, mas a sua vitória passa pela cruz; o Reino já está presente, mas ainda esperamos vê-lo em plenitude. O pico já apareceu no horizonte, embora ainda caminhemos pelo vale.",
-        "aclaracion": "A imagem das montanhas é uma analogia para explicar o cumprimento iniciado e a plenitude futura; não significa que toda profecia anuncie explicitamente duas datas nem que todos os judeus esperassem exatamente as mesmas coisas. As Escrituras tinham sentido para os seus primeiros ouvintes e, para os cristãos, algumas adquirem uma plenitude nova quando relidas à luz de Cristo. Não convém apresentá-las como fotografias antecipadas de acontecimentos futuros nem julgar a fé judaica como obstinação. [:1](?page=documents&document=00a1de35-98f1-481a-956f-e98e2b52331d&ref=21)",
+        "aclaracion": "A imagem das montanhas é uma analogia para explicar o cumprimento iniciado e a plenitude futura; não significa que toda profecia anuncie explicitamente duas datas nem que todos os judeus esperassem exatamente as mesmas coisas. As Escrituras tinham sentido para os seus primeiros ouvintes e, para os cristãos, algumas adquirem uma plenitude nova quando relidas à luz de Cristo. Não convém apresentá-las como fotografias antecipadas de acontecimentos futuros nem julgar a fé judaica como obstinação.",
         "paso_concreto": "Leia Lucas 24, 25-27.44-46 e pergunte-se como a cruz e a Ressurreição mudam a maneira de compreender a esperança do Messias. Depois, pense em que aspecto da obra de Cristo já transforma a sua vida e que plenitude ainda espera.",
         "oracion": "Jesus, Messias e Senhor, ajuda-nos a reconhecer-te na humildade da cruz e na glória da Ressurreição. Sustenta a nossa esperança enquanto esperamos a plenitude do teu Reino. Amém.",
         "enseñanza_de_la_iglesia": [
-          "A Pontifícia Comissão Bíblica ensina que o plano salvador de Deus é uno e se realiza progressivamente. Para os cristãos, o seu cumprimento já se realizou substancialmente no mistério de Cristo, mas a plenitude definitiva virá no fim, com a ressurreição dos mortos e a nova criação. [:1](?page=documents&document=00a1de35-98f1-481a-956f-e98e2b52331d&ref=21)",
-          "O Novo Testamento confessa Jesus de Nazaré como o Messias esperado e compreende o seu messianismo à luz do sofrimento, da morte e da Ressurreição, não como um projeto político terreno. [:2](?page=documents&document=00a1de35-98f1-481a-956f-e98e2b52331d&ref=63)",
-          "A esperança messiânica judaica não deve ser ridicularizada: os cristãos também vivem na expectativa da consumação, embora acreditemos que aquele que há de vir é Jesus, que já veio e atua entre nós. [:1](?page=documents&document=00a1de35-98f1-481a-956f-e98e2b52331d&ref=21)"
+          "A Pontifícia Comissão Bíblica ensina que o plano salvador de Deus é uno e se realiza progressivamente. Para os cristãos, o seu cumprimento já se realizou substancialmente no mistério de Cristo, mas a plenitude definitiva virá no fim, com a ressurreição dos mortos e a nova criação.",
+          "O Novo Testamento confessa Jesus de Nazaré como o Messias esperado e compreende o seu messianismo à luz do sofrimento, da morte e da Ressurreição, não como um projeto político terreno.",
+          "A esperança messiânica judaica não deve ser ridicularizada: os cristãos também vivem na expectativa da consumação, embora acreditemos que aquele que há de vir é Jesus, que já veio e atua entre nós."
         ]
       }
     },
