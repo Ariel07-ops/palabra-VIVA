@@ -225,9 +225,6 @@
     },
     "ansiedad": {
       "keywords": [
-        "ansiedad",
-        "anxiety",
-        "ansiedade",
         "ansioso",
         "ansiosa",
         "anxious",
@@ -249,15 +246,10 @@
     },
     "perdon": {
       "keywords": [
-        "perdon",
         "perdono",
         "forgiveness",
         "perdão",
-        "perdon",
-        "forgive",
-        "perdoar",
         "rencor",
-        "resentment",
         "rancor",
         "culpa",
         "guilt",
@@ -272,9 +264,6 @@
     },
     "miedo": {
       "keywords": [
-        "miedo",
-        "fear",
-        "medo",
         "dread",
         "asustado",
         "asustada",
@@ -487,10 +476,23 @@
         "que podemos charlar",
         "que puedo preguntar",
         "que te puedo",
-        "o que é",
         "palabra viva",
         "este espacio",
         "what is it for",
+        "what can we talk about",
+        "what can we discuss",
+        "what can I ask you",
+        "what can I ask",
+        "what can I ask here",
+        "how can you help me",
+        "what is this space for",
+        "sobre o que podemos falar",
+        "o que podemos conversar",
+        "o que posso perguntar",
+        "o que posso te perguntar",
+        "como voce pode me ajudar",
+        "para que serve este espaco",
+        "quais temas podemos conversar",
         "como usar"
       ],
       "respuesta": {
@@ -2135,30 +2137,30 @@
       "id": "vida",
       "categoria": "Vida Cristiana",
       "keywords": [
-        "me siento solo",
+        "me siento vacio",
         "soledad",
         "estoy solo",
         "abandonado",
         "solo",
-        "feeling lonely",
-        "solidão"
+        "feeling empty",
+        "Sinto-me vazio"
       ],
       "es": {
-        "pregunta_principal": "Me siento solo",
+        "pregunta_principal": "Me siento vacio",
         "respuesta_breve": "«Yo estaré con ustedes todos los días, hasta el fin del mundo» (Mt 28,20). Aunque sientas que alrededor hay un silencio enorme, Él te habita y te conoce por tu nombre.",
         "paso_concreto": "Mándale un mensaje a alguien hoy y compartile un gesto de afecto.",
         "enseñanza_de_la_iglesia": ["CIC 301"],
         "fundamento_biblico": ["Mt 28,20", "Sal 27,10"]
       },
       "en": {
-        "pregunta_principal": "I feel lonely",
+        "pregunta_principal": "I feel empty",
         "respuesta_breve": "\"I am with you always, to the end of the age\" (Mt 28:20). Even if you feel there is a huge silence around you, He dwells within you and knows you by name.",
         "paso_concreto": "Send a message to someone today and share a gesture of affection.",
         "enseñanza_de_la_iglesia": ["CCC 301"],
         "fundamento_biblico": ["Mt 28:20", "Ps 27:10"]
       },
       "pt": {
-        "pregunta_principal": "Sinto-me sozinho",
+        "pregunta_principal": "Sinto-me vazio",
         "respuesta_breve": "«Eis que estou convosco todos os dias, até o fim dos tempos» (Mt 28,20). Ainda que você sinta que ao redor há um silêncio enorme, Ele habita em você e o conhece pelo nome.",
         "paso_concreto": "Envie uma mensagem para alguém hoje e compartilhe um gesto de carinho.",
         "enseñanza_de_la_iglesia": ["CIC 301"],
@@ -2305,7 +2307,7 @@
       "keywords": [
         "como perdonar",
         "no puedo perdonar",
-        "me hirieron perdon",
+        "Cómo perdonar si me hirieron",
         "perdonar",
         "How do I forgive if I've been hurt?",
         "how to forgive",
@@ -2490,8 +2492,9 @@
         "demonio lucifer",
         "angeles caidos",
         "demonio",
-        "fallen angels",
-        "anjos caídos"
+        "rebels or fallen angels",
+        "anjos caídos",
+        "os anjos rebeldes ou caídos"
       ],
       "es": {
         "pregunta_principal": "¿De dónde vienen los ángeles caídos?",
@@ -2501,14 +2504,14 @@
         "fundamento_biblico": ["Jn 8,44", "Ap 12,9"]
       },
       "en": {
-        "pregunta_principal": "Where do bad or fallen angels come from?",
+        "pregunta_principal": "Where do rebels or fallen angels come from?",
         "respuesta_breve": "Bad angels, known as demons, were originally created good by God. However, by their own free decision, they rebelled against God out of pride and rejected His love, turning into forces of evil and temptation.",
         "paso_concreto": "Remember that in the face of temptations or evil, God's grace and prayer are always stronger.",
         "enseñanza_de_la_iglesia": ["CCC 391", "CCC 392"],
         "fundamento_biblico": ["Jn 8:44", "Rev 12:9"]
       },
       "pt": {
-        "pregunta_principal": "De onde vêm os anjos maus ou caídos?",
+        "pregunta_principal": "De onde vêm os anjos rebeldes ou caídos?",
         "respuesta_breve": "Os anjos maus, conhecidos como demónios, foram originalmente criados bons por Deus. No entanto, por sua própria e livre decisão, rebelaram-se contra Deus por soberba e rejeitaram o seu amor, convertendo-se em forças do mal e da tentação.",
         "paso_concreto": "Lembre-se de que diante das tentações ou do mal, a graça de Deus e a oração são sempre mais fortes.",
         "enseñanza_de_la_iglesia": ["CIC 391", "CIC 392"],
@@ -2603,14 +2606,136 @@
       }
     },
     {
+      "id": "rebelion_angeles_decision",
+      "categoria": "Angeles",
+      "keywords": [
+        "rebelion en el cielo",
+        "por que desobedecieron los angeles",
+        "por que los demonios no pueden arrepentirse",
+        "libertad de los angeles",
+        "porque los angeles cayeron",
+        "decision de los angeles",
+        "rebellion in heaven",
+        "why did angels disobey",
+        "why cant demons repent",
+        "angelic free will",
+        "rebellious angels",
+        "rebelião no céu",
+        "por que os anjos desobedeceram",
+        "por que os demônios não podem se arrepender",
+        "liberdade dos anjos"
+      ],
+      "es": {
+        "pregunta_principal": "¿Cómo fue la rebelión de los ángeles y por qué su decisión es para siempre?",
+        "puerta_de_entrada": "A diferencia de los seres humanos, que aprendemos con el tiempo y podemos cambiar de parecer al darnos cuenta de un error, los ángeles poseen un intelecto puro e intuitivo. Al ser creados, vieron con claridad absoluta su elección y sus consecuencias.",
+        "respuesta_breve": "La caída de los ángeles rebeldes no fue por debilidad, sino por un rechazo libre, deliberado y definitivo al dominio de Dios y a su plan de salvación. Al ser criaturas espirituales de intelecto perfecto, su elección no es reversible: deciden de una vez y para siempre. Dios, en su infinita justicia y respeto por la libertad que Él mismo les otorgó, no los destruye, sino que les permite existir en el estado de separación definitiva que ellos mismos eligieron.",
+        "paradoja": "Dios respeta tanto el libre albedrío de sus criaturas que no anula ni siquiera la decisión de quienes lo rechazan. La existencia de los ángeles caídos es una prueba trágica de la libertad real.",
+        "aclaracion": "No debemos imaginar a los demonios como seres con poder equivalente al de Dios; son criaturas finitas. Su permanencia en la condena no se debe a que Dios les niegue el perdón, sino a que la naturaleza de su decisión angélica no admite arrepentimiento posterior.",
+        "paso_concreto": "Leé Apocalipsis 12, 7-9 y meditá sobre el valor sagrado de la libertad que Dios te ha dado. Reflexioná hoy sobre cómo usás tu libre albedrío para acercarte o alejarte del amor de Dios.",
+        "oracion": "Señor Dios, Creador de los cielos y de la tierra, preserva nuestro corazón del orgullo y de la soberbia. Danos la gracia de usar siempre nuestra libertad para amar y servir a tu Voluntad. Amén.",
+        "enseñanza_de_la_iglesia": [
+          "El Catecismo de la Iglesia Católica enseña que el carácter irrevocable de la elección de los ángeles es lo que hace que su caída sea definitiva, no un defecto de la misericordia divina (CEC 393).",
+          "La Iglesia profesa que el Diablo y los demás demonios fueron creados por Dios con una naturaleza buena, pero ellos mismos se hicieron malos por su propia acción (IV Concilio de Letrán)."
+        ]
+      },
+      "en": {
+        "pregunta_principal": "How did the rebellion of the angels happen, and why is their decision everlasting?",
+        "puerta_de_entrada": "Unlike human beings, who learn over time and change their minds upon realizing a mistake, angels possess a pure and intuitive intellect. Upon creation, they saw their choice and its consequences with absolute clarity.",
+        "respuesta_breve": "The fall of the rebellious angels was not out of weakness, but through a free, deliberate, and definitive rejection of God's sovereignty and his plan of salvation. Being spiritual creatures of perfect intellect, their choice is irreversible: they decide once and for all. God, in his infinite justice and respect for the freedom He granted them, does not destroy them, but allows them to exist in the state of definitive separation they chose for themselves.",
+        "paradoja": "God respects the free will of his creatures so deeply that He does not revoke even the choice of those who reject Him. The existence of fallen angels is a tragic proof of real freedom.",
+        "aclaracion": "We should not imagine demons as beings equal in power to God; they are finite creatures. Their remaining in condemnation is not because God denies them forgiveness, but because the nature of their angelic choice admits no subsequent repentance.",
+        "paso_concreto": "Read Revelation 12:7-9 and meditate on the sacred value of the freedom God has given you. Reflect today on how you use your free will to draw closer to or further from God's love.",
+        "oracion": "Lord God, Creator of heaven and earth, preserve our hearts from pride and arrogance. Grant us the grace to always use our freedom to love and serve your Will. Amen.",
+        "enseñanza_de_la_iglesia": [
+          "The Catechism of the Catholic Church teaches that it is the irrevocable character of their choice that makes the angels' fall definitive, not a defect in divine mercy (CCC 393).",
+          "The Church confesses that the Devil and the other demons were created naturally good by God, but they became evil by their own doing (Fourth Lateran Council)."
+        ]
+      },
+      "pt": {
+        "pregunta_principal": "Como foi a rebelião dos anjos e por que a sua decisão é para sempre?",
+        "puerta_de_entrada": "Diferente dos seres humanos, que aprendem com o tempo e mudam de opinião ao perceberem um erro, os anjos possuem um intelecto puro e intuitivo. Ao serem criados, viram com clareza absoluta a sua escolha e as suas consequências.",
+        "respuesta_breve": "A queda dos anjos rebeldes não foi por fraqueza, mas por uma rejeição livre, deliberada e definitiva da soberania de Deus e do seu plano de salvação. Sendo criaturas espirituais de intelecto perfeito, a sua escolha é irreversível: decidem de uma vez para sempre. Deus, na sua infinita justiça e respeito pela liberdade que Ele próprio lhes concedeu, não os destrói, mas permite que existam no estado de separação definitiva que eles próprios escolheram.",
+        "paradoja": "Deus respeita tanto o livre-arbítrio das suas criaturas que não anula nem mesmo a decisão daqueles que O rejeitam. A existência dos anjos caídos é uma prova trágica da liberdade real.",
+        "aclaracion": "Não devemos imaginar os demônios como seres com poder equivalente ao de Deus; são criaturas finitas. A sua permanência na condenação não se deve a Deus lhes negar o perdão, mas ao fato de a natureza da escolha angélica não admitir arrependimento posterior.",
+        "paso_concreto": "Leia Apocalipse 12, 7-9 e medite sobre o valor sagrado da liberdade que Deus lhe deu. Reflexione hoje sobre como você usa o seu livre-arbítrio para se aproximar ou se afastar do amor de Deus.",
+        "oracion": "Senhor Deus, Criador dos céus e da terra, preserva o nosso coração do orgulho e da soberba. Dá-nos a graça de usar sempre a nossa liberdade para amar e servir à tua Vontade. Amém.",
+        "enseñanza_de_la_iglesia": [
+          "O Catecismo da Igreja Católica ensina que é o caráter irrevogável da sua escolha que torna a queda dos anjos definitiva, e não um defeito da misericórdia divina (CIC 393).",
+          "A Igreja professa que o Diabo e os outros demônios foram criados por Deus com uma natureza boa, mas eles próprios se tornaram maus por sua própria ação (IV Concílio de Latrão)."
+        ]
+      }
+    },
+    {
+      "id": "lucifer_satanas_miguel_arcangel",
+      "categoria": "Angeles",
+      "keywords": [
+        "quien es lucifer",
+        "quien es satanas",
+        "son lo mismo lucifer y satanas",
+        "san miguel arcangel",
+        "quien como dios",
+        "arcangel miguel contra la rebelion",
+        "huestes celestiales",
+        "who is lucifer",
+        "who is satan",
+        "are lucifer and satan the same",
+        "saint michael the archangel",
+        "who is like god",
+        "quem e lucifer",
+        "quem e satanas",
+        "são a mesma coisa lucifer e satanas",
+        "são miguel arcanjo",
+        "quem como deus"
+      ],
+      "es": {
+        "pregunta_principal": "¿Quiénes son Lucero (Lucifer) y Satanás, y cuál fue el papel de San Miguel Arcángel?",
+        "puerta_de_entrada": "En la tradición bíblica y teológica se usan distintos nombres para referirse al líder de los ángeles caídos. Conocer su significado nos ayuda a comprender la batalla espiritual y el triunfo del bien sobre el orgullo.",
+        "respuesta_breve": "Originalmente, el nombre 'Lucifer' ('portador de luz') evoca la belleza y la dignidad del más alto de los ángeles creados por Dios. Al rebelarse por soberbia, perdió su resplandor y pasó a ser llamado 'Satanás' (que significa 'adversario' u 'acusador') y 'Diablo' ('calumniador'). Frente a esta rebelión, el Arcángel Miguel encabezó los ejércitos celestiales con el clamor '¿Quién como Dios?' (significado de su nombre *Mika-El*), venciendo al orgullo del adversario y permaneciendo fiel al Creador.",
+        "paradoja": "El ángel que quiso hacerse igual a Dios cayó por soberbia; el arcángel que proclamó la humildad y la supremacía de Dios victorioso prevaleció para siempre.",
+        "aclaracion": "Aunque en la piedad popular 'Lucifer' y 'Satanás' se usan como nombres del mismo ser caído, bíblicamente representan dos momentos: la luz original de la criatura buena creada por Dios y la oscuridad posterior de su rechazo voluntario a la verdad.",
+        "paso_concreto": "Invocá hoy la protección de San Miguel Arcángel ante las tentaciones de soberbia o división. Recordá que la verdadera fortaleza cristiana reside en la humildad y en la confianza total en Dios.",
+        "oracion": "San Miguel Arcángel, defiéndenos en la lucha. Sé nuestro amparo contra la perversidad y acechanzas del demonio. Que Dios manifieste sobre él su poder, es nuestra humilde súplica; y tú, Príncipe de la Milicia Celestial, arroja al infierno a Satanás y a los demás espíritus malignos. Amén.",
+        "enseñanza_de_la_iglesia": [
+          "La Sagrada Escritura atestigua la caída de estos ángeles; Jesús mismo dice haber visto a Satanás caer del cielo como un rayo (Lucas 10, 18).",
+          "San Miguel Arcángel es venerado por la Iglesia como protector del Pueblo de Dios y custodio en las batallas espirituales frente al mal."
+        ]
+      },
+      "en": {
+        "pregunta_principal": "Who are Lucifer and Satan, and what was the role of Saint Michael the Archangel?",
+        "puerta_de_entrada": "In biblical and theological tradition, different names are used to refer to the leader of the fallen angels. Understanding their meaning helps us comprehend the spiritual battle and the triumph of good over pride.",
+        "respuesta_breve": "Originally, the name 'Lucifer' ('light-bearer') evokes the beauty and dignity of the highest angel created by God. Upon rebelling out of pride, he lost his radiance and came to be called 'Satan' (meaning 'adversary' or 'accuser') and 'Devil' ('slanderer'). Faced with this rebellion, the Archangel Michael led the heavenly host with the cry 'Who is like God?' (the meaning of his name *Mika-El*), vanquishing the adversary's pride and remaining faithful to the Creator.",
+        "paradoja": "The angel who wanted to become equal to God fell through pride; the archangel who proclaimed humility and the supreme sovereignty of God prevailed forever.",
+        "aclaracion": "Although in popular piety 'Lucifer' and 'Satan' are used as names for the same fallen entity, biblically they represent two moments: the original light of the good creature created by God and the subsequent darkness of his voluntary rejection of truth.",
+        "paso_concreto": "Invoke the protection of Saint Michael the Archangel today against temptations of pride or division. Remember that true Christian strength lies in humility and total trust in God.",
+        "oracion": "Saint Michael the Archangel, defend us in battle. Be our protection against the wickedness and snares of the devil. May God rebuke him, we humbly pray; and do thou, O Prince of the Heavenly Host, cast into hell Satan and all the evil spirits. Amen.",
+        "enseñanza_de_la_iglesia": [
+          "Sacred Scripture bears witness to the fall of these angels; Jesus himself says he saw Satan fall like lightning from heaven (Luke 10:18).",
+          "Saint Michael the Archangel is venerated by the Church as defender of the People of God and guardian in spiritual battles against evil."
+        ]
+      },
+      "pt": {
+        "pregunta_principal": "Quem são Lúcifer e Satanás, e qual foi o papel de São Miguel Arcanjo?",
+        "puerta_de_entrada": "Na tradição bíblica e teológica, usam-se diferentes nomes para se referir ao líder dos anjos caídos. Conhecer o seu significado ajuda-nos a compreender a batalha espiritual e o triunfo do bem sobre o orgulho.",
+        "respuesta_breve": "Originalmente, o nome 'Lúcifer' ('portador da luz') evoca a beleza e a dignidade do mais alto dos anjos criados por Deus. Ao rebelar-se por soberba, perdeu o seu resplendor e passou a ser chamado 'Satanás' (que significa 'adversário' ou 'acusador') e 'Diabo' ('caluniador'). Diante dessa rebelião, o Arcanjo Miguel liderou os exércitos celestiais com o brado 'Quem como Deus?' (significado do seu nome *Mika-El*), vencendo o orgulho do adversário e permanecendo fiel ao Criador.",
+        "paradoja": "O anjo que quis ser igual a Deus caiu pela soberba; o arcanjo que proclamou a humildade e a supremacia de Deus prevaleceu para sempre.",
+        "aclaracion": "Embora na piedade popular 'Lúcifer' e 'Satanás' sejam usados como nomes do mesmo ser caído, biblicamente representam dois momentos: a luz original da criatura boa criada por Deus e a escuridão posterior da sua rejeição voluntária à verdade.",
+        "paso_concreto": "Invoque hoje a proteção de São Miguel Arcanjo diante das tentações de soberba ou divisão. Lembre-se de que a verdadeira fortaleza cristã reside na humildade e na confiança total em Deus.",
+        "oracion": "São Miguel Arcanjo, defendei-nos no combate. Sede o nosso refúgio contra as maldades e ciladas do demônio. Ordene-lhe Deus, instantemente o pedimos; e vós, Príncipe da Milícia Celeste, pela virtude divina, precipitai no inferno a Satanás e aos outros espíritos malignos. Amém.",
+        "enseñanza_de_la_iglesia": [
+          "A Sagrada Escritura atesta a queda desses anjos; o próprio Jesus diz ter visto Satanás cair do céu como um raio (Lucas 10, 18).",
+          "São Miguel Arcanjo é venerado pela Igreja como protetor do Povo de Deus e custódio nas batalhas espirituais contra o mal."
+        ]
+      }
+    },
+    {
       "id": "angeles_caidos_mal",
       "categoria": "Angeles",
       "keywords": [
         "angeles caidos",
         "origen del mal angeles",
         "fallen angels origin",
-        "do bad angels come from and how",
-        "origem do mal anjos caídos"
+        "Where do fallen angels come from?",
+        "os anjos rebeldes e como eles influenciam-nos"
       ],
       "es": {
         "pregunta_principal": "¿De dónde salen los ángeles caidos y cómo influyen en nosotros?",
@@ -2624,7 +2749,7 @@
         "fundamento_biblico": ["Rev 12,9"]
       },
       "en": {
-        "pregunta_principal": "Where do bad angels come from and how do they influence us?",
+        "pregunta_principal": "Where do fallen angels come from?",
         "puerta_de_entrada": "Freedom is such a great gift that even creatures of light could choose between loving God or rejecting Him.",
         "respuesta_breve": "God created all angels good, but some of them, driven by pride and arrogance, freely rejected God and His Kingdom. They became demons. Their action today is not to create anything, but to try to lead us away from the good through lies, temptation, and division, taking advantage of our weaknesses.",
         "paradoja": "The Evil One is strong, but his power is limited compared to a soul that takes refuge in God's grace and Christ's cross.",
@@ -2635,7 +2760,7 @@
         "fundamento_biblico": ["Rev 12:9"]
       },
       "pt": {
-        "pregunta_principal": "De onde vêm os anjos maus e como eles influenciam-nos?",
+        "pregunta_principal": "De onde vêm os anjos rebeldes e como eles influenciam-nos?",
         "puerta_de_entrada": "A liberdade é um dom tão grande que até as criaturas de luz puderam escolher entre amar a Deus ou rejeitá-Lo.",
         "respuesta_breve": "Deus criou todos os anjos bons, mas alguns deles, movidos pelo orgulho e pela soberba, rejeitaram livremente a Deus e ao Seu Reino. Tornaram-se demónios. A sua ação hoje não é criar nada, mas tentar afastar-nos do bem através da mentira, da tentação e da divisão, aproveitando-se das nossas fraquezas.",
         "paradoja": "O Maligno é forte, mas o seu poder é limitado perante uma alma que se refugia na graça de Deus e na cruz de Cristo.",
@@ -2676,6 +2801,122 @@
         "paso_concreto": "Peça hoje ao Espírito Santo que ative os Seus dons no seu coração para iluminar as suas decisões.",
         "enseñanza_de_la_iglesia": ["CIC 1830", "CIC 1831"],
         "fundamento_biblico": ["Is 11,2"]
+      }
+    },
+    {
+      "id": "tipos_accion_demoniaca_posesion_santidad",
+      "categoria": "Teología y Mística",
+      "keywords": [
+        "que es la posesion demoniaca",
+        "tipos de posesion",
+        "infestacion obsesion posesion",
+        "un santo puede estar poseido",
+        "efectos de la posesion en el alma",
+        "influencia demoniaca",
+        "what is demonic possession",
+        "types of demonic influence",
+        "infestation obsession possession",
+        "can a saint be possessed",
+        "o que e posse demoniaca",
+        "tipos de acao demoniaca",
+        "infestacao obsessao possessao",
+        "um santo pode ser possuido"
+      ],
+      "es": {
+        "pregunta_principal": "¿Qué es la posesión demoníaca, qué tipos de acción diabólica existen y por qué esto no significa que la persona sea mala?",
+        "puerta_de_entrada": "En la teología mística y la práctica pastoral, la Iglesia distingue con claridad entre la salud del alma y los fenómenos extraordinarios que pueden afectar al cuerpo o al entorno de una persona.",
+        "respuesta_breve": "La Iglesia reconoce principalmente tres formas extraordinarias de acción demoníaca: 1) Infestación (afecta lugares u objetos), 2) Obsesión/Opresión (ataques a la mente, emociones o salud física), y 3) Posesión (el demonio toma el control del cuerpo de forma involuntaria para la persona). Es fundamental comprender que la posesión afecta únicamente al cuerpo, no al alma ni a la libertad profunda del espíritu. Estar poseído no es un pecado ni hace mala a la persona; de hecho, Dios ha permitido este sufrimiento en la vida de algunos santos o personas piadosas como una prueba de purificación o para manifestar su gloria.",
+        "paradoja": "El demonio puede llegar a atar o mover el cuerpo de un ser humano, pero jamás puede adueñarse de su alma ni arrebatarle el amor de Dios si la persona permanece en gracia.",
+        "aclaracion": "No hay que confundir la posesión con la condena eterna. La condena es una elección libre del alma que rechaza a Dios hasta el final, mientras que la posesión es un padecimiento físico que no altera la santidad de la persona ni su salvación eterna.",
+        "paso_concreto": "Ante el temor a lo desconocido, recordá que la oración, los sacramentos (Eucaristía y Confesión) y la vida de gracia son la verdadera y más poderosa protección de todo cristiano.",
+        "oracion": "Señor Jesús, protector de nuestras almas, fortalece a los que sufren en el cuerpo o en el espíritu. Guardanos siempre bajo el amparo de tu preciosa Sangre y llena nuestras vidas de tu paz. Amén.",
+        "enseñanza_de_la_iglesia": [
+          "El Rituale Romanum de la Iglesia enseña que el poder del maligno sobre el cuerpo no destruye la dignidad de la persona ni su comunión espiritual con Dios.",
+          "Grandes figuras místicas, como San Gemaldo o la Beata María de Jesús Crucificado, experimentaron vejaciones u opresiones extraordinarias sin perder la unión íntima con Cristo."
+        ]
+      },
+      "en": {
+        "pregunta_principal": "What is demonic possession, what types of demonic action exist, and why does this not mean a person is evil?",
+        "puerta_de_entrada": "In mystical theology and pastoral practice, the Church clearly distinguishes between the health of the soul and extraordinary phenomena that may affect a person's body or environment.",
+        "respuesta_breve": "The Church mainly recognizes three extraordinary forms of demonic action: 1) Infestation (affecting places or objects), 2) Obsession/Oppression (attacks on the mind, emotions, or physical health), and 3) Possession (the demon involuntarily takes control of the person's body). It is vital to understand that possession affects only the body, not the soul or the deep freedom of the spirit. Being possessed is not a sin nor does it make a person evil; in fact, God has permitted this suffering in the lives of some saints and pious individuals as a trial of purification or to manifest His glory.",
+        "paradoja": "The devil may bind or move a human being's body, but he can never possess the soul or take away God's love if the person remains in grace.",
+        "aclaracion": "Possession must not be confused with eternal damnation. Damnation is a free choice of the soul rejecting God to the end, whereas possession is a physical trial that does not compromise a person's holiness or eternal salvation.",
+        "paso_concreto": "Faced with fear of the unknown, remember that prayer, the sacraments (Eucharist and Confession), and a life of grace are the true and most powerful protections for every Christian.",
+        "oracion": "Lord Jesus, guardian of our souls, strengthen those who suffer in body or spirit. Keep us always under the shelter of your precious Blood and fill our lives with your peace. Amen.",
+        "enseñanza_de_la_iglesia": [
+          "The Church's Roman Ritual teaches that the evil one's power over the body does not destroy a person's dignity or spiritual communion with God.",
+          "Great mystical figures, such as Saint Gemma Galgani or Blessed Mary of Jesus Crucified, experienced extraordinary vexations without losing their intimate union with Christ."
+        ]
+      },
+      "pt": {
+        "pregunta_principal": "O que é a posse demoníaca, que tipos de ação diabólica existem e por que isso não significa que a pessoa seja má?",
+        "puerta_de_entrada": "Na teologia mística e na prática pastoral, a Igreja distingue claramente entre a saúde da alma e os fenômenos extraordinários que podem afetar o corpo ou o ambiente de uma pessoa.",
+        "respuesta_breve": "A Igreja reconhece principalmente três formas extraordinárias de ação demoníaca: 1) Infestação (afeta locais ou objetos), 2) Obsessão/Opressão (ataques à mente, emoções ou saúde física), e 3) Possessão (o demônio toma involuntariamente o controle do corpo da pessoa). É fundamental compreender que a possessão afeta apenas o corpo, e não a alma nem a liberdade profunda do espírito. Estar possuído não é um pecado nem torna a pessoa má; de fato, Deus permitiu esse sofrimento na vida de alguns santos ou pessoas piedosas como uma prova de purificação ou para manifestar a sua glória.",
+        "paradoja": "O demônio pode amarrar ou mover o corpo de um ser humano, mas jamais pode apossar-se da sua alma nem arrebatar o amor de Deus se a pessoa permanecer em graça.",
+        "aclaracion": "Não se deve confundir a possessão com a condenação eterna. A condenação é uma escolha livre da alma que rejeita a Deus até o fim, enquanto a possessão é uma prova física que não altera a santidade da pessoa nem a sua salvação eterna.",
+        "paso_concreto": "Diante do medo do desconhecido, lembre-se de que a oração, os sacramentos (Eucaristia e Confissão) e a vida de graça são a verdadeira e mais poderosa proteção de todo cristão.",
+        "oracion": "Senhor Jesus, protetor das nossas almas, fortalece os que sofrem no corpo ou no espírito. Guarda-nos sempre sob o amparo do teu precioso Sangue e enche as nossas vidas com a tua paz. Amém.",
+        "enseñanza_de_la_iglesia": [
+          "O Rituale Romanum da Igreja ensina que o poder do maligno sobre o corpo não destrói a dignidade da pessoa nem a sua comunhão espiritual com Deus.",
+          "Grandes figuras místicas experimentaram opressões ou manifestações extraordinárias sem perder a união íntima com Cristo."
+        ]
+      }
+    },
+    {
+      "id": "prudencia_iglesia_psiquiatria_exorcismo",
+      "categoria": "Teología y Mística",
+      "keywords": [
+        "por que la iglesia pide diagnostico psiquiatrico",
+        "diferencia entre enfermedad mental y posesion",
+        "como discernir un exorcismo",
+        "prudencia de la iglesia exorcismos",
+        "psiquiatria y exorcismo",
+        "criterios de la iglesia para exorcismos",
+        "why church requires psychiatric evaluation",
+        "difference between mental illness and possession",
+        "how church discerns exorcism",
+        "por que a igreja pede diagnostico psiquiatrico",
+        "diferenca entre doenca mental e possessao",
+        "como discernir um exorcismo"
+      ],
+      "es": {
+        "pregunta_principal": "¿Por qué la Iglesia exige evaluaciones psiquiátricas antes de realizar un exorcismo?",
+        "puerta_de_entrada": "La Iglesia aborda los casos de presunta acción demoníaca con extrema prudencia, asegurándose de no confundir patologías médicas o psicológicas con fenómenos de origen espiritual.",
+        "respuesta_breve": "La Iglesia Católica toma el sufrimiento humano con absoluta responsabilidad. El Ritual de Exorcismos establece de forma obligatoria que antes de considerar la intervención de un sacerdote exorcista, se debe descartar cualquier causa médica, neurológica o psiquiátrica mediante profesionales de la salud. La inmensa mayoría de las consultas corresponden a enfermedades mentales, perturbaciones emocionales o traumas que requieren tratamiento clínico. El exorcismo se reserva exclusivamente para aquellos casos excepcionales donde, tras un riguroso discernimiento y la presencia de signos específicos (como aversión a lo sagrado, conocimiento de lenguas desconocidas o fuerzas inexplicables), se comprueba una causa espiritual.",
+        "paradoja": "La fe y la ciencia no se oponen: la Iglesia recurre a la medicina para proteger la salud de las personas y evitar falsos diagnósticos espirituales.",
+        "aclaracion": "Recurrir a la psiquiatría no es un signo de falta de fe por parte de la Iglesia, sino de caridad y verdad. Atribuir a una causa demoníaca lo que es un trastorno psíquico puede perjudicar gravemente la salud del paciente al privarlo de la atención médica adecuada.",
+        "paso_concreto": "Si conocés a alguien que atraviesa un sufrimiento profundo o perturbaciones, impulsalo a buscar primero la atención médica y espiritual correspondiente, confiando en que Dios actúa a través de los profesionales de la salud.",
+        "oracion": "Dios de toda consolación, concede sabiduría y discernimiento a los pastores de tu Iglesia y a los profesionales de la salud. Sana a los que sufren en la mente y el cuerpo, y dales la paz de tu Espíritu. Amén.",
+        "enseñanza_de_la_iglesia": [
+          "El nuevo Ritual de Exorcismos (1999) insta explícitamente a los exorcistas a colaborar con expertos en la ciencia médica y psiquiátrica antes de actuar.",
+          "El Catecismo (CEC 1673) remarca que el exorcismo debe distinguirse claramente de las enfermedades, especialmente psíquicas, cuyo cuidado corresponde a la ciencia médica."
+        ]
+      },
+      "en": {
+        "pregunta_principal": "Why does the Church require psychiatric evaluations before performing an exorcism?",
+        "puerta_de_entrada": "The Church approaches cases of alleged demonic action with extreme prudence, ensuring that medical or psychological conditions are not mistaken for spiritual phenomena.",
+        "respuesta_breve": "The Catholic Church handles human suffering with utmost responsibility. The Ritual of Exorcisms strictly mandates that before considering an exorcist priest's intervention, all medical, neurological, or psychiatric causes must be ruled out by health professionals. The vast majority of consultations correspond to mental health conditions, emotional distress, or trauma requiring clinical care. Exorcism is reserved exclusively for rare cases where, after rigorous discernment and specific signs (such as aversion to the sacred or knowledge of unknown tongues), a spiritual cause is established.",
+        "paradoja": "Faith and science do not conflict: the Church turns to medicine to protect people's health and prevent false spiritual diagnoses.",
+        "aclaracion": "Seeking psychiatric help is not a lack of faith by the Church, but an act of charity and truth. Attributing a psychological disorder to demonic influence can seriously harm a patient by depriving them of proper medical treatment.",
+        "paso_concreto": "If you know someone going through deep distress, encourage them to seek proper medical and spiritual care, trusting that God works through medical professionals.",
+        "oracion": "God of all consolation, grant wisdom and discernment to the pastors of your Church and to healthcare professionals. Heal those who suffer in mind and body, and give them the peace of your Spirit. Amen.",
+        "enseñanza_de_la_iglesia": [
+          "The revised Roman Ritual (1999) explicitly urges exorcists to consult experts in medical and psychiatric sciences prior to action.",
+          "The Catechism (CCC 1673) emphasizes that exorcism must be clearly distinguished from illness, especially mental, the treatment of which belongs to medical science."
+        ]
+      },
+      "pt": {
+        "pregunta_principal": "Por que a Igreja exige avaliações psiquiátricas antes de realizar um exorcismo?",
+        "puerta_de_entrada": "A Igreja aborda os casos de suposta ação demoníaca com extrema prudência, garantindo que patologias médicas ou psicológicas não sejam confundidas com fenômenos espirituais.",
+        "respuesta_breve": "A Igreja Católica trata o sofrimento humano com absoluta responsabilidade. O Ritual de Exorcismos estabelece de forma obrigatória que, antes de considerar a intervenção de um sacerdote exorcista, deve-se descartar qualquer causa médica ou psiquiátrica por meio de profissionais de saúde. A imensa maioria das consultas corresponde a transtornos mentais que exigem tratamento clínico. O exorcismo é reservado exclusivamente para casos excepcionais onde se comprova uma causa espiritual após rigoroso discernimento.",
+        "paradoja": "A fé e a ciência não se opõem: a Igreja recorre à medicina para proteger a saúde das pessoas e evitar falsos diagnósticos espirituais.",
+        "aclaracion": "Recorrer à psiquiatria não é falta de fé por parte da Igreja, mas um ato de caridade e verdade. Atribuir a uma causa demoníaca o que é um transtorno psíquico pode prejudicar gravemente a saúde do paciente.",
+        "paso_concreto": "Se você conhece alguém que atravessa um sofrimento profundo, incentive-o a buscar a devida atenção médica e espiritual.",
+        "oracion": "Deus de toda consolação, concede sabedoria e discernimento aos pastores da tua Igreja e aos profissionais de saúde. Cura os que sofrem na mente e no corpo, e dá-lhes a paz do teu Espírito. Amém.",
+        "enseñanza_de_la_iglesia": [
+          "O novo Ritual de Exorcismos (1999) insta explicitamente os exorcistas a colaborarem com peritos da ciência médica antes de atuarem.",
+          "O Catecismo (CIC 1673) destaca que o exorcismo deve ser claramente distinguido das enfermidades psíquicas, cujo tratamento pertence à ciência médica."
+        ]
       }
     },
     {
@@ -4091,6 +4332,66 @@
       }
     },
     {
+      "id": "camino_santidad_vida_espiritual",
+      "categoria": "Vida Cristiana",
+      "keywords": [
+        "que es estar vivo espiritualmente",
+        "como ser santo",
+        "que es el camino de la santidad",
+        "lucha espiritual y entrenamiento",
+        "ejercicios para el espiritu",
+        "como ser santo en la vida cotidiana",
+        "what does it mean to be spiritually alive",
+        "how to become a saint",
+        "path to holiness",
+        "spiritual struggle and training",
+        "exercises for the spirit",
+        "o que e estar vivo espiritualmente",
+        "como ser santo",
+        "o caminho da santidade",
+        "luta espiritual e treinamento"
+      ],
+      "es": {
+        "pregunta_principal": "¿Qué es estar vivo espiritualmente, qué es la santidad y cómo se entrena en la vida cotidiana?",
+        "puerta_de_entrada": "Un deportista de alto rendimiento no logra su forma física de la noche a la mañana: necesita disciplina, entrenamiento constante, alimentación adecuada y levantarse cada vez que sufre un tropiezo. De la misma manera, la vida espiritual exige un entrenamiento diario del corazón.",
+        "respuesta_breve": "Estar vivo espiritualmente significa que la gracia de Dios circula por nuestra vida como el torrente sanguíneo, manteniéndonos conectados con el amor, la fe y la esperanza. La santidad no es un privilegio para unos pocos elegidos en un pedestal, sino la vocación de todo cristiano a amar en lo cotidiano. Es una lucha de todos los días, un 'entrenamiento' donde la oración es la respiración, la Misa y los sacramentos son el alimento, y las obras de caridad son los ejercicios que fortalecen la voluntad. Como decía San Pablo, en el mundo material los atletas se esfuerzan por un trofeo o una copa que se deteriora, pero la corona de la santidad es incorruptible y eterna.",
+        "paradoja": "El verdadero atleta espiritual no es el que nunca cae, sino el que, confiando en la gracia de Dios, se levanta una y otra vez mediante la confesión y vuelve a empezar con humildad.",
+        "aclaracion": "No debemos confundir la santidad con la perfección impecable o la ausencia de defectos. La santidad es la perfección del amor, un camino progresivo donde Dios no nos pide que no sintamos cansancio, sino que no dejemos de caminar.",
+        "paso_concreto": "Elegí hoy un 'ejercicio espiritual' para tu rutina cotidiana: dedicar 5 minutos de silencio a orar, hacer un acto de bondad sin que nadie se entere, o frenar un impulso de enojo con paciencia.",
+        "oracion": "Señor Jesús, Entrenador y Maestro de nuestras almas, danos constancia en la carrera de la fe. Fortalece nuestro espíritu en los momentos de cansancio, renueva nuestras fuerzas y concédenos la gracia de perseverar hasta alcanzar la corona de la vida. Amén.",
+        "enseñanza_de_la_iglesia": [
+          "El Concilio Vaticano II recordó que todos los fieles, de cualquier estado o condición, están llamados a la plenitud de la vida cristiana y a la perfección de la caridad (Lumen Gentium 40).",
+          "El Papa Francisco en Gaudete et Exsultate enseña que la santidad es el rostro más bello de la Iglesia y se vive en 'los santos de la puerta de al lado', en la fidelidad paciente del día a día."
+        ]
+      },
+      "en": {
+        "pregunta_principal": "What does it mean to be spiritually alive, what is holiness, and how is it trained in daily life?",
+        "puerta_de_entrada": "A high-performance athlete does not achieve physical fitness overnight: it requires discipline, constant training, proper nutrition, and getting back up after every setback. In the same way, the spiritual life demands a daily training of the heart.",
+        "respuesta_breve": "Being spiritually alive means that God's grace flows through our lives like the bloodstream, keeping us connected to love, faith, and hope. Holiness is not a privilege for a chosen few on a pedestal, but every Christian's calling to love in everyday life. It is a daily struggle, a 'training' where prayer is our breathing, Mass and the sacraments are our nourishment, and acts of charity are the exercises that strengthen the will. As Saint Paul said, in the material world athletes strive for a trophy that fades, but the crown of holiness is incorruptible and eternal.",
+        "paradoja": "The true spiritual athlete is not the one who never falls, but the one who, trusting in God's grace, gets up time and again through confession and humbly begins anew.",
+        "aclaracion": "We must not confuse holiness with flawless perfection or the absence of human weakness. Holiness is the perfection of love—a progressive journey where God does not ask us never to feel weary, but never to stop walking.",
+        "paso_concreto": "Choose a 'spiritual exercise' for your daily routine today: spend 5 minutes in silent prayer, perform a quiet act of kindness, or hold back an angry reaction with patience.",
+        "oracion": "Lord Jesus, Coach and Master of our souls, grant us perseverance in the race of faith. Strengthen our spirit in moments of weariness, renew our strength, and give us the grace to endure until we reach the crown of life. Amen.",
+        "enseñanza_de_la_iglesia": [
+          "The Second Vatican Council affirmed that all the faithful, whatever their condition or state, are called to the fullness of the Christian life and the perfection of charity (Lumen Gentium 40).",
+          "Pope Francis in Gaudete et Exsultate teaches that holiness is the most attractive face of the Church, lived out by 'the saints next door' in daily patient fidelity."
+        ]
+      },
+      "pt": {
+        "pregunta_principal": "O que é estar vivo espiritualmente, o que é a santidade e como se treina na vida cotidiana?",
+        "puerta_de_entrada": "Um atleta de alto rendimento não alcança a forma física de um dia para o outro: precisa de disciplina, treino constante, boa alimentação e levantar-se a cada queda. Da mesma forma, a vida espiritual exige um treinamento diário do coração.",
+        "respuesta_breve": "Estar vivo espiritualmente significa que a graça de Deus circula pela nossa vida como a corrente sanguínea, mantendo-nos conectados ao amor, à fé e à esperança. A santidade não é um privilégio para poucos escolhidos num pedestal, mas a vocação de todo cristão para amar no cotidiano. É uma luta diária, um 'treinamento' onde a oração é a respiração, a Missa e os sacramentos são o alimento, e as obras de caridade são os exercícios que fortalecem a vontade. Como dizia São Paulo, os atletas se esforçam por um troféu que se deteriora, mas a coroa da santidade é incorruptível e eterna.",
+        "paradoja": "O verdadeiro atleta espiritual não é aquele que nunca cai, mas aquele que, confiando na graça de Deus, se levanta uma e outra vez pela confissão e recomeça com humildade.",
+        "aclaracion": "Não devemos confundir santidade com perfeição impecável ou ausência de defeitos. A santidade é a perfeição do amor, um caminho progressivo onde Deus não nos pede para nunca sentir cansaço, mas para nunca parar de caminhar.",
+        "paso_concreto": "Escolha hoje um 'exercício espiritual' para a sua rotina: dedique 5 minutos de silêncio para orar, faça um gesto de bondade discreto ou domine um impulso de irritação com paciência.",
+        "oracion": "Senhor Jesus, Treinador e Mestre das nossas almas, dá-nos constância na corrida da fé. Fortalece o nosso espírito nos momentos de cansaço, renova as nossas forças e concede-nos a graça de perseverar até alcançar a coroa da vida. Amém.",
+        "enseñanza_de_la_iglesia": [
+          "O Concílio Vaticano II lembrou que todos os fiéis estão chamados à plenitude da vida cristã e à perfeição da caridade (Lumen Gentium 40).",
+          "O Papa Francisco ensina que a santidade é o rosto mais belo da Igreja e é vivida nos 'santos ao pé da porta', na fidelidade paciente do dia a dia."
+        ]
+      }
+    },
+    {
       "id": "guia",
       "categoria": "Programa",
       "keywords": [
@@ -4126,12 +4427,12 @@
         "que es el odio",
         "rencor",
         "como perdonar el rencor",
-        "odio y rencor",
-        "hate and resentment",
-        "ódio e rancor"
+        "Cómo vencer el odio y el resentimiento?",
+        "How to overcome hate and resentment?",
+        "Como vencer o ódio e o rancor?"
       ],
       "es": {
-        "pregunta_principal": "¿Cómo vencer el odio y el rencor?",
+        "pregunta_principal": "¿Cómo vencer el odio y el resentimiento?",
         "respuesta_breve": "El rencor es un veneno que uno toma esperando que el otro muera... ${nombreIngresado}, soltar el enojo no es justificar el daño, sino elegir la libertad de tu alma.",
         "paso_concreto": "Rezá hoy por esa persona que te lastimó, pidiendo la gracia de poder soltar el peso del pasado.",
         "enseñanza_de_la_iglesia": ["CIC 2302", "CIC 2842", "CIC 2845"],
