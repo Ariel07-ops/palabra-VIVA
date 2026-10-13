@@ -3367,8 +3367,8 @@ body.modo-sepia .path-theme .path-card {
 /* Estilo por defecto (modo normal) */
 #btn-goto-bible,
 #btn-goto-path {
-  background-color: #1a1a1a; /* Fondo oscuro elegante */
-  border: 1px solid #d4af37; /* Detalle dorado sutil */
+  background-color: #ffdfa0; /* o el color que hayas dejado */
+  border: 1px solid #d9ac1b;
 }
 
 /* Estilo cuando el Modo Sepia está activo */
@@ -4255,8 +4255,8 @@ body.modo-sepia .path-theme .path-card {
 /* Estilo por defecto (modo normal) */
 #btn-goto-bible,
 #btn-goto-path {
-  background-color: #1a1a1a; /* Fondo oscuro elegante */
-  border: 1px solid #d4af37; /* Detalle dorado sutil */
+  background-color: #ffdfa0; /* o el color que hayas dejado */
+  border: 1px solid #d9ac1b;
 }
 
 /* Estilo cuando el Modo Sepia está activo */
@@ -4460,4 +4460,15 @@ body.modo-sepia .seccion-copyright *,
 body.modo-sepia .card-aclaracion * {
   background-color: transparent !important; /* Evita recuadros internos alrededor de los textos */
   color: #3b2a1a !important; /* Texto marrón bien legible */
+}
+button,
+.btn-back {
+  padding: 6px;
+  margin: 2px;
+}
+/* Afecta a cualquier botón que tenga la clase btn-back, sin importar sus estados */
+[class*="btn-back"] {
+  padding: 4px !important;
+  margin: 4px !important;
+  box-sizing: border-box;
 }

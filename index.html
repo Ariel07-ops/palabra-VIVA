@@ -153,7 +153,7 @@
     <div id="screen-bible-detail" class="screen">
       <div class="app-container">
         <header class="main-header">
-  <button class="btn-back" onclick="changeScreen(screenMain)">⬅</button>
+  <button class="btn-back" onclick="changeScreen('screen-main')">⬅</button>
   <h1 class="brand-title text-gold" 
       data-es="La Sagrada Escritura" 
       data-en="The Holy Scripture" 
@@ -229,7 +229,7 @@
     <div id="screen-antiguo" class="screen">
       <div class="app-container">
         <header class="main-header">
-          <button class="btn-back" onclick="changeScreen(screenBibleDetail)">
+          <button class="btn-back" onclick="changeScreen('screen-bible-detail')">
             ⬅
           </button>
           <h1 class="brand-title text-gold" data-es="Antiguo Testamento" data-en="Old Testament" data-pt="Antigo Testamento">Antiguo Testamento</h1>
@@ -300,7 +300,7 @@
               width: 100%;
             "
           >
-            <button class="btn-back" onclick="changeScreen(screenCapitulos)">
+            <button class="btn-back" onclick="changeScreen('screen-capitulos')">
               ⬅
             </button>
 
@@ -376,7 +376,7 @@
     <div id="screen-nuevo" class="screen">
       <div class="app-container">
         <header class="main-header">
-          <button class="btn-back" onclick="changeScreen(screenBibleDetail)">
+          <button class="btn-back" onclick="changeScreen('screen-bible-detail')">
             ⬅
           </button>
           <h1 class="brand-title text-gold text-shadow" data-es="Nuevo Testamento" data-en="New Testament" data-pt="Novo Testamento">Nuevo Testamento</h1>
@@ -447,7 +447,7 @@
     <div id="screen-path-detail" class="screen">
       <div class="app-container path-theme">
         <header class="main-header">
-          <button class="btn-back" onclick="changeScreen(screenMain)">⬅</button>
+          <button class="btn-back" onclick="changeScreen('screen-main')">⬅</button>
           <h1 class="brand-title text-gold text-shadow" 
               data-es="CAMINEMOS CON JESÚS" 
               data-en="WALK WITH JESUS" 
@@ -786,7 +786,7 @@
       
       <div class="app-container path-theme">
         <header class="main-header">
-          <button class="btn-back-path" onclick="changeScreen(screenPathDetail)">
+          <button class="btn-back-path" onclick="changeScreen('screen-path-detail')">
             ⬅
           </button>
           <h1 class="brand-title text-gold text-shadow" 
@@ -1506,7 +1506,7 @@
     <!-- Vista del Asistente de Apoyo -->
     <div id="screen-asistente" class="screen">
       <div class="asistente-header">
-        <button class="btn-back" onclick="changeScreen(screenMain)">⬅</button>
+        <button class="btn-back" onclick="changeScreen('screen-main')">⬅</button>
         <h2 class="brand-title text-gold text-shadow" style="font-family: var(--font-roman); margin-bottom: 0; ">
   <i class="fas fa-comment-dots"></i>
   <span data-es="Asistente" data-en="Support" data-pt="Assistente">Asistente</span>
@@ -1548,6 +1548,7 @@
         }
       });
     </script>
+    <script type="module" src="js/main.js"></script>
   
     <footer class="cc-footer">
     <!-- 1. Autoría -->

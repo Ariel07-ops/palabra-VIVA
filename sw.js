@@ -1,10 +1,11 @@
-const CACHE_NAME = "palabra-viva-v9";
+const CACHE_NAME = "palabra-viva-v10";
 const urlsToCache = [
   "./",
   "./index.html",
   "./manifest.json",
   "./css/style.css",
-  "./js/ariel.js",
+  "./js/main.js",
+  "./js/core/ui.js",
   "./assets/imagen/logo-redondo.png",
   "./assets/imagen/splash-cruz-nitida.png",
   "./assets/imagen/splash.png",
