@@ -490,59 +490,6 @@ body.light-mode #contenido-peldaño {
   transform: scale(1.05);
 }
 
-/* ==========================================
-   6. GRILLA DE CAPÍTULOS SIMÉTRICA (5 COLUMNAS)
-   ========================================== */
-.grid-capitulos,
-.capitulos-container,
-#grid-capitulos {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 8px;
-  width: 100%;
-  max-width: 480px;
-  margin: 0 auto 20px auto;
-  padding: 15px;
-  box-sizing: border-box;
-  justify-content: flex-start;
-}
-
-.btn-capitulo,
-.capitulo-card,
-#grid-capitulos .btn-capitulo {
-  flex: 0 0 calc(20% - 7px) !important;
-  aspect-ratio: 1 !important;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background: rgba(212, 175, 55, 0.08);
-  border: 1px solid rgba(212, 175, 55, 0.4);
-  color: var(--gold-light);
-  font-size: 1.1rem;
-  font-weight: bold;
-  border-radius: 8px;
-  cursor: pointer;
-  transition: all 0.2s ease;
-  box-sizing: border-box;
-}
-
-.btn-capitulo:hover,
-.capitulo-card:hover {
-  background: var(--gold);
-  color: #000;
-  transform: scale(1.05);
-}
-
-.texto-ayuda-capitulos,
-.help-text-capitulos {
-  width: 100%;
-  text-align: center;
-  margin-top: 15px;
-  color: #aaa;
-  font-style: italic;
-  font-size: 0.9rem;
-}
-
 /* Animación suave de pulso y brillo para la barrita de cierre */
 @keyframes pulsoBrillo {
   0% {
@@ -961,12 +908,7 @@ body.light-mode #screen-sugerir a:hover {
   height: auto;
 }
 
-/* 4. Prevenir que las grillas de capítulos colapsen en pantallas muy chicas */
-.grid-capitulos,
-.capitulos-container,
-#grid-capitulos {
-  padding-bottom: 40px;
-}
+/
 /* Contenedor exacto de tus botones de estado de ánimo */
 .mood-buttons {
   display: flex;
@@ -2073,7 +2015,7 @@ body.light-mode #contenido-peldaño {
   color: var(--gold);
 }
 
-/* ==========================================
+/* /* ==========================================
    6. GRILLA DE CAPÍTULOS SIMÉTRICA (5 COLUMNAS)
    ========================================== */
 .grid-capitulos,
@@ -2089,42 +2031,9 @@ body.light-mode #contenido-peldaño {
   box-sizing: border-box;
   justify-content: flex-start;
 }
+*/
 
-.btn-capitulo,
-.capitulo-card,
-#grid-capitulos .btn-capitulo {
-  flex: 0 0 calc(20% - 7px) !important;
-  aspect-ratio: 1 !important;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background: rgba(212, 175, 55, 0.08);
-  border: 1px solid rgba(212, 175, 55, 0.4);
-  color: var(--gold-light);
-  font-size: 1.1rem;
-  font-weight: bold;
-  border-radius: 8px;
-  cursor: pointer;
-  transition: all 0.2s ease;
-  box-sizing: border-box;
-}
 
-.btn-capitulo:hover,
-.capitulo-card:hover {
-  background: var(--gold);
-  color: #000;
-  transform: scale(1.05);
-}
-
-.texto-ayuda-capitulos,
-.help-text-capitulos {
-  width: 100%;
-  text-align: center;
-  margin-top: 15px;
-  color: #aaa;
-  font-style: italic;
-  font-size: 0.9rem;
-}
 
 /* ==========================================
    7. PANEL INFERIOR Y ESTUDIO (ABANICO)
@@ -2596,12 +2505,6 @@ body.light-mode #screen-sugerir a:hover {
   height: auto;
 }
 
-/* 4. Prevenir que las grillas de capítulos colapsen en pantallas muy chicas */
-.grid-capitulos,
-.capitulos-container,
-#grid-capitulos {
-  padding-bottom: 40px;
-}
 /* Contenedor exacto de tus botones de estado de ánimo */
 .mood-buttons {
   display: flex;
@@ -4471,4 +4374,56 @@ button,
   padding: 4px !important;
   margin: 4px !important;
   box-sizing: border-box;
+}
+/* ==========================================
+   6. GRILLA DE CAPÍTULOS SIMÉTRICA (5 COLUMNAS)
+   ========================================== */
+.grid-capitulos,
+.capitulos-container,
+#grid-capitulos {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  width: 100%;
+  max-width: 480px;
+  margin: 0 auto 20px auto;
+  padding: 15px 15px 40px 15px; /* Unificamos el padding lateral y el inferior de 40px */
+  box-sizing: border-box;
+  justify-content: center; /* <--- ¡Acá está la clave para que quede centrado! */
+}
+
+.btn-capitulo,
+.capitulo-card,
+#grid-capitulos .btn-capitulo {
+  flex: 0 0 calc(20% - 7px) !important;
+  aspect-ratio: 1 !important;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(212, 175, 55, 0.08);
+  border: 1px solid rgba(212, 175, 55, 0.4);
+  color: var(--gold-light);
+  font-size: 1.1rem;
+  font-weight: bold;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  box-sizing: border-box;
+}
+
+.btn-capitulo:hover,
+.capitulo-card:hover {
+  background: var(--gold);
+  color: #000;
+  transform: scale(1.05);
+}
+
+.texto-ayuda-capitulos,
+.help-text-capitulos {
+  width: 100%;
+  text-align: center;
+  margin-top: 15px;
+  color: #aaa;
+  font-style: italic;
+  font-size: 0.9rem;
 }

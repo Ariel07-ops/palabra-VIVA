@@ -33,7 +33,7 @@ export function initChatEvents() {
   const contenedorMensajes = document.getElementById("chat-mensajes");
   const linkAsistente = document.getElementById("link-asistente");
   const menuLateral = document.getElementById("menu-lateral");
-  const btnMic = document.getElementById("btn-mic");
+  const btnMic = document.getElementById("btnMic");
 
   // 1. CONTROL DEL MICRÓFONO
   const SpeechRecognition =

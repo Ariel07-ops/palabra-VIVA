@@ -5,6 +5,8 @@ let esperandoConfirmacionMic = false;
 let preguntasExploradasEnSesion = new Set();
 let esperandoNombre = false;
 
+import { hablarTextoGlobal } from "../core/voz.js"; // (o ajustá la ruta relativa según dónde esté engine.js respecto a core/)
+
 export function getEsperandoNombre() {
   return esperandoNombre;
 }
@@ -213,21 +215,9 @@ export function buscarEnSeccionJson(texto, seccion) {
 }
 
 // Síntesis de voz
+// Síntesis de voz
 export function hacerHablarAlRobot(texto) {
-  if (!("speechSynthesis" in window)) return;
-  if (!texto) return;
-
-  window.speechSynthesis.cancel();
-
-  const idiomaApp =
-    window.idiomaActual || localStorage.getItem("idiomaApp") || "es";
-  const utterance = new SpeechSynthesisUtterance(texto);
-  utterance.lang =
-    idiomaApp === "en" ? "en-US" : idiomaApp === "pt" ? "pt-BR" : "es-AR";
-  utterance.rate = 1.0;
-  utterance.pitch = 1.0;
-
-  window.speechSynthesis.speak(utterance);
+  hablarTextoGlobal(texto);
 }
 // ==========================================
 // EL CAMINO DE LA RAZÓN (Multilingüe: ES, EN, PT)
@@ -575,6 +565,8 @@ export function leerTextoDirecto(textoParaLeer) {
   window.speechSynthesis.cancel();
   const utterance = new SpeechSynthesisUtterance(textoParaLeer);
   utterance.lang = "es-ES";
+  utterance.rate = 0.82; // Más pausado y reflexivo
+  utterance.pitch = 0.95; // Tono cálido
   window.speechSynthesis.speak(utterance);
 }
 
