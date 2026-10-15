@@ -30,8 +30,9 @@ export function cambiarIdioma(lang) {
     }
   }
 
-  // Persistencia y control de voz
+  // Persistencia unificada para la interfaz y el lector de biblias
   localStorage.setItem("idiomaApp", lang);
+  localStorage.setItem("palabra_viva_idioma", lang); // <--- ¡Agregamos esta línea clave!
   window.idiomaActual = lang;
 
   if ("speechSynthesis" in window) {
