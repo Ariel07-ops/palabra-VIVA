@@ -18,7 +18,7 @@ import {
   cerrarPanelPorCompleto,
 } from "./bible/boxes.js";
 import { cargarEstadoAnimo } from "./core/moods.js";
-import { cambiarIdioma } from "./core/i18n.js";
+import { cambiarIdioma, obtenerIdiomaInicial } from "./core/i18n.js";
 import {
   cambiarTamanio,
   actualizarIndicadorVisual,
@@ -66,24 +66,28 @@ window.manejarCaminoDobleNaturaleza = manejarCaminoDobleNaturaleza;
 window.leerTextoDirecto = leerTextoDirecto;
 window.construirRespuestaCatequesis = construirRespuestaCatequesis;
 window.devolverFocoPC = devolverFocoPC;
+window.obtenerIdiomaInicial = obtenerIdiomaInicial;
 
 // 3. INICIALIZACIÓN TRAS CARGAR EL DOM
 document.addEventListener("DOMContentLoaded", () => {
   console.log("Palabra Viva iniciada – versión modular completa");
 
+  // APLICA EL IDIOMA GUARDADO O DETECTADO APENAS ARRANCA
+  if (typeof cambiarIdioma === "function") {
+    cambiarIdioma();
+  }
+
   if (typeof initSearch === "function") initSearch();
   if (typeof initBoxesEvents === "function") initBoxesEvents();
   if (typeof initUI === "function") initUI();
   if (typeof initChatEvents === "function") initChatEvents();
-});
-document.addEventListener("DOMContentLoaded", () => {
+
+  // Listener para el enlace del asistente
   const linkAsistente = document.getElementById("link-asistente");
   if (linkAsistente) {
     linkAsistente.addEventListener("click", (e) => {
       e.preventDefault(); // Evita el salto del href="#"
       changeScreen("screen-asistente");
-      // Si querés que cierre el menú lateral al hacer clic, descomentá la línea de abajo:
-      // cerrarMenu();
     });
   }
 });
