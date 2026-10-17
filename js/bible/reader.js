@@ -1,10 +1,170 @@
-/// js/bible/reader.js
+// js/bible/reader.js
 // Módulo de lectura y navegación por Libros y Capítulos de la Biblia
 
 import { listaLibrosAntiguo, listaLibrosNuevo } from "./canon.js";
 
 // Canon completo unificado para mapear la posición de los libros (73 libros)
 const CANON_COMPLETO = [...listaLibrosAntiguo, ...listaLibrosNuevo];
+
+// Diccionario de traducción para la interfaz de libros
+const LIBROS_TRADUCIDOS = {
+  en: {
+    Génesis: "Genesis",
+    Éxodo: "Exodus",
+    Levítico: "Leviticus",
+    Números: "Numbers",
+    Deuteronomio: "Deuteronomy",
+    Josué: "Joshua",
+    Jueces: "Judges",
+    Rut: "Ruth",
+    "1 Samuel": "1 Samuel",
+    "2 Samuel": "2 Samuel",
+    "1 Reyes": "1 Kings",
+    "2 Reyes": "2 Kings",
+    "1 Crónicas": "1 Chronicles",
+    "2 Crónicas": "2 Chronicles",
+    Esdras: "Ezra",
+    Nehemías: "Nehemiah",
+    Tobías: "Tobit",
+    Judit: "Judith",
+    Ester: "Esther",
+    "1 Macabeos": "1 Maccabees",
+    "2 Macabeos": "2 Maccabees",
+    Job: "Job",
+    Salmos: "Psalms",
+    Proverbios: "Proverbs",
+    Eclesiastés: "Ecclesiastes",
+    "Cantar de los Cantares": "Song of Solomon",
+    Sabiduría: "Wisdom",
+    Eclesiástico: "Sirach",
+    Isaías: "Isaiah",
+    Jeremías: "Jeremiah",
+    Lamentaciones: "Lamentations",
+    Baruc: "Baruch",
+    Ezequiel: "Ezekiel",
+    Daniel: "Daniel",
+    Oseas: "Hosea",
+    Joel: "Joel",
+    Amós: "Amos",
+    Abdías: "Obadiah",
+    Jonás: "Jonah",
+    Miqueas: "Micah",
+    Nahún: "Nahum",
+    Habacuc: "Habakkuk",
+    Sofonías: "Zephaniah",
+    Ageo: "Haggai",
+    Zacarías: "Zechariah",
+    Malaquías: "Malachi",
+    Mateo: "Matthew",
+    Marcos: "Mark",
+    Lucas: "Luke",
+    Juan: "John",
+    Hechos: "Acts",
+    Romanos: "Romans",
+    "1 Corintios": "1 Corinthians",
+    "2 Corintios": "2 Corinthians",
+    Gálatas: "Galatians",
+    Efesios: "Ephesians",
+    Filipenses: "Philippians",
+    Colosenses: "Colossians",
+    "1 Tesalonicenses": "1 Thessalonians",
+    "2 Tesalonicenses": "2 Thessalonians",
+    "1 Timoteo": "1 Timothy",
+    "2 Timoteo": "2 Timothy",
+    Tito: "Titus",
+    Filemón: "Philemon",
+    Hebreos: "Hebrews",
+    Santiago: "James",
+    "1 Pedro": "1 Peter",
+    "2 Pedro": "2 Peter",
+    "1 Juan": "1 John",
+    "2 Juan": "2 John",
+    "3 Juan": "3 John",
+    Judas: "Jude",
+    Apocalipsis: "Revelation",
+  },
+  pt: {
+    Génesis: "Gênesis",
+    Éxodo: "Êxodo",
+    Levítico: "Levítico",
+    Números: "Números",
+    Deuteronomio: "Deuteranômio",
+    Josué: "Josué",
+    Jueces: "Juízes",
+    Rut: "Rute",
+    "1 Samuel": "1 Samuel",
+    "2 Samuel": "2 Samuel",
+    "1 Reyes": "1 Reis",
+    "2 Reyes": "2 Reis",
+    "1 Crónicas": "1 Crônicas",
+    "2 Crónicas": "2 Crônicas",
+    Esdras: "Esdras",
+    Nehemías: "Neemias",
+    Tobías: "Tobias",
+    Judit: "Judite",
+    Ester: "Ester",
+    "1 Macabeos": "1 Macabeus",
+    "2 Macabeos": "2 Macabeus",
+    Job: "Jó",
+    Salmos: "Salmos",
+    Proverbios: "Provérbios",
+    Eclesiastés: "Eclesiastes",
+    "Cantar de los Cantares": "Cântico dos Cânticos",
+    Sabiduría: "Sabedoria",
+    Eclesiástico: "Eclesiástico",
+    Isaías: "Isaías",
+    Jeremías: "Jeremias",
+    Lamentaciones: "Lamentações",
+    Baruc: "Baruc",
+    Ezequiel: "Ezequiel",
+    Daniel: "Daniel",
+    Oseas: "Oséias",
+    Joel: "Joel",
+    Amós: "Amós",
+    Abdías: "Obadias",
+    Jonás: "Jonas",
+    Miqueas: "Miquéias",
+    Nahún: "Naum",
+    Habacuc: "Habacuc",
+    Sofonías: "Sofonias",
+    Ageo: "Ageu",
+    Zacarías: "Zacarias",
+    Malaquías: "Malaquias",
+    Mateo: "Mateus",
+    Marcos: "Marcos",
+    Lucas: "Lucas",
+    Juan: "João",
+    Hechos: "Atos",
+    Romanos: "Romanos",
+    "1 Corintios": "1 Coríntios",
+    "2 Corintios": "2 Coríntios",
+    Gálatas: "Gálatas",
+    Efesios: "Efésios",
+    Filipenses: "Filipenses",
+    Colosenses: "Colossenses",
+    "1 Tesalonicenses": "1 Tessalonicenses",
+    "2 Tesalonicenses": "2 Tessalonicenses",
+    "1 Timoteo": "1 Timóteo",
+    "2 Timoteo": "2 Timóteo",
+    Tito: "Tito",
+    Filemón: "Filemom",
+    Hebreos: "Hebreus",
+    Santiago: "Tiago",
+    "1 Pedro": "1 Pedro",
+    "2 Pedro": "2 Pedro",
+    "1 Juan": "1 João",
+    "2 Juan": "2 João",
+    "3 Juan": "3 João",
+    Judas: "Judas",
+    Apocalipsis: "Apocalipse",
+  },
+};
+
+// Caché para evitar descargas/normalizaciones repetidas
+let cacheBiblia = {
+  idioma: null,
+  versos: null,
+};
 
 // Función para determinar la ruta del JSON según el idioma activo
 function obtenerInfoBibliaActual() {
@@ -18,6 +178,28 @@ function obtenerInfoBibliaActual() {
     default:
       return { ruta: "data/SpaPlatense.json", idioma: "es" };
   }
+}
+
+/**
+ * Obtiene o descarga los versículos normalizados reutilizando el caché en memoria.
+ */
+async function obtenerVersosNormalizados() {
+  const info = obtenerInfoBibliaActual();
+
+  // Si ya tenemos los versos cargados en memoria para el mismo idioma, devolvemos directo
+  if (cacheBiblia.idioma === info.idioma && cacheBiblia.versos) {
+    return cacheBiblia.versos;
+  }
+
+  const respuesta = await fetch(info.ruta);
+  const jsonRaw = await respuesta.json();
+  const versosNormalizados = normalizarConCanonOficial(jsonRaw, info.idioma);
+
+  // Almacenamos en memoria
+  cacheBiblia.idioma = info.idioma;
+  cacheBiblia.versos = versosNormalizados;
+
+  return versosNormalizados;
 }
 
 /**
@@ -67,19 +249,10 @@ function normalizarConCanonOficial(jsonRaw, idioma) {
   // 3. INGLÉS (World English Bible / KJV - bibleweb.json)
   else if (idioma === "en") {
     const mapaLibros = {};
-
-    // Opcional: Elegimos una traducción específica para no duplicar (ej: la primera o "King James Version")
-    // Si querés filtrar por una en particular, podés descomentar la línea de abajo:
-    // const jsonFiltrado = jsonRaw.filter(capObj => capObj.translationName === "King James Version");
-    const jsonFiltrado = jsonRaw; // O usamos todo si ya lo separamos
-
-    // Agrupamos todos los capítulos según la propiedad bookName del JSON
-    // (Filtramos para tomar una sola translationName si el archivo trae varias)
     const traduccionElegida =
       jsonRaw.find((item) => item.translationName)?.translationName || "";
 
     jsonRaw.forEach((capObj) => {
-      // Si el archivo trae varias traductions mezcladas, nos quedamos solo con la primera
       if (capObj.translationName !== traduccionElegida) return;
 
       const bName = capObj.bookName;
@@ -108,6 +281,15 @@ function normalizarConCanonOficial(jsonRaw, idioma) {
   return versosPlanos;
 }
 
+// Devuelve el nombre traducido del libro según el idioma actual
+function obtenerNombreVisible(nombreLibroEsp) {
+  const idioma = localStorage.getItem("palabra_viva_idioma") || "es";
+  if (LIBROS_TRADUCIDOS[idioma] && LIBROS_TRADUCIDOS[idioma][nombreLibroEsp]) {
+    return LIBROS_TRADUCIDOS[idioma][nombreLibroEsp];
+  }
+  return nombreLibroEsp;
+}
+
 export async function abrirAntiguoTestamento() {
   const changeScreen = window.changeScreen;
   const screenAntiguo =
@@ -121,17 +303,16 @@ export async function abrirAntiguoTestamento() {
   if (contenedor) {
     contenedor.innerHTML = "";
     try {
-      const info = obtenerInfoBibliaActual();
-      const respuesta = await fetch(info.ruta);
-      const jsonRaw = await respuesta.json();
-
-      const todosLosVersos = normalizarConCanonOficial(jsonRaw, info.idioma);
+      const todosLosVersos = await obtenerVersosNormalizados();
 
       listaLibrosAntiguo.forEach((nombreLibro) => {
         const btn = document.createElement("div");
         btn.style.cssText =
           "border: 1px solid var(--gold); border-radius: 8px; padding: 15px; text-align: center; cursor: pointer; background: rgba(255,255,255,0.05); color: #fff; font-size: 0.9rem;";
-        btn.innerText = nombreLibro;
+
+        // Muestra el nombre traducido según el idioma
+        btn.innerText = obtenerNombreVisible(nombreLibro);
+
         btn.addEventListener("click", () =>
           cargarCapitulosLibro(nombreLibro, todosLosVersos, screenAntiguo),
         );
@@ -156,17 +337,16 @@ export async function abrirNuevoTestamento() {
   if (contenedor) {
     contenedor.innerHTML = "";
     try {
-      const info = obtenerInfoBibliaActual();
-      const respuesta = await fetch(info.ruta);
-      const jsonRaw = await respuesta.json();
-
-      const todosLosVersos = normalizarConCanonOficial(jsonRaw, info.idioma);
+      const todosLosVersos = await obtenerVersosNormalizados();
 
       listaLibrosNuevo.forEach((nombreLibro) => {
         const btn = document.createElement("div");
         btn.style.cssText =
           "border: 1px solid var(--gold); border-radius: 8px; padding: 15px; text-align: center; cursor: pointer; background: rgba(255,255,255,0.05); color: #fff; font-size: 0.9rem;";
-        btn.innerText = nombreLibro;
+
+        // Muestra el nombre traducido según el idioma
+        btn.innerText = obtenerNombreVisible(nombreLibro);
+
         btn.addEventListener("click", () =>
           cargarCapitulosLibro(nombreLibro, todosLosVersos, screenNuevo),
         );
@@ -198,7 +378,7 @@ export function cargarCapitulosLibro(nombreLibro, versesArray, pantallaOrigen) {
   const gridCapitulos = document.getElementById("grid-capitulos");
   const areaVersiculos = document.getElementById("texto-versiculos-area");
 
-  if (tituloLibro) tituloLibro.textContent = nombreLibro;
+  if (tituloLibro) tituloLibro.textContent = obtenerNombreVisible(nombreLibro);
   if (gridCapitulos) gridCapitulos.innerHTML = "";
   if (areaVersiculos) areaVersiculos.innerHTML = "";
 
@@ -248,7 +428,7 @@ export function renderizarVersiculosCapitulo(
   const areaLectura = document.getElementById("texto-lectura-final");
 
   if (tituloLectura)
-    tituloLectura.textContent = `${nombreLibro} - Cap. ${numCapitulo}`;
+    tituloLectura.textContent = `${obtenerNombreVisible(nombreLibro)} - Cap. ${numCapitulo}`;
 
   const capitulosSet = new Set(
     versosLibro
