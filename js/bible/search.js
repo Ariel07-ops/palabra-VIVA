@@ -1,110 +1,113 @@
 // js/bible/search.js
-// Módulo de búsqueda inteligente en las Escrituras
+// Módulo de búsqueda inteligente en las Escrituras (Soporte Multidioma Ajustado)
 
 import { state } from "../core/state.js";
 import { limpiarTexto, palabrasANumeros, escaparHTML } from "../core/utils.js";
 
-// Lista oficial de libros católicos (73 libros)
-const LIBROS = [
-  // Antiguo Testamento
-  "genesis",
-  "exodo",
-  "levitico",
-  "numeros",
-  "deuteronomio",
-  "josue",
-  "jueces",
-  "rut",
-  "1 samuel",
-  "2 samuel",
-  "1 reyes",
-  "2 reyes",
-  "1 cronicas",
-  "2 cronicas",
-  "esdras",
-  "nehemias",
-  "tobias",
-  "judit",
-  "ester",
-  "1 macabeos",
-  "2 macabeos",
-  "job",
-  "salmos",
-  "proverbios",
-  "eclesiastes",
-  "cantar de los cantares",
-  "sabiduria",
-  "eclesiastico",
-  "isaias",
-  "jeremias",
-  "lamentaciones",
-  "baruc",
-  "ezequiel",
-  "daniel",
-  "oseas",
-  "joel",
-  "amos",
-  "abdias",
-  "jonas",
-  "miqueas",
-  "nahum",
-  "habacuc",
-  "sofonias",
-  "hageo",
-  "zacarias",
-  "malaquias",
-  // Nuevo Testamento
-  "mateo",
-  "marcos",
-  "lucas",
-  "juan",
-  "hechos",
-  "romanos",
-  "1 corintios",
-  "2 corintios",
-  "galatas",
-  "efesios",
-  "filipenses",
-  "colosenses",
-  "1 tesalonicenses",
-  "2 tesalonicenses",
-  "1 timoteo",
-  "2 timoteo",
-  "tito",
-  "filemon",
-  "hebreos",
-  "santiago",
-  "1 pedro",
-  "2 pedro",
-  "1 juan",
-  "2 juan",
-  "3 juan",
-  "judas",
-  "apocalipsis",
-];
+/**
+ * Detecta qué idioma o versión de Biblia está seleccionada
+ */
+function obtenerConfiguracionIdioma() {
+  const selectIdioma =
+    document.getElementById("select-idioma") ||
+    document.getElementById("selector-idioma") ||
+    document.getElementById("idioma-select");
 
-// Correcciones de voz / tipeo frecuentes
-const CORRECCIONES = {
-  misaias: "isaias",
-  isaias: "isaias",
-  isaías: "isaias",
-  lamentaciones: "lamentaciones",
-  lamentacion: "lamentaciones",
-  mateo: "mateo",
-  matheo: "mateo",
-  juan: "juan",
-  "san juan": "juan",
-  salmo: "salmos",
-  salmos: "salmos",
-  apocalipsis: "apocalipsis",
-  revelacion: "apocalipsis",
-  sabiduria: "sabiduria",
-  siracida: "eclesiastico",
-};
+  const lang = (
+    selectIdioma?.value ||
+    state.idioma ||
+    state.version ||
+    "es"
+  ).toLowerCase();
+
+  if (lang.includes("en") || lang.includes("douay") || lang === "en") {
+    return {
+      archivo: "data/bibleweb.json",
+      idioma: "en",
+    };
+  } else if (
+    lang.includes("pt") ||
+    lang.includes("portugues") ||
+    lang === "pt"
+  ) {
+    return {
+      archivo: "data/bibliaAveMaria.json",
+      idioma: "pt",
+    };
+  }
+
+  // Por defecto: Español (Platense)
+  return {
+    archivo: "data/SpaPlatense.json",
+    idioma: "es",
+  };
+}
 
 /**
- * Inicializa los eventos del buscador de la Biblia
+ * Convierte las 3 estructuras distintas de JSON en una lista plana estandarizada
  */
+function extraerVersiculosDeJSON(datos) {
+  let lista = [];
+
+  // CASO 1: Portugués (bibliaAveMaria.json) -> 'antigoTestamento' y 'novoTestamento'
+  if (datos.antigoTestamento || datos.novoTestamento) {
+    const todosLosLibrosPT = [
+      ...(datos.antigoTestamento || []),
+      ...(datos.novoTestamento || []),
+    ];
+
+    todosLosLibrosPT.forEach((b) => {
+      const bookName = b.nome || "";
+      if (b.capitulos && Array.isArray(b.capitulos)) {
+        b.capitulos.forEach((c) => {
+          const chapNum = c.capitulo || 1;
+          if (c.versiculos && Array.isArray(c.versiculos)) {
+            c.versiculos.forEach((v) => {
+              lista.push({
+                book_name: bookName,
+                chapter: chapNum,
+                verse: v.versiculo || 1,
+                text: v.texto || "",
+              });
+            });
+          }
+        });
+      }
+    });
+    return lista;
+  }
+
+  // CASO 2: Español e Inglés (SpaPlatense.json y bibleweb.json) -> 'books'
+  if (datos.books && Array.isArray(datos.books)) {
+    datos.books.forEach((b) => {
+      const bookName = b.name || b.book || "";
+      if (b.chapters && Array.isArray(b.chapters)) {
+        b.chapters.forEach((c) => {
+          const chapNum = c.chapter || 1;
+          if (c.verses && Array.isArray(c.verses)) {
+            c.verses.forEach((v) => {
+              lista.push({
+                book_name: bookName,
+                chapter: v.chapter !== undefined ? v.chapter : chapNum,
+                verse: v.verse !== undefined ? v.verse : 1,
+                text: v.text || "",
+              });
+            });
+          }
+        });
+      }
+    });
+    return lista;
+  }
+
+  // CASO 3: Estructura plana estándar
+  if (datos.verses && Array.isArray(datos.verses)) {
+    return datos.verses;
+  }
+
+  return lista;
+}
+
 export function initSearch() {
   const btnBuscar = document.getElementById("btn-ejecutar-busqueda");
   if (btnBuscar) {
@@ -112,9 +115,6 @@ export function initSearch() {
   }
 }
 
-/**
- * Función principal de búsqueda
- */
 export async function ejecutarBusqueda() {
   state.resultadosBusqueda = [];
 
@@ -129,138 +129,65 @@ export async function ejecutarBusqueda() {
     return;
   }
 
-  let inputParaCita = palabrasANumeros(inputOriginal);
-  inputParaCita = inputParaCita
-    .replace(/capitulo|cap\.?/g, " ")
-    .replace(/versiculos?|vers\.?|v\.?/g, " ")
-    .replace(/\bal\b|\ba\b|\bhasta\b/g, "-")
-    .replace(/[,;]/g, " ")
-    .replace(/\s+/g, " ")
-    .trim();
-
-  const inputLimpio = limpiarTexto(inputOriginal);
-  const terminoBusqueda = inputLimpio;
-  const palabrasBusqueda = terminoBusqueda
-    .split(/\s+/)
-    .filter((p) => p.length > 2);
-
   contenedorResultados.innerHTML = `<p class="placeholder-text">Buscando en las Escrituras...</p>`;
 
   try {
-    // Si no tenemos los datos guardados en state, hacemos el fetch
-    if (!state.bibliaData) {
-      const respuesta = await fetch("data/biblia.json");
+    const config = obtenerConfiguracionIdioma();
+
+    // Hacemos fetch si cambió el idioma o no están cargados los datos
+    if (!state.bibliaData || state.rutaBibliaCargada !== config.archivo) {
+      console.log(
+        "📥 Cargar motor para idioma:",
+        config.idioma,
+        "->",
+        config.archivo,
+      );
+      const respuesta = await fetch(config.archivo);
       state.bibliaData = await respuesta.json();
+      state.rutaBibliaCargada = config.archivo;
     }
 
     const datos = state.bibliaData;
+    const listaVersiculos = extraerVersiculosDeJSON(datos);
+
     let encontrados = [];
+    const terminoBusqueda = limpiarTexto(inputOriginal);
+    const palabrasBusqueda = terminoBusqueda
+      .split(/\s+/)
+      .filter((p) => p.length > 2);
 
-    if (datos.verses && Array.isArray(datos.verses)) {
-      let libroDetectado = null;
-      let capituloBuscado = null;
-      let versoDesde = null;
-      let versoHasta = null;
-      let esSoloLibro = false;
+    listaVersiculos.forEach((item) => {
+      const textoLimpio = limpiarTexto(item.text || "");
+      const libroLimpio = limpiarTexto(item.book_name || "");
 
-      const regexCita =
-        /^([1-3]?\s*[a-zÁÉÍÓÚáéíóúñü]+(?:\s+[a-zÁÉÍÓÚáéíóúñü]+)?)\s+(\d{1,3})(?:\s*[:\s-]\s*(\d{1,3})(?:\s*-\s*(\d{1,3}))?)?$/i;
-      const match = inputParaCita.match(regexCita);
+      const coincideLibro =
+        libroLimpio.includes(terminoBusqueda) ||
+        (terminoBusqueda.length >= 4 && terminoBusqueda.includes(libroLimpio));
+      const coincideTexto = textoLimpio.includes(terminoBusqueda);
 
-      if (match) {
-        let posible = limpiarTexto(match[1].replace(/\s+/g, " ").trim());
-        if (CORRECCIONES[posible]) posible = CORRECCIONES[posible];
-
-        libroDetectado = LIBROS.find(
-          (l) =>
-            l === posible || l.startsWith(posible) || posible.startsWith(l),
-        );
-
-        if (libroDetectado) {
-          capituloBuscado = parseInt(match[2], 10);
-          if (match[3]) {
-            versoDesde = parseInt(match[3], 10);
-            versoHasta = match[4] ? parseInt(match[4], 10) : versoDesde;
-          }
+      if (coincideLibro || coincideTexto) {
+        encontrados.push({
+          referencia: `${item.book_name} ${item.chapter}:${item.verse}`,
+          texto: item.text,
+        });
+      } else if (palabrasBusqueda.length >= 2) {
+        const coincidencias = palabrasBusqueda.filter((p) =>
+          textoLimpio.includes(p),
+        ).length;
+        const umbral = Math.ceil(palabrasBusqueda.length * 0.8);
+        if (coincidencias >= umbral) {
+          encontrados.push({
+            referencia: `${item.book_name} ${item.chapter}:${item.verse}`,
+            texto: item.text,
+          });
         }
       }
+    });
 
-      if (!libroDetectado) {
-        let posible = inputLimpio;
-        if (CORRECCIONES[posible]) posible = CORRECCIONES[posible];
-
-        libroDetectado = LIBROS.find(
-          (l) =>
-            l === posible ||
-            (posible.length >= 4 &&
-              (l.startsWith(posible) || posible.startsWith(l))),
-        );
-
-        if (libroDetectado) {
-          esSoloLibro = true;
-        }
-      }
-
-      // Proceso de filtrado
-      datos.verses.forEach((item) => {
-        const libroItem = limpiarTexto(item.book_name || "");
-        const textoLimpio = limpiarTexto(item.text || "");
-
-        if (libroDetectado) {
-          const coincideLibro =
-            libroItem === libroDetectado ||
-            libroItem.startsWith(libroDetectado) ||
-            libroDetectado.startsWith(libroItem);
-
-          if (coincideLibro) {
-            if (esSoloLibro) {
-              encontrados.push({
-                referencia: `${item.book_name} ${item.chapter}:${item.verse}`,
-                texto: item.text,
-              });
-            } else if (item.chapter === capituloBuscado) {
-              if (versoDesde == null) {
-                encontrados.push({
-                  referencia: `${item.book_name} ${item.chapter}:${item.verse}`,
-                  texto: item.text,
-                });
-              } else if (
-                item.verse >= versoDesde &&
-                item.verse <= (versoHasta || versoDesde)
-              ) {
-                encontrados.push({
-                  referencia: `${item.book_name} ${item.chapter}:${item.verse}`,
-                  texto: item.text,
-                });
-              }
-            }
-          }
-        } else {
-          if (textoLimpio.includes(terminoBusqueda)) {
-            encontrados.push({
-              referencia: `${item.book_name} ${item.chapter}:${item.verse}`,
-              texto: item.text,
-            });
-          } else if (palabrasBusqueda.length >= 2) {
-            const coincidencias = palabrasBusqueda.filter((p) =>
-              textoLimpio.includes(p),
-            ).length;
-            const umbral = Math.ceil(palabrasBusqueda.length * 0.8);
-            if (coincidencias >= umbral) {
-              encontrados.push({
-                referencia: `${item.book_name} ${item.chapter}:${item.verse}`,
-                texto: item.text,
-              });
-            }
-          }
-        }
-      });
-    }
-
-    // Guardar los resultados en el estado central
     state.resultadosBusqueda = encontrados;
+    window.resultadosBusquedaActuales = encontrados;
 
-    // Renderizar
+    // Renderizado de resultados
     if (encontrados.length > 0) {
       let paginaActual = 1;
       const porPagina = 20;
@@ -273,7 +200,7 @@ export async function ejecutarBusqueda() {
         let html = lote
           .map(
             (item, i) => `
-          <div class="search-result-item" data-index="${inicio + i}"
+          <div class="search-result-item" data-index="${inicio + i}" onclick="window.abrirResultadoPorIndice(${inicio + i})"
                style="margin-bottom:15px; border-bottom:1px solid rgba(212,175,55,0.2); padding-bottom:10px; cursor:pointer;">
             <strong style="color:var(--gold); display:block; margin-bottom:5px;">${escaparHTML(item.referencia)}</strong>
             <p style="color:#e0e0e0; font-size:0.95rem; line-height:1.4;">"${escaparHTML(item.texto)}"</p>
@@ -332,7 +259,6 @@ export async function ejecutarBusqueda() {
     contenedorResultados.innerHTML = `<p class="placeholder-text" style="color:#e34234;">Ocurrió un error al realizar la búsqueda.</p>`;
   }
 }
-// Agregar al final de js/bible/search.js
 
 export function cerrarCajita() {
   const modalVentana = document.getElementById("modal-versiculo");
@@ -342,33 +268,24 @@ export function cerrarCajita() {
 }
 
 export function abrirResultadoPorIndice(indiceGlobal) {
-  console.log("Índice recibido:", indiceGlobal);
-
-  // Usamos el array global o importado de búsquedas
   const resultados = window.resultadosBusquedaActuales || [];
   const item = resultados[indiceGlobal];
 
-  if (!item) {
-    console.warn("⚠️ No se encontró ningún item en ese índice.");
-    return;
-  }
+  if (!item) return;
 
   const modalTexto = document.getElementById("texto-versiculo");
   const modalVentana = document.getElementById("modal-versiculo");
 
   if (modalTexto) {
     modalTexto.innerHTML = `<strong style="color: var(--gold);">${item.referencia}</strong><br><br>"${item.texto}"`;
-  } else {
-    console.error("No se encontró el elemento #texto-versiculo en el HTML.");
   }
 
   if (modalVentana) {
     modalVentana.style.setProperty("display", "flex", "important");
-    console.log("¡Apertura de modal realizada!");
-  } else {
-    console.error("No se encontró el elemento #modal-versiculo!");
   }
 }
+
+window.abrirResultadoPorIndice = abrirResultadoPorIndice;
 
 export function cerrarModalHerramientas() {
   const modal = document.getElementById("modal-herramientas");

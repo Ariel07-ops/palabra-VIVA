@@ -206,12 +206,16 @@ async function obtenerVersosNormalizados() {
  * Normaliza los JSONs asignando los nombres exactos de canon.js
  * de acuerdo a la estructura de cada archivo.
  */
+/**
+ * Normaliza los JSONs asignando los nombres exactos de canon.js
+ * de acuerdo a la estructura de cada archivo.
+ */
 function normalizarConCanonOficial(jsonRaw, idioma) {
   const versosPlanos = [];
 
-  // 1. ESPAÑOL (Straubinger - SpaPlatense.json)
-  if (idioma === "es") {
-    const libros = jsonRaw.books || [];
+  // 1. ESPAÑOL e INGLÉS (Estructura estándar de libros -> chapters -> verses)
+  if (idioma === "es" || idioma === "en") {
+    const libros = jsonRaw.books || (Array.isArray(jsonRaw) ? jsonRaw : []);
     libros.forEach((libro, idx) => {
       const nombreOficial = CANON_COMPLETO[idx] || libro.name;
       (libro.chapters || []).forEach((cap) => {
@@ -246,41 +250,9 @@ function normalizarConCanonOficial(jsonRaw, idioma) {
       });
     });
   }
-  // 3. INGLÉS (World English Bible / KJV - bibleweb.json)
-  else if (idioma === "en") {
-    const mapaLibros = {};
-    const traduccionElegida =
-      jsonRaw.find((item) => item.translationName)?.translationName || "";
-
-    jsonRaw.forEach((capObj) => {
-      if (capObj.translationName !== traduccionElegida) return;
-
-      const bName = capObj.bookName;
-      if (!mapaLibros[bName]) mapaLibros[bName] = [];
-      mapaLibros[bName].push(capObj);
-    });
-
-    const llavesLibros = Object.keys(mapaLibros);
-    llavesLibros.forEach((bName, idx) => {
-      const nombreOficial = CANON_COMPLETO[idx] || bName;
-      const capitulosList = mapaLibros[bName];
-
-      capitulosList.forEach((capObj) => {
-        (capObj.verses || []).forEach((v) => {
-          versosPlanos.push({
-            book_name: nombreOficial,
-            chapter: capObj.chapterNo,
-            verse: v.verseNo,
-            text: v.verseText,
-          });
-        });
-      });
-    });
-  }
 
   return versosPlanos;
 }
-
 // Devuelve el nombre traducido del libro según el idioma actual
 function obtenerNombreVisible(nombreLibroEsp) {
   const idioma = localStorage.getItem("palabra_viva_idioma") || "es";

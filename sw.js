@@ -1,4 +1,4 @@
-const CACHE_NAME = "palabra-viva-v12"; // Incrementamos la versión para que fuerce el refresco
+const CACHE_NAME = "palabra-viva-v13"; // Incrementamos la versión para que fuerce el refresco
 
 const urlsToCache = [
   "./",
