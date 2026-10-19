@@ -1,6 +1,7 @@
 // js/main.js
 
 // 1. IMPORTACIONES
+
 import {
   initSearch,
   cerrarCajita,
