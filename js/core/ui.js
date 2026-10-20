@@ -563,3 +563,26 @@ window.abrirPasoEmaus = abrirPasoEmaus;
 window.abrirPeldaño = abrirPeldaño;
 window.screenEmaus = document.getElementById("screen-emaus");
 window.screenPromesa = document.getElementById("screen-promesa");
+// Función para alternar entre el menú principal, tamaño de letra y herramientas de estudio
+function mostrarSeccionModal(seccion) {
+  const menuPrincipal = document.getElementById("menu-herramientas-principal");
+  const seccionTamano = document.getElementById("seccion-tamano");
+  const seccionEstudio = document.getElementById("seccion-estudio");
+
+  // Ocultar todo primero
+  if (menuPrincipal) menuPrincipal.style.display = "none";
+  if (seccionTamano) seccionTamano.style.display = "none";
+  if (seccionEstudio) seccionEstudio.style.display = "none";
+
+  // Mostrar la sección elegida
+  if (seccion === "principal" && menuPrincipal) {
+    menuPrincipal.style.display = "block";
+  } else if (seccion === "tamano" && seccionTamano) {
+    seccionTamano.style.display = "block";
+  } else if (seccion === "estudio" && seccionEstudio) {
+    seccionEstudio.style.display = "block";
+  }
+}
+
+// Asegurar que cada vez que se abra el modal, arranque en el menú principal
+// (Podes llamar a mostrarSeccionModal('principal') dentro de la función que abre el modal)

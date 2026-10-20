@@ -95,7 +95,7 @@
         <li>
           <a href="#" id="link-herramientas">
             <i class="fas fa-cog"></i> 
-            <span data-es="Herramientas de Lectura" data-en="Reading Tools" data-pt="Ferramentas de Leitura">Herramientas de Lectura</span>
+            <span data-es="Herramientas de Estudio y Lectura" data-en="Study and Reading Tools" data-pt="Ferramentas de Estudo e Leitura">Herramientas de Estudio y Lectura</span>
           </a>
         </li>
         <li>
@@ -1485,23 +1485,59 @@
     </div>
     <!-- Este es el panel que el JavaScript va a intentar abrir -->
     <!-- Panel modal de herramientas -->
+<!-- Panel modal de herramientas unificado -->
 <div id="modal-herramientas" style="display: none; position: fixed; top: 0px; left: 0px; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.8); z-index: 9999; justify-content: center; align-items: center;">
   
-  <div class="modal-contenido">
-    <h3 data-es="Herramientas" data-en="Tools" data-pt="Ferramentas">Herramientas</h3>
+  <div class="modal-contenido" style="text-align: center; min-width: 280px; padding: 20px;">
     
-    <!-- Controles de Tamaño de Letra -->
-    <p class="modal-subtitulo" data-es="Tamaño de letra" data-en="Font size" data-pt="Tamanho da letra" style="margin: 10px 0 5px 0; font-size: 14px;">Tamaño de letra</p>
-    
-    <div style="margin-bottom: 15px; display: flex; justify-content: center; align-items: center; gap: 10px;">
-      <button onclick="cambiarTamanio(2)" class="btn-tamano">A+</button>
-      <span id="indicador-tamano" class="texto-tamano">18px</span>
-      <button onclick="cambiarTamanio(-2)" class="btn-tamano">A-</button>
+    <!-- VISTA 1: MENÚ PRINCIPAL DE OPCIONES -->
+    <div id="menu-herramientas-principal">
+      <h3 data-es="Herramientas y Lectura" data-en="Tools & Reading" data-pt="Ferramentas e Leitura" style="color: var(--gold); margin-bottom: 20px;">Herramientas y Lectura</h3>
+      
+      <div style="display: flex; flex-direction: column; gap: 12px; margin-bottom: 20px;">
+        <!-- Botón para ir al control de tamaño -->
+        <button onclick="mostrarSeccionModal('tamano')" class="btn-opcion-menu" style="background: rgba(212,175,55,0.15); border: 1px solid var(--gold); color: #fff; padding: 12px; border-radius: 8px; cursor: pointer; font-size: 1rem; display: flex; align-items: center; justify-content: center; gap: 8px;">
+          <i class="fas fa-text-height"></i> <span data-es="Tamaño de Letra" data-en="Font Size" data-pt="Tamanho da Letra">Tamaño de Letra</span>
+        </button>
+
+        <!-- Botón para ir al futuro panel de estudio -->
+        <button onclick="mostrarSeccionModal('estudio')" class="btn-opcion-menu" style="background: rgba(212,175,55,0.15); border: 1px solid var(--gold); color: #fff; padding: 12px; border-radius: 8px; cursor: pointer; font-size: 1rem; display: flex; align-items: center; justify-content: center; gap: 8px;">
+          <i class="fas fa-book-open"></i> <span data-es="Herramientas de Estudio" data-en="Study Tools" data-pt="Ferramentas de Estudo">Herramientas de Estudio</span>
+        </button>
+      </div>
+
+      <button onclick="cerrarModalHerramientas()" class="btn-cerrar-modal" data-es="Cerrar" data-en="Close" data-pt="Fechar" style="background: transparent; border: 1px solid #777; color: #ccc; padding: 8px 16px; border-radius: 6px; cursor: pointer;">Cerrar</button>
     </div>
 
-    <button onclick="cerrarModalHerramientas()" class="btn-cerrar-modal" data-es="Cerrar" data-en="Close" data-pt="Fechar">Cerrar</button>
-  </div>
+    <!-- VISTA 2: SECCIÓN DE TAMAÑO DE LETRA (Oculta por defecto) -->
+    <div id="seccion-tamano" style="display: none;">
+      <h3 data-es="Tamaño de Letra" data-en="Font Size" data-pt="Tamanho da Letra" style="color: var(--gold); margin-bottom: 15px;">Tamaño de Letra</h3>
+      
+      <div style="margin-bottom: 20px; display: flex; justify-content: center; align-items: center; gap: 15px;">
+        <button onclick="cambiarTamanio(2)" class="btn-tamano" style="padding: 8px 14px; font-weight: bold; cursor: pointer;">A+</button>
+        <span id="indicador-tamano" class="texto-tamano" style="font-size: 1.1rem; color: var(--gold);">18px</span>
+        <button onclick="cambiarTamanio(-2)" class="btn-tamano" style="padding: 8px 14px; font-weight: bold; cursor: pointer;">A-</button>
+      </div>
 
+      <div style="display: flex; justify-content: center; gap: 10px;">
+        <button onclick="mostrarSeccionModal('principal')" style="background: transparent; border: 1px solid var(--gold); color: var(--gold); padding: 8px 14px; border-radius: 6px; cursor: pointer;" data-es="Volver" data-en="Back" data-pt="Voltar">Volver</button>
+        <button onclick="cerrarModalHerramientas()" class="btn-cerrar-modal" data-es="Cerrar" data-en="Close" data-pt="Fechar" style="background: rgba(212,175,55,0.2); border: 1px solid var(--gold); color: #fff; padding: 8px 14px; border-radius: 6px; cursor: pointer;">Cerrar</button>
+      </div>
+    </div>
+
+    <!-- VISTA 3: SECCIÓN DE HERRAMIENTAS DE ESTUDIO (Próximamente vacía para empezar a poblarla) -->
+    <div id="seccion-estudio" style="display: none;">
+      <h3 data-es="Herramientas de Estudio" data-en="Study Tools" data-pt="Ferramentas de Estudo" style="color: var(--gold); margin-bottom: 15px;">Herramientas de Estudio</h3>
+      
+      <p style="color: #bbb; font-size: 0.9rem; margin-bottom: 20px;" data-es="Próximamente: Cuaderno, notas y referencias cruzadas." data-en="Coming soon: Notebook, notes and cross-references." data-pt="Em breve: Bloco de notas e referências cruzadas.">Próximamente: Cuaderno, notas y referencias cruzadas.</p>
+
+      <div style="display: flex; justify-content: center; gap: 10px;">
+        <button onclick="mostrarSeccionModal('principal')" style="background: transparent; border: 1px solid var(--gold); color: var(--gold); padding: 8px 14px; border-radius: 6px; cursor: pointer;" data-es="Volver" data-en="Back" data-pt="Voltar">Volver</button>
+        <button onclick="cerrarModalHerramientas()" class="btn-cerrar-modal" data-es="Cerrar" data-en="Close" data-pt="Fechar" style="background: rgba(212,175,55,0.2); border: 1px solid var(--gold); color: #fff; padding: 8px 14px; border-radius: 6px; cursor: pointer;">Cerrar</button>
+      </div>
+    </div>
+
+  </div>
 </div>
     <!-- Vista del Asistente de Apoyo -->
     <div id="screen-asistente" class="screen">

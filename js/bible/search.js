@@ -417,6 +417,7 @@ function extraerVersiculosDeJSON(datos) {
 }
 
 /* ========== PARSEAR CITA ========== */
+/* ========== PARSEAR CITA ========== */
 function parsearCita(inputOriginal) {
   let texto = palabrasANumeros(inputOriginal);
   texto = texto
@@ -427,10 +428,14 @@ function parsearCita(inputOriginal) {
     .replace(/\s+/g, " ")
     .trim();
 
-  const regex =
-    /^([1-3]?\s*[a-záéíóúñüãõç]+(?:\s+[a-záéíóúñüãõç]+)?)\s+(\d{1,3})(?:\s*[:\s-]\s*(\d{1,3})(?:\s*-\s*(\d{1,3}))?)?$/i;
+  // Limpiamos totalmente acentos para que "Isaías", "Isaias" o "ISAÍAS" matcheen igual
+  const textoLimpio = limpiarTexto(texto);
 
-  const match = limpiarTexto(texto).match(regex);
+  // Regex ajustado para capturar Libro + Capítulo + (opcional VersoDesde) + (opcional VersoHasta)
+  const regex =
+    /^([1-3]?\s*[a-z]+(?:\s+[a-z]+)?)\s+(\d{1,3})(?:\s*[:\s-]\s*(\d{1,3})(?:\s*-\s*(\d{1,3}))?)?$/i;
+
+  const match = textoLimpio.match(regex);
   if (!match) return null;
 
   const libroClave = resolverLibro(match[1]);
@@ -448,7 +453,6 @@ function parsearCita(inputOriginal) {
     esSoloLibro: false,
   };
 }
-
 function detectarSoloLibro(inputOriginal) {
   const limpio = limpiarTexto(inputOriginal).trim();
   if (!limpio || limpio.split(/\s+/).length > 3) return null;
