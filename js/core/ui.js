@@ -2,6 +2,7 @@
 // Módulo para la interfaz, cambio de pantallas, menú lateral, temas y navegaciones especiales
 
 let tamanoActual = 18;
+let origenBitacora = "screen-main"; // Estado global para recordar de dónde se abrió la bitácora
 
 // --- FUNCIÓN AUXILIAR PARA CAMBIAR DE PANTALLA ---
 export function changeScreen(screenToShow) {
@@ -323,7 +324,6 @@ export function cerrarModalHerramientas() {
   if (modal) {
     modal.style.display = "none";
   }
-  // Al cerrar, nos aseguramos de que vuelva a la vista con ambas opciones para la próxima vez
   mostrarSeccionModal("principal");
 }
 
@@ -341,12 +341,22 @@ export function mostrarPortadaCuaderno() {
   }
 }
 
-export function abrirLibretaEstudio() {
+// --- CONTROL DE ORIGEN Y RETORNO INTELIGENTE DE BITÁCORA ---
+export function abrirLibretaEstudio(origen = "main") {
+  origenBitacora = origen; // Registra de dónde vino ('lectura' o 'main')
   cerrarModalHerramientas();
   const screenCuaderno = document.getElementById("screen-cuaderno");
   if (screenCuaderno) {
     changeScreen(screenCuaderno);
     mostrarPortadaCuaderno();
+  }
+}
+
+export function volverDesdeCuaderno() {
+  if (origenBitacora === "lectura") {
+    changeScreen("screen-lectura");
+  } else {
+    changeScreen("screen-main");
   }
 }
 
@@ -470,8 +480,6 @@ export function initUI() {
   const btnGotoBible = document.getElementById("btn-goto-bible");
   const btnGotoPath = document.getElementById("btn-goto-path");
   const btnBackBible = document.querySelector(".btn-back");
-  const screenBibleDetail = document.getElementById("screen-bible-detail");
-  const screenPathDetail = document.getElementById("screen-path-detail");
 
   if (btnGotoBible)
     btnGotoBible.addEventListener("click", () =>
@@ -623,3 +631,5 @@ window.cerrarModalHerramientas = cerrarModalHerramientas;
 window.abrirLibretaEstudio = abrirLibretaEstudio;
 window.mostrarPortadaCuaderno = mostrarPortadaCuaderno;
 window.cambiarTamanio = cambiarTamanio;
+window.volverDesdeCuaderno = volverDesdeCuaderno;
+window.screenAntiguo = document.getElementById("screen-antiguo");
