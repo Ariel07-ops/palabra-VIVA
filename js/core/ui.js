@@ -56,6 +56,7 @@ export function changeScreen(screenToShow) {
     "screen-sugerir",
     "screen-acerca",
     "screen-asistente",
+    "screen-cuaderno", // <-- Registrada oficialmente la libreta de estudio
   ];
 
   screens.forEach((id) => {
@@ -75,6 +76,7 @@ export function changeScreen(screenToShow) {
     history.pushState({ screenId: screenId }, "", "");
   }
 }
+
 // --- FUNCIÓN PARA REDIRIGIR SEGÚN EL ESTADO DE ÁNIMO ---
 export function redirigir(estado) {
   const estadosMap = {
@@ -297,6 +299,57 @@ export function comenzarExperiencia() {
   }, 2500);
 }
 
+// --- FUNCIONES DEL MODAL DE HERRAMIENTAS Y LIBRETA ---
+export function mostrarSeccionModal(seccion) {
+  const menuPrincipal = document.getElementById("menu-herramientas-principal");
+  const seccionTamano = document.getElementById("seccion-tamano");
+  const seccionEstudio = document.getElementById("seccion-estudio");
+
+  if (menuPrincipal) menuPrincipal.style.display = "none";
+  if (seccionTamano) seccionTamano.style.display = "none";
+  if (seccionEstudio) seccionEstudio.style.display = "none";
+
+  if (seccion === "principal" && menuPrincipal) {
+    menuPrincipal.style.display = "block";
+  } else if (seccion === "tamano" && seccionTamano) {
+    seccionTamano.style.display = "block";
+  } else if (seccion === "estudio" && seccionEstudio) {
+    seccionEstudio.style.display = "block";
+  }
+}
+
+export function cerrarModalHerramientas() {
+  const modal = document.getElementById("modal-herramientas");
+  if (modal) {
+    modal.style.display = "none";
+  }
+  // Al cerrar, nos aseguramos de que vuelva a la vista con ambas opciones para la próxima vez
+  mostrarSeccionModal("principal");
+}
+
+export function mostrarPortadaCuaderno() {
+  const nombreGuardado =
+    localStorage.getItem("pv_user_name") ||
+    localStorage.getItem("nombreUsuario");
+  const saludoElem = document.getElementById("cuaderno-saludo-usuario");
+  if (saludoElem) {
+    if (nombreGuardado && nombreGuardado.trim() !== "") {
+      saludoElem.innerText = `¡Hola, ${nombreGuardado.trim()}! Este es tu espacio de reflexión.`;
+    } else {
+      saludoElem.innerText = "¡Bienvenido/a a tu espacio de reflexión!";
+    }
+  }
+}
+
+export function abrirLibretaEstudio() {
+  cerrarModalHerramientas();
+  const screenCuaderno = document.getElementById("screen-cuaderno");
+  if (screenCuaderno) {
+    changeScreen(screenCuaderno);
+    mostrarPortadaCuaderno();
+  }
+}
+
 export function initUI() {
   // 1. Aplicar tamaño guardado
   const guardado = localStorage.getItem("tamanoLetra");
@@ -394,6 +447,8 @@ export function initUI() {
   if (linkHerramientas) {
     linkHerramientas.addEventListener("click", (e) => {
       e.preventDefault();
+      // Garantizar que siempre abra mostrando las 2 opciones principales
+      mostrarSeccionModal("principal");
       const modal = document.getElementById("modal-herramientas");
       if (modal) modal.style.display = "flex";
       menuLateral?.classList.remove("active");
@@ -563,26 +618,8 @@ window.abrirPasoEmaus = abrirPasoEmaus;
 window.abrirPeldaño = abrirPeldaño;
 window.screenEmaus = document.getElementById("screen-emaus");
 window.screenPromesa = document.getElementById("screen-promesa");
-// Función para alternar entre el menú principal, tamaño de letra y herramientas de estudio
-function mostrarSeccionModal(seccion) {
-  const menuPrincipal = document.getElementById("menu-herramientas-principal");
-  const seccionTamano = document.getElementById("seccion-tamano");
-  const seccionEstudio = document.getElementById("seccion-estudio");
-
-  // Ocultar todo primero
-  if (menuPrincipal) menuPrincipal.style.display = "none";
-  if (seccionTamano) seccionTamano.style.display = "none";
-  if (seccionEstudio) seccionEstudio.style.display = "none";
-
-  // Mostrar la sección elegida
-  if (seccion === "principal" && menuPrincipal) {
-    menuPrincipal.style.display = "block";
-  } else if (seccion === "tamano" && seccionTamano) {
-    seccionTamano.style.display = "block";
-  } else if (seccion === "estudio" && seccionEstudio) {
-    seccionEstudio.style.display = "block";
-  }
-}
-
-// Asegurar que cada vez que se abra el modal, arranque en el menú principal
-// (Podes llamar a mostrarSeccionModal('principal') dentro de la función que abre el modal)
+window.mostrarSeccionModal = mostrarSeccionModal;
+window.cerrarModalHerramientas = cerrarModalHerramientas;
+window.abrirLibretaEstudio = abrirLibretaEstudio;
+window.mostrarPortadaCuaderno = mostrarPortadaCuaderno;
+window.cambiarTamanio = cambiarTamanio;

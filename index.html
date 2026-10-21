@@ -298,12 +298,14 @@
               justify-content: space-between;
               align-items: center;
               width: 100%;
+              gap: 8px;
             "
           >
             <button class="btn-back" onclick="changeScreen('screen-capitulos')">
               ⬅
             </button>
 
+            <!-- Botón Escuchar -->
             <button
               id="btn-hablar-lectura"
               class="btn-audio"
@@ -324,14 +326,38 @@
               <i class="fas fa-volume-up"></i>
               <span data-es="Escuchar" data-en="Listen" data-pt="Ouvir">Escuchar</span>
             </button>
+
+            <!-- NUEVO BOTÓN: Bitácora de Estudio -->
+            <button
+              id="btn-cuaderno-lectura"
+              class="btn-audio"
+              onclick="abrirLibretaEstudio()"
+              title="Abrir Bitácora de Estudio"
+              style="
+                background: rgba(212, 175, 55, 0.2);
+                border: 1px solid var(--gold);
+                color: #fff;
+                padding: 6px 12px;
+                border-radius: 6px;
+                cursor: pointer;
+                display: flex;
+                align-items: center;
+                gap: 6px;
+              "
+            >
+              <i class="fas fa-book-open"></i>
+              <span data-es="Bitácora" data-en="Notebook" data-pt="Caderno">Bitácora</span>
+            </button>
+
             <!-- El indicador "Pro" flotante con clase directa -->
             <div id="indicador-estatus-letra" class="indicador-minimo">
               <span id="texto-estado">A+</span>
               <span id="valor-estado">20px</span>
             </div>
+
             <!-- El nuevo indicador "Pro" (oculto por defecto) -->
             <div
-              id="indicador-estatus-letra"
+              id="indicador-estatus-letra-extra"
               style="
                 display: none;
                 margin-left: 10px;
@@ -1525,17 +1551,62 @@
       </div>
     </div>
 
-    <!-- VISTA 3: SECCIÓN DE HERRAMIENTAS DE ESTUDIO (Próximamente vacía para empezar a poblarla) -->
-    <div id="seccion-estudio" style="display: none;">
-      <h3 data-es="Herramientas de Estudio" data-en="Study Tools" data-pt="Ferramentas de Estudo" style="color: var(--gold); margin-bottom: 15px;">Herramientas de Estudio</h3>
-      
-      <p style="color: #bbb; font-size: 0.9rem; margin-bottom: 20px;" data-es="Próximamente: Cuaderno, notas y referencias cruzadas." data-en="Coming soon: Notebook, notes and cross-references." data-pt="Em breve: Bloco de notas e referências cruzadas.">Próximamente: Cuaderno, notas y referencias cruzadas.</p>
+   <!-- VISTA 3: SECCIÓN DE HERRAMIENTAS DE ESTUDIO -->
+<div id="seccion-estudio" style="display: none; text-align: center; padding: 10px 5px;">
+  <h3 data-es="Cuaderno de Estudio" data-en="Study Notebook" data-pt="Bloco de Notas" style="color: var(--gold, #d4af37); margin-bottom: 12px; font-family: serif;">Cuaderno de Estudio</h3>
+  
+  <p style="color: #bbb; font-size: 0.85rem; margin-bottom: 20px;" data-es="Accedé a tu libreta digital para escribir notas, reflexiones y revisar tus textos subrayados." data-en="Access your digital notebook to write notes, reflections and review highlighted text.">
+    Accedé a tu libreta personal con espacio amplio para reflexiones y apuntes.
+  </p>
 
-      <div style="display: flex; justify-content: center; gap: 10px;">
-        <button onclick="mostrarSeccionModal('principal')" style="background: transparent; border: 1px solid var(--gold); color: var(--gold); padding: 8px 14px; border-radius: 6px; cursor: pointer;" data-es="Volver" data-en="Back" data-pt="Voltar">Volver</button>
-        <button onclick="cerrarModalHerramientas()" class="btn-cerrar-modal" data-es="Cerrar" data-en="Close" data-pt="Fechar" style="background: rgba(212,175,55,0.2); border: 1px solid var(--gold); color: #fff; padding: 8px 14px; border-radius: 6px; cursor: pointer;">Cerrar</button>
-      </div>
+  <!-- Botón principal para ir a la Pantalla Completa -->
+  <!-- Botón principal para ir a la Pantalla Completa -->
+<button onclick="abrirLibretaEstudio()" 
+        style="background: linear-gradient(135deg, rgba(212,175,55,0.3) 0%, rgba(180,140,30,0.1) 100%); border: 1px solid var(--gold, #d4af37); color: #fff; padding: 12px 20px; border-radius: 8px; font-weight: bold; cursor: pointer; width: 100%; margin-bottom: 15px; display: flex; align-items: center; justify-content: center; gap: 8px;">
+  <span>📖</span>
+  <span data-es="Abrir Mi Libreta de Estudio" data-en="Open My Study Notebook">Abrir Mi Libreta de Estudio</span>
+</button>
+
+  <div style="display: flex; justify-content: center; gap: 10px;">
+    <button onclick="mostrarSeccionModal('principal')" style="background: transparent; border: 1px solid var(--gold, #d4af37); color: var(--gold, #d4af37); padding: 8px 16px; border-radius: 6px; cursor: pointer;" data-es="Volver" data-en="Back" data-pt="Voltar">Volver</button>
+    <button onclick="cerrarModalHerramientas()" class="btn-cerrar-modal" data-es="Cerrar" data-en="Close" data-pt="Fechar">Cerrar</button>
+  </div>
+</div>
+
+  </div>
+</div>
+<!-- PANTALLA COMPLETA: CUADERNO DE ESTUDIO / LIBRETA -->
+<div id="screen-cuaderno" class="screen" style="display: none; padding: 15px; max-width: 800px; margin: 0 auto;">
+  
+  <!-- Encabezado superior -->
+  <div style="display: flex; align-items: center; justify-content: space-between; padding-bottom: 12px; border-bottom: 1px solid var(--gold, #d4af37); margin-bottom: 20px;">
+    <button onclick="changeScreen(document.getElementById('screen-lectura'))" style="background: rgba(212,175,55,0.15); border: 1px solid var(--gold, #d4af37); color: var(--gold, #d4af37); padding: 6px 14px; border-radius: 6px; cursor: pointer; font-weight: bold;">
+      ⬅ Volver a la Lectura
+    </button>
+    <h2 style="color: var(--gold, #d4af37); font-family: serif; margin: 0; font-size: 1.2rem;">Bitácora de Estudio</h2>
+  </div>
+
+  <!-- Contenedor Estilo Libreta -->
+  <div style="background: #141414; border: 1px solid var(--gold, #d4af37); border-left: 12px solid #2a2a2a; border-radius: 10px; padding: 20px; box-shadow: 0 8px 20px rgba(0,0,0,0.7);">
+    
+    <!-- Portada Personalizada -->
+    <div style="text-align: center; border-bottom: 1px dashed rgba(212,175,55,0.4); padding-bottom: 15px; margin-bottom: 15px;">
+      <h3 id="saludo-cuaderno" style="color: var(--gold, #d4af37); font-family: serif; font-size: 1.25rem; margin-bottom: 8px;">
+        <!-- Se completa dinámicamente con JS -->
+      </h3>
+      <p style="color: #ccc; font-size: 0.85rem; margin: 0;">
+        Tu espacio personal para meditar la Palabra y guardar tus anotaciones.
+      </p>
     </div>
+
+    <!-- Hoja de Escritura Amplia -->
+    <textarea id="texto-libreta-amplia" 
+              placeholder="Escribí aquí tus reflexiones, oraciones o notas de hoy..." 
+              style="width: 100%; height: 320px; background: rgba(0,0,0,0.3); border: 1px solid rgba(212,175,55,0.3); border-radius: 6px; color: #fff; padding: 12px; font-size: 1rem; line-height: 1.6; outline: none; resize: vertical; box-sizing: border-box;">
+    </textarea>
+
+    <!-- Estado de auto-guardado -->
+    <div id="estado-guardado-libreta" style="text-align: right; font-size: 0.75rem; color: var(--gold, #d4af37); font-style: italic; margin-top: 8px; height: 16px;"></div>
 
   </div>
 </div>

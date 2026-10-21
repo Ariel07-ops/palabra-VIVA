@@ -4427,3 +4427,38 @@ button,
   font-style: italic;
   font-size: 0.9rem;
 }
+/* --- PANTALLA CUADERNO / BITÁCORA --- */
+#screen-cuaderno {
+  display: none;
+  width: 100%;
+  min-height: 100vh;
+  padding: 20px 15px;
+  box-sizing: border-box;
+}
+
+#screen-cuaderno.active {
+  display: block !important; /* Fuerza a que aparezca cuando está activa */
+}
+/* Contenedor tipo Hoja de Libreta */
+.libreta-contenedor {
+  max-width: 600px;
+  margin: 20px auto;
+  background: #1a1a1a;
+  border-radius: 12px;
+  border-left: 14px solid #2a2a2a; /* Simula el lomo / anillado */
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.6);
+  padding: 25px 20px;
+  position: relative;
+  border: 1px solid var(--gold, #d4af37);
+}
+
+/* Detalles de hojitas / renglones suaves */
+.libreta-hoja {
+  background-image: linear-gradient(
+    rgba(212, 175, 55, 0.05) 1px,
+    transparent 1px
+  );
+  background-size: 100% 28px; /* Simula renglones de estudio */
+  line-height: 28px;
+  color: #e0e0e0;
+}
