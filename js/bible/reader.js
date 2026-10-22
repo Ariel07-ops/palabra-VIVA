@@ -2,9 +2,86 @@
 // Módulo de lectura y navegación por Libros y Capítulos de la Biblia
 
 import { listaLibrosAntiguo, listaLibrosNuevo } from "./canon.js";
+import {
+  guardarResaltadoPersonal,
+  aplicarResaltadosPersonales,
+} from "./boxes.js";
+
+// Variable global para controlar qué color del Fibrón está activo (null = desactivado)
+window.colorFibronActivo = null;
 
 // Canon completo unificado para mapear la posición de los libros (73 libros)
 const CANON_COMPLETO = [...listaLibrosAntiguo, ...listaLibrosNuevo];
+
+// Diccionario de abreviaturas para mapear la Bíblia Livre (66 libros) directamente por clave
+const MAPEO_ABBREV_CANON = {
+  Gn: "Génesis",
+  Ex: "Éxodo",
+  Lv: "Levítico",
+  Nm: "Números",
+  Dt: "Deuteronomio",
+  Jos: "Josué",
+  Jz: "Jueces",
+  Rt: "Rut",
+  "1Sm": "1 Samuel",
+  "2Sm": "2 Samuel",
+  "1Rs": "1 Reyes",
+  "2Rs": "2 Reyes",
+  "1Cr": "1 Crónicas",
+  "2Cr": "2 Crónicas",
+  Ed: "Esdras",
+  Ne: "Nehemías",
+  Et: "Ester",
+  Jó: "Job",
+  Sl: "Salmos",
+  Pv: "Proverbios",
+  Ec: "Eclesiastés",
+  Ct: "Cantar de los Cantares",
+  Is: "Isaías",
+  Jr: "Jeremías",
+  Lm: "Lamentaciones",
+  Ez: "Ezequiel",
+  Dn: "Daniel",
+  Os: "Oseas",
+  Jl: "Joel",
+  Am: "Amós",
+  Ob: "Abdías",
+  Jd: "Jonás",
+  Mq: "Miqueas",
+  Na: "Nahún",
+  Hab: "Habacuc",
+  Zf: "Sofonías",
+  Ag: "Ageo",
+  Zc: "Zacarías",
+  Ml: "Malaquías",
+  Mt: "Mateo",
+  Mc: "Marcos",
+  Lc: "Lucas",
+  Jo: "Juan",
+  At: "Hechos",
+  Rm: "Romanos",
+  "1Co": "1 Corintios",
+  "2Co": "2 Corintios",
+  Gl: "Gálatas",
+  Ef: "Efesios",
+  Fp: "Filipenses",
+  Cl: "Colosenses",
+  "1Ts": "1 Tesalonicenses",
+  "2Ts": "2 Tesalonicenses",
+  "1Tm": "1 Timoteo",
+  "2Tm": "2 Timoteo",
+  Tt: "Tito",
+  Fm: "Filemón",
+  Hb: "Hebreos",
+  Tg: "Santiago",
+  "1Pe": "1 Pedro",
+  "2Pe": "2 Pedro",
+  "1Jo": "1 Juan",
+  "2Jo": "2 Juan",
+  "3Jo": "3 Juan",
+  Jd: "Judas",
+  Ap: "Apocalipsis",
+};
 
 // Diccionario de traducción para la interfaz de libros
 const LIBROS_TRADUCIDOS = {
@@ -171,7 +248,7 @@ function obtenerInfoBibliaActual() {
   const idioma = localStorage.getItem("palabra_viva_idioma") || "es";
   switch (idioma) {
     case "pt":
-      return { ruta: "data/bibliaAveMaria.json", idioma: "pt" };
+      return { ruta: "data/bibliaPt.json", idioma: "pt" };
     case "en":
       return { ruta: "data/bibleweb.json", idioma: "en" };
     case "es":
@@ -186,7 +263,6 @@ function obtenerInfoBibliaActual() {
 async function obtenerVersosNormalizados() {
   const info = obtenerInfoBibliaActual();
 
-  // Si ya tenemos los versos cargados en memoria para el mismo idioma, devolvemos directo
   if (cacheBiblia.idioma === info.idioma && cacheBiblia.versos) {
     return cacheBiblia.versos;
   }
@@ -195,7 +271,6 @@ async function obtenerVersosNormalizados() {
   const jsonRaw = await respuesta.json();
   const versosNormalizados = normalizarConCanonOficial(jsonRaw, info.idioma);
 
-  // Almacenamos en memoria
   cacheBiblia.idioma = info.idioma;
   cacheBiblia.versos = versosNormalizados;
 
@@ -204,16 +279,10 @@ async function obtenerVersosNormalizados() {
 
 /**
  * Normaliza los JSONs asignando los nombres exactos de canon.js
- * de acuerdo a la estructura de cada archivo.
- */
-/**
- * Normaliza los JSONs asignando los nombres exactos de canon.js
- * de acuerdo a la estructura de cada archivo.
  */
 function normalizarConCanonOficial(jsonRaw, idioma) {
   const versosPlanos = [];
 
-  // 1. ESPAÑOL e INGLÉS (Estructura estándar de libros -> chapters -> verses)
   if (idioma === "es" || idioma === "en") {
     const libros = jsonRaw.books || (Array.isArray(jsonRaw) ? jsonRaw : []);
     libros.forEach((libro, idx) => {
@@ -229,22 +298,20 @@ function normalizarConCanonOficial(jsonRaw, idioma) {
         });
       });
     });
-  }
-  // 2. PORTUGUÉS (Bíblia Ave Maria - bibliaAveMaria.json)
-  else if (idioma === "pt") {
-    const libros = [
-      ...(jsonRaw.antigoTestamento || []),
-      ...(jsonRaw.novoTestamento || []),
-    ];
-    libros.forEach((libro, idx) => {
-      const nombreOficial = CANON_COMPLETO[idx] || libro.nome;
-      (libro.capitulos || []).forEach((cap) => {
-        (cap.versiculos || []).forEach((v) => {
+  } else if (idioma === "pt") {
+    const libros = Array.isArray(jsonRaw) ? jsonRaw : [];
+    libros.forEach((libro) => {
+      const nombreOficial = MAPEO_ABBREV_CANON[libro.abbrev] || libro.name;
+
+      (libro.chapters || []).forEach((capArray, idxCap) => {
+        const numCapitulo = idxCap + 1;
+        (capArray || []).forEach((textoVerso, idxVer) => {
+          const numVersiculo = idxVer + 1;
           versosPlanos.push({
             book_name: nombreOficial,
-            chapter: cap.capitulo,
-            verse: v.versiculo,
-            text: v.texto,
+            chapter: numCapitulo,
+            verse: numVersiculo,
+            text: textoVerso,
           });
         });
       });
@@ -253,7 +320,7 @@ function normalizarConCanonOficial(jsonRaw, idioma) {
 
   return versosPlanos;
 }
-// Devuelve el nombre traducido del libro según el idioma actual
+
 function obtenerNombreVisible(nombreLibroEsp) {
   const idioma = localStorage.getItem("palabra_viva_idioma") || "es";
   if (LIBROS_TRADUCIDOS[idioma] && LIBROS_TRADUCIDOS[idioma][nombreLibroEsp]) {
@@ -282,7 +349,6 @@ export async function abrirAntiguoTestamento() {
         btn.style.cssText =
           "border: 1px solid var(--gold); border-radius: 8px; padding: 15px; text-align: center; cursor: pointer; background: rgba(255,255,255,0.05); color: #fff; font-size: 0.9rem;";
 
-        // Muestra el nombre traducido según el idioma
         btn.innerText = obtenerNombreVisible(nombreLibro);
 
         btn.addEventListener("click", () =>
@@ -316,7 +382,6 @@ export async function abrirNuevoTestamento() {
         btn.style.cssText =
           "border: 1px solid var(--gold); border-radius: 8px; padding: 15px; text-align: center; cursor: pointer; background: rgba(255,255,255,0.05); color: #fff; font-size: 0.9rem;";
 
-        // Muestra el nombre traducido según el idioma
         btn.innerText = obtenerNombreVisible(nombreLibro);
 
         btn.addEventListener("click", () =>
@@ -438,9 +503,16 @@ export function renderizarVersiculosCapitulo(
 
   if (areaLectura) areaLectura.innerHTML = htmlVersos;
 
+  // 1. Aplica subrayados de la capa de estudio (las cajas)
   if (typeof window.aplicarSubrayadosCapitulo === "function") {
     window.aplicarSubrayadosCapitulo(nombreLibro, numCapitulo);
   }
+
+  // 2. Inicializa los eventos de la paleta del Fibrón si no estaban
+  initFibronEvents();
+
+  // 3. Conecta el clic en cada versículo para resaltar con el Fibrón
+  conectarEventosLecturaFibron(nombreLibro, numCapitulo);
 
   if (capAnterior) {
     document
@@ -457,4 +529,72 @@ export function renderizarVersiculosCapitulo(
         renderizarVersiculosCapitulo(nombreLibro, capSiguiente, versosLibro);
       });
   }
+}
+
+/**
+ * Inicializa los eventos del botón de Fibrón y su paleta flotante
+ */
+export function initFibronEvents() {
+  const btnToggle = document.getElementById("btn-toggle-fibron");
+  const paleta = document.getElementById("paleta-fibron");
+  const botonesColor = document.querySelectorAll(".btn-color-fibron");
+
+  if (!btnToggle || !paleta) return;
+
+  // Abrir / Cerrar paleta
+  btnToggle.onclick = (e) => {
+    e.stopPropagation();
+    const estaOculta =
+      paleta.style.display === "none" || paleta.style.display === "";
+    paleta.style.display = estaOculta ? "flex" : "none";
+  };
+
+  // Elegir color de la paleta
+  botonesColor.forEach((btn) => {
+    btn.onclick = (e) => {
+      e.stopPropagation();
+      const colorElegido = btn.getAttribute("data-color");
+
+      if (window.colorFibronActivo === colorElegido) {
+        window.colorFibronActivo = null;
+        btnToggle.style.border = "1px solid var(--gold)";
+      } else {
+        window.colorFibronActivo = colorElegido;
+        btnToggle.style.border = "2px solid #fff";
+      }
+
+      paleta.style.display = "none";
+    };
+  });
+
+  // Cerrar paleta si se toca fuera
+  document.addEventListener("click", () => {
+    if (paleta) paleta.style.display = "none";
+  });
+}
+
+/**
+ * Conecta el clic en cada versículo cuando el modo Fibrón está activo
+ */
+export function conectarEventosLecturaFibron(nombreLibro, numeroCapitulo) {
+  const lineasVersiculos = document.querySelectorAll("[data-versiculo]");
+
+  lineasVersiculos.forEach((elVerso) => {
+    elVerso.addEventListener("click", () => {
+      if (window.colorFibronActivo) {
+        const numVerso = elVerso.getAttribute("data-versiculo");
+        const textoLimpio = elVerso.textContent.replace(/^\d+/, "").trim();
+
+        guardarResaltadoPersonal(
+          nombreLibro,
+          numeroCapitulo,
+          numVerso,
+          textoLimpio,
+          window.colorFibronActivo,
+        );
+
+        aplicarResaltadosPersonales(nombreLibro, numeroCapitulo);
+      }
+    });
+  });
 }

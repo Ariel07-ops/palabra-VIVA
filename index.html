@@ -289,115 +289,175 @@
     </div>
 
     <!-- PANTALLA 3D: LECTURA DE CAPÍTULO DEDICADA -->
-    <div id="screen-lectura" class="screen">
-      <div class="app-container">
-        <header class="main-header">
-          <div
-            style="
-              display: flex;
-              justify-content: space-between;
-              align-items: center;
-              width: 100%;
-              gap: 8px;
-            "
-          >
-            <button class="btn-back" onclick="changeScreen('screen-capitulos')">
-              ⬅
-            </button>
+<div id="screen-lectura" class="screen">
+  <div class="app-container">
+    <header class="main-header">
+  <!-- Fila de herramientas alineada horizontalmente -->
+  <div
+    style="
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      width: 100%;
+      gap: 6px;
+      flex-wrap: wrap;
+    "
+  >
+    <button class="btn-back" onclick="changeScreen('screen-capitulos')">
+      ⬅
+    </button>
 
-            <!-- Botón Escuchar -->
-            <button
-              id="btn-hablar-lectura"
-              class="btn-audio"
-              onclick="ejecutarLecturaVoz()"
-              title="Escuchar lectura"
-              style="
-                background: rgba(212, 175, 55, 0.2);
-                border: 1px solid var(--gold);
-                color: #fff;
-                padding: 6px 12px;
-                border-radius: 6px;
-                cursor: pointer;
-                display: flex;
-                align-items: center;
-                gap: 6px;
-              "
-            >
-              <i class="fas fa-volume-up"></i>
-              <span data-es="Escuchar" data-en="Listen" data-pt="Ouvir">Escuchar</span>
-            </button>
+    <!-- Botón Escuchar -->
+    <button
+      id="btn-hablar-lectura"
+      class="btn-audio"
+      onclick="ejecutarLecturaVoz()"
+      title="Escuchar lectura"
+      style="
+        background: rgba(212, 175, 55, 0.2);
+        border: 1px solid var(--gold);
+        color: #fff;
+        padding: 6px 10px;
+        border-radius: 6px;
+        cursor: pointer;
+        display: inline-flex;
+        align-items: center;
+        gap: 5px;
+        font-size: 0.85rem;
+      "
+    >
+      <i class="fas fa-volume-up"></i>
+      <span data-es="Escuchar" data-en="Listen" data-pt="Ouvir">Escuchar</span>
+    </button>
 
-            <!-- NUEVO BOTÓN: Bitácora de Estudio -->
-            <button
-              id="btn-cuaderno-lectura"
-              class="btn-audio"
-              onclick="abrirLibretaEstudio()"
-              title="Abrir Bitácora de Estudio"
-              style="
-                background: rgba(212, 175, 55, 0.2);
-                border: 1px solid var(--gold);
-                color: #fff;
-                padding: 6px 12px;
-                border-radius: 6px;
-                cursor: pointer;
-                display: flex;
-                align-items: center;
-                gap: 6px;
-              "
-            >
-              <i class="fas fa-book-open"></i>
-              <span data-es="Bitácora" data-en="Notebook" data-pt="Caderno">Bitácora</span>
-            </button>
+    <!-- Botón Fibrón + Paleta flotante -->
+    <div class="fibron-container" style="position: relative; display: inline-block;">
+      <button
+        id="btn-toggle-fibron"
+        class="btn-audio"
+        title="Resaltar versículos"
+        style="
+          background: rgba(212, 175, 55, 0.2);
+          border: 1px solid var(--gold);
+          color: #fff;
+          padding: 6px 10px;
+          border-radius: 6px;
+          cursor: pointer;
+          display: inline-flex;
+          align-items: center;
+          gap: 5px;
+          font-size: 0.85rem;
+        "
+      >
+        <i class="fas fa-highlighter" style="color: var(--gold);"></i>
+        <span data-es="Fibrón" data-en="Highlighter" data-pt="Marcador">Fibrón</span>
+      </button>
 
-            <!-- El indicador "Pro" flotante con clase directa -->
-            <div id="indicador-estatus-letra" class="indicador-minimo">
-              <span id="texto-estado">A+</span>
-              <span id="valor-estado">20px</span>
-            </div>
-
-            <!-- El nuevo indicador "Pro" (oculto por defecto) -->
-            <div
-              id="indicador-estatus-letra-extra"
-              style="
-                display: none;
-                margin-left: 10px;
-                padding: 5px 10px;
-                border: 1px solid #d4af37;
-                border-radius: 4px;
-                color: #d4af37;
-                font-size: 12px;
-                font-weight: bold;
-                cursor: pointer;
-              "
-            >
-              <span id="texto-estado">A+</span>
-              <span id="valor-estado">20px</span>
-            </div>
-          </div>
-          <h1
-            class="brand-title"
-            id="titulo-lectura-completa"
-            style="margin-top: 10px"
-          >
-            Lectura
-          </h1>
-          <p class="header-statement text-silver text-shadow" data-es="Texto de las Escrituras" data-en="Scripture Text" data-pt="Texto das Escrituras">Texto de las Escrituras</p>
-        </header>
-
-        <main class="content-area" style="padding: 20px; overflow-y: auto">
-          <div
-            id="texto-lectura-final"
-            style="
-              text-align: justify;
-              line-height: 1.8;
-              color: #e0e0e0;
-              font-size: 1.05rem;
-            "
-          ></div>
-        </main>
+      <!-- Paleta flotante de colores -->
+      <div
+        id="paleta-fibron"
+        style="
+          display: none;
+          position: absolute;
+          top: 40px;
+          right: 0;
+          background: #1a1a1a;
+          border: 1px solid var(--gold);
+          border-radius: 8px;
+          padding: 6px;
+          gap: 8px;
+          z-index: 120;
+          box-shadow: 0 4px 12px rgba(0,0,0,0.6);
+        "
+      >
+        <button class="btn-color-fibron" data-color="amarillo" title="Amarillo" style="background: rgba(241, 196, 15, 0.9); border: 1px solid #fff; width: 24px; height: 24px; border-radius: 50%; cursor: pointer;"></button>
+        <button class="btn-color-fibron" data-color="verde" title="Verde" style="background: rgba(46, 204, 113, 0.9); border: 1px solid #fff; width: 24px; height: 24px; border-radius: 50%; cursor: pointer;"></button>
+        <button class="btn-color-fibron" data-color="azul" title="Azul" style="background: rgba(52, 152, 219, 0.9); border: 1px solid #fff; width: 24px; height: 24px; border-radius: 50%; cursor: pointer;"></button>
+        <button class="btn-color-fibron" data-color="rosa" title="Rosa" style="background: rgba(233, 30, 99, 0.9); border: 1px solid #fff; width: 24px; height: 24px; border-radius: 50%; cursor: pointer;"></button>
+        
+        <!-- Gomita -->
+        <button class="btn-color-fibron" data-color="borrar" title="Desmarcar / Borrar" style="background: #333; border: 1px solid #ff5555; color: #ff5555; width: 24px; height: 24px; border-radius: 50%; cursor: pointer; display: flex; align-items: center; justify-content: center; font-size: 0.75rem;">
+          <i class="fas fa-eraser"></i>
+        </button>
       </div>
     </div>
 
+    <!-- Botón Bitácora -->
+    <button
+      id="btn-cuaderno-lectura"
+      class="btn-audio"
+      onclick="abrirLibretaEstudio()"
+      title="Abrir Bitácora de Estudio"
+      style="
+        background: rgba(212, 175, 55, 0.2);
+        border: 1px solid var(--gold);
+        color: #fff;
+        padding: 6px 10px;
+        border-radius: 6px;
+        cursor: pointer;
+        display: inline-flex;
+        align-items: center;
+        gap: 5px;
+        font-size: 0.85rem;
+      "
+    >
+      <i class="fas fa-book-open"></i>
+      <span data-es="Bitácora" data-en="Notebook" data-pt="Caderno">Bitácora</span>
+    </button>
+
+    <!-- Indicador de tamaño de letra -->
+    <div
+      id="indicador-estatus-letra"
+      style="
+        display: flex;
+        align-items: center;
+        gap: 4px;
+        padding: 4px 8px;
+        border: 1px solid rgba(212, 175, 55, 0.5);
+        border-radius: 6px;
+        color: var(--gold);
+        font-size: 0.75rem;
+        font-weight: bold;
+        background: rgba(0, 0, 0, 0.3);
+      "
+    >
+      <span id="texto-estado">A+</span>
+      <span id="valor-estado">20px</span>
+    </div>
+  </div>
+
+  <!-- Título del capítulo bien centrado abajo de la botonera -->
+  <h1
+    class="brand-title"
+    id="titulo-lectura-completa"
+    style="margin-top: 15px; margin-bottom: 4px; text-align: center; width: 100%; display: block; clear: both;"
+  >
+    Lectura
+  </h1>
+  <p
+    class="header-statement text-silver text-shadow"
+    data-es="Texto de las Escrituras"
+    data-en="Scripture Text"
+    data-pt="Texto das Escrituras"
+    style="text-align: center;"
+  >
+    Texto de las Escrituras
+  </p>
+</header>
+
+    <main class="content-area" style="padding: 20px; overflow-y: auto">
+      <div
+        id="texto-lectura-final"
+        style="
+          text-align: justify;
+          line-height: 1.8;
+          color: #e0e0e0;
+          font-size: 1.05rem;
+        "
+      ></div>
+    </main>
+  </div>
+</div>
     <!-- PANTALLA 3E: NUEVO TESTAMENTO (Lista de Libros) -->
     <div id="screen-nuevo" class="screen">
       <div class="app-container">
