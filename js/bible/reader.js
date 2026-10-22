@@ -453,8 +453,7 @@ export function renderizarVersiculosCapitulo(
       window.estaReproduciendo = false;
     if (typeof window.estaPausado !== "undefined") window.estaPausado = false;
     const btnAudio = document.getElementById("btn-hablar-lectura");
-    if (btnAudio)
-      btnAudio.innerHTML = '<i class="fas fa-volume-up"></i> Escuchar';
+    if (btnAudio) btnAudio.innerHTML = '<i class="fas fa-volume-up"></i>';
   }
 
   if (typeof changeScreen === "function" && screenLectura) {

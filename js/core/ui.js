@@ -21,8 +21,7 @@ export function changeScreen(screenToShow) {
       window.estaReproduciendo = false;
     if (typeof window.estaPausado !== "undefined") window.estaPausado = false;
     const btnAudio = document.getElementById("btn-hablar-lectura");
-    if (btnAudio)
-      btnAudio.innerHTML = '<i class="fas fa-volume-up"></i> Escuchar';
+    if (btnAudio) btnAudio.innerHTML = '<i class="fas fa-volume-up"></i>';
     document
       .querySelectorAll(".expanded-full")
       .forEach((el) => el.classList.remove("expanded-full"));
@@ -342,24 +341,28 @@ export function mostrarPortadaCuaderno() {
 }
 
 // --- CONTROL DE ORIGEN Y RETORNO INTELIGENTE DE BITÁCORA ---
+// Abrir la bitácora guardando explícitamente el origen
 export function abrirLibretaEstudio(origen = "main") {
-  origenBitacora = origen; // Registra de dónde vino ('lectura' o 'main')
-  cerrarModalHerramientas();
+  // Guardamos el origen en una variable o directamente en el dataset de la pantalla
   const screenCuaderno = document.getElementById("screen-cuaderno");
   if (screenCuaderno) {
+    screenCuaderno.dataset.origen = origen; // Guarda 'lectura' o 'main'
     changeScreen(screenCuaderno);
     mostrarPortadaCuaderno();
   }
 }
 
+// Volver exactamente al lugar de donde vino
 export function volverDesdeCuaderno() {
-  if (origenBitacora === "lectura") {
+  const screenCuaderno = document.getElementById("screen-cuaderno");
+  const origen = screenCuaderno ? screenCuaderno.dataset.origen : "main";
+
+  if (origen === "lectura") {
     changeScreen("screen-lectura");
   } else {
     changeScreen("screen-main");
   }
 }
-
 export function initUI() {
   // 1. Aplicar tamaño guardado
   const guardado = localStorage.getItem("tamanoLetra");
@@ -618,8 +621,174 @@ export function screenLectura() {
   const el = document.getElementById("screen-lectura");
   if (el) changeScreen(el);
 }
+// --- CONTROL DE LA BARRA LATERAL DERECHA DE LA BITÁCORA ---
+export function toggleMenuBitacora() {
+  const panel = document.getElementById("panel-lateral-bitacora");
+  const overlay = document.getElementById("overlay-bitacora");
 
-// --- EXPOSICIÓN GLOBAL (PUENTE CON EL HTML) ---
+  if (!panel || !overlay) return;
+
+  if (panel.style.right === "0px") {
+    panel.style.right = "-320px";
+    overlay.style.display = "none";
+  } else {
+    panel.style.right = "0px";
+    overlay.style.display = "block";
+    cargarIndiceNotas(); // Carga las notas al desplegar la cortina
+  }
+}
+
+// Cambiar entre pestañas dentro del panel lateral (Notas / Guía / Glosario)
+export function verPestanaBitacora(nombre) {
+  const secNotas = document.getElementById("sec-bitacora-notas");
+  const secGuia = document.getElementById("sec-bitacora-guia");
+  const secGlosario = document.getElementById("sec-bitacora-glosario");
+
+  if (secNotas) secNotas.style.display = nombre === "notas" ? "flex" : "none";
+  if (secGuia) secGuia.style.display = nombre === "guia" ? "block" : "none";
+  if (secGlosario)
+    secGlosario.style.display = nombre === "glosario" ? "block" : "none";
+
+  // Actualizar estilos visuales de los botones de las pestañas
+  const contenedorTabs = document.querySelector(
+    "#panel-lateral-bitacora > div:nth-child(2)",
+  );
+  if (contenedorTabs) {
+    const botones = contenedorTabs.querySelectorAll("button");
+    const pestanasMap = ["notas", "guia", "glosario"];
+
+    botones.forEach((btn, index) => {
+      if (pestanasMap[index] === nombre) {
+        // Estilo ACTIVO (Iluminado)
+        btn.style.background = "rgba(212, 175, 55, 0.25)";
+        btn.style.borderColor = "var(--gold, #d4af37)";
+        btn.style.color = "#fff";
+        btn.style.fontWeight = "bold";
+      } else {
+        // Estilo INACTIVO (Apagado)
+        btn.style.background = "transparent";
+        btn.style.borderColor = "rgba(255, 255, 255, 0.3)";
+        btn.style.color = "#aaa";
+        btn.style.fontWeight = "normal";
+      }
+    });
+  }
+}
+
+// Crear una nota nueva limpia
+export function crearNuevaNota() {
+  const inputTitulo = document.getElementById("titulo-nota-actual");
+  const txtArea = document.getElementById("texto-libreta-amplia");
+  const estado = document.getElementById("estado-guardado-libreta");
+
+  if (inputTitulo)
+    inputTitulo.value = "Nueva Nota " + new Date().toLocaleDateString("es-AR");
+  if (txtArea) txtArea.value = "";
+  if (estado) estado.innerText = "Nota nueva creada";
+
+  toggleMenuBitacora(); // Cierra el panel al crear
+}
+
+// Guardar la nota actual en localStorage
+export function guardarNotaManual() {
+  const inputTitulo = document.getElementById("titulo-nota-actual");
+  const txtArea = document.getElementById("texto-libreta-amplia");
+  const estado = document.getElementById("estado-guardado-libreta");
+
+  const titulo = inputTitulo ? inputTitulo.value.trim() : "Nota sin título";
+  const contenido = txtArea ? txtArea.value : "";
+
+  let notas = JSON.parse(localStorage.getItem("palabra_viva_notas") || "[]");
+
+  const index = notas.findIndex((n) => n.titulo === titulo);
+  if (index >= 0) {
+    notas[index].contenido = contenido;
+    notas[index].fecha = new Date().toLocaleString("es-AR");
+  } else {
+    notas.push({
+      titulo,
+      contenido,
+      fecha: new Date().toLocaleString("es-AR"),
+    });
+  }
+
+  localStorage.setItem("palabra_viva_notas", JSON.stringify(notas));
+  if (estado) estado.innerText = "✓ Guardado exitosamente";
+
+  toggleMenuBitacora(); // Cierra el panel al guardar
+}
+
+// Cargar el listado/índice de notas en la barra lateral con opción de eliminar
+export function cargarIndiceNotas() {
+  const listaContenedor = document.getElementById("lista-notas-indice");
+  if (!listaContenedor) return;
+
+  const notas = JSON.parse(localStorage.getItem("palabra_viva_notas") || "[]");
+  listaContenedor.innerHTML = "";
+
+  if (notas.length === 0) {
+    listaContenedor.innerHTML =
+      "<p style='color: #888; font-size: 0.8rem; font-style: italic;'>No hay notas guardadas aún.</p>";
+    return;
+  }
+
+  notas.forEach((nota, index) => {
+    const item = document.createElement("div");
+    item.style.cssText =
+      "background: rgba(255,255,255,0.05); border: 1px solid rgba(212,175,55,0.3); padding: 8px 10px; border-radius: 5px; cursor: pointer; display: flex; justify-content: space-between; align-items: center;";
+
+    item.innerHTML = `
+      <div style="flex: 1; overflow: hidden; padding-right: 8px;">
+        <div style="color: var(--gold, #d4af37); font-weight: bold; font-size: 0.85rem; text-overflow: ellipsis; overflow: hidden; white-space: nowrap;">📄 ${nota.titulo}</div>
+        <div style="color: #aaa; font-size: 0.7rem;">${nota.fecha}</div>
+      </div>
+      <button onclick="event.stopPropagation(); eliminarNota(${index})" title="Eliminar nota" style="background: transparent; border: none; color: #ff5555; cursor: pointer; font-size: 1rem; padding: 4px;">
+        🗑️
+      </button>
+    `;
+
+    // Al hacer clic en la tarjeta (fuera del tacho) se carga la nota
+    item.onclick = () => {
+      document.getElementById("titulo-nota-actual").value = nota.titulo;
+      document.getElementById("texto-libreta-amplia").value = nota.contenido;
+      document.getElementById("estado-guardado-libreta").innerText =
+        "Nota cargada";
+      toggleMenuBitacora();
+    };
+
+    listaContenedor.appendChild(item);
+  });
+}
+
+// Función para eliminar una nota por su índice
+export function eliminarNota(index) {
+  let notas = JSON.parse(localStorage.getItem("palabra_viva_notas") || "[]");
+
+  if (
+    confirm(`¿Estás seguro de que querés eliminar "${notas[index].titulo}"?`)
+  ) {
+    notas.splice(index, 1);
+    localStorage.setItem("palabra_viva_notas", JSON.stringify(notas));
+
+    // Si la nota borrada era la que estaba abierta, limpiamos el cuaderno
+    document.getElementById("titulo-nota-actual").value = "Mi Nota de Hoy";
+    document.getElementById("texto-libreta-amplia").value = "";
+    document.getElementById("estado-guardado-libreta").innerText =
+      "Nota eliminada";
+
+    // Recargamos el listado
+    cargarIndiceNotas();
+  }
+}
+
+// Exposición global
+window.eliminarNota = eliminarNota;
+// --- EXPOSICIÓN GLOBAL PARA EL HTML ---
+window.toggleMenuBitacora = toggleMenuBitacora;
+window.verPestanaBitacora = verPestanaBitacora;
+window.crearNuevaNota = crearNuevaNota;
+window.guardarNotaManual = guardarNotaManual;
+window.cargarIndiceNotas = cargarIndiceNotas; // --- EXPOSICIÓN GLOBAL (PUENTE CON EL HTML) ---
 window.changeScreen = changeScreen;
 window.redirigir = redirigir;
 window.abrirPasoEmaus = abrirPasoEmaus;

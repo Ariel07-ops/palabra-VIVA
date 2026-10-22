@@ -292,7 +292,7 @@
 <div id="screen-lectura" class="screen">
   <div class="app-container">
     <header class="main-header">
-  <!-- Fila de herramientas alineada horizontalmente -->
+  <!-- Fila de herramientas horizontal compacta -->
   <div
     style="
       display: flex;
@@ -300,34 +300,39 @@
       align-items: center;
       width: 100%;
       gap: 6px;
-      flex-wrap: wrap;
+      flex-wrap: nowrap;
     "
   >
-    <button class="btn-back" onclick="changeScreen('screen-capitulos')">
+    <!-- Botón Volver -->
+    <button
+      class="btn-back"
+      onclick="changeScreen('screen-capitulos')"
+      style="padding: 6px 10px; font-size: 0.85rem;"
+    >
       ⬅
     </button>
 
-    <!-- Botón Escuchar -->
+    <!-- Botón Escuchar (solo icono del parlantito) -->
     <button
       id="btn-hablar-lectura"
       class="btn-audio"
       onclick="ejecutarLecturaVoz()"
-      title="Escuchar lectura"
+      title="Escuchar"
+      aria-label="Escuchar lectura"
       style="
         background: rgba(212, 175, 55, 0.2);
         border: 1px solid var(--gold);
         color: #fff;
-        padding: 6px 10px;
+        padding: 6px 12px;
         border-radius: 6px;
         cursor: pointer;
         display: inline-flex;
         align-items: center;
-        gap: 5px;
-        font-size: 0.85rem;
+        justify-content: center;
+        font-size: 0.9rem;
       "
     >
       <i class="fas fa-volume-up"></i>
-      <span data-es="Escuchar" data-en="Listen" data-pt="Ouvir">Escuchar</span>
     </button>
 
     <!-- Botón Fibrón + Paleta flotante -->
@@ -346,14 +351,15 @@
           display: inline-flex;
           align-items: center;
           gap: 5px;
-          font-size: 0.85rem;
+          font-size: 0.82rem;
+          white-space: nowrap;
         "
       >
         <i class="fas fa-highlighter" style="color: var(--gold);"></i>
         <span data-es="Fibrón" data-en="Highlighter" data-pt="Marcador">Fibrón</span>
       </button>
 
-      <!-- Paleta flotante de colores -->
+      <!-- Paleta flotante de colores + gomita -->
       <div
         id="paleta-fibron"
         style="
@@ -365,18 +371,16 @@
           border: 1px solid var(--gold);
           border-radius: 8px;
           padding: 6px;
-          gap: 8px;
+          gap: 6px;
           z-index: 120;
           box-shadow: 0 4px 12px rgba(0,0,0,0.6);
         "
       >
-        <button class="btn-color-fibron" data-color="amarillo" title="Amarillo" style="background: rgba(241, 196, 15, 0.9); border: 1px solid #fff; width: 24px; height: 24px; border-radius: 50%; cursor: pointer;"></button>
-        <button class="btn-color-fibron" data-color="verde" title="Verde" style="background: rgba(46, 204, 113, 0.9); border: 1px solid #fff; width: 24px; height: 24px; border-radius: 50%; cursor: pointer;"></button>
-        <button class="btn-color-fibron" data-color="azul" title="Azul" style="background: rgba(52, 152, 219, 0.9); border: 1px solid #fff; width: 24px; height: 24px; border-radius: 50%; cursor: pointer;"></button>
-        <button class="btn-color-fibron" data-color="rosa" title="Rosa" style="background: rgba(233, 30, 99, 0.9); border: 1px solid #fff; width: 24px; height: 24px; border-radius: 50%; cursor: pointer;"></button>
-        
-        <!-- Gomita -->
-        <button class="btn-color-fibron" data-color="borrar" title="Desmarcar / Borrar" style="background: #333; border: 1px solid #ff5555; color: #ff5555; width: 24px; height: 24px; border-radius: 50%; cursor: pointer; display: flex; align-items: center; justify-content: center; font-size: 0.75rem;">
+        <button class="btn-color-fibron" data-color="amarillo" title="Amarillo" style="background: rgba(241, 196, 15, 0.9); border: 1px solid #fff; width: 22px; height: 22px; border-radius: 50%; cursor: pointer;"></button>
+        <button class="btn-color-fibron" data-color="verde" title="Verde" style="background: rgba(46, 204, 113, 0.9); border: 1px solid #fff; width: 22px; height: 22px; border-radius: 50%; cursor: pointer;"></button>
+        <button class="btn-color-fibron" data-color="azul" title="Azul" style="background: rgba(52, 152, 219, 0.9); border: 1px solid #fff; width: 22px; height: 22px; border-radius: 50%; cursor: pointer;"></button>
+        <button class="btn-color-fibron" data-color="rosa" title="Rosa" style="background: rgba(233, 30, 99, 0.9); border: 1px solid #fff; width: 22px; height: 22px; border-radius: 50%; cursor: pointer;"></button>
+        <button class="btn-color-fibron" data-color="borrar" title="Desmarcar / Borrar" style="background: #333; border: 1px solid #ff5555; color: #ff5555; width: 22px; height: 22px; border-radius: 50%; cursor: pointer; display: flex; align-items: center; justify-content: center; font-size: 0.7rem;">
           <i class="fas fa-eraser"></i>
         </button>
       </div>
@@ -386,7 +390,7 @@
     <button
       id="btn-cuaderno-lectura"
       class="btn-audio"
-      onclick="abrirLibretaEstudio()"
+      onclick="abrirLibretaEstudio('lectura')"
       title="Abrir Bitácora de Estudio"
       style="
         background: rgba(212, 175, 55, 0.2);
@@ -398,27 +402,29 @@
         display: inline-flex;
         align-items: center;
         gap: 5px;
-        font-size: 0.85rem;
+        font-size: 0.82rem;
+        white-space: nowrap;
       "
     >
       <i class="fas fa-book-open"></i>
-      <span data-es="Bitácora" data-en="Notebook" data-pt="Caderno">Bitácora</span>
+      <span  data-es="Bitácora" data-en="Notebook" data-pt="Caderno">Bitácora</span>
     </button>
 
-    <!-- Indicador de tamaño de letra -->
+    <!-- Indicador A+ -->
     <div
       id="indicador-estatus-letra"
       style="
         display: flex;
         align-items: center;
-        gap: 4px;
-        padding: 4px 8px;
+        gap: 3px;
+        padding: 4px 6px;
         border: 1px solid rgba(212, 175, 55, 0.5);
         border-radius: 6px;
         color: var(--gold);
         font-size: 0.75rem;
         font-weight: bold;
         background: rgba(0, 0, 0, 0.3);
+        white-space: nowrap;
       "
     >
       <span id="texto-estado">A+</span>
@@ -428,23 +434,22 @@
 
   <!-- Título del capítulo bien centrado abajo de la botonera -->
   <h1
-    class="brand-title"
+    class="brand-title text-gold"
     id="titulo-lectura-completa"
-    style="margin-top: 15px; margin-bottom: 4px; text-align: center; width: 100%; display: block; clear: both;"
+    style="margin-top: 14px; margin-bottom: 2px; text-align: center; width: 100%; display: block;"
   >
-    Lectura
+    MARK - CAP. 4
   </h1>
   <p
     class="header-statement text-silver text-shadow"
     data-es="Texto de las Escrituras"
     data-en="Scripture Text"
     data-pt="Texto das Escrituras"
-    style="text-align: center;"
+    style="text-align: center; margin-top: 0;"
   >
-    Texto de las Escrituras
+    Scripture Text
   </p>
 </header>
-
     <main class="content-area" style="padding: 20px; overflow-y: auto">
       <div
         id="texto-lectura-final"
@@ -1636,28 +1641,58 @@
   </div>
 </div>
 <!-- PANTALLA COMPLETA: CUADERNO DE ESTUDIO / LIBRETA -->
-<div id="screen-cuaderno" class="screen" style="display: none; padding: 15px; max-width: 800px; margin: 0 auto;">
+<div id="screen-cuaderno" class="screen" style="padding: 15px; max-width: 800px; margin: 0 auto; position: absolute;">
   
   <!-- Encabezado superior -->
   <div style="display: flex; align-items: center; justify-content: space-between; padding-bottom: 12px; border-bottom: 1px solid var(--gold, #d4af37); margin-bottom: 20px;">
-    <button onclick="changeScreen(document.getElementById('screen-lectura'))" style="background: rgba(212,175,55,0.15); border: 1px solid var(--gold, #d4af37); color: var(--gold, #d4af37); padding: 6px 14px; border-radius: 6px; cursor: pointer; font-weight: bold;">
+    
+    <button onclick="volverDesdeCuaderno()" style="background: rgba(212,175,55,0.15); border: 1px solid var(--gold, #d4af37); color: var(--gold, #d4af37); padding: 6px 14px; border-radius: 6px; cursor: pointer; font-weight: bold;">
       ⬅ Volver a la Lectura
     </button>
-    <h2 style="color: var(--gold, #d4af37); font-family: serif; margin: 0; font-size: 1.2rem;">Bitácora de Estudio</h2>
+    
+    <div style="display: flex; align-items: center; gap: 10px;">
+      <h2 style="font-family: serif; margin: 0; font-size: 1.2rem;">
+  <span class="text-gold">Bitácora de Estudio</span>
+</h2>
+      
+      <!-- Icono Menú Lateral Derecho -->
+      <button onclick="toggleMenuBitacora()" title="Herramientas e Índice" style="background: transparent; border: 1px solid var(--gold, #d4af37); color: var(--gold, #d4af37); padding: 5px 10px; border-radius: 6px; cursor: pointer; font-size: 1.1rem; display: flex; align-items: center;">
+        ☰
+      </button>
+    </div>
+
   </div>
 
   <!-- Contenedor Estilo Libreta -->
-  <div style="background: #141414; border: 1px solid var(--gold, #d4af37); border-left: 12px solid #2a2a2a; border-radius: 10px; padding: 20px; box-shadow: 0 8px 20px rgba(0,0,0,0.7);">
+<div style="background: #141414; border: 1px solid var(--gold, #d4af37); border-left: 12px solid #2a2a2a; border-radius: 10px; padding: 20px; box-shadow: 0 8px 20px rgba(0,0,0,0.7);">
+  
+  <!-- Portada Personalizada / Título de la Nota -->
+  <div style="text-align: center; border-bottom: 1px dashed rgba(212,175,55,0.4); padding-bottom: 15px; margin-bottom: 15px;">
     
-    <!-- Portada Personalizada -->
-    <div style="text-align: center; border-bottom: 1px dashed rgba(212,175,55,0.4); padding-bottom: 15px; margin-bottom: 15px;">
-      <h3 id="saludo-cuaderno" style="color: var(--gold, #d4af37); font-family: serif; font-size: 1.25rem; margin-bottom: 8px;">
-        <!-- Se completa dinámicamente con JS -->
-      </h3>
-      <p style="color: #ccc; font-size: 0.85rem; margin: 0;">
-        Tu espacio personal para meditar la Palabra y guardar tus anotaciones.
-      </p>
+    <h3 id="saludo-cuaderno" style="color: var(--gold, #d4af37); font-family: serif; font-size: 1.25rem; margin-bottom: 8px;">
+      <!-- Se completa dinámicamente con JS -->
+    </h3>
+
+    <!-- Título editable con indicador visual -->
+    <div style="display: flex; align-items: center; justify-content: center; gap: 8px; width: 100%;">
+      <input 
+        type="text" 
+        id="titulo-nota-actual" 
+        placeholder="Escribí el título de tu nota..." 
+        value="Mi Nota de Hoy" 
+        title="Hacé clic para cambiar el título"
+        style="background: transparent; border: none; color: var(--gold, #d4af37); font-family: serif; font-size: 1.1rem; font-weight: bold; text-align: center; width: 85%; outline: none; cursor: text;" 
+      />
+      <span style="color: var(--gold, #d4af37); font-size: 0.9rem; opacity: 0.7; cursor: pointer;" title="Título editable">
+        ✏️
+      </span>
     </div>
+
+    <p style="color: #ccc; font-size: 0.85rem; margin-top: 6px;">
+      Tu espacio personal para meditar la Palabra y guardar tus anotaciones.
+    </p>
+
+  </div>
 
     <!-- Hoja de Escritura Amplia -->
     <textarea id="texto-libreta-amplia" 
@@ -1669,8 +1704,62 @@
     <div id="estado-guardado-libreta" style="text-align: right; font-size: 0.75rem; color: var(--gold, #d4af37); font-style: italic; margin-top: 8px; height: 16px;"></div>
 
   </div>
-</div>
-    <!-- Vista del Asistente de Apoyo -->
+
+  <!-- PANEL LATERAL DERECHO (DESLIZANTE) -->
+  <div id="panel-lateral-bitacora" style="position: fixed; top: 0; right: -320px; width: 300px; height: 100%; background: #1a1a1a; border-left: 2px solid var(--gold, #d4af37); box-shadow: -5px 0 15px rgba(0,0,0,0.8); z-index: 9999; transition: right 0.3s ease; padding: 18px; box-sizing: border-box; display: flex; flex-direction: column;">
+    
+    <!-- Encabezado del Panel -->
+    <div style="display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid rgba(212,175,55,0.4); padding-bottom: 10px; margin-bottom: 12px;">
+      <h3 style="color: var(--gold, #d4af37); margin: 0; font-size: 1.1rem; font-family: serif;">Herramientas</h3>
+      <button onclick="toggleMenuBitacora()" style="background: transparent; border: none; color: #fff; font-size: 1.2rem; cursor: pointer;">✕</button>
+    </div>
+
+    <!-- Pestañas Superiores del Panel Lateral -->
+    <div style="display: flex; gap: 4px; margin-bottom: 12px; border-bottom: 1px solid rgba(212,175,55,0.2); pb: 6px;">
+      <button onclick="verPestanaBitacora('notas')" style="flex: 1; background: rgba(212,175,55,0.2); border: 1px solid var(--gold, #d4af37); color: #fff; font-size: 0.75rem; padding: 6px 2px; border-radius: 4px; cursor: pointer;">📂 Notas</button>
+      <button onclick="verPestanaBitacora('guia')" style="flex: 1; background: transparent; border: 1px solid rgba(212,175,55,0.4); color: #ccc; font-size: 0.75rem; padding: 6px 2px; border-radius: 4px; cursor: pointer;">📖 Guía</button>
+      <button onclick="verPestanaBitacora('glosario')" style="flex: 1; background: transparent; border: 1px solid rgba(212,175,55,0.4); color: #ccc; font-size: 0.75rem; padding: 6px 2px; border-radius: 4px; cursor: pointer;">📚 Glosario</button>
+    </div>
+
+    <!-- SECCIÓN 1: MIS NOTAS Y ACCIONES -->
+    <div id="sec-bitacora-notas" style="display: flex; flex-direction: column; flex: 1; overflow: hidden;">
+      <div style="display: flex; flex-direction: column; gap: 8px; margin-bottom: 12px;">
+        <button onclick="crearNuevaNota()" style="background: rgba(212,175,55,0.15); border: 1px solid var(--gold, #d4af37); color: #fff; padding: 8px; border-radius: 6px; cursor: pointer; text-align: left; font-size: 0.85rem; font-weight: bold;">
+          ➕ Nueva Nota
+        </button>
+        <button onclick="guardarNotaManual()" style="background: rgba(212,175,55,0.15); border: 1px solid var(--gold, #d4af37); color: #fff; padding: 8px; border-radius: 6px; cursor: pointer; text-align: left; font-size: 0.85rem; font-weight: bold;">
+          💾 Guardar Nota
+        </button>
+      </div>
+
+      <h4 style="color: var(--gold, #d4af37); margin: 5px 0; font-size: 0.85rem;">Mis Archivos Guardados:</h4>
+      <div id="lista-notas-indice" style="flex: 1; overflow-y: auto; display: flex; flex-direction: column; gap: 6px; padding-right: 4px;">
+        <!-- Se llena dinámicamente con JS -->
+      </div>
+    </div>
+
+    <!-- SECCIÓN 2: GUÍA DE ESTUDIO -->
+    <div id="sec-bitacora-guia" style="display: none; flex: 1; overflow-y: auto; color: #ddd; font-size: 0.85rem; line-height: 1.5;">
+      <h4 style="color: var(--gold, #d4af37); margin-top: 0;">📖 Pasos para la Meditación</h4>
+      <ol style="padding-left: 18px; margin: 0;">
+        <li><b>Lectura atenta:</b> Leé el pasaje reteniendo palabras clave.</li>
+        <li><b>Observación:</b> ¿Qué enseña sobre Dios o el ser humano?</li>
+        <li><b>Aplicación:</b> ¿Cómo lo pongo en práctica hoy?</li>
+      </ol>
+    </div>
+
+    <!-- SECCIÓN 3: GLOSARIO / DICCIONARIO -->
+    <div id="sec-bitacora-glosario" style="display: none; flex: 1; overflow-y: auto; color: #ddd; font-size: 0.85rem; line-height: 1.5;">
+      <h4 style="color: var(--gold, #d4af37); margin-top: 0;">📚 Glosario de Términos</h4>
+      <p style="color: #aaa; font-style: italic;">Próximamente: Términos y conceptos clave para la consulta rápida.</p>
+    </div>
+
+  </div>
+
+  <!-- Overlay (Fondo oscuro para cerrar al tocar fuera) -->
+  <div id="overlay-bitacora" onclick="toggleMenuBitacora()" style="position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; background: rgba(0,0,0,0.5); z-index: 9998; display: none;"></div>
+
+</div>    <!-- Vista del Asistente de Apoyo -->
     <div id="screen-asistente" class="screen">
       <div class="asistente-header">
         <button class="btn-back" onclick="changeScreen('screen-main')">⬅</button>

@@ -908,7 +908,6 @@ body.light-mode #screen-sugerir a:hover {
   height: auto;
 }
 
-/
 /* Contenedor exacto de tus botones de estado de ánimo */
 .mood-buttons {
   display: flex;
