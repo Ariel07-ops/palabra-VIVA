@@ -531,6 +531,7 @@ export function renderizarVersiculosCapitulo(
 }
 
 /**
+ /**
  * Inicializa los eventos del botón de Fibrón y su paleta flotante
  */
 export function initFibronEvents() {
@@ -554,12 +555,35 @@ export function initFibronEvents() {
       e.stopPropagation();
       const colorElegido = btn.getAttribute("data-color");
 
+      // 1. Limpiamos el brillo y estilos de todos los botones de la paleta primero
+      botonesColor.forEach((b) => {
+        b.style.boxShadow = "none";
+        b.style.transform = "scale(1)";
+        if (b.getAttribute("data-color") === "borrar") {
+          b.style.backgroundColor = "#333";
+          b.style.color = "#ff5555";
+        }
+      });
+
       if (window.colorFibronActivo === colorElegido) {
+        // Se desactiva (toggle)
         window.colorFibronActivo = null;
         btnToggle.style.border = "1px solid var(--gold)";
       } else {
+        // Se activa el nuevo color o la gomita
         window.colorFibronActivo = colorElegido;
         btnToggle.style.border = "2px solid #fff";
+
+        // 2. Aplicamos el efecto visual según sea la gomita o un color
+        if (colorElegido === "borrar") {
+          btn.style.backgroundColor = "#ff5555";
+          btn.style.color = "#1a1a1a";
+          btn.style.transform = "scale(1.2)";
+          btn.style.boxShadow = "0 0 10px #ff5555";
+        } else {
+          btn.style.boxShadow = "0 0 10px #ffffff, 0 0 6px #f1c40f";
+          btn.style.transform = "scale(1.2)";
+        }
       }
 
       paleta.style.display = "none";
@@ -571,7 +595,6 @@ export function initFibronEvents() {
     if (paleta) paleta.style.display = "none";
   });
 }
-
 /**
  * Conecta el clic en cada versículo cuando el modo Fibrón está activo
  */
