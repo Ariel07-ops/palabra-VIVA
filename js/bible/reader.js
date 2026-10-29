@@ -620,3 +620,100 @@ export function conectarEventosLecturaFibron(nombreLibro, numeroCapitulo) {
     });
   });
 }
+/**
+ * Genera y muestra automáticamente el Índice de Contenido Exegético en la Guía,
+ * ordenando los libros estrictamente por orden canónico de la Biblia.
+ */
+export async function inicializarIndiceExegeticoEnGuia() {
+  const contenedor = document.getElementById("lista-indice-dinamico");
+  if (!contenedor) return;
+
+  contenedor.innerHTML = "<em>Cargando índice canónico...</em>";
+
+  try {
+    // 1. Obtenemos los versos normalizados de la biblia activa actual
+    const todosLosVersos = await obtenerVersosNormalizados();
+
+    // 2. Extraemos un conjunto único de los libros que efectivamente tienen contenido cargado
+    const librosConContenido = [
+      ...new Set(todosLosVersos.map((v) => v.book_name)),
+    ];
+
+    if (librosConContenido.length === 0) {
+      contenedor.innerHTML =
+        "<p style='color: #aaa;'><em>No hay contenido cargado aún.</em></p>";
+      return;
+    }
+
+    // 3. Ordenamos los libros utilizando el canon completo oficial (73 libros)
+    librosConContenido.sort((a, b) => {
+      let idxA = CANON_COMPLETO.indexOf(a);
+      let idxB = CANON_COMPLETO.indexOf(b);
+      if (idxA === -1) idxA = 999;
+      if (idxB === -1) idxB = 999;
+      return idxA - idxB;
+    });
+
+    // 4. Construimos la lista visual adaptada al idioma actual de la interfaz
+    let htmlIndice = `<ul style="list-style: none; padding-left: 0; margin: 0;">`;
+
+    librosConContenido.forEach((nombreLibro) => {
+      const nombreVisible = obtenerNombreVisible(nombreLibro);
+
+      // Buscamos qué capítulos tiene este libro cargados
+      const capitulosLibro = [
+        ...new Set(
+          todosLosVersos
+            .filter((v) => v.book_name === nombreLibro)
+            .map((v) => v.chapter),
+        ),
+      ].sort((a, b) => a - b);
+
+      htmlIndice += `
+        <li style="margin-bottom: 10px; color: var(--gold, #d4af37); font-weight: bold;">
+          📖 ${nombreVisible}
+          <ul style="list-style: none; padding-left: 15px; margin-top: 4px;">
+      `;
+
+      capitulosLibro.forEach((numCap) => {
+        htmlIndice += `
+          <li style="margin-bottom: 2px;">
+            <a href="#" class="enlace-capitulo-indice" data-libro="${nombreLibro}" data-capitulo="${numCap}" style="color: #ccc; text-decoration: none; font-weight: normal; font-size: 0.9rem;">
+              Capítulo ${numCap}
+            </a>
+          </li>
+        `;
+      });
+
+      htmlIndice += `</ul></li>`;
+    });
+
+    htmlIndice += `</ul>`;
+    contenedor.innerHTML = htmlIndice;
+
+    // 5. Agregamos los eventos de clic para que al hacer clic en un capítulo del índice, la app navegue directo a la lectura
+    contenedor.querySelectorAll(".enlace-capitulo-indice").forEach((link) => {
+      link.addEventListener("click", async (e) => {
+        e.preventDefault();
+        const libro = link.getAttribute("data-libro");
+        const cap = parseInt(link.getAttribute("data-capitulo"));
+
+        // Usamos la misma función que ya tenés en reader.js para cargar el capítulo
+        const versosLibro = todosLosVersos.filter((v) => v.book_name === libro);
+        renderizarVersiculosCapitulo(libro, cap, versosLibro);
+      });
+    });
+  } catch (error) {
+    console.error("Error al generar el índice exegético:", error);
+    contenedor.innerHTML =
+      "<p style='color: #ff5555;'><em>Error al cargar el índice.</em></p>";
+  }
+}
+// Escucha cuando el usuario abre el acordeón del índice por primera vez
+document
+  .getElementById("acordeon-indice-exegetico")
+  ?.addEventListener("toggle", function () {
+    if (this.open) {
+      inicializarIndiceExegeticoEnGuia();
+    }
+  });

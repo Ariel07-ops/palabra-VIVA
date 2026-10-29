@@ -70,18 +70,24 @@ export async function aplicarSubrayadosCapitulo(nombreLibro, numeroCapitulo) {
     let datos = await respuesta.json();
 
     let keyLibro = nombreLibro.toLowerCase().trim();
+    let idioma = window.idiomaActual || "es"; // Asume 'es' por defecto si no está definido
 
+    // Verificamos paso a paso con corchetes y puntos según corresponda:
     if (
-      !datos.libros ||
-      !datos.libros[keyLibro] ||
-      !datos.libros[keyLibro].capitulos[numeroCapitulo]
+      !datos.idiomas ||
+      !datos.idiomas[idioma] ||
+      !datos.idiomas[idioma].libros ||
+      !datos.idiomas[idioma].libros[keyLibro] ||
+      !datos.idiomas[idioma].libros[keyLibro].capitulos[numeroCapitulo]
     ) {
       // Si no hay notas de estudio, igual aplicamos los resaltados personales del Fibrón
       aplicarResaltadosPersonales(nombreLibro, numeroCapitulo);
       return;
     }
 
-    let capituloData = datos.libros[keyLibro].capitulos[numeroCapitulo];
+    // Y para traer los datos del capítulo usamos la misma lógica:
+    let capituloData =
+      datos.idiomas[idioma].libros[keyLibro].capitulos[numeroCapitulo];
 
     const mapaColoresHex = {
       filologia: "#9b59b6",

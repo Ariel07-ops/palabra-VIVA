@@ -1,67 +1,335 @@
 {
-  "libros": {
-    "marcos": {
-      "capitulos": {
-        "1": {
-          "versiculos": {
+  "idiomas": {
+    "es": {
+      "libros": {
+        "mateo": {
+          "nombre": "San Mateo",
+          "capitulos": {
+            "7": {
+              "versiculos": {
+                "1": {
+                  "texto": "No juzguéis, para que no seáis juzgados.",
+                  "categorias": {
+                    "filologia": true,
+                    "historico": true,
+                    "apologetica": true,
+                    "sucesion": true
+                  },
+                  "textos": {
+                    "filologia": "«No juzguéis» — μὴ κρίνετε (mē krinete)\n\nEl verbo griego κρίνω (krīnō) significa primariamente «juzgar», «discernir», «separar» o «condenar». En este contexto imperativo con negación, Jesús no prohíbe el discernimiento moral necesario para la vida cristiana, sino el juicio temerario, hipercrítico, condenatorio y movido por la soberbia que usurpa el lugar de Dios como único juez legítimo.\n\nNorma de fidelidad exegética: El sentido correcto no elimina la capacidad de discernir el bien y el mal, sino que condena la actitud farisaica de erigirse en jueces implacables del prójimo.",
+                    "historico": "«No juzguéis, para que no seáis juzgados» (Mateo 7,1)\n\n- Contexto vital: En el ambiente del judaísmo tardío y entre los escribas y fariseos, la tendencia a la censura rigurosa y a la descalificación moral del prójimo era frecuente.\n- Enseñanza de Jesús: En el Sermón del Monte, el Señor establece una ética del Reino radicalmente opuesta a la hipocresía judicial, centrada en la misericordia.\n\nNorma de fidelidad histórica: El mandato ilumina la exigencia de una comunidad discipular basada en la fraternidad y el perdón, no en la condena mutua.",
+                    "apologetica": "«No juzguéis...» (Mateo 7,1)\n\n- Objeción frecuente: A menudo se utiliza este versículo fuera de contexto para pretender que la fe cristiana prohíbe todo juicio moral, corrección fraterna o evaluación de conductas (bajo el lema moderno de «no juzgues a nadie en absoluto»).\n- Respuesta católica: Jesús mismo exige en otras partes del Evangelio corregir al hermano con prudencia (cf. Mt 18,15) y discernir a los falsos profetas por sus frutos (cf. Mt 7,16). Lo prohibido es el juicio injusto, malicioso y soberbio, no el recto discernimiento de la verdad.\n\nNorma de fidelidad apologética: Mostrar que la exigencia de misericordia de Cristo no invalida la búsqueda de la verdad ni la corrección en la caridad.",
+                    "sucesion": "«Para que no seáis juzgados» (Mateo 7,1)\n\n- Continuidad eclesial: La advertencia sobre la medida del juicio divino anticipa la responsabilidad comunitaria de la corrección fraterna vivida en la Iglesia.\n\nNorma de fidelidad: La Iglesia custodia la verdad con misericordia, recordando que toda autoridad pastoral y fraterna debe ejercerse bajo el juicio supremo de Dios."
+                  }
+                },
+                "2": {
+                  "texto": "Porque con el juicio con que juzgáis seréis juzgados, y con la medida con que medís os será medido.",
+                  "categorias": {
+                    "filologia": true,
+                    "historico": true,
+                    "apologetica": true,
+                    "sucesion": true
+                  },
+                  "textos": {
+                    "filologia": "«Con la medida con que medís» — ἐν ᾧ μέτρῳ μετρεῖτε (en hō metrō metreite)\n\nEmplea una metáfora mercantil de pesas y medidas. El principio de reciprocidad divina muestra que la severidad o la misericordia que aplicamos al hermano refleja la disposición con la que nos presentamos ante la justicia de Dios.\n\nNorma de fidelidad filológica: La justicia del Reino no opera con legalismo ciego, sino bajo la lógica de la gracia y la medida de la misericordia.",
+                    "historico": "«Seréis juzgados» (Mateo 7,2)\n\n- Trasfondo sapiencial: La ley del talión mitigada o el principio de retribución justa es un tema clásico de la literatura sapiencial de Israel (se cosecha lo que se siembra).\n\nNorma de fidelidad histórica: Jesús retoma la sabiduría veterotestamentaria y la eleva a la perfección escatológica del Reino.",
+                    "apologetica": "«Con el juicio con que juzgáis...» (Mateo 7,2)\n\n- Respuesta católica: Este texto subraya la coherencia exigida al discípulo: quien pide perdón y misericordia a Dios no puede comportarse como un verdugo inflexible con sus hermanos.\n\nNorma de fidelidad apologética: Demuestra la armonía perfecta entre la justicia divina y la exigencia de la caridad práctica en el trato diario.",
+                    "sucesion": "«Os será medido» (Mateo 7,2)\n\n- Dimensión pastoral: La pedagogía de la Iglesia siempre ha insistido en que el ejercicio del ministerio y de la corrección debe estar impregnado de profunda autocrítica y humildad."
+                  }
+                }
+              }
+            }
+          }
+        },
+        "marcos": {
+          "nombre": "San Marcos",
+          "capitulos": {
             "1": {
-              "texto": "Principio del Evangelio de Jesucristo, Hijo de Dios.",
-              "categorias": {
-                "filologia": true,
-                "historico": true,
-                "apologetica": true,
-                "sucesion": true
-              },
-              "textos": {
-                "filologia": "«Principio del evangelio» — ἀρχὴ τοῦ εὐαγγελίου (archē tou euangeliou)\n\nLa palabra griega ἀρχή (archē) significa “principio”, “comienzo” u “origen”. En Marcos 1,1 introduce el inicio de la proclamación evangélica y presenta la llegada de Jesucristo como el comienzo decisivo de la obra salvadora de Dios en la historia.\n\nEl término εὐαγγέλιον (euangélion) designa el anuncio de la salvación y de la Persona misma de Cristo (la Buena Noticia del Reino y de la redención).\n\nNorma de fidelidad exegética: El significado no se obtiene de la etimología aislada, sino por su uso en el texto, el Nuevo Testamento y la Tradición de la Iglesia.",
-                "historico": "«Principio del evangelio de Jesucristo» (Marcos 1,1)\n\n- Autor y tradición apostólica: Atribuido tradicionalmente a Juan Marcos, intérprete de san Pedro (atestiguado por Papías, Ireneo, Clemente, Jerónimo y Eusebio).\n- Fecha y lugar: Datación probable entre los años 50 y 67 d.C., con fuerte arraigo en la tradición romana y la predicación petrina.\n- Situación vital (Sitz im Leben): Dirigido a una comunidad que necesita cimentar su fe, comprender el discipulado y la cruz.\n- Género literario: Relato kerigmático que une la memoria histórica de las obras y dichos de Jesús con la luz de la fe pascual.\n\nNorma de fidelidad exegética: El contexto histórico ilumina el texto sin reducirlo, buscando el sentido literal querido por el autor humano bajo inspiración del Espíritu Santo.",
-                "apologetica": "«Principio del evangelio de Jesucristo, Hijo de Dios» (Marcos 1,1)\n\n- Objeción frecuente: Argumentar que la filiación divina de Jesús es una elaboración mítica tardía de las comunidades.\n- Respuesta católica: La confesión de Jesús como Hijo de Dios está en el núcleo de la fe apostólica originaria. La defensa se apoya en la convergencia de testimonios (profecías, bautismo, autoridad, resurrección).\n- Precisión teológica: Cristo es el Hijo único del Padre por naturaleza y eternamente, no por una adopción meramente moral o simbólica.\n- Centro de su finalidad: Conducir a la persona a la razonabilidad de la fe y al encuentro vivo con la Persona de Cristo.",
-                "sucesion": "«El Evangelio transmitido en la Iglesia» (Marcos 1,1)\n\n- Continuidad apostólica: El Evangelio de Marcos no es una creación aislada, sino la puesta por escrito de la predicación apostólica recibida de Pedro.\n- Recepción eclesial: La autoridad del texto proviene de su inserción y custodia en la vida de la Iglesia desde los orígenes.\n- Tradición viva y Magisterio: La sucesión apostólica (obispos en comunión con el Papa) garantiza la transmisión íntegra de la única fe, uniendo inseparablemente Escritura, Tradición y Magisterio.\n\nNorma de fidelidad: La sucesión apostólica no es una garantía institucional aislada ni una prueba deducida de un solo versículo, sino la continuidad viva de la misión, la enseñanza y la comunión de la Iglesia en fidelidad a Cristo."
+              "versiculos": {
+                "1": {
+                  "texto": "Principio del Evangelio de Jesucristo, Hijo de Dios.",
+                  "categorias": {
+                    "filologia": true,
+                    "historico": true,
+                    "apologetica": true,
+                    "sucesion": true
+                  },
+                  "textos": {
+                    "filologia": "«Principio del evangelio» — ἀρχὴ τοῦ εὐαγγελίου (archē tou euangeliou)\n\nLa palabra griega ἀρχή (archē) significa “principio”, “comienzo” u “origen”. En Marcos 1,1 introduce el inicio de la proclamación evangélica y presenta la llegada de Jesucristo como el comienzo decisivo de la obra salvadora de Dios en la historia.\n\nEl término εὐαγγέλιον (euangélion) designa el anuncio de la salvación y de la Persona misma de Cristo (la Buena Noticia del Reino y de la redención).\n\nNorma de fidelidad exegética: El significado no se obtiene de la etimología aislada, sino por su uso en el texto, el Nuevo Testamento y la Tradición de la Iglesia.",
+                    "historico": "«Principio del evangelio de Jesucristo» (Marcos 1,1)\n\n- Autor y tradición apostólica: Atribuido tradicionalmente a Juan Marcos, intérprete de san Pedro (atestiguado por Papías, Ireneo, Clemente, Jerónimo y Eusebio).\n- Fecha y lugar: Datación probable entre los años 50 y 67 d.C., con fuerte arraigo en la tradición romana y la predicación petrina.\n- Situación vital (Sitz im Leben): Dirigido a una comunidad que necesita cimentar su fe, comprender el discipulado y la cruz.\n- Género literario: Relato kerigmático que une la memoria histórica de las obras y dichos de Jesús con la luz de la fe pascual.\n\nNorma de fidelidad exegética: El contexto histórico ilumina el texto sin reducirlo, buscando el sentido literal querido por el autor humano bajo inspiración del Espíritu Santo.",
+                    "apologetica": "«Principio del evangelio de Jesucristo, Hijo de Dios» (Marcos 1,1)\n\n- Objeción frecuente: Argumentar que la filiación divina de Jesús es una elaboración mítica tardía de las comunidades.\n- Respuesta católica: La confesión de Jesús como Hijo de Dios está en el núcleo de la fe apostólica originaria. La defensa se apoya en la convergencia de testimonios (profecías, bautismo, autoridad, resurrección).\n- Precisión teológica: Cristo es el Hijo único del Padre por naturaleza y eternamente, no por una adopción meramente moral o simbólica.\n- Centro de su finalidad: Conducir a la persona a la razonabilidad de la fe y al encuentro vivo con la Persona de Cristo.",
+                    "sucesion": "«El Evangelio transmitido en la Iglesia» (Marcos 1,1)\n\n- Continuidad apostólica: El Evangelio de Marcos no es una creación aislada, sino la puesta por escrito de la predicación apostólica recibida de Pedro.\n- Recepción eclesial: La autoridad del texto proviene de su inserción y custodia en la vida de la Iglesia desde los orígenes.\n- Tradición viva y Magisterio: La sucesión apostólica (obispos en comunión con el Papa) garantiza la transmisión íntegra de la única fe, uniendo inseparablemente Escritura, Tradición y Magisterio.\n\nNorma de fidelidad: La sucesión apostólica no es una garantía institucional aislada ni una prueba deducida de un solo versículo, sino la continuidad viva de la misión, la enseñanza y la comunión de la Iglesia en fidelidad a Cristo."
+                  }
+                },
+                "2": {
+                  "texto": "Como está escrito en el profeta Isaías: «Mira, envío a mi mensajero delante de ti, el que preparará tu camino».",
+                  "categorias": {
+                    "filologia": true,
+                    "historico": true,
+                    "apologetica": true,
+                    "sucesion": true
+                  },
+                  "textos": {
+                    "filologia": "«Como está escrito» — καθὼς γέγραπται (kathōs gégraptai)\n\nLa expresión introduce una referencia a las Escrituras de Israel y presenta los acontecimientos narrados como parte del designio de Dios ya anunciado por los profetas. «Mensajero» traduce ἄγγελος (ángelos), término que significa principalmente «mensajero» o «enviado»; en este contexto no designa a un ser angélico, sino a una persona enviada por Dios para preparar la llegada del Señor. La tradición cristiana identifica este mensajero con Juan el Bautista, cuja misión consiste en preparar al pueblo para recibir a Cristo. «Tu camino» expresa la imagen bíblica de una vía que Dios mismo recorre al acercarse a su pueblo.\n\nEl texto de Marcos combina la imagen del mensajero de Malaquías 3,1 con la voz que clama en el desierto de Isaías 40,3. Por eso, la referencia a Isaías no debe entenderse como una cita exclusiva de una sola frase, sino como una presentación conjunta de varias profecías convergentes. Esta dificultad ya era conocida por los Padres, quienes explicaron que Marcos reunió en una sola introducción textos proféticos distintos, unidos por el mismo tema: la preparación del camino del Señor. [^1]\n\nNorma de fidelidad filológica: No debe afirmarse que ἄγγελος significa aquí «ángel» en sentido ontológico. El término se refiere a la función de enviado; la identidad concreta del mensajero se determina por el contexto, que lo presenta como Juan el Bautista.",
+                    "historico": "«Como está escrito en el profeta Isaías» (Marcos 1,2)\n\nMarcos inicia la presentación de Juan el Bautista mediante las Escrituras de Israel. El Evangelio no presenta la misión de Juan como un acontecimiento aislado, sino como el cumplimiento de una esperanza profética: antes de la manifestación decisiva del Señor, Dios suscita un mensajero que prepara al pueblo.\n\nDesde el punto de vista textual, Marcos reúne dos pasajes: Malaquías 3,1, donde aparece el mensajero enviado delante del Señor, e Isaías 40,3, donde se habla de una voz que clama en el desierto. Esta combinación no es una dificultad desconocida para la tradición antigua. Orígenes observó que las dos frases proceden de profetas diferentes y que Marcos las presenta conjuntamente porque convergen en un mismo sentido. [^2]\n\nEl trasfondo histórico es el de Israel, pueblo formado por la Ley y los Profetas, que esperaba la intervención salvadora de Dios. La aparición de Juan en el desierto, desarrollada en los versículos siguientes, debe entenderse dentro de esta expectativa de renovación y preparación para la llegada del Mesías.\n\nNorma de fidelidad histórica: La combinación de textos proféticos no debe presentarse apresuradamente como un error de Marcos. Es preferible describirla como una técnica de composición e interpretación propia del mundo bíblico, en la que varios pasajes se reúnen para expresar una unidad de sentido.",
+                    "apologetica": "«Mira, envío a mi mensajero delante de ti, el que preparará tu camino» (Marcos 1,2)\n\n- Objeción frecuente: Puede objetarse que Marcos habría utilizado las Escrituras de manera arbitraria para dar a Jesús una importancia que originalmente no poseía, reinterpretando textos antiguos después de los acontecimientos.\n\n- Respuesta católica: La interpretación cristiana de las profecías não consiste en una asociación casual de frases, sino en reconocer una continuidad entre la esperanza de Israel, la misión de Juan y la manifestación histórica de Jesucristo. Marcos presenta a Jesús dentro de la historia de la alianza, no como una figura inventada al margen de ella.\n\n- La cuestión de las citas: Marcos atribuye la introducción a Isaías aunque reúne también una frase de Malaquías. Esto no obliga a concluir que el Evangelista desconocía las Escrituras. La tradición antigua ya ofrecía varias explicaciones: algunos Padres señalaron la combinación de dos profecías; otros entendieron que Isaías funcionaba como el profeta principal o como la primera voz que expresa el sentido global del pasaje. [^1]\n\n- Fundamento cristológico: El punto central no es solamente la identidad de Juan, sino la identidad de Aquel cuyo camino se prepara. En la profecía, el camino pertenece al Señor; en el relato evangélico, Juan prepara concretamente la manifestación de Jesús. Esta convergencia invita a leer el texto en clave cristológica, reconociendo en Jesús la presencia salvadora del Señor que visita a su pueblo. [^3]\n\nNorma de fidelidad apologética: La defensa debe reconocer honestamente la complejidad de la cita, pero mostrar que dicha complejidad no destruye la credibilidad del Evangelio. La argumentación debe conducir desde la continuidad de las promesas hasta el reconocimiento de Cristo, no limitarse a resolver una dificultad técnica.",
+                    "sucesion": "«Mi mensajero» (Marcos 1,2)\n\n- Continuidad profética: La misión de Juan se sitúa en continuidad con los profetas de Israel. Él no proclama un mensaje privado ni funda una religión separada, sino que recibe una misión de Dios dentro de la historia de la alianza y orientada hacia la llegada del Señor.\n\n- Continuidad del anuncio: La sucesión apostólica comienza a comprenderse aquí como continuidad de una misión recibida: Dios envía mensajeros para preparar, anunciar y transmitir su obra salvadora. Juan es el precursor inmediato; los Apóstoles serán después testigos de Cristo resucitado y ministros de su Evangelio.\n\n- La Iglesia como intérprete: La Iglesia lee conjuntamente Malaquías e Isaías porque reconoce en ambos textos una unidad dentro del designio revelador de Dios. La recepción eclesial de Marcos conserva esta lectura cristológica y no separa el Antiguo Testamento del cumplimiento realizado en Cristo. La tradición patrística afirma que Marcos coloca los testimonios proféticos al comienzo para mostrar que el Evangelio anunciado se encuentra en continuidad con la Ley y los Profetas. [^1]\n\nNorma de fidelidad: Este versículo no demuestra por sí solo la sucesión apostólica en sentido jurídico o episcopal. Su aporte consiste en mostrar la continuidad de la misión revelada: profetas, Juan el Bautista, Cristo y, posteriormente, los Apóstoles y la Iglesia reciben su misión de Dios y la orientan hacia el único Evangelio."
+                  }
+                },
+                "3": {
+                  "texto": "Voz que clama en el desierto: «Preparad el camino del Señor, enderezad sus sendas».",
+                  "categorias": {
+                    "filologia": true,
+                    "historico": true,
+                    "apologetica": true,
+                    "sucesion": true
+                  },
+                  "textos": {
+                    "filologia": "«Voz que clama en el desierto» — φωνὴ βοῶντος ἐν τῇ ἐρήμῳ (phōnē boōntos en tē erēmō)\n\nLa expresión evoca el texto fundamental de Isaías 40,3. El término «voz» (φωνή - phōnē) subraya la función de proclamación profética: el personaje que habla no busca su propio reconocimiento, sino que es el instrumento audible de la palabra de Dios. «Desierto» (ἔρημος - erēmos) no es solo un dato geográfico, sino un lugar teológico de prueba, de gracia y de reencuentro con Dios (como en la tradición del Éxodo).\n\nNorma de fidelidad filológica: El desierto en la literatura bíblica tiene una densidad espiritual y simbólica profunda; no se trata de un simple escenario geográfico vacío, sino del espacio donde Dios habla al corazón de su pueblo.",
+                    "historico": "«Preparad el camino del Señor» (Marcos 1,3)\n\nHistóricamente, la predicación de Juan el Bautista en el desierto de Judea emula las antiguas expectativas de renovación espiritual. En el mundo antiguo, cuando un rey se desplazaba por regiones difíciles, se enviaban adelantados para allanar los caminos y reparar los baches. Aquí la metáfora es espiritual: el camino que hay que enderezar es el corazón del pueblo ante la cercanía de la intervención de Dios.\n\nNorma de fidelidad histórica: La figura del Bautista entronca directamente con los movimientos proféticos y ascéticos tardíos del judaísmo palestinense, pero se diferencia radicalmente al subordinar su misión a la llegada de Aquel que es más poderoso.",
+                    "apologetica": "«Preparad el camino del Señor» (Marcos 1,3)\n\n- Objeción frecuente: Se suele minimizar al Bautista considerándolo simplemente un líder mesiánico independiente cuyos seguidores compitieron con el cristianismo naciente.\n- Respuesta católica: Los Evangelios muestran con absoluta claridad que Juan mismo se encarga de desinflar cualquier pretensión de ser el Mesías, subordinándose totalmente a Jesús y señalándolo explícitamente como el Cordero y el Señor.\n\nNorma de fidelidad apologética: Demostrar que el testimonio del Precursor refuerza la historicidad y la coherencia teológica de la misión de Jesús, impidiendo ver a Cristo como un personaje improvisado.",
+                    "sucesion": "«Enderezad sus sendas» (Marcos 1,3)\n\n- Transmisión del mensaje: La exigencia de conversión y preparación pasa de los profetas antiguos a Juan, de Juan a los discípulos, y constituye la base permanente de la predicación de la Iglesia.\n\nNorma de fidelidad: La tarea de preparar el camino al Señor se perpetúa en el ministerio pastoral de la Iglesia, que llama constantemente a enderezar los rumbos según el Evangelio."
+                  }
+                },
+                "4": {
+                  "texto": "Se presentó Juan el Bautista en el desierto, proclamando un bautismo de conversión para el perdón de los pecados.",
+                  "categorias": {
+                    "filologia": true,
+                    "historico": true,
+                    "apologetica": true,
+                    "sucesion": true
+                  },
+                  "textos": {
+                    "filologia": "«Bautismo de conversión» — βάπτισμα μετανοίας (baptisma metanoias)\n\nEl verbo metanoeō y su sustantivo metanoia implican una transformación radical de la mente, del corazón y de la conducta, un giro copernicano hacia Dios. El término bautismo (baptisma) derivado de baptizō («sumergir») adquiere con Juan un cariz escatológico y purificador único, distinto de los lavatorios rituales cotidianos del judaísmo.\n\nNorma de fidelidad filológica: La conversión bíblica no se reduce a un remordimiento psicológico; es una vuelta efectiva de todo el ser hacia el proyecto de salvación divino.",
+                    "historico": "«Juan el Bautista en el desierto» (Marcos 1,4)\n\nJuan ejerce su ministerio bautismal en las proximidades del río Jordán, un lugar cargado de profundo significado histórico: es la puerta de entrada a la Tierra Prometida que cruzó Josué, simbolizando un nuevo éxodo. Las multitudes acuden desde Jerusalén y toda Judea para confesar sus pecados y someterse a este rito de purificación.\n\nNorma de fidelidad histórica: El bautismo de Juan se enmarca en los movimientos de purificación de la época, pero su vinculación directa con la venida inminente del Reino lo convierte en un hito histórico sin paralelo exacto en las sectas contemporáneas como Qumrán.",
+                    "apologetica": "«Para el perdón de los pecados» (Marcos 1,4)\n\n- Objeción frecuente: Podría cuestionarse por qué un profeta bautiza para el perdón si los sacrificios del Templo en Jerusalén supuestamente cumplían esa función.\n- Respuesta católica: El bautismo de Juan anticipa y apunta hacia la eficacia total del sacrificio de Cristo; es un signo profético de disposición interior que halla su plenitud sacramental en el Bautismo cristiano instituido por el Señor.\n\nNorma de fidelidad apologética: Mostrar la armonía entre la economía preparatoria del Antiguo Testamento y la plenitud sacramental operada en la Iglesia.",
+                    "sucesion": "«Proclamando un bautismo» (Marcos 1,4)\n\n- Origen sacramental: En la práctica bautismal de Juan se vislumbra la raíz histórica sobre la cual Cristo instituirá el sacramento del Bautismo, confiado a la autoridad y misión de los Apóstoles en la Iglesia.\n\nNorma de fidelidad: La autoridad para bautizar y perdonar en nombre de Dios se transmite legítimamente en la sucesión eclesial como continuación de la obra salvadora."
+                  }
+                }
               }
-            },
-            "2": {
-              "texto": "Como está escrito en el profeta Isaías: «Mira, envío a mi mensajero delante de ti, el que preparará tu camino».",
-              "categorias": {
-                "filologia": true,
-                "historico": true,
-                "apologetica": true,
-                "sucesion": true
-              },
-              "textos": {
-                "filologia": "«Como está escrito» — καθὼς γέγραπται (kathōs gégraptai)\n\nLa expresión introduce una referencia a las Escrituras de Israel y presenta los acontecimientos narrados como parte del designio de Dios ya anunciado por los profetas. «Mensajero» traduce ἄγγελος (ángelos), término que significa principalmente «mensajero» o «enviado»; en este contexto no designa a un ser angélico, sino a una persona enviada por Dios para preparar la llegada del Señor. La tradición cristiana identifica este mensajero con Juan el Bautista, cuya misión consiste en preparar al pueblo para recibir a Cristo. «Tu camino» expresa la imagen bíblica de una vía que Dios mismo recorre al acercarse a su pueblo.\n\nEl texto de Marcos combina la imagen del mensajero de Malaquías 3,1 con la voz que clama en el desierto de Isaías 40,3. Por eso, la referencia a Isaías no debe entenderse como una cita exclusiva de una sola frase, sino como una presentación conjunta de varias profecías convergentes. Esta dificultad ya era conocida por los Padres, quienes explicaron que Marcos reunió en una sola introducción textos proféticos distintos, unidos por el mismo tema: la preparación del camino del Señor. [^1]\n\nNorma de fidelidad filológica: No debe afirmarse que ἄγγελος significa aquí «ángel» en sentido ontológico. El término se refiere a la función de enviado; la identidad concreta del mensajero se determina por el contexto, que lo presenta como Juan el Bautista.",
-                "historico": "«Como está escrito en el profeta Isaías» (Marcos 1,2)\n\nMarcos inicia la presentación de Juan el Bautista mediante las Escrituras de Israel. El Evangelio no presenta la misión de Juan como un acontecimiento aislado, sino como el cumplimiento de una esperanza profética: antes de la manifestación decisiva del Señor, Dios suscita un mensajero que prepara al pueblo.\n\nDesde el punto de vista textual, Marcos reúne dos pasajes: Malaquías 3,1, donde aparece el mensajero enviado delante del Señor, e Isaías 40,3, donde se habla de una voz que clama en el desierto. Esta combinación no es una dificultad desconocida para la tradición antigua. Orígenes observó que las dos frases proceden de profetas diferentes y que Marcos las presenta conjuntamente porque convergen en un mismo sentido. [^2]\n\nEl trasfondo histórico es el de Israel, pueblo formado por la Ley y los Profetas, que esperaba la intervención salvadora de Dios. La aparición de Juan en el desierto, desarrollada en los versículos siguientes, debe entenderse dentro de esta expectativa de renovación y preparación para la llegada del Mesías.\n\nNorma de fidelidad histórica: La combinación de textos proféticos no debe presentarse apresuradamente como un error de Marcos. Es preferible describirla como una técnica de composición e interpretación propia del mundo bíblico, en la que varios pasajes se reúnen para expresar una unidad de sentido.",
-                "apologetica": "«Mira, envío a mi mensajero delante de ti, el que preparará tu camino» (Marcos 1,2)\n\n- Objeción frecuente: Puede objetarse que Marcos habría utilizado las Escrituras de manera arbitraria para dar a Jesús una importancia que originalmente no poseía, reinterpretando textos antiguos después de los acontecimientos.\n\n- Respuesta católica: La interpretación cristiana de las profecías no consiste en una asociación casual de frases, sino en reconocer una continuidad entre la esperanza de Israel, la misión de Juan y la manifestación histórica de Jesucristo. Marcos presenta a Jesús dentro de la historia de la alianza, no como una figura inventada al margen de ella.\n\n- La cuestión de las citas: Marcos atribuye la introducción a Isaías aunque reúne también una frase de Malaquías. Esto no obliga a concluir que el Evangelista desconocía las Escrituras. La tradición antigua ya ofrecía varias explicaciones: algunos Padres señalaron la combinación de dos profecías; otros entendieron que Isaías funcionaba como el profeta principal o como la primera voz que expresa el sentido global del pasaje. [^1]\n\n- Fundamento cristológico: El punto central no es solamente la identidad de Juan, sino la identidad de Aquel cuyo camino se prepara. En la profecía, el camino pertenece al Señor; en el relato evangélico, Juan prepara concretamente la manifestación de Jesús. Esta convergencia invita a leer el texto en clave cristológica, reconociendo en Jesús la presencia salvadora del Señor que visita a su pueblo. [^3]\n\nNorma de fidelidad apologética: La defensa debe reconocer honestamente la complejidad de la cita, pero mostrar que dicha complejidad no destruye la credibilidad del Evangelio. La argumentación debe conducir desde la continuidad de las promesas hasta el reconocimiento de Cristo, no limitarse a resolver una dificultad técnica.",
-                "sucesion": "«Mi mensajero» (Marcos 1,2)\n\n- Continuidad profética: La misión de Juan se sitúa en continuidad con los profetas de Israel. Él no proclama un mensaje privado ni funda una religión separada, sino que recibe una misión de Dios dentro de la historia de la alianza y orientada hacia la llegada del Señor.\n\n- Continuidad del anuncio: La sucesión apostólica comienza a comprenderse aquí como continuidad de una misión recibida: Dios envía mensajeros para preparar, anunciar y transmitir su obra salvadora. Juan es el precursor inmediato; los Apóstoles serán después testigos de Cristo resucitado y ministros de su Evangelio.\n\n- La Iglesia como intérprete: La Iglesia lee conjuntamente Malaquías e Isaías porque reconoce en ambos textos una unidad dentro del designio revelador de Dios. La recepción eclesial de Marcos conserva esta lectura cristológica y no separa el Antiguo Testamento del cumplimiento realizado en Cristo. La tradición patrística afirma que Marcos coloca los testimonios proféticos al comienzo para mostrar que el Evangelio anunciado se encuentra en continuidad con la Ley y los Profetas. [^1]\n\nNorma de fidelidad: Este versículo no demuestra por sí solo la sucesión apostólica en sentido jurídico o episcopal. Su aporte consiste en mostrar la continuidad de la misión revelada: profetas, Juan el Bautista, Cristo y, posteriormente, los Apóstoles y la Iglesia reciben su misión de Dios y la orientan hacia el único Evangelio."
+            }
+          }
+        }
+      }
+    },
+    "pt": {
+      "libros": {
+        "mateo": {
+          "nombre": "São Mateus",
+          "capitulos": {
+            "7": {
+              "versiculos": {
+                "1": {
+                  "texto": "Não julgueis, para que não sejais julgados.",
+                  "categorias": {
+                    "filologia": true,
+                    "historico": true,
+                    "apologetica": true,
+                    "sucesion": true
+                  },
+                  "textos": {
+                    "filologia": "«Não julgueis» — μὴ κρίνετε (mē krinete)\n\nO verbo grego κρίνω (krīnō) significa primariamente «julgar», «discernir» ou «condenar». Jesus não proíbe o discernimento moral, mas o julgamento condenatório e movido pela soberba.",
+                    "historico": "«Não julgueis...» (Mateus 7,1)\n\nNo contexto do judaísmo antigo, a tendência à censura rigorosa era comum. Jesus propõe uma ética de misericórdia.",
+                    "apologetica": "«Não julgueis...» (Mateus 7,1)\n\n- Resposta católica: Não se proíbe a correção fraterna nem o discernimento da verdade, mas sim a atitude de soberba e condenação implacável.",
+                    "sucesion": "«Para que não sejais julgados» (Mateus 7,1)\n\nAntecipa a responsabilidade da misericórdia na vida comunitária da Igreja."
+                  }
+                },
+                "2": {
+                  "texto": "Pois com o critério com que julgardes sereis julgados; e com a medida com que medirdes vos será medido.",
+                  "categorias": {
+                    "filologia": true,
+                    "historico": true,
+                    "apologetica": true,
+                    "sucesion": true
+                  },
+                  "textos": {
+                    "filologia": "«Com a medida com que medirdes»\n\nMetáfora de reciprocidade divina que subordina nossa justiça à misericórdia.",
+                    "historico": "Princípio sapiencial tradicional de retribuição justa elevado à perfeição do Reino.",
+                    "apologetica": "A coerência exigida ao discípulo que busca a misericórdia de Deus.",
+                    "sucesion": "A pedagogia pastoral da Igreja fundamentada na humildade."
+                  }
+                }
               }
-            },
-            "3": {
-              "texto": "«La voz de uno que clama en el desierto: “Preparen el camino del Señor, enderecen sus senderos”».",
-              "categorias": {
-                "filologia": true,
-                "historico": true,
-                "apologetica": true,
-                "sucesion": true
-              },
-              "textos": {
-                "filologia": "«La voz» — φωνή (phōnḗ)\n\nEl término φωνή significa «voz» o «sonido». Juan es llamado «voz» porque su misión consiste en proclamar un mensaje que no tiene su origen en él mismo. La voz anuncia; el contenido anunciado es la llegada del Señor.\n\n«En el desierto» — ἐν τῇ ἐρήμῳ (en tē erḗmō)\n\nEl desierto es el lugar concreto de la predicación de Juan, pero también evoca la historia de Israel: el éxodo, la purificación y la preparación para una nueva intervención de Dios. «Preparar el camino» y «enderezar los senderos» expresan, en lenguaje figurado, la conversión necesaria para recibir al Señor. La tradición patrística relaciona esta preparación con la fe recta, las buenas obras y la purificación interior. [^1]\n\nNorma de fidelidad filológica: El sentido figurado no debe eliminar el sentido histórico. Juan predicó realmente en una región desértica; al mismo tiempo, el desierto y el camino poseen una dimensión teológica y espiritual dentro del relato.",
-                "historico": "«La voz de uno que clama en el desierto» (Marcos 1,3)\n\nLa cita procede de Isaías 40,3 y se refiere originalmente al comienzo de la preparación del camino para la intervención salvadora de Dios. Marcos aplica esta profecía a Juan el Bautista, que aparece en el desierto anunciando la llegada de Jesús.\n\nEl desierto posee una importancia histórica y religiosa particular para Israel. Evoca el éxodo y la alianza, pero también la espera de una renovación. Situar allí a Juan permite presentarlo como un profeta que llama al pueblo a prepararse para una nueva acción de Dios.\n\nEl Evangelio de Marcos interpreta la profecía mediante un acontecimiento concreto: Juan es la voz y Jesús es Aquel cuyo camino se prepara. La tradición cristiana antigua observa que Juan es llamado «voz» porque precede al Verbo, del mismo modo que la voz hace posible que las palabras sean escuchadas. [^1]\n\nNorma de fidelidad histórica: No debe reducirse el desierto a una metáfora psicológica. El texto conserva un marco geográfico e histórico real, aunque lo presenta al mismo tiempo como signo de conversión y de renovación espiritual.",
-                "apologetica": "«Preparen el camino del Señor» (Marcos 1,3)\n\n- Objeción frecuente: Se podría objetar que la aplicación de Isaías a Juan y a Jesús sería una reinterpretación posterior, sin relación necesaria con el sentido original de la profecía.\n\n- Respuesta católica: La lectura cristiana reconoce simultáneamente el sentido original del texto y su cumplimiento pleno en Cristo. Isaías anuncia la preparación del camino del Señor; Marcos muestra que esa preparación se realiza históricamente mediante la predicación de Juan y alcanza su centro en la llegada de Jesús.\n\n- El título «Señor»: En Isaías, el camino pertenece al Señor Dios. En la narración de Marcos, Juan prepara ese camino para la manifestación de Jesús. Esta relación constituye un elemento cristológico importante: la identidad de Jesús queda vinculada con la visita salvadora del Señor anunciada por las Escrituras. La lectura del pasaje debe conservar esta doble dimensión: fidelidad al sentido profético y reconocimiento de su cumplimiento en Cristo. [^3]\n\n- Preparación moral: «Enderezar los senderos» no significa realizar una obra humana que obligue a Dios a venir. Significa responder mediante la conversión a una iniciativa divina que ya se acerca. La predicación de Juan prepara los corazones para recibir la gracia de Cristo. [^1]\n\nNorma de fidelidad apologética: La apologética debe mostrar la coherencia de la lectura cristiana sin afirmar que cada detalle de la profecía funciona como una predicción mecánica. El cumplimiento bíblico es una continuidad dinámica: la promesa alcanza en Cristo una plenitud que supera su formulación inicial.",
-                "sucesion": "«La voz de uno que clama» (Marcos 1,3)\n\n- La misión recibida: Juan no se presenta como el contenido definitivo del mensaje, sino como la voz que prepara la llegada del Señor. Su autoridad procede de la misión recibida de Dios y está ordenada enteramente hacia Cristo.\n\n- De la profecía al Evangelio: La Iglesia reconoce una continuidad entre la voz profética de Israel, la predicación de Juan y el anuncio apostólico del Evangelio. No se trata de mensajes desconectados: todos convergen en la acción salvadora de Dios culminada en Jesucristo.\n\n- Modelo para el ministerio eclesial: La figura de Juan ofrece un criterio para toda misión en la Iglesia. El mensajero no debe ocupar el lugar del Señor, sino preparar su camino y dirigir hacia Él. La catequesis auténtica enseña todo en referencia a Cristo y busca poner a las personas en comunión con Él. [^4] [^5]\n\nNorma de fidelidad: La sucesión apostólica se expresa aquí como continuidad de una misión subordinada a Cristo. La Iglesia no reemplaza al Señor ni añade otro camino de salvación; conserva, proclama y transmite el Evangelio recibido."
+            }
+          }
+        },
+        "marcos": {
+          "nombre": "São Marcos",
+          "capitulos": {
+            "1": {
+              "versiculos": {
+                "1": {
+                  "texto": "Princípio do Evangelho de Jesus Cristo, Filho de Deus.",
+                  "categorias": {
+                    "filologia": true,
+                    "historico": true,
+                    "apologetica": true,
+                    "sucesion": true
+                  },
+                  "textos": {
+                    "filologia": "«Princípio do evangelho» — ἀρχὴ τοῦ εὐαγγελίου (archē tou euangeliou)\n\nA palavra grega ἀρχή (archē) significa “princípio”, “começo” ou “origem”. Em Marcos 1,1 introduz o início da proclamação evangélica e apresenta a chegada de Jesus Cristo como o começo decisivo da obra salvadora de Deus na história.\n\nO termo εὐαγγέλιον (euangélion) designa o anúncio da salvação e da própria Pessoa de Cristo (a Boa-Nova do Reino e da redenção).\n\nNorma de fidelidade exegética: O significado não é obtido da etimologia isolada, mas pelo seu uso no texto, no Novo Testamento e na Tradição da Igreja.",
+                    "historico": "«Princípio do evangelho de Jesus Cristo» (Marcos 1,1)\n\n- Autor e tradição apostólica: Atribuído tradicionalmente a João Marcos, intérprete de São Pedro (atestado por Papias, Ireneu, Clemente, Jerônimo e Eusébio).\n- Data e local: Datação provável entre os anos 50 e 67 d.C., com forte enraizamento na tradição romana e na pregação petrina.\n- Situação vital (Sitz im Leben): Dirigido a uma comunidade que precisa alicerçar sua fé, compreender o discipulado e a cruz.\n- Gênero literário: Relato kerigmático que une a memória histórica das obras e ditos de Jesus com a luz da fé pascal.\n\nNorma de fidelidade exegética: O contexto histórico ilumina o texto sem reduzi-lo, buscando o sentido literal querido pelo autor humano sob a inspiração do Espírito Santo.",
+                    "apologetica": "«Princípio do evangelho de Jesus Cristo, Filho de Deus» (Marcos 1,1)\n\n- Objeção frequente: Argumentar que a filiação divina de Jesus é uma elaboração mítica tardia das comunidades.\n- Resposta católica: A confissão de Jesus como Filho de Deus está no núcleo da fé apostólica originária. A defesa apoia-se na convergência de testemunhos (profecias, batismo, autoridade, ressurreição).\n- Precisão teológica: Cristo é o Filho único do Pai por natureza e eternamente, não por uma adoção meramente moral ou simbólica.\n- Centro da sua finalidade: Conduzir a pessoa à razoabilidade da fé e ao encontro vivo com a Pessoa de Cristo.",
+                    "sucesion": "«O Evangelho transmitido na Igreja» (Marcos 1,1)\n\n- Continuidade apostólica: O Evangelho de Marcos não é uma criação isolada, mas a fixação por escrito da pregação apostólica recebida de Pedro.\n- Recepção eclesial: A autoridade do texto provém da sua inserção e custódia na vida da Igreja desde as origens.\n- Tradição viva e Magistério: A sucessão apostólica (bispos em comunhão com o Papa) garante a transmissão íntegra da única fé, unindo inseparavelmente Escritura, Tradição e Magistério.\n\nNorma de fidelidade: A sucessão apostólica não é uma garantia institucional isolada nem uma prova deduzida de um único versículo, mas a continuidade viva da missão, do ensino e da comunhão da Igreja em fidelidade a Cristo."
+                  }
+                },
+                "2": {
+                  "texto": "Conforme está escrito no profeta Isaías: «Eis que envio o meu mensageiro adiante de ti, o qual preparará o teu caminho».",
+                  "categorias": {
+                    "filologia": true,
+                    "historico": true,
+                    "apologetica": true,
+                    "sucesion": true
+                  },
+                  "textos": {
+                    "filologia": "«Conforme está escrito» — καθὼς γέγραπται (kathōs gégraptai)\n\nA expressão introduz uma referência às Escrituras de Israel e apresenta os acontecimentos narrados como parte do desígnio de Deus já anunciado pelos profetas. «Mensageiro» traduz ἄγγελος (ángelos), termo que significa principalmente «mensageiro» ou «enviado»; neste contexto não designa um ser angélico, mas uma pessoa enviada por Deus para preparar a chegada do Senhor. A tradição cristã identifica este mensageiro com João Batista, cuja missão consiste em preparar o povo para receber a Cristo. «O teu caminho» expressa a imagem bíblica de uma vereda que o próprio Deus percorre ao aproximar-se do seu povo.\n\nO texto de Marcos combina a imagem do mensageiro de Malaquias 3,1 com a voz que clama no deserto de Isaías 40,3. Por isso, a referência a Isaías não deve ser entendida como uma citação exclusiva de uma única frase, mas como uma apresentação conjunta de várias profecias convergentes.\n\nNorma de fidelidade filológica: Não se deve afirmar que ἄγγελος significa aqui «anjo» em sentido ontológico. O termo refere-se à função de enviado; a identidade concreta do mensageiro é determinada pelo contexto, que o apresenta como João Batista.",
+                    "historico": "«Conforme está escrito no profeta Isaías» (Marcos 1,2)\n\nMarcos inicia a apresentação de João Batista por meio das Escrituras de Israel. O Evangelho não apresenta a missão de João como um acontecimento isolado, mas como o cumprimento de uma esperança profética: antes da manifestação decisiva do Senhor, Deus suscita um mensageiro que prepara o povo.\n\nDo ponto de vista textual, Marcos reúne duas passagens: Malaquias 3,1, onde aparece o mensageiro enviado diante do Senhor, e Isaías 40,3, onde se fala de uma voz que clama no deserto. O pano de fundo histórico é o de Israel, povo formado pela Lei e pelos Profetas, que esperava a intervenção salvadora de Deus.\n\nNorma de fidelidade histórica: A combinação de textos proféticos não deve ser apresentada apressadamente como um erro de Marcos, mas sim como uma técnica de composição e interpretação própria do mundo bíblico, reunindo várias passagens para expressar uma unidade de sentido.",
+                    "apologetica": "«Eis que envio o meu mensageiro adiante de ti...» (Marcos 1,2)\n\n- Objeção frequente: Pode-se argumentar que Marcos utilizou as Escrituras de maneira arbitrária para dar a Jesus uma importância que originalmente não possuía.\n\n- Resposta católica: A interpretação cristã das profecías não consiste numa associação casual de frases, mas no reconhecimento de uma continuidade entre a esperança de Israel, a missão de João e a manifestação histórica de Jesus Cristo.\n\n- Fundamento cristológico: O ponto central não é apenas a identidade de João, mas a identidade daquele cujo caminho é preparado. Na profecia, o caminho pertence ao Senhor; no relato evangélico, João prepara concretamente a manifestação de Jesus. Esta convergência convida a ler o texto em chave cristológica, reconhecendo em Jesus a presença salvadora do Senhor. [^3]\n\nNorma de fidelidade apologética: A defesa deve reconhecer honestamente a complexidade da citação, mostrando que ela não destrói a credibilidade do Evangelho, mas conduz da promessa ao reconhecimento de Cristo.",
+                    "sucesion": "«O meu mensageiro» (Marcos 1,2)\n\n- Continuidade profética: A missão de João situa-se em continuidade com os profetas de Israel. Ele não proclama uma mensagem privada nem funda uma religião separada, mas recebe uma missão de Deus orientada para a chegada do Senhor.\n\n- Continuidade do anúncio: A sucessão apostólica começa a ser compreendida aqui como continuidade de uma missão recebida: Deus envia mensageiros para preparar, anunciar e transmitir sua obra salvadora. João é o precursor imediato; os Apóstolos serão depois testemunhas de Cristo ressuscitado.\n\nNorma de fidelidade: Este versículo mostra a continuidade da missão revelada: profetas, João Batista, Cristo e, posteriormente, os Apóstolos e a Igreja recebem sua missão de Deus e a orientam para o único Evangelio."
+                  }
+                },
+                "3": {
+                  "texto": "Voz do que clama no deserto: «Preparai o caminho do Senhor, endireitai as suas veredas».",
+                  "categorias": {
+                    "filologia": true,
+                    "historico": true,
+                    "apologetica": true,
+                    "sucesion": true
+                  },
+                  "textos": {
+                    "filologia": "«Voz do que clama no deserto» — φωνὴ βοῶντος ἐν τῇ ἐρήμῳ",
+                    "historico": "«Preparai o caminho do Senhor» (Marcos 1,3)",
+                    "apologetica": "«Preparai o caminho» (Marcos 1,3)",
+                    "sucesion": "«Endireitai as suas veredas» (Marcos 1,3)"
+                  }
+                },
+                "4": {
+                  "texto": "Apareceu João Batista no deserto, prestando um batismo de conversão para o perdão dos pecados.",
+                  "categorias": {
+                    "filologia": true,
+                    "historico": true,
+                    "apologetica": true,
+                    "sucesion": true
+                  },
+                  "textos": {
+                    "filologia": "«Batismo de conversão»",
+                    "historico": "«João Batista no deserto»",
+                    "apologetica": "«Para o perdão dos pecados»",
+                    "sucesion": "«Pregando o batismo»"
+                  }
+                }
               }
-            },
-            "4": {
-              "texto": "Apareció Juan el Bautista en el desierto, proclamando un bautismo de conversión para el perdón de los pecados.",
-              "categorias": {
-                "filologia": true,
-                "historico": true,
-                "apologetica": true,
-                "sucesion": true
-              },
-              "textos": {
-                "filologia": "«Apareció» — ἐγένετο (egéneto)\n\nEl verbo introduce la aparición pública de Juan en la historia. No se trata solamente de una idea o de una figura simbólica, sino de una persona que comienza una misión concreta.\n\n«Bautismo de conversión» — βάπτισμα μετανοίας (báptisma metanoías)\n\nβάπτισμα designa un baño o inmersión ritual; μετανοία significa conversión, cambio de mente y retorno a Dios. El bautismo de Juan era un signo público de arrepentimiento y disposición para recibir la salvación.\n\n«Para el perdón de los pecados» — εἰς ἄφεσιν ἁμαρτιῶν (eis áphesin hamartiōn)\n\nἄφεσις significa liberación, remisión o perdón; ἁμαρτίαι son los pecados. La expresión indica la finalidad religiosa de la predicación de Juan: llamar al pueblo a una conversión sincera ante la inminente llegada del Señor.\n\nEste rito de Juan no debe identificarse sin más con el Bautismo cristiano instituido por Cristo. El propio desarrollo de Marcos distingue el bautismo de Juan con agua del bautismo que Jesús dará con el Espíritu Santo. [^6]\n\nNorma de fidelidad filológica: Los términos deben interpretarse dentro del contexto de Marcos. «Bautismo» no significa aquí todavía toda la realidad sacramental del Bautismo cristiano, aunque el rito de Juan prepara y anticipa su manifestación plena en Cristo.",
-                "historico": "«Apareció Juan el Bautista en el desierto» (Marcos 1,4)\n\nMarcos presenta a Juan como un predicador histórico que desarrolla su actividad en el desierto y llama a Israel a la conversión. Su predicación se sitúa en continuidad con la expectativa profética de una intervención decisiva de Dios.\n\nEl bautismo de Juan era un rito de conversión vinculado al reconocimiento de los pecados y a la preparación para la llegada del Mesías. No era todavía el sacramento del Bautismo cristiano, que será presentado en el conjunto del Nuevo Testamento en relación con la muerte y la Resurrección de Cristo y con el don del Espíritu Santo.\n\nLa existencia de Juan y su actividad pública aparecen como elementos centrales de la presentación evangélica: él no es el Salvador, sino el precursor. Marcos orienta desde el comienzo la atención del lector hacia Jesús, cuya venida da sentido a la misión de Juan. El texto de Marcos describe explícitamente su aparición en el desierto y su proclamación de un bautismo de conversión para el perdón de los pecados. [^7]\n\nNorma de fidelidad histórica: Puede afirmarse con seguridad textual que Marcos presenta a Juan como predicador y bautizador en el desierto. Las reconstrucciones más detalladas sobre sus grupos de seguidores, sus influencias religiosas o su relación con otros movimientos deben presentarse como hipótesis históricas, no como datos explícitos de este versículo.",
-                "apologetica": "«Un bautismo de conversión para el perdón de los pecados» (Marcos 1,4)\n\n- Objeción frecuente: Puede objetarse que la existencia de un rito de purificación anterior al Bautismo cristiano contradice la originalidad del cristianismo o demuestra que el sacramento fue simplemente tomado de prácticas judías anteriores.\n\n- Respuesta católica: La existencia del bautismo de Juan no contradice la novedad cristiana. El rito de Juan prepara al pueblo, pero no posee todavía la plenitud del Bautismo instituido por Cristo. La diferencia aparece en la misma secuencia de Marcos: Juan bautiza con agua, mientras Jesús bautiza con el Espíritu Santo. [^6]\n\n- Conversión y gracia: La conversión exigida por Juan no es una autosalvación. Es la respuesta humana a la iniciativa de Dios y la disposición necesaria para recibir al Mesías. La predicación cristiana conservará esta llamada a la conversión, pero la comprenderá a la luz de Cristo, de su muerte, de su Resurrección y del don del Espíritu.\n\n- Perdón de los pecados: Marcos presenta el bautismo de Juan como orientado al perdón, pero el relato no permite separarlo de la llegada de Jesús. Juan prepara; Cristo cumple. La fuente última del perdón no es el rito considerado aisladamente, sino la acción salvadora de Dios que alcanza su plenitud en Jesucristo.\n\nNorma de fidelidad apologética: No debe presentarse el bautismo de Juan como idéntico al sacramento cristiano ni como una relación sin fundamento con él. Es más exacto describirlo como un signo histórico de conversión y preparación, asumido y llevado a plenitud por Cristo.",
-                "sucesion": "«Juan el Bautista» (Marcos 1,4)\n\n- Precursor y no fundador autónomo: Juan recibe una misión de preparación. Su autoridad no consiste en crear un mensaje independiente, sino en llamar al pueblo a disponerse para la llegada del Señor.\n\n- Continuidad sacramental: El bautismo de Juan se encuentra en una etapa preparatoria respecto del Bautismo cristiano. Hay continuidad porque ambos incluyen una llamada a la conversión, pero también diferencia porque el Bautismo cristiano comunica sacramentalmente la vida nueva en Cristo y el don del Espíritu Santo.\n\n- Continuidad del ministerio: La misión de Juan anticipa el modelo de todo ministerio eclesial: anunciar la conversión, señalar la presencia de Cristo y conducir a las personas hacia Él. La Iglesia enseña que la catequesis no tiene como centro al catequista ni una doctrina separada, sino a Jesucristo, el Hijo único del Padre. [^4]\n\n- De Juan a los Apóstoles: Juan prepara el camino; Cristo llama y forma a los Apóstoles; los Apóstoles reciben la misión de anunciar el Evangelio y administrar los sacramentos. Esta continuidad no es una sucesión de mensajes diferentes, sino el despliegue histórico de la única obra salvadora de Dios.\n\nNorma de fidelidad: Marcos 1,4 no presenta todavía la sucesión apostólica en sentido institucional, pero sí muestra su principio teológico: toda misión auténtica procede de Dios, sirve a su designio y está ordenada a conducir al pueblo hacia Jesucristo."
+            }
+          }
+        }
+      }
+    },
+    "en": {
+      "libros": {
+        "mateo": {
+          "nombre": "Saint Matthew",
+          "capitulos": {
+            "7": {
+              "versiculos": {
+                "1": {
+                  "texto": "Judge not, that you be not judged.",
+                  "categorias": {
+                    "filologia": true,
+                    "historico": true,
+                    "apologetica": true,
+                    "sucesion": true
+                  },
+                  "textos": {
+                    "filologia": "“Judge not” — μὴ κρίνετε (mē krinete)\n\nThe verb krīnō means to judge or condemn. Jesus condemns self-righteous, hypocritical condemnation rather than moral discernment.",
+                    "historico": "Addressed against the hypercritical censoriousness prevalent among religious legalists of the time.",
+                    "apologetica": "Does not prohibit fraternal correction or discernment, but arrogant judgment.",
+                    "sucesion": "Fosters the spirit of mercy required in the Christian community."
+                  }
+                },
+                "2": {
+                  "texto": "For with the judgment you judge you will be judged; and with the measure you use, it will be measured back to you.",
+                  "categorias": {
+                    "filologia": true,
+                    "historico": true,
+                    "apologetica": true,
+                    "sucesion": true
+                  },
+                  "textos": {
+                    "filologia": "“The measure you use”\n\nReflects divine reciprocity and the logic of grace over rigorous legalism.",
+                    "historico": "Draws on traditional wisdom of moral harvest and divine justice.",
+                    "apologetica": "Calls the disciple to consistency between receiving God's mercy and showing it.",
+                    "sucesion": "Informs the pastoral approach of humility within the Church."
+                  }
+                }
+              }
+            }
+          }
+        },
+        "marcos": {
+          "nombre": "Saint Mark",
+          "capitulos": {
+            "1": {
+              "versiculos": {
+                "1": {
+                  "texto": "The beginning of the gospel of Jesus Christ, the Son of God.",
+                  "categorias": {
+                    "filologia": true,
+                    "historico": true,
+                    "apologetica": true,
+                    "sucesion": true
+                  },
+                  "textos": {
+                    "filologia": "“Beginning of the gospel” — ἀρχὴ τοῦ εὐαγγελίου (archē tou euangeliou)\n\nThe Greek word ἀρχή (archē) means “beginning”, “start”, or “origin”. In Mark 1:1, it introduces the start of the evangelical proclamation and presents the coming of Jesus Christ as the decisive beginning of God’s saving work in history.\n\nThe term εὐαγγέλιον (euangélion) designates the announcement of salvation and of the Person of Christ Himself (the Good News of the Kingdom and redemption).\n\nNorm of exegetical fidelity: Meaning is not derived from isolated etymology, but from its usage in the text, the New Testament, and the Tradition of the Church.",
+                    "historico": "“Beginning of the gospel of Jesus Christ” (Mark 1:1)\n\n- Author and apostolic tradition: Traditionally attributed to John Mark, interpreter of Saint Peter (attested by Papias, Irenaeus, Clement, Jerome, and Eusebius).\n- Date and place: Probable dating between 50 and 67 A.D., deeply rooted in Roman tradition and Petrine preaching.\n- Life situation (Sitz im Leben): Addressed to a community needing to ground its faith and understand discipleship and the cross.\n- Literary genre: Kerygmatic narrative combining historical memory of Jesus’ works and sayings with the light of Easter faith.\n\nNorm of exegetical fidelity: Historical context illuminates the text without reducing it, seeking the literal sense intended by the human author under the inspiration of the Holy Spirit.",
+                    "apologetica": "“Beginning of the gospel of Jesus Christ, the Son of God” (Mark 1:1)\n\n- Frequent objection: Claiming that the divine sonship of Jesus is a late mythical creation of early communities.\n- Catholic response: The confession of Jesus as Son of God is at the core of original apostolic faith. Defense relies on convergent testimony (prophecies, baptism, authority, resurrection).\n- Theological precision: Christ is the sole Son of the Father by nature and eternally, not by mere moral or symbolic adoption.\n- Core purpose: Leading the person to the reasonableness of faith and a living encounter with the Person of Christ.",
+                    "sucesion": "“The Gospel transmitted in the Church” (Mark 1:1)\n\n- Apostolic continuity: The Gospel of Mark is not an isolated creation, but the written record of apostolic preaching received from Peter.\n- Ecclesial reception: Textual authority stems from its insertion and custody within the life of the Church from the beginning.\n- Living Tradition and Magisterium: Apostolic succession (bishops in communion with the Pope) guarantees the whole transmission of the one faith, inseparably uniting Scripture, Tradition, and Magisterium.\n\nNorm of fidelity: Apostolic succession is not an isolated institutional guarantee nor a proof drawn from a single verse, but the living continuity of the Church’s mission, teaching, and communion in fidelity to Christ."
+                  }
+                },
+                "2": {
+                  "texto": "As it is written in Isaiah the prophet: «Behold, I send my messenger before your face, who will prepare your way».",
+                  "categorias": {
+                    "filologia": true,
+                    "historico": true,
+                    "apologetica": true,
+                    "sucesion": true
+                  },
+                  "textos": {
+                    "filologia": "“As it is written” — καθὼς γέγραπται (kathōs gégraptai)\n\nThe expression introduces a reference to the Scriptures of Israel and presents the narrated events as part of God's design already announced by the prophets. “Messenger” translates ἄγγελος (ángelos), a term meaning primarily “messenger” or “envoy”; in this context, it denotes a person sent by God to prepare the Lord's coming rather than an angelic being. Christian tradition identifies this messenger with John the Baptist.\n\nMark's text combines the messenger image from Malachi 3:1 with the voice crying in the wilderness from Isaiah 40:3. Therefore, the reference to Isaiah should not be understood as an exclusive quote of a single phrase, but as a joint presentation of converging prophecies.\n\nNorm of exegetical fidelity: The term ἄγγελος does not mean an ontological “angel” here; it refers to the function of an envoy, whose concrete identity as John the Baptist is fixed by the context.",
+                    "historico": "“As it is written in the prophet Isaiah” (Mark 1:2)\n\nMark initiates the presentation of John the Baptist through the Scriptures of Israel. The Gospel does not present John's mission as an isolated event, but as the fulfillment of prophetic hope: before the decisive manifestation of the Lord, God raises up a messenger to prepare the people.\n\nTextually, Mark brings together two passages: Malachi 3:1 (the messenger sent before the Lord) and Isaiah 40:3 (the voice crying in the wilderness). The historical background is Israel, a people shaped by the Law and the Prophets, awaiting God's saving intervention.\n\nNorm of exegetical fidelity: Combining prophetic texts should not be hastily dismissed as an error by Mark; rather, it reflects a traditional biblical composition technique uniting several passages to express a unified meaning.",
+                    "apologetica": "“Behold, I send my messenger before your face, who will prepare your way” (Mark 1:2)\n\n- Frequent objection: Claiming that Mark arbitrarily used the Scriptures to give Jesus an importance He originally lacked.\n- Catholic response: Christian interpretation of prophecies is not a casual association of phrases, but recognition of continuity between Israel's hope, John's mission, and the historical manifestation of Jesus Christ.\n- Christological foundation: The central point is not merely John's identity, but the identity of the One whose way is prepared. In prophecy, the path belongs to the Lord; in the Gospel narrative, John prepares the way for Jesus' manifest presence. [^3]\n\nNorm of exegetical fidelity: Apologetics must honestly acknowledge citation complexities while showing how they lead from the continuity of promises to the recognition of Christ.",
+                    "sucesion": "«My messenger» (Mark 1:2)\n\n- Prophetic continuity: John's mission continues the line of Israel's prophets. He proclaims no private message and founds no separate religion, but receives a mission from God directed toward the Lord's coming.\n\n- Continuity of proclamation: Apostolic succession is foreshadowed here as the continuity of a received mission: God sends messengers to prepare, announce, and transmit His saving work. John is the immediate precursor; the Apostles will later be witnesses of the risen Christ.\n\nNorm de fidelity: This verse illustrates the continuity of the revealed mission—prophets, John the Baptist, Christ, and subsequently the Apostles and the Church—all receiving their mission from God and orienting it toward the single Gospel."
+                  }
+                },
+                "3": {
+                  "texto": "The voice of one crying in the wilderness: «Prepare the way of the Lord, make his paths straight».",
+                  "categorias": {
+                    "filologia": true,
+                    "historico": true,
+                    "apologetica": true,
+                    "sucesion": true
+                  },
+                  "textos": {
+                    "filologia": "“Voice of one crying in the wilderness”",
+                    "historico": "“Prepare the way of the Lord”",
+                    "apologetica": "“Prepare the way”",
+                    "sucesion": "“Make his paths straight”"
+                  }
+                },
+                "4": {
+                  "texto": "John appeared, baptizing in the wilderness and proclaiming a baptism of repentance for the forgiveness of sins.",
+                  "categorias": {
+                    "filologia": true,
+                    "historico": true,
+                    "apologetica": true,
+                    "sucesion": true
+                  },
+                  "textos": {
+                    "filologia": "“Baptism of repentance”",
+                    "historico": "“John appeared in the wilderness”",
+                    "apologetica": "“For the forgiveness of sins”",
+                    "sucesion": "“Proclaiming a baptism”"
+                  }
+                }
               }
             }
           }

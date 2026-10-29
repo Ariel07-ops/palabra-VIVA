@@ -1646,14 +1646,15 @@
   <!-- Encabezado superior -->
   <div style="display: flex; align-items: center; justify-content: space-between; padding-bottom: 12px; border-bottom: 1px solid var(--gold, #d4af37); margin-bottom: 20px;">
     
-    <button onclick="volverDesdeCuaderno()" style="background: rgba(212,175,55,0.15); border: 1px solid var(--gold, #d4af37); color: var(--gold, #d4af37); padding: 6px 14px; border-radius: 6px; cursor: pointer; font-weight: bold;">
-      ⬅ Volver a la Lectura
+    <!-- Botón de retorno optimizado y compacto -->
+    <button onclick="volverDesdeCuaderno()" style="background: rgba(212,175,55,0.15); border: 1px solid var(--gold, #d4af37); color: var(--gold, #d4af37); padding: 6px 12px; border-radius: 6px; cursor: pointer; font-weight: bold; font-size: 0.9rem;">
+      ⬅ Volver
     </button>
     
     <div style="display: flex; align-items: center; gap: 10px;">
-      <h2 style="font-family: serif; margin: 0; font-size: 1.2rem;">
-  <span class="text-gold">Bitácora de Estudio</span>
-</h2>
+      <h2 style="font-family: serif; margin: 0; font-size: 1.1rem;">
+        <span class="text-gold">Bitácora de Estudio</span>
+      </h2>
       
       <!-- Icono Menú Lateral Derecho -->
       <button onclick="toggleMenuBitacora()" title="Herramientas e Índice" style="background: transparent; border: 1px solid var(--gold, #d4af37); color: var(--gold, #d4af37); padding: 5px 10px; border-radius: 6px; cursor: pointer; font-size: 1.1rem; display: flex; align-items: center;">
@@ -1662,7 +1663,6 @@
     </div>
 
   </div>
-
   <!-- Contenedor Estilo Libreta -->
 <div style="background: #141414; border: 1px solid var(--gold, #d4af37); border-left: 12px solid #2a2a2a; border-radius: 10px; padding: 20px; box-shadow: 0 8px 20px rgba(0,0,0,0.7);">
   
@@ -1740,13 +1740,87 @@
     </div>
 
     <!-- SECCIÓN 2: GUÍA DE ESTUDIO -->
-    <div id="sec-bitacora-guia" style="display: none; flex: 1; overflow-y: auto; color: #ddd; font-size: 0.85rem; line-height: 1.5;">
-      <h4 style="color: var(--gold, #d4af37); margin-top: 0;">📖 Pasos para la Meditación</h4>
-      <ol style="padding-left: 18px; margin: 0;">
-        <li><b>Lectura atenta:</b> Leé el pasaje reteniendo palabras clave.</li>
-        <li><b>Observación:</b> ¿Qué enseña sobre Dios o el ser humano?</li>
-        <li><b>Aplicación:</b> ¿Cómo lo pongo en práctica hoy?</li>
-      </ol>
+    <div id="sec-bitacora-guia" style="display: none; flex: 1; overflow-y: auto; color: #ddd; font-size: 0.85rem; line-height: 1.5; padding-right: 4px;">
+      
+      <h4 style="color: var(--gold, #d4af37); margin-top: 0; font-family: serif; font-size: 0.95rem; text-align: center; border-bottom: 1px dashed rgba(212,175,55,0.3); padding-bottom: 8px;">
+        📖 Guía Práctica de Estudio y Meditación
+      </h4>
+
+      <div style="display: flex; flex-direction: column; gap: 8px; margin-top: 10px;">
+
+        <!-- ACORDEÓN 1: PASOS PARA LA MEDITACIÓN -->
+        <details style="background: rgba(0,0,0,0.3); border: 1px solid rgba(212,175,55,0.4); border-radius: 6px; padding: 8px;">
+          <summary style="color: var(--gold, #d4af37); font-weight: bold; cursor: pointer; outline: none; list-style: none; display: flex; justify-content: space-between; align-items: center;">
+            <span>1. Pasos para la Meditación</span>
+            <span style="font-size: 0.75rem;">▼</span>
+          </summary>
+          <div style="margin-top: 8px; font-size: 0.8rem; color: #ccc; border-top: 1px dotted rgba(212,175,55,0.2); padding-top: 8px;">
+            <p style="margin: 0 0 6px 0;"><strong style="color: #fff;">• Lectura Atenta:</strong> Leé el pasaje reteniendo palabras clave, verbos principales y conceptos repetidos.</p>
+            <p style="margin: 0 0 6px 0;"><strong style="color: #fff;">• Observación y Contexto:</strong> ¿Quién escribe y a quién? Recordá: <em>"Un texto fuera de contexto es un pretexto"</em>.</p>
+            <p style="margin: 0 0 6px 0;"><strong style="color: #fff;">• Aplicación Personal:</strong> ¿Qué me enseña sobre Dios, el ser humano y cómo llevarlo a mi vida hoy?</p>
+            <p style="margin: 0;"><strong style="color: #fff;">• Oración:</strong> Transformá la reflexión en un diálogo pidiendo luz para obedecer la Palabra.</p>
+          </div>
+        </details>
+        <!-- ACORDEÓN NUEVO: ÍNDICE DE CONTENIDO EXEGÉTICO -->
+        <details style="background: rgba(0,0,0,0.3); border: 1px solid rgba(212,175,55,0.4); border-radius: 6px; padding: 8px;">
+          <summary style="color: var(--gold, #d4af37); font-weight: bold; cursor: pointer; outline: none; list-style: none; display: flex; justify-content: space-between; align-items: center;">
+            <span>📖 Índice de Contenido Exegético</span>
+            <span style="font-size: 0.75rem;">▼</span>
+            
+          </summary>
+          <div style="margin-top: 8px; font-size: 0.8rem; color: #ccc; border-top: 1px dotted rgba(212,175,55,0.2); padding-top: 8px;">
+            <!-- Aquí el JavaScript inyectará automáticamente los libros y capítulos -->
+            <div id="lista-indice-dinamico">
+              <em>Cargando índice canónico...</em>
+            </div>
+          </div>
+        </details>
+
+        <!-- ACORDEÓN 2: SUBRAYADO EXEGÉTICO Y ABANICO -->
+        <details style="background: rgba(0,0,0,0.3); border: 1px solid rgba(212,175,55,0.4); border-radius: 6px; padding: 8px;">
+          <summary style="color: var(--gold, #d4af37); font-weight: bold; cursor: pointer; outline: none; list-style: none; display: flex; justify-content: space-between; align-items: center;">
+            <span>2. Subrayado Exegético y Abanico</span>
+            <span style="font-size: 0.75rem;">▼</span>
+          </summary>
+          <div style="margin-top: 8px; font-size: 0.8rem; color: #ccc; border-top: 1px dotted rgba(212,175,55,0.2); padding-top: 8px;">
+            <p style="margin: 0 0 8px 0;">Al tocar las palabras con <span style="border-bottom: 1px dotted #aaa; color: var(--gold, #d4af37);">subrayado estilo lápiz</span> en pasajes clave, desplegás 4 ejes fundamentales:</p>
+            <ul style="margin: 0; padding-left: 16px; display: flex; flex-direction: column; gap: 4px;">
+              <li><strong style="color: #fff;">Raíces y Filología:</strong> Origen de los términos (hebreo/griego) y sus matices exactos.</li>
+              <li><strong style="color: #fff;">Contexto Histórico:</strong> Entorno político, social y cultural de la época.</li>
+              <li><strong style="color: #fff;">Sucesión Apostólica:</strong> Enseñanza y doctrina transmitida por la Iglesia primitiva.</li>
+              <li><strong style="color: #fff;">Apologética:</strong> Defensa razonada de la fe y respuestas a dudas profundas.</li>
+            </ul>
+          </div>
+        </details>
+
+        <!-- ACORDEÓN 3: USO DE LA BITÁCORA Y ARCHIVOS -->
+        <details style="background: rgba(0,0,0,0.3); border: 1px solid rgba(212,175,55,0.4); border-radius: 6px; padding: 8px;">
+          <summary style="color: var(--gold, #d4af37); font-weight: bold; cursor: pointer; outline: none; list-style: none; display: flex; justify-content: space-between; align-items: center;">
+            <span>3. ¿Cómo usar esta Bitácora?</span>
+            <span style="font-size: 0.75rem;">▼</span>
+          </summary>
+          <div style="margin-top: 8px; font-size: 0.8rem; color: #ccc; border-top: 1px dotted rgba(212,175,55,0.2); padding-top: 8px;">
+            <p style="margin: 0 0 6px 0;"><strong>• ➕ Nueva Nota:</strong> Abrí una hoja limpia para iniciar un estudio o tema diferente.</p>
+            <p style="margin: 0 0 6px 0;"><strong>• ✏️ Título Editable:</strong> Toca el título en la portada del cuaderno para personalizarlo.</p>
+            <p style="margin: 0 0 6px 0;"><strong>• 💾 Guardar:</strong> Guardá tus cambios para consultarlos más adelante desde la solapa <em>📂 Notas</em>.</p>
+            <p style="margin: 0;"><strong>• 📖 Fibrón y Pinceles:</strong> Usá los resaltadores en el texto bíblico para traer ideas al cuaderno.</p>
+          </div>
+        </details>
+
+        <!-- ACORDEÓN 4: REFERENCIAS CRUZADAS Y CLASES -->
+        <details style="background: rgba(0,0,0,0.3); border: 1px solid rgba(212,175,55,0.4); border-radius: 6px; padding: 8px;">
+          <summary style="color: var(--gold, #d4af37); font-weight: bold; cursor: pointer; outline: none; list-style: none; display: flex; justify-content: space-between; align-items: center;">
+            <span>4. Referencias Cruzadas y Clases</span>
+            <span style="font-size: 0.75rem;">▼</span>
+          </summary>
+          <div style="margin-top: 8px; font-size: 0.8rem; color: #ccc; border-top: 1px dotted rgba(212,175,55,0.2); padding-top: 8px;">
+            <p style="margin: 0 0 6px 0;"><strong>• Referencias Cruzadas:</strong> Próximamente dispondrás de un botón para ver pasajes conectados que se interpretan mutuamente.</p>
+            <p style="margin: 0;"><strong>• Armado de Clases:</strong> Utilizá este espacio para estructurar enseñanzas, predicaciones o guías de estudio en puntos clave.</p>
+          </div>
+        </details>
+
+      </div>
+
     </div>
 
     <!-- SECCIÓN 3: GLOSARIO / DICCIONARIO -->

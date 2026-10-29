@@ -4600,3 +4600,39 @@ button,
     0 0 10px #ffffff,
     0 0 5px var(--gold);
 }
+#lista-indice-dinamico {
+  padding: 10px 15px;
+  background-color: rgba(20, 20, 20, 0.6);
+  border-radius: 6px;
+  margin-top: 8px;
+}
+
+.indice-lista-libros {
+  list-style: none;
+  padding-left: 0;
+  margin: 0;
+}
+
+.indice-item-libro {
+  margin-bottom: 12px;
+  color: #f1c40f; /* Tono dorado */
+  font-size: 1.05rem;
+}
+
+.indice-lista-capitulos {
+  list-style: none;
+  padding-left: 20px;
+  margin-top: 5px;
+}
+
+.indice-item-capitulo a {
+  color: #e0e0e0;
+  text-decoration: none;
+  font-size: 0.95rem;
+  transition: color 0.2s ease;
+}
+
+.indice-item-capitulo a:hover {
+  color: #f39c12;
+  text-decoration: underline;
+}
