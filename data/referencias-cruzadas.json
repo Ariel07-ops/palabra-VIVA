@@ -1,0 +1,36 @@
+[
+  {
+    "id": "ref-001",
+    "desde": {
+      "libro": "marcos",
+      "capitulo": 1,
+      "versiculo": 2
+    },
+    "hacia": {
+      "libro": "isaias",
+      "capitulo": 40,
+      "versiculo": 3,
+      "citaTexto": "Isaías 40,3 / Malaquías 3,1"
+    },
+    "tipo": "Cita y cumplimiento profético",
+    "explicacion": "Marcos combina las profecías de Malaquías 3,1 y Isaías 40,3 para presentar la misión de Juan el Bautista como el precursor enviado a preparar el camino del Señor.",
+    "fuente": "Catecismo y Tradición Patrística"
+  },
+  {
+    "id": "ref-002",
+    "desde": {
+      "libro": "mateo",
+      "capitulo": 7,
+      "versiculo": 1
+    },
+    "hacia": {
+      "libro": "romanos",
+      "capitulo": 2,
+      "versiculo": 1,
+      "citaTexto": "Romanos 2,1-3"
+    },
+    "tipo": "Desarrollo del tema",
+    "explicacion": "San Pablo retoma la enseñanza de Jesús sobre no juzgar al prójimo, explicando que quien juzga con soberbia se condena a sí mismo por hacer las mismas cosas.",
+    "fuente": "Carta a los Romanos"
+  }
+]

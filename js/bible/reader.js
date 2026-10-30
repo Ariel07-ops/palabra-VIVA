@@ -621,53 +621,73 @@ export function conectarEventosLecturaFibron(nombreLibro, numeroCapitulo) {
   });
 }
 /**
+ /**
  * Genera y muestra automáticamente el Índice de Contenido Exegético en la Guía,
- * ordenando los libros estrictamente por orden canónico de la Biblia.
+ * leyendo exclusivamente desde contenido.json para mostrar solo lo que tiene cajitas reales.
  */
 export async function inicializarIndiceExegeticoEnGuia() {
   const contenedor = document.getElementById("lista-indice-dinamico");
   if (!contenedor) return;
 
-  contenedor.innerHTML = "<em>Cargando índice canónico...</em>";
+  contenedor.innerHTML = "<em>Cargando índice exegético...</em>";
 
   try {
-    // 1. Obtenemos los versos normalizados de la biblia activa actual
-    const todosLosVersos = await obtenerVersosNormalizados();
+    // 1. Cargamos el archivo de contenido exegético
+    const respuesta = await fetch("data/contenido.json");
+    const datosJson = await respuesta.json();
 
-    // 2. Extraemos un conjunto único de los libros que efectivamente tienen contenido cargado
-    const librosConContenido = [
-      ...new Set(todosLosVersos.map((v) => v.book_name)),
-    ];
+    const idioma = localStorage.getItem("palabra_viva_idioma") || "es";
 
-    if (librosConContenido.length === 0) {
+    // Validamos que exista la estructura para el idioma actual
+    if (
+      !datosJson.idiomas ||
+      !datosJson.idiomas[idioma] ||
+      !datosJson.idiomas[idioma].libros
+    ) {
+      contenedor.innerHTML =
+        "<p style='color: #aaa;'><em>No se encontró contenido exegético disponible.</em></p>";
+      return;
+    }
+
+    const librosContenido = datosJson.idiomas[idioma].libros;
+    const llavesLibros = Object.keys(librosContenido);
+
+    if (llavesLibros.length === 0) {
       contenedor.innerHTML =
         "<p style='color: #aaa;'><em>No hay contenido cargado aún.</em></p>";
       return;
     }
 
-    // 3. Ordenamos los libros utilizando el canon completo oficial (73 libros)
-    librosConContenido.sort((a, b) => {
-      let idxA = CANON_COMPLETO.indexOf(a);
-      let idxB = CANON_COMPLETO.indexOf(b);
+    // 2. Ordenamos los libros según el CANON_COMPLETO oficial
+    llavesLibros.sort((a, b) => {
+      // Normalizamos las claves para buscar el índice exacto en el canon
+      let nombreA = a.charAt(0).toUpperCase() + a.slice(1);
+      let nombreB = b.charAt(0).toUpperCase() + b.slice(1);
+
+      let idxA = CANON_COMPLETO.indexOf(nombreA);
+      let idxB = CANON_COMPLETO.indexOf(nombreB);
+
       if (idxA === -1) idxA = 999;
       if (idxB === -1) idxB = 999;
       return idxA - idxB;
     });
 
-    // 4. Construimos la lista visual adaptada al idioma actual de la interfaz
+    // 3. Construimos la lista visual adaptada al acordeón
     let htmlIndice = `<ul style="list-style: none; padding-left: 0; margin: 0;">`;
 
-    librosConContenido.forEach((nombreLibro) => {
-      const nombreVisible = obtenerNombreVisible(nombreLibro);
+    llavesLibros.forEach((keyLibro) => {
+      const datosLibro = librosContenido[keyLibro];
+      const capitulosObj = datosLibro.capitulos || {};
+      const numerosCapitulos = Object.keys(capitulosObj)
+        .map(Number)
+        .sort((a, b) => a - b);
 
-      // Buscamos qué capítulos tiene este libro cargados
-      const capitulosLibro = [
-        ...new Set(
-          todosLosVersos
-            .filter((v) => v.book_name === nombreLibro)
-            .map((v) => v.chapter),
-        ),
-      ].sort((a, b) => a - b);
+      if (numerosCapitulos.length === 0) return;
+
+      // Nombre oficial capitalizado para mostrar
+      const nombreLibroEsp =
+        keyLibro.charAt(0).toUpperCase() + keyLibro.slice(1);
+      const nombreVisible = obtenerNombreVisible(nombreLibroEsp);
 
       htmlIndice += `
         <li style="margin-bottom: 10px; color: var(--gold, #d4af37); font-weight: bold;">
@@ -675,10 +695,10 @@ export async function inicializarIndiceExegeticoEnGuia() {
           <ul style="list-style: none; padding-left: 15px; margin-top: 4px;">
       `;
 
-      capitulosLibro.forEach((numCap) => {
+      numerosCapitulos.forEach((numCap) => {
         htmlIndice += `
           <li style="margin-bottom: 2px;">
-            <a href="#" class="enlace-capitulo-indice" data-libro="${nombreLibro}" data-capitulo="${numCap}" style="color: #ccc; text-decoration: none; font-weight: normal; font-size: 0.9rem;">
+            <a href="#" class="enlace-capitulo-indice" data-libro="${nombreLibroEsp}" data-capitulo="${numCap}" style="color: #ccc; text-decoration: none; font-weight: normal; font-size: 0.9rem;">
               Capítulo ${numCap}
             </a>
           </li>
@@ -691,29 +711,111 @@ export async function inicializarIndiceExegeticoEnGuia() {
     htmlIndice += `</ul>`;
     contenedor.innerHTML = htmlIndice;
 
-    // 5. Agregamos los eventos de clic para que al hacer clic en un capítulo del índice, la app navegue directo a la lectura
+    // 4. Agregamos los eventos de clic para que al tocar un capítulo salte directo a la lectura
     contenedor.querySelectorAll(".enlace-capitulo-indice").forEach((link) => {
       link.addEventListener("click", async (e) => {
         e.preventDefault();
         const libro = link.getAttribute("data-libro");
         const cap = parseInt(link.getAttribute("data-capitulo"));
 
-        // Usamos la misma función que ya tenés en reader.js para cargar el capítulo
+        // Obtenemos los versos de la Biblia activa para poder renderizar la lectura
+        const todosLosVersos = await obtenerVersosNormalizados();
         const versosLibro = todosLosVersos.filter((v) => v.book_name === libro);
+
         renderizarVersiculosCapitulo(libro, cap, versosLibro);
       });
     });
   } catch (error) {
-    console.error("Error al generar el índice exegético:", error);
+    console.error(
+      "Error al generar el índice exegético desde contenido.json:",
+      error,
+    );
     contenedor.innerHTML =
       "<p style='color: #ff5555;'><em>Error al cargar el índice.</em></p>";
   }
 }
 // Escucha cuando el usuario abre el acordeón del índice por primera vez
+// Disparador elegante para cargar el índice exegético al abrir el acordeón por primera vez
 document
   .getElementById("acordeon-indice-exegetico")
   ?.addEventListener("toggle", function () {
     if (this.open) {
-      inicializarIndiceExegeticoEnGuia();
+      if (typeof inicializarIndiceExegeticoEnGuia === "function") {
+        inicializarIndiceExegeticoEnGuia();
+      } else {
+        console.error(
+          "La función inicializarIndiceExegeticoEnGuia no está definida.",
+        );
+      }
     }
   });
+async function poblarReferenciasAcordeon() {
+  const contenedor = document.getElementById("lista-referencias-acordeon");
+  if (!contenedor) return;
+
+  try {
+    const res = await fetch("data/referencias-cruzadas.json");
+    if (!res.ok) throw new Error("No se pudo cargar el archivo");
+    const lista = await res.json();
+
+    if (lista.length === 0) {
+      contenedor.innerHTML =
+        '<p style="color: #888; margin: 0;">No hay referencias cargadas todavía.</p>';
+      return;
+    }
+
+    let html = '<ul style="list-style: none; padding: 0; margin: 0;">';
+
+    lista.forEach((ref) => {
+      // Formateamos un texto claro para la lista (ej: "Marcos 1,2 ➔ Isaías 40,3")
+      const textoOrigen = `${ref.desde.libro.toUpperCase()} ${ref.desde.capitulo},${ref.desde.versiculo}`;
+      const textoDestino =
+        ref.hacia.citaTexto ||
+        `${ref.hacia.libro.toUpperCase()} ${ref.hacia.capitulo},${ref.hacia.versiculo}`;
+
+      html += `
+                <li style="margin-bottom: 10px; border-bottom: 1px solid rgba(212,175,55,0.1); padding-bottom: 8px;">
+                  <a href="#" class="enlace-referencia-item" 
+                     data-libro="${ref.desde.libro}" 
+                     data-capitulo="${ref.desde.capitulo}" 
+                     style="color: var(--gold); text-decoration: none; display: block; cursor: pointer;">
+                     🔗 <strong>${textoOrigen}</strong> ➔ ${textoDestino}
+                  </a>
+                  <span style="font-size: 0.85rem; color: #ccc; display: block; margin-top: 4px; line-height: 1.3;">${ref.explicacion}</span>
+                </li>
+            `;
+    });
+
+    html += "</ul>";
+    contenedor.innerHTML = html;
+    // Agregamos el evento de clic a cada elemento de la lista para que salte al pasaje
+    contenedor.querySelectorAll(".enlace-referencia-item").forEach((el) => {
+      el.addEventListener("click", (e) => {
+        e.preventDefault();
+        const libro = el.getAttribute("data-libro");
+        const capitulo = Number(el.getAttribute("data-capitulo"));
+
+        // Llamamos a tu función existente para renderizar el capítulo en el lector principal
+        if (
+          typeof renderizarVersiculosCapitulo === "function" &&
+          typeof versosLibro !== "undefined"
+        ) {
+          renderizarVersiculosCapitulo(libro, capitulo, versosLibro);
+        } else {
+          console.warn(
+            "Faltan datos o la función de renderizado global para saltar al capítulo.",
+          );
+        }
+      });
+    });
+  } catch (error) {
+    console.error("Error al cargar las referencias en el acordeón:", error);
+    contenedor.innerHTML =
+      '<p style="color: #ff6b6b; margin: 0;">Error al cargar las referencias.</p>';
+  }
+}
+
+// Ejecutamos esta función al iniciar la app o cuando cargue la página
+document.addEventListener("DOMContentLoaded", () => {
+  poblarReferenciasAcordeon();
+});

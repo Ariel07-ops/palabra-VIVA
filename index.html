@@ -1747,6 +1747,20 @@
       </h4>
 
       <div style="display: flex; flex-direction: column; gap: 8px; margin-top: 10px;">
+<!-- ACORDEÓN NUEVO: ÍNDICE DE CONTENIDO EXEGÉTICO -->
+        <details id="acordeon-indice-exegetico" style="background: rgba(0,0,0,0.3); border: 1px solid rgba(212,175,55,0.4); border-radius: 6px; padding: 8px;">
+          <summary style="color: var(--gold, #d4af37); font-weight: bold; cursor: pointer; outline: none; list-style: none; display: flex; justify-content: space-between; align-items: center;">
+            <span>📖 Índice de Contenido Exegético</span>
+            <span style="font-size: 0.75rem;">▼</span>
+            
+          </summary>
+          <div style="margin-top: 8px; font-size: 0.8rem; color: #ccc; border-top: 1px dotted rgba(212,175,55,0.2); padding-top: 8px;">
+            <!-- Aquí el JavaScript inyectará automáticamente los libros y capítulos -->
+            <div id="lista-indice-dinamico">
+              <em>Cargando índice canónico...</em>
+            </div>
+          </div>
+        </details>
 
         <!-- ACORDEÓN 1: PASOS PARA LA MEDITACIÓN -->
         <details style="background: rgba(0,0,0,0.3); border: 1px solid rgba(212,175,55,0.4); border-radius: 6px; padding: 8px;">
@@ -1761,21 +1775,7 @@
             <p style="margin: 0;"><strong style="color: #fff;">• Oración:</strong> Transformá la reflexión en un diálogo pidiendo luz para obedecer la Palabra.</p>
           </div>
         </details>
-        <!-- ACORDEÓN NUEVO: ÍNDICE DE CONTENIDO EXEGÉTICO -->
-        <details style="background: rgba(0,0,0,0.3); border: 1px solid rgba(212,175,55,0.4); border-radius: 6px; padding: 8px;">
-          <summary style="color: var(--gold, #d4af37); font-weight: bold; cursor: pointer; outline: none; list-style: none; display: flex; justify-content: space-between; align-items: center;">
-            <span>📖 Índice de Contenido Exegético</span>
-            <span style="font-size: 0.75rem;">▼</span>
-            
-          </summary>
-          <div style="margin-top: 8px; font-size: 0.8rem; color: #ccc; border-top: 1px dotted rgba(212,175,55,0.2); padding-top: 8px;">
-            <!-- Aquí el JavaScript inyectará automáticamente los libros y capítulos -->
-            <div id="lista-indice-dinamico">
-              <em>Cargando índice canónico...</em>
-            </div>
-          </div>
-        </details>
-
+        
         <!-- ACORDEÓN 2: SUBRAYADO EXEGÉTICO Y ABANICO -->
         <details style="background: rgba(0,0,0,0.3); border: 1px solid rgba(212,175,55,0.4); border-radius: 6px; padding: 8px;">
           <summary style="color: var(--gold, #d4af37); font-weight: bold; cursor: pointer; outline: none; list-style: none; display: flex; justify-content: space-between; align-items: center;">
@@ -1808,16 +1808,30 @@
         </details>
 
         <!-- ACORDEÓN 4: REFERENCIAS CRUZADAS Y CLASES -->
-        <details style="background: rgba(0,0,0,0.3); border: 1px solid rgba(212,175,55,0.4); border-radius: 6px; padding: 8px;">
-          <summary style="color: var(--gold, #d4af37); font-weight: bold; cursor: pointer; outline: none; list-style: none; display: flex; justify-content: space-between; align-items: center;">
-            <span>4. Referencias Cruzadas y Clases</span>
-            <span style="font-size: 0.75rem;">▼</span>
-          </summary>
-          <div style="margin-top: 8px; font-size: 0.8rem; color: #ccc; border-top: 1px dotted rgba(212,175,55,0.2); padding-top: 8px;">
-            <p style="margin: 0 0 6px 0;"><strong>• Referencias Cruzadas:</strong> Próximamente dispondrás de un botón para ver pasajes conectados que se interpretan mutuamente.</p>
-            <p style="margin: 0;"><strong>• Armado de Clases:</strong> Utilizá este espacio para estructurar enseñanzas, predicaciones o guías de estudio en puntos clave.</p>
-          </div>
-        </details>
+<details style="background: rgba(0,0,0,0.3); border: 1px solid rgba(212,175,55,0.4); border-radius: 6px; padding: 8px;">
+  <summary style="color: var(--gold, #d4af37); font-weight: bold; cursor: pointer; outline: none; list-style: none; display: flex; justify-content: space-between; align-items: center;">
+    <span>4. Referencias Cruzadas y Clases</span>
+    <span style="font-size: 0.75rem;">▼</span>
+  </summary>
+  <div style="margin-top: 8px; font-size: 0.8rem; color: #ccc; border-top: 1px dotted rgba(212,175,55,0.2); padding-top: 8px;">
+    
+    <!-- Sección de Referencias Cruzadas con lista interactiva -->
+    <div style="margin-bottom: 12px;">
+      <strong style="color: var(--gold);">• Referencias Cruzadas:</strong>
+      
+      <div id="lista-referencias-acordeon" style="max-height: 150px; overflow-y: auto; padding-right: 4px;">
+        <span style="color: #888;">Cargando referencias...</span>
+      </div>
+    </div>
+
+    <!-- Sección de Clases -->
+    <div>
+      <strong style="color: var(--gold);">• Armado de Clases:</strong>
+      <p style="margin: 4px 0 0 0;">Utilizá este espacio para estructurar enseñanzas, compartir la palabra o realizar guías de estudio en puntos clave.</p>
+    </div>
+
+  </div>
+</details>
 
       </div>
 
