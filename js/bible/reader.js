@@ -819,3 +819,40 @@ async function poblarReferenciasAcordeon() {
 document.addEventListener("DOMContentLoaded", () => {
   poblarReferenciasAcordeon();
 });
+// glosario.js
+async function cargarGlosario() {
+  const contenedor = document.getElementById("glosario-container");
+  if (!contenedor) return;
+
+  try {
+    const respuesta = await fetch("data/glosario.json");
+    if (!respuesta.ok) throw new Error("Error al cargar el archivo JSON");
+
+    const glosarioData = await respuesta.json();
+
+    // Limpiamos el texto/cartel previo
+    contenedor.innerHTML = "";
+
+    // Ordenamos alfabéticamente por término
+    const terminosOrdenados = [...glosarioData].sort((a, b) =>
+      a.termino.localeCompare(b.termino, "es", { sensitivity: "base" }),
+    );
+
+    // Inyectamos las tarjetas de términos
+    terminosOrdenados.forEach((item) => {
+      const card = document.createElement("div");
+      card.className = "glosario-item";
+      card.innerHTML = `
+        <h4 class="glosario-termino">${item.termino}</h4>
+        <p class="glosario-definicion">${item.definicion}</p>
+      `;
+      contenedor.appendChild(card);
+    });
+  } catch (error) {
+    console.error("Error cargando el glosario:", error);
+    contenedor.innerHTML =
+      "<p class='glosario-error'>No se pudieron cargar los términos.</p>";
+  }
+}
+
+document.addEventListener("DOMContentLoaded", cargarGlosario);

@@ -1824,11 +1824,7 @@
       </div>
     </div>
 
-    <!-- Sección de Clases -->
-    <div>
-      <strong style="color: var(--gold);">• Armado de Clases:</strong>
-      <p style="margin: 4px 0 0 0;">Utilizá este espacio para estructurar enseñanzas, compartir la palabra o realizar guías de estudio en puntos clave.</p>
-    </div>
+   
 
   </div>
 </details>
@@ -1840,7 +1836,11 @@
     <!-- SECCIÓN 3: GLOSARIO / DICCIONARIO -->
     <div id="sec-bitacora-glosario" style="display: none; flex: 1; overflow-y: auto; color: #ddd; font-size: 0.85rem; line-height: 1.5;">
       <h4 style="color: var(--gold, #d4af37); margin-top: 0;">📚 Glosario de Términos</h4>
-      <p style="color: #aaa; font-style: italic;">Próximamente: Términos y conceptos clave para la consulta rápida.</p>
+      
+      <!-- Contenedor donde el JS inyectará las palabras del JSON -->
+      <div id="glosario-container" class="glosario-lista">
+        <p style="color: #aaa; font-style: italic;">Cargando términos...</p>
+      </div>
     </div>
 
   </div>
