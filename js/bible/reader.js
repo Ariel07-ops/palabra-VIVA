@@ -300,8 +300,11 @@ function normalizarConCanonOficial(jsonRaw, idioma) {
     });
   } else if (idioma === "pt") {
     const libros = Array.isArray(jsonRaw) ? jsonRaw : [];
-    libros.forEach((libro) => {
-      const nombreOficial = MAPEO_ABBREV_CANON[libro.abbrev] || libro.name;
+    libros.forEach((libro, idx) => {
+      // Forzamos a que tome el nombre oficial del canon completo según el índice,
+      // tal cual hace para español e inglés, garantizando que el nombre sea "Éxodo" y no falle el filtro.
+      const nombreOficial =
+        CANON_COMPLETO[idx] || MAPEO_ABBREV_CANON[libro.abbrev] || libro.name;
 
       (libro.chapters || []).forEach((capArray, idxCap) => {
         const numCapitulo = idxCap + 1;
