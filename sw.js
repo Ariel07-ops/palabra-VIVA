@@ -1,4 +1,4 @@
-const CACHE_NAME = "palabra-viva-v15"; // Incrementamos la versión para que fuerce el refresco
+const CACHE_NAME = "palabra-viva-v16"; // Incrementamos la versión para que fuerce el refresco
 
 const urlsToCache = [
   "./",
@@ -38,7 +38,7 @@ const urlsToCache = [
   // JSONs Bíblicos Multilingües
   "./data/SpaPlatense.json",
   "./data/bibleweb.json",
-  "./data/bibliaPt.json",
+  "./data/biblia_pt_completa.json",
   // JSONs de Contenido y Asistente
   "./data/estados.json",
   "./data/contenido.json",

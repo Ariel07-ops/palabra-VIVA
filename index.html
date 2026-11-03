@@ -1640,14 +1640,14 @@
 
   </div>
 </div>
-<!-- PANTALLA COMPLETA: CUADERNO DE ESTUDIO / LIBRETA -->
-<div id="screen-cuaderno" class="screen" style="padding: 15px; max-width: 800px; margin: 0 auto; position: absolute;">
+<<!-- PANTALLA COMPLETA: CUADERNO DE ESTUDIO / LIBRETA -->
+<div id="screen-cuaderno" class="screen" style="padding: 15px; max-width: 100% !important; width: 99% !important; margin: 0 auto; position: absolute;">
   
   <!-- Encabezado superior -->
-  <div style="display: flex; align-items: center; justify-content: space-between; padding-bottom: 12px; border-bottom: 1px solid var(--gold, #d4af37); margin-bottom: 20px;">
+  <div class="cuaderno-header" style="display: flex; align-items: center; justify-content: space-between; padding-bottom: 12px; border-bottom: 1px solid var(--gold, #d4af37); margin-bottom: 20px;">
     
-    <!-- Botón de retorno optimizado y compacto -->
-    <button onclick="volverDesdeCuaderno()" style="background: rgba(212,175,55,0.15); border: 1px solid var(--gold, #d4af37); color: var(--gold, #d4af37); padding: 6px 12px; border-radius: 6px; cursor: pointer; font-weight: bold; font-size: 0.9rem;">
+    <!-- Botón de retorno -->
+    <button onclick="volverDesdeCuaderno()" class="btn-tema-borde" style="background: rgba(212,175,55,0.15); border: 1px solid var(--gold, #d4af37); color: var(--gold, #d4af37); padding: 6px 12px; border-radius: 6px; cursor: pointer; font-weight: bold; font-size: 0.9rem;">
       ⬅ Volver
     </button>
     
@@ -1657,47 +1657,50 @@
       </h2>
       
       <!-- Icono Menú Lateral Derecho -->
-      <button onclick="toggleMenuBitacora()" title="Herramientas e Índice" style="background: transparent; border: 1px solid var(--gold, #d4af37); color: var(--gold, #d4af37); padding: 5px 10px; border-radius: 6px; cursor: pointer; font-size: 1.1rem; display: flex; align-items: center;">
+      <button onclick="toggleMenuBitacora()" title="Herramientas e Índice" class="btn-tema-borde" style="background: transparent; border: 1px solid var(--gold, #d4af37); color: var(--gold, #d4af37); padding: 5px 10px; border-radius: 6px; cursor: pointer; font-size: 1.1rem; display: flex; align-items: center;">
         ☰
       </button>
     </div>
 
   </div>
-  <!-- Contenedor Estilo Libreta -->
-<div style="background: #141414; border: 1px solid var(--gold, #d4af37); border-left: 12px solid #2a2a2a; border-radius: 10px; padding: 20px; box-shadow: 0 8px 20px rgba(0,0,0,0.7);">
-  
-  <!-- Portada Personalizada / Título de la Nota -->
-  <div style="text-align: center; border-bottom: 1px dashed rgba(212,175,55,0.4); padding-bottom: 15px; margin-bottom: 15px;">
+
+  <!-- Contenedor Estilo Libreta (Adaptable por temas) -->
+  <div class="cuaderno-card" style="border: 1px solid var(--gold, #d4af37); border-left: 12px solid var(--gold, #d4af37); border-radius: 10px; padding: 20px; box-shadow: 0 8px 20px rgba(0,0,0,0.3);">
     
-    <h3 id="saludo-cuaderno" style="color: var(--gold, #d4af37); font-family: serif; font-size: 1.25rem; margin-bottom: 8px;">
-      <!-- Se completa dinámicamente con JS -->
-    </h3>
+    <!-- Portada Personalizada / Título de la Nota -->
+    <div style="text-align: center; border-bottom: 1px dashed rgba(212,175,55,0.4); padding-bottom: 15px; margin-bottom: 15px;">
+      
+      <h3 id="saludo-cuaderno" style="color: var(--gold, #d4af37); font-family: serif; font-size: 1.25rem; margin-bottom: 8px;">
+        <!-- Se completa dinámicamente con JS -->
+      </h3>
 
-    <!-- Título editable con indicador visual -->
-    <div style="display: flex; align-items: center; justify-content: center; gap: 8px; width: 100%;">
-      <input 
-        type="text" 
-        id="titulo-nota-actual" 
-        placeholder="Escribí el título de tu nota..." 
-        value="Mi Nota de Hoy" 
-        title="Hacé clic para cambiar el título"
-        style="background: transparent; border: none; color: var(--gold, #d4af37); font-family: serif; font-size: 1.1rem; font-weight: bold; text-align: center; width: 85%; outline: none; cursor: text;" 
-      />
-      <span style="color: var(--gold, #d4af37); font-size: 0.9rem; opacity: 0.7; cursor: pointer;" title="Título editable">
-        ✏️
-      </span>
+      <!-- Título editable -->
+      <div style="display: flex; align-items: center; justify-content: center; gap: 8px; width: 100%;">
+        <input 
+          type="text" 
+          id="titulo-nota-actual" 
+          placeholder="Escribí el título de tu nota..." 
+          value="Mi Nota de Hoy" 
+          title="Hacé clic para cambiar el título"
+          class="input-tema-dinamico"
+          style="background: transparent; border: none; color: var(--gold, #d4af37); font-family: serif; font-size: 1.1rem; font-weight: bold; text-align: center; width: 85%; outline: none; cursor: text;" 
+        />
+        <span style="color: var(--gold, #d4af37); font-size: 0.9rem; opacity: 0.7; cursor: pointer;" title="Título editable">
+          ✏️
+        </span>
+      </div>
+
+      <p class="text-muted-dinamico" style="font-size: 0.85rem; margin-top: 6px;">
+        Tu espacio personal para meditar la Palabra y guardar tus anotaciones.
+      </p>
+
     </div>
-
-    <p style="color: #ccc; font-size: 0.85rem; margin-top: 6px;">
-      Tu espacio personal para meditar la Palabra y guardar tus anotaciones.
-    </p>
-
-  </div>
 
     <!-- Hoja de Escritura Amplia -->
     <textarea id="texto-libreta-amplia" 
               placeholder="Escribí aquí tus reflexiones, oraciones o notas de hoy..." 
-              style="width: 100%; height: 320px; background: rgba(0,0,0,0.3); border: 1px solid rgba(212,175,55,0.3); border-radius: 6px; color: #fff; padding: 12px; font-size: 1rem; line-height: 1.6; outline: none; resize: vertical; box-sizing: border-box;">
+              class="textarea-tema-dinamico"
+              style="width: 100%; height: 320px; border: 1px solid rgba(212,175,55,0.3); border-radius: 6px; padding: 12px; font-size: 1rem; line-height: 1.6; outline: none; resize: vertical; box-sizing: border-box;">
     </textarea>
 
     <!-- Estado de auto-guardado -->
@@ -1706,29 +1709,29 @@
   </div>
 
   <!-- PANEL LATERAL DERECHO (DESLIZANTE) -->
-  <div id="panel-lateral-bitacora" style="position: fixed; top: 0; right: -320px; width: 300px; height: 100%; background: #1a1a1a; border-left: 2px solid var(--gold, #d4af37); box-shadow: -5px 0 15px rgba(0,0,0,0.8); z-index: 9999; transition: right 0.3s ease; padding: 18px; box-sizing: border-box; display: flex; flex-direction: column;">
+  <div id="panel-lateral-bitacora" class="panel-lateral-tema" style="position: fixed; top: 0; right: -320px; width: 300px; height: 100%; border-left: 2px solid var(--gold, #d4af37); box-shadow: -5px 0 15px rgba(0,0,0,0.5); z-index: 9999; transition: right 0.3s ease; padding: 18px; box-sizing: border-box; display: flex; flex-direction: column;">
     
     <!-- Encabezado del Panel -->
     <div style="display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid rgba(212,175,55,0.4); padding-bottom: 10px; margin-bottom: 12px;">
       <h3 style="color: var(--gold, #d4af37); margin: 0; font-size: 1.1rem; font-family: serif;">Herramientas</h3>
-      <button onclick="toggleMenuBitacora()" style="background: transparent; border: none; color: #fff; font-size: 1.2rem; cursor: pointer;">✕</button>
+      <button onclick="toggleMenuBitacora()" style="background: transparent; border: none; color: inherit; font-size: 1.2rem; cursor: pointer;">✕</button>
     </div>
 
     <!-- Pestañas Superiores del Panel Lateral -->
-    <div style="display: flex; gap: 4px; margin-bottom: 12px; border-bottom: 1px solid rgba(212,175,55,0.2); pb: 6px;">
-      <button onclick="verPestanaBitacora('notas')" style="flex: 1; background: rgba(212,175,55,0.2); border: 1px solid var(--gold, #d4af37); color: #fff; font-size: 0.75rem; padding: 6px 2px; border-radius: 4px; cursor: pointer;">📂 Notas</button>
-      <button onclick="verPestanaBitacora('guia')" style="flex: 1; background: transparent; border: 1px solid rgba(212,175,55,0.4); color: #ccc; font-size: 0.75rem; padding: 6px 2px; border-radius: 4px; cursor: pointer;">📖 Guía</button>
-      <button onclick="verPestanaBitacora('glosario')" style="flex: 1; background: transparent; border: 1px solid rgba(212,175,55,0.4); color: #ccc; font-size: 0.75rem; padding: 6px 2px; border-radius: 4px; cursor: pointer;">📚 Glosario</button>
+    <div style="display: flex; gap: 4px; margin-bottom: 12px; border-bottom: 1px solid rgba(212,175,55,0.2); padding-bottom: 6px;">
+      <button onclick="verPestanaBitacora('notas')" style="flex: 1; background: rgba(212,175,55,0.2); border: 1px solid var(--gold, #d4af37); color: inherit; font-size: 0.75rem; padding: 6px 2px; border-radius: 4px; cursor: pointer;">📂 Notas</button>
+      <button onclick="verPestanaBitacora('guia')" style="flex: 1; background: transparent; border: 1px solid rgba(212,175,55,0.4); color: inherit; font-size: 0.75rem; padding: 6px 2px; border-radius: 4px; cursor: pointer;">📖 Guía</button>
+      <button onclick="verPestanaBitacora('glosario')" style="flex: 1; background: transparent; border: 1px solid rgba(212,175,55,0.4); color: inherit; font-size: 0.75rem; padding: 6px 2px; border-radius: 4px; cursor: pointer;">📚 Glosario</button>
       <button onclick="toggleMenuBitacora()" title="Cerrar panel" style="background: transparent; border: 1px solid rgba(255,85,85,0.5); color: #ff5555; width: 28px; height: 28px; border-radius: 4px; font-size: 0.9rem; display: flex; align-items: center; justify-content: center; cursor: pointer; flex-shrink: 0;">✕</button>
     </div>
 
     <!-- SECCIÓN 1: MIS NOTAS Y ACCIONES -->
     <div id="sec-bitacora-notas" style="display: flex; flex-direction: column; flex: 1; overflow: hidden;">
       <div style="display: flex; flex-direction: column; gap: 8px; margin-bottom: 12px;">
-        <button onclick="crearNuevaNota()" style="background: rgba(212,175,55,0.15); border: 1px solid var(--gold, #d4af37); color: #fff; padding: 8px; border-radius: 6px; cursor: pointer; text-align: left; font-size: 0.85rem; font-weight: bold;">
+        <button onclick="crearNuevaNota()" style="background: rgba(212,175,55,0.15); border: 1px solid var(--gold, #d4af37); color: inherit; padding: 8px; border-radius: 6px; cursor: pointer; text-align: left; font-size: 0.85rem; font-weight: bold;">
           ➕ Nueva Nota
         </button>
-        <button onclick="guardarNotaManual()" style="background: rgba(212,175,55,0.15); border: 1px solid var(--gold, #d4af37); color: #fff; padding: 8px; border-radius: 6px; cursor: pointer; text-align: left; font-size: 0.85rem; font-weight: bold;">
+        <button onclick="guardarNotaManual()" style="background: rgba(212,175,55,0.15); border: 1px solid var(--gold, #d4af37); color: inherit; padding: 8px; border-radius: 6px; cursor: pointer; text-align: left; font-size: 0.85rem; font-weight: bold;">
           💾 Guardar Nota
         </button>
       </div>
@@ -1740,114 +1743,98 @@
     </div>
 
     <!-- SECCIÓN 2: GUÍA DE ESTUDIO -->
-    <div id="sec-bitacora-guia" style="display: none; flex: 1; overflow-y: auto; color: #ddd; font-size: 0.85rem; line-height: 1.5; padding-right: 4px;">
+    <div id="sec-bitacora-guia" style="display: none; flex: 1; overflow-y: auto; font-size: 0.85rem; line-height: 1.5; padding-right: 4px;">
       
       <h4 style="color: var(--gold, #d4af37); margin-top: 0; font-family: serif; font-size: 0.95rem; text-align: center; border-bottom: 1px dashed rgba(212,175,55,0.3); padding-bottom: 8px;">
         📖 Guía Práctica de Estudio y Meditación
       </h4>
 
       <div style="display: flex; flex-direction: column; gap: 8px; margin-top: 10px;">
-<!-- ACORDEÓN NUEVO: ÍNDICE DE CONTENIDO EXEGÉTICO -->
-        <details id="acordeon-indice-exegetico" style="background: rgba(0,0,0,0.3); border: 1px solid rgba(212,175,55,0.4); border-radius: 6px; padding: 8px;">
+        <!-- ACORDEONES CON CLASE ADAPTABLE -->
+        <details class="acordeon-tema" style="border: 1px solid rgba(212,175,55,0.4); border-radius: 6px; padding: 8px;">
           <summary style="color: var(--gold, #d4af37); font-weight: bold; cursor: pointer; outline: none; list-style: none; display: flex; justify-content: space-between; align-items: center;">
             <span>📖 Índice de Contenido Exegético</span>
             <span style="font-size: 0.75rem;">▼</span>
-            
           </summary>
-          <div style="margin-top: 8px; font-size: 0.8rem; color: #ccc; border-top: 1px dotted rgba(212,175,55,0.2); padding-top: 8px;">
-            <!-- Aquí el JavaScript inyectará automáticamente los libros y capítulos -->
+          <div style="margin-top: 8px; font-size: 0.8rem; border-top: 1px dotted rgba(212,175,55,0.2); padding-top: 8px;">
             <div id="lista-indice-dinamico">
               <em>Cargando índice canónico...</em>
             </div>
           </div>
         </details>
 
-        <!-- ACORDEÓN 1: PASOS PARA LA MEDITACIÓN -->
-        <details style="background: rgba(0,0,0,0.3); border: 1px solid rgba(212,175,55,0.4); border-radius: 6px; padding: 8px;">
+        <details class="acordeon-tema" style="border: 1px solid rgba(212,175,55,0.4); border-radius: 6px; padding: 8px;">
           <summary style="color: var(--gold, #d4af37); font-weight: bold; cursor: pointer; outline: none; list-style: none; display: flex; justify-content: space-between; align-items: center;">
             <span>1. Pasos para la Meditación</span>
             <span style="font-size: 0.75rem;">▼</span>
           </summary>
-          <div style="margin-top: 8px; font-size: 0.8rem; color: #ccc; border-top: 1px dotted rgba(212,175,55,0.2); padding-top: 8px;">
-            <p style="margin: 0 0 6px 0;"><strong style="color: #fff;">• Lectura Atenta:</strong> Leé el pasaje reteniendo palabras clave, verbos principales y conceptos repetidos.</p>
-            <p style="margin: 0 0 6px 0;"><strong style="color: #fff;">• Observación y Contexto:</strong> ¿Quién escribe y a quién? Recordá: <em>"Un texto fuera de contexto es un pretexto"</em>.</p>
-            <p style="margin: 0 0 6px 0;"><strong style="color: #fff;">• Aplicación Personal:</strong> ¿Qué me enseña sobre Dios, el ser humano y cómo llevarlo a mi vida hoy?</p>
-            <p style="margin: 0;"><strong style="color: #fff;">• Oración:</strong> Transformá la reflexión en un diálogo pidiendo luz para obedecer la Palabra.</p>
+          <div style="margin-top: 8px; font-size: 0.8rem; border-top: 1px dotted rgba(212,175,55,0.2); padding-top: 8px;">
+            <p style="margin: 0 0 6px 0;"><strong>• Lectura Atenta:</strong> Leé el pasaje reteniendo palabras clave, verbos principales y conceptos repetidos.</p>
+            <p style="margin: 0 0 6px 0;"><strong>• Observación y Contexto:</strong> ¿Quién escribe y a quién? Recordá: <em>"Un texto fuera de contexto es un pretexto"</em>.</p>
+            <p style="margin: 0 0 6px 0;"><strong>• Aplicación Personal:</strong> ¿Qué me enseña sobre Dios, el ser humano y cómo llevarlo a mi vida hoy?</p>
+            <p style="margin: 0;"><strong>• Oración:</strong> Transformá la reflexión en un diálogo pidiendo luz para obedecer la Palabra.</p>
           </div>
         </details>
-        
-        <!-- ACORDEÓN 2: SUBRAYADO EXEGÉTICO Y ABANICO -->
-        <details style="background: rgba(0,0,0,0.3); border: 1px solid rgba(212,175,55,0.4); border-radius: 6px; padding: 8px;">
+
+        <details class="acordeon-tema" style="border: 1px solid rgba(212,175,55,0.4); border-radius: 6px; padding: 8px;">
           <summary style="color: var(--gold, #d4af37); font-weight: bold; cursor: pointer; outline: none; list-style: none; display: flex; justify-content: space-between; align-items: center;">
             <span>2. Subrayado Exegético y Abanico</span>
             <span style="font-size: 0.75rem;">▼</span>
           </summary>
-          <div style="margin-top: 8px; font-size: 0.8rem; color: #ccc; border-top: 1px dotted rgba(212,175,55,0.2); padding-top: 8px;">
-            <p style="margin: 0 0 8px 0;">Al tocar las palabras con <span style="border-bottom: 1px dotted #aaa; color: var(--gold, #d4af37);">subrayado estilo lápiz</span> en pasajes clave, desplegás 4 ejes fundamentales:</p>
+          <div style="margin-top: 8px; font-size: 0.8rem; border-top: 1px dotted rgba(212,175,55,0.2); padding-top: 8px;">
+            <p style="margin: 0 0 8px 0;">Al tocar las palabras con subrayado estilo lápiz en pasajes clave, desplegás 4 ejes fundamentales:</p>
             <ul style="margin: 0; padding-left: 16px; display: flex; flex-direction: column; gap: 4px;">
-              <li><strong style="color: #fff;">Raíces y Filología:</strong> Origen de los términos (hebreo/griego) y sus matices exactos.</li>
-              <li><strong style="color: #fff;">Contexto Histórico:</strong> Entorno político, social y cultural de la época.</li>
-              <li><strong style="color: #fff;">Sucesión Apostólica:</strong> Enseñanza y doctrina transmitida por la Iglesia primitiva.</li>
-              <li><strong style="color: #fff;">Apologética:</strong> Defensa razonada de la fe y respuestas a dudas profundas.</li>
+              <li><strong>Raíces y Filología:</strong> Origen de los términos (hebreo/griego) y matices exactos.</li>
+              <li><strong>Contexto Histórico:</strong> Entorno político, social y cultural.</li>
+              <li><strong>Sucesión Apostólica:</strong> Enseñanza y doctrina de la Iglesia primitiva.</li>
+              <li><strong>Apologética:</strong> Defensa razonada de la fe.</li>
             </ul>
           </div>
         </details>
 
-        <!-- ACORDEÓN 3: USO DE LA BITÁCORA Y ARCHIVOS -->
-        <details style="background: rgba(0,0,0,0.3); border: 1px solid rgba(212,175,55,0.4); border-radius: 6px; padding: 8px;">
+        <details class="acordeon-tema" style="border: 1px solid rgba(212,175,55,0.4); border-radius: 6px; padding: 8px;">
           <summary style="color: var(--gold, #d4af37); font-weight: bold; cursor: pointer; outline: none; list-style: none; display: flex; justify-content: space-between; align-items: center;">
             <span>3. ¿Cómo usar esta Bitácora?</span>
             <span style="font-size: 0.75rem;">▼</span>
           </summary>
-          <div style="margin-top: 8px; font-size: 0.8rem; color: #ccc; border-top: 1px dotted rgba(212,175,55,0.2); padding-top: 8px;">
-            <p style="margin: 0 0 6px 0;"><strong>• ➕ Nueva Nota:</strong> Abrí una hoja limpia para iniciar un estudio o tema diferente.</p>
-            <p style="margin: 0 0 6px 0;"><strong>• ✏️ Título Editable:</strong> Toca el título en la portada del cuaderno para personalizarlo.</p>
-            <p style="margin: 0 0 6px 0;"><strong>• 💾 Guardar:</strong> Guardá tus cambios para consultarlos más adelante desde la solapa <em>📂 Notas</em>.</p>
-            <p style="margin: 0;"><strong>• 📖 Fibrón y Pinceles:</strong> Usá los resaltadores en el texto bíblico para traer ideas al cuaderno.</p>
+          <div style="margin-top: 8px; font-size: 0.8rem; border-top: 1px dotted rgba(212,175,55,0.2); padding-top: 8px;">
+            <p style="margin: 0 0 6px 0;"><strong>• ➕ Nueva Nota:</strong> Abrí una hoja limpia para un nuevo estudio.</p>
+            <p style="margin: 0 0 6px 0;"><strong>• ✏️ Título Editable:</strong> Toca el título para personalizarlo.</p>
+            <p style="margin: 0;"><strong>• 💾 Guardar:</strong> Guardá tus cambios para consultarlos luego.</p>
           </div>
         </details>
 
-        <!-- ACORDEÓN 4: REFERENCIAS CRUZADAS Y CLASES -->
-<details style="background: rgba(0,0,0,0.3); border: 1px solid rgba(212,175,55,0.4); border-radius: 6px; padding: 8px;">
-  <summary style="color: var(--gold, #d4af37); font-weight: bold; cursor: pointer; outline: none; list-style: none; display: flex; justify-content: space-between; align-items: center;">
-    <span>4. Referencias Cruzadas y Clases</span>
-    <span style="font-size: 0.75rem;">▼</span>
-  </summary>
-  <div style="margin-top: 8px; font-size: 0.8rem; color: #ccc; border-top: 1px dotted rgba(212,175,55,0.2); padding-top: 8px;">
-    
-    <!-- Sección de Referencias Cruzadas con lista interactiva -->
-    <div style="margin-bottom: 12px;">
-      <strong style="color: var(--gold);">• Referencias Cruzadas:</strong>
-      
-      <div id="lista-referencias-acordeon" style="max-height: 150px; overflow-y: auto; padding-right: 4px;">
-        <span style="color: #888;">Cargando referencias...</span>
+        <details class="acordeon-tema" style="border: 1px solid rgba(212,175,55,0.4); border-radius: 6px; padding: 8px;">
+          <summary style="color: var(--gold, #d4af37); font-weight: bold; cursor: pointer; outline: none; list-style: none; display: flex; justify-content: space-between; align-items: center;">
+            <span>4. Referencias Cruzadas y Clases</span>
+            <span style="font-size: 0.75rem;">▼</span>
+          </summary>
+          <div style="margin-top: 8px; font-size: 0.8rem; border-top: 1px dotted rgba(212,175,55,0.2); padding-top: 8px;">
+            <div style="margin-bottom: 12px;">
+              <strong style="color: var(--gold);">• Referencias Cruzadas:</strong>
+              <div id="lista-referencias-acordeon" style="max-height: 150px; overflow-y: auto; padding-right: 4px;">
+                <span>Cargando referencias...</span>
+              </div>
+            </div>
+          </div>
+        </details>
+
       </div>
     </div>
 
-   
-
-  </div>
-</details>
-
-      </div>
-
-    </div>
-
-    <!-- SECCIÓN 3: GLOSARIO / DICCIONARIO -->
-    <div id="sec-bitacora-glosario" style="display: none; flex: 1; overflow-y: auto; color: #ddd; font-size: 0.85rem; line-height: 1.5;">
+    <!-- SECCIÓN 3: GLOSARIO -->
+    <div id="sec-bitacora-glosario" style="display: none; flex: 1; overflow-y: auto; font-size: 0.85rem; line-height: 1.5;">
       <h4 style="color: var(--gold, #d4af37); margin-top: 0;">📚 Glosario de Términos</h4>
-      
-      <!-- Contenedor donde el JS inyectará las palabras del JSON -->
       <div id="glosario-container" class="glosario-lista">
-        <p style="color: #aaa; font-style: italic;">Cargando términos...</p>
+        <p style="font-style: italic;">Cargando términos...</p>
       </div>
     </div>
 
   </div>
 
-  <!-- Overlay (Fondo oscuro para cerrar al tocar fuera) -->
+  <!-- Overlay -->
   <div id="overlay-bitacora" onclick="toggleMenuBitacora()" style="position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; background: rgba(0,0,0,0.5); z-index: 9998; display: none;"></div>
-
+</div>
 </div>    <!-- Vista del Asistente de Apoyo -->
     <div id="screen-asistente" class="screen">
       <div class="asistente-header">

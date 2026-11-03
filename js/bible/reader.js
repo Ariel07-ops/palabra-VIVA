@@ -248,7 +248,7 @@ function obtenerInfoBibliaActual() {
   const idioma = localStorage.getItem("palabra_viva_idioma") || "es";
   switch (idioma) {
     case "pt":
-      return { ruta: "data/bibliaPt.json", idioma: "pt" };
+      return { ruta: "data/biblia_pt_completa.json", idioma: "pt" }; // <--- Apuntando al unificado perfecto
     case "en":
       return { ruta: "data/bibleweb.json", idioma: "en" };
     case "es":
@@ -256,7 +256,6 @@ function obtenerInfoBibliaActual() {
       return { ruta: "data/SpaPlatense.json", idioma: "es" };
   }
 }
-
 /**
  * Obtiene o descarga los versículos normalizados reutilizando el caché en memoria.
  */
@@ -283,7 +282,7 @@ async function obtenerVersosNormalizados() {
 function normalizarConCanonOficial(jsonRaw, idioma) {
   const versosPlanos = [];
 
-  if (idioma === "es" || idioma === "en") {
+  if (idioma === "es" || idioma === "en" || idioma === "pt") {
     const libros = jsonRaw.books || (Array.isArray(jsonRaw) ? jsonRaw : []);
     libros.forEach((libro, idx) => {
       const nombreOficial = CANON_COMPLETO[idx] || libro.name;
@@ -294,27 +293,6 @@ function normalizarConCanonOficial(jsonRaw, idioma) {
             chapter: cap.chapter,
             verse: v.verse,
             text: v.text,
-          });
-        });
-      });
-    });
-  } else if (idioma === "pt") {
-    const libros = Array.isArray(jsonRaw) ? jsonRaw : [];
-    libros.forEach((libro, idx) => {
-      // Forzamos a que tome el nombre oficial del canon completo según el índice,
-      // tal cual hace para español e inglés, garantizando que el nombre sea "Éxodo" y no falle el filtro.
-      const nombreOficial =
-        CANON_COMPLETO[idx] || MAPEO_ABBREV_CANON[libro.abbrev] || libro.name;
-
-      (libro.chapters || []).forEach((capArray, idxCap) => {
-        const numCapitulo = idxCap + 1;
-        (capArray || []).forEach((textoVerso, idxVer) => {
-          const numVersiculo = idxVer + 1;
-          versosPlanos.push({
-            book_name: nombreOficial,
-            chapter: numCapitulo,
-            verse: numVersiculo,
-            text: textoVerso,
           });
         });
       });

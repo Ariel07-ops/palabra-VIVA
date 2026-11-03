@@ -2358,25 +2358,28 @@ body.light-mode .fan-column.expanded-full {
 
 @media (min-width: 800px) {
   .fan-column.expanded-full {
-    grid-column: span 4;
-    max-width: 900px;
-    width: 90%;
-    margin: 0 auto;
-    top: 55%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    right: auto;
-    height: auto;
-    max-height: 75vh;
-    padding-top: 50px;
-  }
-  .fan-column.expanded-full .btn-close-extended {
-    position: absolute;
-    top: 15px;
-    right: 20px;
+    grid-column: span 4 !important; /* Abarca las 4 columnas de lado a lado */
+    width: 100% !important;
+    max-width: 100% !important;
+    margin: 0 !important;
+    left: 0 !important;
+    right: 0 !important;
+    top: auto !important;
+    bottom: 0 !important; /* Se apoya abajo como el panel tradicional pero con la altura justa */
+    transform: none !important;
+    height: auto !important;
+    max-height: 70vh !important; /* Altura máxima para dejar respirar el texto de arriba */
+    overflow-y: auto !important; /* Habilita el scroll interno si el contenido es largo */
+    padding: 25px 30px !important;
   }
 }
-
+@media (min-width: 800px) {
+  #screen-cuaderno {
+    max-width: 100% !important; /* Ampliamos el ancho máximo para la PC */
+    width: 99% !important;
+    margin: 0 auto !important;
+  }
+}
 body.light-mode #screen-main {
   background-color: #e8e4dc !important;
 }
@@ -2416,6 +2419,105 @@ body.light-mode .btn-capitulo:hover {
   background-color: #b39353 !important;
   color: #ffffff !important;
 }
+/* =========================================================
+   SISTEMA DE TEMAS COMPLETO: BITÁCORA Y PANEL LATERAL
+   ========================================================= */
+
+/* --- 1. MODO CLARO (body.light-mode) --- */
+
+/* Pantalla principal y contenedores */
+body.light-mode #screen-cuaderno,
+body.light-mode #screen-cuaderno div[style*="background"] {
+  background-color: #f5f5f7 !important;
+  color: #2c2c2e !important;
+  border-color: #d1d1d6 !important;
+}
+
+/* Textos, títulos y párrafos */
+body.light-mode #screen-cuaderno p,
+body.light-mode #screen-cuaderno span,
+body.light-mode #screen-cuaderno h2,
+body.light-mode #screen-cuaderno h3,
+body.light-mode #screen-cuaderno strong,
+body.light-mode #screen-cuaderno summary {
+  color: #1c1c1e !important;
+}
+
+/* Hoja de notas (textarea) e Input de Título */
+body.light-mode #texto-libreta-amplia,
+body.light-mode #titulo-nota-actual {
+  background-color: #ffffff !important;
+  color: #1c1c1e !important;
+  border-color: #c7c7cc !important;
+}
+
+/* Panel Lateral Derecho */
+body.light-mode #panel-lateral-bitacora,
+body.light-mode #panel-lateral-bitacora div[style*="background"] {
+  background-color: #f0f0f3 !important;
+  color: #2c2c2e !important;
+}
+
+/* Acordeones, botones y detalles dentro del panel */
+body.light-mode #panel-lateral-bitacora details,
+body.light-mode #panel-lateral-bitacora details summary,
+body.light-mode #panel-lateral-bitacora details div {
+  background-color: #ffffff !important;
+  color: #2c2c2e !important;
+  border-color: #e5e5ea !important;
+}
+
+body.light-mode #panel-lateral-bitacora button {
+  color: #1c1c1e !important;
+}
+
+/* --- 2. MODO SEPIA (body.sepia-mode) --- */
+
+/* Pantalla principal y contenedores */
+body.sepia-mode #screen-cuaderno,
+body.sepia-mode #screen-cuaderno div[style*="background"] {
+  background-color: #f4ecd8 !important;
+  color: #43302b !important;
+  border-color: #d2b48c !important;
+}
+
+/* Textos, títulos y párrafos */
+body.sepia-mode #screen-cuaderno p,
+body.sepia-mode #screen-cuaderno span,
+body.sepia-mode #screen-cuaderno h2,
+body.sepia-mode #screen-cuaderno h3,
+body.sepia-mode #screen-cuaderno strong,
+body.sepia-mode #screen-cuaderno summary {
+  color: #43302b !important;
+}
+
+/* Hoja de notas (textarea) e Input de Título */
+body.sepia-mode #texto-libreta-amplia,
+body.sepia-mode #titulo-nota-actual {
+  background-color: #fdf8ed !important;
+  color: #43302b !important;
+  border-color: #c8b08b !important;
+}
+
+/* Panel Lateral Derecho */
+body.sepia-mode #panel-lateral-bitacora,
+body.sepia-mode #panel-lateral-bitacora div[style*="background"] {
+  background-color: #eee4ce !important;
+  color: #43302b !important;
+}
+
+/* Acordeones, botones y detalles dentro del panel */
+body.sepia-mode #panel-lateral-bitacora details,
+body.sepia-mode #panel-lateral-bitacora details summary,
+body.sepia-mode #panel-lateral-bitacora details div {
+  background-color: #f8f2e4 !important;
+  color: #43302b !important;
+  border-color: #d8c4a5 !important;
+}
+
+body.sepia-mode #panel-lateral-bitacora button {
+  color: #43302b !important;
+}
 /* Ajuste fino exclusivo para la pantalla principal */
 #screen-main {
   display: flex;
@@ -2423,7 +2525,39 @@ body.light-mode .btn-capitulo:hover {
   justify-content: center;
   padding-bottom: 20px;
 }
+/* --- Fondo sólido y seguro para el panel lateral de la bitácora --- */
+#panel-lateral-bitacora {
+  background-color: #1a1a1a !important;
+}
+/* --- Ajuste de Modo Oscuro Suave y Cómodo para la Vista --- */
 
+/* Fondo general de la pantalla de la bitácora en modo oscuro */
+#screen-cuaderno {
+  background-color: #141414 !important;
+  color: var(--gold, #d4af37) !important;
+}
+
+/* Tarjeta contenedora de la libreta en gris oscuro (no negro puro) */
+#screen-cuaderno .cuaderno-card,
+#screen-cuaderno div[style*="background"] {
+  background-color: #1e1e1e !important; /* Gris oscuro suave */
+  color: #e0e0e0 !important; /* Texto claro descansado */
+  border-color: rgba(212, 175, 55, 0.4) !important;
+}
+
+/* Área de escritura (textarea) y título en modo oscuro con fondo grisáceo */
+#texto-libreta-amplia,
+#titulo-nota-actual {
+  background-color: #252525 !important; /* Gris un poquito más legible */
+  color: #f0f0f0 !important; /* Blanco suave, no brillante */
+  border: 1px solid rgba(212, 175, 55, 0.3) !important;
+}
+
+/* Panel lateral derecho en modo oscuro con fondo gris sólido */
+#panel-lateral-bitacora {
+  background-color: #1a1a1a !important;
+  color: #e0e0e0 !important;
+}
 #screen-main .split-container {
   height: calc(
     100vh - 85px
@@ -3918,6 +4052,12 @@ body.light-mode .mensaje-asistente {
 body.light-mode .sidebar-menu ul li a,
 body.light-mode .sidebar-menu ul li a span {
   color: #f4f4f4 !important;
+}
+@media (min-width: 800px) {
+  #study-card {
+    height: 80vh !important;
+    max-height: 85vh !important;
+  }
 }
 /* --- ESTILOS ADAPTATIVOS PARA EL MODAL --- */
 

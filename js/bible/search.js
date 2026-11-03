@@ -121,7 +121,7 @@ function obtenerConfiguracionIdioma() {
 
   // Portugués
   if (lang.includes("pt") || lang === "pt") {
-    return { archivo: "data/bibliaAveMaria.json", idioma: "pt" };
+    return { archivo: "data/biblia_pt_completa.json", idioma: "pt" };
   }
 
   // Inglés
