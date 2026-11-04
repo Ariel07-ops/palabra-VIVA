@@ -653,6 +653,12 @@ export function verPestanaBitacora(nombre) {
   const contenedorTabs = document.querySelector(
     "#panel-lateral-bitacora > div:nth-child(2)",
   );
+  if (secNotas) {
+    secNotas.style.display = nombre === "notas" ? "flex" : "none";
+    if (nombre === "notas") {
+      cargarIndiceNotas();
+    }
+  }
   if (contenedorTabs) {
     const botones = contenedorTabs.querySelectorAll("button");
     const pestanasMap = ["notas", "guia", "glosario"];
@@ -727,8 +733,18 @@ export function cargarIndiceNotas() {
   listaContenedor.innerHTML = "";
 
   if (notas.length === 0) {
-    listaContenedor.innerHTML =
-      "<p style='color: #888; font-size: 0.8rem; font-style: italic;'>No hay notas guardadas aún.</p>";
+    const langActual = localStorage.getItem("palabra_viva_idioma") || "es";
+    const msjSinNotas = {
+      es: "No hay notas guardadas aún.",
+      en: "No saved notes yet.",
+      pt: "Nenhuma nota salva ainda.",
+    };
+
+    listaContenedor.innerHTML = `
+      <p style='color: #888; font-size: 0.8rem; font-style: italic;'>
+        ${msjSinNotas[langActual] || msjSinNotas.es}
+      </p>
+    `;
     return;
   }
 

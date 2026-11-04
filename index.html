@@ -1640,20 +1640,20 @@
 
   </div>
 </div>
-<<!-- PANTALLA COMPLETA: CUADERNO DE ESTUDIO / LIBRETA -->
+<!-- PANTALLA COMPLETA: CUADERNO DE ESTUDIO / LIBRETA -->
 <div id="screen-cuaderno" class="screen" style="padding: 15px; max-width: 100% !important; width: 99% !important; margin: 0 auto; position: absolute;">
   
   <!-- Encabezado superior -->
   <div class="cuaderno-header" style="display: flex; align-items: center; justify-content: space-between; padding-bottom: 12px; border-bottom: 1px solid var(--gold, #d4af37); margin-bottom: 20px;">
     
     <!-- Botón de retorno -->
-    <button onclick="volverDesdeCuaderno()" class="btn-tema-borde" style="background: rgba(212,175,55,0.15); border: 1px solid var(--gold, #d4af37); color: var(--gold, #d4af37); padding: 6px 12px; border-radius: 6px; cursor: pointer; font-weight: bold; font-size: 0.9rem;">
+    <button onclick="volverDesdeCuaderno()" class="btn-tema-borde" data-es="⬅ Volver" data-en="⬅ Back" data-pt="⬅ Voltar" style="background: rgba(212,175,55,0.15); border: 1px solid var(--gold, #d4af37); color: var(--gold, #d4af37); padding: 6px 12px; border-radius: 6px; cursor: pointer; font-weight: bold; font-size: 0.9rem;">
       ⬅ Volver
     </button>
     
     <div style="display: flex; align-items: center; gap: 10px;">
       <h2 style="font-family: serif; margin: 0; font-size: 1.1rem;">
-        <span class="text-gold">Bitácora de Estudio</span>
+        <span class="text-gold" data-es="Bitácora de Estudio" data-en="Study Notebook" data-pt="Caderno de Estudo">Bitácora de Estudio</span>
       </h2>
       
       <!-- Icono Menú Lateral Derecho -->
@@ -1680,7 +1680,13 @@
           type="text" 
           id="titulo-nota-actual" 
           placeholder="Escribí el título de tu nota..." 
+          data-es-placeholder="Escribí el título de tu nota..."
+          data-en-placeholder="Type your note title..."
+          data-pt-placeholder="Digite o título da sua nota..."
           value="Mi Nota de Hoy" 
+          data-es="Mi Nota de Hoy"
+          data-en="My Note Today"
+          data-pt="Minha Nota de Hoje"
           title="Hacé clic para cambiar el título"
           class="input-tema-dinamico"
           style="background: transparent; border: none; color: var(--gold, #d4af37); font-family: serif; font-size: 1.1rem; font-weight: bold; text-align: center; width: 85%; outline: none; cursor: text;" 
@@ -1690,7 +1696,7 @@
         </span>
       </div>
 
-      <p class="text-muted-dinamico" style="font-size: 0.85rem; margin-top: 6px;">
+      <p class="text-muted-dinamico" data-es="Tu espacio personal para meditar la Palabra y guardar tus anotaciones." data-en="Your personal space to meditate on the Word and save your notes." data-pt="Seu espaço pessoal para meditar na Palavra e salvar suas anotações." style="font-size: 0.85rem; margin-top: 6px;">
         Tu espacio personal para meditar la Palabra y guardar tus anotaciones.
       </p>
 
@@ -1699,6 +1705,9 @@
     <!-- Hoja de Escritura Amplia -->
     <textarea id="texto-libreta-amplia" 
               placeholder="Escribí aquí tus reflexiones, oraciones o notas de hoy..." 
+              data-es-placeholder="Escribí aquí tus reflexiones, oraciones o notas de hoy..."
+              data-en-placeholder="Write your reflections, prayers or notes here..."
+              data-pt-placeholder="Escreva aqui suas reflexões, orações ou notas..."
               class="textarea-tema-dinamico"
               style="width: 100%; height: 320px; border: 1px solid rgba(212,175,55,0.3); border-radius: 6px; padding: 12px; font-size: 1rem; line-height: 1.6; outline: none; resize: vertical; box-sizing: border-box;">
     </textarea>
@@ -1713,30 +1722,30 @@
     
     <!-- Encabezado del Panel -->
     <div style="display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid rgba(212,175,55,0.4); padding-bottom: 10px; margin-bottom: 12px;">
-      <h3 style="color: var(--gold, #d4af37); margin: 0; font-size: 1.1rem; font-family: serif;">Herramientas</h3>
+      <h3 data-es="Herramientas" data-en="Tools" data-pt="Ferramentas" style="color: var(--gold, #d4af37); margin: 0; font-size: 1.1rem; font-family: serif;">Herramientas</h3>
       <button onclick="toggleMenuBitacora()" style="background: transparent; border: none; color: inherit; font-size: 1.2rem; cursor: pointer;">✕</button>
     </div>
 
     <!-- Pestañas Superiores del Panel Lateral -->
     <div style="display: flex; gap: 4px; margin-bottom: 12px; border-bottom: 1px solid rgba(212,175,55,0.2); padding-bottom: 6px;">
-      <button onclick="verPestanaBitacora('notas')" style="flex: 1; background: rgba(212,175,55,0.2); border: 1px solid var(--gold, #d4af37); color: inherit; font-size: 0.75rem; padding: 6px 2px; border-radius: 4px; cursor: pointer;">📂 Notas</button>
-      <button onclick="verPestanaBitacora('guia')" style="flex: 1; background: transparent; border: 1px solid rgba(212,175,55,0.4); color: inherit; font-size: 0.75rem; padding: 6px 2px; border-radius: 4px; cursor: pointer;">📖 Guía</button>
-      <button onclick="verPestanaBitacora('glosario')" style="flex: 1; background: transparent; border: 1px solid rgba(212,175,55,0.4); color: inherit; font-size: 0.75rem; padding: 6px 2px; border-radius: 4px; cursor: pointer;">📚 Glosario</button>
+      <button onclick="verPestanaBitacora('notas')" data-es="📂 Notas" data-en="📂 Notes" data-pt="📂 Notas" style="flex: 1; background: rgba(212,175,55,0.2); border: 1px solid var(--gold, #d4af37); color: inherit; font-size: 0.75rem; padding: 6px 2px; border-radius: 4px; cursor: pointer;">📂 Notas</button>
+      <button onclick="verPestanaBitacora('guia')" data-es="📖 Guía" data-en="📖 Guide" data-pt="📖 Guia" style="flex: 1; background: transparent; border: 1px solid rgba(212,175,55,0.4); color: inherit; font-size: 0.75rem; padding: 6px 2px; border-radius: 4px; cursor: pointer;">📖 Guía</button>
+      <button onclick="verPestanaBitacora('glosario')" data-es="📚 Glosario" data-en="📚 Glossary" data-pt="📚 Glossário" style="flex: 1; background: transparent; border: 1px solid rgba(212,175,55,0.4); color: inherit; font-size: 0.75rem; padding: 6px 2px; border-radius: 4px; cursor: pointer;">📚 Glosario</button>
       <button onclick="toggleMenuBitacora()" title="Cerrar panel" style="background: transparent; border: 1px solid rgba(255,85,85,0.5); color: #ff5555; width: 28px; height: 28px; border-radius: 4px; font-size: 0.9rem; display: flex; align-items: center; justify-content: center; cursor: pointer; flex-shrink: 0;">✕</button>
     </div>
 
     <!-- SECCIÓN 1: MIS NOTAS Y ACCIONES -->
     <div id="sec-bitacora-notas" style="display: flex; flex-direction: column; flex: 1; overflow: hidden;">
       <div style="display: flex; flex-direction: column; gap: 8px; margin-bottom: 12px;">
-        <button onclick="crearNuevaNota()" style="background: rgba(212,175,55,0.15); border: 1px solid var(--gold, #d4af37); color: inherit; padding: 8px; border-radius: 6px; cursor: pointer; text-align: left; font-size: 0.85rem; font-weight: bold;">
+        <button onclick="crearNuevaNota()" data-es="➕ Nueva Nota" data-en="➕ New Note" data-pt="➕ Nova Nota" style="background: rgba(212,175,55,0.15); border: 1px solid var(--gold, #d4af37); color: inherit; padding: 8px; border-radius: 6px; cursor: pointer; text-align: left; font-size: 0.85rem; font-weight: bold;">
           ➕ Nueva Nota
         </button>
-        <button onclick="guardarNotaManual()" style="background: rgba(212,175,55,0.15); border: 1px solid var(--gold, #d4af37); color: inherit; padding: 8px; border-radius: 6px; cursor: pointer; text-align: left; font-size: 0.85rem; font-weight: bold;">
+        <button onclick="guardarNotaManual()" data-es="💾 Guardar Nota" data-en="💾 Save Note" data-pt="💾 Salvar Nota" style="background: rgba(212,175,55,0.15); border: 1px solid var(--gold, #d4af37); color: inherit; padding: 8px; border-radius: 6px; cursor: pointer; text-align: left; font-size: 0.85rem; font-weight: bold;">
           💾 Guardar Nota
         </button>
       </div>
 
-      <h4 style="color: var(--gold, #d4af37); margin: 5px 0; font-size: 0.85rem;">Mis Archivos Guardados:</h4>
+      <h4 data-es="Mis Archivos Guardados:" data-en="My Saved Files:" data-pt="Meus Arquivos Salvos:" style="color: var(--gold, #d4af37); margin: 5px 0; font-size: 0.85rem;">Mis Archivos Guardados:</h4>
       <div id="lista-notas-indice" style="flex: 1; overflow-y: auto; display: flex; flex-direction: column; gap: 6px; padding-right: 4px;">
         <!-- Se llena dinámicamente con JS -->
       </div>
@@ -1745,75 +1754,75 @@
     <!-- SECCIÓN 2: GUÍA DE ESTUDIO -->
     <div id="sec-bitacora-guia" style="display: none; flex: 1; overflow-y: auto; font-size: 0.85rem; line-height: 1.5; padding-right: 4px;">
       
-      <h4 style="color: var(--gold, #d4af37); margin-top: 0; font-family: serif; font-size: 0.95rem; text-align: center; border-bottom: 1px dashed rgba(212,175,55,0.3); padding-bottom: 8px;">
+      <h4 data-es="📖 Guía Práctica de Estudio y Meditación" data-en="📖 Practical Study and Meditation Guide" data-pt="📖 Guia Prática de Estudo e Meditação" style="color: var(--gold, #d4af37); margin-top: 0; font-family: serif; font-size: 0.95rem; text-align: center; border-bottom: 1px dashed rgba(212,175,55,0.3); padding-bottom: 8px;">
         📖 Guía Práctica de Estudio y Meditación
       </h4>
 
       <div style="display: flex; flex-direction: column; gap: 8px; margin-top: 10px;">
         <!-- ACORDEONES CON CLASE ADAPTABLE -->
-        <details class="acordeon-tema" style="border: 1px solid rgba(212,175,55,0.4); border-radius: 6px; padding: 8px;">
+        <details id="acordeon-indice-exegetico" style="border: 1px solid rgba(212,175,55,0.4); border-radius: 6px; padding: 8px;">
           <summary style="color: var(--gold, #d4af37); font-weight: bold; cursor: pointer; outline: none; list-style: none; display: flex; justify-content: space-between; align-items: center;">
-            <span>📖 Índice de Contenido Exegético</span>
+            <span data-es="📖 Índice de Contenido Exegético" data-en="📖 Exegetical Content Index" data-pt="📖 Índice de Conteúdo Exegético">📖 Índice de Contenido Exegético</span>
             <span style="font-size: 0.75rem;">▼</span>
           </summary>
           <div style="margin-top: 8px; font-size: 0.8rem; border-top: 1px dotted rgba(212,175,55,0.2); padding-top: 8px;">
             <div id="lista-indice-dinamico">
-              <em>Cargando índice canónico...</em>
+              <em data-es="Cargando índice canónico..." data-en="Loading canonical index..." data-pt="Carregando índice canônico...">Cargando índice canónico...</em>
             </div>
           </div>
         </details>
 
         <details class="acordeon-tema" style="border: 1px solid rgba(212,175,55,0.4); border-radius: 6px; padding: 8px;">
           <summary style="color: var(--gold, #d4af37); font-weight: bold; cursor: pointer; outline: none; list-style: none; display: flex; justify-content: space-between; align-items: center;">
-            <span>1. Pasos para la Meditación</span>
+            <span data-es="1. Pasos para la Meditación" data-en="1. Steps for Meditation" data-pt="1. Passos para a Meditação">1. Pasos para la Meditación</span>
             <span style="font-size: 0.75rem;">▼</span>
           </summary>
           <div style="margin-top: 8px; font-size: 0.8rem; border-top: 1px dotted rgba(212,175,55,0.2); padding-top: 8px;">
-            <p style="margin: 0 0 6px 0;"><strong>• Lectura Atenta:</strong> Leé el pasaje reteniendo palabras clave, verbos principales y conceptos repetidos.</p>
-            <p style="margin: 0 0 6px 0;"><strong>• Observación y Contexto:</strong> ¿Quién escribe y a quién? Recordá: <em>"Un texto fuera de contexto es un pretexto"</em>.</p>
-            <p style="margin: 0 0 6px 0;"><strong>• Aplicación Personal:</strong> ¿Qué me enseña sobre Dios, el ser humano y cómo llevarlo a mi vida hoy?</p>
-            <p style="margin: 0;"><strong>• Oración:</strong> Transformá la reflexión en un diálogo pidiendo luz para obedecer la Palabra.</p>
+            <p style="margin: 0 0 6px 0;"><strong data-es="• Lectura Atenta:" data-en="• Careful Reading:" data-pt="• Leitura Atenta:">• Lectura Atenta:</strong> <span data-es="Leé el pasaje reteniendo palabras clave, verbos principales y conceptos repetidos." data-en="Read the passage retaining keywords, main verbs, and repeated concepts." data-pt="Leia a passagem retendo palavras-chave, verbos principais e conceitos repetidos.">Leé el pasaje reteniendo palabras clave, verbos principales y conceptos repetidos.</span></p>
+            <p style="margin: 0 0 6px 0;"><strong data-es="• Observación y Contexto:" data-en="• Observation and Context:" data-pt="• Observação e Contexto:">• Observación y Contexto:</strong> <span data-es="¿Quién escribe y a quién? Recordá: " data-en="Who is writing and to whom? Remember: " data-pt="Quem escreve e para quem? Lembre-se: ">¿Quién escribe y a quién? Recordá: </span><em><span data-es=""Un texto fuera de contexto es un pretexto"" data-en=""A text out of context is a pretext"" data-pt=""Um texto fora de contexto é um pretexto"">"Un texto fuera de contexto es un pretexto"</span></em>.</p>
+            <p style="margin: 0 0 6px 0;"><strong data-es="• Aplicación Personal:" data-en="• Personal Application:" data-pt="• Aplicação Pessoal:">• Aplicación Personal:</strong> <span data-es="¿Qué me enseña sobre Dios, el ser humano y cómo llevarlo a mi vida hoy?" data-en="What does it teach me about God, human beings, and how to apply it to my life today?" data-pt="O que isso me ensina sobre Deus, o ser humano e como aplicá-lo à minha vida hoje?">¿Qué me enseña sobre Dios, el ser humano y cómo llevarlo a mi vida hoy?</span></p>
+            <p style="margin: 0;"><strong data-es="• Oración:" data-en="• Prayer:" data-pt="• Oração:">• Oración:</strong> <span data-es="Transformá la reflexión en un diálogo pidiendo luz para obedecer la Palabra." data-en="Transform reflection into a dialogue asking for light to obey the Word." data-pt="Transforme a reflexão em um diálogo pedindo luz para obedecer à Palavra.">Transformá la reflexión en un diálogo pidiendo luz para obedecer la Palabra.</span></p>
           </div>
         </details>
 
         <details class="acordeon-tema" style="border: 1px solid rgba(212,175,55,0.4); border-radius: 6px; padding: 8px;">
           <summary style="color: var(--gold, #d4af37); font-weight: bold; cursor: pointer; outline: none; list-style: none; display: flex; justify-content: space-between; align-items: center;">
-            <span>2. Subrayado Exegético y Abanico</span>
+            <span data-es="2. Subrayado Exegético y Abanico" data-en="2. Exegetical Underlining and Fan" data-pt="2. Sublinhado Exegético e Leque">2. Subrayado Exegético y Abanico</span>
             <span style="font-size: 0.75rem;">▼</span>
           </summary>
           <div style="margin-top: 8px; font-size: 0.8rem; border-top: 1px dotted rgba(212,175,55,0.2); padding-top: 8px;">
-            <p style="margin: 0 0 8px 0;">Al tocar las palabras con subrayado estilo lápiz en pasajes clave, desplegás 4 ejes fundamentales:</p>
+            <p data-es="Al tocar las palabras con subrayado estilo lápiz en pasajes clave, desplegás 4 ejes fundamentales:" data-en="By touching words with pencil-style underlining in key passages, you display 4 fundamental axes:" data-pt="Ao tocar nas palavras com sublinhado estilo lápis em passagens-chave, você exibe 4 eixos fundamentais:" style="margin: 0 0 8px 0;">Al tocar las palabras con subrayado estilo lápiz en pasajes clave, desplegás 4 ejes fundamentales:</p>
             <ul style="margin: 0; padding-left: 16px; display: flex; flex-direction: column; gap: 4px;">
-              <li><strong>Raíces y Filología:</strong> Origen de los términos (hebreo/griego) y matices exactos.</li>
-              <li><strong>Contexto Histórico:</strong> Entorno político, social y cultural.</li>
-              <li><strong>Sucesión Apostólica:</strong> Enseñanza y doctrina de la Iglesia primitiva.</li>
-              <li><strong>Apologética:</strong> Defensa razonada de la fe.</li>
+              <li><strong data-es="Raíces y Filología:" data-en="Roots and Philology:" data-pt="Raíces e Filologia:">Raíces y Filología:</strong> <span data-es="Origen de los términos (hebreo/griego) y matices exactos." data-en="Origin of terms (Hebrew/Greek) and exact nuances." data-pt="Origem dos termos (hebraico/grego) e nuances exatas.">Origen de los términos (hebreo/griego) y matices exactos.</span></li>
+              <li><strong data-es="Contexto Histórico:" data-en="Historical Context:" data-pt="Contexto Histórico:">Contexto Histórico:</strong> <span data-es="Entorno político, social y cultural." data-en="Political, social, and cultural environment." data-pt="Ambiente político, social e cultural.">Entorno político, social y cultural.</span></li>
+              <li><strong data-es="Sucesión Apostólica:" data-en="Apostolic Succession:" data-pt="Sucessão Apostólica:">Sucesión Apostólica:</strong> <span data-es="Enseñanza y doctrina de la Iglesia primitiva." data-en="Teaching and doctrine of the early Church." data-pt="Ensino e doutrina da Igreja primitiva.">Enseñanza y doctrina de la Iglesia primitiva.</span></li>
+              <li><strong data-es="Apologética:" data-en="Apologetics:" data-pt="Apologética:">Apologética:</strong> <span data-es="Defensa razonada de la fe." data-en="Reasoned defense of the faith." data-pt="Defesa razoada da fé.">Defensa razonada de la fe.</span></li>
             </ul>
           </div>
         </details>
 
         <details class="acordeon-tema" style="border: 1px solid rgba(212,175,55,0.4); border-radius: 6px; padding: 8px;">
           <summary style="color: var(--gold, #d4af37); font-weight: bold; cursor: pointer; outline: none; list-style: none; display: flex; justify-content: space-between; align-items: center;">
-            <span>3. ¿Cómo usar esta Bitácora?</span>
+            <span data-es="3. ¿Cómo usar esta Bitácora?" data-en="3. How to use this Notebook?" data-pt="3. Como usar este Caderno?">3. ¿Cómo usar esta Bitácora?</span>
             <span style="font-size: 0.75rem;">▼</span>
           </summary>
           <div style="margin-top: 8px; font-size: 0.8rem; border-top: 1px dotted rgba(212,175,55,0.2); padding-top: 8px;">
-            <p style="margin: 0 0 6px 0;"><strong>• ➕ Nueva Nota:</strong> Abrí una hoja limpia para un nuevo estudio.</p>
-            <p style="margin: 0 0 6px 0;"><strong>• ✏️ Título Editable:</strong> Toca el título para personalizarlo.</p>
-            <p style="margin: 0;"><strong>• 💾 Guardar:</strong> Guardá tus cambios para consultarlos luego.</p>
+            <p style="margin: 0 0 6px 0;"><strong data-es="• ➕ Nueva Nota:" data-en="• ➕ New Note:" data-pt="• ➕ Nova Nota:">• ➕ Nueva Nota:</strong> <span data-es="Abrí una hoja limpia para un nuevo estudio." data-en="Open a clean sheet for a new study." data-pt="Abra uma folha limpa para um novo estudo.">Abrí una hoja limpia para un nuevo estudio.</span></p>
+            <p style="margin: 0 0 6px 0;"><strong data-es="• ✏️ Título Editable:" data-en="• ✏️ Editable Title:" data-pt="• ✏️ Título Editável:">• ✏️ Título Editable:</strong> <span data-es="Toca el título para personalizarlo." data-en="Tap the title to customize it." data-pt="Toque no título para personalizá-lo.">Toca el título para personalizarlo.</span></p>
+            <p style="margin: 0;"><strong data-es="• 💾 Guardar:" data-en="• 💾 Save:" data-pt="• 💾 Salvar:">• 💾 Guardar:</strong> <span data-es="Guardá tus cambios para consultarlos luego." data-en="Save your changes to consult them later." data-pt="Salve suas alterações para consultá-las mais tarde.">Guardá tus cambios para consultarlos luego.</span></p>
           </div>
         </details>
 
         <details class="acordeon-tema" style="border: 1px solid rgba(212,175,55,0.4); border-radius: 6px; padding: 8px;">
           <summary style="color: var(--gold, #d4af37); font-weight: bold; cursor: pointer; outline: none; list-style: none; display: flex; justify-content: space-between; align-items: center;">
-            <span>4. Referencias Cruzadas y Clases</span>
+            <span data-es="4. Referencias Cruzadas y Clases" data-en="4. Cross References and Classes" data-pt="4. Referências Cruzadas e Aulas">4. Referencias Cruzadas y Clases</span>
             <span style="font-size: 0.75rem;">▼</span>
           </summary>
           <div style="margin-top: 8px; font-size: 0.8rem; border-top: 1px dotted rgba(212,175,55,0.2); padding-top: 8px;">
             <div style="margin-bottom: 12px;">
-              <strong style="color: var(--gold);">• Referencias Cruzadas:</strong>
+              <strong data-es="• Referencias Cruzadas:" data-en="• Cross References:" data-pt="• Referências Cruzadas:" style="color: var(--gold);">• Referencias Cruzadas:</strong>
               <div id="lista-referencias-acordeon" style="max-height: 150px; overflow-y: auto; padding-right: 4px;">
-                <span>Cargando referencias...</span>
+                <span data-es="Cargando referencias..." data-en="Loading references..." data-pt="Carregando referências...">Cargando referencias...</span>
               </div>
             </div>
           </div>
@@ -1824,9 +1833,9 @@
 
     <!-- SECCIÓN 3: GLOSARIO -->
     <div id="sec-bitacora-glosario" style="display: none; flex: 1; overflow-y: auto; font-size: 0.85rem; line-height: 1.5;">
-      <h4 style="color: var(--gold, #d4af37); margin-top: 0;">📚 Glosario de Términos</h4>
+      <h4 data-es="📚 Glosario de Términos" data-en="📚 Glossary of Terms" data-pt="📚 Glossário de Termos" style="color: var(--gold, #d4af37); margin-top: 0;">📚 Glosario de Términos</h4>
       <div id="glosario-container" class="glosario-lista">
-        <p style="font-style: italic;">Cargando términos...</p>
+        <p data-es="Cargando términos..." data-en="Loading terms..." data-pt="Carregando termos..." style="font-style: italic;">Cargando términos...</p>
       </div>
     </div>
 
@@ -1835,7 +1844,8 @@
   <!-- Overlay -->
   <div id="overlay-bitacora" onclick="toggleMenuBitacora()" style="position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; background: rgba(0,0,0,0.5); z-index: 9998; display: none;"></div>
 </div>
-</div>    <!-- Vista del Asistente de Apoyo -->
+</div>    
+<!-- Vista del Asistente de Apoyo -->
     <div id="screen-asistente" class="screen">
       <div class="asistente-header">
         <button class="btn-back" onclick="changeScreen('screen-main')">⬅</button>

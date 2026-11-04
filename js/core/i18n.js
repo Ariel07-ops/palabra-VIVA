@@ -54,7 +54,7 @@ export function cambiarIdioma(lang) {
     limpiarBuscador();
   }
 
-  // 4. Traducir elementos de la UI
+  // 4. Traducir elementos estándar de la UI (innerText)
   const elementosTraducibles = document.querySelectorAll(
     "[data-es][data-en][data-pt]",
   );
@@ -69,7 +69,34 @@ export function cambiarIdioma(lang) {
     }
   });
 
-  // 5. Destacar botón activo en la pantalla de ajustes
+  // 5. Traducir valores de inputs con atributos de idioma (ej. Título de nota actual)
+  const inputsTraducibles = document.querySelectorAll(
+    "input[data-es], input[data-en], input[data-pt]",
+  );
+  inputsTraducibles.forEach((input) => {
+    const valTraducido = input.getAttribute(`data-${lang}`);
+    if (valTraducido) {
+      input.value = valTraducido;
+    }
+  });
+
+  // 6. Traducir placeholders de inputs y textareas
+  const camposConPlaceholder = document.querySelectorAll(
+    "[data-es-placeholder][data-en-placeholder][data-pt-placeholder]",
+  );
+  camposConPlaceholder.forEach((campo) => {
+    const placeholderTraducido = campo.getAttribute(`data-${lang}-placeholder`);
+    if (placeholderTraducido) {
+      campo.placeholder = placeholderTraducido;
+    }
+  });
+
+  // 7. Refrescar el índice de notas para traducir el mensaje de "Sin notas" al instante
+  if (typeof cargarIndiceNotas === "function") {
+    cargarIndiceNotas();
+  }
+
+  // 8. Destacar botón activo en la pantalla de ajustes
   const botonesIdioma = document.querySelectorAll("#screen-idioma button");
   botonesIdioma.forEach((btn) => btn.classList.remove("active"));
 
@@ -80,7 +107,7 @@ export function cambiarIdioma(lang) {
     botonActivo.classList.add("active");
   }
 
-  // 6. Traducir el placeholder del buscador
+  // 9. Traducir el placeholder del buscador principal
   const inputBusqueda = document.getElementById("input-busqueda");
   if (inputBusqueda) {
     const placeholderTraducido = inputBusqueda.getAttribute(
@@ -91,12 +118,21 @@ export function cambiarIdioma(lang) {
     }
   }
 
-  // 7. Detener lectura de voz si estaba reproduciendo
+  // 10. Detener lectura de voz si estaba reproduciendo
   if ("speechSynthesis" in window) {
     window.speechSynthesis.cancel();
     if (typeof window.estaReproduciendo !== "undefined") {
       window.estaReproduciendo = false;
     }
+  }
+
+  // 11. Refrescar contenido dinámico del glosario y referencias cruzadas
+  // 11. Refrescar contenido dinámico del glosario y referencias cruzadas
+  if (typeof poblarReferenciasAcordeon === "function") {
+    poblarReferenciasAcordeon();
+  }
+  if (typeof cargarGlosario === "function") {
+    cargarGlosario();
   }
 
   console.log("🌐 Idioma cambiado y guardado con éxito:", lang);

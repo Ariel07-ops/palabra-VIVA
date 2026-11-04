@@ -1,22 +1,77 @@
 [
   {
     "termino": "Dogma",
-    "definicion": "Verdad revelada por Dios y definida formalmente por la Iglesia, que exige la adhesión de fe de los creyentes."
+    "es": {
+      "titulo": "Dogma",
+      "definicion": "Verdad revelada por Dios y definida formalmente por la Iglesia, que exige la adhesión de fe de los creyentes."
+    },
+    "en": {
+      "titulo": "Dogma",
+      "definicion": "Truth revealed by God and formally defined by the Church, which demands the adherence of faith from believers."
+    },
+    "pt": {
+      "titulo": "Dogma",
+      "definicion": "Verdade revelada por Deus e definida formalmente pela Igreja, que exige a adesão de fé dos crentes."
+    }
   },
   {
-    "termino": "Encíclica",
-    "definicion": "Carta solemne que el Papa dirige a los obispos y a todos los fieles para reflexionar sobre temas doctrinarios o morales."
+    "termino": "Enciclica",
+    "es": {
+      "titulo": "Encíclica",
+      "definicion": "Carta solemne que el Papa dirige a los obispos y a todos los fieles para reflexionar sobre temas doctrinarios o morales."
+    },
+    "en": {
+      "titulo": "Encyclical",
+      "definicion": "Solemn letter addressed by the Pope to bishops and all the faithful to reflect on doctrinal or moral issues."
+    },
+    "pt": {
+      "titulo": "Encíclica",
+      "definicion": "Carta solene que o Papa dirige aos bispos e a todos os fiéis para refletir sobre temas doutrinários ou morais."
+    }
   },
   {
     "termino": "Magisterio",
-    "definicion": "Autoridad de enseñanza de la Iglesia, ejercida por el Papa y los obispos en comunión con él, para interpretar y custodiar la Verdad."
+    "es": {
+      "titulo": "Magisterio",
+      "definicion": "Autoridad de enseñanza de la Iglesia, ejercida por el Papa y los obispos en comunión con él, para interpretar y custodiar la Verdad."
+    },
+    "en": {
+      "titulo": "Magisterium",
+      "definicion": "Teaching authority of the Church, exercised by the Pope and bishops in communion with him, to interpret and guard the Truth."
+    },
+    "pt": {
+      "titulo": "Magistério",
+      "definicion": "Autoridade de ensino da Igreja, exercida pelo Papa e pelos bispos em comunhão com ele, para interpretar e custodiar a Verdade."
+    }
   },
   {
-    "termino": "Parusía",
-    "definicion": "Segunda venida gloriosa de Jesucristo al final de los tiempos."
+    "termino": "Parusia",
+    "es": {
+      "titulo": "Parusía",
+      "definicion": "Segunda venida gloriosa de Jesucristo al final de los tiempos."
+    },
+    "en": {
+      "titulo": "Parousia",
+      "definicion": "The glorious second coming of Jesus Christ at the end of time."
+    },
+    "pt": {
+      "titulo": "Parusia",
+      "definicion": "A segunda vinda gloriosa de Jesus Cristo no fim dos tempos."
+    }
   },
   {
-    "termino": "Redención",
-    "definicion": "Obra de salvación realizada por Jesucristo mediante su pasión, muerte y resurrección, liberando a la humanidad del pecado."
+    "termino": "Redencion",
+    "es": {
+      "titulo": "Redención",
+      "definicion": "Obra de salvación realizada por Jesucristo mediante su pasión, muerte y resurrección, liberando a la humanidad del pecado."
+    },
+    "en": {
+      "titulo": "Redemption",
+      "definicion": "The work of salvation accomplished by Jesus Christ through his passion, death, and resurrection, freeing humanity from sin."
+    },
+    "pt": {
+      "titulo": "Redenção",
+      "definicion": "Obra de salvação realizada por Jesus Cristo através da sua paixão, morte e ressurreição, libertando a humanidade do pecado."
+    }
   }
 ]

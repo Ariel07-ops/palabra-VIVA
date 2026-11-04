@@ -730,6 +730,7 @@ document
       }
     }
   });
+
 async function poblarReferenciasAcordeon() {
   const contenedor = document.getElementById("lista-referencias-acordeon");
   if (!contenedor) return;
@@ -739,20 +740,31 @@ async function poblarReferenciasAcordeon() {
     if (!res.ok) throw new Error("No se pudo cargar el archivo");
     const lista = await res.json();
 
-    if (lista.length === 0) {
+    if (!Array.isArray(lista) || lista.length === 0) {
       contenedor.innerHTML =
         '<p style="color: #888; margin: 0;">No hay referencias cargadas todavía.</p>';
       return;
     }
 
+    // Obtenemos el idioma activo unificando la fuente global y local
+    const lang =
+      window.idiomaActual ||
+      localStorage.getItem("idioma") ||
+      localStorage.getItem("palabra_viva_idioma") ||
+      "es";
+
     let html = '<ul style="list-style: none; padding: 0; margin: 0;">';
 
     lista.forEach((ref) => {
-      // Formateamos un texto claro para la lista (ej: "Marcos 1,2 ➔ Isaías 40,3")
       const textoOrigen = `${ref.desde.libro.toUpperCase()} ${ref.desde.capitulo},${ref.desde.versiculo}`;
       const textoDestino =
         ref.hacia.citaTexto ||
         `${ref.hacia.libro.toUpperCase()} ${ref.hacia.capitulo},${ref.hacia.versiculo}`;
+
+      // Extraemos el texto traducido según el idioma actual (con respaldo en 'es')
+      const datosIdioma = ref[lang] || ref.es || ref;
+      const tipoTexto = datosIdioma.tipo || "";
+      const explicacionTexto = datosIdioma.explicacion || "";
 
       html += `
                 <li style="margin-bottom: 10px; border-bottom: 1px solid rgba(212,175,55,0.1); padding-bottom: 8px;">
@@ -762,21 +774,20 @@ async function poblarReferenciasAcordeon() {
                      style="color: var(--gold); text-decoration: none; display: block; cursor: pointer;">
                      🔗 <strong>${textoOrigen}</strong> ➔ ${textoDestino}
                   </a>
-                  <span style="font-size: 0.85rem; color: #ccc; display: block; margin-top: 4px; line-height: 1.3;">${ref.explicacion}</span>
+                  <span style="font-size: 0.85rem; color: #ccc; display: block; margin-top: 4px; line-height: 1.3;">${explicacionTexto}</span>
                 </li>
             `;
     });
 
     html += "</ul>";
     contenedor.innerHTML = html;
-    // Agregamos el evento de clic a cada elemento de la lista para que salte al pasaje
+
     contenedor.querySelectorAll(".enlace-referencia-item").forEach((el) => {
       el.addEventListener("click", (e) => {
         e.preventDefault();
         const libro = el.getAttribute("data-libro");
         const capitulo = Number(el.getAttribute("data-capitulo"));
 
-        // Llamamos a tu función existente para renderizar el capítulo en el lector principal
         if (
           typeof renderizarVersiculosCapitulo === "function" &&
           typeof versosLibro !== "undefined"
@@ -796,36 +807,51 @@ async function poblarReferenciasAcordeon() {
   }
 }
 
-// Ejecutamos esta función al iniciar la app o cuando cargue la página
-document.addEventListener("DOMContentLoaded", () => {
-  poblarReferenciasAcordeon();
-});
-// glosario.js
 async function cargarGlosario() {
   const contenedor = document.getElementById("glosario-container");
   if (!contenedor) return;
 
   try {
     const respuesta = await fetch("data/glosario.json");
-    if (!respuesta.ok) throw new Error("Error al cargar el archivo JSON");
+    if (!respuesta.ok) throw new Error("Error al cargar el glosario.json");
 
     const glosarioData = await respuesta.json();
-
-    // Limpiamos el texto/cartel previo
     contenedor.innerHTML = "";
 
-    // Ordenamos alfabéticamente por término
-    const terminosOrdenados = [...glosarioData].sort((a, b) =>
-      a.termino.localeCompare(b.termino, "es", { sensitivity: "base" }),
-    );
+    if (!Array.isArray(glosarioData) || glosarioData.length === 0) {
+      contenedor.innerHTML =
+        "<p class='glosario-error'>No hay términos cargados.</p>";
+      return;
+    }
 
-    // Inyectamos las tarjetas de términos
+    // Detectamos el idioma activo con la variable global o localStorage
+    const lang =
+      window.idiomaActual ||
+      localStorage.getItem("idioma") ||
+      localStorage.getItem("palabra_viva_idioma") ||
+      "es";
+
+    // Ordenamos alfabéticamente según el título del idioma activo
+    const terminosOrdenados = [...glosarioData].sort((a, b) => {
+      const objA = a[lang] || a.es || {};
+      const objB = b[lang] || b.es || {};
+      const tituloA = objA.titulo || a.termino || "";
+      const tituloB = objB.titulo || b.termino || "";
+      return tituloA.localeCompare(tituloB, lang, { sensitivity: "base" });
+    });
+
+    // Inyectamos las tarjetas traduciéndolas al idioma actual
     terminosOrdenados.forEach((item) => {
+      // Extrae la rama correspondiente ('es', 'en' o 'pt'), con respaldo en 'es'
+      const datos = item[lang] || item.es || {};
+      const titulo = datos.titulo || item.termino || "";
+      const definicion = datos.definicion || "";
+
       const card = document.createElement("div");
       card.className = "glosario-item";
       card.innerHTML = `
-        <h4 class="glosario-termino">${item.termino}</h4>
-        <p class="glosario-definicion">${item.definicion}</p>
+        <h4 class="glosario-termino">${titulo}</h4>
+        <p class="glosario-definicion">${definicion}</p>
       `;
       contenedor.appendChild(card);
     });
@@ -835,5 +861,8 @@ async function cargarGlosario() {
       "<p class='glosario-error'>No se pudieron cargar los términos.</p>";
   }
 }
-
-document.addEventListener("DOMContentLoaded", cargarGlosario);
+// Inicialización unificada al cargar el DOM o cuando corresponda
+document.addEventListener("DOMContentLoaded", () => {
+  poblarReferenciasAcordeon();
+  cargarGlosario();
+});
