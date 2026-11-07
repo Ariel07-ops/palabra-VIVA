@@ -3852,6 +3852,13 @@ body.light-mode .mensaje-asistente {
   margin-bottom: 10px;
   margin-left: 0px;
 }
+/* Ajuste exclusivo para ampliar el input solo en pantallas de computadora */
+@media (min-width: 768px) {
+  #chat-input {
+    flex-grow: 1; /* Hace que ocupe el espacio disponible junto a los botones sin romperlos */
+    min-width: 300px; /* Asegura un ancho mínimo cómodo en escritorio */
+  }
+}
 #btnMic {
   display: flex;
   align-items: auto;
