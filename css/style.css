@@ -4783,3 +4783,23 @@ button,
   color: #f39c12;
   text-decoration: underline;
 }
+@keyframes pulsoFrenoMano {
+  0% {
+    box-shadow: 0 0 4px rgba(212, 175, 55, 0.3);
+    border-color: var(--gold);
+  }
+  50% {
+    box-shadow: 0 0 12px rgba(212, 175, 55, 0.9);
+    border-color: #fff;
+    background: rgba(212, 175, 55, 0.5);
+  }
+  100% {
+    box-shadow: 0 0 4px rgba(212, 175, 55, 0.3);
+    border-color: var(--gold);
+  }
+}
+
+.btn-pausa-activo {
+  animation: pulsoFrenoMano 1.5s infinite ease-in-out;
+  background: rgba(212, 175, 55, 0.4) !important;
+}

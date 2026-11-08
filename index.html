@@ -292,80 +292,82 @@
 <div id="screen-lectura" class="screen">
   <div class="app-container">
     <header class="main-header">
-  <!-- Fila de herramientas horizontal compacta -->
+<!-- Fila de herramientas horizontal compacta en una sola línea -->
   <div
     style="
       display: flex;
       justify-content: space-between;
       align-items: center;
       width: 100%;
-      gap: 6px;
+      gap: 2px;
       flex-wrap: nowrap;
+      box-sizing: border-box;
     "
   >
-    <!-- Botón Volver -->
+    <!-- 1. Botón Volver -->
     <button
       class="btn-back"
       onclick="changeScreen('screen-capitulos')"
-      style="padding: 6px 10px; font-size: 0.85rem;"
+      style="padding: 5px 8px; font-size: 0.8rem; flex-shrink: 0;"
     >
       ⬅
     </button>
 
-    <!-- Botón Escuchar (solo icono del parlantito) -->
+    <!-- 2. Botón Escuchar -->
     <button
       id="btn-hablar-lectura"
       class="btn-audio"
       onclick="ejecutarLecturaVoz()"
       title="Escuchar"
       aria-label="Escuchar lectura"
-      style="
-        background: rgba(212, 175, 55, 0.2);
-        border: 1px solid var(--gold);
-        color: #fff;
-        padding: 6px 12px;
-        border-radius: 6px;
-        cursor: pointer;
-        display: inline-flex;
-        align-items: center;
-        justify-content: center;
-        font-size: 0.9rem;
-      "
+      style="background: rgba(212, 175, 55, 0.2); border: 1px solid var(--gold); color: #fff; padding: 5px 8px; border-radius: 6px; cursor: pointer; display: inline-flex; align-items: center; justify-content: center; font-size: 0.8rem; flex-shrink: 0;"
     >
       <i class="fas fa-volume-up"></i>
     </button>
 
+    <!-- 3. Botón Pausa -->
+    <button
+      id="btn-pausa-lectura"
+      class="btn-audio"
+      onclick="alternarPausaAudio()"
+      title="Pausar / Continuar"
+      aria-label="Pausar o continuar lectura"
+      style="background: rgba(212, 175, 55, 0.2); border: 1px solid var(--gold); color: #fff; padding: 5px 8px; border-radius: 6px; cursor: pointer; display: inline-flex; align-items: center; justify-content: center; font-size: 0.8rem; flex-shrink: 0;"
+    >
+      <i class="fas fa-pause"></i>
+    </button>
+
     <!-- Botón Fibrón + Paleta flotante -->
-    <div class="fibron-container" style="position: relative; display: inline-block;">
+    <div class="fibron-container" style="position: relative; display: inline-flex; flex-shrink: 0;">
       <button
         id="btn-toggle-fibron"
         class="btn-audio"
+        onclick="const p = document.getElementById('paleta-fibron'); p.style.display = (p.style.display === 'none' || p.style.display === '') ? 'flex' : 'none';"
         title="Resaltar versículos"
         style="
           background: rgba(212, 175, 55, 0.2);
           border: 1px solid var(--gold);
           color: #fff;
-          padding: 6px 10px;
+          padding: 5px 8px;
           border-radius: 6px;
           cursor: pointer;
           display: inline-flex;
           align-items: center;
-          gap: 5px;
-          font-size: 0.82rem;
-          white-space: nowrap;
+          font-size: 0.8rem;
+          outline: none;
+          box-shadow: none;
         "
       >
         <i class="fas fa-highlighter" style="color: var(--gold);"></i>
-        
       </button>
 
-      <!-- Paleta flotante de colores + gomita -->
+      <!-- Paleta flotante de colores -->
       <div
         id="paleta-fibron"
         style="
           display: none;
           position: absolute;
-          top: 40px;
+          top: 35px;
           right: 0;
           background: #1a1a1a;
           border: 1px solid var(--gold);
@@ -376,55 +378,56 @@
           box-shadow: 0 4px 12px rgba(0,0,0,0.6);
         "
       >
-        <button class="btn-color-fibron" data-color="amarillo" title="Amarillo" style="background: rgba(241, 196, 15, 0.9); border: 1px solid #fff; width: 22px; height: 22px; border-radius: 50%; cursor: pointer;"></button>
-        <button class="btn-color-fibron" data-color="verde" title="Verde" style="background: rgba(46, 204, 113, 0.9); border: 1px solid #fff; width: 22px; height: 22px; border-radius: 50%; cursor: pointer;"></button>
-        <button class="btn-color-fibron" data-color="azul" title="Azul" style="background: rgba(52, 152, 219, 0.9); border: 1px solid #fff; width: 22px; height: 22px; border-radius: 50%; cursor: pointer;"></button>
-        <button class="btn-color-fibron" data-color="rosa" title="Rosa" style="background: rgba(233, 30, 99, 0.9); border: 1px solid #fff; width: 22px; height: 22px; border-radius: 50%; cursor: pointer;"></button>
-        <button class="btn-color-fibron" data-color="borrar" title="Desmarcar / Borrar" style="background: #333; border: 1px solid #ff5555; color: #ff5555; width: 22px; height: 22px; border-radius: 50%; cursor: pointer; display: flex; align-items: center; justify-content: center; font-size: 0.7rem;">
+        <button class="btn-color-fibron" data-color="amarillo" title="Amarillo" style="background: rgba(241, 196, 15, 0.9); border: 1px solid #fff; width: 20px; height: 20px; border-radius: 50%; cursor: pointer; outline: none;"></button>
+        <button class="btn-color-fibron" data-color="verde" title="Verde" style="background: rgba(46, 204, 113, 0.9); border: 1px solid #fff; width: 20px; height: 20px; border-radius: 50%; cursor: pointer; outline: none;"></button>
+        <button class="btn-color-fibron" data-color="azul" title="Azul" style="background: rgba(52, 152, 219, 0.9); border: 1px solid #fff; width: 20px; height: 20px; border-radius: 50%; cursor: pointer; outline: none;"></button>
+        <button class="btn-color-fibron" data-color="rosa" title="Rosa" style="background: rgba(233, 30, 99, 0.9); border: 1px solid #fff; width: 20px; height: 20px; border-radius: 50%; cursor: pointer; outline: none;"></button>
+        <button class="btn-color-fibron" data-color="borrar" title="Borrar" style="background: #333; border: 1px solid #ff5555; color: #ff5555; width: 20px; height: 20px; border-radius: 50%; cursor: pointer; display: flex; align-items: center; justify-content: center; font-size: 0.65rem; outline: none;">
           <i class="fas fa-eraser"></i>
         </button>
       </div>
     </div>
 
-    <!-- Botón Bitácora -->
+    <!-- 5. Botón Bitácora (Solo ícono) -->
     <button
       id="btn-cuaderno-lectura"
       class="btn-audio"
       onclick="abrirLibretaEstudio('lectura')"
-      title="Abrir Bitácora de Estudio"
+      title="Bitácora de Estudio"
+      aria-label="Bitácora de Estudio"
       style="
         background: rgba(212, 175, 55, 0.2);
         border: 1px solid var(--gold);
         color: #fff;
-        padding: 6px 10px;
+        padding: 5px 8px;
         border-radius: 6px;
         cursor: pointer;
         display: inline-flex;
         align-items: center;
-        gap: 5px;
-        font-size: 0.82rem;
-        white-space: nowrap;
+        justify-content: center;
+        font-size: 0.8rem;
+        flex-shrink: 0;
       "
     >
       <i class="fas fa-book-open"></i>
-      <span  data-es="Bitácora" data-en="Notebook" data-pt="Caderno">Bitácora</span>
     </button>
 
-    <!-- Indicador A+ -->
+    <!-- 6. Indicador A+ -->
     <div
       id="indicador-estatus-letra"
       style="
         display: flex;
         align-items: center;
-        gap: 3px;
-        padding: 4px 6px;
+        gap: 2px;
+        padding: 3px 4px;
         border: 1px solid rgba(212, 175, 55, 0.5);
         border-radius: 6px;
         color: var(--gold);
-        font-size: 0.75rem;
+        font-size: 0.65rem;
         font-weight: bold;
-        background: rgba(0, 0, 0, 0.3);
+        background: rgba(0, 0, 0, 0.4);
         white-space: nowrap;
+        flex-shrink: 0;
       "
     >
       <span id="texto-estado">A+</span>
