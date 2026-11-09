@@ -1,5 +1,5 @@
 // js/bible/reader.js
-// Módulo de lectura y navegación por Libros y Capítulos de la Biblia
+// Módulo de lectura y navegación por Libros y Capítulos de la Biblia (Con soporte de Audio y Modo Continuo)
 
 import { listaLibrosAntiguo, listaLibrosNuevo } from "./canon.js";
 import {
@@ -7,6 +7,7 @@ import {
   aplicarResaltadosPersonales,
 } from "./boxes.js";
 import { resetAudioState } from "../core/voz.js";
+
 // Variable global para controlar qué color del Fibrón está activo (null = desactivado)
 window.colorFibronActivo = null;
 
@@ -248,7 +249,7 @@ function obtenerInfoBibliaActual() {
   const idioma = localStorage.getItem("palabra_viva_idioma") || "es";
   switch (idioma) {
     case "pt":
-      return { ruta: "data/biblia_pt_completa.json", idioma: "pt" }; // <--- Apuntando al unificado perfecto
+      return { ruta: "data/biblia_pt_completa.json", idioma: "pt" };
     case "en":
       return { ruta: "data/bibleweb.json", idioma: "en" };
     case "es":
@@ -256,6 +257,7 @@ function obtenerInfoBibliaActual() {
       return { ruta: "data/SpaPlatense.json", idioma: "es" };
   }
 }
+
 /**
  * Obtiene o descarga los versículos normalizados reutilizando el caché en memoria.
  */
@@ -417,6 +419,9 @@ export function cargarCapitulosLibro(nombreLibro, versesArray, pantallaOrigen) {
   });
 }
 
+// ==========================================
+// RENDERIZADO DE VERSÍCULOS + ESTADO PARA AUDIO
+// ==========================================
 export function renderizarVersiculosCapitulo(
   nombreLibro,
   numCapitulo,
@@ -440,6 +445,12 @@ export function renderizarVersiculosCapitulo(
   if (typeof changeScreen === "function" && screenLectura) {
     changeScreen(screenLectura);
   }
+
+  // Guardar estado actual para el módulo de audio y controles MediaSession[span_0](start_span)[span_0](end_span)
+  window.pvAudioEstado = window.pvAudioEstado || {};
+  window.pvAudioEstado.libro = nombreLibro;
+  window.pvAudioEstado.capitulo = numCapitulo;
+  window.pvAudioEstado.versosLibro = versosLibro; // útil para next/prev[span_1](start_span)[span_1](end_span)
 
   const tituloLectura = document.getElementById("titulo-lectura-completa");
   const areaLectura = document.getElementById("texto-lectura-final");
@@ -473,28 +484,54 @@ export function renderizarVersiculosCapitulo(
   });
   htmlVersos += `</div>`;
 
+  // Toggle de Modo Continuo + Barra de Navegación de Capítulos
   htmlVersos += `
-    <div style="max-width: 600px; margin: 30px auto 50px auto; display: flex; justify-content: space-between; align-items: center; border-top: 1px solid rgba(212,175,55,0.3); padding-top: 20px;">
+    <div style="max-width: 600px; margin: 20px auto 10px auto; padding: 0 10px; display: flex; justify-content: center;">
+      <label class="toggle-continuo" style="display: flex; align-items: center; gap: 8px; color: #ccc; font-size: 0.85rem; cursor: pointer; background: rgba(212, 175, 55, 0.05); border: 1px dashed rgba(212, 175, 55, 0.3); padding: 8px 12px; border-radius: 8px; width: 100%; justify-content: center;">
+        <input type="checkbox" id="chk-modo-continuo" style="accent-color: var(--gold); cursor: pointer;">
+        <span>Continuar al siguiente capítulo automáticamente</span>
+      </label>
+    </div>
+
+    <div style="max-width: 600px; margin: 20px auto 50px auto; display: flex; justify-content: space-between; align-items: center; border-top: 1px solid rgba(212,175,55,0.3); padding-top: 20px;">
       <button id="btn-cap-anterior" style="background: rgba(212,175,55,0.1); border: 1px solid var(--gold); color: #fff; padding: 10px 16px; border-radius: 6px; cursor: pointer; font-size: 0.9rem; ${!capAnterior ? "opacity: 0.3; pointer-events: none;" : ""}">⬅ Anterior</button>
       <span style="color: var(--gold); font-size: 0.85rem;">Capítulo ${numCapitulo}</span>
       <button id="btn-cap-siguiente" style="background: rgba(212,175,55,0.1); border: 1px solid var(--gold); color: #fff; padding: 10px 16px; border-radius: 6px; cursor: pointer; font-size: 0.9rem; ${!capSiguiente ? "opacity: 0.3; pointer-events: none;" : ""}">Siguiente ➡</button>
     </div>
   `;
-  // Para resetear pausa, cuando la pantalla y los botones ya están listos:
+
   if (typeof resetAudioState === "function") {
     resetAudioState();
   }
   if (areaLectura) areaLectura.innerHTML = htmlVersos;
 
-  // 1. Aplica subrayados de la capa de estudio (las cajas)
+  // Inicializar y sincronizar el estado del checkbox del Modo Continuo[span_2](start_span)[span_2](end_span)
+  const chkContinuo = document.getElementById("chk-modo-continuo");
+  if (chkContinuo) {
+    const activo = localStorage.getItem("pv_modo_continuo") === "true";
+    chkContinuo.checked = activo;
+    window.pvAudioEstado.autoContinuar = activo;
+
+    chkContinuo.onchange = () => {
+      localStorage.setItem(
+        "pv_modo_continuo",
+        chkContinuo.checked ? "true" : "false",
+      );
+      if (window.pvAudioEstado) {
+        window.pvAudioEstado.autoContinuar = chkContinuo.checked;
+      }
+    };
+  }
+
+  // 1. Aplica subrayados de la capa de estudio
   if (typeof window.aplicarSubrayadosCapitulo === "function") {
     window.aplicarSubrayadosCapitulo(nombreLibro, numCapitulo);
   }
 
-  // 2. Inicializa los eventos de la paleta del Fibrón si no estaban
+  // 2. Inicializa los eventos de la paleta del Fibrón
   initFibronEvents();
 
-  // 3. Conecta el clic en cada versículo para resaltar con el Fibrón
+  // 3. Conecta el clic en cada versículo para resaltar
   conectarEventosLecturaFibron(nombreLibro, numCapitulo);
 
   if (capAnterior) {
@@ -514,8 +551,57 @@ export function renderizarVersiculosCapitulo(
   }
 }
 
+// ==========================================
+// SIGUIENTE / ANTERIOR CAPÍTULO (GLOBAL PARA AUDIO Y AUTO)
+// ==========================================
+window.irAlSiguienteCapitulo = function (autoReproducir = false) {
+  const estado = window.pvAudioEstado || {};
+  if (!estado.libro || !estado.versosLibro) return;
+
+  const caps = [...new Set(estado.versosLibro.map((v) => v.chapter))].sort(
+    (a, b) => a - b,
+  );
+  const idx = caps.indexOf(Number(estado.capitulo));
+  if (idx === -1 || idx >= caps.length - 1) {
+    console.log("No hay más capítulos en este libro");
+    return;
+  }
+
+  const siguiente = caps[idx + 1];
+  renderizarVersiculosCapitulo(estado.libro, siguiente, estado.versosLibro);
+
+  if (autoReproducir) {
+    setTimeout(() => {
+      if (typeof window.ejecutarLecturaVoz === "function") {
+        window.ejecutarLecturaVoz();
+      }
+    }, 700);
+  }
+};
+
+window.irAlCapituloAnterior = function (autoReproducir = false) {
+  const estado = window.pvAudioEstado || {};
+  if (!estado.libro || !estado.versosLibro) return;
+
+  const caps = [...new Set(estado.versosLibro.map((v) => v.chapter))].sort(
+    (a, b) => a - b,
+  );
+  const idx = caps.indexOf(Number(estado.capitulo));
+  if (idx <= 0) return;
+
+  const anterior = caps[idx - 1];
+  renderizarVersiculosCapitulo(estado.libro, anterior, estado.versosLibro);
+
+  if (autoReproducir) {
+    setTimeout(() => {
+      if (typeof window.ejecutarLecturaVoz === "function") {
+        window.ejecutarLecturaVoz();
+      }
+    }, 700);
+  }
+};
+
 /**
- /**
  * Inicializa los eventos del botón de Fibrón y su paleta flotante
  */
 export function initFibronEvents() {
@@ -525,7 +611,6 @@ export function initFibronEvents() {
 
   if (!btnToggle || !paleta) return;
 
-  // Abrir / Cerrar paleta
   btnToggle.onclick = (e) => {
     e.stopPropagation();
     const estaOculta =
@@ -533,13 +618,11 @@ export function initFibronEvents() {
     paleta.style.display = estaOculta ? "flex" : "none";
   };
 
-  // Elegir color de la paleta
   botonesColor.forEach((btn) => {
     btn.onclick = (e) => {
       e.stopPropagation();
       const colorElegido = btn.getAttribute("data-color");
 
-      // 1. Limpiamos el brillo y estilos de todos los botones de la paleta primero
       botonesColor.forEach((b) => {
         b.style.boxShadow = "none";
         b.style.transform = "scale(1)";
@@ -550,15 +633,12 @@ export function initFibronEvents() {
       });
 
       if (window.colorFibronActivo === colorElegido) {
-        // Se desactiva (toggle)
         window.colorFibronActivo = null;
         btnToggle.style.border = "1px solid var(--gold)";
       } else {
-        // Se activa el nuevo color o la gomita
         window.colorFibronActivo = colorElegido;
         btnToggle.style.border = "2px solid #fff";
 
-        // 2. Aplicamos el efecto visual según sea la gomita o un color
         if (colorElegido === "borrar") {
           btn.style.backgroundColor = "#ff5555";
           btn.style.color = "#1a1a1a";
@@ -574,11 +654,11 @@ export function initFibronEvents() {
     };
   });
 
-  // Cerrar paleta si se toca fuera
   document.addEventListener("click", () => {
     if (paleta) paleta.style.display = "none";
   });
 }
+
 /**
  * Conecta el clic en cada versículo cuando el modo Fibrón está activo
  */
@@ -604,10 +684,9 @@ export function conectarEventosLecturaFibron(nombreLibro, numeroCapitulo) {
     });
   });
 }
+
 /**
- /**
- * Genera y muestra automáticamente el Índice de Contenido Exegético en la Guía,
- * leyendo exclusivamente desde contenido.json para mostrar solo lo que tiene cajitas reales.
+ * Genera y muestra automáticamente el Índice de Contenido Exegético en la Guía
  */
 export async function inicializarIndiceExegeticoEnGuia() {
   const contenedor = document.getElementById("lista-indice-dinamico");
@@ -616,13 +695,10 @@ export async function inicializarIndiceExegeticoEnGuia() {
   contenedor.innerHTML = "<em>Cargando índice exegético...</em>";
 
   try {
-    // 1. Cargamos el archivo de contenido exegético
     const respuesta = await fetch("data/contenido.json");
     const datosJson = await respuesta.json();
-
     const idioma = localStorage.getItem("palabra_viva_idioma") || "es";
 
-    // Validamos que exista la estructura para el idioma actual
     if (
       !datosJson.idiomas ||
       !datosJson.idiomas[idioma] ||
@@ -642,9 +718,7 @@ export async function inicializarIndiceExegeticoEnGuia() {
       return;
     }
 
-    // 2. Ordenamos los libros según el CANON_COMPLETO oficial
     llavesLibros.sort((a, b) => {
-      // Normalizamos las claves para buscar el índice exacto en el canon
       let nombreA = a.charAt(0).toUpperCase() + a.slice(1);
       let nombreB = b.charAt(0).toUpperCase() + b.slice(1);
 
@@ -656,7 +730,6 @@ export async function inicializarIndiceExegeticoEnGuia() {
       return idxA - idxB;
     });
 
-    // 3. Construimos la lista visual adaptada al acordeón
     let htmlIndice = `<ul style="list-style: none; padding-left: 0; margin: 0;">`;
 
     llavesLibros.forEach((keyLibro) => {
@@ -668,7 +741,6 @@ export async function inicializarIndiceExegeticoEnGuia() {
 
       if (numerosCapitulos.length === 0) return;
 
-      // Nombre oficial capitalizado para mostrar
       const nombreLibroEsp =
         keyLibro.charAt(0).toUpperCase() + keyLibro.slice(1);
       const nombreVisible = obtenerNombreVisible(nombreLibroEsp);
@@ -695,14 +767,12 @@ export async function inicializarIndiceExegeticoEnGuia() {
     htmlIndice += `</ul>`;
     contenedor.innerHTML = htmlIndice;
 
-    // 4. Agregamos los eventos de clic para que al tocar un capítulo salte directo a la lectura
     contenedor.querySelectorAll(".enlace-capitulo-indice").forEach((link) => {
       link.addEventListener("click", async (e) => {
         e.preventDefault();
         const libro = link.getAttribute("data-libro");
         const cap = parseInt(link.getAttribute("data-capitulo"));
 
-        // Obtenemos los versos de la Biblia activa para poder renderizar la lectura
         const todosLosVersos = await obtenerVersosNormalizados();
         const versosLibro = todosLosVersos.filter((v) => v.book_name === libro);
 
@@ -710,26 +780,18 @@ export async function inicializarIndiceExegeticoEnGuia() {
       });
     });
   } catch (error) {
-    console.error(
-      "Error al generar el índice exegético desde contenido.json:",
-      error,
-    );
+    console.error("Error al generar el índice exegético:", error);
     contenedor.innerHTML =
       "<p style='color: #ff5555;'><em>Error al cargar el índice.</em></p>";
   }
 }
-// Escucha cuando el usuario abre el acordeón del índice por primera vez
-// Disparador elegante para cargar el índice exegético al abrir el acordeón por primera vez
+
 document
   .getElementById("acordeon-indice-exegetico")
   ?.addEventListener("toggle", function () {
     if (this.open) {
       if (typeof inicializarIndiceExegeticoEnGuia === "function") {
         inicializarIndiceExegeticoEnGuia();
-      } else {
-        console.error(
-          "La función inicializarIndiceExegeticoEnGuia no está definida.",
-        );
       }
     }
   });
@@ -749,7 +811,6 @@ async function poblarReferenciasAcordeon() {
       return;
     }
 
-    // Obtenemos el idioma activo unificando la fuente global y local
     const lang =
       window.idiomaActual ||
       localStorage.getItem("idioma") ||
@@ -764,22 +825,20 @@ async function poblarReferenciasAcordeon() {
         ref.hacia.citaTexto ||
         `${ref.hacia.libro.toUpperCase()} ${ref.hacia.capitulo},${ref.hacia.versiculo}`;
 
-      // Extraemos el texto traducido según el idioma actual (con respaldo en 'es')
       const datosIdioma = ref[lang] || ref.es || ref;
-      const tipoTexto = datosIdioma.tipo || "";
       const explicacionTexto = datosIdioma.explicacion || "";
 
       html += `
-                <li style="margin-bottom: 10px; border-bottom: 1px solid rgba(212,175,55,0.1); padding-bottom: 8px;">
-                  <a href="#" class="enlace-referencia-item" 
-                     data-libro="${ref.desde.libro}" 
-                     data-capitulo="${ref.desde.capitulo}" 
-                     style="color: var(--gold); text-decoration: none; display: block; cursor: pointer;">
-                     🔗 <strong>${textoOrigen}</strong> ➔ ${textoDestino}
-                  </a>
-                  <span style="font-size: 0.85rem; color: #ccc; display: block; margin-top: 4px; line-height: 1.3;">${explicacionTexto}</span>
-                </li>
-            `;
+        <li style="margin-bottom: 10px; border-bottom: 1px solid rgba(212,175,55,0.1); padding-bottom: 8px;">
+          <a href="#" class="enlace-referencia-item" 
+             data-libro="${ref.desde.libro}" 
+             data-capitulo="${ref.desde.capitulo}" 
+             style="color: var(--gold); text-decoration: none; display: block; cursor: pointer;">
+             🔗 <strong>${textoOrigen}</strong> ➔ ${textoDestino}
+          </a>
+          <span style="font-size: 0.85rem; color: #ccc; display: block; margin-top: 4px; line-height: 1.3;">${explicacionTexto}</span>
+        </li>
+      `;
     });
 
     html += "</ul>";
@@ -796,15 +855,11 @@ async function poblarReferenciasAcordeon() {
           typeof versosLibro !== "undefined"
         ) {
           renderizarVersiculosCapitulo(libro, capitulo, versosLibro);
-        } else {
-          console.warn(
-            "Faltan datos o la función de renderizado global para saltar al capítulo.",
-          );
         }
       });
     });
   } catch (error) {
-    console.error("Error al cargar las referencias en el acordeón:", error);
+    console.error("Error al cargar las referencias:", error);
     contenedor.innerHTML =
       '<p style="color: #ff6b6b; margin: 0;">Error al cargar las referencias.</p>';
   }
@@ -827,14 +882,12 @@ async function cargarGlosario() {
       return;
     }
 
-    // Detectamos el idioma activo con la variable global o localStorage
     const lang =
       window.idiomaActual ||
       localStorage.getItem("idioma") ||
       localStorage.getItem("palabra_viva_idioma") ||
       "es";
 
-    // Ordenamos alfabéticamente según el título del idioma activo
     const terminosOrdenados = [...glosarioData].sort((a, b) => {
       const objA = a[lang] || a.es || {};
       const objB = b[lang] || b.es || {};
@@ -843,9 +896,7 @@ async function cargarGlosario() {
       return tituloA.localeCompare(tituloB, lang, { sensitivity: "base" });
     });
 
-    // Inyectamos las tarjetas traduciéndolas al idioma actual
     terminosOrdenados.forEach((item) => {
-      // Extrae la rama correspondiente ('es', 'en' o 'pt'), con respaldo en 'es'
       const datos = item[lang] || item.es || {};
       const titulo = datos.titulo || item.termino || "";
       const definicion = datos.definicion || "";
@@ -864,11 +915,12 @@ async function cargarGlosario() {
       "<p class='glosario-error'>No se pudieron cargar los términos.</p>";
   }
 }
-// Inicialización unificada al cargar el DOM o cuando corresponda
+
 document.addEventListener("DOMContentLoaded", () => {
   poblarReferenciasAcordeon();
   cargarGlosario();
 });
+
 /**
  * Desactiva el modo Fibrón, limpia los estilos de la paleta y resetea el color activo.
  */

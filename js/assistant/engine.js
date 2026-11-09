@@ -5,7 +5,7 @@ let esperandoConfirmacionMic = false;
 let preguntasExploradasEnSesion = new Set();
 let esperandoNombre = false;
 
-import { hablarTextoGlobal } from "../core/voz.js"; // (o ajustá la ruta relativa según dónde esté engine.js respecto a core/)
+import { hablarTextoPorFrases } from "../core/voz.js"; // (o ajustá la ruta relativa según dónde esté engine.js respecto a core/)
 
 export function getEsperandoNombre() {
   return esperandoNombre;
@@ -217,7 +217,7 @@ export function buscarEnSeccionJson(texto, seccion) {
 // Síntesis de voz
 // Síntesis de voz
 export function hacerHablarAlRobot(texto) {
-  hablarTextoGlobal(texto);
+  hablarTextoPorFrases(texto);
 }
 // ==========================================
 // EL CAMINO DE LA RAZÓN (Multilingüe: ES, EN, PT)

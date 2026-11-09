@@ -4798,8 +4798,3 @@ button,
     border-color: var(--gold);
   }
 }
-
-.btn-pausa-activo {
-  animation: pulsoFrenoMano 1.5s infinite ease-in-out;
-  background: rgba(212, 175, 55, 0.4) !important;
-}

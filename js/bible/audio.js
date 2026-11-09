@@ -1,5 +1,7 @@
 // js/bible/audio.js
-// Módulo de sintetizador de voz y lectura bíblica fluida por frases
+// Módulo de sintetizador de voz y lectura bíblica fluida por frases con Media Session y Modo Continuo
+
+import { hablarTextoPorFrases, resetAudioState } from "../core/voz.js";
 
 let estaReproduciendo = false;
 
@@ -42,7 +44,7 @@ export function obtenerVozPorIdioma(idiomaCodigo) {
 }
 
 // ==========================================
-// 2. MOTOR DE AUDIO BÍBLICO (POR FRASES)
+// 2. MOTOR DE AUDIO BÍBLICO (CONECTADO AL NÚCLEO)
 // ==========================================
 export function ejecutarLecturaVoz() {
   if (!("speechSynthesis" in window)) {
@@ -58,7 +60,7 @@ export function ejecutarLecturaVoz() {
   // --- BOTÓN DETENER / INTERRUPTOR INSTANTÁNEO ---
   if (estaReproduciendo || window.speechSynthesis.speaking) {
     estaReproduciendo = false;
-    window.speechSynthesis.cancel();
+    resetAudioState();
     if (btnAudio) {
       btnAudio.innerHTML = '<i class="fas fa-volume-up"></i> Escuchar';
     }
@@ -83,76 +85,31 @@ export function ejecutarLecturaVoz() {
     return;
   }
 
-  // 3. SEPARAR EL CAPÍTULO EN FRASES
-  const frases = textoLimpio.match(/[^.!?]+[.!?]+/g) || [textoLimpio];
+  // 3. Tomar libro y capítulo actuales para los metadatos del Media Session
+  const libro =
+    window.pvAudioEstado?.libro ||
+    document.getElementById("titulo-libro-seleccionado")?.textContent ||
+    "Sagrada Escritura";
 
-  // 4. Cancelación preventiva del buffer
-  window.speechSynthesis.cancel();
+  const capitulo =
+    window.pvAudioEstado?.capitulo ||
+    document
+      .querySelector("#titulo-lectura-completa")
+      ?.textContent.match(/CAP\.?\s*(\d+)/i)?.[1] ||
+    "";
 
-  // 5. Cadena de lectura fluida
-  setTimeout(() => {
-    if (typeof window.desactivarModoFibron === "function") {
-      window.desactivarModoFibron();
-    } else if (typeof desactivarModoFibron === "function") {
-      desactivarModoFibron();
-    }
-    const idiomaApp =
-      window.idiomaActual || localStorage.getItem("idiomaApp") || "es";
-    const configIdioma =
-      CONFIG_IDIOMAS_VOZ[idiomaApp] || CONFIG_IDIOMAS_VOZ["es"];
-    const vozSeleccionada = obtenerVozPorIdioma(idiomaApp);
+  estaReproduciendo = true;
+  if (btnAudio) {
+    btnAudio.innerHTML = '<i class="fas fa-stop"></i> Detener';
+  }
 
-    let indiceFrase = 0;
-    estaReproduciendo = true;
-
-    if (btnAudio) {
-      btnAudio.innerHTML = '<i class="fas fa-stop"></i> Detener';
-    }
-
-    // Función recursiva que encadena las oraciones
-    function reproducirSiguienteFrase() {
-      if (!estaReproduciendo || indiceFrase >= frases.length) {
-        estaReproduciendo = false;
-        window.speechSynthesis.cancel();
-        if (btnAudio) {
-          btnAudio.innerHTML = '<i class="fas fa-volume-up"></i> Escuchar';
-        }
-        return;
-      }
-
-      const textoFrase = frases[indiceFrase].trim();
-
-      if (!textoFrase) {
-        indiceFrase++;
-        reproducirSiguienteFrase();
-        return;
-      }
-
-      const utterance = new SpeechSynthesisUtterance(textoFrase);
-      if (vozSeleccionada) utterance.voice = vozSeleccionada;
-      utterance.lang = configIdioma.lang;
-
-      // CONFIGURACIÓN REFLEXIVA / PAUSADA
-      utterance.rate = 0.82;
-      utterance.pitch = 0.95;
-
-      utterance.onend = () => {
-        indiceFrase++;
-        reproducirSiguienteFrase();
-      };
-
-      utterance.onerror = (e) => {
-        console.error("Error en frase de voz:", e);
-        estaReproduciendo = false;
-        window.speechSynthesis.cancel();
-        if (btnAudio) {
-          btnAudio.innerHTML = '<i class="fas fa-volume-up"></i> Escuchar';
-        }
-      };
-
-      window.speechSynthesis.speak(utterance);
-    }
-
-    reproducirSiguienteFrase();
-  }, 150);
+  // 4. Delegamos la reproducción por frases al núcleo unificado (voz.js)
+  if (typeof hablarTextoPorFrases === "function") {
+    hablarTextoPorFrases(textoLimpio, { libro, capitulo });
+  } else {
+    console.error("No se encontró la función hablarTextoPorFrases en voz.js");
+  }
 }
+
+// Exponer globalmente para la interfaz y botones
+window.ejecutarLecturaVoz = ejecutarLecturaVoz;

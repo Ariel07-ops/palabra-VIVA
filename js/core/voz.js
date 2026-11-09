@@ -1,5 +1,5 @@
-// core/voz.js
-// Módulo central de síntesis de voz, MediaSession API y control de estados (Core)
+// js/core/voz.js
+// Núcleo de voz + MediaSession + modo continuo
 
 import { desactivarModoFibron } from "../bible/reader.js";
 
@@ -15,39 +15,48 @@ export const CONFIG_IDIOMAS_VOZ = {
   },
 };
 
+let estaReproduciendo = false;
+let indiceFrase = 0;
+let frasesActuales = [];
 let utteranceActual = null;
-let listaCapitulosActual = [];
-let indiceCapituloActual = 0;
 
+// Estado del libro/capítulo actual (para next/prev)
+window.pvAudioEstado = window.pvAudioEstado || {
+  libro: null,
+  capitulo: null,
+  autoContinuar: localStorage.getItem("pv_modo_continuo") === "true",
+};
+
+// ======================
+// HELPERS
+// ======================
 export function obtenerVozPorIdioma(idiomaCodigo) {
   if (!("speechSynthesis" in window)) return null;
   const voces = window.speechSynthesis.getVoices();
-  const config = CONFIG_IDIOMAS_VOZ[idiomaCodigo] || CONFIG_IDIOMAS_VOZ["es"];
+  const config = CONFIG_IDIOMAS_VOZ[idiomaCodigo] || CONFIG_IDIOMAS_VOZ.es;
 
   for (let nombre of config.filtro) {
-    const vozEncontrada = voces.find((v) => v.name.includes(nombre));
-    if (vozEncontrada) return vozEncontrada;
+    const voz = voces.find((v) => v.name.includes(nombre));
+    if (voz) return voz;
   }
-
-  const vozFemenina = voces.find(
+  const femenina = voces.find(
     (v) =>
       v.lang.startsWith(idiomaCodigo) &&
       v.name.toLowerCase().includes("female"),
   );
-  if (vozFemenina) return vozFemenina;
-
+  if (femenina) return femenina;
   return voces.find((v) => v.lang.startsWith(idiomaCodigo)) || voces[0];
 }
 
-// ==========================================
-// RESETEO TOTAL (ANTI-FANTASMAS Y LIMPIEZA)
-// ==========================================
 export function resetAudioState() {
+  estaReproduciendo = false;
+  indiceFrase = 0;
+  frasesActuales = [];
+  utteranceActual = null;
+
   if ("speechSynthesis" in window) {
     window.speechSynthesis.cancel();
   }
-
-  limpiarEstadoPausa();
 
   const btnAudio = document.getElementById("btn-hablar-lectura");
   if (btnAudio) {
@@ -60,147 +69,144 @@ export function resetAudioState() {
   }
 }
 
-// Función global mejorada con control de MediaSession (Bluetooth / Auto / Bloqueo)
-export function hablarTextoGlobal(texto, listaCompleta = null) {
-  if (!("speechSynthesis" in window) || !texto) return;
+// ======================
+/// ======================
+// MEDIA SESSION
+// ======================
+function configurarMediaSession() {
+  if (!("mediaSession" in navigator)) return;
 
-  // 1. Limpieza total preventiva
+  navigator.mediaSession.setActionHandler("play", () => {
+    if (typeof window.ejecutarLecturaVoz === "function") {
+      window.ejecutarLecturaVoz();
+    }
+  });
+
+  navigator.mediaSession.setActionHandler("pause", () => {
+    resetAudioState();
+  });
+
+  navigator.mediaSession.setActionHandler("stop", () => {
+    resetAudioState();
+  });
+
+  navigator.mediaSession.setActionHandler("nexttrack", () => {
+    if (typeof window.irAlSiguienteCapitulo === "function") {
+      window.irAlSiguienteCapitulo(true); // true = auto-reproducir
+    }
+  });
+
+  navigator.mediaSession.setActionHandler("previoustrack", () => {
+    if (typeof window.irAlCapituloAnterior === "function") {
+      window.irAlCapituloAnterior(true);
+    }
+  });
+}
+
+function actualizarMediaSession(titulo, capitulo) {
+  if (!("mediaSession" in navigator)) return;
+
+  navigator.mediaSession.metadata = new MediaMetadata({
+    title: capitulo ? `${titulo} – Cap. ${capitulo}` : titulo || "Palabra Viva",
+    artist: "Palabra Viva",
+    album: "Lectura Bíblica",
+    artwork: [
+      { src: "img/icon-192.png", sizes: "192x192", type: "image/png" },
+      { src: "img/icon-512.png", sizes: "512x512", type: "image/png" },
+    ],
+  });
+
+  navigator.mediaSession.playbackState = estaReproduciendo
+    ? "playing"
+    : "paused";
+}
+
+// Llamar una vez al iniciar la app
+configurarMediaSession();
+
+// ======================
+
+// ======================
+// LECTURA POR FRASES (capítulo actual)
+// ======================
+export function hablarTextoPorFrases(textoLimpio, meta = {}) {
+  if (!("speechSynthesis" in window) || !textoLimpio) return;
+
   resetAudioState();
 
   if (typeof desactivarModoFibron === "function") {
     desactivarModoFibron();
   }
-  if (listaCompleta) {
-    listaCapitulosActual = listaCompleta;
-    indiceCapituloActual = 0;
+
+  // Guardar meta para MediaSession y next/prev
+  if (meta.libro) window.pvAudioEstado.libro = meta.libro;
+  if (meta.capitulo) window.pvAudioEstado.capitulo = meta.capitulo;
+
+  frasesActuales = textoLimpio.match(/[^.!?]+[.!?]+/g) || [textoLimpio];
+  indiceFrase = 0;
+  estaReproduciendo = true;
+
+  const btnAudio = document.getElementById("btn-hablar-lectura");
+  if (btnAudio) {
+    btnAudio.innerHTML = '<i class="fas fa-stop"></i> Detener';
   }
+
+  actualizarMediaSession(meta.libro || "Palabra Viva", meta.capitulo);
 
   const idiomaApp =
     window.idiomaActual || localStorage.getItem("idiomaApp") || "es";
-  const configIdioma =
-    CONFIG_IDIOMAS_VOZ[idiomaApp] || CONFIG_IDIOMAS_VOZ["es"];
+  const configIdioma = CONFIG_IDIOMAS_VOZ[idiomaApp] || CONFIG_IDIOMAS_VOZ.es;
   const vozSeleccionada = obtenerVozPorIdioma(idiomaApp);
 
-  utteranceActual = new SpeechSynthesisUtterance(texto);
-  if (vozSeleccionada) utteranceActual.voice = vozSeleccionada;
-  utteranceActual.lang = configIdioma.lang;
+  function reproducirSiguienteFrase() {
+    if (!estaReproduciendo || indiceFrase >= frasesActuales.length) {
+      // Terminó el capítulo
+      estaReproduciendo = false;
+      if (btnAudio)
+        btnAudio.innerHTML = '<i class="fas fa-volume-up"></i> Escuchar';
+      if ("mediaSession" in navigator)
+        navigator.mediaSession.playbackState = "none";
 
-  // Configuración reflexiva y pausada
-  utteranceActual.rate = 0.82;
-  utteranceActual.pitch = 0.95;
-
-  utteranceActual.onend = () => {
-    resetAudioState();
-  };
-
-  utteranceActual.onerror = (e) => {
-    console.error("Error en síntesis global:", e);
-    resetAudioState();
-  };
-
-  // 2. Configurar controles para auriculares Bluetooth y pantalla de bloqueo (MediaSession)
-  if ("mediaSession" in navigator) {
-    navigator.mediaSession.metadata = new MediaMetadata({
-      title: "Palabra Viva - Lectura Bíblica",
-      artist: "Acompañamiento Espiritual",
-      album: "Estudio Bíblico",
-      artwork: [
-        { src: "img/icon-192.png", sizes: "192x192", type: "image/png" },
-        { src: "img/icon-512.png", sizes: "512x512", type: "image/png" },
-      ],
-    });
-
-    navigator.mediaSession.setActionHandler("play", () => {
-      if (window.speechSynthesis.paused) {
-        window.speechSynthesis.resume();
-        limpiarEstadoPausa();
-        navigator.mediaSession.playbackState = "playing";
+      // --- BYPASS: MODO CONTINUO ---
+      const modoContinuo = localStorage.getItem("pv_modo_continuo") === "true";
+      if (modoContinuo && typeof window.irAlSiguienteCapitulo === "function") {
+        setTimeout(() => {
+          window.irAlSiguienteCapitulo(true); // Salta y reproduce automáticamente
+        }, 900);
       }
-    });
+      return;
+    }
 
-    navigator.mediaSession.setActionHandler("pause", () => {
-      if (window.speechSynthesis.speaking && !window.speechSynthesis.paused) {
-        window.speechSynthesis.pause();
-        marcarEstadoPausa();
-        navigator.mediaSession.playbackState = "paused";
-      }
-    });
+    const textoFrase = frasesActuales[indiceFrase].trim();
+    if (!textoFrase) {
+      indiceFrase++;
+      reproducirSiguienteFrase();
+      return;
+    }
 
-    navigator.mediaSession.setActionHandler("stop", () => {
+    utteranceActual = new SpeechSynthesisUtterance(textoFrase);
+    if (vozSeleccionada) utteranceActual.voice = vozSeleccionada;
+    utteranceActual.lang = configIdioma.lang;
+    utteranceActual.rate = 0.82;
+    utteranceActual.pitch = 0.95;
+
+    utteranceActual.onend = () => {
+      indiceFrase++;
+      reproducirSiguienteFrase();
+    };
+
+    utteranceActual.onerror = () => {
       resetAudioState();
-    });
+    };
 
-    navigator.mediaSession.setActionHandler("nexttrack", () => {
-      siguienteCapituloAudio();
-    });
-
-    navigator.mediaSession.playbackState = "playing";
+    window.speechSynthesis.speak(utteranceActual);
   }
 
-  window.speechSynthesis.speak(utteranceActual);
-}
-// ==========================================
-// CONTROL DE PAUSA / REANUDACIÓN (TESTIGO)
-// ==========================================
-// ==========================================
-// CONTROL DE PAUSA / REANUDACIÓN (BLINDADO)
-// ==========================================
-export function alternarPausaAudio() {
-  if (!("speechSynthesis" in window)) return;
-
-  // Si está hablando activamente y NO está pausado -> Pausamos
-  if (window.speechSynthesis.speaking && !window.speechSynthesis.paused) {
-    window.speechSynthesis.pause();
-    marcarEstadoPausa();
-    if ("mediaSession" in navigator) {
-      navigator.mediaSession.playbackState = "paused";
-    }
-  }
-  // Si está pausado -> Reanudamos
-  else if (window.speechSynthesis.paused) {
-    window.speechSynthesis.resume();
-    limpiarEstadoPausa();
-    if ("mediaSession" in navigator) {
-      navigator.mediaSession.playbackState = "playing";
-    }
-  }
-  // Si el botón quedó titilando (atrapado) pero el navegador ya no está reproduciendo
-  else {
-    // Forzamos limpieza total para evitar el estado "sordo" en dispositivos móviles
-    resetAudioState();
-  }
-}
-function marcarEstadoPausa() {
-  const btnPausa = document.getElementById("btn-pausa-lectura");
-  if (btnPausa) {
-    // Activamos el estado de pausa pero sin titilar, mostrando el icono de Play para reanudar
-    btnPausa.classList.add("btn-pausa-activo");
-    btnPausa.classList.remove("titilando");
-    btnPausa.innerHTML = '<i class="fas fa-play"></i>';
-  }
+  // Pequeño delay para evitar bugs de cancelación
+  setTimeout(() => reproducirSiguienteFrase(), 150);
 }
 
-function limpiarEstadoPausa() {
-  const btnPausa = document.getElementById("btn-pausa-lectura");
-  if (btnPausa) {
-    // Volvemos al estado normal mostrando el icono de Pausa
-    btnPausa.classList.remove("btn-pausa-activo", "titilando");
-    btnPausa.innerHTML = '<i class="fas fa-pause"></i>';
-  }
-}
+// Exponer
 
-function siguienteCapituloAudio() {
-  resetAudioState();
-  if (
-    listaCapitulosActual.length > 0 &&
-    indiceCapituloActual < listaCapitulosActual.length - 1
-  ) {
-    indiceCapituloActual++;
-    const siguienteTexto = listaCapitulosActual[indiceCapituloActual];
-    hablarTextoGlobal(siguienteTexto);
-  }
-}
-
-// Exponer globalmente para HTML / UI
-window.alternarPausaAudio = alternarPausaAudio;
 window.resetAudioState = resetAudioState;
+window.hablarTextoPorFrases = hablarTextoPorFrases;
