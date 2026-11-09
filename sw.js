@@ -1,4 +1,4 @@
-const CACHE_NAME = "palabra-viva-v18"; // Subimos la versión
+const CACHE_NAME = "palabra-viva-v19"; // Subimos la versión
 
 const urlsToCache = [
   "./",
