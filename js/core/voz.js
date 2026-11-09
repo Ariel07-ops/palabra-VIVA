@@ -142,25 +142,34 @@ export function hablarTextoGlobal(texto, listaCompleta = null) {
 // ==========================================
 // CONTROL DE PAUSA / REANUDACIÓN (TESTIGO)
 // ==========================================
+// ==========================================
+// CONTROL DE PAUSA / REANUDACIÓN (BLINDADO)
+// ==========================================
 export function alternarPausaAudio() {
   if (!("speechSynthesis" in window)) return;
 
-  // Si está hablando y NO está pausado -> Pausamos
+  // Si está hablando activamente y NO está pausado -> Pausamos
   if (window.speechSynthesis.speaking && !window.speechSynthesis.paused) {
     window.speechSynthesis.pause();
     marcarEstadoPausa();
-    if ("mediaSession" in navigator)
+    if ("mediaSession" in navigator) {
       navigator.mediaSession.playbackState = "paused";
+    }
   }
   // Si está pausado -> Reanudamos
   else if (window.speechSynthesis.paused) {
     window.speechSynthesis.resume();
     limpiarEstadoPausa();
-    if ("mediaSession" in navigator)
+    if ("mediaSession" in navigator) {
       navigator.mediaSession.playbackState = "playing";
+    }
+  }
+  // Si el botón quedó titilando (atrapado) pero el navegador ya no está reproduciendo
+  else {
+    // Forzamos limpieza total para evitar el estado "sordo" en dispositivos móviles
+    resetAudioState();
   }
 }
-
 function marcarEstadoPausa() {
   const btnPausa = document.getElementById("btn-pausa-lectura");
   if (btnPausa) {
