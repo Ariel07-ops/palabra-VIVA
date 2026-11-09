@@ -6,7 +6,7 @@ import {
   guardarResaltadoPersonal,
   aplicarResaltadosPersonales,
 } from "./boxes.js";
-
+import { resetAudioState } from "../core/voz.js";
 // Variable global para controlar qué color del Fibrón está activo (null = desactivado)
 window.colorFibronActivo = null;
 
@@ -480,7 +480,10 @@ export function renderizarVersiculosCapitulo(
       <button id="btn-cap-siguiente" style="background: rgba(212,175,55,0.1); border: 1px solid var(--gold); color: #fff; padding: 10px 16px; border-radius: 6px; cursor: pointer; font-size: 0.9rem; ${!capSiguiente ? "opacity: 0.3; pointer-events: none;" : ""}">Siguiente ➡</button>
     </div>
   `;
-
+  // Para resetear pausa, cuando la pantalla y los botones ya están listos:
+  if (typeof resetAudioState === "function") {
+    resetAudioState();
+  }
   if (areaLectura) areaLectura.innerHTML = htmlVersos;
 
   // 1. Aplica subrayados de la capa de estudio (las cajas)
@@ -866,3 +869,29 @@ document.addEventListener("DOMContentLoaded", () => {
   poblarReferenciasAcordeon();
   cargarGlosario();
 });
+/**
+ * Desactiva el modo Fibrón, limpia los estilos de la paleta y resetea el color activo.
+ */
+export function desactivarModoFibron() {
+  window.colorFibronActivo = null;
+
+  const btnToggle = document.getElementById("btn-toggle-fibron");
+  if (btnToggle) {
+    btnToggle.style.border = "1px solid var(--gold)";
+  }
+
+  const paleta = document.getElementById("paleta-fibron");
+  if (paleta) {
+    paleta.style.display = "none";
+  }
+
+  const botonesColor = document.querySelectorAll(".btn-color-fibron");
+  botonesColor.forEach((b) => {
+    b.style.boxShadow = "none";
+    b.style.transform = "scale(1)";
+    if (b.getAttribute("data-color") === "borrar") {
+      b.style.backgroundColor = "#333";
+      b.style.color = "#ff5555";
+    }
+  });
+}

@@ -91,6 +91,11 @@ export function ejecutarLecturaVoz() {
 
   // 5. Cadena de lectura fluida
   setTimeout(() => {
+    if (typeof window.desactivarModoFibron === "function") {
+      window.desactivarModoFibron();
+    } else if (typeof desactivarModoFibron === "function") {
+      desactivarModoFibron();
+    }
     const idiomaApp =
       window.idiomaActual || localStorage.getItem("idiomaApp") || "es";
     const configIdioma =

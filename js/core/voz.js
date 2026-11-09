@@ -1,4 +1,7 @@
 // core/voz.js
+// Módulo central de síntesis de voz, MediaSession API y control de estados (Core)
+
+import { desactivarModoFibron } from "../bible/reader.js";
 
 export const CONFIG_IDIOMAS_VOZ = {
   es: { lang: "es-ES", filtro: ["Paulina", "Monica", "Helena", "Sabina"] },
@@ -36,13 +39,37 @@ export function obtenerVozPorIdioma(idiomaCodigo) {
   return voces.find((v) => v.lang.startsWith(idiomaCodigo)) || voces[0];
 }
 
-// Función global mejorada con control de MediaSession (Bluetooth / Auto)
+// ==========================================
+// RESETEO TOTAL (ANTI-FANTASMAS Y LIMPIEZA)
+// ==========================================
+export function resetAudioState() {
+  if ("speechSynthesis" in window) {
+    window.speechSynthesis.cancel();
+  }
+
+  limpiarEstadoPausa();
+
+  const btnAudio = document.getElementById("btn-hablar-lectura");
+  if (btnAudio) {
+    btnAudio.innerHTML = '<i class="fas fa-volume-up"></i> Escuchar';
+    btnAudio.classList.remove("titilando");
+  }
+
+  if ("mediaSession" in navigator) {
+    navigator.mediaSession.playbackState = "none";
+  }
+}
+
+// Función global mejorada con control de MediaSession (Bluetooth / Auto / Bloqueo)
 export function hablarTextoGlobal(texto, listaCompleta = null) {
   if (!("speechSynthesis" in window) || !texto) return;
 
-  // 1. Limpieza total para que no se encimen audios viejos de otros capítulos
-  window.speechSynthesis.cancel();
+  // 1. Limpieza total preventiva
+  resetAudioState();
 
+  if (typeof desactivarModoFibron === "function") {
+    desactivarModoFibron();
+  }
   if (listaCompleta) {
     listaCapitulosActual = listaCompleta;
     indiceCapituloActual = 0;
@@ -62,12 +89,21 @@ export function hablarTextoGlobal(texto, listaCompleta = null) {
   utteranceActual.rate = 0.82;
   utteranceActual.pitch = 0.95;
 
-  // 2. Configurar controles para el estéreo del auto o auriculares (MediaSession)
+  utteranceActual.onend = () => {
+    resetAudioState();
+  };
+
+  utteranceActual.onerror = (e) => {
+    console.error("Error en síntesis global:", e);
+    resetAudioState();
+  };
+
+  // 2. Configurar controles para auriculares Bluetooth y pantalla de bloqueo (MediaSession)
   if ("mediaSession" in navigator) {
     navigator.mediaSession.metadata = new MediaMetadata({
       title: "Palabra Viva - Lectura Bíblica",
       artist: "Acompañamiento Espiritual",
-      album: "Catequesis de Confirmación",
+      album: "Estudio Bíblico",
       artwork: [
         { src: "img/icon-192.png", sizes: "192x192", type: "image/png" },
         { src: "img/icon-512.png", sizes: "512x512", type: "image/png" },
@@ -77,56 +113,75 @@ export function hablarTextoGlobal(texto, listaCompleta = null) {
     navigator.mediaSession.setActionHandler("play", () => {
       if (window.speechSynthesis.paused) {
         window.speechSynthesis.resume();
+        limpiarEstadoPausa();
+        navigator.mediaSession.playbackState = "playing";
       }
     });
 
     navigator.mediaSession.setActionHandler("pause", () => {
-      if (window.speechSynthesis.speaking) {
+      if (window.speechSynthesis.speaking && !window.speechSynthesis.paused) {
         window.speechSynthesis.pause();
+        marcarEstadoPausa();
+        navigator.mediaSession.playbackState = "paused";
       }
+    });
+
+    navigator.mediaSession.setActionHandler("stop", () => {
+      resetAudioState();
     });
 
     navigator.mediaSession.setActionHandler("nexttrack", () => {
       siguienteCapituloAudio();
     });
+
+    navigator.mediaSession.playbackState = "playing";
   }
 
   window.speechSynthesis.speak(utteranceActual);
 }
-
-// Funciones auxiliares para pausar, reanudar o pasar de capítulo desde la UI o el auto
-// Función única de Pausa/Reanudación con indicador visual ("freno de mano")
+// ==========================================
+// CONTROL DE PAUSA / REANUDACIÓN (TESTIGO)
+// ==========================================
 export function alternarPausaAudio() {
   if (!("speechSynthesis" in window)) return;
-  const btnPausa = document.getElementById("btn-pausa-lectura");
 
+  // Si está hablando y NO está pausado -> Pausamos
   if (window.speechSynthesis.speaking && !window.speechSynthesis.paused) {
     window.speechSynthesis.pause();
-    if (btnPausa) btnPausa.classList.add("btn-pausa-activo"); // Prende el testigo
-  } else if (window.speechSynthesis.paused) {
+    marcarEstadoPausa();
+    if ("mediaSession" in navigator)
+      navigator.mediaSession.playbackState = "paused";
+  }
+  // Si está pausado -> Reanudamos
+  else if (window.speechSynthesis.paused) {
     window.speechSynthesis.resume();
-    if (btnPausa) btnPausa.classList.remove("btn-pausa-activo"); // Apaga el testigo
+    limpiarEstadoPausa();
+    if ("mediaSession" in navigator)
+      navigator.mediaSession.playbackState = "playing";
   }
 }
 
-// Asegurarnos de apagar el testigo si el audio termina solo o se cancela
-function limpiarEstadoPausa() {
+function marcarEstadoPausa() {
   const btnPausa = document.getElementById("btn-pausa-lectura");
-  if (btnPausa) btnPausa.classList.remove("btn-pausa-activo");
+  if (btnPausa) {
+    // Activamos el estado de pausa pero sin titilar, mostrando el icono de Play para reanudar
+    btnPausa.classList.add("btn-pausa-activo");
+    btnPausa.classList.remove("titilando");
+    btnPausa.innerHTML = '<i class="fas fa-play"></i>';
+  }
 }
 
-// En tu función hablarTextoGlobal (cuando arranca un audio nuevo), asegurate de limpiar el estado:
-// limpiarEstadoPausa();
-
-window.alternarPausaAudio = alternarPausaAudio;
-export function reanudarAudioGlobal() {
-  if (window.speechSynthesis.paused) {
-    window.speechSynthesis.resume();
+function limpiarEstadoPausa() {
+  const btnPausa = document.getElementById("btn-pausa-lectura");
+  if (btnPausa) {
+    // Volvemos al estado normal mostrando el icono de Pausa
+    btnPausa.classList.remove("btn-pausa-activo", "titilando");
+    btnPausa.innerHTML = '<i class="fas fa-pause"></i>';
   }
 }
 
 function siguienteCapituloAudio() {
-  window.speechSynthesis.cancel();
+  resetAudioState();
   if (
     listaCapitulosActual.length > 0 &&
     indiceCapituloActual < listaCapitulosActual.length - 1
@@ -136,5 +191,7 @@ function siguienteCapituloAudio() {
     hablarTextoGlobal(siguienteTexto);
   }
 }
-// Exponer la función globalmente para que el HTML la reconozca
+
+// Exponer globalmente para HTML / UI
 window.alternarPausaAudio = alternarPausaAudio;
+window.resetAudioState = resetAudioState;
