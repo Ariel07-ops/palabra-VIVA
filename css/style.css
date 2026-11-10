@@ -4798,3 +4798,17 @@ button,
     border-color: var(--gold);
   }
 }
+/* Hace que el <details> abierto se expanda en el contenedor flex */
+details.acordeon-tema[open] {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Remueve el límite de altura fija y permite scroll interno fluido */
+details.acordeon-tema[open] #lista-referencias-acordeon,
+details.acordeon-tema[open] div[style*="max-height"] {
+  max-height: none !important;
+  flex: 1;
+  overflow-y: auto;
+}

@@ -796,7 +796,7 @@ document
     }
   });
 
-async function poblarReferenciasAcordeon() {
+export async function poblarReferenciasAcordeon() {
   const contenedor = document.getElementById("lista-referencias-acordeon");
   if (!contenedor) return;
 
@@ -865,7 +865,7 @@ async function poblarReferenciasAcordeon() {
   }
 }
 
-async function cargarGlosario() {
+export async function cargarGlosario() {
   const contenedor = document.getElementById("glosario-container");
   if (!contenedor) return;
 

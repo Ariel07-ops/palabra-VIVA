@@ -1,77 +1,2207 @@
 [
   {
-    "termino": "Dogma",
+    "termino": "Abismo",
     "es": {
-      "titulo": "Dogma",
-      "definicion": "Verdad revelada por Dios y definida formalmente por la Iglesia, que exige la adhesión de fe de los creyentes."
+      "titulo": "Abismo",
+      "definicion": "Profundidad inmensa. Según el pasaje, puede referirse a aguas profundas, al mundo de los muertos o a una fuerza caótica."
     },
     "en": {
-      "titulo": "Dogma",
-      "definicion": "Truth revealed by God and formally defined by the Church, which demands the adherence of faith from believers."
+      "titulo": "Abyss",
+      "definicion": "Immense depth. Depending on the passage, it can refer to deep waters, the realm of the dead, or a chaotic force."
     },
     "pt": {
-      "titulo": "Dogma",
-      "definicion": "Verdade revelada por Deus e definida formalmente pela Igreja, que exige a adesão de fé dos crentes."
+      "titulo": "Abismo",
+      "definicion": "Profundidade imensa. Segundo a passagem, pode referir-se a águas profundas, ao mundo dos mortos ou a uma força caótica."
     }
   },
   {
-    "termino": "Enciclica",
+    "termino": "Abominacion",
     "es": {
-      "titulo": "Encíclica",
-      "definicion": "Carta solemne que el Papa dirige a los obispos y a todos los fieles para reflexionar sobre temas doctrinarios o morales."
+      "titulo": "Abominación",
+      "definicion": "Acción o cosa que se considera gravemente detestable ante Dios."
     },
     "en": {
-      "titulo": "Encyclical",
-      "definicion": "Solemn letter addressed by the Pope to bishops and all the faithful to reflect on doctrinal or moral issues."
+      "titulo": "Abomination",
+      "definicion": "An action or thing considered deeply detestable before God."
     },
     "pt": {
-      "titulo": "Encíclica",
-      "definicion": "Carta solene que o Papa dirige aos bispos e a todos os fiéis para refletir sobre temas doutrinários ou morais."
+      "titulo": "Abominação",
+      "definicion": "Ação ou coisa considerada gravemente detestável diante de Deus."
     }
   },
   {
-    "termino": "Magisterio",
+    "termino": "Adorar",
     "es": {
-      "titulo": "Magisterio",
-      "definicion": "Autoridad de enseñanza de la Iglesia, ejercida por el Papa y los obispos en comunión con él, para interpretar y custodiar la Verdad."
+      "titulo": "Adorar",
+      "definicion": "Reconocer a Dios como Señor y rendirle culto."
     },
     "en": {
-      "titulo": "Magisterium",
-      "definicion": "Teaching authority of the Church, exercised by the Pope and bishops in communion with him, to interpret and guard the Truth."
+      "titulo": "Worship",
+      "definicion": "To acknowledge God as Lord and render Him worship."
     },
     "pt": {
-      "titulo": "Magistério",
-      "definicion": "Autoridade de ensino da Igreja, exercida pelo Papa e pelos bispos em comunhão com ele, para interpretar e custodiar a Verdade."
+      "titulo": "Adorar",
+      "definicion": "Reconhecer a Deus como Senhor e render-Lhe culto."
     }
   },
   {
-    "termino": "Parusia",
+    "termino": "Adulterio",
     "es": {
-      "titulo": "Parusía",
-      "definicion": "Segunda venida gloriosa de Jesucristo al final de los tiempos."
+      "titulo": "Adulterio",
+      "definicion": "Relación sexual de una persona casada con alguien que no es su cónyuge. En la Biblia también puede representar la infidelidad a Dios."
     },
     "en": {
-      "titulo": "Parousia",
-      "definicion": "The glorious second coming of Jesus Christ at the end of time."
+      "titulo": "Adultery",
+      "definicion": "Sexual relationship of a married person with someone other than their spouse. In the Bible it can also represent unfaithfulness to God."
     },
     "pt": {
-      "titulo": "Parusia",
-      "definicion": "A segunda vinda gloriosa de Jesus Cristo no fim dos tempos."
+      "titulo": "Adultério",
+      "definicion": "Relação sexual de uma pessoa casada com alguém que não é seu cônjuge. Na Bíblia também pode representar a infidelidade a Deus."
+    }
+  },
+  {
+    "termino": "Afliccion",
+    "es": {
+      "titulo": "Aflicción",
+      "definicion": "Sufrimiento, angustia o situación que causa dolor."
+    },
+    "en": {
+      "titulo": "Affliction",
+      "definicion": "Suffering, anguish, or a situation that causes pain."
+    },
+    "pt": {
+      "titulo": "Aflição",
+      "definicion": "Sofrimento, angústia ou situação que causa dor."
+    }
+  },
+  {
+    "termino": "Alianza",
+    "es": {
+      "titulo": "Alianza",
+      "definicion": "Pacto o compromiso solemne. En la Biblia suele referirse al vínculo que Dios establece con personas o con su pueblo."
+    },
+    "en": {
+      "titulo": "Covenant",
+      "definicion": "A solemn pact or commitment. In the Bible it usually refers to the bond God establishes with individuals or His people."
+    },
+    "pt": {
+      "titulo": "Aliança",
+      "definicion": "Pacto ou compromisso solene. Na Bíblia costuma referir-se ao vínculo que Deus estabelece com pessoas ou com o seu povo."
+    }
+  },
+  {
+    "termino": "Alma",
+    "es": {
+      "titulo": "Alma",
+      "definicion": "La vida o el ser de una persona. Según el contexto, también puede referirse a la persona entera."
+    },
+    "en": {
+      "titulo": "Soul",
+      "definicion": "The life or being of a person. Depending on the context, it can also refer to the entire person."
+    },
+    "pt": {
+      "titulo": "Alma",
+      "definicion": "A vida ou o ser de uma pessoa. Segundo o contexto, também pode referir-se à pessoa inteira."
+    }
+  },
+  {
+    "termino": "Altar",
+    "es": {
+      "titulo": "Altar",
+      "definicion": "Lugar destinado a ofrecer sacrificios o presentar ofrendas a Dios."
+    },
+    "en": {
+      "titulo": "Altar",
+      "definicion": "Place designated for offering sacrifices or presenting offerings to God."
+    },
+    "pt": {
+      "titulo": "Altar",
+      "definicion": "Lugar destinado a oferecer sacrifícios ou apresentar oferendas a Deus."
+    }
+  },
+  {
+    "termino": "Amen",
+    "es": {
+      "titulo": "Amén",
+      "definicion": "Expresión que confirma lo dicho; significa «así es» o «así sea»."
+    },
+    "en": {
+      "titulo": "Amen",
+      "definicion": "Expression confirming what was said; it means 'so be it' or 'truly'."
+    },
+    "pt": {
+      "titulo": "Amém",
+      "definicion": "Expressão que confirma o que foi dito; significa 'assim seja' ou 'assim é'."
+    }
+  },
+  {
+    "termino": "Anciano",
+    "es": {
+      "titulo": "Anciano",
+      "definicion": "Persona mayor; también, alguien respetado que puede cumplir una función de autoridad en la comunidad."
+    },
+    "en": {
+      "titulo": "Elder",
+      "definicion": "An older person; also, a respected individual who fulfills a role of authority in the community."
+    },
+    "pt": {
+      "titulo": "Ancião",
+      "definicion": "Pessoa idosa; também, alguém respeitado que pode exercer uma função de autoridade na comunidade."
+    }
+  },
+  {
+    "termino": "Angel",
+    "es": {
+      "titulo": "Ángel",
+      "definicion": "Mensajero o servidor de Dios."
+    },
+    "en": {
+      "titulo": "Angel",
+      "definicion": "Messenger or servant of God."
+    },
+    "pt": {
+      "titulo": "Anjo",
+      "definicion": "Mensageiro ou servidor de Deus."
+    }
+  },
+  {
+    "termino": "Apostol",
+    "es": {
+      "titulo": "Apóstol",
+      "definicion": "Enviado. En el Nuevo Testamento, especialmente, uno de los enviados por Jesús para anunciar el Evangelio."
+    },
+    "en": {
+      "titulo": "Apostle",
+      "definicion": "One who is sent. In the New Testament, specifically one sent by Jesus to proclaim the Gospel."
+    },
+    "pt": {
+      "titulo": "Apóstolo",
+      "definicion": "Enviado. No Novo Testamento, especialmente, um dos enviados por Jesus para anunciar o Evangelho."
+    }
+  },
+  {
+    "termino": "Arca",
+    "es": {
+      "titulo": "Arca",
+      "definicion": "Caja o cofre. En la Biblia, puede referirse al arca de Noé o al Arca de la Alianza."
+    },
+    "en": {
+      "titulo": "Ark",
+      "definicion": "Chest or vessel. In the Bible, it can refer to Noah's ark or the Ark of the Covenant."
+    },
+    "pt": {
+      "titulo": "Arca",
+      "definicion": "Caixa ou cofre. Na Bíblia, pode referir-se à arca de Noé ou à Arca da Aliança."
+    }
+  },
+  {
+    "termino": "ArcaDeLaAlianza",
+    "es": {
+      "titulo": "Arca de la Alianza",
+      "definicion": "Cofre sagrado asociado con la alianza de Dios con Israel y con las tablas de la Ley."
+    },
+    "en": {
+      "titulo": "Ark of the Covenant",
+      "definicion": "Sacred chest associated with God's covenant with Israel and the tables of the Law."
+    },
+    "pt": {
+      "titulo": "Arca da Aliança",
+      "definicion": "Cofre sagrado associado à aliança de Deus com Israel e às tábuas da Lei."
+    }
+  },
+  {
+    "termino": "Arrepentimiento",
+    "es": {
+      "titulo": "Arrepentimiento",
+      "definicion": "Reconocimiento del pecado y cambio interior que impulsa a apartarse del mal y volver a Dios."
+    },
+    "en": {
+      "titulo": "Repentance",
+      "definicion": "Recognition of sin and an inner change that impels turning away from evil and returning to God."
+    },
+    "pt": {
+      "titulo": "Arrependimento",
+      "definicion": "Reconhecimento do pecado e mudança interior que impulsiona a afastar-se do mal e voltar para Deus."
+    }
+  },
+  {
+    "termino": "Asamblea",
+    "es": {
+      "titulo": "Asamblea",
+      "definicion": "Reunión de personas. En algunos pasajes, es la comunidad reunida para escuchar a Dios o rendirle culto."
+    },
+    "en": {
+      "titulo": "Assembly",
+      "definicion": "Gathering of people. In some passages, it refers to the community gathered to listen to God or worship Him."
+    },
+    "pt": {
+      "titulo": "Assembleia",
+      "definicion": "Reunião de pessoas. Em algumas passagens, é a comunidade reunida para ouvir a Deus ou render-Lhe culto."
+    }
+  },
+  {
+    "termino": "Asedio",
+    "es": {
+      "titulo": "Asedio",
+      "definicion": "Cerco de una ciudad por un ejército que intenta conquistarla."
+    },
+    "en": {
+      "titulo": "Siege",
+      "definicion": "Encirclement of a city by an army attempting to conquer it."
+    },
+    "pt": {
+      "titulo": "Cerco",
+      "definicion": "Cerco de uma cidade por um exército que tenta conquistá-la."
+    }
+  },
+  {
+    "termino": "Ayuno",
+    "es": {
+      "titulo": "Ayuno",
+      "definicion": "Abstenerse de comer durante un tiempo, generalmente como práctica de oración, penitencia o preparación."
+    },
+    "en": {
+      "titulo": "Fasting",
+      "definicion": "Abstaining from food for a time, usually as a practice of prayer, penance, or preparation."
+    },
+    "pt": {
+      "titulo": "Jejum",
+      "definicion": "Abster-se de comer durante um tempo, geralmente como prática de oração, penitência ou preparação."
+    }
+  },
+  {
+    "termino": "Baal",
+    "es": {
+      "titulo": "Baal",
+      "definicion": "Nombre de una divinidad adorada por pueblos vecinos de Israel. La Biblia critica que Israel le rinda culto."
+    },
+    "en": {
+      "titulo": "Baal",
+      "definicion": "Name of a deity worshipped by Israel's neighboring peoples. The Bible criticizes Israel for worshipping him."
+    },
+    "pt": {
+      "titulo": "Baal",
+      "definicion": "Nome de uma divindade adorada por povos vizinhos de Israel. A Bíblia critica que Israel lhe renda culto."
+    }
+  },
+  {
+    "termino": "Bautismo",
+    "es": {
+      "titulo": "Bautismo",
+      "definicion": "Rito de iniciación cristiana realizado con agua; incorpora a la vida cristiana y está relacionado con el perdón de los pecados."
+    },
+    "en": {
+      "titulo": "Baptism",
+      "definicion": "Christian initiation rite performed with water; incorporates into Christian life and is related to the forgiveness of sins."
+    },
+    "pt": {
+      "titulo": "Batismo",
+      "definicion": "Rito de iniciação cristã realizado com água; incorpora à vida cristã e está relacionado com o perdão dos pecados."
+    }
+  },
+  {
+    "termino": "Bendicion",
+    "es": {
+      "titulo": "Bendición",
+      "definicion": "Bien o favor pedido a Dios o recibido de Él. Bendecir también puede significar alabar a Dios o desear el bien a alguien."
+    },
+    "en": {
+      "titulo": "Blessing",
+      "definicion": "Good or favor requested from God or received from Him. To bless can also mean praising God or wishing good upon someone."
+    },
+    "pt": {
+      "titulo": "Bênção",
+      "definicion": "Bem ou favor pedido a Deus ou recebido d'Ele. Abençoar também pode significar louvar a Deus ou desejar o bem a alguém."
+    }
+  },
+  {
+    "termino": "Blasfemia",
+    "es": {
+      "titulo": "Blasfemia",
+      "definicion": "Palabra o acción que insulta a Dios o trata irrespetuosamente lo sagrado."
+    },
+    "en": {
+      "titulo": "Blasphemy",
+      "definicion": "Word or action that insults God or treats what is sacred disrespectfully."
+    },
+    "pt": {
+      "titulo": "Blasfêmia",
+      "definicion": "Palavra ou ação que insulta a Deus ou trata desrespeitosamente o sagrado."
+    }
+  },
+  {
+    "termino": "Bondad",
+    "es": {
+      "titulo": "Bondad",
+      "definicion": "Disposición a hacer el bien y tratar a los demás con benevolencia."
+    },
+    "en": {
+      "titulo": "Goodness",
+      "definicion": "Disposition to do good and treat others with benevolence."
+    },
+    "pt": {
+      "titulo": "Bondade",
+      "definicion": "Disposição para fazer o bem e tratar os outros com benevolência."
+    }
+  },
+  {
+    "termino": "Buey",
+    "es": {
+      "titulo": "Buey",
+      "definicion": "Animal de trabajo semejante al toro, usado antiguamente para tirar del arado o transportar cargas."
+    },
+    "en": {
+      "titulo": "Ox",
+      "definicion": "Work animal similar to a bull, used anciently to pull plows or transport loads."
+    },
+    "pt": {
+      "titulo": "Boi",
+      "definicion": "Animal de trabalho semelhante ao touro, usado antigamente para puxar o arado ou transportar cargas."
+    }
+  },
+  {
+    "termino": "Caliz",
+    "es": {
+      "titulo": "Cáliz",
+      "definicion": "Copa. En la celebración cristiana, es la copa en que se consagra el vino de la Eucaristía."
+    },
+    "en": {
+      "titulo": "Chalice",
+      "definicion": "Cup. In Christian celebration, it is the cup in which the Eucharistic wine is consecrated."
+    },
+    "pt": {
+      "titulo": "Cálice",
+      "definicion": "Copo ou taça. Na celebração cristã, é a taça em que se consagra o vinho da Eucaristia."
+    }
+  },
+  {
+    "termino": "Caridad",
+    "es": {
+      "titulo": "Caridad",
+      "definicion": "Amor a Dios y al prójimo que se expresa en obras concretas de cuidado y ayuda."
+    },
+    "en": {
+      "titulo": "Charity",
+      "definicion": "Love for God and neighbor expressed in concrete works of care and help."
+    },
+    "pt": {
+      "titulo": "Caridade",
+      "definicion": "Amor a Deus e ao próximo que se expressa em obras concretas de cuidado e ajuda."
+    }
+  },
+  {
+    "termino": "Carne",
+    "es": {
+      "titulo": "Carne",
+      "definicion": "Puede significar el cuerpo humano, la condición mortal de las personas o, en algunos pasajes, la inclinación al pecado."
+    },
+    "en": {
+      "titulo": "Flesh",
+      "definicion": "Can mean the human body, mortal human condition, or in some passages, the inclination to sin."
+    },
+    "pt": {
+      "titulo": "Carne",
+      "definicion": "Pode significar o corpo humano, a condição mortal das pessoas ou, em algumas passagens, a inclinação ao pecado."
+    }
+  },
+  {
+    "termino": "Celo",
+    "es": {
+      "titulo": "Celo",
+      "definicion": "Dedicación intensa a una causa o a Dios. También puede significar envidia o deseo posesivo, según el pasaje."
+    },
+    "en": {
+      "titulo": "Zeal",
+      "definicion": "Intense dedication to a cause or to God. It can also mean envy or possessive desire, depending on the passage."
+    },
+    "pt": {
+      "titulo": "Zelo",
+      "definicion": "Dedicação intensa a uma causa ou a Deus. Também pode significar inveja ou desejo possessivo, segundo a passagem."
+    }
+  },
+  {
+    "termino": "Cesar",
+    "es": {
+      "titulo": "César",
+      "definicion": "Título usado por los emperadores romanos."
+    },
+    "en": {
+      "titulo": "Caesar",
+      "definicion": "Title used by Roman emperors."
+    },
+    "pt": {
+      "titulo": "César",
+      "definicion": "Título usado pelos imperadores romanos."
+    }
+  },
+  {
+    "termino": "Cielo",
+    "es": {
+      "titulo": "Cielo",
+      "definicion": "Morada de Dios; también puede referirse al firmamento o al ámbito celestial."
+    },
+    "en": {
+      "titulo": "Heaven",
+      "definicion": "Dwelling of God; can also refer to the firmament or the heavenly realm."
+    },
+    "pt": {
+      "titulo": "Céu",
+      "definicion": "Morada de Deus; também pode referir-se ao firmamento ou ao âmbito celestial."
+    }
+  },
+  {
+    "termino": "Circuncision",
+    "es": {
+      "titulo": "Circuncisión",
+      "definicion": "Señal ritual que consistía en cortar el prepucio. En la antigua alianza, era señal de pertenencia al pueblo de Israel."
+    },
+    "en": {
+      "titulo": "Circumcision",
+      "definicion": "Ritual sign consisting of removing the foreskin. In the Old Covenant, it was a sign of belonging to Israel."
+    },
+    "pt": {
+      "titulo": "Circuncisão",
+      "definicion": "Sinal ritual que consistia em cortar o prepúcio. Na antiga aliança, era sinal de pertença ao povo de Israel."
+    }
+  },
+  {
+    "termino": "Consagrar",
+    "es": {
+      "titulo": "Consagrar",
+      "definicion": "Dedicar a Dios o destinar algo o a alguien a un servicio sagrado."
+    },
+    "en": {
+      "titulo": "Consecrate",
+      "definicion": "To dedicate to God or set apart something or someone for a sacred service."
+    },
+    "pt": {
+      "titulo": "Consagrar",
+      "definicion": "Dedicar a Deus ou destinar algo ou alguém a um serviço sagrado."
+    }
+  },
+  {
+    "termino": "Conversion",
+    "es": {
+      "titulo": "Conversión",
+      "definicion": "Cambio de vida que supone apartarse del pecado y volver a Dios."
+    },
+    "en": {
+      "titulo": "Conversion",
+      "definicion": "Change of life involving turning away from sin and returning to God."
+    },
+    "pt": {
+      "titulo": "Conversão",
+      "definicion": "Mudança de vida que supõe afastar-se do pecado e voltar para Deus."
+    }
+  },
+  {
+    "termino": "Corazon",
+    "es": {
+      "titulo": "Corazón",
+      "definicion": "Además del órgano del cuerpo, representa el centro interior de la persona: sus pensamientos, deseos, decisiones y sentimientos."
+    },
+    "en": {
+      "titulo": "Heart",
+      "definicion": "Besides the physical organ, represents the inner center of a person: thoughts, desires, decisions, and feelings."
+    },
+    "pt": {
+      "titulo": "Coração",
+      "definicion": "Além do órgão do corpo, representa o centro interior da pessoa: seus pensamentos, desejos, decisões e sentimentos."
+    }
+  },
+  {
+    "termino": "Cordero",
+    "es": {
+      "titulo": "Cordero",
+      "definicion": "Cría de la oveja. En el Nuevo Testamento, «Cordero de Dios» es un título de Jesús que señala su entrega y su misión salvadora."
+    },
+    "en": {
+      "titulo": "Lamb",
+      "definicion": "Young sheep. In the New Testament, 'Lamb of God' is a title of Jesus highlighting His self-giving and saving mission."
+    },
+    "pt": {
+      "titulo": "Cordeiro",
+      "definicion": "Cria da ovelha. No Novo Testamento, 'Cordeiro de Deus' é um título de Jesus que assinala a sua entrega e missão salvadora."
+    }
+  },
+  {
+    "termino": "Creacion",
+    "es": {
+      "titulo": "Creación",
+      "definicion": "Todo lo que Dios ha hecho; también puede referirse a la acción de crear."
+    },
+    "en": {
+      "titulo": "Creation",
+      "definicion": "All that God has made; can also refer to the act of creating."
+    },
+    "pt": {
+      "titulo": "Criação",
+      "definicion": "Tudo o que Deus fez; também pode referir-se à ação de criar."
+    }
+  },
+  {
+    "termino": "Cruz",
+    "es": {
+      "titulo": "Cruz",
+      "definicion": "Instrumento romano de ejecución. Para los cristianos, representa la muerte de Jesús y su entrega por la salvación."
+    },
+    "en": {
+      "titulo": "Cross",
+      "definicion": "Roman instrument of execution. For Christians, it represents the death of Jesus and His self-offering for salvation."
+    },
+    "pt": {
+      "titulo": "Cruz",
+      "definicion": "Instrumento romano de execução. Para os cristãos, representa a morte de Jesus e a sua entrega pela salvação."
+    }
+  },
+  {
+    "termino": "Culto",
+    "es": {
+      "titulo": "Culto",
+      "definicion": "Conjunto de actos con que se honra y se adora a Dios."
+    },
+    "en": {
+      "titulo": "Worship / Cult",
+      "definicion": "Set of acts by which God is honored and worshipped."
+    },
+    "pt": {
+      "titulo": "Culto",
+      "definicion": "Conjunto de atos com que se honra e se adora a Deus."
+    }
+  },
+  {
+    "termino": "Decalogo",
+    "es": {
+      "titulo": "Decálogo",
+      "definicion": "Los Diez Mandamientos."
+    },
+    "en": {
+      "titulo": "Decalogue",
+      "definicion": "The Ten Commandments."
+    },
+    "pt": {
+      "titulo": "Decálogo",
+      "definicion": "Os Dez Mandamentos."
+    }
+  },
+  {
+    "termino": "Demonio",
+    "es": {
+      "titulo": "Demonio",
+      "definicion": "Espíritu maligno que se opone a Dios y busca apartar a las personas del bien."
+    },
+    "en": {
+      "titulo": "Demon",
+      "definicion": "Evil spirit that opposes God and seeks to lead people away from goodness."
+    },
+    "pt": {
+      "titulo": "Demônio",
+      "definicion": "Espírito maligno que se opõe a Deus e busca afastar as pessoas do bem."
+    }
+  },
+  {
+    "termino": "Desierto",
+    "es": {
+      "titulo": "Desierto",
+      "definicion": "Región extensa, árida y poco habitada. En la Biblia puede ser lugar de prueba, soledad, encuentro con Dios o camino hacia una promesa."
+    },
+    "en": {
+      "titulo": "Wilderness / Desert",
+      "definicion": "Arid, sparsely inhabited region. In the Bible, it can be a place of testing, solitude, meeting God, or path to a promise."
+    },
+    "pt": {
+      "titulo": "Deserto",
+      "definicion": "Região extensa, árida e pouco habitada. Na Bíblia pode ser lugar de provação, solidão, encontro com Deus ou caminho para uma promessa."
+    }
+  },
+  {
+    "termino": "Discipulo",
+    "es": {
+      "titulo": "Discípulo",
+      "definicion": "Persona que aprende de un maestro y sigue sus enseñanzas. Los discípulos de Jesús lo acompañaban y aprendían de él."
+    },
+    "en": {
+      "titulo": "Disciple",
+      "definicion": "Person who learns from a master and follows their teachings. Jesus' disciples accompanied Him and learned from Him."
+    },
+    "pt": {
+      "titulo": "Discípulo",
+      "definicion": "Pessoa que aprende com um mestre e segue os seus ensinamentos. Os discípulos de Jesus acompanhavam-no e aprendiam com ele."
+    }
+  },
+  {
+    "termino": "Dios",
+    "es": {
+      "titulo": "Dios",
+      "definicion": "Nombre con que se reconoce al Creador y Señor de todo. En la fe bíblica, es único, santo y fuente de la vida."
+    },
+    "en": {
+      "titulo": "God",
+      "definicion": "Name acknowledging the Creator and Lord of all. In biblical faith, He is one, holy, and the source of life."
+    },
+    "pt": {
+      "titulo": "Deus",
+      "definicion": "Nome com que se reconhece o Criador e Senhor de tudo. Na fé bíblica, é único, santo e fonte da vida."
+    }
+  },
+  {
+    "termino": "Doctrina",
+    "es": {
+      "titulo": "Doctrina",
+      "definicion": "Enseñanza o conjunto de enseñanzas sobre la fe y la vida."
+    },
+    "en": {
+      "titulo": "Doctrine",
+      "definicion": "Teaching or set of teachings concerning faith and life."
+    },
+    "pt": {
+      "titulo": "Doutrina",
+      "definicion": "Ensinamento ou conjunto de ensinamentos sobre a fé e a vida."
+    }
+  },
+  {
+    "termino": "Don",
+    "es": {
+      "titulo": "Don",
+      "definicion": "Regalo recibido. En la Biblia puede referirse especialmente a un regalo de Dios o a una capacidad concedida para servir."
+    },
+    "en": {
+      "titulo": "Gift",
+      "definicion": "Received gift. In the Bible, it especially refers to a gift from God or an ability granted for service."
+    },
+    "pt": {
+      "titulo": "Dom",
+      "definicion": "Presente recebido. Na Bíblia pode referir-se especialmente a um presente de Deus ou a uma capacidade concedida para servir."
+    }
+  },
+  {
+    "termino": "Edom",
+    "es": {
+      "titulo": "Edom",
+      "definicion": "Nombre de un pueblo y de una región vinculados en la Biblia con los descendientes de Esaú."
+    },
+    "en": {
+      "titulo": "Edom",
+      "definicion": "Name of a people and region linked in the Bible with Esau's descendants."
+    },
+    "pt": {
+      "titulo": "Edom",
+      "definicion": "Nome de um povo e de uma região vinculados na Bíblia aos descendentes de Esaú."
+    }
+  },
+  {
+    "termino": "Efod",
+    "es": {
+      "titulo": "Efod",
+      "definicion": "Prenda o vestidura religiosa usada por los sacerdotes de Israel."
+    },
+    "en": {
+      "titulo": "Ephod",
+      "definicion": "Sacred garment worn by the priests of Israel."
+    },
+    "pt": {
+      "titulo": "Éfode",
+      "definicion": "Veste religiosa usada pelos sacerdotes de Israel."
+    }
+  },
+  {
+    "termino": "Eleccion",
+    "es": {
+      "titulo": "Elección",
+      "definicion": "Acto de escoger. En la Biblia puede referirse a la elección de una persona o de un pueblo para una misión."
+    },
+    "en": {
+      "titulo": "Election / Choice",
+      "definicion": "Act of choosing. In the Bible, it can refer to the selection of a person or a people for a mission."
+    },
+    "pt": {
+      "titulo": "Eleição",
+      "definicion": "Ato de escolher. Na Bíblia pode referir-se à escolha de uma pessoa ou de um povo para uma missão."
+    }
+  },
+  {
+    "termino": "Envidia",
+    "es": {
+      "titulo": "Envidia",
+      "definicion": "Tristeza o resentimiento por el bien que tiene otra persona, acompañado a veces por el deseo de que lo pierda."
+    },
+    "en": {
+      "titulo": "Envy",
+      "definicion": "Sorrow or resentment over another's good, sometimes accompanied by the desire for them to lose it."
+    },
+    "pt": {
+      "titulo": "Inveja",
+      "definicion": "Tristeza ou ressentimento pelo bem de outra pessoa, por vezes acompanhado pelo desejo de que o perca."
+    }
+  },
+  {
+    "termino": "Escriba",
+    "es": {
+      "titulo": "Escriba",
+      "definicion": "Experto en la Ley y en su interpretación; podía enseñar o copiar los textos sagrados."
+    },
+    "en": {
+      "titulo": "Scribe",
+      "definicion": "Expert in the Law and its interpretation; could teach or copy sacred texts."
+    },
+    "pt": {
+      "titulo": "Escriba",
+      "definicion": "Especialista na Lei e na sua interpretação; podia ensinar ou copiar os textos sagrados."
+    }
+  },
+  {
+    "termino": "Escritura",
+    "es": {
+      "titulo": "Escritura",
+      "definicion": "Texto escrito. «Las Escrituras» suele referirse a los libros sagrados."
+    },
+    "en": {
+      "titulo": "Scripture",
+      "definicion": "Written text. 'The Scriptures' usually refers to the sacred books."
+    },
+    "pt": {
+      "titulo": "Escritura",
+      "definicion": "Texto escrito. 'As Escrituras' costuma referir-se aos livros sagrados."
+    }
+  },
+  {
+    "termino": "Espiritu",
+    "es": {
+      "titulo": "Espíritu",
+      "definicion": "Aliento o principio de vida; también puede referirse a la dimensión interior de una persona o a un ser espiritual."
+    },
+    "en": {
+      "titulo": "Spirit",
+      "definicion": "Breath or principle of life; can also refer to a person's inner dimension or a spiritual being."
+    },
+    "pt": {
+      "titulo": "Espírito",
+      "definicion": "Sopro ou princípio de vida; também pode referir-se à dimensão interior de uma pessoa ou a um ser espiritual."
+    }
+  },
+  {
+    "termino": "EspirituSanto",
+    "es": {
+      "titulo": "Espíritu Santo",
+      "definicion": "Espíritu de Dios; en la fe cristiana, es la tercera Persona de la Trinidad."
+    },
+    "en": {
+      "titulo": "Holy Spirit",
+      "definicion": "Spirit of God; in Christian faith, the third Person of the Trinity."
+    },
+    "pt": {
+      "titulo": "Espírito Santo",
+      "definicion": "Espírito de Deus; na fé cristã, é a terceira Pessoa da Trindade."
+    }
+  },
+  {
+    "termino": "Eucaristia",
+    "es": {
+      "titulo": "Eucaristía",
+      "definicion": "Sacramento en el que se celebra la presencia de Cristo bajo las especies de pan y vino."
+    },
+    "en": {
+      "titulo": "Eucharist",
+      "definicion": "Sacrament celebrating the real presence of Christ under the species of bread and wine."
+    },
+    "pt": {
+      "titulo": "Eucaristia",
+      "definicion": "Sacramento em que se celebra a presença de Cristo sob as espécies de pão e vinho."
+    }
+  },
+  {
+    "termino": "Evangelio",
+    "es": {
+      "titulo": "Evangelio",
+      "definicion": "Significa «buena noticia». Se refiere al anuncio de la salvación en Jesús y a los cuatro libros que narran su vida."
+    },
+    "en": {
+      "titulo": "Gospel",
+      "definicion": "Means 'good news'. Refers to the proclamation of salvation in Jesus and the four books recounting His life."
+    },
+    "pt": {
+      "titulo": "Evangelho",
+      "definicion": "Significa 'boa nova'. Refere-se ao anúncio da salvação em Jesus e aos quatro livros que narram a sua vida."
+    }
+  },
+  {
+    "termino": "Exilio",
+    "es": {
+      "titulo": "Exilio",
+      "definicion": "Expulsión o traslado forzado de una persona o un pueblo lejos de su tierra."
+    },
+    "en": {
+      "titulo": "Exile",
+      "definicion": "Expulsion or forced relocation of a person or people away from their homeland."
+    },
+    "pt": {
+      "titulo": "Exílio",
+      "definicion": "Expulsão ou remoção forçada de uma pessoa ou de um povo para longe da sua terra."
+    }
+  },
+  {
+    "termino": "Expiacion",
+    "es": {
+      "titulo": "Expiación",
+      "definicion": "Reparación o purificación relacionada con el pecado. Se vincula de modo especial con la entrega de Cristo."
+    },
+    "en": {
+      "titulo": "Atonement",
+      "definicion": "Reparation or purification related to sin. Especially linked to the self-giving of Christ."
+    },
+    "pt": {
+      "titulo": "Expiação",
+      "definicion": "Reparação ou purificação relacionada com o pecado. Vincula-se de modo especial à entrega de Cristo."
+    }
+  },
+  {
+    "termino": "Fariseo",
+    "es": {
+      "titulo": "Fariseo",
+      "definicion": "Miembro de un grupo religioso judío que procuraba observar cuidadosamente la Ley."
+    },
+    "en": {
+      "titulo": "Pharisee",
+      "definicion": "Member of a Jewish religious group that sought to strictly observe the Law."
+    },
+    "pt": {
+      "titulo": "Fariseu",
+      "definicion": "Membro de um grupo religioso judaico que procurava observar cuidadosamente a Lei."
+    }
+  },
+  {
+    "termino": "Fe",
+    "es": {
+      "titulo": "Fe",
+      "definicion": "Confianza y adhesión a Dios; también, aceptación de lo que Dios revela."
+    },
+    "en": {
+      "titulo": "Faith",
+      "definicion": "Trust in and adherence to God; also, acceptance of what God reveals."
+    },
+    "pt": {
+      "titulo": "Fé",
+      "definicion": "Confiança e adesão a Deus; também, aceitação do que Deus revela."
+    }
+  },
+  {
+    "termino": "Fidelidad",
+    "es": {
+      "titulo": "Fidelidad",
+      "definicion": "Constancia en el amor, en los compromisos y en la relación con Dios o con otra persona."
+    },
+    "en": {
+      "titulo": "Faithfulness",
+      "definicion": "Constancy in love, commitments, and relationships with God or others."
+    },
+    "pt": {
+      "titulo": "Fidelidade",
+      "definicion": "Constância no amor, nos compromissos e na relação com Deus ou com outra pessoa."
+    }
+  },
+  {
+    "termino": "Filisteos",
+    "es": {
+      "titulo": "Filisteos",
+      "definicion": "Pueblo vecino de Israel que aparece con frecuencia en los relatos del Antiguo Testamento."
+    },
+    "en": {
+      "titulo": "Philistines",
+      "definicion": "Neighboring people of Israel frequently mentioned in the Old Testament."
+    },
+    "pt": {
+      "titulo": "Filisteus",
+      "definicion": "Povo vizinho de Israel que aparece frequentemente nos relatos do Antigo Testamento."
+    }
+  },
+  {
+    "termino": "Fruto",
+    "es": {
+      "titulo": "Fruto",
+      "definicion": "Producto de una planta. En sentido figurado, resultado de una conducta o de la acción de Dios en una persona."
+    },
+    "en": {
+      "titulo": "Fruit",
+      "definicion": "Product of a plant. Figuratively, the outcome of conduct or God's action in a person."
+    },
+    "pt": {
+      "titulo": "Fruto",
+      "definicion": "Produto de uma planta. Em sentido figurado, resultado de uma conduta ou da ação de Deus numa pessoa."
+    }
+  },
+  {
+    "termino": "Gentil",
+    "es": {
+      "titulo": "Gentil",
+      "definicion": "Persona que no pertenece al pueblo judío."
+    },
+    "en": {
+      "titulo": "Gentile",
+      "definicion": "Person who does not belong to the Jewish people."
+    },
+    "pt": {
+      "titulo": "Gentio",
+      "definicion": "Pessoa que não pertence ao povo judaico."
+    }
+  },
+  {
+    "termino": "Gloria",
+    "es": {
+      "titulo": "Gloria",
+      "definicion": "Grandesa, honor o esplendor. La «gloria de Dios» expresa su majestad y su presencia."
+    },
+    "en": {
+      "titulo": "Glory",
+      "definicion": "Greatness, honor, or splendor. The 'glory of God' expresses His majesty and presence."
+    },
+    "pt": {
+      "titulo": "Glória",
+      "definicion": "Grandeza, honra ou esplendor. A 'glória de Deus' expressa a sua majestade e presença."
+    }
+  },
+  {
+    "termino": "Gracia",
+    "es": {
+      "titulo": "Gracia",
+      "definicion": "Regalo gratuito de Dios que ayuda a la persona a vivir en comunión con Él y a obrar el bien."
+    },
+    "en": {
+      "titulo": "Grace",
+      "definicion": "Free gift from God helping a person live in communion with Him and do good."
+    },
+    "pt": {
+      "titulo": "Graça",
+      "definicion": "Presente gratuito de Deus que ajuda a pessoa a viver em comunhão com Ele e a praticar o bem."
+    }
+  },
+  {
+    "termino": "GraciaDeDios",
+    "es": {
+      "titulo": "Gracia de Dios",
+      "definicion": "Favor y ayuda que Dios concede sin que la persona pueda exigirlos como pago."
+    },
+    "en": {
+      "titulo": "Grace of God",
+      "definicion": "Favor and help granted by God without human merit or earnable status."
+    },
+    "pt": {
+      "titulo": "Graça de Deus",
+      "definicion": "Favor e ajuda que Deus concede sem que a pessoa os possa exigir como pagamento."
+    }
+  },
+  {
+    "termino": "Granero",
+    "es": {
+      "titulo": "Granero",
+      "definicion": "Lugar donde se guarda el grano después de la cosecha."
+    },
+    "en": {
+      "titulo": "Barn / Granary",
+      "definicion": "Place where grain is stored after harvest."
+    },
+    "pt": {
+      "titulo": "Celeiro",
+      "definicion": "Lugar onde se guarda o grão depois da colheita."
+    }
+  },
+  {
+    "termino": "Guardian",
+    "es": {
+      "titulo": "Guardián",
+      "definicion": "Persona encargada de vigilar o proteger algo o a alguien."
+    },
+    "en": {
+      "titulo": "Guardian / Watchman",
+      "definicion": "Person charged with watching over or protecting someone or something."
+    },
+    "pt": {
+      "titulo": "Guardião",
+      "definicion": "Pessoa encarregada de vigiar ou proteger algo ou alguém."
+    }
+  },
+  {
+    "termino": "Hades",
+    "es": {
+      "titulo": "Hades",
+      "definicion": "Lugar o estado de los muertos. No siempre significa lo mismo que el infierno entendido como castigo definitivo."
+    },
+    "en": {
+      "titulo": "Hades",
+      "definicion": "Place or state of the dead. Does not always equate to hell as final punishment."
+    },
+    "pt": {
+      "titulo": "Hades",
+      "definicion": "Lugar ou estado dos mortos. Nem sempre significa o mesmo que o inferno entendido como castigo definitivo."
+    }
+  },
+  {
+    "termino": "Hebreo",
+    "es": {
+      "titulo": "Hebreo",
+      "definicion": "Persona perteneciente al antiguo pueblo de Israel; también puede referirse a su lengua."
+    },
+    "en": {
+      "titulo": "Hebrew",
+      "definicion": "Person belonging to ancient Israel; also refers to their language."
+    },
+    "pt": {
+      "titulo": "Hebraico / Hebreu",
+      "definicion": "Pessoa pertencente ao antigo povo de Israel; também pode referir-se à sua língua."
+    }
+  },
+  {
+    "termino": "Herejia",
+    "es": {
+      "titulo": "Herejía",
+      "definicion": "Enseñanza que contradice una verdad fundamental de la fe cristiana."
+    },
+    "en": {
+      "titulo": "Heresy",
+      "definicion": "Teaching that contradicts a fundamental truth of Christian faith."
+    },
+    "pt": {
+      "titulo": "Heresia",
+      "definicion": "Ensinamento que contradiz uma verdade fundamental da fé cristã."
+    }
+  },
+  {
+    "termino": "Holocausto",
+    "es": {
+      "titulo": "Holocausto",
+      "definicion": "En el Antiguo Testamento, sacrificio en el que la víctima se quemaba completamente sobre el altar."
+    },
+    "en": {
+      "titulo": "Holocaust / Burnt Offering",
+      "definicion": "In the Old Testament, a sacrifice in which the victim was completely burned on the altar."
+    },
+    "pt": {
+      "titulo": "Holocausto",
+      "definicion": "No Antigo Testamento, sacrifício em que a vítima era completamente queimada sobre o altar."
+    }
+  },
+  {
+    "termino": "Hosanna",
+    "es": {
+      "titulo": "Hosanna",
+      "definicion": "Expresión de súplica o alabanza que significa «¡sálvanos!» y llegó a usarse como aclamación."
+    },
+    "en": {
+      "titulo": "Hosanna",
+      "definicion": "Expression of plea or praise meaning 'save us!' used as an acclamation."
+    },
+    "pt": {
+      "titulo": "Hosana",
+      "definicion": "Expressão de súplica ou louvor que significa 'salva-nos!' e passou a ser usada como aclamação."
+    }
+  },
+  {
+    "termino": "Humildad",
+    "es": {
+      "titulo": "Humildad",
+      "definicion": "Actitud de quien reconoce la verdad sobre sí mismo, sin creerse superior a los demás y confiando en Dios."
+    },
+    "en": {
+      "titulo": "Humility",
+      "definicion": "Attitude of recognizing the truth about oneself without superiority, trusting in God."
+    },
+    "pt": {
+      "titulo": "Humildade",
+      "definicion": "Atitude de quem reconhece a verdade sobre si mesmo, sem se julgar superior aos outros e confiando em Deus."
+    }
+  },
+  {
+    "termino": "Idolo",
+    "es": {
+      "titulo": "Ídolo",
+      "definicion": "Imagen u objeto al que se rinde culto como si fuera un dios; o cualquier cosa que ocupe el lugar de Dios."
+    },
+    "en": {
+      "titulo": "Idol",
+      "definicion": "Image or object worshipped as a god; or anything taking the place of God."
+    },
+    "pt": {
+      "titulo": "Ídolo",
+      "definicion": "Imagem ou objeto a que se rende culto como se fosse um deus; ou qualquer coisa que ocupe o lugar de Deus."
+    }
+  },
+  {
+    "termino": "Iglesia",
+    "es": {
+      "titulo": "Iglesia",
+      "definicion": "Asamblea de los creyentes. Para los cristianos, es la comunidad reunida por Cristo."
+    },
+    "en": {
+      "titulo": "Church",
+      "definicion": "Assembly of believers. For Christians, the community gathered by Christ."
+    },
+    "pt": {
+      "titulo": "Igreja",
+      "definicion": "Assembleia dos crentes. Para os cristãos, é a comunidade reunida por Cristo."
+    }
+  },
+  {
+    "termino": "Iniquidad",
+    "es": {
+      "titulo": "Iniquidad",
+      "definicion": "Maldad o injusticia grave; conducta contraria a la voluntad de Dios."
+    },
+    "en": {
+      "titulo": "Iniquity",
+      "definicion": "Grave evil or injustice; behavior contrary to the will of God."
+    },
+    "pt": {
+      "titulo": "Iniquidade",
+      "definicion": "Maldade ou injustiça grave; conduta contrária à vontade de Deus."
+    }
+  },
+  {
+    "termino": "Israel",
+    "es": {
+      "titulo": "Israel",
+      "definicion": "Nombre dado a Jacob y, posteriormente, nombre del pueblo formado por sus descendientes."
+    },
+    "en": {
+      "titulo": "Israel",
+      "definicion": "Name given to Jacob and subsequently the name of the people formed by his descendants."
+    },
+    "pt": {
+      "titulo": "Israel",
+      "definicion": "Nome dado a Jacó e, posteriormente, nome do povo formado pelos seus descendentes."
+    }
+  },
+  {
+    "termino": "Israelita",
+    "es": {
+      "titulo": "Israelita",
+      "definicion": "Persona perteneciente al pueblo de Israel."
+    },
+    "en": {
+      "titulo": "Israelite",
+      "definicion": "Person belonging to the people of Israel."
+    },
+    "pt": {
+      "titulo": "Israelita",
+      "definicion": "Pessoa pertencente ao povo de Israel."
+    }
+  },
+  {
+    "termino": "Jubileo",
+    "es": {
+      "titulo": "Jubileo",
+      "definicion": "Año especial en la Ley de Israel, asociado con el descanso de la tierra y recuperación de propiedades y libertades."
+    },
+    "en": {
+      "titulo": "Jubilee",
+      "definicion": "Special year in Israelite law associated with land rest and restoration of rights and land."
+    },
+    "pt": {
+      "titulo": "Jubileu",
+      "definicion": "Ano especial na Lei de Israel, associado ao descanso da terra e recuperação de propriedades e liberdades."
+    }
+  },
+  {
+    "termino": "Juicio",
+    "es": {
+      "titulo": "Juicio",
+      "definicion": "Decisión sobre la conducta de una persona o pueblo. El «juicio de Dios» es su evaluación del bien y del mal."
+    },
+    "en": {
+      "titulo": "Judgment",
+      "definicion": "Decision regarding conduct. The 'judgment of God' refers to Divine evaluation of good and evil."
+    },
+    "pt": {
+      "titulo": "Juízo",
+      "definicion": "Decisão sobre a conduta de uma pessoa ou povo. O 'juízo de Deus' refere-se à avaliação divina do bem e do mal."
+    }
+  },
+  {
+    "termino": "Justicia",
+    "es": {
+      "titulo": "Justicia",
+      "definicion": "Obrar rectamente y dar a cada uno lo que le corresponde; también describe la fidelidad a la voluntad de Dios."
+    },
+    "en": {
+      "titulo": "Justice / Righteousness",
+      "definicion": "Acting uprightly and giving each their due; also describes faithfulness to God's will."
+    },
+    "pt": {
+      "titulo": "Justiça",
+      "definicion": "Agir retamente e dar a cada um o que lhe corresponde; também descreve a fidelidade à vontade de Deus."
+    }
+  },
+  {
+    "termino": "Justificacion",
+    "es": {
+      "titulo": "Justificación",
+      "definicion": "Acción por la que Dios hace justa a la persona y la reconcilia con Él, relacionada con la fe y la gracia."
+    },
+    "en": {
+      "titulo": "Justification",
+      "definicion": "Action by which God makes a person righteous and reconciles them with Himself through faith and grace."
+    },
+    "pt": {
+      "titulo": "Justificação",
+      "definicion": "Ação pela qual Deus torna justa a pessoa e a reconcilia consigo, relacionada com a fé e a graça."
+    }
+  },
+  {
+    "termino": "Ley",
+    "es": {
+      "titulo": "Ley",
+      "definicion": "Conjunto de mandamientos e instrucciones dados por Dios a su pueblo (especialmente la Ley de Moisés)."
+    },
+    "en": {
+      "titulo": "Law",
+      "definicion": "Set of commandments and instructions given by God to His people (especially the Law of Moses)."
+    },
+    "pt": {
+      "titulo": "Lei",
+      "definicion": "Conjunto de mandamentos e instruções dados por Deus ao seu povo (especialmente a Lei de Moisés)."
+    }
+  },
+  {
+    "termino": "Leproso",
+    "es": {
+      "titulo": "Leproso",
+      "definicion": "Persona afectada por lepra o afección semejante, que en tiempos bíblicos podía ser apartada comunalmente."
+    },
+    "en": {
+      "titulo": "Lepr",
+      "definicion": "Person affected by leprosy or a similar skin condition, historically isolated from community."
+    },
+    "pt": {
+      "titulo": "Leproso",
+      "definicion": "Pessoa afetada por lepra ou afeção semelhante, que em tempos bíblicos podia ser afastada da comunidade."
+    }
+  },
+  {
+    "termino": "Levita",
+    "es": {
+      "titulo": "Levita",
+      "definicion": "Miembro de la tribu de Leví, con funciones relacionadas con el servicio religioso de Israel."
+    },
+    "en": {
+      "titulo": "Levite",
+      "definicion": "Member of the tribe of Levi, assigned functions regarding the religious service of Israel."
+    },
+    "pt": {
+      "titulo": "Levita",
+      "definicion": "Membro da tribo de Levi, com funções relacionadas com o serviço religioso de Israel."
+    }
+  },
+  {
+    "termino": "Limosna",
+    "es": {
+      "titulo": "Limosna",
+      "definicion": "Ayuda material entregada a una persona necesitada."
+    },
+    "en": {
+      "titulo": "Alms / Charity",
+      "definicion": "Material aid given to a person in need."
+    },
+    "pt": {
+      "titulo": "Esmola",
+      "definicion": "Ajuda material entregue a uma pessoa necessitada."
+    }
+  },
+  {
+    "termino": "Liturgia",
+    "es": {
+      "titulo": "Liturgia",
+      "definicion": "Celebración pública del culto de la Iglesia, especialmente de los sacramentos."
+    },
+    "en": {
+      "titulo": "Liturgy",
+      "definicion": "Public celebration of Church worship, especially the celebration of the sacraments."
+    },
+    "pt": {
+      "titulo": "Liturgia",
+      "definicion": "Celebração pública do culto da Igreja, especialmente dos sacramentos."
+    }
+  },
+  {
+    "termino": "Mana",
+    "es": {
+      "titulo": "Maná",
+      "definicion": "Alimento milagroso dado por Dios a los israelitas durante su marcha por el desierto."
+    },
+    "en": {
+      "titulo": "Manna",
+      "definicion": "Miraculous food provided by God to the Israelites during their desert journey."
+    },
+    "pt": {
+      "titulo": "Maná",
+      "definicion": "Alimento milagroso dado por Deus aos israelitas durante a sua marcha pelo deserto."
+    }
+  },
+  {
+    "termino": "Mansedumbre",
+    "es": {
+      "titulo": "Mansedumbre",
+      "definicion": "Fortaleza serena y amable; disposición a tratar a los demás sin violencia ni arrogancia."
+    },
+    "en": {
+      "titulo": "Meekness / Gentleness",
+      "definicion": "Serene and gentle strength; disposition to treat others without violence or arrogance."
+    },
+    "pt": {
+      "titulo": "Mansidão",
+      "definicion": "Fortaleza serena e afável; disposição para tratar os outros sem violência nem arrogância."
+    }
+  },
+  {
+    "termino": "Martir",
+    "es": {
+      "titulo": "Mártir",
+      "definicion": "Persona que da testimonio de su fe y muere por ella."
+    },
+    "en": {
+      "titulo": "Martyr",
+      "definicion": "Person who bears witness to their faith and dies for it."
+    },
+    "pt": {
+      "titulo": "Mártir",
+      "definicion": "Pessoa que dá testemunho da sua fé e morre por ela."
+    }
+  },
+  {
+    "termino": "Mesias",
+    "es": {
+      "titulo": "Mesías",
+      "definicion": "Palabra que significa «ungido». Los cristianos reconocen a Jesús como el Mesías prometido."
+    },
+    "en": {
+      "titulo": "Messiah",
+      "definicion": "Word meaning 'anointed one'. Christians recognize Jesus as the promised Messiah."
+    },
+    "pt": {
+      "titulo": "Messias",
+      "definicion": "Palavra que significa 'ungido'. Os cristãos reconhecem Jesus como o Messias prometido."
+    }
+  },
+  {
+    "termino": "Misericordia",
+    "es": {
+      "titulo": "Misericordia",
+      "definicion": "Compasión que mueve a socorrer, perdonar o aliviar el sufrimiento de otra persona."
+    },
+    "en": {
+      "titulo": "Mercy",
+      "definicion": "Compassion that moves one to help, forgive, or relieve another's suffering."
+    },
+    "pt": {
+      "titulo": "Misericórdia",
+      "definicion": "Compaixão que move a socorrer, perdoar ou aliviar o sofrimento de outra pessoa."
+    }
+  },
+  {
+    "termino": "Misterio",
+    "es": {
+      "titulo": "Misterio",
+      "definicion": "Realidad de Dios o de la fe que supera la comprensión humana completa, aunque revelada en parte."
+    },
+    "en": {
+      "titulo": "Mystery",
+      "definicion": "Reality of God or faith exceeding human comprehension, though partially revealed."
+    },
+    "pt": {
+      "titulo": "Mistério",
+      "definicion": "Realidade de Deus ou da fé que supera a compreensão humana completa, embora revelada em parte."
+    }
+  },
+  {
+    "termino": "Nazareo",
+    "es": {
+      "titulo": "Nazareo",
+      "definicion": "Persona consagrada a Dios mediante voto especial (abstención de vino, no cortarse el cabello)."
+    },
+    "en": {
+      "titulo": "Nazarite",
+      "definicion": "Person consecrated to God by a special vow (abstaining from wine, uncut hair)."
+    },
+    "pt": {
+      "titulo": "Nazireu",
+      "definicion": "Pessoa consagrada a Deus mediante voto especial (abstenção de vinho, não cortar o cabelo)."
+    }
+  },
+  {
+    "termino": "Nazareno",
+    "es": {
+      "titulo": "Nazareno",
+      "definicion": "Persona de Nazaret. También se usa para referirse a Jesús."
+    },
+    "en": {
+      "titulo": "Nazarene",
+      "definicion": "Person from Nazareth. Also used to refer to Jesus."
+    },
+    "pt": {
+      "titulo": "Nazareno",
+      "definicion": "Pessoa de Nazaré. Também se usa para referir-se a Jesus."
+    }
+  },
+  {
+    "termino": "Oblacion",
+    "es": {
+      "titulo": "Oblación",
+      "definicion": "Ofrenda presentada a Dios; puede consistir en alimentos u otros bienes."
+    },
+    "en": {
+      "titulo": "Oblation / Offering",
+      "definicion": "Offering presented to God; can consist of food or other goods."
+    },
+    "pt": {
+      "titulo": "Oblação",
+      "definicion": "Oferenda apresentada a Deus; pode consistir em alimentos ou outros bens."
+    }
+  },
+  {
+    "termino": "Oraculo",
+    "es": {
+      "titulo": "Oráculo",
+      "definicion": "Mensaje o respuesta que se atribuye a Dios, especialmente en el Antiguo Testamento."
+    },
+    "en": {
+      "titulo": "Oracle",
+      "definicion": "Message or response attributed to God, especially in the Old Testament."
+    },
+    "pt": {
+      "titulo": "Oráculo",
+      "definicion": "Mensagem ou resposta que se atribui a Deus, especialmente no Antigo Testamento."
+    }
+  },
+  {
+    "termino": "Ofrenda",
+    "es": {
+      "titulo": "Ofrenda",
+      "definicion": "Regalo presentado a Dios o destinado al servicio religioso y a la ayuda de otros."
+    },
+    "en": {
+      "titulo": "Offering",
+      "definicion": "Gift presented to God or designated for religious service and helping others."
+    },
+    "pt": {
+      "titulo": "Oferenda",
+      "definicion": "Presente apresentado a Deus ou destinado ao serviço religioso e à ajuda de outros."
+    }
+  },
+  {
+    "termino": "Pacto",
+    "es": {
+      "titulo": "Pacto",
+      "definicion": "Acuerdo o compromiso solemne entre dos partes. Equivale habitualmente a «alianza»."
+    },
+    "en": {
+      "titulo": "Pact / Covenant",
+      "definicion": "Solemn agreement between two parties. Equivalent to 'covenant'."
+    },
+    "pt": {
+      "titulo": "Pacto",
+      "definicion": "Acordo ou compromisso solene entre duas partes. Equivale habitualmente a 'aliança'."
+    }
+  },
+  {
+    "termino": "Pascua",
+    "es": {
+      "titulo": "Pascua",
+      "definicion": "Fiesta judía que recuerda la liberación de Egipto. Para los cristianos, celebra la muerte y resurrección de Jesús."
+    },
+    "en": {
+      "titulo": "Passover / Easter",
+      "definicion": "Jewish feast recalling liberation from Egypt. For Christians, celebrates Christ's death and resurrection."
+    },
+    "pt": {
+      "titulo": "Páscoa",
+      "definicion": "Festa judaica que recorda a libertação do Egito. Para os cristãos, celebra a morte e ressurreição de Jesus."
+    }
+  },
+  {
+    "termino": "Pastor",
+    "es": {
+      "titulo": "Pastor",
+      "definicion": "Persona que cuida un rebaño. Figuradamente, quien guía y cuida una comunidad; Jesús es el Buen Pastor."
+    },
+    "en": {
+      "titulo": "Shepherd / Pastor",
+      "definicion": "Person caring for a flock. Figuratively, one who guides a community; Jesus is the Good Shepherd."
+    },
+    "pt": {
+      "titulo": "Pastor",
+      "definicion": "Pessoa que cuida de um rebanho. Figuradamente, quem guia e cuida de uma comunidade; Jesus é o Bom Pastor."
+    }
+  },
+  {
+    "termino": "Patriarca",
+    "es": {
+      "titulo": "Patriarca",
+      "definicion": "Antepasado principal de una familia o pueblo (Abraham, Isaac y Jacob)."
+    },
+    "en": {
+      "titulo": "Patriarch",
+      "definicion": "Chief ancestor of a family or people (Abraham, Isaac, Jacob)."
+    },
+    "pt": {
+      "titulo": "Patriarca",
+      "definicion": "Antepassado principal de uma família ou povo (Abraão, Isaac e Jacó)."
+    }
+  },
+  {
+    "termino": "Pecado",
+    "es": {
+      "titulo": "Pecado",
+      "definicion": "Pensamiento, palabra, acción u omisión que se aparta del bien y de la voluntad de Dios."
+    },
+    "en": {
+      "titulo": "Sin",
+      "definicion": "Thought, word, deed, or omission departing from goodness and God's will."
+    },
+    "pt": {
+      "titulo": "Pecado",
+      "definicion": "Pensamento, palavra, ação ou omissão que se afasta do bem e da vontade de Deus."
+    }
+  },
+  {
+    "termino": "Pentecostes",
+    "es": {
+      "titulo": "Pentecostés",
+      "definicion": "Fiesta judía (50 días tras Pascua). Para los cristianos, recuerda la venida del Espíritu Santo."
+    },
+    "en": {
+      "titulo": "Pentecost",
+      "definicion": "Jewish feast (50 days after Passover). For Christians, commemorates the coming of the Holy Spirit."
+    },
+    "pt": {
+      "titulo": "Pentecostes",
+      "definicion": "Festa judaica (50 dias após a Páscoa). Para os cristãos, recorda a vinda do Espírito Santo."
+    }
+  },
+  {
+    "termino": "Perdon",
+    "es": {
+      "titulo": "Perdón",
+      "definicion": "Decisión de renunciar al rencor y liberar a otro de la deuda moral. El perdón de Dios es la remisión del pecado."
+    },
+    "en": {
+      "titulo": "Forgiveness",
+      "definicion": "Decision to forego resentment and release moral debt. God's forgiveness is the remission of sin."
+    },
+    "pt": {
+      "titulo": "Perdão",
+      "definicion": "Decisão de renunciar ao rencor e libertar outro da dívida moral. O perdão de Deus é a remissão do pecado."
+    }
+  },
+  {
+    "termino": "Piedad",
+    "es": {
+      "titulo": "Piedad",
+      "definicion": "Devoción y respeto hacia Dios. También puede significar compasión hacia quien sufre."
+    },
+    "en": {
+      "titulo": "Piety / Piety",
+      "definicion": "Devotion and respect toward God. Can also mean compassion toward sufferers."
+    },
+    "pt": {
+      "titulo": "Piedade",
+      "definicion": "Devoção e respeito a Deus. Também pode significar compaixão para com quem sofre."
+    }
+  },
+  {
+    "termino": "Primogenito",
+    "es": {
+      "titulo": "Primogénito",
+      "definicion": "Primer hijo nacido. Tenía un lugar especial en la familia; no significa necesariamente «hijo único»."
+    },
+    "en": {
+      "titulo": "Firstborn",
+      "definicion": "First child born. Held a special status; does not necessarily mean 'only child'."
+    },
+    "pt": {
+      "titulo": "Primogênito",
+      "definicion": "Primeiro filho nascido. Tinha um lugar especial na família; não significa necessariamente 'filho único'."
+    }
+  },
+  {
+    "termino": "Profecia",
+    "es": {
+      "titulo": "Profecía",
+      "definicion": "Mensaje atribuido a Dios y comunicado por medio de un profeta."
+    },
+    "en": {
+      "titulo": "Prophecy",
+      "definicion": "Message attributed to God and communicated through a prophet."
+    },
+    "pt": {
+      "titulo": "Profecia",
+      "definicion": "Mensagem atribuída a Deus e comunicada por meio de um profeta."
+    }
+  },
+  {
+    "termino": "Profeta",
+    "es": {
+      "titulo": "Profeta",
+      "definicion": "Persona llamada por Dios para comunicar su mensaje y llamar al pueblo a la fidelidad."
+    },
+    "en": {
+      "titulo": "Prophet",
+      "definicion": "Person called by God to communicate His message and call people to faithfulness."
+    },
+    "pt": {
+      "titulo": "Profeta",
+      "definicion": "Pessoa chamada por Deus para comunicar a sua mensagem e chamar o povo à fidelidade."
+    }
+  },
+  {
+    "termino": "Projimo",
+    "es": {
+      "titulo": "Prójimo",
+      "definicion": "Persona cercana o cualquier persona a quien uno debe tratar con amor y misericordia."
+    },
+    "en": {
+      "titulo": "Neighbor",
+      "definicion": "Nearby person or anyone whom one ought to treat with love and mercy."
+    },
+    "pt": {
+      "titulo": "Próximo",
+      "definicion": "Pessoa próxima ou qualquer pessoa a quem se deve tratar com amor e misericórdia."
+    }
+  },
+  {
+    "termino": "Providencia",
+    "es": {
+      "titulo": "Providencia",
+      "definicion": "Cuidado con que Dios sostiene y guía la creación y la historia."
+    },
+    "en": {
+      "titulo": "Providence",
+      "definicion": "Care with which God sustains and guides creation and history."
+    },
+    "pt": {
+      "titulo": "Providência",
+      "definicion": "Cuidado com que Deus sustenta e guia a criação e a história."
+    }
+  },
+  {
+    "termino": "Purificacion",
+    "es": {
+      "titulo": "Purificación",
+      "definicion": "Acción de quitar una impureza (limpieza ritual o renovación interior)."
+    },
+    "en": {
+      "titulo": "Purification",
+      "definicion": "Action of removing impurity (ritual cleansing or inner renewal)."
+    },
+    "pt": {
+      "titulo": "Purificação",
+      "definicion": "Ação de retirar uma impureza (limpeza ritual ou renovação interior)."
     }
   },
   {
     "termino": "Redencion",
     "es": {
       "titulo": "Redención",
-      "definicion": "Obra de salvación realizada por Jesucristo mediante su pasión, muerte y resurrección, liberando a la humanidad del pecado."
+      "definicion": "Rescate o liberación. En la fe cristiana, liberación del pecado por medio de Cristo."
     },
     "en": {
       "titulo": "Redemption",
-      "definicion": "The work of salvation accomplished by Jesus Christ through his passion, death, and resurrection, freeing humanity from sin."
+      "definicion": "Rescue or deliverance. In Christian faith, deliverance from sin through Christ."
     },
     "pt": {
       "titulo": "Redenção",
-      "definicion": "Obra de salvação realizada por Jesus Cristo através da sua paixão, morte e ressurreição, libertando a humanidade do pecado."
+      "definicion": "Resgate ou libertação. Na fé cristã, libertação do pecado por meio de Cristo."
+    }
+  },
+  {
+    "termino": "ReinoDeDios",
+    "es": {
+      "titulo": "Reino de Dios",
+      "definicion": "Reinado de Dios, presente allí donde se acogen su voluntad, su justicia y su paz."
+    },
+    "en": {
+      "titulo": "Kingdom of God",
+      "definicion": "Reign of God, present wherever His will, justice, and peace are embraced."
+    },
+    "pt": {
+      "titulo": "Reino de Deus",
+      "definicion": "Reinado de Deus, presente onde quer que se acolham a sua vontade, justiça e paz."
+    }
+  },
+  {
+    "termino": "Resurreccion",
+    "es": {
+      "titulo": "Resurrección",
+      "definicion": "Retorno a la vida por acción de Dios. La resurrección de Jesús es el centro de la fe cristiana."
+    },
+    "en": {
+      "titulo": "Resurrection",
+      "definicion": "Return to life by God's action. Jesus' resurrection is the center of Christian faith."
+    },
+    "pt": {
+      "titulo": "Ressurreição",
+      "definicion": "Retorno à vida por ação de Deus. A ressurreição de Jesus é o centro da fé cristã."
+    }
+  },
+  {
+    "termino": "Revelacion",
+    "es": {
+      "titulo": "Revelación",
+      "definicion": "Acción por la que Dios se da a conocer y comunica su voluntad."
+    },
+    "en": {
+      "titulo": "Revelation",
+      "definicion": "Action by which God makes Himself known and communicates His will."
+    },
+    "pt": {
+      "titulo": "Revelação",
+      "definicion": "Ação pela qual Deus se dá a conhecer e comunica a sua vontade."
+    }
+  },
+  {
+    "termino": "Rito",
+    "es": {
+      "titulo": "Rito",
+      "definicion": "Acción o ceremonia realizada según una forma establecida, especialmente en el culto."
+    },
+    "en": {
+      "titulo": "Rite",
+      "definicion": "Action or ceremony performed according to established practice, especially in worship."
+    },
+    "pt": {
+      "titulo": "Rito",
+      "definicion": "Ação ou cerimônia realizada segundo uma forma estabelecida, especialmente no culto."
+    }
+  },
+  {
+    "termino": "Sacerdote",
+    "es": {
+      "titulo": "Sacerdote",
+      "definicion": "Persona dedicada al servicio religioso encargada de funciones sagradas."
+    },
+    "en": {
+      "titulo": "Priest",
+      "definicion": "Person dedicated to religious service charged with sacred duties."
+    },
+    "pt": {
+      "titulo": "Sacerdote",
+      "definicion": "Pessoa dedicada ao serviço religioso encarregada de funções sagradas."
+    }
+  },
+  {
+    "termino": "Sacrificio",
+    "es": {
+      "titulo": "Sacrificio",
+      "definicion": "Ofrenda presentada a Dios (inmolación ritual, oración, alabanza o entrega personal)."
+    },
+    "en": {
+      "titulo": "Sacrifice",
+      "definicion": "Offering presented to God (ritual immolation, prayer, praise, or personal self-offering)."
+    },
+    "pt": {
+      "titulo": "Sacrifício",
+      "definicion": "Oferenda apresentada a Deus (imolação ritual, oração, louvor ou entrega pessoal)."
+    }
+  },
+  {
+    "termino": "Salvacion",
+    "es": {
+      "titulo": "Salvación",
+      "definicion": "Liberación del pecado y sus consecuencias, y entrada en la vida que Dios ofrece."
+    },
+    "en": {
+      "titulo": "Salvation",
+      "definicion": "Deliverance from sin and its consequences, entering into the life God offers."
+    },
+    "pt": {
+      "titulo": "Salvação",
+      "definicion": "Libertação do pecado e das suas consequências, e entrada na vida que Deus oferece."
+    }
+  },
+  {
+    "termino": "Samaritano",
+    "es": {
+      "titulo": "Samaritano",
+      "definicion": "Habitante de Samaría. Judíos y samaritanos mantenían antiguas diferencias religiosas y sociales."
+    },
+    "en": {
+      "titulo": "Samaritan",
+      "definicion": "Inhabitant of Samaria. Jews and Samaritans maintained long-standing religious differences."
+    },
+    "pt": {
+      "titulo": "Samaritano",
+      "definicion": "Habitante de Samaria. Judeus e samaritanos mantinham antigas diferenças religiosas e sociais."
+    }
+  },
+  {
+    "termino": "Santidad",
+    "es": {
+      "titulo": "Santidad",
+      "definicion": "Condición de quien pertenece a Dios y está llamado a vivir de acuerdo con su voluntad."
+    },
+    "en": {
+      "titulo": "Holiness",
+      "definicion": "Condition of belonging to God and being called to live according to His will."
+    },
+    "pt": {
+      "titulo": "Santidade",
+      "definicion": "Condição de quem pertence a Deus e é chamado a viver de acordo com a sua vontade."
+    }
+  },
+  {
+    "termino": "Santo",
+    "es": {
+      "titulo": "Santo",
+      "definicion": "Persona o cosa consagrada a Dios, o quien vive profundamente unido a Él."
+    },
+    "en": {
+      "titulo": "Saint / Holy",
+      "definicion": "Person or thing consecrated to God, or living in deep communion with Him."
+    },
+    "pt": {
+      "titulo": "Santo",
+      "definicion": "Pessoa ou coisa consagrada a Deus, ou quem vive profundamente unido a Ele."
+    }
+  },
+  {
+    "termino": "Sabado",
+    "es": {
+      "titulo": "Sábado",
+      "definicion": "Día de descanso semanal en la tradición judía, dedicado al Señor."
+    },
+    "en": {
+      "titulo": "Sabbath",
+      "definicion": "Weekly day of rest in Jewish tradition, dedicated to the Lord."
+    },
+    "pt": {
+      "titulo": "Sábado",
+      "definicion": "Dia de descanso semanal na tradição judaica, dedicado ao Senhor."
+    }
+  },
+  {
+    "termino": "Sion",
+    "es": {
+      "titulo": "Sion",
+      "definicion": "Nombre de una colina de Jerusalén. Representa a menudo a Jerusalén o al pueblo de Dios."
+    },
+    "en": {
+      "titulo": "Zion",
+      "definicion": "Hill in Jerusalem. Often symbolizes Jerusalem or the people of God."
+    },
+    "pt": {
+      "titulo": "Sião",
+      "definicion": "Nome de uma colina de Jerusalém. Representa frequentemente Jerusalém ou o povo de Deus."
+    }
+  },
+  {
+    "termino": "Sinagoga",
+    "es": {
+      "titulo": "Sinagoga",
+      "definicion": "Lugar de reunión y oración de la comunidad judía."
+    },
+    "en": {
+      "titulo": "Synagogue",
+      "definicion": "Place of gathering and prayer for the Jewish community."
+    },
+    "pt": {
+      "titulo": "Sinagoga",
+      "definicion": "Lugar de reunião e oração da comunidade judaica."
+    }
+  },
+  {
+    "termino": "Soberbia",
+    "es": {
+      "titulo": "Soberbia",
+      "definicion": "Orgullo desmedido que lleva a considerarse superior a los demás o rechazar a Dios."
+    },
+    "en": {
+      "titulo": "Pride / Arrogance",
+      "definicion": "Excessive pride leading to superiority over others or rejecting God."
+    },
+    "pt": {
+      "titulo": "Soberba",
+      "definicion": "Orgulho desmedido que leva a considerar-se superior aos outros ou a rejeitar a Deus."
+    }
+  },
+  {
+    "termino": "Sheol",
+    "es": {
+      "titulo": "Sheol",
+      "definicion": "Término hebreo para el ámbito o estado de los muertos."
+    },
+    "en": {
+      "titulo": "Sheol",
+      "definicion": "Hebrew term for the realm or state of the dead."
+    },
+    "pt": {
+      "titulo": "Sheol",
+      "definicion": "Termo hebraico para o âmbito ou estado dos mortos."
+    }
+  },
+  {
+    "termino": "Tabernaculo",
+    "es": {
+      "titulo": "Tabernáculo",
+      "definicion": "Tienda sagrada en el desierto; en uso católico, lugar donde se reserva la Eucaristía."
+    },
+    "en": {
+      "titulo": "Tabernacle",
+      "definicion": "Sacred tent in the wilderness; in Catholic use, place where Eucharist is reserved."
+    },
+    "pt": {
+      "titulo": "Tabernáculo",
+      "definicion": "Tenda sagrada no deserto; no uso católico, lugar onde se reserva a Eucaristia."
+    }
+  },
+  {
+    "termino": "Talento",
+    "es": {
+      "titulo": "Talento",
+      "definicion": "Antigua medida de peso y dinero. En la parábola, representa bienes o capacidades confiadas."
+    },
+    "en": {
+      "titulo": "Talent",
+      "definicion": "Ancient unit of weight/money. In the parable, represents entrusted goods or abilities."
+    },
+    "pt": {
+      "titulo": "Talento",
+      "definicion": "Antiga medida de peso e dinheiro. Na parábola, representa bens ou capacidades confiadas."
+    }
+  },
+  {
+    "termino": "TemorDeDios",
+    "es": {
+      "titulo": "Temor de Dios",
+      "definicion": "Respeto profundo y reverencia ante Dios; reconocer su grandeza y procurar vivir fielmente."
+    },
+    "en": {
+      "titulo": "Fear of God",
+      "definicion": "Profound respect and reverence before God; recognizing His greatness to live faithfully."
+    },
+    "pt": {
+      "titulo": "Temor de Deus",
+      "definicion": "Respeito profundo e reverência diante de Deus; reconhecer a sua grandeza e procurar viver fielmente."
+    }
+  },
+  {
+    "termino": "Templo",
+    "es": {
+      "titulo": "Templo",
+      "definicion": "Edificio dedicado al culto de Dios (especialmente el templo de Jerusalén)."
+    },
+    "en": {
+      "titulo": "Temple",
+      "definicion": "Building dedicated to God's worship (specifically the Temple of Jerusalem)."
+    },
+    "pt": {
+      "titulo": "Templo",
+      "definicion": "Edifício dedicado ao culto de Deus (especialmente o templo de Jerusalém)."
+    }
+  },
+  {
+    "termino": "Tentacion",
+    "es": {
+      "titulo": "Tentación",
+      "definicion": "Invitación o impulso a hacer el mal. Ser tentado no significa por sí mismo haber pecado."
+    },
+    "en": {
+      "titulo": "Temptation",
+      "definicion": "Invitation or impulse to do evil. Being tempted is not in itself sinning."
+    },
+    "pt": {
+      "titulo": "Tentação",
+      "definicion": "Convite ou impulso para fazer o mal. Ser tentado não significa por si só ter pecado."
+    }
+  },
+  {
+    "termino": "Testamento",
+    "es": {
+      "titulo": "Testamento",
+      "definicion": "Alianza o pacto. El Antiguo y Nuevo Testamento son las dos grandes partes de la Biblia."
+    },
+    "en": {
+      "titulo": "Testament",
+      "definicion": "Covenant or pact. Old and New Testaments are the two main parts of the Bible."
+    },
+    "pt": {
+      "titulo": "Testamento",
+      "definicion": "Aliança ou pacto. O Antigo e o Novo Testamento são as duas grandes partes da Bíblia."
+    }
+  },
+  {
+    "termino": "Testimonio",
+    "es": {
+      "titulo": "Testimonio",
+      "definicion": "Declaración que afirma algo; o una vida que muestra una convicción o fe."
+    },
+    "en": {
+      "titulo": "Testimony / Witness",
+      "definicion": "Declaration affirming something; or a life demonstrating a conviction/faith."
+    },
+    "pt": {
+      "titulo": "Testemunho",
+      "definicion": "Declaração que afirma algo; ou uma vida que mostra uma convicção ou fé."
+    }
+  },
+  {
+    "termino": "Tribulacion",
+    "es": {
+      "titulo": "Tribulación",
+      "definicion": "Sufrimiento, prueba o persecución intensa."
+    },
+    "en": {
+      "titulo": "Tribulation",
+      "definicion": "Suffering, severe trial, or intense persecution."
+    },
+    "pt": {
+      "titulo": "Tribulação",
+      "definicion": "Sofrimento, provação ou perseguição intensa."
+    }
+  },
+  {
+    "termino": "Tributo",
+    "es": {
+      "titulo": "Tributo",
+      "definicion": "Pago exigido por una autoridad, como un impuesto."
+    },
+    "en": {
+      "titulo": "Tribute / Tax",
+      "definicion": "Payment exacted by an authority, such as a tax."
+    },
+    "pt": {
+      "titulo": "Tributo",
+      "definicion": "Pagamento exigido por uma autoridade, como um imposto."
+    }
+  },
+  {
+    "termino": "Uncion",
+    "es": {
+      "titulo": "Unción",
+      "definicion": "Acto de aplicar aceite como signo de consagración, curación o elección para una misión."
+    },
+    "en": {
+      "titulo": "Anointing",
+      "definicion": "Act of applying oil as a sign of consecration, healing, or election for a mission."
+    },
+    "pt": {
+      "titulo": "Unção",
+      "definicion": "Ato de aplicar óleo como sinal de consagração, cura ou escolha para uma missão."
+    }
+  },
+  {
+    "termino": "Ungido",
+    "es": {
+      "titulo": "Ungido",
+      "definicion": "Persona consagrada o escogida mediante una unción («Mesías» y «Cristo» significan «ungido»)."
+    },
+    "en": {
+      "titulo": "Anointed One",
+      "definicion": "Person consecrated/chosen through anointing ('Messiah' and 'Christ' mean 'anointed')."
+    },
+    "pt": {
+      "titulo": "Ungido",
+      "definicion": "Pessoa consagrada ou escolhida mediante uma unção ('Messias' e 'Cristo' significam 'ungido')."
+    }
+  },
+  {
+    "termino": "Venerar",
+    "es": {
+      "titulo": "Venerar",
+      "definicion": "Honrar con respeto. En la enseñanza católica, venerar a los santos no es adorar a Dios."
+    },
+    "en": {
+      "titulo": "Venerate",
+      "definicion": "To honor with respect. In Catholic teaching, venerating saints is distinct from worshipping God."
+    },
+    "pt": {
+      "titulo": "Venerar",
+      "definicion": "Honrar com respeito. No ensino católico, venerar os santos não é o mesmo que adorar a Deus."
+    }
+  },
+  {
+    "termino": "Verbo",
+    "es": {
+      "titulo": "Verbo",
+      "definicion": "Palabra. En el Evangelio de Juan, «el Verbo» es título de Jesús y su relación eterna con Dios."
+    },
+    "en": {
+      "titulo": "Word / Logos",
+      "definicion": "Word. In John's Gospel, 'the Word' is a title of Jesus expressing His eternal relation to God."
+    },
+    "pt": {
+      "titulo": "Verbo",
+      "definicion": "Palavra. No Evangelho de João, 'o Verbo' é um título de Jesus e a sua relação eterna com Deus."
+    }
+  },
+  {
+    "termino": "Vigilia",
+    "es": {
+      "titulo": "Vigilia",
+      "definicion": "Tiempo dedicado a permanecer despierto para orar; víspera de una fiesta."
+    },
+    "en": {
+      "titulo": "Vigil",
+      "definicion": "Time spent staying awake to pray; eve of a festival."
+    },
+    "pt": {
+      "titulo": "Vigília",
+      "definicion": "Tempo dedicado a permanecer acordado para orar; véspera de uma festa."
+    }
+  },
+  {
+    "termino": "Vocacion",
+    "es": {
+      "titulo": "Vocación",
+      "definicion": "Llamado de Dios a una forma de vida o a una misión."
+    },
+    "en": {
+      "titulo": "Vocation",
+      "definicion": "Call from God to a state of life or mission."
+    },
+    "pt": {
+      "titulo": "Vocação",
+      "definicion": "Chamado de Deus a uma forma de vida ou a uma missão."
+    }
+  },
+  {
+    "termino": "Voto",
+    "es": {
+      "titulo": "Voto",
+      "definicion": "Promesa solemne hecha a Dios."
+    },
+    "en": {
+      "titulo": "Vow",
+      "definicion": "Solemn promise made to God."
+    },
+    "pt": {
+      "titulo": "Voto",
+      "definicion": "Promessa solene feita a Deus."
+    }
+  },
+  {
+    "termino": "Zelote",
+    "es": {
+      "titulo": "Zelote",
+      "definicion": "Miembro de un movimiento judío conocido por su fervor religioso y oposición al dominio romano."
+    },
+    "en": {
+      "titulo": "Zealot",
+      "definicion": "Member of a Jewish movement known for religious fervor and opposition to Roman rule."
+    },
+    "pt": {
+      "titulo": "Zelote",
+      "definicion": "Membro de um movimento judaico conhecido pelo seu fervor religioso e oposição ao domínio romano."
+    }
+  },
+  {
+    "termino": "Zizania",
+    "es": {
+      "titulo": "Zizania",
+      "definicion": "Planta parecida al trigo que crece entre los cultivos. Representa el mal mezclado con el bien."
+    },
+    "en": {
+      "titulo": "Tares / Weeds",
+      "definicion": "Wheat-like weed growing among crops. Represents evil mixed with good."
+    },
+    "pt": {
+      "titulo": "Zizânia / Joio",
+      "definicion": "Planta parecida com o trigo que cresce entre os cultivos. Representa o mal misturado com o bem."
     }
   }
 ]

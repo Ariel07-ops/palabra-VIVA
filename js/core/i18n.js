@@ -2,6 +2,7 @@
 // Módulo de traducción e internacionalización de la interfaz
 import { state } from "./state.js";
 import { limpiarBuscador } from "../bible/search.js";
+import { poblarReferenciasAcordeon, cargarGlosario } from "../bible/reader.js";
 
 /**
  * Obtiene el idioma guardado o detecta el idioma por defecto del navegador
@@ -126,7 +127,6 @@ export function cambiarIdioma(lang) {
     }
   }
 
-  // 11. Refrescar contenido dinámico del glosario y referencias cruzadas
   // 11. Refrescar contenido dinámico del glosario y referencias cruzadas
   if (typeof poblarReferenciasAcordeon === "function") {
     poblarReferenciasAcordeon();

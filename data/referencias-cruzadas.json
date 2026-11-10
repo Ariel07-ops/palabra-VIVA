@@ -1,56 +1,508 @@
 [
   {
-    "id": "ref-001",
-    "desde": {
-      "libro": "marcos",
-      "capitulo": 1,
-      "versiculo": 2
-    },
+    "id": "ref-002",
+    "desde": { "libro": "genesis", "capitulo": 15, "versiculo": 7 },
     "hacia": {
-      "libro": "isaias",
-      "capitulo": 40,
-      "versiculo": 3,
-      "citaTexto": "Isaías 40,3 / Malaquías 3,1"
+      "libro": "exodo",
+      "capitulo": 15,
+      "versiculo": 17,
+      "citaTexto": "Éxodo 15,17"
     },
     "es": {
-      "tipo": "Cita y cumplimiento profético",
-      "explicacion": "Marcos combina las profecías de Malaquías 3,1 y Isaías 40,3 para presentar la misión de Juan el Bautista como el precursor enviado a preparar el camino del Señor."
+      "tipo": "Desarrollo temático",
+      "explicacion": "La tierra prometida a Abraham se relaciona con la entrada del pueblo en el lugar de la presencia de Dios."
     },
     "en": {
-      "tipo": "Quote and prophetic fulfillment",
-      "explicacion": "Mark combines the prophecies of Malachi 3:1 and Isaiah 40:3 to present the mission of John the Baptist as the precursor sent to prepare the way of the Lord."
+      "tipo": "Thematic development",
+      "explicacion": "The land promised to Abraham is linked to the people's entry into the place of God's presence."
     },
     "pt": {
-      "tipo": "Citação e cumprimento profético",
-      "explicacion": "Marcos combina as profecias de Malaquias 3,1 e Isaías 40,3 para apresentar a missão de João Batista como o precursor enviado para preparar o caminho do Senhor."
+      "tipo": "Desenvolvimento temático",
+      "explicacion": "A terra prometida a Abraão está relacionada com a entrada do povo no lugar da presença de Deus."
     },
-    "fuente": "Catecismo y Tradición Patrística"
+    "fuente": "Magisterio y Tradición Patrística"
   },
   {
-    "id": "ref-002",
-    "desde": {
-      "libro": "mateo",
-      "capitulo": 7,
-      "versiculo": 1
-    },
+    "id": "ref-003",
+    "desde": { "libro": "exodo", "capitulo": 15, "versiculo": 17 },
     "hacia": {
-      "libro": "romanos",
-      "capitulo": 2,
-      "versiculo": 1,
-      "citaTexto": "Romanos 2,1-3"
+      "libro": "salmos",
+      "capitulo": 132,
+      "versiculo": 7,
+      "citaTexto": "Salmo 132,7-8"
     },
     "es": {
-      "tipo": "Desarrollo del tema",
-      "explicacion": "San Pablo retoma la enseñanza de Jesús sobre no juzgar al prójimo, explicando que quien juzga con soberbia se condena a sí mismo por hacer las mismas cosas."
+      "tipo": "Desarrollo temático",
+      "explicacion": "El lugar donde Dios habita se expresa como santuario y descanso."
     },
     "en": {
-      "tipo": "Development of the theme",
-      "explicacion": "Saint Paul takes up Jesus' teaching on not judging one's neighbor, explaining that whoever judges with pride condemns themselves by doing the same things."
+      "tipo": "Thematic development",
+      "explicacion": "The place where God dwells is expressed as a sanctuary and rest."
     },
     "pt": {
-      "tipo": "Desenvolvimento do tema",
-      "explicacion": "São Paulo retoma o ensinamento de Jesus sobre não julgar o próximo, explicando que quem julga com soberba condena a si mesmo por fazer as mesmas coisas."
+      "tipo": "Desenvolvimento temático",
+      "explicacion": "O lugar onde Deus habita expressa-se como santuário e descanso."
     },
-    "fuente": "Carta a los Romanos"
+    "fuente": "Magisterio y Tradición Patrística"
+  },
+  {
+    "id": "ref-004",
+    "desde": { "libro": "salmos", "capitulo": 132, "versiculo": 7 },
+    "hacia": {
+      "libro": "salmos",
+      "capitulo": 95,
+      "versiculo": 8,
+      "citaTexto": "Salmo 95,8-11"
+    },
+    "es": {
+      "tipo": "Tema común",
+      "explicacion": "El descanso de Dios se vincula con la fidelidad del pueblo."
+    },
+    "en": {
+      "tipo": "Common theme",
+      "explicacion": "God's rest is linked to the faithfulness of the people."
+    },
+    "pt": {
+      "tipo": "Tema comum",
+      "explicacion": "O descanso de Deus está vinculado à fidelidade do povo."
+    },
+    "fuente": "Magisterio y Tradición Patrística"
+  },
+  {
+    "id": "ref-005",
+    "desde": { "libro": "salmos", "capitulo": 95, "versiculo": 8 },
+    "hacia": {
+      "libro": "hebreos",
+      "capitulo": 3,
+      "versiculo": 7,
+      "citaTexto": "Hebreos 3,7–4,11"
+    },
+    "es": {
+      "tipo": "Relectura en el NT",
+      "explicacion": "Hebreos retoma el llamado a no endurecer el corazón y profundiza la promesa del descanso."
+    },
+    "en": {
+      "tipo": "NT Rereading",
+      "explicacion": "Hebrews takes up the call not to harden the heart and deepens the promise of rest."
+    },
+    "pt": {
+      "tipo": "Releitura no NT",
+      "explicacion": "Hebreus retoma o chamado a não endurecer o coração e aprofunda a promessa do descanso."
+    },
+    "fuente": "Magisterio y Tradición Patrística"
+  },
+  {
+    "id": "ref-006",
+    "desde": { "libro": "hebreos", "capitulo": 3, "versiculo": 7 },
+    "hacia": {
+      "libro": "hebreos",
+      "capitulo": 6,
+      "versiculo": 12,
+      "citaTexto": "Hebreos 6,12.18-20"
+    },
+    "es": {
+      "tipo": "Desarrollo temático",
+      "explicacion": "La esperanza y la promesa se orientan hacia la vida junto a Dios."
+    },
+    "en": {
+      "tipo": "Thematic development",
+      "explicacion": "Hope and promise are oriented toward life with God."
+    },
+    "pt": {
+      "tipo": "Desenvolvimento temático",
+      "explicacion": "A esperança e a promessa orientam-se para a vida com Deus."
+    },
+    "fuente": "Magisterio y Tradición Patrística"
+  },
+  {
+    "id": "ref-007",
+    "desde": { "libro": "hebreos", "capitulo": 6, "versiculo": 12 },
+    "hacia": {
+      "libro": "hebreos",
+      "capitulo": 9,
+      "versiculo": 15,
+      "citaTexto": "Hebreos 9,15"
+    },
+    "es": {
+      "tipo": "Desarrollo temático",
+      "explicacion": "La promesa culmina en la esperanza de una herencia eterna."
+    },
+    "en": {
+      "tipo": "Thematic development",
+      "explicacion": "The promise culminates in the hope of an eternal inheritance."
+    },
+    "pt": {
+      "tipo": "Desenvolvimento temático",
+      "explicacion": "A promessa culmina na esperança de uma herança eterna."
+    },
+    "fuente": "Magisterio y Tradición Patrística"
+  },
+  {
+    "id": "ref-008",
+    "desde": { "libro": "2samuel", "capitulo": 7, "versiculo": 12 },
+    "hacia": {
+      "libro": "salmos",
+      "capitulo": 89,
+      "versiculo": 20,
+      "citaTexto": "Salmo 89,20-38"
+    },
+    "es": {
+      "tipo": "Relectura",
+      "explicacion": "El salmo vuelve sobre la promesa hecha a David en medio de una situación de sufrimiento."
+    },
+    "en": {
+      "tipo": "Rereading",
+      "explicacion": "The psalm revisits the promise made to David amidst a context of suffering."
+    },
+    "pt": {
+      "tipo": "Releitura",
+      "explicacion": "O salmo retoma a promessa feita a Davi em meio a uma situação de sofrimento."
+    },
+    "fuente": "Magisterio y Tradición Patrística"
+  },
+  {
+    "id": "ref-009",
+    "desde": { "libro": "2samuel", "capitulo": 7, "versiculo": 12 },
+    "hacia": {
+      "libro": "salmos",
+      "capitulo": 2,
+      "versiculo": 7,
+      "citaTexto": "Salmo 2,7-8"
+    },
+    "es": {
+      "tipo": "Desarrollo temático",
+      "explicacion": "Se prolonga la esperanza en el rey escogido por Dios y en el alcance de su reinado."
+    },
+    "en": {
+      "tipo": "Thematic development",
+      "explicacion": "Hope in the king chosen by God and the extent of his reign is extended."
+    },
+    "pt": {
+      "tipo": "Desenvolvimento temático",
+      "explicacion": "Prolonga-se a esperança no rei escolhido por Deus e no alcance do seu reinado."
+    },
+    "fuente": "Magisterio y Tradición Patrística"
+  },
+  {
+    "id": "ref-010",
+    "desde": { "libro": "2samuel", "capitulo": 7, "versiculo": 12 },
+    "hacia": {
+      "libro": "salmos",
+      "capitulo": 110,
+      "versiculo": 1,
+      "citaTexto": "Salmo 110,1.4"
+    },
+    "es": {
+      "tipo": "Desarrollo temático",
+      "explicacion": "Continúa la reflexión bíblica sobre la autoridad y la misión del rey."
+    },
+    "en": {
+      "tipo": "Thematic development",
+      "explicacion": "Biblical reflection on the authority and mission of the king continues."
+    },
+    "pt": {
+      "tipo": "Desenvolvimento temático",
+      "explicacion": "Continua a reflexão bíblica sobre a autoridade e a missão do rei."
+    },
+    "fuente": "Magisterio y Tradición Patrística"
+  },
+  {
+    "id": "ref-011",
+    "desde": { "libro": "2samuel", "capitulo": 7, "versiculo": 12 },
+    "hacia": {
+      "libro": "isaias",
+      "capitulo": 7,
+      "versiculo": 13,
+      "citaTexto": "Isaías 7,13-14"
+    },
+    "es": {
+      "tipo": "Esperanza mesiánica",
+      "explicacion": "El texto se integra en la esperanza relacionada con la casa de David."
+    },
+    "en": {
+      "tipo": "Messianic hope",
+      "explicacion": "The text integrates into the hope associated with the House of David."
+    },
+    "pt": {
+      "tipo": "Esperança mesiânica",
+      "explicacion": "O texto integra-se na esperança relacionada com a casa de Davi."
+    },
+    "fuente": "Magisterio y Tradición Patrística"
+  },
+  {
+    "id": "ref-012",
+    "desde": { "libro": "2samuel", "capitulo": 7, "versiculo": 12 },
+    "hacia": {
+      "libro": "jeremias",
+      "capitulo": 23,
+      "versiculo": 5,
+      "citaTexto": "Jeremías 23,5-6"
+    },
+    "es": {
+      "tipo": "Esperanza mesiánica",
+      "explicacion": "Jeremías anuncia una esperanza vinculada con un descendiente justo de David."
+    },
+    "en": {
+      "tipo": "Messianic hope",
+      "explicacion": "Jeremiah announces a hope linked to a righteous descendant of David."
+    },
+    "pt": {
+      "tipo": "Esperança mesiânica",
+      "explicacion": "Jeremias anuncia uma esperança vinculada a um descendente justo de Davi."
+    },
+    "fuente": "Magisterio y Tradición Patrística"
+  },
+  {
+    "id": "ref-013",
+    "desde": { "libro": "2samuel", "capitulo": 7, "versiculo": 12 },
+    "hacia": {
+      "libro": "amos",
+      "capitulo": 9,
+      "versiculo": 11,
+      "citaTexto": "Amós 9,11"
+    },
+    "es": {
+      "tipo": "Restauración",
+      "explicacion": "La esperanza se expresa como restauración de la casa de David."
+    },
+    "en": {
+      "tipo": "Restoration",
+      "explicacion": "Hope is expressed as the restoration of the House of David."
+    },
+    "pt": {
+      "tipo": "Restauração",
+      "explicacion": "A esperança expressa-se como restauração da casa de Davi."
+    },
+    "fuente": "Magisterio y Tradición Patrística"
+  },
+  {
+    "id": "ref-014",
+    "desde": { "libro": "2samuel", "capitulo": 7, "versiculo": 12 },
+    "hacia": {
+      "libro": "marcos",
+      "capitulo": 11,
+      "versiculo": 10,
+      "citaTexto": "Marcos 11,10"
+    },
+    "es": {
+      "tipo": "Eco del AT",
+      "explicacion": "La aclamación sobre el Reino de David reaparece en el relato de Jesús."
+    },
+    "en": {
+      "tipo": "OT Echo",
+      "explicacion": "The acclamation of the Kingdom of David reappears in the narrative of Jesus."
+    },
+    "pt": {
+      "tipo": "Eco do AT",
+      "explicacion": "A aclamação sobre o Reino de Davi reaparece no relato de Jesus."
+    },
+    "fuente": "Magisterio y Tradición Patrística"
+  },
+  {
+    "id": "ref-015",
+    "desde": { "libro": "salmos", "capitulo": 2, "versiculo": 7 },
+    "hacia": {
+      "libro": "mateo",
+      "capitulo": 28,
+      "versiculo": 18,
+      "citaTexto": "Mateo 28,18"
+    },
+    "es": {
+      "tipo": "Tema común",
+      "explicacion": "Se enlaza la esperanza del reinado universal con la autoridad universal atribuida a Cristo."
+    },
+    "en": {
+      "tipo": "Common theme",
+      "explicacion": "Links the hope of universal reign with the universal authority attributed to Christ."
+    },
+    "pt": {
+      "tipo": "Tema comum",
+      "explicacion": "Interliga a esperança do reinado universal com a autoridade universal atribuída a Cristo."
+    },
+    "fuente": "Magisterio y Tradición Patrística"
+  },
+  {
+    "id": "ref-016",
+    "desde": { "libro": "exodo", "capitulo": 14, "versiculo": 1 },
+    "hacia": {
+      "libro": "1corintios",
+      "capitulo": 10,
+      "versiculo": 1,
+      "citaTexto": "1 Corintios 10,1-2"
+    },
+    "es": {
+      "tipo": "Figura / Tipología",
+      "explicacion": "Pablo relaciona el paso del mar con el camino del pueblo bajo la nube; figura del Bautismo."
+    },
+    "en": {
+      "tipo": "Typology / Figure",
+      "explicacion": "Paul links the crossing of the sea with the people's journey under the cloud; a figure of Baptism."
+    },
+    "pt": {
+      "tipo": "Figura / Tipologia",
+      "explicacion": "Paulo relaciona a travessia do mar com o caminho do povo sob a nuvem; figura do Batismo."
+    },
+    "fuente": "Catecismo de la Iglesia Católica (CIC 1094)"
+  },
+  {
+    "id": "ref-017",
+    "desde": { "libro": "exodo", "capitulo": 14, "versiculo": 1 },
+    "hacia": {
+      "libro": "1corintios",
+      "capitulo": 10,
+      "versiculo": 1,
+      "citaTexto": "1 Corintios 10,1-6"
+    },
+    "es": {
+      "tipo": "Relectura pedagógica",
+      "explicacion": "Pablo recuerda episodios del desierto para enseñar a los cristianos a aprender de Israel."
+    },
+    "en": {
+      "tipo": "Pedagogical rereading",
+      "explicacion": "Paul recalls desert episodes to teach Christians to learn from Israel."
+    },
+    "pt": {
+      "tipo": "Releitura pedagógica",
+      "explicacion": "Paulo recorda episódios do deserto para ensinar os cristãos a aprender com Israel."
+    },
+    "fuente": "Catecismo de la Iglesia Católica (CIC 1094)"
+  },
+  {
+    "id": "ref-018",
+    "desde": { "libro": "genesis", "capitulo": 6, "versiculo": 5 },
+    "hacia": {
+      "libro": "1pedro",
+      "capitulo": 3,
+      "versiculo": 20,
+      "citaTexto": "1 Pedro 3,20-21"
+    },
+    "es": {
+      "tipo": "Figura / Tipología",
+      "explicacion": "La salvación de Noé a través de las aguas se relaciona directamente con la salvación por el Bautismo."
+    },
+    "en": {
+      "tipo": "Typology / Figure",
+      "explicacion": "Noah's salvation through the waters is directly linked to salvation through Baptism."
+    },
+    "pt": {
+      "tipo": "Figura / Tipologia",
+      "explicacion": "A salvação de Noé através das águas relaciona-se diretamente com a salvação pelo Batismo."
+    },
+    "fuente": "Catecismo de la Iglesia Católica (CIC 1094)"
+  },
+  {
+    "id": "ref-019",
+    "desde": { "libro": "exodo", "capitulo": 16, "versiculo": 4 },
+    "hacia": {
+      "libro": "juan",
+      "capitulo": 6,
+      "versiculo": 32,
+      "citaTexto": "Juan 6,32-35"
+    },
+    "es": {
+      "tipo": "Figura y cumplimiento",
+      "explicacion": "El maná del desierto se reinterpreta cuando Jesús se presenta a sí mismo como el Pan verdadero del cielo."
+    },
+    "en": {
+      "tipo": "Figure and fulfillment",
+      "explicacion": "The desert manna is reinterpreted as Jesus reveals Himself as the true Bread from heaven."
+    },
+    "pt": {
+      "tipo": "Figura e cumprimento",
+      "explicacion": "O maná do deserto é reinterpretado quando Jesus se apresenta como o verdadeiro Pão do céu."
+    },
+    "fuente": "Catecismo de la Iglesia Católica (CIC 1094)"
+  },
+  {
+    "id": "ref-020",
+    "desde": { "libro": "exodo", "capitulo": 17, "versiculo": 1 },
+    "hacia": {
+      "libro": "1corintios",
+      "capitulo": 10,
+      "versiculo": 1,
+      "citaTexto": "1 Corintios 10,1-6"
+    },
+    "es": {
+      "tipo": "Relectura",
+      "explicacion": "Pablo recuerda el agua de la roca al reflexionar sobre los dones espirituales recibidos por Israel."
+    },
+    "en": {
+      "tipo": "Rereading",
+      "explicacion": "Paul recalls the water from the rock while reflecting on the spiritual gifts received by Israel."
+    },
+    "pt": {
+      "tipo": "Releitura",
+      "explicacion": "Paulo recorda a água da rocha ao refletir sobre os dons espirituais recebidos por Israel."
+    },
+    "fuente": "Catecismo de la Iglesia Católica (CIC 1094)"
+  },
+  {
+    "id": "ref-021",
+    "desde": { "libro": "exodo", "capitulo": 12, "versiculo": 1 },
+    "hacia": {
+      "libro": "1corintios",
+      "capitulo": 5,
+      "versiculo": 6,
+      "citaTexto": "1 Corintios 5,6-8"
+    },
+    "es": {
+      "tipo": "Eco y exhortación",
+      "explicacion": "Pablo utiliza la imagen del pan sin levadura y la Pascua para exhortar a una vida nueva."
+    },
+    "en": {
+      "tipo": "Echo and exhortation",
+      "explicacion": "Paul uses the image of unleavened bread and Passover to urge a new life."
+    },
+    "pt": {
+      "tipo": "Eco e exortação",
+      "explicacion": "Paulo usa a imagem do pão sem fermento e da Páscoa para exortar a uma vida nova."
+    },
+    "fuente": "Catecismo de la Iglesia Católica (CIC 129)"
+  },
+  {
+    "id": "ref-022",
+    "desde": { "libro": "exodo", "capitulo": 12, "versiculo": 1 },
+    "hacia": {
+      "libro": "lucas",
+      "capitulo": 22,
+      "versiculo": 14,
+      "citaTexto": "Lucas 22,14-20"
+    },
+    "es": {
+      "tipo": "Trasfondo sacramental",
+      "explicacion": "Explora el trasfondo de la Pascua de Israel en la institución de la Última Cena por parte de Jesús."
+    },
+    "en": {
+      "tipo": "Sacramental background",
+      "explicacion": "Explores the background of Israel's Passover in Jesus' institution of the Last Supper."
+    },
+    "pt": {
+      "tipo": "Contexto sacramental",
+      "explicacion": "Explora o contexto da Páscoa de Israel na instituição da última ceia por Jesus."
+    },
+    "fuente": "Catecismo de la Iglesia Católica (CIC 129)"
+  },
+  {
+    "id": "ref-023",
+    "desde": { "libro": "lucas", "capitulo": 24, "versiculo": 13 },
+    "hacia": {
+      "libro": "lucas",
+      "capitulo": 24,
+      "versiculo": 27,
+      "citaTexto": "Antiguo y Nuevo Testamento"
+    },
+    "es": {
+      "tipo": "Clave de lectura bíblica",
+      "explicacion": "Jesús en Emaús enseña a leer toda la Escritura en clave pascual y en su profunda unidad."
+    },
+    "en": {
+      "tipo": "Key for biblical reading",
+      "explicacion": "Jesus at Emmaus teaches how to read all Scripture in a Paschal key and in its profound unity."
+    },
+    "pt": {
+      "tipo": "Chave de leitura bíblica",
+      "explicacion": "Jesus em Emaús ensina a ler toda a Escritura em chave pascoal e na sua profunda unidade."
+    },
+    "fuente": "Catecismo de la Iglesia Católica"
   }
 ]
