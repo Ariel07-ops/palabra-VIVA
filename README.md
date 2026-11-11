@@ -48,6 +48,6 @@ Las citas bíblicas, textos de la Torá, el Tanaj y los documentos del Magisteri
 
 1. **Clonar el repositorio:**
    ```bash
-   git clone [https://github.com/usuario/palabra-viva.git](https://github.com/usuario/palabra-viva.git)
-   cd palabra-viva
+   git clone [https://github.com/ariel07-ops/palabra-VIVA.git](https://github.com/ariel07-ops/palabra-VIVA.git)
+   cd palabra-VIVA
    ```
