@@ -1,5 +1,5 @@
 // js/bible/reader.js
-// Módulo de lectura y navegación por Libros y Capítulos de la Biblia (Con soporte de Audio y Modo Continuo)
+// Módulo de lectura y navegación por Libros y Capítulos de la Biblia (Aislado y protegido)
 
 import { listaLibrosAntiguo, listaLibrosNuevo } from "./canon.js";
 import {
@@ -244,7 +244,6 @@ let cacheBiblia = {
   versos: null,
 };
 
-// Función para determinar la ruta del JSON según el idioma activo
 function obtenerInfoBibliaActual() {
   const idioma = localStorage.getItem("palabra_viva_idioma") || "es";
   switch (idioma) {
@@ -258,9 +257,6 @@ function obtenerInfoBibliaActual() {
   }
 }
 
-/**
- * Obtiene o descarga los versículos normalizados reutilizando el caché en memoria.
- */
 async function obtenerVersosNormalizados() {
   const info = obtenerInfoBibliaActual();
 
@@ -278,9 +274,6 @@ async function obtenerVersosNormalizados() {
   return versosNormalizados;
 }
 
-/**
- * Normaliza los JSONs asignando los nombres exactos de canon.js
- */
 function normalizarConCanonOficial(jsonRaw, idioma) {
   const versosPlanos = [];
 
@@ -333,7 +326,6 @@ export async function abrirAntiguoTestamento() {
           "border: 1px solid var(--gold); border-radius: 8px; padding: 15px; text-align: center; cursor: pointer; background: rgba(255,255,255,0.05); color: #fff; font-size: 0.9rem;";
 
         btn.innerText = obtenerNombreVisible(nombreLibro);
-
         btn.addEventListener("click", () =>
           cargarCapitulosLibro(nombreLibro, todosLosVersos, screenAntiguo),
         );
@@ -366,7 +358,6 @@ export async function abrirNuevoTestamento() {
           "border: 1px solid var(--gold); border-radius: 8px; padding: 15px; text-align: center; cursor: pointer; background: rgba(255,255,255,0.05); color: #fff; font-size: 0.9rem;";
 
         btn.innerText = obtenerNombreVisible(nombreLibro);
-
         btn.addEventListener("click", () =>
           cargarCapitulosLibro(nombreLibro, todosLosVersos, screenNuevo),
         );
@@ -438,19 +429,22 @@ export function renderizarVersiculosCapitulo(
     if (typeof window.estaReproduciendo !== "undefined")
       window.estaReproduciendo = false;
     if (typeof window.estaPausado !== "undefined") window.estaPausado = false;
-    const btnAudio = document.getElementById("btn-hablar-lectura");
-    if (btnAudio) btnAudio.innerHTML = '<i class="fas fa-volume-up"></i>';
+
+    // Apuntando exclusivamente al botón único de la Biblia
+    const btnAudio = document.getElementById("bible-audio-trigger");
+    if (btnAudio)
+      btnAudio.innerHTML = '<i class="fas fa-volume-up"></i> Escuchar';
   }
 
   if (typeof changeScreen === "function" && screenLectura) {
     changeScreen(screenLectura);
   }
 
-  // Guardar estado actual para el módulo de audio y controles MediaSession[span_0](start_span)[span_0](end_span)
+  // Guardar estado actual para el módulo de audio y controles MediaSession
   window.pvAudioEstado = window.pvAudioEstado || {};
   window.pvAudioEstado.libro = nombreLibro;
   window.pvAudioEstado.capitulo = numCapitulo;
-  window.pvAudioEstado.versosLibro = versosLibro; // útil para next/prev[span_1](start_span)[span_1](end_span)
+  window.pvAudioEstado.versosLibro = versosLibro;
 
   const tituloLectura = document.getElementById("titulo-lectura-completa");
   const areaLectura = document.getElementById("texto-lectura-final");
@@ -489,7 +483,7 @@ export function renderizarVersiculosCapitulo(
     <div style="max-width: 600px; margin: 20px auto 10px auto; padding: 0 10px; display: flex; justify-content: center;">
       <label class="toggle-continuo" style="display: flex; align-items: center; gap: 8px; color: #ccc; font-size: 0.85rem; cursor: pointer; background: rgba(212, 175, 55, 0.05); border: 1px dashed rgba(212, 175, 55, 0.3); padding: 8px 12px; border-radius: 8px; width: 100%; justify-content: center;">
         <input type="checkbox" id="chk-modo-continuo" style="accent-color: var(--gold); cursor: pointer;">
-        <span>Continuar al siguiente capítulo automáticamente</span>
+        <span>Continuar audio del siguiente capítulo automáticamente</span>
       </label>
     </div>
 
@@ -505,12 +499,14 @@ export function renderizarVersiculosCapitulo(
   }
   if (areaLectura) areaLectura.innerHTML = htmlVersos;
 
-  // Inicializar y sincronizar el estado del checkbox del Modo Continuo[span_2](start_span)[span_2](end_span)
+  // Sincronizar estado del checkbox del Modo Continuo
   const chkContinuo = document.getElementById("chk-modo-continuo");
   if (chkContinuo) {
     const activo = localStorage.getItem("pv_modo_continuo") === "true";
     chkContinuo.checked = activo;
-    window.pvAudioEstado.autoContinuar = activo;
+    if (window.pvAudioEstado) {
+      window.pvAudioEstado.autoContinuar = activo;
+    }
 
     chkContinuo.onchange = () => {
       localStorage.setItem(
@@ -552,9 +548,15 @@ export function renderizarVersiculosCapitulo(
 }
 
 // ==========================================
-// SIGUIENTE / ANTERIOR CAPÍTULO (GLOBAL PARA AUDIO Y AUTO)
+// NAVEGACIÓN PROTEGIDA (CON CANDADO DE PANTALLA)
 // ==========================================
 window.irAlSiguienteCapitulo = function (autoReproducir = false) {
+  // CANDADO: Si no estamos en la pantalla de lectura, abortar inmediatamente
+  const pantallaActiva = document.querySelector(".screen.active");
+  if (!pantallaActiva || pantallaActiva.id !== "screen-lectura") {
+    return;
+  }
+
   const estado = window.pvAudioEstado || {};
   if (!estado.libro || !estado.versosLibro) return;
 
@@ -580,6 +582,12 @@ window.irAlSiguienteCapitulo = function (autoReproducir = false) {
 };
 
 window.irAlCapituloAnterior = function (autoReproducir = false) {
+  // CANDADO: Si no estamos en la pantalla de lectura, abortar inmediatamente
+  const pantallaActiva = document.querySelector(".screen.active");
+  if (!pantallaActiva || pantallaActiva.id !== "screen-lectura") {
+    return;
+  }
+
   const estado = window.pvAudioEstado || {};
   if (!estado.libro || !estado.versosLibro) return;
 
@@ -921,9 +929,6 @@ document.addEventListener("DOMContentLoaded", () => {
   cargarGlosario();
 });
 
-/**
- * Desactiva el modo Fibrón, limpia los estilos de la paleta y resetea el color activo.
- */
 export function desactivarModoFibron() {
   window.colorFibronActivo = null;
 

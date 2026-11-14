@@ -52,7 +52,7 @@ export function ejecutarLecturaVoz() {
     return;
   }
 
-  const btnAudio = document.getElementById("btn-hablar-lectura");
+  const btnAudio = document.getElementById("bible-audio-trigger");
   const areaLecturaFinal = document.getElementById("texto-lectura-final");
 
   if (!areaLecturaFinal) return;
@@ -113,3 +113,57 @@ export function ejecutarLecturaVoz() {
 
 // Exponer globalmente para la interfaz y botones
 window.ejecutarLecturaVoz = ejecutarLecturaVoz;
+// --- MODO PANTALLA NEGRA Y WAKE LOCK PARA LA BIBLIA ---
+let wakeLockBiblia = null;
+
+async function activarPantallaNegraBiblia() {
+  try {
+    if ("wakeLock" in navigator) {
+      wakeLockBiblia = await navigator.wakeLock.request("screen");
+    }
+  } catch (err) {
+    console.warn(`Wake Lock no disponible: ${err.message}`);
+  }
+
+  let overlay = document.getElementById("overlay-pantalla-negra-biblia");
+  if (!overlay) {
+    overlay = document.createElement("div");
+    overlay.id = "overlay-pantalla-negra-biblia";
+    overlay.style.cssText = `
+      position: fixed;
+      top: 0; left: 0;
+      width: 100vw; height: 100vh;
+      background: #000000;
+      z-index: 99999;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      color: #d4af37;
+      font-family: var(--font-roman, sans-serif);
+      cursor: pointer;
+    `;
+
+    overlay.innerHTML = `
+      <div style="text-align: center; opacity: 0.8;">
+        <i class="fas fa-moon" style="font-size: 2.5rem; margin-bottom: 15px;"></i>
+        <p style="font-size: 1rem; margin: 0;">Tocá la pantalla para volver</p>
+      </div>
+    `;
+
+    overlay.addEventListener("click", () => {
+      overlay.style.display = "none";
+      if (wakeLockBiblia !== null) {
+        wakeLockBiblia.release().then(() => {
+          wakeLockBiblia = null;
+        });
+      }
+    });
+
+    document.body.appendChild(overlay);
+  } else {
+    overlay.style.display = "flex";
+  }
+}
+
+window.activarPantallaNegraBiblia = activarPantallaNegraBiblia;

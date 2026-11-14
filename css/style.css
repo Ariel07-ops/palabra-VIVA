@@ -4346,7 +4346,7 @@ body.light-sepia #screen-main .split-block {
   background: #e8e4dc !important;
 }
 /* acá modificamos el boton de audio hacia la izq */
-#btn-hablar-lectura {
+#bible-audio-trigger {
   display: flex;
   justify-content: space-between;
   align-items: center;

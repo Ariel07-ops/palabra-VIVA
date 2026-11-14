@@ -58,7 +58,7 @@ export function resetAudioState() {
     window.speechSynthesis.cancel();
   }
 
-  const btnAudio = document.getElementById("btn-hablar-lectura");
+  const btnAudio = document.getElementById("bible-audio-trigger");
   if (btnAudio) {
     btnAudio.innerHTML = '<i class="fas fa-volume-up"></i> Escuchar';
     btnAudio.classList.remove("titilando");
@@ -146,7 +146,7 @@ export function hablarTextoPorFrases(textoLimpio, meta = {}) {
   indiceFrase = 0;
   estaReproduciendo = true;
 
-  const btnAudio = document.getElementById("btn-hablar-lectura");
+  const btnAudio = document.getElementById("bible-audio-trigger");
   if (btnAudio) {
     btnAudio.innerHTML = '<i class="fas fa-stop"></i> Detener';
   }

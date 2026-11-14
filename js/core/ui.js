@@ -20,7 +20,7 @@ export function changeScreen(screenToShow) {
     if (typeof window.estaReproduciendo !== "undefined")
       window.estaReproduciendo = false;
     if (typeof window.estaPausado !== "undefined") window.estaPausado = false;
-    const btnAudio = document.getElementById("btn-hablar-lectura");
+    const btnAudio = document.getElementById("bible-audio-trigger");
     if (btnAudio) btnAudio.innerHTML = '<i class="fas fa-volume-up"></i>';
     document
       .querySelectorAll(".expanded-full")

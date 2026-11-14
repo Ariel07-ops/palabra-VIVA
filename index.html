@@ -183,8 +183,8 @@
                 transition: transform 0.2s;
               "
             >
-              <h3 style="color: text-gold; margin: 0">
-                📜 <span class= "text-gold" data-es="Antiguo Testamento" data-en="Old Testament" data-pt="Antigo Testamento">Antiguo Testamento</span>
+              <h3 style="color: var(--gold); margin: 0">
+                📜 <span class="text-gold" data-es="Antiguo Testamento" data-en="Old Testament" data-pt="Antigo Testamento">Antiguo Testamento</span>
               </h3>
               <p class="text-silver text-shadow"
                 data-es="Explorar los libros históricos, poéticos y proféticos." 
@@ -209,10 +209,10 @@
                 transition: transform 0.2s;
               "
             >
-              <h3 style="color: text-gold; margin: 0">
+              <h3 style="color: var(--gold); margin: 0">
                 ✨ <span class="text-gold" data-es="Nuevo Testamento" data-en="New Testament" data-pt="Novo Testamento">Nuevo Testamento</span>
               </h3>
-              <p class= "text-silver"
+              <p class="text-silver"
                 data-es="Explorar los Evangelios, cartas y Apocalipsis." 
                 data-en="Explore Gospels, letters, and Revelation." 
                 data-pt="Explorar os Evangelhos, cartas e Apocalipse." 
@@ -254,7 +254,7 @@
     <div id="screen-capitulos" class="screen">
       <div class="app-container">
         <header class="main-header">
-          <button class="btn-back" onclick="changeScreen(screenAntiguo)">
+          <button class="btn-back" onclick="changeScreen('screen-antiguo')">
             ⬅
           </button>
 
@@ -281,14 +281,11 @@
               margin-top: 15px;
             "
           >
-            
-            >
           </div>
         </main>
       </div>
     </div>
-
-    <!-- PANTALLA 3D: LECTURA DE CAPÍTULO DEDICADA -->
+   <!-- PANTALLA 3D: LECTURA DE CAPÍTULO DEDICADA -->
 <div id="screen-lectura" class="screen">
   <div class="app-container">
     <header class="main-header">
@@ -315,7 +312,7 @@
 
     <!-- 2. Botón Escuchar -->
     <button
-      id="btn-hablar-lectura"
+      id="bible-audio-trigger"
       class="btn-audio"
       onclick="ejecutarLecturaVoz()"
       title="Escuchar"
@@ -591,7 +588,7 @@
               </em>
             </p>
             <div class="emaus-container">
-              <button class="btn-emaus" onclick="changeScreen(screenEmaus)" 
+              <button class="btn-emaus" onclick="changeScreen('screen-emaus')" 
                       data-es="Inicia tu recorrido" 
                       data-en="Start your journey" 
                       data-pt="Inicie seu percurso">
@@ -599,7 +596,7 @@
               </button>
               <button
                 class="btn-emaus"
-                onclick="changeScreen(screenPromesa)"
+                onclick="changeScreen('screen-promesa')"
                 style="margin-left: 10px"
                 data-es="La Escalera de la Promesa" 
                 data-en="The Staircase of Promise" 
@@ -609,7 +606,7 @@
               </button>
             </div>
           </div>
-          <!-- PIE DE PÁGINA DE REFLEXIÓN -->
+   <!-- PIE DE PÁGINA DE REFLEXIÓN -->
           <div class="footer-reflexion">
             <p>
               <em data-es='"Recordá: Dios nos da la vida y también los medios materiales para cuidarla. La fe no reemplaza el salvavidas, la canoa o el médico; la fe nos da la sabiduría para aceptar y aprovechar responsablemente las herramientas que Él pone en nuestro camino para protegernos y ayudarnos."' 
@@ -627,10 +624,10 @@
       </div>
     </div>
 
-    <!-- Pantallas de Estado en el camino de Emaus (Alimentadas 100% desde Estados.json) -->
+    <!-- Pantallas de Estado en el camino de Emaús (Alimentadas 100% desde Estados.json) -->
 
     <div id="screen-agradecido" class="screen">
-      <button class="btn-back-path">⬅</button>
+      <button class="btn-back-path" onclick="changeScreen('screen-path-detail')">⬅</button>
       <h2 class="titulo-estado"></h2>
       <p class="acogida-estado"></p>
 
@@ -658,7 +655,7 @@
     </div>
 
     <div id="screen-cansado" class="screen">
-      <button class="btn-back-path">⬅</button>
+      <button class="btn-back-path" onclick="changeScreen('screen-path-detail')">⬅</button>
       <h2 class="titulo-estado"></h2>
       <p class="acogida-estado"></p>
       <div class="bloque-evangelio">
@@ -678,7 +675,7 @@
     </div>
 
     <div id="screen-bendecido" class="screen">
-      <button class="btn-back-path">⬅</button>
+      <button class="btn-back-path" onclick="changeScreen('screen-path-detail')">⬅</button>
       <h2 class="titulo-estado"></h2>
       <p class="acogida-estado"></p>
       <div class="bloque-evangelio">
@@ -698,7 +695,7 @@
     </div>
 
     <div id="screen-feliz" class="screen">
-      <button class="btn-back-path">⬅</button>
+      <button class="btn-back-path" onclick="changeScreen('screen-path-detail')">⬅</button>
       <h2 class="titulo-estado"></h2>
       <p class="acogida-estado"></p>
       <div class="bloque-evangelio">
@@ -718,7 +715,7 @@
     </div>
 
     <div id="screen-triste" class="screen">
-      <button class="btn-back-path">⬅</button>
+      <button class="btn-back-path" onclick="changeScreen('screen-path-detail')">⬅</button>
       <h2 class="titulo-estado"></h2>
       <p class="acogida-estado"></p>
       <div class="bloque-evangelio">
@@ -738,7 +735,7 @@
     </div>
 
     <div id="screen-temeroso" class="screen">
-      <button class="btn-back-path">⬅</button>
+      <button class="btn-back-path" onclick="changeScreen('screen-path-detail')">⬅</button>
       <h2 class="titulo-estado"></h2>
       <p class="acogida-estado"></p>
       <div class="bloque-evangelio">
@@ -758,7 +755,7 @@
     </div>
 
     <div id="screen-ansioso" class="screen">
-      <button class="btn-back-path">⬅</button>
+      <button class="btn-back-path" onclick="changeScreen('screen-path-detail')">⬅</button>
       <h2 class="titulo-estado"></h2>
       <p class="acogida-estado"></p>
       <div class="bloque-evangelio">
@@ -778,7 +775,7 @@
     </div>
 
     <div id="screen-preocupado" class="screen">
-      <button class="btn-back-path">⬅</button>
+      <button class="btn-back-path" onclick="changeScreen('screen-path-detail')">⬅</button>
       <h2 class="titulo-estado"></h2>
       <p class="acogida-estado"></p>
       <div class="bloque-evangelio">
@@ -798,7 +795,7 @@
     </div>
 
     <div id="screen-en-paz" class="screen">
-      <button class="btn-back-path">⬅</button>
+      <button class="btn-back-path" onclick="changeScreen('screen-path-detail')">⬅</button>
       <h2 class="titulo-estado"></h2>
       <p class="acogida-estado"></p>
       <div class="bloque-evangelio">
@@ -819,7 +816,7 @@
 
     <!-- PANTALLA NUEVA DEL CAMINO DE EMAÚS -->
     <div id="screen-emaus" class="screen header">
-      <button class="btn-back-path">⬅</button>
+      <button class="btn-back-path" onclick="changeScreen('screen-path-detail')">⬅</button>
       <div class="header-emaus">
         <h1 class="brand-title text-gold text-shadow" 
             data-es="El Camino de Emaús" 
@@ -829,8 +826,7 @@
             data-es="Este camino es tu itinerario personal con Cristo. De la oscuridad a la luz de la fe." 
             data-en="This path is your personal itinerary with Christ. From darkness to the light of faith." 
             data-pt="Este caminho é o seu itinerário pessoal com Cristo. Da escuridão para a luz da fé.">
-          Este camino es tu itinerario personal con Cristo. De la oscuridad a la
-          luz de la fe.
+          Este camino es tu itinerario personal con Cristo. De la oscuridad a la luz de la fe.
         </h2>
       </div>
 
@@ -865,9 +861,9 @@
         </div>
       </div>
     </div>
-<!-- PANTALLA NUEVA: LA ESCALERA DE LA PROMESA -->
+
+    <!-- PANTALLA NUEVA: LA ESCALERA DE LA PROMESA -->
     <div id="screen-promesa" class="screen">
-      
       <div class="app-container path-theme">
         <header class="main-header">
           <button class="btn-back-path" onclick="changeScreen('screen-path-detail')">
@@ -881,8 +877,7 @@
              data-es="El hilo conductor de la Divina Revelación: desde el principio eterno hasta Pentecostés." 
              data-en="The common thread of Divine Revelation: from the eternal beginning to Pentecost." 
              data-pt="O fio condutor da Divina Revelação: do princípio eterno até Pentecostes.">
-            El hilo conductor de la Divina Revelación: desde el principio eterno
-            hasta Pentecostés.
+            El hilo conductor de la Divina Revelación: desde el principio eterno hasta Pentecostés.
           </p>
         </header>
 
@@ -946,12 +941,11 @@
         </div>
       </div>
     </div>
-
     <!-- PANTALLA DEDICADA: DETALLE DE UN PELDAÑO DE LA PROMESA -->
 <div id="screen-peldaño-detalle" class="screen">
   <div class="app-container path-theme">
     <header class="main-header">
-      <button class="btn-back-path" onclick="changeScreen(screenPromesa)">
+      <button class="btn-back-path" onclick="changeScreen('screen-promesa')">
         ⬅
       </button>
       <h1 class="brand-title text-gold" id="titulo-peldaño-detalle">
@@ -982,7 +976,7 @@
     <div id="screen-emaus-detalle" class="screen">
       <div class="app-container path-theme">
         <header class="main-header">
-          <button class="btn-back-path" onclick="changeScreen(screenEmaus)">
+          <button class="btn-back-path" onclick="changeScreen('screen-emaus')">
             ⬅
           </button>
           <h1 class="brand-title text-gold" id="titulo-emaus-detalle">
@@ -1064,6 +1058,9 @@
     <h2
       class="text-gold text-shadow"
       style="font-family: var(--font-roman); margin-bottom: 0;"
+      data-es="Selector de Idioma / Language"
+      data-en="Language Selector"
+      data-pt="Seletor de Idioma"
     >
       Selector de Idioma / Language
     </h2>
@@ -1081,6 +1078,9 @@
       class="btn-emaus active"
       onclick="cambiarIdioma('es')"
       style="width: 100%; max-width: 100%"
+      data-es="🇪🇸 Español (Predeterminado)"
+      data-en="🇪🇸 Spanish (Default)"
+      data-pt="🇪🇸 Espanhol (Padrão)"
     >
       🇪🇸 Español (Predeterminado)
     </button>
@@ -1088,6 +1088,9 @@
       class="btn-emaus"
       onclick="cambiarIdioma('en')"
       style="width: 100%; max-width: 100%"
+      data-es="🇬🇧 English"
+      data-en="🇬🇧 English"
+      data-pt="🇬🇧 Inglês"
     >
       🇬🇧 English
     </button>
@@ -1095,6 +1098,9 @@
       class="btn-emaus" 
       onclick="cambiarIdioma('pt')" 
       style="width: 100%; max-width: 100%;"
+      data-es="🇧🇷 Portugués"
+      data-en="🇧🇷 Portuguese"
+      data-pt="🇧🇷 Português"
     >
       🇧🇷 Português
     </button>
@@ -1111,7 +1117,6 @@
 <p style="color: var(--text-light); margin-bottom: 25px; font-size: 0.95rem;" data-es="Recursos recomendados para profundizar en el estudio y la lectura:" data-en="Recommended resources for further study and reading:" data-pt="Recursos recomendados para aprofundar no estudo e na leitura:">Recursos recomendados para profundizar en el estudio y la lectura:</p>
 
         <!-- Enlace 1: YouTube -->
-      <!-- Enlace 1: YouTube -->
         <a
           href="https://www.youtube.com/@vaticannewsES"
           target="_blank"
@@ -1317,11 +1322,11 @@
                 font-size: 1.1em;
               "
               class="text-gold text-shadow"
-              data-es="Nuestro proposito"
+              data-es="Nuestro propósito"
               data-en="Our purpose"
               data-pt="Nosso propósito"
             >
-              Nuestro proposito
+              Nuestro propósito
             </p>
 
             <p 
@@ -1437,24 +1442,24 @@
 
             <!-- Aclaración Técnica y Fuentes Bíblicas -->
                   <p>
-                    <strong class="text-gold text-shadow">Versiones bíblicas y fuentes utilizadas:</strong>
+                    <strong class="text-gold text-shadow" data-es="Versiones bíblicas y fuentes utilizadas:" data-en="Biblical versions and sources used:" data-pt="Versões bíblicas e fontes utilizadas:">Versiones bíblicas y fuentes utilizadas:</strong>
                   </p>
-                  <p class="text-silver text-shadow">
+                  <p class="text-silver text-shadow" data-es="Para garantizar un estudio riguroso y de libre acceso, Palabra Viva utiliza traducciones que se encuentran en el dominio público y libres de copyright:" data-en="To guarantee rigorous and freely accessible study, Palabra Viva uses translations that are in the public domain and copyright-free:" data-pt="Para garantir um estudo rigoroso e de livre acesso, Palabra Viva utiliza traduções que estão em domínio público e livres de direitos autorais:">
                     Para garantizar un estudio riguroso y de libre acceso, <em>Palabra Viva</em> utiliza traducciones que se encuentran en el dominio público y libres de copyright:
                   </p>
                   
                   <ul>
                     <li>
                       <strong class="text-gold text-shadow">Español:</strong> 
-                      <span class="text-silver text-shadow">Sagrada Biblia (Traducción de Mons. Dr. Juan Straubinger), base exegética principal.</span>
+                      <span class="text-silver text-shadow" data-es="Sagrada Biblia (Traducción de Mons. Dr. Juan Straubinger), base exegética principal." data-en="Holy Bible (Translation by Mons. Dr. Juan Straubinger), main exegetical base." data-pt="Bagrada Bíblia (Tradução de Dom Dr. Juan Straubinger), base exegética principal.">Sagrada Biblia (Traducción de Mons. Dr. Juan Straubinger), base exegética principal.</span>
                     </li>
                     <li>
                       <strong class="text-gold text-shadow">Portugués:</strong> 
-                      <span class="text-silver text-shadow">Bíblia Livre (incluyendo los textos deuterocanónicos).</span>
+                      <span class="text-silver text-shadow" data-es="Bíblia Livre (incluyendo los textos deuterocanónicos)." data-en="Bíblia Livre (including deuterocanonical texts)." data-pt="Bíblia Livre (incluindo os textos deuterocanônicos).">Bíblia Livre (incluyendo los textos deuterocanónicos).</span>
                     </li>
                     <li>
                       <strong class="text-gold text-shadow">Inglés:</strong> 
-                      <span class="text-silver text-shadow">World English Bible (WEB).</span>
+                      <span class="text-silver text-shadow" data-es="World English Bible (WEB)." data-en="World English Bible (WEB)." data-pt="World English Bible (WEB).">World English Bible (WEB).</span>
                     </li>
                   </ul>
 
@@ -1462,17 +1467,17 @@
                   <hr class="separador-suave" />
 
                   <p>
-                    <strong class="text-gold text-shadow">Recurso histórico de consulta (Félix Torres Amat):</strong>
+                    <strong class="text-gold text-shadow" data-es="Recurso histórico de consulta (Félix Torres Amat):" data-en="Historical reference resource (Félix Torres Amat):" data-pt="Recurso histórico de consulta (Félix Torres Amat):">Recurso histórico de consulta (Félix Torres Amat):</strong>
                   </p>
-                  <p class="text-silver text-shadow">
+                  <p class="text-silver text-shadow" data-es="Edición histórica de referencia de los comienzos del proyecto, conservada como apoyo de consulta externa." data-en="Historical reference edition from the beginnings of the project, kept as an external consultation support." data-pt="Edição histórica de referência dos começos do projeto, conservada como apoio de consulta externa.">
                     Edición histórica de referencia de los comienzos del proyecto, conservada como apoyo de consulta externa.
                   </p>
                   <p style="margin-top: 15px">
-                    <a href="https://archive.org/details/AI159" target="_blank" rel="noopener noreferrer" class="enlace-dorado">
+                    <a href="https://archive.org/details/AI159" target="_blank" rel="noopener noreferrer" class="enlace-dorado" data-es="Consultar el ejemplar digitalizado completo en Internet Archive" data-en="Consult the complete digitized copy on Internet Archive" data-pt="Consultar o exemplar digitalizado completo no Internet Archive">
                       Consultar el ejemplar digitalizado completo en Internet Archive
                     </a>
                   </p>
-                  <p class="text-silver text-shadow" style="margin-top: 10px;">
+                  <p class="text-silver text-shadow" style="margin-top: 10px;" data-es="Condición legal: Estos textos se integran respetando su condición de dominio público y licencias abiertas, permitiendo su uso pastoral y de estudio sin restricciones comerciales. Los recursos estructurados están disponibles a consulta y descarga desde repositorios públicos abiertos." data-en="Legal condition: These texts are integrated respecting their public domain and open licenses condition, allowing their pastoral and study use without commercial restrictions. Structured resources are available for consultation and download from open public repositories." data-pt="Condição legal: Estes textos são integrados respeitando sua condição de domínio público e licenças abertas, permitindo seu uso pastoral e de estudo sem restrições comerciais. Os recursos estruturados estão disponíveis para consulta e download em repositórios públicos abertos.">
                     <em>Condición legal:</em> Estos textos se integran respetando su condición de dominio público y licencias abiertas, permitiendo su uso pastoral y de estudio sin restricciones comerciales. Los recursos estructurados están disponibles a consulta y descarga desde repositorios públicos abiertos.
                   </p>
                 </div>
@@ -1586,16 +1591,15 @@
 <div id="seccion-estudio" style="display: none; text-align: center; padding: 10px 5px;">
   <h3 data-es="Cuaderno de Estudio" data-en="Study Notebook" data-pt="Bloco de Notas" style="color: var(--gold, #d4af37); margin-bottom: 12px; font-family: serif;">Cuaderno de Estudio</h3>
   
-  <p style="color: #bbb; font-size: 0.85rem; margin-bottom: 20px;" data-es="Accedé a tu libreta digital para escribir notas, reflexiones y revisar tus textos subrayados." data-en="Access your digital notebook to write notes, reflections and review highlighted text.">
+  <p style="color: #bbb; font-size: 0.85rem; margin-bottom: 20px;" data-es="Accedé a tu libreta digital para escribir notas, reflexiones y revisar tus textos subrayados." data-en="Access your digital notebook to write notes, reflections and review highlighted text." data-pt="Acesse seu caderno digital para escrever notas, reflexões e revisar textos sublinhados.">
     Accedé a tu libreta personal con espacio amplio para reflexiones y apuntes.
   </p>
 
   <!-- Botón principal para ir a la Pantalla Completa -->
-  <!-- Botón principal para ir a la Pantalla Completa -->
 <button onclick="abrirLibretaEstudio()" 
         style="background: linear-gradient(135deg, rgba(212,175,55,0.3) 0%, rgba(180,140,30,0.1) 100%); border: 1px solid var(--gold, #d4af37); color: #fff; padding: 12px 20px; border-radius: 8px; font-weight: bold; cursor: pointer; width: 100%; margin-bottom: 15px; display: flex; align-items: center; justify-content: center; gap: 8px;">
   <span>📖</span>
-  <span data-es="Abrir Mi Libreta de Estudio" data-en="Open My Study Notebook">Abrir Mi Libreta de Estudio</span>
+  <span data-es="Abrir Mi Libreta de Estudio" data-en="Open My Study Notebook" data-pt="Abrir Meu Caderno de Estudo">Abrir Mi Libreta de Estudio</span>
 </button>
 
   <div style="display: flex; justify-content: center; gap: 10px;">
@@ -1745,7 +1749,7 @@
           </summary>
           <div style="margin-top: 8px; font-size: 0.8rem; border-top: 1px dotted rgba(212,175,55,0.2); padding-top: 8px;">
             <p style="margin: 0 0 6px 0;"><strong data-es="• Lectura Atenta:" data-en="• Careful Reading:" data-pt="• Leitura Atenta:">• Lectura Atenta:</strong> <span data-es="Leé el pasaje reteniendo palabras clave, verbos principales y conceptos repetidos." data-en="Read the passage retaining keywords, main verbs, and repeated concepts." data-pt="Leia a passagem retendo palavras-chave, verbos principais e conceitos repetidos.">Leé el pasaje reteniendo palabras clave, verbos principales y conceptos repetidos.</span></p>
-            <p style="margin: 0 0 6px 0;"><strong data-es="• Observación y Contexto:" data-en="• Observation and Context:" data-pt="• Observação e Contexto:">• Observación y Contexto:</strong> <span data-es="¿Quién escribe y a quién? Recordá: " data-en="Who is writing and to whom? Remember: " data-pt="Quem escreve e para quem? Lembre-se: ">¿Quién escribe y a quién? Recordá: </span><em><span data-es=""Un texto fuera de contexto es un pretexto"" data-en=""A text out of context is a pretext"" data-pt=""Um texto fora de contexto é um pretexto"">"Un texto fuera de contexto es un pretexto"</span></em>.</p>
+            <p style="margin: 0 0 6px 0;"><strong data-es="• Observación y Contexto:" data-en="• Observation and Context:" data-pt="• Observação e Contexto:">• Observación y Contexto:</strong> <span data-es="¿Quién escribe y a quién? Recordá: " data-en="Who is writing and to whom? Remember: " data-pt="Quem escreve e para quem? Lembre-se: ">¿Quién escribe y a quién? Recordá: </span><em><span data-es='"Un texto fuera de contexto es un pretexto"' data-en='"A text out of context is a pretext"' data-pt='"Um texto fora de contexto é um pretexto"'>"Un texto fuera de contexto es un pretexto"</span></em>.</p>
             <p style="margin: 0 0 6px 0;"><strong data-es="• Aplicación Personal:" data-en="• Personal Application:" data-pt="• Aplicação Pessoal:">• Aplicación Personal:</strong> <span data-es="¿Qué me enseña sobre Dios, el ser humano y cómo llevarlo a mi vida hoy?" data-en="What does it teach me about God, human beings, and how to apply it to my life today?" data-pt="O que isso me ensina sobre Deus, o ser humano e como aplicá-lo à minha vida hoje?">¿Qué me enseña sobre Dios, el ser humano y cómo llevarlo a mi vida hoy?</span></p>
             <p style="margin: 0;"><strong data-es="• Oración:" data-en="• Prayer:" data-pt="• Oração:">• Oración:</strong> <span data-es="Transformá la reflexión en un diálogo pidiendo luz para obedecer la Palabra." data-en="Transform reflection into a dialogue asking for light to obey the Word." data-pt="Transforme a reflexão em um diálogo pedindo luz para obedecer à Palavra.">Transformá la reflexión en un diálogo pidiendo luz para obedecer la Palabra.</span></p>
           </div>
@@ -1796,7 +1800,6 @@
 
       </div>
     </div>
-
     <!-- SECCIÓN 3: GLOSARIO -->
     <div id="sec-bitacora-glosario" style="display: none; flex: 1; overflow-y: auto; font-size: 0.85rem; line-height: 1.5;">
       <h4 data-es="📚 Glosario de Términos" data-en="📚 Glossary of Terms" data-pt="📚 Glossário de Termos" style="color: var(--gold, #d4af37); margin-top: 0;">📚 Glosario de Términos</h4>
@@ -1831,10 +1834,13 @@
           type="text"
           id="chat-input"
           placeholder="Escribí tu mensaje aquí..."
+          data-es-placeholder="Escribí tu mensaje aquí..."
+          data-en-placeholder="Type your message here..."
+          data-pt-placeholder="Digite sua mensagem aqui..."
           autocomplete="off"
         />
-        <button id="chat-btn-enviar" class="btn-enviar">Enviar</button>
-        <button id="btnMic" class="mic-button" title="Usar micrófono">
+        <button id="chat-btn-enviar" class="btn-enviar" data-es="Enviar" data-en="Send" data-pt="Enviar">Enviar</button>
+        <button id="btnMic" class="mic-button" title="Usar micrófono" data-es-title="Usar micrófono" data-en-title="Use microphone" data-pt-title="Usar microfone">
     <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
         <path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"></path>
         <path d="M19 10v1a7 7 0 0 1-14 0v-1"></path>
@@ -1863,16 +1869,16 @@
     <p><strong>© 2026 Ariel — Palabra Viva</strong></p>
     
     <!-- 2. Licencia CC BY-NC-SA 4.0 -->
-    <p>El contenido original de <em>Palabra Viva</em> está disponible bajo licencia 
+    <p><span data-es="El contenido original de" data-en="The original content of" data-pt="O conteúdo original de">El contenido original de</span> <em>Palabra Viva</em> <span data-es="está disponible bajo licencia" data-en="is available under license" data-pt="está disponível sob a licença">está disponible bajo licencia</span> 
         <a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.es" target="_blank" rel="noopener">CC BY-NC-SA 4.0</a>. 
-        Los textos bíblicos principales (Biblia Straubinger, Bíblia Livre y World English Bible) son de dominio público y libres de copyright.
+        <span data-es="Los textos bíblicos principales (Biblia Straubinger, Bíblia Livre y World English Bible) son de dominio público y libres de copyright." data-en="The main biblical texts (Straubinger Bible, Bíblia Livre, and World English Bible) are in the public domain and copyright-free." data-pt="Os principais textos bíblicos (Bíblia Straubinger, Bíblia Livre e World English Bible) estão em domínio público e livres de direitos autorais.">Los textos bíblicos principales (Biblia Straubinger, Bíblia Livre y World English Bible) son de dominio público y libres de copyright.</span>
     </p>
 
     <!-- 3. Recurso histórico de consulta -->
-    <p><small>Recurso histórico de consulta: Materiales y ediciones de los inicios del proyecto (disponibles para referencia externa).</small></p>
+    <p><small data-es="Recurso histórico de consulta: Materiales y ediciones de los inicios del proyecto (disponibles para referencia externa)." data-en="Historical consultation resource: Materials and editions from the beginnings of the project (available for external reference)." data-pt="Recurso histórico de consulta: Materiais e edições dos começos do projeto (disponíveis para referência externa).">Recurso histórico de consulta: Materiales y ediciones de los inicios del proyecto (disponibles para referencia externa).</small></p>
 
     <!-- 4. Correcciones menores / Aviso de cookies -->
-    <p><small>Nuestro propósito • Material para estudio • Este sitio no utiliza cookies de rastreo.</small></p>
+    <p><small data-es="Nuestro propósito • Material para estudio • Este sitio no utiliza cookies de rastreo." data-en="Our purpose • Study material • This site does not use tracking cookies." data-pt="Nosso propósito • Material para estudo • Este site não utiliza cookies de rastreamento.">Nuestro propósito • Material para estudio • Este sitio no utiliza cookies de rastreo.</small></p>
 </footer>
 </body>
   
