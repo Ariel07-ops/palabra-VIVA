@@ -4851,3 +4851,31 @@ body.modo-sepia .icono-menu-oro,
   box-shadow: 0 2px 4px rgba(60, 40, 15, 0.35); /* Le da relieve tipo medalla sobre el fondo claro */
   filter: contrast(1.1) saturate(1.15);
 }
+/* Aumentamos el tamaño y mejoramos la presencia de los íconos del menú */
+.icono-menu-oro {
+  width: 36px; /* Los agrandamos para que se luzcan los detalles */
+  height: 36px;
+  object-fit: contain;
+  margin-right: 14px;
+  vertical-align: middle;
+  mix-blend-mode: lighten;
+  filter: drop-shadow(0 0 4px rgba(212, 175, 55, 0.45));
+  transition:
+    transform 0.25s ease,
+    filter 0.25s ease;
+}
+
+/* Efecto al pasar el dedo o el mouse */
+nav ul li a:hover .icono-menu-oro,
+nav ul li a:active .icono-menu-oro {
+  transform: scale(1.15);
+  filter: drop-shadow(0 0 8px rgba(255, 215, 0, 0.9)) brightness(1.2);
+}
+
+/* Ajuste específico para el modo sepia que ya tenías */
+body.modo-sepia .icono-menu-oro {
+  mix-blend-mode: normal;
+  border-radius: 8px;
+  box-shadow: 0 2px 5px rgba(60, 40, 15, 0.4);
+  filter: contrast(1.15) saturate(1.2);
+}
