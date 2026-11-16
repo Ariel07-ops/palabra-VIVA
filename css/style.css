@@ -4812,3 +4812,42 @@ details.acordeon-tema[open] div[style*="max-height"] {
   flex: 1;
   overflow-y: auto;
 }
+.icono-menu-oro {
+  width: 28px;
+  height: auto;
+  margin-right: 12px;
+  vertical-align: middle;
+  filter: drop-shadow(0 2px 2px rgba(0, 0, 0, 0.4));
+}
+/* Estilo base para los íconos de oro y plata */
+.icono-menu-oro {
+  width: 28px;
+  height: 28px;
+  object-fit: contain;
+  margin-right: 12px;
+  vertical-align: middle;
+
+  /* MAGIA: Vuelve transparente el fondo negro del .jpeg */
+  mix-blend-mode: lighten;
+
+  /* Brillo dorado sutil permanente */
+  filter: drop-shadow(0 0 3px rgba(212, 175, 55, 0.35));
+  transition:
+    transform 0.25s ease,
+    filter 0.25s ease;
+}
+
+/* Efecto de destello al pasar el mouse o tocar la opción */
+nav ul li a:hover .icono-menu-oro,
+nav ul li a:active .icono-menu-oro {
+  transform: scale(1.12);
+  filter: drop-shadow(0 0 7px rgba(255, 215, 0, 0.85)) brightness(1.15);
+}
+/* Ajustá el selector (.tema-sepia, .sepia o body[data-theme="sepia"]) según cómo lo llames en tu CSS */
+body.modo-sepia .icono-menu-oro,
+.modo-sepia .icono-menu-oro {
+  mix-blend-mode: normal;
+  border-radius: 6px; /* Suaviza las esquinas del cuadradito oscuro sobre el pergamino */
+  box-shadow: 0 2px 4px rgba(60, 40, 15, 0.35); /* Le da relieve tipo medalla sobre el fondo claro */
+  filter: contrast(1.1) saturate(1.15);
+}

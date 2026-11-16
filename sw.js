@@ -1,4 +1,4 @@
-const CACHE_NAME = "palabra-viva-v19"; // Subimos la versión
+const CACHE_NAME = "palabra-viva-v21"; // Subí la versión para incluir los nuevos íconos
 
 const urlsToCache = [
   "./",
@@ -16,7 +16,9 @@ const urlsToCache = [
   "./js/bible/canon.js",
   "./js/assistant/chat.js",
   "./js/assistant/engine.js",
+  // Imágenes principales y splash
   "./assets/imagen/logo-redondo.png",
+  "./assets/imagen/logo-192.png",
   "./assets/imagen/splash-cruz-nitida.png",
   "./assets/imagen/splash.png",
   "./assets/imagen/splash1.png",
@@ -33,6 +35,18 @@ const urlsToCache = [
   "./assets/imagen/escalon6.jpg",
   "./assets/imagen/escalon7.jpg",
   "./assets/imagen/escalon8.jpg",
+  // Nuevos íconos de menú en oro y plata
+  "./assets/imagen/inicio.jpeg",
+  "./assets/imagen/biblia.jpeg",
+  "./assets/imagen/buscar.jpeg",
+  "./assets/imagen/idioma.jpeg",
+  "./assets/imagen/enlaces.jpeg",
+  "./assets/imagen/herramientas.jpeg",
+  "./assets/imagen/acerca.jpeg",
+  "./assets/imagen/asistente.jpeg",
+  // Audio (importante para el splash)
+  "./assets/audio/intro.mp3",
+  // Datos
   "./data/SpaPlatense.json",
   "./data/bibleweb.json",
   "./data/biblia_pt_completa.json",
@@ -40,22 +54,22 @@ const urlsToCache = [
   "./data/contenido.json",
   "./data/camino.json",
   "./data/promesa.json",
-  "./data/catequesis.json",
   "./data/config.json",
-  "./data/palabraviva.json",
   "./data/respuestas_asistente.json",
+  "./data/glosario.json",
+  "./data/referencias-cruzadas.json",
 ];
 
-// Instalación: cachea los recursos esenciales de forma independiente
+// Instalación
 self.addEventListener("install", (event) => {
   event.waitUntil(
     caches.open(CACHE_NAME).then(async (cache) => {
-      console.log("Cacheando archivos de Palabra Viva...");
-      for (let url of urlsToCache) {
+      console.log("[SW] Cacheando recursos de Palabra Viva...");
+      for (const url of urlsToCache) {
         try {
           await cache.add(url);
         } catch (e) {
-          console.warn("No se pudo cachear archivo individual:", url);
+          console.warn("[SW] No se pudo cachear:", url, e);
         }
       }
       return self.skipWaiting();
@@ -63,7 +77,7 @@ self.addEventListener("install", (event) => {
   );
 });
 
-// Activación: limpia las cachés viejas inmediatamente
+// Activación: limpia cachés viejas
 self.addEventListener("activate", (event) => {
   event.waitUntil(
     caches
@@ -72,7 +86,7 @@ self.addEventListener("activate", (event) => {
         return Promise.all(
           cacheNames.map((cacheName) => {
             if (cacheName !== CACHE_NAME) {
-              console.log("Eliminando caché antigua:", cacheName);
+              console.log("[SW] Eliminando caché antigua:", cacheName);
               return caches.delete(cacheName);
             }
           }),
@@ -82,31 +96,52 @@ self.addEventListener("activate", (event) => {
   );
 });
 
-// Fetch robusto con estrategia de respaldo offline
+// Estrategia Cache-First + fallback offline
 self.addEventListener("fetch", (event) => {
-  // Ignoramos peticiones que no sean GET (como extensiones o analytics si los hubiera)
   if (event.request.method !== "GET") return;
+
+  // No cacheamos ni interceptamos requests a CDNs externos
+  const url = new URL(event.request.url);
+  if (
+    url.hostname.includes("fonts.googleapis.com") ||
+    url.hostname.includes("fonts.gstatic.com") ||
+    url.hostname.includes("cdnjs.cloudflare.com") ||
+    url.hostname.includes("archive.org")
+  ) {
+    return; // Dejamos que fallen offline
+  }
 
   event.respondWith(
     caches.match(event.request).then((cachedResponse) => {
-      // Si está en caché, lo devolvemos al instante
       if (cachedResponse) {
         return cachedResponse;
       }
 
-      // Si no está en caché, intentamos buscarlo en la red
       return fetch(event.request)
         .then((networkResponse) => {
+          // Opcional: cachear dinámicamente recursos de la misma origin
+          if (
+            networkResponse &&
+            networkResponse.status === 200 &&
+            url.origin === self.location.origin
+          ) {
+            const responseClone = networkResponse.clone();
+            caches.open(CACHE_NAME).then((cache) => {
+              cache.put(event.request, responseClone);
+            });
+          }
           return networkResponse;
         })
         .catch(() => {
-          // Si falla la red y es una petición de navegación ( HTML ), devolvemos el index.html cacheado
+          // Fallback para navegación
           if (
             event.request.mode === "navigate" ||
             event.request.headers.get("accept")?.includes("text/html")
           ) {
             return caches.match("./index.html");
           }
+          // Para otros recursos fallidos, devolvemos un Response vacío o el index
+          return new Response("", { status: 503, statusText: "Offline" });
         });
     }),
   );
