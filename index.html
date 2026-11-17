@@ -330,8 +330,7 @@
     <button
       class="btn-back"
       onclick="changeScreen('screen-capitulos')"
-      style="padding: 5px 8px; font-size: 0.8rem; flex-shrink: 0;"
-    >
+          >
       ⬅
     </button>
 
@@ -1721,15 +1720,24 @@
       <button onclick="toggleMenuBitacora()" style="background: transparent; border: none; color: inherit; font-size: 1.2rem; cursor: pointer;">✕</button>
     </div>
 
-    <!-- Pestañas Superiores del Panel Lateral -->
-    <div style="display: flex; gap: 4px; margin-bottom: 12px; border-bottom: 1px solid rgba(212,175,55,0.2); padding-bottom: 6px;">
-      <button onclick="verPestanaBitacora('notas')" data-es="📂 Notas" data-en="📂 Notes" data-pt="📂 Notas" style="flex: 1; background: rgba(212,175,55,0.2); border: 1px solid var(--gold, #d4af37); color: inherit; font-size: 0.75rem; padding: 6px 2px; border-radius: 4px; cursor: pointer;">📂 Notas</button>
-      <button onclick="verPestanaBitacora('guia')" data-es="📖 Guía" data-en="📖 Guide" data-pt="📖 Guia" style="flex: 1; background: transparent; border: 1px solid rgba(212,175,55,0.4); color: inherit; font-size: 0.75rem; padding: 6px 2px; border-radius: 4px; cursor: pointer;">📖 Guía</button>
-      <button onclick="verPestanaBitacora('glosario')" data-es="📚 Glosario" data-en="📚 Glossary" data-pt="📚 Glossário" style="flex: 1; background: transparent; border: 1px solid rgba(212,175,55,0.4); color: inherit; font-size: 0.75rem; padding: 6px 2px; border-radius: 4px; cursor: pointer;">📚 Glosario</button>
-      <button onclick="toggleMenuBitacora()" title="Cerrar panel" style="background: transparent; border: 1px solid rgba(255,85,85,0.5); color: #ff5555; width: 28px; height: 28px; border-radius: 4px; font-size: 0.9rem; display: flex; align-items: center; justify-content: center; cursor: pointer; flex-shrink: 0;">✕</button>
-    </div>
+   <!-- Pestañas Superiores del Panel Lateral -->
+<div style="display: flex; gap: 4px; margin-bottom: 8px; border-bottom: 1px solid rgba(212,175,55,0.2); padding-bottom: 6px;">
+  <button onclick="verPestanaBitacora('notas')" data-es="📂 Notas" data-en="📂 Notes" data-pt="📂 Notas" style="flex: 1; background: rgba(212,175,55,0.2); border: 1px solid var(--gold, #d4af37); color: inherit; font-size: 0.75rem; padding: 6px 2px; border-radius: 4px; cursor: pointer;">📂 Notas</button>
+  <button onclick="verPestanaBitacora('guia')" data-es="📖 Guía" data-en="📖 Guide" data-pt="📖 Guia" style="flex: 1; background: transparent; border: 1px solid rgba(212,175,55,0.4); color: inherit; font-size: 0.75rem; padding: 6px 2px; border-radius: 4px; cursor: pointer;">📖 Guía</button>
+  <button onclick="verPestanaBitacora('glosario')" data-es="📚 Glosario" data-en="📚 Glossary" data-pt="📚 Glossário" style="flex: 1; background: transparent; border: 1px solid rgba(212,175,55,0.4); color: inherit; font-size: 0.75rem; padding: 6px 2px; border-radius: 4px; cursor: pointer;">📚 Glosario</button>
+  <button onclick="toggleMenuBitacora()" title="Cerrar panel" style="background: transparent; border: 1px solid rgba(255,85,85,0.5); color: #ff5555; width: 28px; height: 28px; border-radius: 4px; font-size: 0.9rem; display: flex; align-items: center; justify-content: center; cursor: pointer; flex-shrink: 0;">✕</button>
+</div>
 
-    <!-- SECCIÓN 1: MIS NOTAS Y ACCIONES -->
+<!-- Botones de Respaldo (Exportar / Importar JSON) -->
+<div style="display: flex; gap: 6px; margin-bottom: 12px;">
+  <button onclick="exportarTodasLasNotas()" style="flex: 1; background: rgba(212,175,55,0.1); border: 1px solid rgba(212,175,55,0.3); color: inherit; font-size: 0.7rem; padding: 6px; border-radius: 4px; cursor: pointer;">📤 Exportar</button>
+  
+  <!-- Botón que al hacer clic fuerza a abrir el selector de archivos -->
+  <button onclick="document.getElementById('input-importar-json').click()" style="flex: 1; background: rgba(212,175,55,0.1); border: 1px solid rgba(212,175,55,0.3); color: inherit; font-size: 0.7rem; padding: 6px; border-radius: 4px; cursor: pointer;">📥 Importar</button>
+  
+  <!-- Input oculto separado -->
+  <input type="file" id="input-importar-json" accept=".json" onchange="importarNotasDesdeJSON(event)" style="display: none;">
+</div>    <!-- SECCIÓN 1: MIS NOTAS Y ACCIONES -->
     <div id="sec-bitacora-notas" style="display: flex; flex-direction: column; flex: 1; overflow: hidden;">
       <div style="display: flex; flex-direction: column; gap: 8px; margin-bottom: 12px;">
         <button onclick="crearNuevaNota()" data-es="➕ Nueva Nota" data-en="➕ New Note" data-pt="➕ Nova Nota" style="background: rgba(212,175,55,0.15); border: 1px solid var(--gold, #d4af37); color: inherit; padding: 8px; border-radius: 6px; cursor: pointer; text-align: left; font-size: 0.85rem; font-weight: bold;">

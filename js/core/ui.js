@@ -667,7 +667,6 @@ export function verPestanaBitacora(nombre) {
   if (secGlosario)
     secGlosario.style.display = nombre === "glosario" ? "block" : "none";
 
-  // Actualizar estilos visuales de los botones de las pestañas
   const contenedorTabs = document.querySelector(
     "#panel-lateral-bitacora > div:nth-child(2)",
   );
@@ -683,13 +682,11 @@ export function verPestanaBitacora(nombre) {
 
     botones.forEach((btn, index) => {
       if (pestanasMap[index] === nombre) {
-        // Estilo ACTIVO (Iluminado)
         btn.style.background = "rgba(212, 175, 55, 0.25)";
         btn.style.borderColor = "var(--gold, #d4af37)";
         btn.style.color = "#fff";
         btn.style.fontWeight = "bold";
       } else {
-        // Estilo INACTIVO (Apagado)
         btn.style.background = "transparent";
         btn.style.borderColor = "rgba(255, 255, 255, 0.3)";
         btn.style.color = "#aaa";
@@ -699,47 +696,170 @@ export function verPestanaBitacora(nombre) {
   }
 }
 
+// --- SISTEMA DE NOTAS CON ID ÚNICO Y RESPALDO JSON ---
+
+function generarIdNota() {
+  return (
+    "nota_" + Date.now() + "_" + Math.random().toString(36).substring(2, 7)
+  );
+}
+
 // Crear una nota nueva limpia
 export function crearNuevaNota() {
   const inputTitulo = document.getElementById("titulo-nota-actual");
   const txtArea = document.getElementById("texto-libreta-amplia");
   const estado = document.getElementById("estado-guardado-libreta");
 
-  if (inputTitulo)
+  if (inputTitulo) {
     inputTitulo.value = "Nueva Nota " + new Date().toLocaleDateString("es-AR");
+    inputTitulo.dataset.notaId = ""; // Se generará el ID único al guardar por primera vez
+  }
   if (txtArea) txtArea.value = "";
   if (estado) estado.innerText = "Nota nueva creada";
 
-  toggleMenuBitacora(); // Cierra el panel al crear
+  if (typeof toggleMenuBitacora === "function") toggleMenuBitacora();
 }
 
-// Guardar la nota actual en localStorage
+// Cargar una nota existente en el editor usando su ID único
+export function cargarNotaEnEditor(nota) {
+  const inputTitulo = document.getElementById("titulo-nota-actual");
+  const txtArea = document.getElementById("texto-libreta-amplia");
+  const estado = document.getElementById("estado-guardado-libreta");
+
+  if (inputTitulo) {
+    inputTitulo.value = nota.titulo || "";
+    inputTitulo.dataset.notaId = nota.id || "";
+  }
+  if (txtArea) txtArea.value = nota.contenido || "";
+  if (estado) estado.innerText = "Nota cargada";
+}
+
+// Guardar la nota actual en localStorage con ID único (evita sobrescribir notas con igual título)
 export function guardarNotaManual() {
   const inputTitulo = document.getElementById("titulo-nota-actual");
   const txtArea = document.getElementById("texto-libreta-amplia");
   const estado = document.getElementById("estado-guardado-libreta");
 
-  const titulo = inputTitulo ? inputTitulo.value.trim() : "Nota sin título";
+  const titulo = inputTitulo ? inputTitulo.value.trim() : "Sin título";
   const contenido = txtArea ? txtArea.value : "";
 
+  let idActual = inputTitulo?.dataset?.notaId || null;
   let notas = JSON.parse(localStorage.getItem("palabra_viva_notas") || "[]");
 
-  const index = notas.findIndex((n) => n.titulo === titulo);
+  if (!idActual) {
+    idActual = generarIdNota();
+    if (inputTitulo) inputTitulo.dataset.notaId = idActual;
+  }
+
+  const notaData = {
+    id: idActual,
+    titulo: titulo || "Sin título",
+    contenido: contenido,
+    fecha: new Date().toLocaleString("es-AR"),
+    fechaISO: new Date().toISOString(),
+  };
+
+  const index = notas.findIndex((n) => n.id === idActual);
+
   if (index >= 0) {
-    notas[index].contenido = contenido;
-    notas[index].fecha = new Date().toLocaleString("es-AR");
+    notas[index] = notaData; // Actualiza la existente
   } else {
-    notas.push({
-      titulo,
-      contenido,
-      fecha: new Date().toLocaleString("es-AR"),
-    });
+    notas.push(notaData); // Agrega nueva
   }
 
   localStorage.setItem("palabra_viva_notas", JSON.stringify(notas));
   if (estado) estado.innerText = "✓ Guardado exitosamente";
 
-  toggleMenuBitacora(); // Cierra el panel al guardar
+  if (typeof cargarIndiceNotas === "function") cargarIndiceNotas();
+}
+
+// Exportar todas las notas a un archivo JSON profesional con metadatos
+export function exportarTodasLasNotas() {
+  const notas = JSON.parse(localStorage.getItem("palabra_viva_notas") || "[]");
+
+  if (notas.length === 0) {
+    alert("No hay notas para exportar.");
+    return;
+  }
+
+  const respaldo = {
+    app: "Palabra Viva",
+    version: "1.0",
+    fechaExportacion: new Date().toISOString(),
+    cantidad: notas.length,
+    notas: notas,
+  };
+
+  const blob = new Blob([JSON.stringify(respaldo, null, 2)], {
+    type: "application/json",
+  });
+
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement("a");
+  a.href = url;
+  a.download = `PalabraViva-Notas-${new Date().toISOString().slice(0, 10)}.json`;
+  document.body.appendChild(a);
+  a.click();
+  document.body.removeChild(a);
+  URL.revokeObjectURL(url);
+}
+
+// Importar notas desde un archivo JSON (Fusión inteligente por ID)
+export function importarNotasDesdeJSON(event) {
+  const archivo = event.target.files[0];
+  if (!archivo) return;
+
+  const reader = new FileReader();
+
+  reader.onload = function (e) {
+    try {
+      const data = JSON.parse(e.target.result);
+      let notasImportadas = Array.isArray(data) ? data : data.notas;
+
+      if (!Array.isArray(notasImportadas)) {
+        alert("El archivo no tiene el formato correcto de notas.");
+        return;
+      }
+
+      let notasLocales = JSON.parse(
+        localStorage.getItem("palabra_viva_notas") || "[]",
+      );
+      let agregadas = 0;
+      let actualizadas = 0;
+
+      notasImportadas.forEach((notaImp) => {
+        if (!notaImp.id) {
+          notaImp.id = generarIdNota(); // Asigna ID si el archivo importado es viejo
+        }
+
+        const index = notasLocales.findIndex((n) => n.id === notaImp.id);
+
+        if (index >= 0) {
+          notasLocales[index] = notaImp;
+          actualizadas++;
+        } else {
+          notasLocales.push(notaImp); // Conviven aunque tengan el mismo título (ej: Dios y Dios)
+          agregadas++;
+        }
+      });
+
+      localStorage.setItem("palabra_viva_notas", JSON.stringify(notasLocales));
+
+      if (typeof cargarIndiceNotas === "function") {
+        cargarIndiceNotas();
+      }
+
+      alert(
+        `Importación finalizada.\n\nNotas nuevas: ${agregadas}\nNotas actualizadas: ${actualizadas}`,
+      );
+    } catch (error) {
+      console.error("Error al importar notas:", error);
+      alert("Hubo un error al leer el archivo.");
+    }
+  };
+
+  reader.readAsText(archivo);
+  event.target.value = ""; // Limpia el input para permitir reimportar el mismo archivo si hace falta
 }
 
 // Cargar el listado/índice de notas en la barra lateral con opción de eliminar
@@ -766,63 +886,74 @@ export function cargarIndiceNotas() {
     return;
   }
 
-  notas.forEach((nota, index) => {
+  // Ordenar de más reciente a más antigua
+  notas.sort((a, b) => new Date(b.fechaISO || 0) - new Date(a.fechaISO || 0));
+
+  notas.forEach((nota) => {
     const item = document.createElement("div");
     item.style.cssText =
-      "background: rgba(255,255,255,0.05); border: 1px solid rgba(212,175,55,0.3); padding: 8px 10px; border-radius: 5px; cursor: pointer; display: flex; justify-content: space-between; align-items: center;";
+      "background: rgba(255,255,255,0.05); border: 1px solid rgba(212,175,55,0.3); padding: 8px 10px; border-radius: 5px; cursor: pointer; display: flex; justify-content: space-between; align-items: center; margin-bottom: 6px;";
 
     item.innerHTML = `
       <div style="flex: 1; overflow: hidden; padding-right: 8px;">
-        <div style="color: var(--gold, #d4af37); font-weight: bold; font-size: 0.85rem; text-overflow: ellipsis; overflow: hidden; white-space: nowrap;">📄 ${nota.titulo}</div>
-        <div style="color: #aaa; font-size: 0.7rem;">${nota.fecha}</div>
+        <div style="color: var(--gold, #d4af37); font-weight: bold; font-size: 0.85rem; text-overflow: ellipsis; overflow: hidden; white-space: nowrap;">📄 ${nota.titulo || "Sin título"}</div>
+        <div style="color: #aaa; font-size: 0.7rem;">${nota.fecha || ""}</div>
       </div>
-      <button onclick="event.stopPropagation(); eliminarNota(${index})" title="Eliminar nota" style="background: transparent; border: none; color: #ff5555; cursor: pointer; font-size: 1rem; padding: 4px;">
+      <button onclick="event.stopPropagation(); eliminarNota('${nota.id}')" title="Eliminar nota" style="background: transparent; border: none; color: #ff5555; cursor: pointer; font-size: 1rem; padding: 4px;">
         🗑️
       </button>
     `;
 
-    // Al hacer clic en la tarjeta (fuera del tacho) se carga la nota
+    // Al hacer clic, carga la nota exacta por su ID único
     item.onclick = () => {
-      document.getElementById("titulo-nota-actual").value = nota.titulo;
-      document.getElementById("texto-libreta-amplia").value = nota.contenido;
-      document.getElementById("estado-guardado-libreta").innerText =
-        "Nota cargada";
-      toggleMenuBitacora();
+      cargarNotaEnEditor(nota);
+      if (typeof toggleMenuBitacora === "function") toggleMenuBitacora();
     };
 
     listaContenedor.appendChild(item);
   });
 }
 
-// Función para eliminar una nota por su índice
-export function eliminarNota(index) {
+// Función para eliminar una nota usando su ID único
+export function eliminarNota(idNota) {
   let notas = JSON.parse(localStorage.getItem("palabra_viva_notas") || "[]");
+  const notaABorrar = notas.find((n) => n.id === idNota);
+
+  if (!notaABorrar) return;
 
   if (
-    confirm(`¿Estás seguro de que querés eliminar "${notas[index].titulo}"?`)
+    confirm(`¿Estás seguro de que querés eliminar "${notaABorrar.titulo}"?`)
   ) {
-    notas.splice(index, 1);
+    notas = notas.filter((n) => n.id !== idNota);
     localStorage.setItem("palabra_viva_notas", JSON.stringify(notas));
 
-    // Si la nota borrada era la que estaba abierta, limpiamos el cuaderno
-    document.getElementById("titulo-nota-actual").value = "Mi Nota de Hoy";
-    document.getElementById("texto-libreta-amplia").value = "";
-    document.getElementById("estado-guardado-libreta").innerText =
-      "Nota eliminada";
+    // Si la nota borrada era la que estaba abierta en el editor, limpiamos
+    const inputTitulo = document.getElementById("titulo-nota-actual");
+    if (inputTitulo && inputTitulo.dataset.notaId === idNota) {
+      inputTitulo.value = "Mi Nota de Hoy";
+      inputTitulo.dataset.notaId = "";
+      const txtArea = document.getElementById("texto-libreta-amplia");
+      if (txtArea) txtArea.value = "";
+      const estado = document.getElementById("estado-guardado-libreta");
+      if (estado) estado.innerText = "Nota eliminada";
+    }
 
-    // Recargamos el listado
     cargarIndiceNotas();
   }
 }
 
-// Exposición global
-window.eliminarNota = eliminarNota;
-// --- EXPOSICIÓN GLOBAL PARA EL HTML ---
+// Exposición global (Puentes con el HTML)
 window.toggleMenuBitacora = toggleMenuBitacora;
 window.verPestanaBitacora = verPestanaBitacora;
 window.crearNuevaNota = crearNuevaNota;
 window.guardarNotaManual = guardarNotaManual;
-window.cargarIndiceNotas = cargarIndiceNotas; // --- EXPOSICIÓN GLOBAL (PUENTE CON EL HTML) ---
+window.exportarTodasLasNotas = exportarTodasLasNotas;
+window.importarNotasDesdeJSON = importarNotasDesdeJSON;
+window.cargarIndiceNotas = cargarIndiceNotas;
+window.cargarNotaEnEditor = cargarNotaEnEditor;
+window.eliminarNota = eliminarNota;
+
+// --- RESTO DE EXPOSICIONES GLOBALES ---
 window.changeScreen = changeScreen;
 window.redirigir = redirigir;
 window.abrirPasoEmaus = abrirPasoEmaus;
