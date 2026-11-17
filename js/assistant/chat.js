@@ -60,7 +60,7 @@ export function initChatEvents() {
         }
 
         try {
-          const idiomaActual = localStorage.getItem("idiomaApp") || "es";
+          const idiomaActual = localStorage.getItem("pv_idioma") || "es";
           let langCode = "es-AR";
           if (idiomaActual === "en") langCode = "en-US";
           else if (idiomaActual === "pt") langCode = "pt-BR";
@@ -125,7 +125,7 @@ export function initChatEvents() {
     }
   });
 
-  const nombreGuardado = localStorage.getItem("nombrePalabraViva");
+  const nombreGuardado = localStorage.getItem("pv_nombre");
 
   // 3. CARGA INICIAL Y MENSAJE DE BIENVENIDA
   (async () => {
@@ -210,7 +210,7 @@ export function initChatEvents() {
             : textoUsuarioCrudo.split(" ")[0];
 
           if (nombreIngresado.length > 2) {
-            localStorage.setItem("nombrePalabraViva", nombreIngresado);
+            localStorage.setItem("pv_nombre", nombreIngresado);
             setEsperandoNombre(false);
             const respConNombre =
               datosMaestros.sistema_nombres?.saludo_con_nombre;
@@ -235,7 +235,7 @@ export function initChatEvents() {
             textoLimpio.includes("borrar mi nombre") ||
             textoLimpio.includes("olvidar mi nombre")
           ) {
-            localStorage.removeItem("nombrePalabraViva");
+            localStorage.removeItem("pv_nombre");
             setEsperandoNombre(true);
             respuestaAsistente =
               "Listo, borré el nombre que tenía guardado. ¿Cómo querés que te llame ahora?";
@@ -368,7 +368,7 @@ export function initChatEvents() {
 
                 const idiomaActual =
                   window.idiomaActual ||
-                  localStorage.getItem("idiomaApp") ||
+                  localStorage.getItem("pv_idioma") ||
                   "es";
                 const datosItemIdioma = item[idiomaActual] || item.es || item;
 
@@ -437,7 +437,7 @@ export function initChatEvents() {
                 if (comodinItem) {
                   const idiomaActual =
                     window.idiomaActual ||
-                    localStorage.getItem("idiomaApp") ||
+                    localStorage.getItem("pv_idoma") ||
                     "es";
                   const datosComodinIdioma =
                     comodinItem[idiomaActual] || comodinItem.es || comodinItem;
@@ -510,7 +510,7 @@ export function initChatEvents() {
                 if (relacionados.length > 0) {
                   const idiomaActual =
                     window.idiomaActual ||
-                    localStorage.getItem("idiomaApp") ||
+                    localStorage.getItem("pv_idioma") ||
                     "es";
                   const textoExplorar =
                     idiomaActual === "en"
@@ -586,7 +586,7 @@ export function initChatEvents() {
       divAsistente.className = "mensaje-asistente";
 
       const idiomaApp =
-        window.idiomaActual || localStorage.getItem("idiomaApp") || "es";
+        window.idiomaActual || localStorage.getItem("pv_idioma") || "es";
       const textoBotonEscuchar =
         idiomaApp === "en"
           ? "🔊 Listen"

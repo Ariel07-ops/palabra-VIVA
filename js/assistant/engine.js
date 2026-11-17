@@ -24,7 +24,7 @@ export function escaparHTML(texto) {
 export function obtenerTextoIdioma(itemTexto) {
   if (!itemTexto) return "";
   const idioma =
-    window.idiomaActual || localStorage.getItem("idiomaApp") || "es";
+    window.idiomaActual || localStorage.getItem("pv_idioma") || "es";
 
   let textoObtenido = "";
   if (typeof itemTexto === "object") {
@@ -34,7 +34,7 @@ export function obtenerTextoIdioma(itemTexto) {
   }
 
   // Inyección automática de nombre
-  const nombreActual = localStorage.getItem("nombrePalabraViva") || "amigo";
+  const nombreActual = localStorage.getItem("pv_nombre") || "amigo";
   textoObtenido = textoObtenido
     .replace(/\$\{nombreIngresado\}/g, nombreActual)
     .replace(/\$\{nombreGuardado\}/g, nombreActual);
@@ -397,7 +397,7 @@ export let pasoActualRazon = 1;
 export function manejarCaminoRazon(mensajeUsuario) {
   const texto = mensajeUsuario.toLowerCase().trim();
 
-  const idiomaActual = localStorage.getItem("idiomaApp") || "es";
+  const idiomaActual = localStorage.getItem("pv_idioma") || "es";
   const caminoRazonData =
     caminoRazonTraducciones[idiomaActual] || caminoRazonTraducciones.es;
   const ui = textosUIRazon[idiomaActual] || textosUIRazon.es;
@@ -572,7 +572,7 @@ export function leerTextoDirecto(textoParaLeer) {
 
 export function construirRespuestaCatequesis(item) {
   const idioma =
-    window.idiomaActual || localStorage.getItem("idiomaApp") || "es";
+    window.idiomaActual || localStorage.getItem("pv_idioma") || "es";
   const datosIdioma = item[idioma] || item.es || item;
 
   const tituloPregunta =
@@ -779,7 +779,7 @@ export let pasoActualTrinidad = 1;
 export function manejarCaminoTrinidad(mensajeUsuario) {
   const texto = mensajeUsuario.toLowerCase().trim();
 
-  const idiomaActual = localStorage.getItem("idiomaApp") || "es";
+  const idiomaActual = localStorage.getItem("pv_idioma") || "es";
   const caminoTrinidadData =
     caminoTrinidadTraducciones[idiomaActual] || caminoTrinidadTraducciones.es;
   const ui = textosUITrinidad[idiomaActual] || textosUITrinidad.es;
@@ -1013,7 +1013,7 @@ export let pasoActualAlma = 1;
 export function manejarCaminoAlma(mensajeUsuario) {
   const texto = mensajeUsuario.toLowerCase().trim();
 
-  const idiomaActual = localStorage.getItem("idiomaApp") || "es";
+  const idiomaActual = localStorage.getItem("pv_idioma") || "es";
   const caminoAlmaData =
     caminoAlmaTraducciones[idiomaActual] || caminoAlmaTraducciones.es;
   const ui = textosUIAlma[idiomaActual] || textosUIAlma.es;
@@ -1241,7 +1241,7 @@ export let pasoActualPascua = 1;
 export function manejarCaminoPascua(mensajeUsuario) {
   const texto = mensajeUsuario.toLowerCase().trim();
 
-  const idiomaActual = localStorage.getItem("idiomaApp") || "es";
+  const idiomaActual = localStorage.getItem("pv_idioma") || "es";
   const caminoPascuaData =
     caminoPascuaTraducciones[idiomaActual] || caminoPascuaTraducciones.es;
   const ui = textosUIPascua[idiomaActual] || textosUIPascua.es;
@@ -1479,7 +1479,7 @@ export let pasoActualDobleNaturaleza = 1;
 export function manejarCaminoDobleNaturaleza(mensajeUsuario) {
   const texto = mensajeUsuario.toLowerCase().trim();
 
-  const idiomaActual = localStorage.getItem("idiomaApp") || "es";
+  const idiomaActual = localStorage.getItem("pv_idioma") || "es";
   const caminoData =
     caminoDobleNaturalezaTraducciones[idiomaActual] ||
     caminoDobleNaturalezaTraducciones.es;

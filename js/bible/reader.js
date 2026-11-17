@@ -245,7 +245,7 @@ let cacheBiblia = {
 };
 
 function obtenerInfoBibliaActual() {
-  const idioma = localStorage.getItem("palabra_viva_idioma") || "es";
+  const idioma = localStorage.getItem("pv_idioma") || "es";
   switch (idioma) {
     case "pt":
       return { ruta: "data/biblia_pt_completa.json", idioma: "pt" };
@@ -298,7 +298,7 @@ function normalizarConCanonOficial(jsonRaw, idioma) {
 }
 
 function obtenerNombreVisible(nombreLibroEsp) {
-  const idioma = localStorage.getItem("palabra_viva_idioma") || "es";
+  const idioma = localStorage.getItem("pv_idioma") || "es";
   if (LIBROS_TRADUCIDOS[idioma] && LIBROS_TRADUCIDOS[idioma][nombreLibroEsp]) {
     return LIBROS_TRADUCIDOS[idioma][nombreLibroEsp];
   }
@@ -705,7 +705,7 @@ export async function inicializarIndiceExegeticoEnGuia() {
   try {
     const respuesta = await fetch("data/contenido.json");
     const datosJson = await respuesta.json();
-    const idioma = localStorage.getItem("palabra_viva_idioma") || "es";
+    const idioma = localStorage.getItem("pv_idioma") || "es";
 
     if (
       !datosJson.idiomas ||
@@ -821,8 +821,8 @@ export async function poblarReferenciasAcordeon() {
 
     const lang =
       window.idiomaActual ||
-      localStorage.getItem("idioma") ||
-      localStorage.getItem("palabra_viva_idioma") ||
+      localStorage.getItem("pv_idioma") ||
+      localStorage.getItem("pv_idioma") ||
       "es";
 
     let html = '<ul style="list-style: none; padding: 0; margin: 0;">';
@@ -892,8 +892,8 @@ export async function cargarGlosario() {
 
     const lang =
       window.idiomaActual ||
-      localStorage.getItem("idioma") ||
-      localStorage.getItem("palabra_viva_idioma") ||
+      localStorage.getItem("pv_idioma") ||
+      localStorage.getItem("pv_idioma") ||
       "es";
 
     const terminosOrdenados = [...glosarioData].sort((a, b) => {

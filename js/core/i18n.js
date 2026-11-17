@@ -5,21 +5,30 @@ import { limpiarBuscador } from "../bible/search.js";
 import { poblarReferenciasAcordeon, cargarGlosario } from "../bible/reader.js";
 
 /**
- * Obtiene el idioma guardado o detecta el idioma por defecto del navegador
+ * Obtiene el idioma guardado (con migración automática de claves viejas a pv_idioma)
  */
 export function obtenerIdiomaInicial() {
-  // 1. Revisa si hay un idioma guardado previamente en alguna de las claves
-  const guardado =
-    localStorage.getItem("idioma") ||
-    localStorage.getItem("palabraViva_idioma") ||
-    localStorage.getItem("palabra_viva_idioma") ||
-    localStorage.getItem("idiomaApp");
+  // 1. Primero busca en la clave oficial nueva
+  let idioma = localStorage.getItem("pv_idioma");
 
-  if (guardado) {
-    return guardado;
+  // 2. Si no existe, busca en las claves viejas y migra
+  if (!idioma) {
+    idioma =
+      localStorage.getItem("idioma") ||
+      localStorage.getItem("palabraViva_idioma") ||
+      localStorage.getItem("palabra_viva_idioma") ||
+      localStorage.getItem("idiomaApp");
+
+    if (idioma) {
+      localStorage.setItem("pv_idioma", idioma); // Migración automática
+    }
   }
 
-  // 2. Si no hay nada guardado, detecta el idioma del navegador
+  if (idioma) {
+    return idioma;
+  }
+
+  // 3. Si no hay nada guardado, detecta el idioma del navegador
   const navLang = (
     navigator.language ||
     navigator.userLanguage ||
@@ -44,11 +53,12 @@ export function cambiarIdioma(lang) {
   state.idiomaActual = lang;
   window.idiomaActual = lang;
 
-  // 2. Persistencia unificada en localStorage (todas las variantes para compatibilidad)
-  localStorage.setItem("idioma", lang);
-  localStorage.setItem("palabraViva_idioma", lang);
-  localStorage.setItem("palabra_viva_idioma", lang);
-  localStorage.setItem("idiomaApp", lang);
+  // 2. Persistencia unificada bajo la clave oficial y limpieza de claves obsoletas
+  localStorage.setItem("pv_idioma", lang);
+  localStorage.removeItem("idioma");
+  localStorage.removeItem("palabraViva_idioma");
+  localStorage.removeItem("palabra_viva_idioma");
+  localStorage.removeItem("idiomaApp");
 
   // 3. Limpiar e invalidar la caché del buscador para forzar la nueva Biblia
   if (typeof limpiarBuscador === "function") {
@@ -135,5 +145,8 @@ export function cambiarIdioma(lang) {
     cargarGlosario();
   }
 
-  console.log("🌐 Idioma cambiado y guardado con éxito:", lang);
+  console.log(
+    "🌐 Idioma cambiado y guardado con éxito bajo `pv_idioma`:",
+    lang,
+  );
 }

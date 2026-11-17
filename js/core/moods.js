@@ -4,7 +4,7 @@
 export async function cargarEstadoAnimo(nombreEstado) {
   try {
     const idioma =
-      window.idiomaActual || localStorage.getItem("idiomaApp") || "es";
+      window.idiomaActual || localStorage.getItem("pv_idioma") || "es";
     console.log("=== INICIO CARGA ESTADO ===", nombreEstado, "Idioma:", idioma);
 
     const respuesta = await fetch("data/estados.json");

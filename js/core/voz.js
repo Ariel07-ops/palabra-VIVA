@@ -154,7 +154,7 @@ export function hablarTextoPorFrases(textoLimpio, meta = {}) {
   actualizarMediaSession(meta.libro || "Palabra Viva", meta.capitulo);
 
   const idiomaApp =
-    window.idiomaActual || localStorage.getItem("idiomaApp") || "es";
+    window.idiomaActual || localStorage.getItem("pv_idioma") || "es";
   const configIdioma = CONFIG_IDIOMAS_VOZ[idiomaApp] || CONFIG_IDIOMAS_VOZ.es;
   const vozSeleccionada = obtenerVozPorIdioma(idiomaApp);
 

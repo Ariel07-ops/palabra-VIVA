@@ -103,7 +103,7 @@ export function redirigir(estado) {
 export async function abrirPasoEmaus(numero) {
   try {
     const idioma =
-      window.idiomaActual || localStorage.getItem("idiomaApp") || "es";
+      window.idiomaActual || localStorage.getItem("pv_idioma") || "es";
 
     const respuesta = await fetch("data/camino.json");
     const datosJson = await respuesta.json();
@@ -154,7 +154,7 @@ export async function abrirPasoEmaus(numero) {
 export async function abrirPeldaño(numero) {
   try {
     const idioma =
-      window.idiomaActual || localStorage.getItem("idiomaApp") || "es";
+      window.idiomaActual || localStorage.getItem("pv_idioma") || "es";
 
     const respuesta = await fetch("data/promesa.json");
     const datosJson = await respuesta.json();
@@ -274,31 +274,50 @@ export function cambiarTamanio(delta) {
   actualizarIndicadorVisual();
 }
 
+// ==========================================
+// SPLASH SCREEN - VERSIÓN LIMPIA Y ROBUSTA
+// ==========================================
 export function comenzarExperiencia() {
-  const audio = document.getElementById("musica-inicio");
   const splash = document.getElementById("screen-splash");
   const main = document.getElementById("screen-main");
+  const audio = document.getElementById("musica-inicio");
 
-  if (!audio || !splash || !main) return;
+  // Si no existen los elementos, salimos sin error
+  if (!splash || !main) return;
 
-  audio.volume = 0.02;
-  audio.play().catch(() => {});
+  // Intentamos reproducir el audio de forma suave
+  if (audio) {
+    audio.volume = 0.15; // volumen bajo
+    audio.play().catch(() => {
+      // Si el navegador bloquea el autoplay, no pasa nada
+      console.log("Audio de splash bloqueado por el navegador");
+    });
+  }
+
+  // Tiempo total que se muestra el splash (en milisegundos)
+  const TIEMPO_SPLASH = 4200;
 
   setTimeout(() => {
-    const fadeOut = setInterval(() => {
-      if (audio.volume > 0.005) {
-        audio.volume -= 0.005;
-      } else {
-        clearInterval(fadeOut);
+    // Hacemos el fade out
+    splash.style.transition = "opacity 0.9s ease";
+    splash.style.opacity = "0";
+
+    // Después del fade, escondemos el splash y mostramos la pantalla principal
+    setTimeout(() => {
+      splash.style.display = "none";
+      splash.classList.remove("active");
+
+      main.style.display = "block";
+      main.classList.add("active");
+
+      // Paramos y reiniciamos el audio
+      if (audio) {
         audio.pause();
         audio.currentTime = 0;
-        splash.style.display = "none";
-        main.style.display = "block";
       }
-    }, 50);
-  }, 2500);
+    }, 900); // tiempo del fade
+  }, TIEMPO_SPLASH);
 }
-
 // --- FUNCIONES DEL MODAL DE HERRAMIENTAS Y LIBRETA ---
 export function mostrarSeccionModal(seccion) {
   const menuPrincipal = document.getElementById("menu-herramientas-principal");
@@ -328,8 +347,7 @@ export function cerrarModalHerramientas() {
 
 export function mostrarPortadaCuaderno() {
   const nombreGuardado =
-    localStorage.getItem("pv_user_name") ||
-    localStorage.getItem("nombreUsuario");
+    localStorage.getItem("pv_nombre") || localStorage.getItem("pv_nombre");
   const saludoElem = document.getElementById("cuaderno-saludo-usuario");
   if (saludoElem) {
     if (nombreGuardado && nombreGuardado.trim() !== "") {
@@ -733,7 +751,7 @@ export function cargarIndiceNotas() {
   listaContenedor.innerHTML = "";
 
   if (notas.length === 0) {
-    const langActual = localStorage.getItem("palabra_viva_idioma") || "es";
+    const langActual = localStorage.getItem("pv_idioma") || "es";
     const msjSinNotas = {
       es: "No hay notas guardadas aún.",
       en: "No saved notes yet.",

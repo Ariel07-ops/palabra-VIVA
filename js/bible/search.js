@@ -94,6 +94,7 @@ function obtenerConfiguracionIdioma() {
 
   // 2. Segunda Prioridad: Claves de localStorage
   const langGuardado =
+    localStorage.getItem("pv_idioma") ||
     localStorage.getItem("idioma") ||
     localStorage.getItem("lang") ||
     localStorage.getItem("palabraViva_idioma") ||
