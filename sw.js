@@ -1,4 +1,4 @@
-const CACHE_NAME = "palabra-viva-v21"; // Subí la versión para incluir los nuevos íconos
+const CACHE_NAME = "palabra-viva-v22"; // ← subí la versión
 
 const urlsToCache = [
   "./",
@@ -9,6 +9,8 @@ const urlsToCache = [
   "./js/core/i18n.js",
   "./js/core/ui.js",
   "./js/core/moods.js",
+  "./js/core/state.js",
+  "./js/core/voz.js",
   "./js/bible/reader.js",
   "./js/bible/search.js",
   "./js/bible/audio.js",
@@ -16,7 +18,7 @@ const urlsToCache = [
   "./js/bible/canon.js",
   "./js/assistant/chat.js",
   "./js/assistant/engine.js",
-  // Imágenes principales y splash
+  // Imágenes
   "./assets/imagen/logo-redondo.png",
   "./assets/imagen/logo-192.png",
   "./assets/imagen/splash-cruz-nitida.png",
@@ -35,7 +37,6 @@ const urlsToCache = [
   "./assets/imagen/escalon6.jpg",
   "./assets/imagen/escalon7.jpg",
   "./assets/imagen/escalon8.jpg",
-  // Nuevos íconos de menú en oro y plata
   "./assets/imagen/inicio.jpeg",
   "./assets/imagen/biblia.jpeg",
   "./assets/imagen/buscar.jpeg",
@@ -44,7 +45,7 @@ const urlsToCache = [
   "./assets/imagen/herramientas.jpeg",
   "./assets/imagen/acerca.jpeg",
   "./assets/imagen/asistente.jpeg",
-  // Audio (importante para el splash)
+  // Audio
   "./assets/audio/intro.mp3",
   // Datos
   "./data/SpaPlatense.json",
@@ -64,12 +65,12 @@ const urlsToCache = [
 self.addEventListener("install", (event) => {
   event.waitUntil(
     caches.open(CACHE_NAME).then(async (cache) => {
-      console.log("[SW] Cacheando recursos de Palabra Viva...");
+      console.log("[SW] Cacheando recursos...");
       for (const url of urlsToCache) {
         try {
           await cache.add(url);
         } catch (e) {
-          console.warn("[SW] No se pudo cachear:", url, e);
+          console.warn("[SW] Falló cachear:", url);
         }
       }
       return self.skipWaiting();
@@ -77,71 +78,78 @@ self.addEventListener("install", (event) => {
   );
 });
 
-// Activación: limpia cachés viejas
+// Activación – limpia cachés viejas
 self.addEventListener("activate", (event) => {
   event.waitUntil(
     caches
       .keys()
-      .then((cacheNames) => {
+      .then((keys) => {
         return Promise.all(
-          cacheNames.map((cacheName) => {
-            if (cacheName !== CACHE_NAME) {
-              console.log("[SW] Eliminando caché antigua:", cacheName);
-              return caches.delete(cacheName);
-            }
-          }),
+          keys
+            .filter((key) => key !== CACHE_NAME)
+            .map((key) => {
+              console.log("[SW] Borrando caché vieja:", key);
+              return caches.delete(key);
+            }),
         );
       })
       .then(() => self.clients.claim()),
   );
 });
 
-// Estrategia Cache-First + fallback offline
+// Fetch – Cache First + fallback robusto
 self.addEventListener("fetch", (event) => {
   if (event.request.method !== "GET") return;
 
-  // No cacheamos ni interceptamos requests a CDNs externos
   const url = new URL(event.request.url);
+
+  // Dejamos fallar los recursos externos (fuentes, CDNs)
   if (
     url.hostname.includes("fonts.googleapis.com") ||
     url.hostname.includes("fonts.gstatic.com") ||
     url.hostname.includes("cdnjs.cloudflare.com") ||
     url.hostname.includes("archive.org")
   ) {
-    return; // Dejamos que fallen offline
+    return;
   }
 
   event.respondWith(
-    caches.match(event.request).then((cachedResponse) => {
-      if (cachedResponse) {
-        return cachedResponse;
+    caches.match(event.request).then((cached) => {
+      if (cached) {
+        return cached; // Cache First
       }
 
+      // Si no está en caché, intentamos red
       return fetch(event.request)
         .then((networkResponse) => {
-          // Opcional: cachear dinámicamente recursos de la misma origin
+          // Cacheamos en caliente recursos de la misma origin
           if (
             networkResponse &&
             networkResponse.status === 200 &&
             url.origin === self.location.origin
           ) {
-            const responseClone = networkResponse.clone();
+            const clone = networkResponse.clone();
             caches.open(CACHE_NAME).then((cache) => {
-              cache.put(event.request, responseClone);
+              cache.put(event.request, clone);
             });
           }
           return networkResponse;
         })
         .catch(() => {
-          // Fallback para navegación
+          // Fallback fuerte: si es navegación → index.html
           if (
             event.request.mode === "navigate" ||
-            event.request.headers.get("accept")?.includes("text/html")
+            (event.request.headers.get("accept") || "").includes("text/html")
           ) {
             return caches.match("./index.html");
           }
-          // Para otros recursos fallidos, devolvemos un Response vacío o el index
-          return new Response("", { status: 503, statusText: "Offline" });
+
+          // Para cualquier otro recurso que falle offline
+          return new Response("Recurso no disponible offline", {
+            status: 503,
+            statusText: "Offline",
+            headers: { "Content-Type": "text/plain" },
+          });
         });
     }),
   );

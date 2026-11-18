@@ -151,3 +151,35 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 });
+// ==========================================
+// PEDIR ALMACENAMIENTO PERSISTENTE
+// ==========================================
+async function pedirPersistencia() {
+  if (navigator.storage && navigator.storage.persist) {
+    try {
+      const yaEsPersistente = await navigator.storage.persisted();
+
+      if (yaEsPersistente) {
+        console.log("✓ El almacenamiento ya es persistente");
+        return;
+      }
+
+      const concedido = await navigator.storage.persist();
+      console.log(
+        concedido
+          ? "✓ Almacenamiento persistente concedido"
+          : "⚠ El navegador no concedió persistencia",
+      );
+    } catch (error) {
+      console.warn("No se pudo pedir persistencia:", error);
+    }
+  }
+}
+
+// Llamarla al iniciar
+document.addEventListener("DOMContentLoaded", () => {
+  // ... tu código actual de inicialización ...
+
+  // Pedir persistencia (no bloquea)
+  pedirPersistencia();
+});
