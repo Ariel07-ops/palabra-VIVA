@@ -92,3 +92,62 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 });
+document.addEventListener("DOMContentLoaded", () => {
+  const modalBienvenida = document.getElementById("modal-bienvenida");
+  const btnCerrar = document.getElementById("btn-cerrar-bienvenida");
+
+  // Verificamos si es la primera vez que abre la app
+  if (modalBienvenida && !localStorage.getItem("pv_bienvenida_vista")) {
+    // Le damos un pequeño respiro (ej. 1.5 seg) por si está pasando el splash screen
+    setTimeout(() => {
+      modalBienvenida.style.display = "flex";
+    }, 1500);
+  }
+
+  if (btnCerrar) {
+    btnCerrar.addEventListener("click", () => {
+      modalBienvenida.style.display = "none";
+      localStorage.setItem("pv_bienvenida_vista", "true");
+    });
+  }
+});
+document.addEventListener("DOMContentLoaded", () => {
+  const btnAsistente = document.getElementById("btn-asistente-home");
+
+  if (btnAsistente) {
+    // Si ya usó o vio el aviso en otra sesión, lo ocultamos de entrada
+    if (localStorage.getItem("pv_tooltip_asistente_visto")) {
+      btnAsistente.classList.add("ocultar-tooltip");
+    } else {
+      // Al tocar el botón, desaparece el globito y queda guardado
+      btnAsistente.addEventListener("click", () => {
+        btnAsistente.classList.add("ocultar-tooltip");
+        localStorage.setItem("pv_tooltip_asistente_visto", "true");
+      });
+    }
+  }
+});
+// Ocultar el tooltip de los versículos al hacer clic por primera vez y recordarlo
+document.addEventListener("click", (e) => {
+  // Buscamos si el elemento tocado o alguno de sus padres es una línea de versículo interactiva
+  const versiculo = e.target.closest(".linea-versiculo");
+
+  if (versiculo) {
+    // Guardamos en localStorage que ya se vio/descubrió
+    localStorage.setItem("pv_tooltip_versiculos_visto", "true");
+
+    // Ocultamos el tooltip de TODOS los versículos en la pantalla actual
+    document.querySelectorAll(".linea-versiculo").forEach((el) => {
+      el.classList.add("ocultar-tooltip-versiculo");
+    });
+  }
+});
+
+// Al cargar cualquier vista, si ya estaba visto, se oculta de entrada
+document.addEventListener("DOMContentLoaded", () => {
+  if (localStorage.getItem("pv_tooltip_versiculos_visto")) {
+    document.querySelectorAll(".linea-versiculo").forEach((el) => {
+      el.classList.add("ocultar-tooltip-versiculo");
+    });
+  }
+});

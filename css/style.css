@@ -4879,3 +4879,227 @@ body.modo-sepia .icono-menu-oro {
   box-shadow: 0 2px 5px rgba(60, 40, 15, 0.4);
   filter: contrast(1.15) saturate(1.2);
 }
+.modal-pv-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.85);
+  backdrop-filter: blur(4px);
+  z-index: 9999;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 15px;
+  box-sizing: border-box;
+}
+
+.modal-pv-caja {
+  background: linear-gradient(145deg, #181818, #0d0d0d);
+  border: 2px solid rgba(212, 175, 55, 0.5);
+  border-radius: 18px;
+  padding: 24px 20px;
+  max-width: 420px;
+  width: 100%;
+  color: #f0f0f0;
+  text-align: center;
+  box-shadow:
+    0 10px 35px rgba(0, 0, 0, 0.9),
+    0 0 20px rgba(212, 175, 55, 0.15);
+  max-height: 90vh;
+  overflow-y: auto;
+}
+
+.modal-pv-cruz {
+  font-size: 2.2rem;
+  color: #d4af37;
+  margin-bottom: 5px;
+  filter: drop-shadow(0 0 8px rgba(212, 175, 55, 0.5));
+}
+
+.modal-pv-caja h2 {
+  color: #d4af37;
+  font-size: 1.35rem;
+  margin: 0 0 12px 0;
+  letter-spacing: 0.5px;
+}
+
+.modal-pv-intro,
+.modal-pv-cierre {
+  font-size: 0.92rem;
+  line-height: 1.5;
+  color: #ddd;
+  margin-bottom: 15px;
+}
+
+.modal-pv-lista {
+  background: rgba(255, 255, 255, 0.04);
+  border-left: 3px solid #d4af37;
+  border-radius: 8px;
+  padding: 12px 14px;
+  text-align: left;
+  margin-bottom: 15px;
+  font-size: 0.88rem;
+}
+
+.modal-pv-lista p {
+  margin: 0 0 8px 0;
+  color: #d4af37;
+}
+
+.modal-pv-lista ul {
+  margin: 0;
+  padding-left: 18px;
+  color: #e5e5e5;
+}
+
+.modal-pv-lista li {
+  margin-bottom: 6px;
+  line-height: 1.4;
+}
+
+.modal-pv-btn {
+  background: linear-gradient(135deg, #d4af37, #b59020);
+  color: #000;
+  border: none;
+  border-radius: 25px;
+  padding: 12px 32px;
+  font-size: 1rem;
+  font-weight: bold;
+  cursor: pointer;
+  box-shadow: 0 4px 12px rgba(212, 175, 55, 0.3);
+  transition: transform 0.2s;
+}
+
+.modal-pv-btn:active {
+  transform: scale(0.96);
+}
+/* Aseguramos referencia para posicionar el globito en tu botón existente */
+#btn-asistente-home {
+  position: relative;
+}
+
+/* El globito del tooltip */
+#btn-asistente-home::after {
+  content: "💬 Tocá acá para llamar al asistente";
+  position: absolute;
+  top: 118%; /* Justo debajo de la barra superior */
+  left: 50%;
+  transform: translateX(-50%);
+  background: linear-gradient(135deg, #d4af37, #b59020);
+  color: #0b0b0b;
+  font-size: 0.75rem;
+  font-weight: 700;
+  padding: 5px 12px;
+  border-radius: 8px;
+  white-space: nowrap;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.75);
+  z-index: 999;
+  pointer-events: none;
+  border: 1px solid rgba(255, 255, 255, 0.35);
+  transition:
+    opacity 0.4s ease,
+    visibility 0.4s ease;
+}
+
+/* Flechita apuntando hacia arriba (al botón) */
+#btn-asistente-home::before {
+  content: "";
+  position: absolute;
+  top: 102%;
+  left: 50%;
+  transform: translateX(-50%);
+  border-width: 0 6px 6px 6px;
+  border-style: solid;
+  border-color: transparent transparent #d4af37 transparent;
+  z-index: 1000;
+  pointer-events: none;
+  transition:
+    opacity 0.4s ease,
+    visibility 0.4s ease;
+}
+
+/* Clase para esconderlo una vez visto o tocado */
+#btn-asistente-home.ocultar-tooltip::after,
+#btn-asistente-home.ocultar-tooltip::before {
+  opacity: 0;
+  visibility: hidden;
+}
+/* En lugar de tirarlo hacia arriba (-125%), lo ponemos flotando abajo del versículo 1 */
+.linea-versiculo[style*="border-bottom"]:first-of-type {
+  position: relative;
+}
+
+.linea-versiculo[style*="border-bottom"]:first-of-type::after {
+  content: "✏️ ¡Tocá los versículos subrayados para ver más!";
+  position: absolute;
+  top: 115%; /* Se ubica cómodamente debajo del texto */
+  left: 0;
+  background: linear-gradient(135deg, #d4af37, #b59020);
+  color: #0b0b0b;
+  font-size: 0.72rem;
+  font-weight: 700;
+  padding: 5px 10px;
+  border-radius: 6px;
+  white-space: nowrap;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.8);
+  z-index: 50;
+  pointer-events: none;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+/* Flechita apuntando hacia arriba (desde el globito hacia el texto) */
+.linea-versiculo[style*="border-bottom"]:first-of-type::before {
+  content: "";
+  position: absolute;
+  top: 102%;
+  left: 15px;
+  border-width: 0 5px 5px 5px; /* Invertimos el triángulo para que apunte hacia arriba */
+  border-style: solid;
+  border-color: transparent transparent #d4af37 transparent;
+  z-index: 51;
+  pointer-events: none;
+}
+/* Forzamos que la clase oculte totalmente el globito y la flecha */
+.linea-versiculo.ocultar-tooltip-versiculo::after,
+.linea-versiculo.ocultar-tooltip-versiculo::before {
+  display: none !important;
+  opacity: 0 !important;
+  visibility: hidden !important;
+}
+.enlace-capitulo-indice {
+  position: relative;
+  overflow: hidden;
+  display: inline-block;
+  transition: all 0.3s ease;
+}
+
+/* Efecto de brillo que recorre el elemento */
+.enlace-capitulo-indice::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 50%;
+  height: 100%;
+  background: linear-gradient(
+    120deg,
+    transparent,
+    rgba(212, 175, 55, 0.4),
+    transparent
+  );
+  animation: brillo-desplazamiento 3s infinite;
+}
+
+@keyframes brillo-desplazamiento {
+  0% {
+    left: -100%;
+  }
+  20% {
+    left: 150%;
+  }
+  100% {
+    left: 150%;
+  }
+}

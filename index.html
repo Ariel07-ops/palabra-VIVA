@@ -1896,6 +1896,45 @@
       });
     </script>
     <script type="module" src="js/main.js"></script>
+    <!-- Aquí termina el contenido normal de tu app (secciones, botones, etc.) -->
+
+    <!-- Modal de Bienvenida (Va abajo de todo, antes de cerrar el body) -->
+    <div id="modal-bienvenida" class="modal-pv-overlay" style="display: none;">
+      <div class="modal-pv-caja">
+        <div class="modal-pv-cruz">✝</div>
+        <h2>¡Bienvenido a Palabra Viva!</h2>
+        <p class="modal-pv-intro">
+          Esta aplicación ha sido diseñada y pensada para el estudio de la Biblia y como un acompañamiento personal en tu camino de fe.
+        </p>
+        <div class="modal-pv-lista">
+          <p><strong>¿Qué vas a encontrar acá?</strong></p>
+          <ul>
+            <li>📖 <strong>Lectura y Estudio:</strong> La Biblia completa en varios idiomas, con glosario y referencias cruzadas.</li>
+            <li>🧭 <strong>Camino y Estados:</strong> Reflexiones y guías pensadas para acompañarte según cómo te sientas hoy.</li>
+            <li>✍️ <strong>Tus Notas Personales:</strong> Un espacio para guardar tus propias reflexiones, exportarlas en PDF o hacer copias de seguridad.</li>
+            <li>💬 <strong>Asistente Espiritual:</strong> Una guía rápida para responder dudas y ayudarte a buscar pasajes.</li>
+          </ul>
+        </div>
+        
+        <!-- Instrucciones para instalar la app -->
+        <div class="modal-pv-lista" style="border-left-color: #4CAF50; margin-top: 12px;">
+          <p style="color: #4CAF50;">📲 <strong>¿Cómo dejarla instalada en tu celu?</strong></p>
+          <ul style="margin: 0; padding-left: 18px; color: #e5e5e5; font-size: 0.85rem;">
+            <li>Tocá los <strong>tres puntitos</strong> arriba a la derecha en tu navegador (Chrome).</li>
+            <li>Seleccioná <strong>"Instalación de aplicación"</strong> o <strong>"Agregar a la pantalla principal"</strong>.</li>
+            <li>¡Listo! Te va a quedar el ícono de Palabra Viva en el celular como cualquier otra app, para usarla siempre sin internet.</li>
+          </ul>
+        </div>
+
+        <p class="modal-pv-cierre" style="margin-top: 15px;">
+          Te va a servir para leer, reflexionar, anotar lo que Dios te dice cada día y llevar la Palabra siempre con vos.
+        </p>
+        <button id="btn-cerrar-bienvenida" class="modal-pv-btn">¡Comenzar!</button>
+      </div>
+    </div>
+
+  
+
   
     <footer class="cc-footer">
     <!-- 1. Autoría -->
