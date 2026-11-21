@@ -119,33 +119,69 @@ document.addEventListener("DOMContentLoaded", () => {
     if (localStorage.getItem("pv_tooltip_asistente_visto")) {
       btnAsistente.classList.add("ocultar-tooltip");
     } else {
-      // Al tocar el botón, desaparece el globito y queda guardado
-      btnAsistente.addEventListener("click", () => {
+      const ocultarYGuardar = () => {
         btnAsistente.classList.add("ocultar-tooltip");
         localStorage.setItem("pv_tooltip_asistente_visto", "true");
+      };
+
+      // Si no lo tocan, desaparece igual a los 7 segundos y queda marcado como visto
+      const timerTooltip = setTimeout(ocultarYGuardar, 7000);
+
+      // Si lo tocan antes, se oculta al instante, se limpia el timer y queda guardado
+      btnAsistente.addEventListener("click", () => {
+        clearTimeout(timerTooltip);
+        ocultarYGuardar();
       });
     }
   }
 });
-// Ocultar el tooltip de los versículos al hacer clic por primera vez y recordarlo
-document.addEventListener("click", (e) => {
-  // Buscamos si el elemento tocado o alguno de sus padres es una línea de versículo interactiva
-  const versiculo = e.target.closest(".linea-versiculo");
+function actualizarTooltipSubrayados(aleatorio = true) {
+  const yaVisto =
+    localStorage.getItem("pv_tooltip_versiculos_visto") === "true";
+  const versiculos = Array.from(document.querySelectorAll(".linea-versiculo"));
 
-  if (versiculo) {
-    // Guardamos en localStorage que ya se vio/descubrió
-    localStorage.setItem("pv_tooltip_versiculos_visto", "true");
+  // Limpiamos cualquier marca previa al cambiar de capítulo
+  versiculos.forEach((el) => {
+    el.classList.remove(
+      "tooltip-subrayado-activo",
+      "ocultar-tooltip-versiculo",
+    );
+  });
 
-    // Ocultamos el tooltip de TODOS los versículos en la pantalla actual
-    document.querySelectorAll(".linea-versiculo").forEach((el) => {
-      el.classList.add("ocultar-tooltip-versiculo");
-    });
+  if (yaVisto) {
+    versiculos.forEach((el) => el.classList.add("ocultar-tooltip-versiculo"));
+    return;
   }
-});
 
-// Al cargar cualquier vista, si ya estaba visto, se oculta de entrada
-document.addEventListener("DOMContentLoaded", () => {
-  if (localStorage.getItem("pv_tooltip_versiculos_visto")) {
+  // Filtramos solo los versículos que realmente están subrayados en este capítulo
+  const subrayados = versiculos.filter((el) => {
+    const styleAttr = (el.getAttribute("style") || "").toLowerCase();
+    return (
+      styleAttr.includes("border-bottom") || el.classList.contains("subrayado")
+    );
+  });
+
+  if (subrayados.length === 0) return;
+
+  const elegido = aleatorio
+    ? subrayados[Math.floor(Math.random() * subrayados.length)]
+    : subrayados[0];
+
+  elegido.classList.add("tooltip-subrayado-activo");
+}
+
+// Al tocar un versículo subrayado, marcamos como visto y ocultamos
+document.addEventListener("click", (e) => {
+  const versiculo = e.target.closest(".linea-versiculo");
+  if (!versiculo) return;
+
+  const esSubrayado =
+    (versiculo.getAttribute("style") || "")
+      .toLowerCase()
+      .includes("border-bottom") || versiculo.classList.contains("subrayado");
+
+  if (esSubrayado) {
+    localStorage.setItem("pv_tooltip_versiculos_visto", "true");
     document.querySelectorAll(".linea-versiculo").forEach((el) => {
       el.classList.add("ocultar-tooltip-versiculo");
     });

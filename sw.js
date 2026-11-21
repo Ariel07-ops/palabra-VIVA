@@ -1,4 +1,4 @@
-const CACHE_NAME = "palabra-viva-v22"; // ← subí la versión
+const CACHE_NAME = "palabra-viva-v24";
 
 const urlsToCache = [
   "./",
@@ -11,6 +11,7 @@ const urlsToCache = [
   "./js/core/moods.js",
   "./js/core/state.js",
   "./js/core/voz.js",
+  "./js/core/utils.js",
   "./js/bible/reader.js",
   "./js/bible/search.js",
   "./js/bible/audio.js",

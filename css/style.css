@@ -5027,58 +5027,54 @@ body.modo-sepia .icono-menu-oro {
   visibility: hidden;
 }
 /* En lugar de tirarlo hacia arriba (-125%), lo ponemos flotando abajo del versículo 1 */
-.linea-versiculo[style*="border-bottom"]:first-of-type {
+.linea-versiculo.tooltip-subrayado-activo {
   position: relative;
 }
 
-.linea-versiculo[style*="border-bottom"]:first-of-type::after {
-  content: "✏️ ¡Tocá los versículos subrayados para ver más!";
+.linea-versiculo.tooltip-subrayado-activo::after {
+  content: "✏️ En este capítulo tenés versículos subrayados (como marcados con lápiz); tocalos para ver más.";
   position: absolute;
-  top: 115%; /* Se ubica cómodamente debajo del texto */
+  top: calc(100% + 8px);
   left: 0;
+  width: max-content;
+  max-width: min(270px, 82vw);
   background: linear-gradient(135deg, #d4af37, #b59020);
   color: #0b0b0b;
-  font-size: 0.72rem;
+  font-size: 0.75rem;
   font-weight: 700;
-  padding: 5px 10px;
-  border-radius: 6px;
-  white-space: nowrap;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.8);
+  line-height: 1.35;
+  padding: 7px 11px;
+  border-radius: 8px;
+  white-space: normal;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.85);
   z-index: 50;
   pointer-events: none;
-  border: 1px solid rgba(255, 255, 255, 0.3);
+  border: 1px solid rgba(255, 255, 255, 0.35);
 }
 
-/* Flechita apuntando hacia arriba (desde el globito hacia el texto) */
-.linea-versiculo[style*="border-bottom"]:first-of-type::before {
+.linea-versiculo.tooltip-subrayado-activo::before {
   content: "";
   position: absolute;
-  top: 102%;
-  left: 15px;
-  border-width: 0 5px 5px 5px; /* Invertimos el triángulo para que apunte hacia arriba */
+  top: calc(100% + 3px);
+  left: 16px;
+  border-width: 0 5px 5px 5px;
   border-style: solid;
   border-color: transparent transparent #d4af37 transparent;
   z-index: 51;
   pointer-events: none;
 }
-/* Forzamos que la clase oculte totalmente el globito y la flecha */
+
 .linea-versiculo.ocultar-tooltip-versiculo::after,
 .linea-versiculo.ocultar-tooltip-versiculo::before {
   display: none !important;
   opacity: 0 !important;
   visibility: hidden !important;
 }
-.enlace-capitulo-indice {
-  position: relative;
-  overflow: hidden;
-  display: inline-block;
-  transition: all 0.3s ease;
-}
 
 /* Efecto de brillo que recorre el elemento */
 .enlace-capitulo-indice::after {
   content: "";
-  position: absolute;
+  position: relative;
   top: 0;
   left: -100%;
   width: 50%;
@@ -5089,7 +5085,7 @@ body.modo-sepia .icono-menu-oro {
     rgba(212, 175, 55, 0.4),
     transparent
   );
-  animation: brillo-desplazamiento 3s infinite;
+  animation: brillo-desplazamiento 2s infinite;
 }
 
 @keyframes brillo-desplazamiento {
@@ -5102,4 +5098,70 @@ body.modo-sepia .icono-menu-oro {
   100% {
     left: 150%;
   }
+}
+/* Fondo base del menú lateral derecho */
+.panel-lateral-tema {
+  background: #141414;
+  color: #f0f0f0;
+}
+
+/* Fondo específico para el menú lateral derecho en modo sepia */
+body.modo-sepia .panel-lateral-tema {
+  background: #f4ecd8;
+  color: #2c2012;
+  border-left-color: #8a621e;
+}
+/* Sepia marroncito parejo para cuaderno, libreta y panel lateral */
+html.modo-sepia #screen-cuaderno,
+body.modo-sepia #screen-cuaderno,
+html.modo-sepia #screen-cuaderno .cuaderno-card,
+body.modo-sepia #screen-cuaderno .cuaderno-card,
+html.modo-sepia .libreta-contenedor,
+body.modo-sepia .libreta-contenedor {
+  background: #eadbc0 !important;
+  background-color: #eadbc0 !important;
+  color: #2e2010 !important;
+  border-color: #8c6223 !important;
+}
+
+html.modo-sepia .libreta-hoja,
+body.modo-sepia .libreta-hoja {
+  background-image: linear-gradient(
+    rgba(140, 98, 35, 0.14) 1px,
+    transparent 1px
+  ) !important;
+  color: #2e2010 !important;
+}
+
+html.modo-sepia #panel-lateral-bitacora,
+body.modo-sepia #panel-lateral-bitacora,
+html.modo-sepia .panel-lateral-tema,
+body.modo-sepia .panel-lateral-tema {
+  background: #e3d1b0 !important;
+  background-color: #e3d1b0 !important;
+  color: #2e2010 !important;
+  border-left-color: #8c6223 !important;
+}
+
+/* Textos, títulos y botones dentro de esos bloques en modo sepia */
+html.modo-sepia #screen-cuaderno h1,
+body.modo-sepia #screen-cuaderno h1,
+html.modo-sepia #screen-cuaderno h2,
+body.modo-sepia #screen-cuaderno h2,
+html.modo-sepia #screen-cuaderno h3,
+body.modo-sepia #screen-cuaderno h3,
+html.modo-sepia #panel-lateral-bitacora h3,
+body.modo-sepia #panel-lateral-bitacora h3,
+html.modo-sepia #panel-lateral-bitacora h4,
+body.modo-sepia #panel-lateral-bitacora h4,
+html.modo-sepia #panel-lateral-bitacora summary,
+body.modo-sepia #panel-lateral-bitacora summary {
+  color: #6b4712 !important;
+}
+
+html.modo-sepia #panel-lateral-bitacora button,
+body.modo-sepia #panel-lateral-bitacora button,
+html.modo-sepia #screen-cuaderno button,
+body.modo-sepia #screen-cuaderno button {
+  color: #2e2010 !important;
 }
