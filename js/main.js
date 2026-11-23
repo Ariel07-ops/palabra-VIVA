@@ -124,8 +124,8 @@ document.addEventListener("DOMContentLoaded", () => {
         localStorage.setItem("pv_tooltip_asistente_visto", "true");
       };
 
-      // Si no lo tocan, desaparece igual a los 7 segundos y queda marcado como visto
-      const timerTooltip = setTimeout(ocultarYGuardar, 7000);
+      // Si no lo tocan, desaparece igual a los 20 segundos y queda marcado como visto
+      const timerTooltip = setTimeout(ocultarYGuardar, 20000);
 
       // Si lo tocan antes, se oculta al instante, se limpia el timer y queda guardado
       btnAsistente.addEventListener("click", () => {
@@ -135,12 +135,29 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   }
 });
+
+function esVersiculoSubrayado(el) {
+  const styleAttr = (el.getAttribute("style") || "").toLowerCase();
+  const borderComputado = window.getComputedStyle(el).borderBottomStyle;
+  return (
+    styleAttr.includes("border-bottom") ||
+    el.classList.contains("subrayado") ||
+    (borderComputado && borderComputado !== "none")
+  );
+}
+
+function ocultarTodosLosTooltipsVersiculos() {
+  document.querySelectorAll(".linea-versiculo").forEach((el) => {
+    el.classList.remove("tooltip-subrayado-activo");
+    el.classList.add("ocultar-tooltip-versiculo");
+  });
+}
+
 function actualizarTooltipSubrayados(aleatorio = true) {
   const yaVisto =
     localStorage.getItem("pv_tooltip_versiculos_visto") === "true";
   const versiculos = Array.from(document.querySelectorAll(".linea-versiculo"));
 
-  // Limpiamos cualquier marca previa al cambiar de capítulo
   versiculos.forEach((el) => {
     el.classList.remove(
       "tooltip-subrayado-activo",
@@ -148,19 +165,12 @@ function actualizarTooltipSubrayados(aleatorio = true) {
     );
   });
 
-  if (yaVisto) {
+  if (yaVisto || versiculos.length === 0) {
     versiculos.forEach((el) => el.classList.add("ocultar-tooltip-versiculo"));
     return;
   }
 
-  // Filtramos solo los versículos que realmente están subrayados en este capítulo
-  const subrayados = versiculos.filter((el) => {
-    const styleAttr = (el.getAttribute("style") || "").toLowerCase();
-    return (
-      styleAttr.includes("border-bottom") || el.classList.contains("subrayado")
-    );
-  });
-
+  const subrayados = versiculos.filter(esVersiculoSubrayado);
   if (subrayados.length === 0) return;
 
   const elegido = aleatorio
@@ -170,21 +180,13 @@ function actualizarTooltipSubrayados(aleatorio = true) {
   elegido.classList.add("tooltip-subrayado-activo");
 }
 
-// Al tocar un versículo subrayado, marcamos como visto y ocultamos
 document.addEventListener("click", (e) => {
   const versiculo = e.target.closest(".linea-versiculo");
   if (!versiculo) return;
 
-  const esSubrayado =
-    (versiculo.getAttribute("style") || "")
-      .toLowerCase()
-      .includes("border-bottom") || versiculo.classList.contains("subrayado");
-
-  if (esSubrayado) {
+  if (esVersiculoSubrayado(versiculo)) {
     localStorage.setItem("pv_tooltip_versiculos_visto", "true");
-    document.querySelectorAll(".linea-versiculo").forEach((el) => {
-      el.classList.add("ocultar-tooltip-versiculo");
-    });
+    ocultarTodosLosTooltipsVersiculos();
   }
 });
 // ==========================================
@@ -219,3 +221,146 @@ document.addEventListener("DOMContentLoaded", () => {
   // Pedir persistencia (no bloquea)
   pedirPersistencia();
 });
+// === Modal de Bienvenida: idioma inicial y aparición única ===
+(function () {
+  function detectarIdiomaInicial() {
+    const guardado = localStorage.getItem("idiomaPalabraViva");
+    if (guardado && ["es", "en", "pt"].includes(guardado)) {
+      return guardado;
+    }
+
+    const candidatos =
+      Array.isArray(navigator.languages) && navigator.languages.length
+        ? navigator.languages
+        : [navigator.language || "es"];
+
+    for (const raw of candidatos) {
+      const lang = String(raw).toLowerCase();
+      if (lang.startsWith("pt")) return "pt";
+      if (lang.startsWith("en")) return "en";
+      if (lang.startsWith("es")) return "es";
+    }
+
+    return "es";
+  }
+
+  function aplicarIdiomasData(idioma) {
+    document.documentElement.lang = idioma;
+    localStorage.setItem("idiomaPalabraViva", idioma);
+
+    document.querySelectorAll("[data-es]").forEach((el) => {
+      const texto =
+        el.getAttribute(`data-${idioma}`) || el.getAttribute("data-es");
+      if (texto !== null) {
+        el.textContent = texto;
+      }
+    });
+  }
+
+  function iniciarBienvenida() {
+    const idioma = detectarIdiomaInicial();
+
+    if (typeof cambiarIdioma === "function") {
+      cambiarIdioma(idioma);
+    } else {
+      aplicarIdiomasData(idioma);
+    }
+
+    const modal = document.getElementById("modal-bienvenida");
+    const btnComenzar = document.getElementById("btn-cerrar-bienvenida");
+    const claveVista = "palabraVivaBienvenidaVista_v1";
+
+    if (!modal) return;
+
+    if (localStorage.getItem(claveVista) === "1") {
+      modal.style.display = "none";
+      return;
+    }
+
+    modal.style.display = "flex";
+
+    if (btnComenzar) {
+      btnComenzar.addEventListener("click", () => {
+        modal.style.display = "none";
+        localStorage.setItem(claveVista, "1");
+      });
+    }
+  }
+
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", iniciarBienvenida);
+  } else {
+    iniciarBienvenida();
+  }
+})(); // === Modal de Bienvenida: idioma inicial y aparición única ===
+(function () {
+  function detectarIdiomaInicial() {
+    const guardado = localStorage.getItem("idiomaPalabraViva");
+    if (guardado && ["es", "en", "pt"].includes(guardado)) {
+      return guardado;
+    }
+
+    const candidatos =
+      Array.isArray(navigator.languages) && navigator.languages.length
+        ? navigator.languages
+        : [navigator.language || "es"];
+
+    for (const raw of candidatos) {
+      const lang = String(raw).toLowerCase();
+      if (lang.startsWith("pt")) return "pt";
+      if (lang.startsWith("en")) return "en";
+      if (lang.startsWith("es")) return "es";
+    }
+
+    return "es";
+  }
+
+  function aplicarIdiomasData(idioma) {
+    document.documentElement.lang = idioma;
+    localStorage.setItem("idiomaPalabraViva", idioma);
+
+    document.querySelectorAll("[data-es]").forEach((el) => {
+      const texto =
+        el.getAttribute(`data-${idioma}`) || el.getAttribute("data-es");
+      if (texto !== null) {
+        el.textContent = texto;
+      }
+    });
+  }
+
+  function iniciarBienvenida() {
+    const idioma = detectarIdiomaInicial();
+
+    if (typeof cambiarIdioma === "function") {
+      cambiarIdioma(idioma);
+    } else {
+      aplicarIdiomasData(idioma);
+    }
+
+    const modal = document.getElementById("modal-bienvenida");
+    const btnComenzar = document.getElementById("btn-cerrar-bienvenida");
+    const claveVista = "palabraVivaBienvenidaVista_v1";
+
+    if (!modal) return;
+
+    if (localStorage.getItem(claveVista) === "1") {
+      modal.style.display = "none";
+      return;
+    }
+
+    modal.style.display = "flex";
+
+    if (btnComenzar) {
+      btnComenzar.addEventListener("click", () => {
+        modal.style.display = "none";
+        localStorage.setItem(claveVista, "1");
+      });
+    }
+  }
+
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", iniciarBienvenida);
+  } else {
+    iniciarBienvenida();
+  }
+})();

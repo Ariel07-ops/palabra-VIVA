@@ -1915,57 +1915,205 @@
     <!-- Aquí termina el contenido normal de tu app (secciones, botones, etc.) -->
 
     <!-- Modal de Bienvenida (Va abajo de todo, antes de cerrar el body) -->
-    <div id="modal-bienvenida" class="modal-pv-overlay" style="display: none;">
-      <div class="modal-pv-caja">
-        <div class="modal-pv-cruz">✝</div>
-        <h2>¡Bienvenido a Palabra Viva!</h2>
-        <p class="modal-pv-intro">
-          Esta aplicación ha sido diseñada y pensada para el estudio de la Biblia y como un acompañamiento personal en tu camino de fe.
-        </p>
-        <div class="modal-pv-lista">
-          <p><strong>¿Qué vas a encontrar acá?</strong></p>
-          <ul>
-            <li>📖 <strong>Lectura y Estudio:</strong> La Biblia completa en varios idiomas, con glosario y referencias cruzadas.</li>
-            <li>🧭 <strong>Camino y Estados:</strong> Reflexiones y guías pensadas para acompañarte según cómo te sientas hoy.</li>
-            <li>✍️ <strong>Tus Notas Personales:</strong> Un espacio para guardar tus propias reflexiones, exportarlas en PDF o hacer copias de seguridad.</li>
-            <li>💬 <strong>Asistente Espiritual:</strong> Una guía rápida para responder dudas y ayudarte a buscar pasajes.</li>
-          </ul>
-        </div>
-        
-        <!-- Instrucciones para instalar la app -->
-        <div>
-  <p style="color:#8f8; font-weight:bold; margin-bottom:8px;">
-    📲 ¿Cómo dejarla instalada en tu celu?
-  </p>
-
-  <!-- Android -->
-  <p style="margin: 6px 0 2px 0;"><strong>Android (Chrome):</strong></p>
-  <ul style="margin-top:0;">
-    <li>Tocá los <strong>tres puntitos</strong> arriba a la derecha.</li>
-    <li>Seleccioná <strong>“Instalar aplicación”</strong> o <strong>“Agregar a la pantalla principal”</strong>.</li>
-  </ul>
-
-  <!-- iPhone -->
-  <p style="margin: 10px 0 2px 0;"><strong>iPhone (Safari):</strong></p>
-  <ul style="margin-top:0;">
-    <li>Entrá con <strong>Safari</strong> (importante).</li>
-    <li>Tocá el botón <strong>Compartir</strong> (cuadrado con flecha hacia arriba).</li>
-    <li>Elegí <strong>“Agregar a la pantalla de inicio”</strong>.</li>
-  </ul>
-
-  <p style="margin-top:10px;">
-    ¡Listo! Te va a quedar el ícono de <strong>Palabra Viva</strong> como cualquier otra app, para usarla también sin internet.
-  </p>
-</div>
-
-        <p class="modal-pv-cierre" style="margin-top: 15px;">
-          Te va a servir para leer, reflexionar, anotar lo que Dios te dice cada día y llevar la Palabra siempre con vos.
-        </p>
-        <button id="btn-cerrar-bienvenida" class="modal-pv-btn">¡Comenzar!</button>
-      </div>
+<div id="modal-bienvenida" class="modal-pv-overlay" style="display: none;">
+  <div class="modal-pv-caja">
+    <div class="modal-pv-cruz">✝</div>
+    <h2
+      data-es="¡Bienvenido a Palabra Viva!"
+      data-en="Welcome to Palabra Viva!"
+      data-pt="Bem-vindo ao Palabra Viva!"
+    >
+      ¡Bienvenido a Palabra Viva!
+    </h2>
+    <p
+      class="modal-pv-intro"
+      data-es="Esta aplicación ha sido diseñada y pensada para el estudio de la Biblia y como un acompañamiento personal en tu camino de fe."
+      data-en="This app has been designed for studying the Bible and as personal accompaniment on your faith journey."
+      data-pt="Este aplicativo foi pensado para o estudo da Bíblia e como acompanhamento pessoal na sua caminhada de fé."
+    >
+      Esta aplicación ha sido diseñada y pensada para el estudio de la Biblia y como un acompañamiento personal en tu camino de fe.
+    </p>
+    <div class="modal-pv-lista">
+      <p>
+        <strong
+          data-es="¿Qué vas a encontrar acá?"
+          data-en="What will you find here?"
+          data-pt="O que você vai encontrar aqui?"
+        >
+          ¿Qué vas a encontrar acá?
+        </strong>
+      </p>
+      <ul>
+        <li>
+          📖
+          <strong
+            data-es="Lectura y Estudio:"
+            data-en="Reading and Study:"
+            data-pt="Leitura e Estudo:"
+          >
+            Lectura y Estudio:
+          </strong>
+          <span
+            data-es="La Biblia completa en varios idiomas, con glosario y referencias cruzadas."
+            data-en="The complete Bible in several languages, with a glossary and cross-references."
+            data-pt="A Bíblia completa em vários idiomas, com glossário e referências cruzadas."
+          >
+            La Biblia completa en varios idiomas, con glosario y referencias cruzadas.
+          </span>
+        </li>
+        <li>
+          🧭
+          <strong
+            data-es="Camino y Estados:"
+            data-en="Journey and Moods:"
+            data-pt="Caminho e Estados:"
+          >
+            Camino y Estados:
+          </strong>
+          <span
+            data-es="Reflexiones y guías pensadas para acompañarte según cómo te sientas hoy."
+            data-en="Reflections and guides designed to accompany you according to how you feel today."
+            data-pt="Reflexões e guias pensadas para acompanhar você conforme como se sente hoje."
+          >
+            Reflexiones y guías pensadas para acompañarte según cómo te sientas hoy.
+          </span>
+        </li>
+        <li>
+          ✍️
+          <strong
+            data-es="Tus Notas Personales:"
+            data-en="Your Personal Notes:"
+            data-pt="Suas Notas Pessoais:"
+          >
+            Tus Notas Personales:
+          </strong>
+          <span
+            data-es="Un espacio para guardar tus propias reflexiones, exportarlas en PDF o hacer copias de seguridad."
+            data-en="A space to save your own reflections, export them to PDF, or make backups."
+            data-pt="Um espaço para guardar suas próprias reflexões, exportá-las em PDF ou fazer cópias de segurança."
+          >
+            Un espacio para guardar tus propias reflexiones, exportarlas en PDF o hacer copias de seguridad.
+          </span>
+        </li>
+        <li>
+          💬
+          <strong
+            data-es="Asistente Espiritual:"
+            data-en="Spiritual Assistant:"
+            data-pt="Assistente Espiritual:"
+          >
+            Asistente Espiritual:
+          </strong>
+          <span
+            data-es="Una guía rápida para responder dudas y ayudarte a buscar pasajes."
+            data-en="A quick guide to answer questions and help you find passages."
+            data-pt="Um guia rápido para responder dúvidas e ajudar você a buscar passagens."
+          >
+            Una guía rápida para responder dudas y ayudarte a buscar pasajes.
+          </span>
+        </li>
+      </ul>
     </div>
 
-  
+    <!-- Instrucciones para instalar la app -->
+    <div>
+      <p
+        style="color:#8f8; font-weight:bold; margin-bottom:8px;"
+        data-es="📲 ¿Cómo dejarla instalada en tu celu?"
+        data-en="📲 How to install it on your phone?"
+        data-pt="📲 Como deixar instalada no seu celular?"
+      >
+        📲 ¿Cómo dejarla instalada en tu celu?
+      </p>
+
+      <!-- Android -->
+      <p style="margin: 6px 0 2px 0;">
+        <strong>Android (Chrome):</strong>
+      </p>
+      <ul style="margin-top:0;">
+        <li
+          data-es="Tocá los tres puntitos arriba a la derecha."
+          data-en="Tap the three dots in the top right corner."
+          data-pt="Toque nos três pontinhos no canto superior direito."
+        >
+          Tocá los tres puntitos arriba a la derecha.
+        </li>
+        <li
+          data-es="Seleccioná “Instalar aplicación” o “Agregar a la pantalla principal”."
+          data-en="Select “Install app” or “Add to Home screen”."
+          data-pt="Selecione “Instalar aplicativo” ou “Adicionar à tela inicial”."
+        >
+          Seleccioná “Instalar aplicación” o “Agregar a la pantalla principal”.
+        </li>
+      </ul>
+
+      <!-- iPhone -->
+      <p style="margin: 10px 0 2px 0;">
+        <strong>iPhone (Safari):</strong>
+      </p>
+      <ul style="margin-top:0;">
+        <li
+          data-es="Entrá con Safari (importante)."
+          data-en="Open it in Safari (important)."
+          data-pt="Acesse pelo Safari (importante)."
+        >
+          Entrá con Safari (importante).
+        </li>
+        <li
+          data-es="Tocá el botón Compartir (cuadrado con flecha hacia arriba)."
+          data-en="Tap the Share button (square with an upward arrow)."
+          data-pt="Toque no botão Compartilhar (quadrado com seta para cima)."
+        >
+          Tocá el botón Compartir (cuadrado con flecha hacia arriba).
+        </li>
+        <li
+          data-es="Elegí “Agregar a la pantalla de inicio”."
+          data-en="Choose “Add to Home Screen”."
+          data-pt="Escolha “Adicionar à Tela de Início”."
+        >
+          Elegí “Agregar a la pantalla de inicio”.
+        </li>
+      </ul>
+
+      <p style="margin-top:10px;">
+        <span
+          data-es="¡Listo! Te va a quedar el ícono de "
+          data-en="All set! You'll get the "
+          data-pt="Pronto! Você terá o ícone do "
+        >
+          ¡Listo! Te va a quedar el ícono de
+        </span>
+        <strong>Palabra Viva</strong>
+        <span
+          data-es=" como cualquier otra app, para usarla también sin internet."
+          data-en=" icon just like any other app, ready to use offline too."
+          data-pt=" como qualquer outro aplicativo, para usar também sem internet."
+        >
+          como cualquier otra app, para usarla también sin internet.
+        </span>
+      </p>
+    </div>
+
+    <p
+      class="modal-pv-cierre"
+      style="margin-top: 15px;"
+      data-es="Te va a servir para leer, reflexionar, anotar lo que Dios te dice cada día y llevar la Palabra siempre con vos."
+      data-en="It will help you read, reflect, note what God tells you each day, and carry the Word with you always."
+      data-pt="Vai ajudar você a ler, refletir, anotar o que Deus diz a cada dia e levar a Palavra sempre com você."
+    >
+      Te va a servir para leer, reflexionar, anotar lo que Dios te dice cada día y llevar la Palabra siempre con vos.
+    </p>
+    <button
+      id="btn-cerrar-bienvenida"
+      class="modal-pv-btn"
+      data-es="¡Comenzar!"
+      data-en="Get started!"
+      data-pt="Começar!"
+    >
+      ¡Comenzar!
+    </button>
+  </div>
+</div>  
 
   
     <footer class="cc-footer">
