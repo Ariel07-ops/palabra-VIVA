@@ -275,41 +275,96 @@
       </div>
     </div>
 
-    <!-- PANTALLA 3C: CAPÍTULOS Y LECTURA DEL LIBRO -->
-    <div id="screen-capitulos" class="screen">
-      <div class="app-container">
-        <header class="main-header">
-          <button class="btn-back" onclick="changeScreen('screen-antiguo')">
-            ⬅
-          </button>
+   <!-- PANTALLA 3C: CAPÍTULOS Y LECTURA DEL LIBRO -->
+<div id="screen-capitulos" class="screen">
+  <div class="app-container">
+    <header class="main-header">
+      <button class="btn-back" onclick="changeScreen('screen-antiguo')">
+        ⬅
+      </button>
 
-          <h1 class="brand-title text-gold" id="titulo-libro-seleccionado">Libro</h1>
-          <p class="header-statement text-silver" data-es="Seleccioná un capítulo para leer." data-en="Select a chapter to read." data-pt="Selecione um capítulo para ler.">Seleccioná un capítulo para leer.</p>
-        </header>
+      <h1 class="brand-title text-gold" id="titulo-libro-seleccionado">Libro</h1>
 
-        <main class="content-area" style="padding: 20px">
-          <div
-            id="grid-capitulos"
-            style="
-              display: flex;
-              flex-wrap: wrap;
-              gap: 8px;
-              margin-bottom: 20px;
-            "
-          ></div>
-          <div
-            id="texto-versiculos-area"
-            style="
-              text-align: justify;
-              line-height: 1.7;
-              color: #e0e0e0;
-              margin-top: 15px;
-            "
-          >
-          </div>
-        </main>
+      <button
+        type="button"
+        id="btn-introduccion-libro"
+        class="btn-intro-libro"
+        aria-haspopup="dialog"
+        title="Introducción al libro"
+      >
+        📖 Intro
+      </button>
+
+      <p
+        class="header-statement text-silver"
+        data-es="Seleccioná un capítulo para leer."
+        data-en="Select a chapter to read."
+        data-pt="Selecione um capítulo para ler."
+      >
+        Seleccioná un capítulo para leer.
+      </p>
+    </header>
+
+    <main class="content-area" style="padding: 20px">
+      <div
+        id="grid-capitulos"
+        style="
+          display: flex;
+          flex-wrap: wrap;
+          gap: 8px;
+          margin-bottom: 20px;
+        "
+      ></div>
+      <div
+        id="texto-versiculos-area"
+        style="
+          text-align: justify;
+          line-height: 1.7;
+          color: #e0e0e0;
+          margin-top: 15px;
+        "
+      ></div>
+    </main>
+  </div>
+</div>
+
+<!-- MODAL: INTRODUCCIÓN AL LIBRO -->
+<div
+  id="modal-introduccion-libro"
+  class="pv-modal-backdrop"
+  role="dialog"
+  aria-modal="true"
+  aria-labelledby="intro-libro-titulo"
+>
+  <div class="pv-modal-box">
+    <div class="pv-modal-header">
+      <div>
+        <span id="intro-libro-categoria" class="intro-libro-badge"></span>
+        <h2 id="intro-libro-titulo"></h2>
+      </div>
+      <button
+        type="button"
+        id="btn-cerrar-intro-libro"
+        class="btn-cerrar-intro"
+        aria-label="Cerrar introducción"
+        title="Cerrar introducción"
+        onclick="cerrarIntroduccionLibro()"
+      >
+        ✕
+      </button>
+    </div>
+
+    <div class="pv-modal-body">
+      <p id="intro-libro-corta" class="intro-libro-corta"></p>
+      <p id="intro-libro-introduccion" class="intro-libro-texto"></p>
+      <p id="intro-libro-resumen" class="intro-libro-resumen"></p>
+      <div class="intro-libro-clave-box">
+        <strong>Clave de lectura:</strong>
+        <p id="intro-libro-clave"></p>
       </div>
     </div>
+  </div>
+</div>
    <!-- PANTALLA 3D: LECTURA DE CAPÍTULO DEDICADA -->
 <div id="screen-lectura" class="screen">
   <div class="app-container">

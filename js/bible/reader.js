@@ -520,10 +520,23 @@ export function renderizarVersiculosCapitulo(
   }
 
   // 1. Aplica subrayados de la capa de estudio
+  // 1. Aplica subrayados de la capa de estudio y luego el tooltip
   if (typeof window.aplicarSubrayadosCapitulo === "function") {
-    window.aplicarSubrayadosCapitulo(nombreLibro, numCapitulo);
+    Promise.resolve(window.aplicarSubrayadosCapitulo(nombreLibro, numCapitulo))
+      .then(() => {
+        setTimeout(() => {
+          console.log("Entró al setTimeout del tooltip", {
+            tieneFn: typeof window.actualizarTooltipSubrayados,
+            visto: localStorage.getItem("pv_tooltip_versiculos_visto"),
+            versiculos: document.querySelectorAll(".linea-versiculo").length,
+          });
+          if (typeof window.actualizarTooltipSubrayados === "function") {
+            window.actualizarTooltipSubrayados(true);
+          }
+        }, 400);
+      })
+      .catch((err) => console.warn("Error al aplicar subrayados:", err));
   }
-
   // 2. Inicializa los eventos de la paleta del Fibrón
   initFibronEvents();
 
@@ -952,3 +965,124 @@ export function desactivarModoFibron() {
     }
   });
 }
+let cacheIntroduccionesLibros = null;
+
+function normalizarClaveLibro(texto = "") {
+  return texto
+    .toString()
+    .trim()
+    .toLowerCase()
+    .normalize("NFD")
+    .replace(/[\u0300-\u036f]/g, "");
+}
+
+async function cargarIntroduccionesLibros() {
+  if (cacheIntroduccionesLibros) {
+    return cacheIntroduccionesLibros;
+  }
+
+  try {
+    const respuesta = await fetch("./data/introduccion_libro.json", {
+      cache: "no-cache",
+    });
+    if (!respuesta.ok) {
+      throw new Error(
+        `No se pudo cargar ./data/introduccion_libro.json (${respuesta.status})`,
+      );
+    }
+    cacheIntroduccionesLibros = await respuesta.json();
+    return cacheIntroduccionesLibros;
+  } catch (error) {
+    console.error("Error cargando introducciones de libros:", error);
+    return {};
+  }
+}
+
+function pintarModalIntroduccion(info, nombreRespaldo) {
+  const modal = document.getElementById("modal-introduccion-libro");
+  if (!modal) return;
+
+  const datos = info || {
+    nombre: nombreRespaldo || "Este libro",
+    categoria: "Introducción bíblica",
+    introduccion_corta: "",
+    introduccion:
+      "Panorama inicial del libro para ubicar su contexto, su tono y el sentido general de su lectura.",
+    resumen:
+      "Vista general del contexto, el tipo de escrito y el eje central de este libro antes de elegir un capítulo.",
+    clave:
+      "Fijate en el propósito del texto, su contexto y qué tema o enseñanza se repite a lo largo de sus capítulos.",
+  };
+
+  const asignarCampo = (id, valor) => {
+    const el = document.getElementById(id);
+    if (!el) return;
+    const texto = (valor || "").trim();
+    el.textContent = texto;
+    el.style.display = texto ? "" : "none";
+  };
+
+  asignarCampo("intro-libro-categoria", datos.categoria);
+  asignarCampo("intro-libro-titulo", datos.nombre || nombreRespaldo || "Libro");
+  asignarCampo("intro-libro-corta", datos.introduccion_corta);
+  asignarCampo("intro-libro-introduccion", datos.introduccion);
+  asignarCampo("intro-libro-resumen", datos.resumen);
+  asignarCampo("intro-libro-clave", datos.clave);
+
+  // Si en el HTML el modal está anidado dentro de otro contenedor, lo llevamos a <body>
+  if (modal.parentElement !== document.body) {
+    document.body.appendChild(modal);
+  }
+
+  modal.classList.remove("oculto");
+  modal.classList.add("activo");
+  modal.style.setProperty("display", "flex", "important");
+  modal.style.setProperty("z-index", "99999", "important");
+}
+async function abrirIntroduccionLibro() {
+  const tituloEl = document.getElementById("titulo-libro-seleccionado");
+  const nombreLibro = tituloEl ? tituloEl.textContent.trim() : "";
+  const clave = normalizarClaveLibro(nombreLibro);
+
+  const mapaLibros = await cargarIntroduccionesLibros();
+  const infoLibro = clave && mapaLibros ? mapaLibros[clave] || null : null;
+
+  pintarModalIntroduccion(infoLibro, nombreLibro);
+}
+
+function cerrarIntroduccionLibro() {
+  const modal = document.getElementById("modal-introduccion-libro");
+  if (modal) {
+    modal.classList.remove("activo");
+    modal.classList.add("oculto");
+    modal.style.setProperty("display", "none", "important");
+  }
+}
+
+document.addEventListener("DOMContentLoaded", () => {
+  const btnAbrir = document.getElementById("btn-introduccion-libro");
+  const btnCerrar = document.getElementById("btn-cerrar-intro-libro");
+  const modal = document.getElementById("modal-introduccion-libro");
+
+  if (btnAbrir) {
+    btnAbrir.addEventListener("click", abrirIntroduccionLibro);
+  }
+
+  if (btnCerrar) {
+    btnCerrar.addEventListener("click", cerrarIntroduccionLibro);
+  }
+
+  if (modal) {
+    modal.addEventListener("click", (e) => {
+      if (e.target === modal) {
+        cerrarIntroduccionLibro();
+      }
+    });
+  }
+
+  document.addEventListener("keydown", (e) => {
+    if (e.key === "Escape") {
+      cerrarIntroduccionLibro();
+    }
+  });
+});

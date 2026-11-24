@@ -68,6 +68,7 @@ window.leerTextoDirecto = leerTextoDirecto;
 window.construirRespuestaCatequesis = construirRespuestaCatequesis;
 window.devolverFocoPC = devolverFocoPC;
 window.obtenerIdiomaInicial = obtenerIdiomaInicial;
+window.actualizarTooltipSubrayados = actualizarTooltipSubrayados;
 
 // 3. INICIALIZACIÓN TRAS CARGAR EL DOM
 document.addEventListener("DOMContentLoaded", () => {
@@ -153,7 +154,7 @@ function ocultarTodosLosTooltipsVersiculos() {
   });
 }
 
-function actualizarTooltipSubrayados(aleatorio = true) {
+function actualizarTooltipSubrayados(aleatorio = false) {
   const yaVisto =
     localStorage.getItem("pv_tooltip_versiculos_visto") === "true";
   const versiculos = Array.from(document.querySelectorAll(".linea-versiculo"));
@@ -173,22 +174,19 @@ function actualizarTooltipSubrayados(aleatorio = true) {
   const subrayados = versiculos.filter(esVersiculoSubrayado);
   if (subrayados.length === 0) return;
 
-  const elegido = aleatorio
-    ? subrayados[Math.floor(Math.random() * subrayados.length)]
-    : subrayados[0];
-
+  const elegido = subrayados[0];
   elegido.classList.add("tooltip-subrayado-activo");
+
+  // Cierra el tooltip apenas se toca el versículo o cualquier cosa dentro de él
+  elegido.addEventListener(
+    "click",
+    () => {
+      localStorage.setItem("pv_tooltip_versiculos_visto", "true");
+      ocultarTodosLosTooltipsVersiculos();
+    },
+    { once: true },
+  );
 }
-
-document.addEventListener("click", (e) => {
-  const versiculo = e.target.closest(".linea-versiculo");
-  if (!versiculo) return;
-
-  if (esVersiculoSubrayado(versiculo)) {
-    localStorage.setItem("pv_tooltip_versiculos_visto", "true");
-    ocultarTodosLosTooltipsVersiculos();
-  }
-});
 // ==========================================
 // PEDIR ALMACENAMIENTO PERSISTENTE
 // ==========================================

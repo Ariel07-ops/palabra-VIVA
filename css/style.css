@@ -5165,3 +5165,123 @@ html.modo-sepia #screen-cuaderno button,
 body.modo-sepia #screen-cuaderno button {
   color: #2e2010 !important;
 }
+#screen-capitulos .main-header {
+  position: relative;
+}
+
+#screen-capitulos .btn-intro-libro {
+  position: absolute;
+  top: 14px;
+  right: 14px;
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  background: rgba(212, 175, 55, 0.14);
+  color: #e6c65c;
+  border: 1px solid rgba(212, 175, 55, 0.55);
+  border-radius: 999px;
+  padding: 5px 11px;
+  font-size: 0.78rem;
+  font-weight: 600;
+  cursor: pointer;
+  z-index: 5;
+  transition:
+    background 0.2s ease,
+    transform 0.15s ease;
+}
+
+#screen-capitulos .btn-intro-libro:hover {
+  background: rgba(212, 175, 55, 0.26);
+  transform: translateY(-1px);
+}
+
+.pv-modal-backdrop {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.82);
+  align-items: center;
+  justify-content: center;
+  padding: 16px;
+  z-index: 9999;
+}
+
+.pv-modal-backdrop.activo {
+  display: flex;
+}
+
+.pv-modal-box {
+  width: 100%;
+  max-width: 480px;
+  background: #141416;
+  color: #f0eee9;
+  border: 1px solid rgba(212, 175, 55, 0.55);
+  border-radius: 14px;
+  padding: 20px;
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.9);
+}
+
+.pv-modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 12px;
+  margin-bottom: 14px;
+}
+
+.intro-libro-badge {
+  display: inline-block;
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: #d4af37;
+  margin-bottom: 4px;
+}
+
+.pv-modal-header h2 {
+  margin: 0;
+  font-size: 1.35rem;
+  color: #fff;
+}
+
+.btn-cerrar-intro {
+  background: transparent;
+  color: #ccc;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 8px;
+  width: 32px;
+  height: 32px;
+  cursor: pointer;
+  font-size: 1rem;
+}
+
+.pv-modal-body p {
+  line-height: 1.55;
+  margin: 0 0 12px;
+  font-size: 0.95rem;
+}
+
+.intro-libro-clave-box {
+  background: rgba(212, 175, 55, 0.08);
+  border-left: 3px solid #d4af37;
+  padding: 10px 12px;
+  border-radius: 6px;
+  font-size: 0.9rem;
+}
+
+.oculto {
+  display: none !important;
+}
+.pv-modal-backdrop:not(.activo) {
+  display: none;
+}
+
+.pv-modal-backdrop.activo {
+  display: flex;
+}
+.intro-libro-corta {
+  font-weight: 600;
+  color: #e6c65c;
+  font-style: italic;
+  margin-bottom: 10px;
+}

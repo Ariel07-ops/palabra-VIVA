@@ -1,0 +1,77 @@
+{
+  "genesis": {
+    "nombre": "Génesis",
+    "categoria": "Antiguo Testamento · Pentateuco",
+    "introduccion_corta": "Los relatos de los orígenes y la promesa de Dios que abre camino a toda la historia bíblica.",
+    "introduccion": "Génesis abre la Biblia con relatos sobre los orígenes del mundo y de la humanidad, y con la historia de los primeros patriarcas. En sus páginas aparecen preguntas fundamentales sobre la creación, la libertad, el pecado, la vida familiar y la fidelidad de Dios. La historia de Abrahán, Isaac, Jacob y José muestra cómo la promesa divina acompaña a personas y generaciones, y prepara el camino para la historia del pueblo de Israel.",
+    "resumen": "Relata los orígenes del mundo, la historia humana y la promesa de Dios a los patriarcas (Abrahán, Isaac, Jacob y José), abriendo el camino de toda la narración bíblica.",
+    "clave": "Leerlo como un relato fundacional sobre la creación, la libertad humana, las consecuencias del quiebre y la fidelidad de Dios a su promesa."
+  },
+
+  "exodo": {
+    "nombre": "Éxodo",
+    "categoria": "Antiguo Testamento · Pentateuco",
+    "introduccion_corta": "La liberación de Israel y la alianza que lo constituye como pueblo de Dios.",
+    "introduccion": "Éxodo narra la salida de Israel de la esclavitud en Egipto y el camino hacia una vida de alianza con Dios. En el relato, la liberación no es solo una huida de la opresión: es el comienzo de una relación en la que el pueblo es llamado a confiar en el Señor y a vivir según su enseñanza. Al leerlo, prestá atención al paso de la esclavitud a la libertad, a la alianza del Sinaí y a la presencia de Dios que guía a su pueblo.",
+    "resumen": "Relata el éxodo de Egipto, la entrega de la ley y la alianza en el Sinaí, y el inicio de la vida comunitaria de Israel guiado por Dios.",
+    "clave": "Leer la liberación de Egipto como el paso hacia una alianza viva donde Dios camina con su pueblo y lo llama a responder."
+  },
+
+  "levitico": {
+    "nombre": "Levítico",
+    "categoria": "Antiguo Testamento · Pentateuco",
+    "introduccion_corta": "El culto, la santidad y la vida comunitaria de Israel ante Dios.",
+    "introduccion": "Levítico reúne normas relacionadas con el culto, los sacerdotes, las ofrendas, la purificación y la vida del pueblo. Algunas de sus disposiciones pueden resultar extrañas al lector actual; por eso, conviene leerlas en su contexto y preguntarse qué buscaban expresar sobre la santidad de Dios y la vida de la comunidad. El libro invita a considerar que la relación con Dios abarca tanto el culto como la conducta cotidiana.",
+    "resumen": "Reúne instrucciones sobre sacrificios, sacerdocio, pureza y santidad que organizaban el culto y la convivencia del pueblo ante Dios.",
+    "clave": "Entender las leyes rituales y de santidad dentro de su contexto histórico para ver cómo buscaban cuidar la cercanía con Dios y la justicia en la comunidad."
+  },
+  "numeros": {
+    "nombre": "Números",
+    "categoria": "Antiguo Testamento · Pentateuco",
+    "introduccion_corta": "El camino de Israel por el desierto, con sus pruebas, infidelidades y aprendizajes.",
+    "introduccion": "Números cuenta episodios del camino de Israel por el desierto, entre la salida del Sinaí y la llegada a las puertas de la tierra prometida. El pueblo experimenta dificultades, dudas y conflictos, mientras aprende a vivir como comunidad guiada por Dios. Al recorrer el libro, observá cómo se entrelazan la rebeldía humana, las consecuencias de las decisiones y la fidelidad de Dios a su propósito.",
+    "resumen": "Acompaña el recorrido por el desierto desde el Sinaí hasta los umbrales de la tierra prometida, entre censos, pruebas, desánimos y fidelidad divina.",
+    "clave": "Observar el contraste entre las quejas y dudas del camino y la paciencia de Dios que sostiene la marcha hacia la promesa."
+  },
+  "deuteronomio": {
+    "nombre": "Deuteronomio",
+    "categoria": "Antiguo Testamento · Pentateuco",
+    "introduccion_corta": "Una llamada a recordar la alianza y elegir una vida fiel a Dios.",
+    "introduccion": "Deuteronomio presenta una serie de discursos de Moisés dirigidos a Israel antes de entrar en la tierra prometida. El pueblo es llamado a recordar lo vivido, escuchar de nuevo la enseñanza recibida y renovar su compromiso con Dios. El libro subraya que la alianza debe influir en toda la vida: en el amor a Dios, en la conducta personal y en la justicia dentro de la comunidad.",
+    "resumen": "Presenta los discursos finales de Moisés que repasan la historia de la alianza y exhortan a amar a Dios y cumplir sus mandamientos al entrar en la tierra.",
+    "clave": "Prestar atención al llamado a hacer memoria, elegir la vida y traducir el amor a Dios en cuidado mutuo y justicia social."
+  },
+  "josue": {
+    "nombre": "Josué",
+    "categoria": "Antiguo Testamento · Libros históricos",
+    "introduccion_corta": "La entrada en la tierra prometida y el reparto de la herencia bajo la guía de Dios.",
+    "introduccion": "Josué continúa el camino de Israel después de la muerte de Moisés, centrándose en la entrada a la tierra prometida y en su distribución entre las tribus. El libro muestra cómo la fidelidad a la palabra de Dios sostiene a la comunidad frente a nuevos desafíos.",
+    "resumen": "Narra el cruce del Jordán, la toma de ciudades clave y el reparto de la tierra entre las doce tribus, culminando en la renovación de la alianza.",
+    "clave": "Ver cómo el cumplimiento de la promesa va de la mano con la obediencia a la palabra de Dios y la unidad del pueblo."
+  },
+  "jueces": {
+    "nombre": "Jueces",
+    "categoria": "Antiguo Testamento · Libros históricos",
+    "introduccion_corta": "Ciclos de infidelidad, opresión y liberación en una etapa de dispersión.",
+    "introduccion": "Jueces retrata una etapa marcada por la fragmentación interna y la repetición de un ciclo: alejamiento de Dios, opresión, clamor de auxilio y levantamiento de libertadores puntuales. Conviene leerlo advirtiendo tanto la fragilidad humana como la paciencia de Dios que responde cuando el pueblo busca ayuda.",
+    "resumen": "Expone los ciclos repetidos de infidelidad, opresión de pueblos vecinos y rescate mediante jueces antes de que exista un rey en Israel.",
+    "clave": "Notar el espiral de caída y rescate para descubrir por qué las soluciones parciales no bastan sin una fidelidad sostenida."
+  },
+
+  "mateo": {
+    "nombre": "Mateo",
+    "categoria": "Nuevo Testamento · Evangelio sinóptico",
+    "introduccion_corta": "El Mesías que inaugura el Reino de los cielos en diálogo vivo con las Escrituras de Israel.",
+    "introduccion": "El Evangelio según Mateo invita a descubrir quién es Jesús y cómo sus palabras y acciones inauguran el Reino de los cielos. A lo largo del relato, el lector encontrará enseñanzas, parábolas y encuentros que muestran a Jesús como el Mesías esperado y ayudan a comprender cómo su misión se relaciona con las Escrituras de Israel. Al leerlo, conviene prestar atención a los grandes discursos —especialmente el Sermón del Monte— y preguntarse qué significa vivir como discípulo del Reino.",
+    "resumen": "Presenta a Jesús como el Mesías prometido y el Rey que inaugura el Reino de los cielos, conectando fuertemente la fe con las Escrituras de Israel y estructurando su mensaje en grandes discursos.",
+    "clave": "Observar cómo se entrelazan las promesas del Antiguo Testamento con las palabras y acciones de Jesús, especialmente en el Sermón del Monte."
+  },
+  "apocalipsis": {
+    "nombre": "Apocalipsis",
+    "categoria": "Nuevo Testamento · Literatura profética y apocalíptica",
+    "introduccion_corta": "Un llamado a la esperanza, la conversión y la fidelidad en medio de las pruebas.",
+    "introduccion": "El Apocalipsis transmite un mensaje de esperanza a comunidades que atraviesan pruebas. Mediante visiones e imágenes simbólicas, invita a mirar la historia desde la fidelidad a Dios y a perseverar en el seguimiento de Cristo. Su lenguaje puede resultar enigmático si se interpreta cada imagen literalmente; por eso, conviene leerlo atendiendo al sentido de conjunto y a su llamado a la conversión, la confianza y la esperanza en la renovación final.",
+    "resumen": "Escrito para fortalecer y consolar a comunidades en medio de pruebas, utiliza imágenes simbólicas poderosas para mostrar la soberanía de Dios y la esperanza de una renovación final.",
+    "clave": "No quedarse en una lectura literal de cada símbolo, sino captar el mensaje de ánimo, fidelidad y esperanza que comunica."
+  }
+}
