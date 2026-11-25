@@ -976,6 +976,36 @@ function normalizarClaveLibro(texto = "") {
     .replace(/[\u0300-\u036f]/g, "");
 }
 
+function obtenerIdiomaActual() {
+  const candidatos = [
+    window.idiomaActual,
+    window.idioma,
+    window.LANG,
+    localStorage.getItem("idioma"),
+    localStorage.getItem("lang"),
+    localStorage.getItem("pv_idioma"),
+    document.documentElement.lang,
+  ];
+
+  for (const cand of candidatos) {
+    if (!cand) continue;
+    const lim = String(cand).toLowerCase().slice(0, 2);
+    if (["es", "en", "pt"].includes(lim)) {
+      return lim;
+    }
+  }
+  return "es";
+}
+
+function resolverTextoIdioma(campo, idioma = "es") {
+  if (!campo) return "";
+  if (typeof campo === "string") return campo;
+  if (typeof campo === "object") {
+    return campo[idioma] || campo.es || campo.en || campo.pt || "";
+  }
+  return String(campo);
+}
+
 async function cargarIntroduccionesLibros() {
   if (cacheIntroduccionesLibros) {
     return cacheIntroduccionesLibros;
@@ -1002,28 +1032,72 @@ function pintarModalIntroduccion(info, nombreRespaldo) {
   const modal = document.getElementById("modal-introduccion-libro");
   if (!modal) return;
 
-  const datos = info || {
-    nombre: nombreRespaldo || "Este libro",
-    categoria: "Introducción bíblica",
-    introduccion_corta: "",
-    introduccion:
-      "Panorama inicial del libro para ubicar su contexto, su tono y el sentido general de su lectura.",
-    resumen:
-      "Vista general del contexto, el tipo de escrito y el eje central de este libro antes de elegir un capítulo.",
-    clave:
-      "Fijate en el propósito del texto, su contexto y qué tema o enseñanza se repite a lo largo de sus capítulos.",
+  const idioma = obtenerIdiomaActual();
+  const nombreFallback = nombreRespaldo || "Este libro";
+
+  const respaldoPorIdioma = {
+    es: {
+      categoria: "Introducción bíblica",
+      introduccion:
+        "Panorama inicial del libro para ubicar su contexto, su tono y el sentido general de su lectura.",
+      resumen:
+        "Vista general del contexto, el tipo de escrito y el eje central de este libro antes de elegir un capítulo.",
+      clave:
+        "Fijate en el propósito del texto, su contexto y qué tema o enseñanza se repite a lo largo de sus capítulos.",
+    },
+    en: {
+      categoria: "Biblical Introduction",
+      introduccion:
+        "Initial overview of the book to situate its context, tone, and general sense of reading.",
+      resumen:
+        "General view of the context, literary genre, and core focus of this book before choosing a chapter.",
+      clave:
+        "Pay attention to the purpose of the text, its context, and the recurring themes or teachings across its chapters.",
+    },
+    pt: {
+      categoria: "Introdução bíblica",
+      introduccion:
+        "Panorama inicial do livro para situar seu contexto, seu tom e o sentido geral da leitura.",
+      resumen:
+        "Visão geral do contexto, do gênero do escrito e do eixo central deste livro antes de escolher um capítulo.",
+      clave:
+        "Observe o propósito do texto, seu contexto e os temas ou ensinamentos que se repetem ao longo dos capítulos.",
+    },
   };
+
+  const def = respaldoPorIdioma[idioma] || respaldoPorIdioma.es;
+
+  const datos = info || {
+    nombre: nombreFallback,
+    categoria: def.categoria,
+    introduccion_corta: "",
+    introduccion: def.introduccion,
+    resumen: def.resumen,
+    clave: def.clave,
+  };
+  const titulosClavePorIdioma = {
+    es: "Clave de lectura:",
+    en: "Reading key:",
+    pt: "Chave de leitura:",
+  };
+
+  const claveTituloEl = document.getElementById("intro-libro-clave-titulo");
+  if (claveTituloEl) {
+    claveTituloEl.textContent =
+      titulosClavePorIdioma[idioma] || titulosClavePorIdioma.es;
+  }
 
   const asignarCampo = (id, valor) => {
     const el = document.getElementById(id);
     if (!el) return;
-    const texto = (valor || "").trim();
+    const textoExtraido = resolverTextoIdioma(valor, idioma);
+    const texto = String(textoExtraido || "").trim();
     el.textContent = texto;
     el.style.display = texto ? "" : "none";
   };
 
   asignarCampo("intro-libro-categoria", datos.categoria);
-  asignarCampo("intro-libro-titulo", datos.nombre || nombreRespaldo || "Libro");
+  asignarCampo("intro-libro-titulo", datos.nombre || nombreFallback);
   asignarCampo("intro-libro-corta", datos.introduccion_corta);
   asignarCampo("intro-libro-introduccion", datos.introduccion);
   asignarCampo("intro-libro-resumen", datos.resumen);
@@ -1038,7 +1112,15 @@ function pintarModalIntroduccion(info, nombreRespaldo) {
   modal.classList.add("activo");
   modal.style.setProperty("display", "flex", "important");
   modal.style.setProperty("z-index", "99999", "important");
+
+  // Siempre arranca arriba de todo al abrir
+  modal.scrollTop = 0;
+  const cuerpoModal = modal.querySelector(".pv-modal-body");
+  if (cuerpoModal) {
+    cuerpoModal.scrollTop = 0;
+  }
 }
+
 async function abrirIntroduccionLibro() {
   const tituloEl = document.getElementById("titulo-libro-seleccionado");
   const nombreLibro = tituloEl ? tituloEl.textContent.trim() : "";
@@ -1058,6 +1140,8 @@ function cerrarIntroduccionLibro() {
     modal.style.setProperty("display", "none", "important");
   }
 }
+
+window.cerrarIntroduccionLibro = cerrarIntroduccionLibro;
 
 document.addEventListener("DOMContentLoaded", () => {
   const btnAbrir = document.getElementById("btn-introduccion-libro");

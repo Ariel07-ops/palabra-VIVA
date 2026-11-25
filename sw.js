@@ -1,4 +1,4 @@
-const CACHE_NAME = "palabra-viva-v25";
+const CACHE_NAME = "palabra-viva-v26";
 
 const urlsToCache = [
   "./",
@@ -54,6 +54,7 @@ const urlsToCache = [
   "./data/biblia_pt_completa.json",
   "./data/estados.json",
   "./data/contenido.json",
+  "./data/introduccion_libro.json",
   "./data/camino.json",
   "./data/promesa.json",
   "./data/config.json",
