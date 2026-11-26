@@ -1,4 +1,4 @@
-const CACHE_NAME = "palabra-viva-v26";
+const CACHE_NAME = "palabra-viva-v27";
 
 const urlsToCache = [
   "./",

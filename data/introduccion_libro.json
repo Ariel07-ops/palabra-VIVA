@@ -49,8 +49,8 @@
     },
     "introduccion": {
       "es": "El Éxodo narra el paso de un clan familiar a un pueblo liberado de la opresión en Egipto y consagrado por una alianza con Dios. Une memoria de salvación, mandamientos para la vida en común y presencia cercana en medio del camino.",
-      "en": "Exodus narrates the passage from a family clan to a people freed from oppression in Egypt and consecrated by a covenant with God. It unites memories of salvation, commandments for life together, and a near presence along the way.",
-      "pt": "O Êxodo narra a passagem de um clã familiar a um povo libertado da opressão no Egito e consagrado por uma aliança com Deus. Une memória de salvação, mandamentos para a vida em comum e presença próxima no meio do caminho."
+      "en": "Exodus narrates the passage from a family clan to a people freed from oppression in Egypt and consecrated by a covenant with God. It brings together memories of salvation, commandments for life together, and God's near presence along the way.",
+      "pt": "O Êxodo narra a passagem de um clã familiar a um povo libertado da escravidão no Egito e consagrado por uma aliança com Deus. Une memória de salvação, mandamentos para a vida em comum e presença próxima no meio do caminho."
     },
     "resumen": {
       "es": "Relata la opresión en Egipto, el llamado de Moisés, las plagas y el paso del mar, la travesía hacia el monte Sinaí, la entrega de la Ley y la alianza, y las instrucciones para levantar el tabernáculo tras el episodio del becerro de oro.",
@@ -81,7 +81,7 @@
     },
     "introduccion": {
       "es": "El Levítico ofrece leyes y orientaciones para que un pueblo recién liberado aprenda a vivir en presencia de un Dios santo. Lejos de ser solo normas rituales, integra ofrendas, pureza, fiestas y justicia social en una misma vida consagrada.",
-      "en": "Leviticus offers laws and guidelines so a newly freed people can learn to live in the presence of a holy God. Far from being merely ritual rules, it integrates offerings, purity, festivals, and social justice into a single consecrated life.",
+      "en": "Leviticus offers laws and guidelines so a newly freed people can learn to live in the presence of a holy God. Far from being merely ritual rules, it brings together offerings, purity, festivals, and social justice in one consecrated life.",
       "pt": "O Levítico oferece leis e orientações para que um povo recém-libertado aprenda a viver na presença de um Deus santo. Longe de serem apenas normas rituais, integra ofertas, pureza, festas e justiça social numa mesma vida consagrada."
     },
     "resumen": {
@@ -108,12 +108,12 @@
     },
     "introduccion_corta": {
       "es": "Cuarenta años en el desierto entre murmuraciones, pruebas y la fidelidad que guía.",
-      "en": "Forty years in the wilderness amid grumbling, trials, and guiding faithfulness.",
+      "en": "Forty years in the wilderness amid complaints, trials, and guiding faithfulness.",
       "pt": "Quarenta anos no deserto entre murmurações, provas e a fidelidade que guia."
     },
     "introduccion": {
       "es": "Números acompaña el largo recorrido del pueblo desde el Sinaí hasta las fronteras de la tierra prometida. Mezcla censos y normas de marcha con relatos de desánimo, rebeldía y paciencia divina que sostienen la travesía.",
-      "en": "Numbers follows the people's long journey from Sinai to the borders of the promised land. It blends censuses and travel rules with accounts of discouragement, rebellion, and divine patience sustaining the crossing.",
+      "en": "Numbers follows the people's long journey from Sinai to the borders of the promised land. It blends censuses and travel rules with accounts of discouragement, rebellion, and divine patience sustaining the journey.",
       "pt": "Números acompanha a longa caminhada do povo desde o Sinai até as fronteiras da terra prometida. Mistura censos e normas de marcha com relatos de desânimo, rebeldia e paciência divina que sustentam a travessia."
     },
     "resumen": {
@@ -155,11 +155,10 @@
     },
     "clave": {
       "es": "Detenerse en el llamado a la memoria agradecida, a escuchar y amar a Dios, y a elegir activamente el camino de la vida.",
-      "en": "Pause at the call to grateful remembrance, to listen to and love God, and to actively choose the path of life.",
-      "pt": "Detener-se no chamado à memória agradecida, a escutar e amar a Deus, e a escolher ativamente o caminho da vida."
+      "en": "Pause at the call to grateful remembrance, to listen for and love God, and to actively choose the path of life.",
+      "pt": "Deter-se no chamado à memória agradecida, a escutar e amar a Deus, e a escolher ativamente o caminho da vida."
     }
   },
-
   "josue": {
     "nombre": {
       "es": "Josué",
@@ -237,7 +236,7 @@
     },
     "introduccion_corta": {
       "es": "Lealtad familiar, acogida al extranjero y providencia silenciosa en medio de la escasez.",
-      "en": "Family loyalty, welcome for the foreigner, and quiet providence amid scarcity.",
+      "en": "Family loyalty, welcoming the stranger, and quiet providence amid scarcity.",
       "pt": "Lealdade familiar, acolhida ao estrangeiro e providência silenciosa em meio à escassez."
     },
     "introduccion": {
@@ -253,7 +252,7 @@
     "clave": {
       "es": "Detenerse en el concepto de fidelidad solidaria (hesed) y en cómo alguien de afuera es abrazada dentro de la historia de salvación.",
       "en": "Pause at the notion of loyal solidarity (hesed) and how an outsider is embraced into the story of salvation.",
-      "pt": "Detener-se no sentido de fidelidade solidária (hesed) e em como alguém de fora é acolhida dentro da história da salvação."
+      "pt": "Deter-se no sentido de fidelidade solidária (hesed) e em como alguém de fora é acolhida dentro da história da salvação."
     }
   },
   "1 samuel": {
@@ -274,8 +273,8 @@
     },
     "introduccion": {
       "es": "1 Samuel narra una transición decisiva en Israel, cuando el pueblo pide un rey como las demás naciones. A través de Samuel, Saúl y David, el libro plantea qué significa gobernar según el corazón de Dios y no solo según las apariencias.",
-      "en": "1 Samuel narrates a decisive transition in Israel as the people ask for a king like other nations. Through Samuel, Saul, and David, the book asks what it means to rule according to God's heart rather than outward appearances.",
-      "pt": "1 Samuel narra uma transição decisiva em Israel, quando o povo pede um rei como as demais nações. Por meio de Samuel, Saul e Davi, o livro coloca o que significa governar segundo o coração de Deus e não apenas segundo as aparências."
+      "en": "1 Samuel narrates a decisive transition in Israel as the people ask for a king like the other nations. Through Samuel, Saul, and David, the book asks what it means to rule according to God's heart rather than outward appearances.",
+      "pt": "1 Samuel narra uma transição decisiva em Israel, quando o povo pede um rei como as demais nações. Por meio de Samuel, Saul e Davi, o livro propõe o que significa governar segundo o coração de Deus e não apenas segundo as aparências."
     },
     "resumen": {
       "es": "Comienza con el nacimiento y llamado de Samuel, sigue con la captura del arca y la unción de Saúl como primer rey, y luego desarrolla el declive de Saúl junto con la unción secreta y persecución de David hasta la muerte de Saúl.",
@@ -338,7 +337,7 @@
     },
     "introduccion": {
       "es": "1 Reyes abre con el esplendor de Salomón y la construcción del templo en Jerusalén, pero pronto muestra cómo la idolatría y los abusos fracturan la unidad del pueblo en dos reinos. En medio de la crisis surge Elías para defender la fidelidad al único Dios.",
-      "en": "1 Kings opens with Solomon's splendor and the building of the temple in Jerusalem, yet soon reveals how idolatry and abuses fracture the people's unity into two kingdoms. Amid the crisis, Elijah rises to defend faithfulness to the one God.",
+      "en": "1 Kings opens with Solomon's splendor and the building of the temple in Jerusalem, yet soon reveals how idolatry and abuses divide the people's unity into two kingdoms. Amid the crisis, Elijah rises to defend faithfulness to the one God.",
       "pt": "1 Reis abre com o esplendor de Salomão e a construção do templo em Jerusalém, mas logo mostra como a idolatria e os abusos fraturam a unidade do povo em dois reinos. Em meio à crise surge Elias para defender a fidelidade ao único Deus."
     },
     "resumen": {
@@ -370,7 +369,7 @@
     },
     "introduccion": {
       "es": "2 Reyes acompaña el declive progresivo de Israel y de Judá, mostrando que ni las reformas tardías alcanzan cuando la infidelidad se vuelve habitual. A pesar de los exilios y la destrucción de Jerusalén, deja abierta una pequeña chispa de esperanza.",
-      "en": "2 Kings follows the progressive decline of Israel and Judah, showing that even late reforms fall short when unfaithfulness becomes ingrained. Despite the exiles and Jerusalem's destruction, it leaves a small spark of hope alive.",
+      "en": "2 Kings follows the progressive decline of Israel and Judah, showing that even late reforms fall short when unfaithfulness becomes ingrained. Despite the exiles and Jerusalem's destruction, it keeps a small spark of hope alive.",
       "pt": "2 Reis acompanha o declínio progressivo de Israel e de Judá, mostrando que nem as reformas tardias bastam quando a infidelidade se torna habitual. Apesar dos exílios e da destruição de Jerusalém, deixa acesa uma pequena centelha de esperança."
     },
     "resumen": {
@@ -413,13 +412,13 @@
     "clave": {
       "es": "Detenerse en la importancia de la memoria y la liturgia: saber de dónde venimos y volver a poner la adoración a Dios en el centro.",
       "en": "Pause at the importance of memory and liturgy: knowing where we come from and placing the worship of God back at the center.",
-      "pt": "Detener-se na importância da memória e da liturgia: saber de onde viemos e voltar a colocar a adoração a Deus no centro."
+      "pt": "Deter-se na importância da memória e da liturgia: saber de onde viemos e voltar a colocar a adoração a Deus no centro."
     }
   },
   "2 cronicas": {
     "nombre": {
       "es": "2 Crónicas",
-      "en": "2 Kings / 2 Chronicles",
+      "en": "2 Chronicles",
       "pt": "2 Crônicas"
     },
     "categoria": {
@@ -534,14 +533,14 @@
       "pt": "Ambientado na diáspora do Império Persa, Ester conta como uma jovem judia elevada a rainha arrisca a própria vida para deter um decreto de extermínio. Mostra que o cuidado de Deus age mesmo onde o seu nome não é pronunciado em voz alta."
     },
     "resumen": {
-      "es": "Narra la elección de Ester como reina, la negativa de Mardoqueo a postrarse ante Amán, el decreto contra los judíos, la intercesión valiente de Ester ante el rey, la caída de Amán y la institución de la fiesta de Purim.",
+      "es": "Narra la elección de Ester como reina, la negativa de Mardoqueo a postrarse ante Amán, el decreto contra los judíos, la intercesión valiente de Ester ante el rey, la caída de Amán y la instituição de la fiesta de Purim.",
       "en": "It narrates Esther's selection as queen, Mordecai's refusal to bow to Haman, the decree against the Jews, Esther's courageous intercession before the king, Haman's downfall, and the institution of the feast of Purim.",
       "pt": "Narra a escolha de Ester como rainha, a recusa de Mardoqueu em prostrar-se diante de Hamã, o decreto contra os judeus, a intercessão corajosa de Ester diante do rei, a queda de Hamã e a instituição da festa de Purim."
     },
     "clave": {
       "es": "Detenerse en la pregunta de Mardoqueo a Ester: quizás para una hora como esta has llegado al lugar en que estás.",
       "en": "Pause at Mordecai's question to Esther: perhaps you have come to your royal position for just such a time as this.",
-      "pt": "Detener-se na pergunta de Mardoqueu a Ester: talvez para uma hora como esta tenhas chegado ao lugar em que estás."
+      "pt": "Deter-se na pergunta de Mardoqueu a Ester: talvez para uma hora como esta tenhas chegado ao lugar em que estás."
     }
   },
   "job": {
@@ -626,7 +625,7 @@
     },
     "introduccion": {
       "es": "Proverbios ofrece enseñanzas breves y agudas para orientar las decisiones cotidianas, las relaciones, el uso de la palabra y la justicia. Recuerda que la verdadera sabiduría comienza con una actitud reverente y humilde ante Dios.",
-      "en": "Proverbs offers concise, sharp teachings to guide everyday choices, relationships, speech, and justice. It reminds us that true wisdom begins with a reverent, humble posture before God.",
+      "en": "Proverbs offers concise, sharp teachings to guide everyday choices, relationships, speech, and justice. It reminds us that true wisdom begins with a humble, reverent heart before God.",
       "pt": "Provérbios oferece ensinamentos breves e agudos para orientar as decisões cotidianas, as relações, o uso da palavra e a justiça. Recorda que a verdadeira sabedoria começa com uma atitude reverente e humilde diante de Deus."
     },
     "resumen": {
@@ -637,7 +636,7 @@
     "clave": {
       "es": "Detenerse en el principio del temor del Señor: la sabiduría bíblica no es mera astucia, sino vivir en armonía con Dios y con el prójimo.",
       "en": "Pause at the principle of the fear of the Lord: biblical wisdom is not mere cleverness, but living in harmony with God and neighbor.",
-      "pt": "Detener-se no princípio do temor do Senhor: a sabedoria bíblica não é mera astúcia, mas viver em harmonia com Deus e com o próximo."
+      "pt": "Deter-se no princípio do temor do Senhor: a sabedoria bíblica não é mera astúcia, mas viver em harmonia com Deus e com o próximo."
     }
   },
   "eclesiastes": {
@@ -658,13 +657,13 @@
     },
     "introduccion": {
       "es": "Eclesiastés examina con lucidez y realismo los límites de los esfuerzos humanos bajo el sol. Frente a lo efímero y a las paradojas de la historia, invita a soltar pretensiones absolutas y a recibir cada día como don.",
-      "en": "Ecclesiastes examines with lucid realism the limits of human striving under the sun. Facing what is fleeting and life's paradoxes, it invites letting go of absolute illusions and receiving each day as a gift.",
+      "en": "Ecclesiastes examines with lucid realism the limits of human striving under the sun. Facing what is fleeting and life's paradoxes, it invites letting go of false absolutes and receiving each day as a gift.",
       "pt": "Eclesiastes examina com lucidez e realismo os limites dos esforços humanos debaixo do sol. Diante do efêmero e dos paradoxos da história, convida a soltar pretensões absolutas e a acolher cada dia como dom."
     },
     "resumen": {
-      "es": "Recorre las indagaciones de Cohélet sobre el trabajo, la sabiduría, el placer y la injusticia, incluye el célebre poema sobre los tiempos de la existencia y concluye llamando a recordar al Creador y cumplir sus mandamientos.",
-      "en": "It traces Qoheleth's inquiries into work, wisdom, pleasure, and injustice, includes the well-known poem on life's seasons, and concludes by calling us to remember the Creator and keep his commands.",
-      "pt": "Percorre as indagações de Coélet sobre o trabalho, a sabedoria, o prazer e a injustiça, inclui o célebre poema sobre os tempos da existência e conclui chamando a recordar o Criador e cumprir os seus mandamentos."
+      "es": "Recorre las indagaciones de Cohélet (el Predicador) sobre el trabajo, la sabiduría, el placer y la injusticia, incluye el célebre poema sobre los tiempos de la existencia y concluye llamando a recordar al Creador y cumplir sus mandamientos.",
+      "en": "It traces Qoheleth (the Preacher) inquiries into work, wisdom, pleasure, and injustice, includes the well-known poem on life's seasons, and concludes by calling us to remember the Creator and keep his commands.",
+      "pt": "Percorre as indagações de Coélet (o Predicador) sobre o trabalho, a sabedoria, o prazer e a injustiça, inclui o célebre poema sobre os tempos da existência e conclui chamando a recordar o Criador e cumprir os seus mandamentos."
     },
     "clave": {
       "es": "Fijarse en cómo la palabra traducida como vanidad apunta a lo vaporoso y pasajero, abriendo espacio para disfrutar con sencillez lo que Dios concede hoy.",
@@ -694,7 +693,7 @@
       "pt": "O Cântico dos Cânticos celebra o amor humano na sua dimensão poética, sensual e fiel. Com imagens da natureza e do encontro, dignifica o afeto recíproco e também foi lido como símbolo do vínculo entre Deus e o seu povo."
     },
     "resumen": {
-      "es": "Se despliega como un diálogo poético apasionado entre los amantes, entretejido con escenas de búsqueda y reencuentro, elogios mutuos y cantos sobre la fuerza duradera del amor.",
+      "es": "Se despliega como un diálogo poético apasionado entre los amantes, entretejido con escenas de búsqueda y reencuentro, elogios mutuos y cantos sobre la força duradera del amor.",
       "en": "It unfolds as a passionate poetic dialogue between lovers, interwoven with scenes of seeking and reunion, mutual praise, and songs on the enduring strength of love.",
       "pt": "Desdobra-se como um diálogo poético apaixonado entre os amantes, entremeado com cenas de busca e reencontro, elogios mútuos e cânticos sobre a força duradoura do amor."
     },
@@ -713,7 +712,7 @@
     "categoria": {
       "es": "Antiguo Testamento · Libros sapienciales",
       "en": "Old Testament · Wisdom Books",
-      "pt": "Antigo Testamento · Livros sapienciais"
+      "pt": "Antigo Testamento · Livros poéticos e sapienciais"
     },
     "introduccion_corta": {
       "es": "El valor de la Sabiduría de Dios, la justicia, la inmortalidad y la memoria del Éxodo.",
@@ -722,7 +721,7 @@
     },
     "introduccion": {
       "es": "El libro de la Sabiduría presenta la sabiduría divina como aliento y reflejo de Dios que orienta la vida hacia la justicia y la inmortalidad. Dialoga con un contexto cultural helenístico y relee la historia del Éxodo como signo del cuidado divino.",
-      "en": "The Book of Wisdom presents divine wisdom as a breath and reflection of God that guides life toward justice and immortality. It engages a Hellenistic cultural context and rereads the Exodus story as a sign of divine care.",
+      "en": "The Book of Wisdom presents divine wisdom as a breath and reflection of God's power that guides life toward justice and immortality. It engages a Hellenistic cultural context and rereads the Exodus story as a sign of divine care.",
       "pt": "O livro da Sabedoria apresenta a sabedoria divina como sopro e reflexo de Deus que orienta a vida para a justiça e a imortalidade. Dialoga com um contexto cultural helenístico e relê a história do Êxodo como sinal do cuidado divino."
     },
     "resumen": {
@@ -765,7 +764,7 @@
     "clave": {
       "es": "Detenerse en la llamada a la humildad y a la gratitud: quien se abaja ante Dios y honra al prójimo halla verdadera sabiduría.",
       "en": "Pause at the call to humility and gratitude: those who humble themselves before God and honor their neighbor find true wisdom.",
-      "pt": "Detener-se no chamado à humildade e à gratidão: quem se humilha diante de Deus e honra o próximo encontra verdadeira sabedoria."
+      "pt": "Deter-se no chamado à humildade e à gratidão: quem se humilha diante de Deus e honra o próximo encontra verdadeira sabedoria."
     }
   },
   "isaias": {
@@ -823,7 +822,7 @@
     },
     "resumen": {
       "es": "Comienza con el llamado del profeta, alterna denuncias de idolatría e injusticia, acciones simbólicas y confesiones íntimas con relatos de persecución y caída de Jerusalén, y culmina con el libro del consuelo y la nueva alianza.",
-      "en": "It begins with the prophet's call, alternates denunciations of idolatry and injustice, symbolic acts, and intimate laments with accounts of persecution and Jerusalem's fall, and culminates in the book of comfort and new covenant.",
+      "en": "It begins with the prophet's call, alternates denunciations of idolatry and injustice, symbolic acts, and intimate laments with accounts of persecution and Jerusalem's fall, and culminates in the book of comfort and the new covenant.",
       "pt": "Começa com o chamado do profeta, alterna denúncias de idolatria e injustiça, ações simbólicas e confissões íntimas com relatos de perseguição e queda de Jerusalém, e culmina no livro do consolo e da nova aliança."
     },
     "clave": {
@@ -850,7 +849,7 @@
     },
     "introduccion": {
       "es": "Lamentaciones recoge poemas elegíacos que lloran la destrucción de Jerusalén, su templo y el sufrimiento de su gente. No maquilla el dolor ni apura consuelos baratos, sino que da voz al duelo y encuentra un punto de apoyo en la compasión de Dios.",
-      "en": "Lamentations gathers elegiac poems mourning the destruction of Jerusalem, its temple, and its people's suffering. It neither masks grief nor rushes cheap answers, giving voice to sorrow while finding footing in God's compassion.",
+      "en": "Lamentations gathers elegiac poems mourning the destruction of Jerusalem, its temple, and its people's suffering. It neither masks grief nor rushes cheap comfort, giving voice to sorrow while finding footing in God's compassion.",
       "pt": "Lamentações recolhe poemas elegíacos que choram a destruição de Jerusalém, o seu templo e o sofrimento do seu povo. Não disfarça a dor nem apressa consolos fáceis, dando voz ao luto e encontrando apoio na compaixão de Deus."
     },
     "resumen": {
@@ -861,7 +860,7 @@
     "clave": {
       "es": "Detenerse en el centro del libro: las misericordias del Señor no se han agotado y cada mañana se renuevan.",
       "en": "Pause at the heart of the book: the Lord's mercies are never consumed and are new every morning.",
-      "pt": "Detener-se no centro do livro: as misericórdias do Senhor não se esgotaram e a cada manhã se renovam."
+      "pt": "Deter-se no centro do livro: as misericórdias do Senhor não se esgotaram e a cada manhã se renovam."
     }
   },
   "baruc": {
@@ -925,7 +924,7 @@
     "clave": {
       "es": "Detenerse en la promesa de cambiar un corazón de piedra por un corazón de carne e infundir un espíritu nuevo.",
       "en": "Pause at the promise to replace a heart of stone with a heart of flesh and pour out a new spirit.",
-      "pt": "Detener-se na promessa de trocar um coração de pedra por um coração de carne e infundir um espírito novo."
+      "pt": "Deter-se na promessa de trocar um coração de pedra por um coração de carne e infundir um espírito novo."
     }
   },
   "daniel": {
@@ -987,9 +986,9 @@
       "pt": "Combina o relato simbólico do casamento e dos filhos de Oseias com denúncias contra a infidelidade, a violência e a falta de conhecimento de Deus, alternadas com promessas de amor paciente e retorno."
     },
     "clave": {
-      "es": "Detenerse en la preferencia divina por la misericordia y el conocimiento fiel de Dios por encima de los sacrificios formales.",
+      "es": "Detenerse en la preferencia divina por la misericordia y el conhecimento fiel de Dios por encima de los sacrificios formales.",
       "en": "Pause at God's desire for steadfast love and true knowledge of God over empty ritual sacrifices.",
-      "pt": "Detener-se na preferência divina pela misericórdia e pelo conhecimento fiel de Deus acima dos sacrifícios formais."
+      "pt": "Deter-se na preferência divina pela misericórdia e pelo conhecimento fiel de Deus acima dos sacrifícios formais."
     }
   },
   "joel": {
@@ -1042,7 +1041,7 @@
     },
     "introduccion": {
       "es": "Amós, pastor y cultivador de sicómoros llevado a hablar en el santuario de Betel, denuncia con fuerza la opresión económica y la indiferencia de los poderosos. Su mensaje recuerda que la elección de Dios implica responsabilidad ética.",
-      "en": "Amos, a shepherd and fig-dresser sent to speak at the shrine of Bethel, strongly denounces economic oppression and indifference among the powerful. His message reminds us that election by God carries ethical responsibility.",
+      "en": "Amos, a shepherd and fig grower sent to speak at the shrine of Bethel, strongly denounces economic oppression and indifference among the powerful. His message reminds us that election by God carries ethical responsibility.",
       "pt": "Amós, pastor e cultivador de sicômoros enviado a falar no santuário de Betel, denuncia com firmeza a opressão econômica e a indiferença dos poderosos. Sua mensagem recorda que a escolha de Deus implica responsabilidade ética."
     },
     "resumen": {
@@ -1053,7 +1052,7 @@
     "clave": {
       "es": "Detenerse en la imagen de hacer correr el derecho como agua y la justicia como arroyo inagotable.",
       "en": "Pause at the image of letting justice roll down like waters and righteousness like an ever-flowing stream.",
-      "pt": "Detener-se na imagem de fazer correr o direito como água e a justiça como torrente perene."
+      "pt": "Deter-se na imagem de fazer correr o direito como água e a justiça como torrente perene."
     }
   },
   "abdias": {
@@ -1069,7 +1068,7 @@
     },
     "introduccion_corta": {
       "es": "El libro más breve del Antiguo Testamento: orgullo, violencia contra el hermano y soberanía de Dios.",
-      "en": "The shortest book of the Old Testament: pride, violence against kin, and God's sovereignty.",
+      "en": "The shortest book of the Old Testament: pride, betrayal of kin, and God's sovereignty.",
       "pt": "O livro mais breve do Antigo Testamento: orgulho, violência contra o irmão e soberania de Deus."
     },
     "introduccion": {
@@ -1107,7 +1106,7 @@
     "introduccion": {
       "es": "Jonás es un relato profético irónico y profundo que pone en espejo las resistencias humanas frente a la compasión de Dios. Mientras el profeta intenta escapar y se irrita por el perdón a Nínive, Dios muestra su cuidado universal.",
       "en": "Jonah is an ironic, profound prophetic narrative holding up a mirror to human resistance against God's compassion. While the prophet tries to flee and resents Nineveh's pardon, God shows universal care.",
-      "pt": "Jonas é um relato profético irônico e profundo que põe em espelho as resistências humanas diante da compaixão de Deus. Enquanto o profeta tenta fugir e se irrita com o perdão a Nínive, Deus mostra o seu cuidado universal."
+      "pt": "Jonas é um relato profético irônico e profundo que espelha as resistências humanas diante da compaixão de Deus. Enquanto o profeta tenta fugir e se irrita com o perdão a Nínive, Deus mostra o seu cuidado universal."
     },
     "resumen": {
       "es": "Narra la huida de Jonás por mar, la tormenta y el gran pez donde ora desde el abismo, la predicación en Nínive y el arrepentimiento de la ciudad, y el diálogo final de Dios con Jonás a la sombra de la planta.",
@@ -1149,7 +1148,7 @@
     "clave": {
       "es": "Detenerse en la síntesis de lo que Dios pide: practicar la justicia, amar la misericordia y caminar humildemente con Dios.",
       "en": "Pause at the summary of what God requires: to do justice, to love kindness, and to walk humbly with your God.",
-      "pt": "Detener-se na síntese do que Deus pede: praticar a justiça, amar a misericórdia e caminhar humildemente com Deus."
+      "pt": "Deter-se na síntese do que Deus pede: praticar a justiça, amar a misericórdia e caminhar humildemente com Deus."
     }
   },
   "nahum": {
@@ -1213,7 +1212,7 @@
     "clave": {
       "es": "Detenerse en la frase central —el justo vivirá por su fidelidad— y en la decisión final de alegrarse en Dios aun cuando falte todo lo demás.",
       "en": "Pause at the central line—the righteous will live by faithfulness—and the final resolve to rejoice in God even when everything else fails.",
-      "pt": "Detener-se na frase central —o justo viverá pela fidelidade— e na decisão final de alegrar-se em Deus mesmo quando falta todo o resto."
+      "pt": "Deter-se na frase central —o justo viverá pela fidelidade— e na decisão final de alegrar-se em Deus mesmo quando falta todo o resto."
     }
   },
   "sofonias": {
@@ -1277,7 +1276,7 @@
     "clave": {
       "es": "Detenerse en el estribillo que sostiene todo el libro: ánimo y manos a la obra, porque yo estoy con ustedes.",
       "en": "Pause at the refrain sustaining the whole book: take courage and work, for I am with you.",
-      "pt": "Detener-se no refrão que sustenta todo o livro: coragem e mãos à obra, porque eu estou convosco."
+      "pt": "Deter-se no refrão que sustenta todo o livro: coragem e mãos à obra, porque eu estou convosco."
     }
   },
   "zacarias": {
@@ -1331,7 +1330,7 @@
     "introduccion": {
       "es": "Malaquías —cuyo nombre significa 'mi mensajero'— retrata el cansancio y el escepticismo de una comunidad posterior a la reconstrucción del templo. A través de preguntas y respuestas directas, reaviva la memoria del amor de Dios y la fidelidad en la vida cotidiana.",
       "en": "Malachi—whose name means 'my messenger'—portrays weariness and skepticism in a community after the temple's rebuilding. Through direct questions and replies, it rekindles memory of God's love and everyday faithfulness.",
-      "pt": "Malaquias —cujo nome significa 'meu mensageiro'— retrata o cansaço e o cansaço espiritual de uma comunidade após a reconstrução do templo. Por meio de perguntas e respostas diretas, reaviva a memória do amor de Deus e da fidelidade na vida cotidiana."
+      "pt": "Malaquias —cujo nome significa 'meu mensageiro'— retrata o cansaço e o ceticismo espiritual de uma comunidade após a reconstrução do templo. Por meio de perguntas e respostas diretas, reaviva a memória do amor de Deus e da fidelidade na vida cotidiana."
     },
     "resumen": {
       "es": "Se estructura como un diálogo disputado entre Dios y el pueblo que aborda el amor electivo de Dios, la desidia en el culto, la fidelidad matrimonial, la justicia y el anuncio del mensajero que precede al día del Señor.",
@@ -1341,7 +1340,7 @@
     "clave": {
       "es": "Detenerse en la afirmación inicial que sostiene todo el reclamo profético: yo los he amado.",
       "en": "Pause at the opening affirmation sustaining the whole prophetic appeal: I have loved you.",
-      "pt": "Detener-se na afirmação inicial que sustenta todo o apelo profético: eu vos amei."
+      "pt": "Deter-se na afirmação inicial que sustenta todo o apelo profético: eu vos amei."
     }
   },
   "tobias": {
@@ -1363,7 +1362,7 @@
     "introduccion": {
       "es": "Tobías es un relato entrañable sobre la fidelidad doméstica y el cuidado silencioso de Dios en tiempos de exilio. A través de Tobit, Tobías y Sara, muestra cómo la oración, la limosna y la compañía fiel sostienen la vida.",
       "en": "Tobit is a warm story of household faithfulness and God's quiet care in exile. Through Tobit, Tobias, and Sarah, it shows how prayer, generosity, and faithful companionship sustain life.",
-      "pt": "Tobias é um relato próximo sobre a fidelidade doméstica e o cuidado silencioso de Deus em tempos de exílio. Por meio de Tobit, Tobias e Sara, mostra como a oração, a esmola e a companhia fiel sustentam a vida."
+      "pt": "Tobias é um relato tocante sobre a fidelidade doméstica e o cuidado silencioso de Deus em tempos de exílio. Por meio de Tobit, Tobias e Sara, mostra como a oração, a esmola e a companhia fiel sustentam a vida."
     },
     "resumen": {
       "es": "Narra la piedad de Tobit en el exilio asirio y su ceguera, el viaje de su hijo Tobías acompañado por el ángel Rafael, la liberación de Sara, la curación de Tobit y el canto de acción de gracias final.",
@@ -1405,7 +1404,7 @@
     "clave": {
       "es": "Detenerse en la certeza de que la fuerza de Dios no depende de la magnitud de un ejército, sino de un corazón confiado.",
       "en": "Pause at the conviction that God's strength depends not on army size, but on a trusting heart.",
-      "pt": "Detener-se na certeza de que a força de Deus não depende da dimensão de um exército, mas de um coração confiante."
+      "pt": "Deter-se na certeza de que a força de Deus não depende da dimensão de um exército, mas de um coração confiante."
     }
   },
   "1 macabeos": {
@@ -1436,7 +1435,7 @@
     },
     "clave": {
       "es": "Observar cómo la fidelidad a la alianza y al culto verdadero se vuelve sostén de identidad cuando se intenta borrar la memoria del pueblo.",
-      "en": "Notice how fidelity to covenant and true worship becomes a anchor of identity when a people's memory is threatened.",
+      "en": "Notice how fidelity to covenant and true worship becomes an anchor of identity when a people's memory is threatened.",
       "pt": "Observar como a fidelidade à aliança e ao culto verdadeiro se torna sustentáculo de identidade quando se tenta apagar a memória do povo."
     }
   },
@@ -1469,7 +1468,7 @@
     "clave": {
       "es": "Detenerse en la convicción de que Dios da vida a quienes son fieles hasta el extremo y en la oración solidaria por los difuntos.",
       "en": "Pause at the conviction that God gives life to those faithful to the end and at solidarity in prayer for the dead.",
-      "pt": "Detener-se na convicção de que Deus dá vida aos que são fiéis até ao fim e na oração solidária pelos falecidos."
+      "pt": "Deter-se na convicção de que Deus dá vida aos que são fiéis até ao fim e na oração solidária pelos falecidos."
     }
   },
   "mateo": {
@@ -1532,8 +1531,8 @@
     },
     "clave": {
       "es": "Detenerse en el giro de la confesión de Pedro: seguir a Jesús implica cargar la cruz y aprender que el primero es el que sirve a todos.",
-      "en": "Pause at the turn of Peter's confession: following Jesus means taking up the cross and learning that the greatest serves all.",
-      "pt": "Detener-se na virada da confissão de Pedro: seguir Jesus implica tomar a cruz e aprender que o primeiro é quem serve a todos."
+      "en": "Pause at the turn of Peter's confession: following Jesus means taking up the cross and learning that true greatness is found in serving all.",
+      "pt": "Deter-se na virada da confissão de Pedro: seguir Jesus implica tomar a cruz e aprender que o primeiro é quem serve a todos."
     }
   },
   "lucas": {
@@ -1554,7 +1553,7 @@
     },
     "introduccion": {
       "es": "Lucas escribe una narración cuidada y acogedora que subraya la compasión universal de Jesús, la presencia del Espíritu Santo y la oración constante. Pone un relieve especial en los pobres, las mujeres, los pecadores y quienes quedan al margen.",
-      "en": "Luke writes a thoughtful, welcoming narrative highlighting Jesus's universal compassion, the Holy Spirit's presence, and constant prayer. It gives special prominence to the poor, women, outcasts, and those on the margins.",
+      "en": "Luke writes a thoughtful, welcoming narrative highlighting Jesus's universal compassion, the Holy Spirit's presence, and constant prayer. It gives special prominence to the poor, women, outcasts, and others on the margins.",
       "pt": "Lucas escreve uma narrativa cuidada e acolhedora que sublinha a compaixão universal de Jesus, a presença do Espírito Santo e a oração constante. Dá especial destaque aos pobres, às mulheres, aos pecadores e aos que ficam à margem."
     },
     "resumen": {
@@ -1597,7 +1596,7 @@
     "clave": {
       "es": "Detenerse en la invitación a permanecer en el amor de Jesús y en cómo la entrega en la cruz se muestra como manifestación de gloria y don.",
       "en": "Pause at the invitation to abide in Jesus's love and how self-giving on the cross is revealed as glory and gift.",
-      "pt": "Detener-se no convite a permanecer no amor de Jesus e em como a entrega na cruz se mostra como manifestação de glória e dom."
+      "pt": "Deter-se no convite a permanecer no amor de Jesus e em como a entrega na cruz se mostra como manifestação de glória e dom."
     }
   },
   "hechos": {
@@ -1618,11 +1617,11 @@
     },
     "introduccion": {
       "es": "Hechos narra cómo el anuncio de Jesús resucitado se expande desde Jerusalén hasta los confines de la tierra guiado por el Espíritu Santo. Muestra tanto la frescura y generosidad de las primeras comunidades como las tensiones y viajes misioneros.",
-      "en": "Acts narrates how proclaiming the risen Jesus expands from Jerusalem to the ends of the earth guided by the Holy Spirit. It shows both the vitality and generosity of early communities and the tensions and missionary journeys.",
+      "en": "Acts narrates how proclaiming the risen Jesus expands from Jerusalem to the ends of the earth guided by the Holy Spirit. It shows both the vitality and generosity of early communities and the tensions and missionary journeys along the way.",
       "pt": "Atos narra como o anúncio de Jesus ressuscitado se expande de Jerusalém até aos confins da terra guiado pelo Espírito Santo. Mostra tanto a vitalidade e a generosidade das primeiras comunidades quanto as tensões e viagens missionárias."
     },
     "resumen": {
-      "es": "Comienza con la ascensión y Pentecostés, sigue la vida comunitaria, los primeros conflictos y la expansión hacia Samaria y los paganos, y luego centra gran parte del relato en los viajes misioneros de Pablo hasta su llegada a Roma.",
+      "es": "Comienza con la ascensión y Pentecostés, sigue la vida comunitaria, los primeros conflictos y la expansão hacia Samaria y los paganos, y luego centra gran parte del relato en los viajes misioneros de Pablo hasta su llegada a Roma.",
       "en": "It begins with the ascension and Pentecost, traces community life, early conflicts, and expansion toward Samaria and Gentiles, and then centers much of the narrative on Paul's missionary journeys through his arrival in Rome.",
       "pt": "Começa com a ascensão e Pentecostes, acompanha a vida comunitária, os primeiros conflitos e a expansão rumo a Samaria e aos pagãos, e depois centra grande parte do relato nas viagens missionárias de Paulo até à chegada a Roma."
     },
@@ -1660,8 +1659,8 @@
     },
     "clave": {
       "es": "Detenerse en la certeza de que nada puede separar del amor de Dios manifestado en Cristo Jesús, y en cómo ese amor se traduce en entrega cotidiana.",
-      "en": "Pause at the assurance that nothing can separate us from God's love in Christ Jesus, and how that love takes shape in daily devotion.",
-      "pt": "Detener-se na certeza de que nada pode separar do amor de Deus manifestado em Cristo Jesus, e em como esse amor se traduz em entrega cotidiana."
+      "en": "Pause at the assurance that nothing can separate us from God's love in Christ Jesus, and how that love takes shape in daily life and service.",
+      "pt": "Deter-se na certeza de que nada pode separar do amor de Deus manifestado em Cristo Jesus, e em como esse amor se traduz em entrega cotidiana."
     }
   },
   "1 corintios": {
@@ -1725,7 +1724,7 @@
     "clave": {
       "es": "Detenerse en la paradoja evangélica: cuando soy débil, entonces es cuando soy fuerte, porque la gracia de Dios basta.",
       "en": "Pause at the Gospel paradox: whenever I am weak, then I am strong, because God's grace is sufficient.",
-      "pt": "Detener-se no paradoxo evangélico: quando sou fraco, então é que sou forte, porque a graça de Deus basta."
+      "pt": "Deter-se no paradoxo evangélico: quando sou fraco, então é que sou forte, porque a graça de Deus basta."
     }
   },
   "galatas": {
@@ -1789,7 +1788,7 @@
     "clave": {
       "es": "Detenerse en la llamada a vivir a la altura del llamado recibido, construyendo unidad con humildad, mansedumbre y paciencia.",
       "en": "Pause at the call to walk worthy of the calling received, building unity with humility, gentleness, and patience.",
-      "pt": "Detener-se no chamado a viver à altura do chamado recebido, construindo unidade com humildade, mansidão e paciência."
+      "pt": "Deter-se no chamado a viver à altura do chamado recebido, construindo unidade com humildade, mansidão e paciência."
     }
   },
   "filipenses": {
@@ -1821,7 +1820,7 @@
     "clave": {
       "es": "Detenerse en el himno de la humildad de Cristo y en la invitación a alegrarse siempre y entregar las preocupaciones en oración.",
       "en": "Pause at the hymn of Christ's humility and the invitation to rejoice always and bring anxieties to prayer.",
-      "pt": "Detener-se no hino da humildade de Cristo e no convite a alegrar-se sempre e entregar as preocupações em oração."
+      "pt": "Deter-se no hino da humildade de Cristo e no convite a alegrar-se sempre e entregar as preocupações em oração."
     }
   },
   "colosenses": {
@@ -1847,7 +1846,7 @@
     },
     "resumen": {
       "es": "Presenta un gran himno sobre Cristo como imagen del Dios invisible y cabeza de la Iglesia, advierte contra falsas doctrinas y prácticas vacías, y ofrece pautas concretas para vestir de compasión, gratitud y paz.",
-      "en": "It presents a lofty hymn on Christ as image of the invisible God and head of the Church, warns against hollow traditions and rules, and gives concrete guidance to clothe oneself in compassion, gratitude, and peace.",
+      "en": "It presents a lofty hymn on Christ as image of the invisible God and head of the Church, warns against hollow traditions and rules, and gives concrete guidance to put on compassion, gratitude, and peace.",
       "pt": "Apresenta um grande hino sobre Cristo como imagem do Deus invisível e cabeça da Igreja, adverte contra falsas doutrinas e práticas vazias e oferece orientações concretas para revestir-se de compaixão, gratidão e paz."
     },
     "clave": {
@@ -1879,13 +1878,13 @@
     },
     "resumen": {
       "es": "Recuerda con gratitud cómo nació la fe en Tesalónica y el cuidado maternal y paterno del apóstol, exhorta a una vida limpia y laboriosa, y consuela ante la partida de los seres queridos y la venida del Señor.",
-      "en": "It recalls with gratitude how faith took root in Thessalonica and the apostle's tender care, urges a pure, industrious life, and comforts believers regarding those who have died and the Lord's coming.",
+      "en": "It recalls with gratitude how faith took root in Thessalonica and the apostle's tender care, urges a pure, industrious life, and comforts believers concerning loved ones who have died and the Lord's coming.",
       "pt": "Recorda com gratidão como nasceu a fé em Tessalônica e o cuidado afetuoso do apóstolo, exorta a uma vida íntegra e trabalhadora e consola diante da partida dos entes queridos e da vinda do Senhor."
     },
     "clave": {
       "es": "Detenerse en la esperanza que no deja lugar a la desesperanza: vivir vigilantes, agradecidos y atentos al bien de todos.",
       "en": "Pause at the hope that leaves no room for despair: living watchfully, gratefully, and seeking what is good for all.",
-      "pt": "Detener-se na esperança que não deixa espaço para o desespero: viver vigilantes, agradecidos e atentos ao bem de todos."
+      "pt": "Deter-se na esperança que não deixa espaço para o desespero: viver vigilantes, agradecidos e atentos ao bem de todos."
     }
   },
   "2 tesalonicenses": {
@@ -1911,7 +1910,7 @@
     },
     "resumen": {
       "es": "Agradece por la fe y paciencia de la comunidad ante las pruebas, aclara no dejarse alarmar ni engañar sobre el día del Señor, y exhorta a no caer en la ociosidad ni en el desánimo, sino a hacer el bien sin cansarse.",
-      "en": "It gives thanks for the community's faith and endurance under trials, urges not being shaken or deceived about the day of the Lord, and exhorts against idleness or discouragement, calling to do good without tiring.",
+      "en": "It gives thanks for the community's faith and endurance under trials, urges believers not to be shaken or deceived about the day of the Lord, and exhorts against idleness or discouragement, calling to do good without tiring.",
       "pt": "Agradece pela fé e paciência da comunidade diante das provas, esclarece não se deixar alarmar nem enganar sobre o dia do Senhor e exorta a não cair na ociosidade nem no desânimo, mas a fazer o bem sem cansar."
     },
     "clave": {
@@ -1949,7 +1948,7 @@
     "clave": {
       "es": "Detenerse en la centralidad de la piedad unida al contentamiento y en la meta del Evangelio: formar comunidades sanas en el amor.",
       "en": "Pause at godliness joined with contentment and the Gospel's goal: shaping communities healthy in love.",
-      "pt": "Detener-se na centralidade da piedade unida ao contentamento e no alvo do Evangelho: formar comunidades sadias no amor."
+      "pt": "Deter-se na centralidade da piedade unida ao contentamento e no alvo do Evangelho: formar comunidades sadias no amor."
     }
   },
   "2 timoteo": {
@@ -2006,14 +2005,14 @@
       "pt": "Escrita a Tito em Creta, esta carta breve une organização comunitária, integridade moral e anúncio da graça. Recorda que a salvação não nasce de méritos próprios, mas da misericórdia de Deus, e se expressa em boas obras."
     },
     "resumen": {
-      "es": "Orienta sobre el nombramiento de presbíteros íntegros y la sana enseñanza, traza pautas de conducta para distintas edades y situaciones, expone la aparición de la gracia de Dios y llama a una vida justa y servicial.",
+      "es": "Orienta sobre el nombramiento de presbíteros íntegros y la sana enseñanza, traza pautas de conducta para distintas edades y situações, expone la aparición de la gracia de Dios y llama a una vida justa y servicial.",
       "en": "It guides appointing blameless elders and sound teaching, outlines conduct across generations and roles, sets forth the appearing of God's grace, and calls to an upright, helpful life.",
       "pt": "Orienta sobre a escolha de presbíteros íntegros e o ensino sadio, traça orientações de conduta para diferentes idades e situações, expõe a manifestação da graça de Deus e chama a uma vida justa e solidária."
     },
     "clave": {
       "es": "Detenerse en la gracia de Dios que se manifestó para salvar a todos y nos enseña a vivir con sobriedad, justicia y piedad.",
       "en": "Pause at God's grace appearing to bring salvation to all and training us to live uprightly, soberly, and devoutly.",
-      "pt": "Detener-se na graça de Deus que se manifestou para salvar a todos e nos ensina a viver com sobriedade, justiça e piedade."
+      "pt": "Deter-se na graça de Deus que se manifestou para salvar a todos e nos ensina a viver com sobriedade, justiça e piedade."
     }
   },
   "filemon": {
@@ -2034,7 +2033,7 @@
     },
     "introduccion": {
       "es": "La carta más corta de Pablo aborda una situación concreta y delicada: la relación con Onésimo, un esclavo vinculado a Filemón. En lugar de imponer una orden autoritaria, apela al amor, a la reconciliación y a la igualdad fraterna.",
-      "en": "Paul's shortest letter addresses a concrete, delicate situation: his relationship with Onesimus, connected to Philemon. Rather than issuing an authoritarian command, it appeals to love, reconciliation, and brotherly equality.",
+      "en": "Paul's shortest letter addresses a concrete, sensitive situation: his relationship with Onesimus, connected to Philemon. Rather than issuing an authoritarian command, it appeals to love, reconciliation, and brotherly equality.",
       "pt": "A carta mais breve de Paulo aborda uma situação concreta e delicada: a relação com Onésimo, ligado a Filemom. Em vez de impor uma ordem autoritária, apela ao amor, à reconciliação e à igualdade fraterna."
     },
     "resumen": {
@@ -2060,9 +2059,9 @@
       "pt": "Novo Testamento · Cartas"
     },
     "introduccion_corta": {
-      "es": "La superioridad del sacerdocio y la entrega de Cristo, confianza en la prueba y camino de fe.",
+      "es": "La supremacía del sacerdocio de Cristo y de la ofrenda de sí mismo, confianza en la prueba y camino de fe.",
       "en": "The supremacy of Christ's priesthood and self-offering, trust under trial, and the path of faith.",
-      "pt": "A superioridade do sacerdócio e da entrega de Cristo, confiança na prova e caminho de fé."
+      "pt": "A supremacia do sacerdócio de Cristo e da oferta de si mesmo, confiança na prova e caminho de fé."
     },
     "introduccion": {
       "es": "Hebreos anima a una comunidad cansada y tentada a retroceder, mostrándole la grandeza de Jesús como Hijo, sumo sacerdote misericordioso y mediador de una alianza nueva y definitiva. Combina reflexión profunda con llamados urgentes a perseverar.",
@@ -2077,7 +2076,7 @@
     "clave": {
       "es": "Detenerse en la invitación a acercarse con confianza al trono de la gracia para hallar misericordia y ayuda oportuna en el momento preciso.",
       "en": "Pause at the invitation to draw near with confidence to the throne of grace to find mercy and timely help in time of need.",
-      "pt": "Detener-se no convite a aproximar-se com confiança do trono da graça para alcançar misericórdia e auxílio oportuno na hora certa."
+      "pt": "Deter-se no convite a aproximar-se com confiança do trono da graça para alcançar misericórdia e auxílio oportuno no momento oportuno."
     }
   },
   "santiago": {
@@ -2097,9 +2096,9 @@
       "pt": "Uma fé viva que se demonstra nas obras, sabedoria serena, domínio da língua e justiça."
     },
     "introduccion": {
-      "es": "Con estilo directo y sabor sapiencial, Santiago insiste en que la fe auténtica transforma la conducta concreta, el trato con los pobres y el uso de las palabras. Es una llamada lúcida a la coherencia entre lo que se cree y lo que se vive.",
-      "en": "With a direct style and wisdom flavor, James insists that authentic faith transforms concrete conduct, care for the poor, and speech. It is a lucid call to coherence between what is professed and how one lives.",
-      "pt": "Com estilo direto e sabor sapiencial, Tiago insiste em que a fé autêntica transforma a conduta concreta, o cuidado com os pobres e o uso das palavras. É um apelo lúcido à coerência entre o que se crê e o que se vive."
+      "es": "Con estilo directo y tono sapiencial, Santiago insiste en que la fe auténtica transforma la conducta concreta, el trato con los pobres y el uso de las palabras. Es una llamada lúcida a la coherencia entre lo que se cree y lo que se vive.",
+      "en": "With a direct style and a wisdom-like tone, James insists that authentic faith transforms everyday conduct, the way people treat the poor, and the use of words. It is a lucid call to consistency between what one believes and how one lives.",
+      "pt": "Com estilo direto e tom sapiencial, Tiago insiste em que a fé autêntica transforma a conduta concreta, o modo como se trata os pobres e o uso das palavras. É um apelo lúcido à coerência entre o que se crê e o que se vive."
     },
     "resumen": {
       "es": "Aborda cómo enfrentar las pruebas con entereza, escuchar y poner por obra la Palabra, no hacer acepción de personas, la relación entre fe y obras, el peso de la lengua, la sabiduría de arriba, la paciencia y la oración confiada.",
@@ -2129,9 +2128,9 @@
       "pt": "Esperança viva em meio à prova, identidade de povo peregrino e mansidão no testemunho."
     },
     "introduccion": {
-      "es": "1 Pedro escribe a comunidades que viven como forasteros y soportan incomprensión o sufrimiento por su fe. Les recuerda su dignidad recibida por la resurrección de Cristo y los invita a responder con esperanza, respeto y bondad.",
-      "en": "1 Peter writes to communities living as strangers and enduring hostility or suffering for their faith. It reminds them of their dignity through Christ's resurrection and calls them to answer with hope, respect, and goodness.",
-      "pt": "1 Pedro escreve a comunidades que vivem como forasteiros e suportam incompreensão ou sofrimento pela fé. Recorda-lhes a sua dignidade recebida pela ressurreição de Cristo e convida-as a responder com esperança, respeito e bondade."
+      "es": "1 Pedro escribe a comunidades que viven como extranjeras y peregrinas, y soportan incomprensión o sufrimiento por su fe. Les recuerda la esperanza bautismal y la nueva vida recibidas por la resurrección de Cristo, y las invita a responder con respeto, bondad y esperanza.",
+      "en": "1 Peter writes to communities living as strangers and pilgrims, enduring misunderstanding or suffering because of their faith. It reminds them of their baptismal hope and new life through Christ's resurrection and calls them to respond with respect, goodness, and hope.",
+      "pt": "1 Pedro escreve a comunidades que vivem como estrangeiras e peregrinas e suportam incompreensão ou sofrimento por causa da fé. Recorda-lhes a esperança batismal e a vida nova recebidas pela ressurreição de Cristo e convida-as a responder com respeito, bondade e esperança."
     },
     "resumen": {
       "es": "Comienza bendiciendo a Dios por una esperanza viva, define a los creyentes como piedras vivas y pueblo consagrado, orienta la conducta cívica, familiar y comunitaria ante el sufrimiento, y cierra con un llamado a la humildad y la vigilancia.",
@@ -2141,7 +2140,7 @@
     "clave": {
       "es": "Detenerse en la invitación a estar siempre listos para dar razón de la esperanza con mansedumbre y respeto, confiando en el Pastor de las almas.",
       "en": "Pause at the call to always be ready to give a reason for hope with gentleness and respect, trusting the Shepherd of souls.",
-      "pt": "Detener-se no convite a estar sempre prontos para dar razão da esperança com mansidão e respeito, confiando no Pastor das almas."
+      "pt": "Deter-se no convite a estar sempre prontos para dar razão da esperança com mansidão e respeito, confiando no Pastor das almas."
     }
   },
   "2 pedro": {
@@ -2156,9 +2155,9 @@
       "pt": "Novo Testamento · Cartas católicas"
     },
     "introduccion_corta": {
-      "es": "Crecer en la gracia y el conocimiento de Cristo, fidelidad a la Palabra y paciencia ante el tiempo de Dios.",
-      "en": "Growing in the grace and knowledge of Christ, fidelity to Scripture, and patience with God's timing.",
-      "pt": "Crescer na graça e no conhecimento de Cristo, fidelidade à Palavra e paciência diante do tempo de Deus."
+      "es": "Crecer en la gracia y el conocimiento de Cristo, permanecer fieles a la enseñanza apostólica y esperar con paciencia las promesas de Dios.",
+      "en": "Growing in the grace and knowledge of Christ, remaining faithful to apostolic teaching, and waiting patiently for God's promises.",
+      "pt": "Crescer na graça e no conhecimento de Cristo, permanecer fiéis ao ensinamento apostólico e esperar com paciência as promessas de Deus."
     },
     "introduccion": {
       "es": "2 Pedro llama a mantener viva la memoria de la enseñanza apostólica frente a maestros engañosos y burlas escépticas. Une el crecimiento espiritual cotidiano con la paciencia confiada ante las promesas de Dios.",
@@ -2171,7 +2170,7 @@
       "pt": "Exorta a somar virtudes como domínio próprio, perseverança e amor fraterno, recorda o testemunho ocular da glória de Cristo e a inspiração das Escrituras, adverte contra falsos mestres e explica a paciência do Senhor."
     },
     "clave": {
-      "es": "Observar que lo que parece demora en el tiempo humano es paciencia de Dios que espera la conversión de todos.",
+      "es": "Observar que lo que parece demora en el tiempo humano es paciencia de Dios que espera la conversão de todos.",
       "en": "Notice that what seems delay on a human clock is God's patience waiting for everyone to turn back.",
       "pt": "Observar que o que parece demora no tempo humano é paciência de Deus que espera a conversão de todos."
     }
@@ -2193,9 +2192,9 @@
       "pt": "Comunhão com Deus, caminhar na luz, verdade sobre Jesus e o mandamento do amor fraterno."
     },
     "introduccion": {
-      "es": "Con tono meditativo y cercanía de padre espiritual, 1 Juan invita a verificar la autenticidad de la fe en dos pilares inseparables: confesar a Jesús como Hijo encarnado y amar de verdad a los hermanos.",
-      "en": "With a reflective tone and warmth of a spiritual father, 1 John invites testing authentic faith on two inseparable pillars: confessing Jesus as incarnate Son and truly loving brothers and sisters.",
-      "pt": "Com tom meditativo e proximidade de pai espiritual, 1 João convida a verificar a autenticidade da fé em dois pilares inseparáveis: confessar Jesus como Filho encarnado e amar de verdade os irmãos."
+      "es": "Con tono meditativo y calidez pastoral de padre espiritual, 1 Juan invita a verificar la autenticidad de la fe en dos pilares inseparables: confesar a Jesús como el Hijo que se hizo hombre y amar de verdad a los hermanos.",
+      "en": "With a reflective tone and the pastoral warmth of a spiritual father, 1 John invites readers to test the authenticity of their faith by two inseparable marks: confessing Jesus as the Son who came in the flesh and truly loving their brothers and sisters.",
+      "pt": "Com tom meditativo e calor pastoral de pai espiritual, 1 João convida a verificar a autenticidade da fé em dois pilares inseparáveis: confessar Jesus como o Filho que se fez homem e amar de verdade os irmãos."
     },
     "resumen": {
       "es": "Parte del testimonio de la Palabra de vida para una alegría plena, desarrolla contrastes entre luz y tinieblas, verdad y mentira, hijos de Dios y pecado, y culmina en la certeza de que Dios es amor y el amor vence el temor.",
@@ -2205,7 +2204,7 @@
     "clave": {
       "es": "Detenerse en la frase que resume todo el libro: Dios es amor, y quien permanece en el amor permanece en Dios.",
       "en": "Pause at the line summarizing the whole letter: God is love, and whoever abides in love abides in God.",
-      "pt": "Detener-se na frase que resume todo o livro: Deus é amor, e quem permanece no amor permanece em Deus."
+      "pt": "Deter-se na frase que resume todo o livro: Deus é amor, e quem permanece no amor permanece em Deus."
     }
   },
   "2 juan": {
@@ -2225,9 +2224,9 @@
       "pt": "Caminhar na verdade e no amor, e discernir com prudência diante dos que negam Cristo."
     },
     "introduccion": {
-      "es": "Breve y directa, 2 Juan une dos exigencias inseparables para la vida comunitaria: la fidelidad a la verdad del Evangelio y el amor fraterno concreto. Advierte contra quienes desdibujan la humanidad y la misión de Jesús.",
-      "en": "Brief and direct, 2 John joins two inseparable demands for community life: fidelity to Gospel truth and concrete brotherly love. It warns against those who blur Jesus's true coming and mission.",
-      "pt": "Breve e direta, 2 João une duas exigências inseparáveis para a vida comunitária: a fidelidade à verdade do Evangelho e o amor fraterno concreto. Adverte contra os que desfiguram a encarnação e a missão de Jesus."
+      "es": "Breve y directa, 2 Juan une dos exigencias inseparables para la vida comunitaria: la fidelidad a la verdad del Evangelio y el amor fraterno concreto. Advierte contra quienes niegan que Jesucristo haya venido en carne.",
+      "en": "Brief and direct, 2 John joins two inseparable demands of community life: fidelity to the truth of the Gospel and concrete love of one another. It warns against those who deny that Jesus Christ has come in the flesh.",
+      "pt": "Breve e direta, 2 João une duas exigências inseparáveis para a vida comunitária: a fidelidade à verdade do Evangelho e o amor fraterno concreto. Adverte contra os que negam que Jesus Cristo veio na carne."
     },
     "resumen": {
       "es": "Saluda en la verdad y el amor, celebra a quienes viven según los mandamientos, recuerda el mandato de amarse unos a otros y pide discernimiento para no apoyar enseñanzas contrarias a la doctrina de Cristo.",
@@ -2257,8 +2256,8 @@
       "pt": "Hospitalidade generosa, testemunho na verdade e contraste entre o serviço humilde e a soberba."
     },
     "introduccion": {
-      "es": "Dirigida a Gayo, 3 Juan ofrece una ventana viva a la cotidianidad de las primeras comunidades cristianas. Elogia la hospitalidad hacia los misioneros itinerantes y advierte contra el afán de protagonismo que divide.",
-      "en": "Addressed to Gaius, 3 John offers a vivid window into everyday early Christian communities. It commends hospitality toward traveling coworkers and warns against self-seeking dominance that divides.",
+      "es": "Dirigida a Gayo, 3 Juan ofrece una ventana viva a la vida cotidiana de las primeras comunidades cristianas. Elogia la hospitalidad hacia los misioneros itinerantes y advierte contra el afán de ocupar el primer puesto y ejercer dominio.",
+      "en": "Addressed to Gaius, 3 John offers a vivid window into the everyday life of the early Christian communities. It commends hospitality toward traveling missionaries and warns against the desire to dominate.",
       "pt": "Dirigida a Gaio, 3 João oferece uma janela viva para o cotidiano das primeiras comunidades cristãs. Elogia a hospitalidade aos missionários itinerantes e adverte contra o desejo de domínio que divide."
     },
     "resumen": {
@@ -2269,7 +2268,7 @@
     "clave": {
       "es": "Detenerse en la llamada a imitar el bien y no el mal, reconociendo que quien hace el bien pertenece a Dios.",
       "en": "Pause at the call to imitate what is good rather than evil, recognizing that whoever does good belongs to God.",
-      "pt": "Detener-se no chamado a imitar o bem e não o mal, reconhecendo que quem faz o bem pertence a Deus."
+      "pt": "Deter-se no chamado a imitar o bem e não o mal, reconhecendo que quem faz o bem pertence a Deus."
     }
   },
   "judas": {
@@ -2295,7 +2294,7 @@
     },
     "resumen": {
       "es": "Llama a combatir por la fe, evoca ejemplos bíblicos y tradiciones de juicio contra los impostores, exhorta a edificarse en la fe, orar en el Espíritu y mostrar compasión, y cierra con una doxología luminosa.",
-      "en": "It calls to contend for the faith, cites biblical examples and judgment traditions against intruders, urges building up in faith, praying in the Spirit, and showing mercy, and closes with a radiant doxology.",
+      "en": "It calls to contend for the faith, cites biblical examples and judgment traditions against deceptive intruders, urges building up in faith, praying in the Spirit, and showing mercy, and closes with a radiant doxology.",
       "pt": "Chama a combater pela fé, evoca exemplos bíblicos e tradições de juízo contra os impostores, exorta a edificar-se na fé, orar no Espírito e mostrar compaixão, e encerra com uma doxologia luminosa."
     },
     "clave": {
@@ -2317,7 +2316,7 @@
     },
     "introduccion_corta": {
       "es": "Revelación de Cristo victorioso, consuelo en la persecución y horizonte de cielos nuevos y tierra nueva.",
-      "en": "Revelation of Christ triumphant, comfort under persecution, and a horizon of new heavens and new earth.",
+      "en": "The revelation of Christ triumphant, comfort under persecution, and a horizon of new heavens and new earth.",
       "pt": "Revelação de Cristo vitorioso, consolo na perseguição e horizonte de novos céus e nova terra."
     },
     "introduccion": {
@@ -2333,7 +2332,7 @@
     "clave": {
       "es": "Detenerse en la clave de lectura simbólica y esperanzada: la victoria no llega por violencia imperial, sino por la fidelidad y el amor del Cordero.",
       "en": "Pause at its symbolic, hopeful key: victory comes not through imperial violence, but through the Lamb's faithfulness and love.",
-      "pt": "Detener-se na chave de leitura simbólica e esperançada: a vitória não chega pela violência imperial, mas pela fidelidade e pelo amor do Cordeiro."
+      "pt": "Deter-se na chave de leitura simbólica e esperançada: a vitória não chega pela violência imperial, mas pela fidelidade e pelo amor do Cordeiro."
     }
   }
 }
